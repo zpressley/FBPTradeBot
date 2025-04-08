@@ -142,6 +142,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
             "team3_assets": corrected_players.get(team3, [])
         }
     )
+    print(f"🔍 Matching `{raw}` against roster: {roster_names}")
 
     await interaction.response.defer(ephemeral=True)
     await interaction.followup.send(content=msg, view=view, ephemeral=True)
@@ -188,7 +189,21 @@ class PreviewConfirmView(View):
             await interaction.response.send_message("❌ Trade canceled.", ephemeral=True)
 
 
-# Helper to parse WB
+# Helper to parse 
+
+import re
+
+def extract_name(player_line):
+    """
+    Extracts the player's name from a line like:
+    'SS Trea Turner [PHI] - VC 1' → 'Trea Turner'
+    """
+    try:
+        match = re.match(r"^\w+\s+(.+?)\s+\[", player_line)
+        return match.group(1).strip() if match else player_line.strip()
+    except Exception:
+        return player_line.strip()
+
 def extract_wb(asset_list):
     for item in asset_list:
         cleaned = item.strip().lower()
