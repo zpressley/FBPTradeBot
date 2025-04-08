@@ -5,52 +5,47 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-import os
+# Load env vars from local .env (optional for local dev)
+load_dotenv()
 
-# Write Google credentials to a file if provided via env
+# Set up Discord token
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+# Write Google credentials from env (Render secret)
 google_creds = os.getenv("GOOGLE_CREDS_JSON")
 if google_creds:
     with open("google_creds.json", "w") as f:
         f.write(google_creds)
 
-# Write Yahoo token to a file if provided via env
+# Write Yahoo token from env
 yahoo_token = os.getenv("YAHOO_TOKEN_JSON")
 if yahoo_token:
     with open("token.json", "w") as f:
         f.write(yahoo_token)
 
-
-load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
-
+# Set up Discord bot
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+# Only sync slash commands manually or during dev
 @bot.event
 async def on_ready():
-    print(f"{bot.user} is online.")
-    try:
-        synced = await bot.tree.sync()
-        print(f"✅ Synced {len(synced)} slash commands.")
-    except Exception as e:
-        print(f"❌ Error syncing commands: {e}")
+    print(f"✅ {bot.user} is online.")
 
-# Load trade command + core logic
-async def main():
-    await bot.load_extension("commands.trade")   # Main /trade command (text input)
-    await bot.load_extension("commands.roster") # /roster command (text input)
-    await bot.load_extension("commands.player") # /player command (text input)
-    await bot.load_extension("commands.standings") # /standings command (text input)
-    # Add any other cogs here if needed
+# Load commands when the bot is ready
+@bot.event
+async def setup_hook():
+    await bot.load_extension("commands.trade")
+    await bot.load_extension("commands.roster")
+    await bot.load_extension("commands.player")
+    await bot.load_extension("commands.standings")
+    # Add more cogs here as needed
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
     bot.run(TOKEN)
-
 
 
 
