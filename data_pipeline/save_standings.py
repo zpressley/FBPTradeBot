@@ -68,6 +68,8 @@ def fetch_and_save_standings():
         })
 
     standings.sort(key=lambda x: x["rank"])
+    print("📦 Raw standings XML:")
+    print(standings_res.text[:2000])  # print first 2,000 chars
 
     # Matchups — Fully namespace-safe
     matchups = []
