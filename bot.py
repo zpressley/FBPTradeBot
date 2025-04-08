@@ -5,6 +5,21 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+import os
+
+# Write Google credentials to a file if provided via env
+google_creds = os.getenv("GOOGLE_CREDS_JSON")
+if google_creds:
+    with open("google_creds.json", "w") as f:
+        f.write(google_creds)
+
+# Write Yahoo token to a file if provided via env
+yahoo_token = os.getenv("YAHOO_TOKEN_JSON")
+if yahoo_token:
+    with open("token.json", "w") as f:
+        f.write(yahoo_token)
+
+
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
