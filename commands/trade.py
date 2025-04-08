@@ -73,7 +73,13 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
         roster = combined_data.get(team, [])
         corrected_players[team] = []
 
-        submitted = players.get(f"team{involved.index(team)+1}", [])
+        submitted_key = (
+            "team1" if team == team1 else
+            "team2" if team == team2 else
+            "team3" if team == team3 else None
+        )
+
+        submitted = players.get(submitted_key, [])
         for raw in submitted:
             if is_wizbuck_entry(raw):
                 corrected_players[team].append(raw)
@@ -90,6 +96,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
                 corrected_players[team].append(roster[matched_index])
             else:
                 problems.append(f"{team}: `{raw}` is not on your roster.")
+
 
     if problems:
         msg = (
