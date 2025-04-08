@@ -51,6 +51,10 @@ class Trade(commands.Cog):
 
 # Main validation + preview
 async def handle_trade_submission(interaction, user_id, team2, team3, players, wb):
+    from commands.lookup import extract_name
+    from commands.utils import DISCORD_ID_TO_TEAM
+    from commands.lookup import combined_data
+
     team1 = DISCORD_ID_TO_TEAM.get(user_id)
     if not team1:
         await interaction.response.send_message("❌ You are not mapped to a team.", ephemeral=True)
@@ -60,26 +64,27 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
     problems = []
     corrected_players = {}
 
-    # WB validation
+    # Validate WB
     for team in involved:
-        max_allowed = wizbucks_data.get(team, 0)
+        max_allowed = wb.get(team, 0)
         if wb.get(team, 0) % 5 != 0:
             problems.append(f"{team}: WB must be in $5 increments.")
         if wb.get(team, 0) > max_allowed:
             problems.append(f"{team}: Trying to send ${wb.get(team)} WB but only has ${max_allowed}.")
 
-    # Player validation
+    # Map team to their input field
+    team_key_map = {
+        team1: "team1",
+        team2: "team2"
+    }
+    if team3:
+        team_key_map[team3] = "team3"
+
     for team in involved:
         roster = combined_data.get(team, [])
         corrected_players[team] = []
+        submitted = players.get(team_key_map.get(team), [])
 
-        submitted_key = (
-            "team1" if team == team1 else
-            "team2" if team == team2 else
-            "team3" if team == team3 else None
-        )
-
-        submitted = players.get(submitted_key, [])
         for raw in submitted:
             if is_wizbuck_entry(raw):
                 corrected_players[team].append(raw)
@@ -97,18 +102,17 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
             else:
                 problems.append(f"{team}: `{raw}` is not on your roster.")
 
-
     if problems:
         msg = (
             "❌ Trade could not be submitted due to the following issues:\n\n" +
             "\n".join(f"- {p}" for p in problems) +
             "\n\n🔁 Please re-submit the trade using `/trade` and only include players currently on your team.\n" +
-            "💡 Use `/roster` (coming soon) to view your current players."
+            "💡 Use `/roster` to view your current players."
         )
         await interaction.response.send_message(content=msg, ephemeral=True)
         return
 
-    # Build preview
+    # Build trade preview
     def block(team):
         lines = corrected_players.get(team, [])
         wb_val = wb.get(team, 0)
@@ -121,6 +125,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
 {block(team1)}
 
 {block(team2)}"""
+
     if team3:
         msg += f"\n\n{block(team3)}"
 
@@ -140,6 +145,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
 
     await interaction.response.defer(ephemeral=True)
     await interaction.followup.send(content=msg, view=view, ephemeral=True)
+
 
 
 # Preview confirmation view
