@@ -28,7 +28,7 @@ async def main():
     await bot.load_extension("commands.trade")   # Main /trade command (text input)
     await bot.load_extension("commands.roster") # /roster command (text input)
     await bot.load_extension("commands.player") # /player command (text input)
-
+    await bot.load_extension("commands.standings") # /standings command (text input)
     # Add any other cogs here if needed
 
 if __name__ == "__main__":

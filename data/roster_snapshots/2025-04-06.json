@@ -1,0 +1,23 @@
+{
+  "date": "2025-04-06",
+  "players": {
+    "Dylan Crews": {
+      "mlb_id": 686611,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Lawlar": {
+      "mlb_id": 690986,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Jackson Holliday": {
+      "mlb_id": 702287,
+      "on_roster": false,
+      "currentTeam": "Unknown",
+      "rosterStatus": "Unknown"
+    }
+  }
+}

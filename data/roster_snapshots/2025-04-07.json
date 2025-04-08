@@ -1,0 +1,2075 @@
+{
+  "date": "2025-04-07",
+  "players": {
+    "Drew Thorpe": {
+      "mlb_id": 689672,
+      "on_roster": false,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "James Wood": {
+      "mlb_id": 695578,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Brooks Lee": {
+      "mlb_id": 686797,
+      "on_roster": false,
+      "currentTeam": "Fort Myers Mighty Mussels",
+      "rosterStatus": "Unknown"
+    },
+    "Max Meyer": {
+      "mlb_id": 676974,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Cade Povich": {
+      "mlb_id": 700249,
+      "on_roster": true,
+      "currentTeam": "Baltimore Orioles",
+      "rosterStatus": "Unknown"
+    },
+    "David Festa": {
+      "mlb_id": 701581,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Joey Loperfido": {
+      "mlb_id": 694388,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Osleivis Basabe": {
+      "mlb_id": 678545,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Hayden Birdsong": {
+      "mlb_id": 806185,
+      "on_roster": true,
+      "currentTeam": "San Francisco Giants",
+      "rosterStatus": "Unknown"
+    },
+    "Connor Norby": {
+      "mlb_id": 681393,
+      "on_roster": false,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Alexander Canario": {
+      "mlb_id": 672744,
+      "on_roster": true,
+      "currentTeam": "Pittsburgh Pirates",
+      "rosterStatus": "Unknown"
+    },
+    "Justin Wrobleski": {
+      "mlb_id": 680736,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "George Valera": {
+      "mlb_id": 671655,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Victor Scott": {
+      "mlb_id": 687363,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Tekoah Roby": {
+      "mlb_id": 694358,
+      "on_roster": false,
+      "currentTeam": "Springfield Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Chayce McDermott": {
+      "mlb_id": 694646,
+      "on_roster": false,
+      "currentTeam": "Baltimore Orioles",
+      "rosterStatus": "Unknown"
+    },
+    "Luis Vazquez": {
+      "mlb_id": 676679,
+      "on_roster": false,
+      "currentTeam": "Norfolk Tides",
+      "rosterStatus": "Unknown"
+    },
+    "Austin Shenton": {
+      "mlb_id": 668853,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Adam Mazur": {
+      "mlb_id": 800049,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Brady House": {
+      "mlb_id": 691781,
+      "on_roster": false,
+      "currentTeam": "Rochester Red Wings",
+      "rosterStatus": "Unknown"
+    },
+    "Brant Hurter": {
+      "mlb_id": 676428,
+      "on_roster": true,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Jhonkensy Noel": {
+      "mlb_id": 678877,
+      "on_roster": true,
+      "currentTeam": "Cleveland Guardians",
+      "rosterStatus": "Unknown"
+    },
+    "Jake Bloss": {
+      "mlb_id": 814005,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Matt Mervis": {
+      "mlb_id": 670223,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Pedro Pages": {
+      "mlb_id": 686780,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Nick Yorke": {
+      "mlb_id": 694377,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Justice Bigbie": {
+      "mlb_id": 694425,
+      "on_roster": false,
+      "currentTeam": "Erie SeaWolves",
+      "rosterStatus": "Unknown"
+    },
+    "Chase Hampton": {
+      "mlb_id": 694633,
+      "on_roster": false,
+      "currentTeam": "Somerset Patriots",
+      "rosterStatus": "Unknown"
+    },
+    "Leo Jimenez": {
+      "mlb_id": 677870,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Robert Gasser": {
+      "mlb_id": 688107,
+      "on_roster": false,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Michael McGreevy": {
+      "mlb_id": 700241,
+      "on_roster": false,
+      "currentTeam": "Memphis Redbirds",
+      "rosterStatus": "Unknown"
+    },
+    "AJ Smith-Shawver": {
+      "mlb_id": 700363,
+      "on_roster": true,
+      "currentTeam": "Atlanta Braves",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Hurtubise": {
+      "mlb_id": 674441,
+      "on_roster": true,
+      "currentTeam": "Cincinnati Reds",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Amaya": {
+      "mlb_id": 676070,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Noah Cameron": {
+      "mlb_id": 702070,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "Andrew Morris": {
+      "mlb_id": 702193,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Ky Bush": {
+      "mlb_id": 681066,
+      "on_roster": false,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Cristian Mena": {
+      "mlb_id": 691441,
+      "on_roster": false,
+      "currentTeam": "Reno Aces",
+      "rosterStatus": "Unknown"
+    },
+    "Sawyer Gipson-Long": {
+      "mlb_id": 687830,
+      "on_roster": false,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Nick Loftin": {
+      "mlb_id": 679845,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "David Hamilton": {
+      "mlb_id": 666152,
+      "on_roster": true,
+      "currentTeam": "Boston Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Tyler Gentry": {
+      "mlb_id": 694355,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "Mason Black": {
+      "mlb_id": 696131,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Nick Nastrini": {
+      "mlb_id": 680897,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Trey Cabbage": {
+      "mlb_id": 663550,
+      "on_roster": false,
+      "currentTeam": "Pittsburgh Pirates",
+      "rosterStatus": "Unknown"
+    },
+    "Zach DeLoach": {
+      "mlb_id": 676113,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Dane Myers": {
+      "mlb_id": 667472,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Zach Maxwell": {
+      "mlb_id": 687209,
+      "on_roster": false,
+      "currentTeam": "Louisville Bats",
+      "rosterStatus": "Unknown"
+    },
+    "Troy Johnston": {
+      "mlb_id": 687859,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Wenceel Perez": {
+      "mlb_id": 672761,
+      "on_roster": false,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Butto": {
+      "mlb_id": 676130,
+      "on_roster": true,
+      "currentTeam": "New York Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Dominic Fletcher": {
+      "mlb_id": 666150,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Niko Kavadas": {
+      "mlb_id": 694359,
+      "on_roster": false,
+      "currentTeam": "Salt Lake Bees",
+      "rosterStatus": "Unknown"
+    },
+    "Mike Burrows": {
+      "mlb_id": 681347,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Nick Frasso": {
+      "mlb_id": 693308,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Kameron Misner": {
+      "mlb_id": 670224,
+      "on_roster": true,
+      "currentTeam": "Tampa Bay Rays",
+      "rosterStatus": "Unknown"
+    },
+    "Braden Shewmake": {
+      "mlb_id": 669699,
+      "on_roster": false,
+      "currentTeam": "Scranton/Wilkes-Barre RailRiders",
+      "rosterStatus": "Unknown"
+    },
+    "J.T. Ginn": {
+      "mlb_id": 669372,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Blade Tidwell": {
+      "mlb_id": 694918,
+      "on_roster": false,
+      "currentTeam": "Syracuse Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Connor Thomas": {
+      "mlb_id": 671162,
+      "on_roster": true,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Korey Lee": {
+      "mlb_id": 686676,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Livan Soto": {
+      "mlb_id": 670869,
+      "on_roster": false,
+      "currentTeam": "Norfolk Tides",
+      "rosterStatus": "Unknown"
+    },
+    "Noah Song": {
+      "mlb_id": 679977,
+      "on_roster": false,
+      "currentTeam": "Portland Sea Dogs",
+      "rosterStatus": "Unknown"
+    },
+    "Brennen Davis": {
+      "mlb_id": 680695,
+      "on_roster": false,
+      "currentTeam": "Scranton/Wilkes-Barre RailRiders",
+      "rosterStatus": "Unknown"
+    },
+    "Michael Siani": {
+      "mlb_id": 672279,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Carlos Perez": {
+      "mlb_id": 542208,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Matt Wilkinson": {
+      "mlb_id": 683363,
+      "on_roster": false,
+      "currentTeam": "Lake County Captains",
+      "rosterStatus": "Unknown"
+    },
+    "Max Schuemann": {
+      "mlb_id": 680474,
+      "on_roster": true,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Andrew Politi": {
+      "mlb_id": 681555,
+      "on_roster": false,
+      "currentTeam": "Worcester Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Ty Madden": {
+      "mlb_id": 680744,
+      "on_roster": false,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Ivan Herrera": {
+      "mlb_id": 671056,
+      "on_roster": false,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Wicks": {
+      "mlb_id": 696136,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Ben Brown": {
+      "mlb_id": 676962,
+      "on_roster": true,
+      "currentTeam": "Chicago Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Canaan Smith-Njigba": {
+      "mlb_id": 675986,
+      "on_roster": false,
+      "currentTeam": "Gigantes de Carolina",
+      "rosterStatus": "Unknown"
+    },
+    "Peyton Battenfield": {
+      "mlb_id": 685410,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Gordon Graceffo": {
+      "mlb_id": 700669,
+      "on_roster": false,
+      "currentTeam": "Memphis Redbirds",
+      "rosterStatus": "Unknown"
+    },
+    "Bryce Johnson": {
+      "mlb_id": 669369,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Nathan Lukes": {
+      "mlb_id": 664770,
+      "on_roster": true,
+      "currentTeam": "Toronto Blue Jays",
+      "rosterStatus": "Unknown"
+    },
+    "Conner Capel": {
+      "mlb_id": 668843,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Michael Mercado": {
+      "mlb_id": 675650,
+      "on_roster": false,
+      "currentTeam": "Lehigh Valley IronPigs",
+      "rosterStatus": "Unknown"
+    },
+    "Nic Enright": {
+      "mlb_id": 663671,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Paul McIntosh": {
+      "mlb_id": 682192,
+      "on_roster": false,
+      "currentTeam": "Reading Fightin Phils",
+      "rosterStatus": "Unknown"
+    },
+    "Otto Lopez": {
+      "mlb_id": 672640,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Moises Gomez": {
+      "mlb_id": 664332,
+      "on_roster": false,
+      "currentTeam": "San Antonio Missions",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Groshans": {
+      "mlb_id": 677954,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "Malcom Nunez": {
+      "mlb_id": 682650,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Rece Hinds": {
+      "mlb_id": 677956,
+      "on_roster": false,
+      "currentTeam": "Louisville Bats",
+      "rosterStatus": "Unknown"
+    },
+    "Damiano Palmegiani": {
+      "mlb_id": 671913,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Aaron Zavala": {
+      "mlb_id": 701648,
+      "on_roster": false,
+      "currentTeam": "Frisco RoughRiders",
+      "rosterStatus": "Unknown"
+    },
+    "Hunter Bigge": {
+      "mlb_id": 685801,
+      "on_roster": true,
+      "currentTeam": "Tampa Bay Rays",
+      "rosterStatus": "Unknown"
+    },
+    "Trey Lipscomb": {
+      "mlb_id": 702358,
+      "on_roster": false,
+      "currentTeam": "Rochester Red Wings",
+      "rosterStatus": "Unknown"
+    },
+    "Seth Halvorsen": {
+      "mlb_id": 678020,
+      "on_roster": true,
+      "currentTeam": "Colorado Rockies",
+      "rosterStatus": "Unknown"
+    },
+    "Ben Casparius": {
+      "mlb_id": 676508,
+      "on_roster": true,
+      "currentTeam": "Los Angeles Dodgers",
+      "rosterStatus": "Unknown"
+    },
+    "Wikelman Gonzalez": {
+      "mlb_id": 682790,
+      "on_roster": false,
+      "currentTeam": "Birmingham Barons",
+      "rosterStatus": "Unknown"
+    },
+    "Christian Scott": {
+      "mlb_id": 681035,
+      "on_roster": false,
+      "currentTeam": "New York Mets",
+      "rosterStatus": "Unknown"
+    },
+    "K.C. Hunt": {
+      "mlb_id": 687268,
+      "on_roster": false,
+      "currentTeam": "Biloxi Shuckers",
+      "rosterStatus": "Unknown"
+    },
+    "Bubba Chandler": {
+      "mlb_id": 696149,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Michel Otanez": {
+      "mlb_id": 671305,
+      "on_roster": false,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Blake Walston": {
+      "mlb_id": 686796,
+      "on_roster": false,
+      "currentTeam": "Arizona Diamondbacks",
+      "rosterStatus": "Unknown"
+    },
+    "Asa Lacy": {
+      "mlb_id": 669370,
+      "on_roster": false,
+      "currentTeam": "Northwest Arkansas Naturals",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Torres": {
+      "mlb_id": 600526,
+      "on_roster": false,
+      "currentTeam": "Vaqueros Union Laguna",
+      "rosterStatus": "Unknown"
+    },
+    "Will Wagner": {
+      "mlb_id": 695238,
+      "on_roster": true,
+      "currentTeam": "Toronto Blue Jays",
+      "rosterStatus": "Unknown"
+    },
+    "Roman Anthony": {
+      "mlb_id": 701350,
+      "on_roster": false,
+      "currentTeam": "Worcester Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Javier Sanoja": {
+      "mlb_id": 691594,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Sem Robberse": {
+      "mlb_id": 691828,
+      "on_roster": false,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Connor Phillips": {
+      "mlb_id": 683175,
+      "on_roster": false,
+      "currentTeam": "Louisville Bats",
+      "rosterStatus": "Unknown"
+    },
+    "Evan Carter": {
+      "mlb_id": 694497,
+      "on_roster": false,
+      "currentTeam": "Round Rock Express",
+      "rosterStatus": "Unknown"
+    },
+    "Jackson Rutledge": {
+      "mlb_id": 671131,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Anthony Garcia": {
+      "mlb_id": 571685,
+      "on_roster": false,
+      "currentTeam": "Rieleros de Aguascalientes",
+      "rosterStatus": "Unknown"
+    },
+    "Brandon Young": {
+      "mlb_id": 687064,
+      "on_roster": false,
+      "currentTeam": "Norfolk Tides",
+      "rosterStatus": "Unknown"
+    },
+    "Ryan Kreidler": {
+      "mlb_id": 668952,
+      "on_roster": true,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Jake Eder": {
+      "mlb_id": 671109,
+      "on_roster": false,
+      "currentTeam": "Salt Lake Bees",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Fernandez": {
+      "mlb_id": 605228,
+      "on_roster": false,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Tyler Collins": {
+      "mlb_id": 607385,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "Brandon Sproat": {
+      "mlb_id": 687075,
+      "on_roster": false,
+      "currentTeam": "Syracuse Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Rodriguez": {
+      "mlb_id": 679563,
+      "on_roster": false,
+      "currentTeam": "Philadelphia Phillies",
+      "rosterStatus": "Unknown"
+    },
+    "Owen White": {
+      "mlb_id": 669391,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Shane Smith": {
+      "mlb_id": 681343,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Clayton Beeter": {
+      "mlb_id": 690925,
+      "on_roster": false,
+      "currentTeam": "New York Yankees",
+      "rosterStatus": "Unknown"
+    },
+    "Andrew Moore": {
+      "mlb_id": 621058,
+      "on_roster": false,
+      "currentTeam": "New Hampshire Fisher Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Evan Reifert": {
+      "mlb_id": 682126,
+      "on_roster": false,
+      "currentTeam": "Montgomery Biscuits",
+      "rosterStatus": "Unknown"
+    },
+    "Alek Jacob": {
+      "mlb_id": 689690,
+      "on_roster": true,
+      "currentTeam": "San Diego Padres",
+      "rosterStatus": "Unknown"
+    },
+    "Jace Jung": {
+      "mlb_id": 690291,
+      "on_roster": false,
+      "currentTeam": "Toledo Mud Hens",
+      "rosterStatus": "Unknown"
+    },
+    "Kristian Robinson": {
+      "mlb_id": 677565,
+      "on_roster": false,
+      "currentTeam": "Amarillo Sod Poodles",
+      "rosterStatus": "Unknown"
+    },
+    "Samad Taylor": {
+      "mlb_id": 669392,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Kyle Stowers": {
+      "mlb_id": 669065,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Luken Baker": {
+      "mlb_id": 663609,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Bradley Blalock": {
+      "mlb_id": 687134,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Cade Marlowe": {
+      "mlb_id": 687799,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Young": {
+      "mlb_id": 696285,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Oliver Dunn": {
+      "mlb_id": 686554,
+      "on_roster": true,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Sean Bouchard": {
+      "mlb_id": 656248,
+      "on_roster": true,
+      "currentTeam": "Colorado Rockies",
+      "rosterStatus": "Unknown"
+    },
+    "Alika Williams": {
+      "mlb_id": 675961,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Liam Hicks": {
+      "mlb_id": 689414,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Noah Schultz": {
+      "mlb_id": 702273,
+      "on_roster": false,
+      "currentTeam": "Birmingham Barons",
+      "rosterStatus": "Unknown"
+    },
+    "Brett Sullivan": {
+      "mlb_id": 664954,
+      "on_roster": false,
+      "currentTeam": "El Paso Chihuahuas",
+      "rosterStatus": "Unknown"
+    },
+    "Austin Cox": {
+      "mlb_id": 680735,
+      "on_roster": false,
+      "currentTeam": "Omaha Storm Chasers",
+      "rosterStatus": "Unknown"
+    },
+    "Jonatan Clase": {
+      "mlb_id": 682729,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Andres Chaparro": {
+      "mlb_id": 665953,
+      "on_roster": false,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Carlos Silva": {
+      "mlb_id": 400067,
+      "on_roster": false,
+      "currentTeam": "Venezuela",
+      "rosterStatus": "Unknown"
+    },
+    "Thomas Szapucki": {
+      "mlb_id": 663378,
+      "on_roster": false,
+      "currentTeam": "Lakeland Flying Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Brady Basso": {
+      "mlb_id": 669620,
+      "on_roster": false,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Jake Mangum": {
+      "mlb_id": 663968,
+      "on_roster": true,
+      "currentTeam": "Tampa Bay Rays",
+      "rosterStatus": "Unknown"
+    },
+    "Andrew Taylor": {
+      "mlb_id": 476531,
+      "on_roster": false,
+      "currentTeam": "Salt Lake Bees",
+      "rosterStatus": "Unknown"
+    },
+    "Sean Burke": {
+      "mlb_id": 680732,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "J.C. Escarra": {
+      "mlb_id": 641555,
+      "on_roster": true,
+      "currentTeam": "New York Yankees",
+      "rosterStatus": "Unknown"
+    },
+    "Landon Knack": {
+      "mlb_id": 689017,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Joe Boyle": {
+      "mlb_id": 671212,
+      "on_roster": false,
+      "currentTeam": "Durham Bulls",
+      "rosterStatus": "Unknown"
+    },
+    "Mike Vasil": {
+      "mlb_id": 678024,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Lopez": {
+      "mlb_id": 673111,
+      "on_roster": false,
+      "currentTeam": "FCL Rays",
+      "rosterStatus": "Unknown"
+    },
+    "Landen Roupp": {
+      "mlb_id": 694738,
+      "on_roster": true,
+      "currentTeam": "San Francisco Giants",
+      "rosterStatus": "Unknown"
+    },
+    "Dylan Dodd": {
+      "mlb_id": 689266,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Darius Vines": {
+      "mlb_id": 670241,
+      "on_roster": false,
+      "currentTeam": "Columbus Clingstones",
+      "rosterStatus": "Unknown"
+    },
+    "Anthony Veneziano": {
+      "mlb_id": 685107,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Kristian Campbell": {
+      "mlb_id": 692225,
+      "on_roster": true,
+      "currentTeam": "Boston Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Jackson Jobe": {
+      "mlb_id": 695549,
+      "on_roster": true,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Dylan Crews": {
+      "mlb_id": 686611,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Samuel Basallo": {
+      "mlb_id": 694212,
+      "on_roster": false,
+      "currentTeam": "Norfolk Tides",
+      "rosterStatus": "Unknown"
+    },
+    "Carson Williams": {
+      "mlb_id": 700246,
+      "on_roster": false,
+      "currentTeam": "Durham Bulls",
+      "rosterStatus": "Unknown"
+    },
+    "Andrew Painter": {
+      "mlb_id": 691725,
+      "on_roster": false,
+      "currentTeam": "FCL Phillies",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Lawlar": {
+      "mlb_id": 691783,
+      "on_roster": false,
+      "currentTeam": "Reno Aces",
+      "rosterStatus": "Unknown"
+    },
+    "Kumar Rocker": {
+      "mlb_id": 677958,
+      "on_roster": true,
+      "currentTeam": "Texas Rangers",
+      "rosterStatus": "Unknown"
+    },
+    "Emmanuel Rodriguez": {
+      "mlb_id": 691181,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Marcelo Mayer": {
+      "mlb_id": 691785,
+      "on_roster": false,
+      "currentTeam": "Worcester Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Bryce Eldridge": {
+      "mlb_id": 805811,
+      "on_roster": false,
+      "currentTeam": "Richmond Flying Squirrels",
+      "rosterStatus": "Unknown"
+    },
+    "Dalton Rushing": {
+      "mlb_id": 687221,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Travis Bazzana": {
+      "mlb_id": 683953,
+      "on_roster": false,
+      "currentTeam": "Akron RubberDucks",
+      "rosterStatus": "Unknown"
+    },
+    "Matt Shaw": {
+      "mlb_id": 807713,
+      "on_roster": true,
+      "currentTeam": "Chicago Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Coby Mayo": {
+      "mlb_id": 691723,
+      "on_roster": false,
+      "currentTeam": "Norfolk Tides",
+      "rosterStatus": "Unknown"
+    },
+    "Ethan Salas": {
+      "mlb_id": 806956,
+      "on_roster": false,
+      "currentTeam": "San Antonio Missions",
+      "rosterStatus": "Unknown"
+    },
+    "Jasson Dominguez": {
+      "mlb_id": 691176,
+      "on_roster": true,
+      "currentTeam": "New York Yankees",
+      "rosterStatus": "Unknown"
+    },
+    "Jeferson Quero": {
+      "mlb_id": 691620,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Chase Burns": {
+      "mlb_id": 695505,
+      "on_roster": false,
+      "currentTeam": "Dayton Dragons",
+      "rosterStatus": "Unknown"
+    },
+    "Nick Kurtz": {
+      "mlb_id": 701762,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Kyle Manzardo": {
+      "mlb_id": 700932,
+      "on_roster": true,
+      "currentTeam": "Cleveland Guardians",
+      "rosterStatus": "Unknown"
+    },
+    "Rhett Lowder": {
+      "mlb_id": 695076,
+      "on_roster": false,
+      "currentTeam": "Cincinnati Reds",
+      "rosterStatus": "Unknown"
+    },
+    "Charlie Condon": {
+      "mlb_id": 809707,
+      "on_roster": false,
+      "currentTeam": "Spokane Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Drake Baldwin": {
+      "mlb_id": 686948,
+      "on_roster": true,
+      "currentTeam": "Atlanta Braves",
+      "rosterStatus": "Unknown"
+    },
+    "Chase Dollander": {
+      "mlb_id": 801403,
+      "on_roster": true,
+      "currentTeam": "Colorado Rockies",
+      "rosterStatus": "Unknown"
+    },
+    "Hagen Smith": {
+      "mlb_id": 696146,
+      "on_roster": false,
+      "currentTeam": "Birmingham Barons",
+      "rosterStatus": "Unknown"
+    },
+    "Kyle Teel": {
+      "mlb_id": 691019,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Robert Hassell": {
+      "mlb_id": 690987,
+      "on_roster": false,
+      "currentTeam": "Rochester Red Wings",
+      "rosterStatus": "Unknown"
+    },
+    "Cole Young": {
+      "mlb_id": 702284,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Cam Smith": {
+      "mlb_id": 701358,
+      "on_roster": true,
+      "currentTeam": "Houston Astros",
+      "rosterStatus": "Unknown"
+    },
+    "Kevin Alcantara": {
+      "mlb_id": 682634,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Moises Ballesteros": {
+      "mlb_id": 694208,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Tink Hence": {
+      "mlb_id": 693311,
+      "on_roster": false,
+      "currentTeam": "Memphis Redbirds",
+      "rosterStatus": "Unknown"
+    },
+    "Luke Keaschall": {
+      "mlb_id": 807712,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Orelvis Martinez": {
+      "mlb_id": 682619,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Colson Montgomery": {
+      "mlb_id": 695657,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Mick Abel": {
+      "mlb_id": 690953,
+      "on_roster": false,
+      "currentTeam": "Lehigh Valley IronPigs",
+      "rosterStatus": "Unknown"
+    },
+    "Jett Williams": {
+      "mlb_id": 702518,
+      "on_roster": false,
+      "currentTeam": "Binghamton Rumble Ponies",
+      "rosterStatus": "Unknown"
+    },
+    "Jac Caglianone": {
+      "mlb_id": 695506,
+      "on_roster": false,
+      "currentTeam": "Northwest Arkansas Naturals",
+      "rosterStatus": "Unknown"
+    },
+    "Cade Horton": {
+      "mlb_id": 690990,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Misiorowski": {
+      "mlb_id": 694819,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Chase DeLauter": {
+      "mlb_id": 800050,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Caden Dana": {
+      "mlb_id": 702674,
+      "on_roster": false,
+      "currentTeam": "Salt Lake Bees",
+      "rosterStatus": "Unknown"
+    },
+    "Will Warren": {
+      "mlb_id": 701542,
+      "on_roster": true,
+      "currentTeam": "New York Yankees",
+      "rosterStatus": "Unknown"
+    },
+    "James Triantos": {
+      "mlb_id": 701649,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Wilson": {
+      "mlb_id": 805779,
+      "on_roster": true,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Harry Ford": {
+      "mlb_id": 695670,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Edgar Quero": {
+      "mlb_id": 700337,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "River Ryan": {
+      "mlb_id": 689981,
+      "on_roster": false,
+      "currentTeam": "Los Angeles Dodgers",
+      "rosterStatus": "Unknown"
+    },
+    "Joey Cantillo": {
+      "mlb_id": 676282,
+      "on_roster": true,
+      "currentTeam": "Cleveland Guardians",
+      "rosterStatus": "Unknown"
+    },
+    "Owen Caissie": {
+      "mlb_id": 683357,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Tyler Black": {
+      "mlb_id": 672012,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Trey Sweeney": {
+      "mlb_id": 700242,
+      "on_roster": true,
+      "currentTeam": "Detroit Tigers",
+      "rosterStatus": "Unknown"
+    },
+    "Ian Seymour": {
+      "mlb_id": 693855,
+      "on_roster": false,
+      "currentTeam": "Durham Bulls",
+      "rosterStatus": "Unknown"
+    },
+    "Thomas Harrington": {
+      "mlb_id": 802419,
+      "on_roster": true,
+      "currentTeam": "Pittsburgh Pirates",
+      "rosterStatus": "Unknown"
+    },
+    "Carson Whisenhunt": {
+      "mlb_id": 687931,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Christian Moore": {
+      "mlb_id": 695681,
+      "on_roster": false,
+      "currentTeam": "Rocket City Trash Pandas",
+      "rosterStatus": "Unknown"
+    },
+    "Tyler Locklear": {
+      "mlb_id": 682988,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Parker Messick": {
+      "mlb_id": 800048,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Colby Thomas": {
+      "mlb_id": 687515,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Adrian Del Castillo": {
+      "mlb_id": 680728,
+      "on_roster": false,
+      "currentTeam": "Reno Aces",
+      "rosterStatus": "Unknown"
+    },
+    "Ronny Mauricio": {
+      "mlb_id": 677595,
+      "on_roster": false,
+      "currentTeam": "New York Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Melton": {
+      "mlb_id": 689200,
+      "on_roster": false,
+      "currentTeam": "Sugar Land Space Cowboys",
+      "rosterStatus": "Unknown"
+    },
+    "Thomas Saggese": {
+      "mlb_id": 695336,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Marc Church": {
+      "mlb_id": 687847,
+      "on_roster": true,
+      "currentTeam": "Texas Rangers",
+      "rosterStatus": "Unknown"
+    },
+    "Richard Fitts": {
+      "mlb_id": 690916,
+      "on_roster": true,
+      "currentTeam": "Boston Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Juan Brito": {
+      "mlb_id": 682877,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Ricky Tiedemann": {
+      "mlb_id": 694357,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Yilber Diaz": {
+      "mlb_id": 700270,
+      "on_roster": false,
+      "currentTeam": "Reno Aces",
+      "rosterStatus": "Unknown"
+    },
+    "Jairo Iriarte": {
+      "mlb_id": 683568,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Agustin Ramirez": {
+      "mlb_id": 682663,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Caleb Durbin": {
+      "mlb_id": 702332,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Emiliano Teodo": {
+      "mlb_id": 693713,
+      "on_roster": false,
+      "currentTeam": "Round Rock Express",
+      "rosterStatus": "Unknown"
+    },
+    "Adam Kloffenstein": {
+      "mlb_id": 680572,
+      "on_roster": false,
+      "currentTeam": "Buffalo Bisons",
+      "rosterStatus": "Unknown"
+    },
+    "Chandler Simpson": {
+      "mlb_id": 802415,
+      "on_roster": false,
+      "currentTeam": "Durham Bulls",
+      "rosterStatus": "Unknown"
+    },
+    "Chase Meidroth": {
+      "mlb_id": 805367,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Alex Freeland": {
+      "mlb_id": 690976,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Carlos F. Rodriguez": {
+      "mlb_id": 692230,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Roki Sasaki": {
+      "mlb_id": 808963,
+      "on_roster": true,
+      "currentTeam": "Los Angeles Dodgers",
+      "rosterStatus": "Unknown"
+    },
+    "Rhett Kouba": {
+      "mlb_id": 688763,
+      "on_roster": false,
+      "currentTeam": "Sugar Land Space Cowboys",
+      "rosterStatus": "Unknown"
+    },
+    "Cade Cavalli": {
+      "mlb_id": 676917,
+      "on_roster": false,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Jack Leiter": {
+      "mlb_id": 683004,
+      "on_roster": false,
+      "currentTeam": "Texas Rangers",
+      "rosterStatus": "Unknown"
+    },
+    "Grant Taylor": {
+      "mlb_id": 691799,
+      "on_roster": false,
+      "currentTeam": "Birmingham Barons",
+      "rosterStatus": "Unknown"
+    },
+    "Luisangel Acuna": {
+      "mlb_id": 682668,
+      "on_roster": true,
+      "currentTeam": "New York Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Adael Amador": {
+      "mlb_id": 691182,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Allan Winans": {
+      "mlb_id": 642216,
+      "on_roster": false,
+      "currentTeam": "Scranton/Wilkes-Barre RailRiders",
+      "rosterStatus": "Unknown"
+    },
+    "Cole Winn": {
+      "mlb_id": 668390,
+      "on_roster": false,
+      "currentTeam": "Round Rock Express",
+      "rosterStatus": "Unknown"
+    },
+    "Robby Snelling": {
+      "mlb_id": 702281,
+      "on_roster": false,
+      "currentTeam": "Pensacola Blue Wahoos",
+      "rosterStatus": "Unknown"
+    },
+    "Zach Dezenzo": {
+      "mlb_id": 701305,
+      "on_roster": true,
+      "currentTeam": "Houston Astros",
+      "rosterStatus": "Unknown"
+    },
+    "Jack Kochanowicz": {
+      "mlb_id": 686799,
+      "on_roster": true,
+      "currentTeam": "Los Angeles Angels",
+      "rosterStatus": "Unknown"
+    },
+    "Hurston Waldrep": {
+      "mlb_id": 694462,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Zac Veen": {
+      "mlb_id": 691728,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Drew Gilbert": {
+      "mlb_id": 687551,
+      "on_roster": false,
+      "currentTeam": "St. Lucie Mets",
+      "rosterStatus": "Unknown"
+    },
+    "Randy Vasquez": {
+      "mlb_id": 681190,
+      "on_roster": true,
+      "currentTeam": "San Diego Padres",
+      "rosterStatus": "Unknown"
+    },
+    "Griff McGarry": {
+      "mlb_id": 676046,
+      "on_roster": false,
+      "currentTeam": "Reading Fightin Phils",
+      "rosterStatus": "Unknown"
+    },
+    "Blake Dunn": {
+      "mlb_id": 694362,
+      "on_roster": true,
+      "currentTeam": "Cincinnati Reds",
+      "rosterStatus": "Unknown"
+    },
+    "Blaze Alexander": {
+      "mlb_id": 677942,
+      "on_roster": false,
+      "currentTeam": "Arizona Diamondbacks",
+      "rosterStatus": "Unknown"
+    },
+    "Lyon Richardson": {
+      "mlb_id": 680689,
+      "on_roster": false,
+      "currentTeam": "Louisville Bats",
+      "rosterStatus": "Unknown"
+    },
+    "Grant McCray": {
+      "mlb_id": 687529,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Keaton Winn": {
+      "mlb_id": 676775,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Joey Estes": {
+      "mlb_id": 683155,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Alan Roden": {
+      "mlb_id": 702176,
+      "on_roster": true,
+      "currentTeam": "Toronto Blue Jays",
+      "rosterStatus": "Unknown"
+    },
+    "Justin Foscue": {
+      "mlb_id": 679822,
+      "on_roster": false,
+      "currentTeam": "Round Rock Express",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Leasure": {
+      "mlb_id": 673929,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Denzel Clarke": {
+      "mlb_id": 672016,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Ray Kerr": {
+      "mlb_id": 678061,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Gus Varland": {
+      "mlb_id": 681402,
+      "on_roster": false,
+      "currentTeam": "Charlotte Knights",
+      "rosterStatus": "Unknown"
+    },
+    "Drew Rom": {
+      "mlb_id": 680723,
+      "on_roster": false,
+      "currentTeam": "Memphis Redbirds",
+      "rosterStatus": "Unknown"
+    },
+    "Cody Morris": {
+      "mlb_id": 663752,
+      "on_roster": false,
+      "currentTeam": "Scranton/Wilkes-Barre RailRiders",
+      "rosterStatus": "Unknown"
+    },
+    "Forrest Whitley": {
+      "mlb_id": 666215,
+      "on_roster": false,
+      "currentTeam": "Houston Astros",
+      "rosterStatus": "Unknown"
+    },
+    "Jacob Lopez": {
+      "mlb_id": 682052,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Ryan Fernandez": {
+      "mlb_id": 681676,
+      "on_roster": true,
+      "currentTeam": "St. Louis Cardinals",
+      "rosterStatus": "Unknown"
+    },
+    "Max Muncy": {
+      "mlb_id": 691777,
+      "on_roster": true,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Davis Daniel": {
+      "mlb_id": 669721,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Daniel Espino": {
+      "mlb_id": 682982,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "Justin Jarvis": {
+      "mlb_id": 680691,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Shay Whitcomb": {
+      "mlb_id": 694376,
+      "on_roster": false,
+      "currentTeam": "Sugar Land Space Cowboys",
+      "rosterStatus": "Unknown"
+    },
+    "Billy Cook": {
+      "mlb_id": 695257,
+      "on_roster": false,
+      "currentTeam": "Indianapolis Indians",
+      "rosterStatus": "Unknown"
+    },
+    "Janson Junk": {
+      "mlb_id": 676083,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Payton Eeles": {
+      "mlb_id": 823356,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Roddery Munoz": {
+      "mlb_id": 682610,
+      "on_roster": false,
+      "currentTeam": "Memphis Redbirds",
+      "rosterStatus": "Unknown"
+    },
+    "Brandon Walter": {
+      "mlb_id": 687888,
+      "on_roster": false,
+      "currentTeam": "Sugar Land Space Cowboys",
+      "rosterStatus": "Unknown"
+    },
+    "Victor Vodnik": {
+      "mlb_id": 680767,
+      "on_roster": true,
+      "currentTeam": "Colorado Rockies",
+      "rosterStatus": "Unknown"
+    },
+    "Jakob Marsee": {
+      "mlb_id": 805300,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Bryan Mata": {
+      "mlb_id": 667356,
+      "on_roster": false,
+      "currentTeam": "Worcester Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Ramon Ramirez": {
+      "mlb_id": 430673,
+      "on_roster": false,
+      "currentTeam": "Gigantes del Cibao",
+      "rosterStatus": "Unknown"
+    },
+    "Ethan Small": {
+      "mlb_id": 663629,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Craig Yoho": {
+      "mlb_id": 684974,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Erik Miller": {
+      "mlb_id": 669062,
+      "on_roster": true,
+      "currentTeam": "San Francisco Giants",
+      "rosterStatus": "Unknown"
+    },
+    "Bryan Ramos": {
+      "mlb_id": 682868,
+      "on_roster": false,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Sean Hjelle": {
+      "mlb_id": 663546,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Riley Pint": {
+      "mlb_id": 666207,
+      "on_roster": false,
+      "currentTeam": "Columbus Clippers",
+      "rosterStatus": "Unknown"
+    },
+    "James McArthur": {
+      "mlb_id": 663704,
+      "on_roster": false,
+      "currentTeam": "Kansas City Royals",
+      "rosterStatus": "Unknown"
+    },
+    "Cole Sands": {
+      "mlb_id": 663485,
+      "on_roster": true,
+      "currentTeam": "Minnesota Twins",
+      "rosterStatus": "Unknown"
+    },
+    "Sixto Sanchez": {
+      "mlb_id": 664350,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Brett Wisely": {
+      "mlb_id": 689172,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Deivi Garcia": {
+      "mlb_id": 665620,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Wilmer Flores": {
+      "mlb_id": 695865,
+      "on_roster": false,
+      "currentTeam": "Toledo Mud Hens",
+      "rosterStatus": "Unknown"
+    },
+    "Prelander Berroa": {
+      "mlb_id": 672860,
+      "on_roster": false,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Ryan Bliss": {
+      "mlb_id": 669208,
+      "on_roster": true,
+      "currentTeam": "Seattle Mariners",
+      "rosterStatus": "Unknown"
+    },
+    "Royber Salinas": {
+      "mlb_id": 683690,
+      "on_roster": false,
+      "currentTeam": "Gwinnett Stripers",
+      "rosterStatus": "Unknown"
+    },
+    "Tirso Ornelas": {
+      "mlb_id": 672359,
+      "on_roster": false,
+      "currentTeam": "El Paso Chihuahuas",
+      "rosterStatus": "Unknown"
+    },
+    "Jackson Wolf": {
+      "mlb_id": 680232,
+      "on_roster": false,
+      "currentTeam": "San Antonio Missions",
+      "rosterStatus": "Unknown"
+    },
+    "Jonathan Cannon": {
+      "mlb_id": 686563,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "John McMillon": {
+      "mlb_id": 669111,
+      "on_roster": false,
+      "currentTeam": "Lehigh Valley IronPigs",
+      "rosterStatus": "Unknown"
+    },
+    "Carson Spiers": {
+      "mlb_id": 686730,
+      "on_roster": true,
+      "currentTeam": "Cincinnati Reds",
+      "rosterStatus": "Unknown"
+    },
+    "Mitchell Parker": {
+      "mlb_id": 680730,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Darell Hernaiz": {
+      "mlb_id": 687231,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Graham Pauley": {
+      "mlb_id": 688363,
+      "on_roster": true,
+      "currentTeam": "Miami Marlins",
+      "rosterStatus": "Unknown"
+    },
+    "Johnathan Rodriguez": {
+      "mlb_id": 671286,
+      "on_roster": true,
+      "currentTeam": "Cleveland Guardians",
+      "rosterStatus": "Unknown"
+    },
+    "Justin Slaten": {
+      "mlb_id": 686580,
+      "on_roster": true,
+      "currentTeam": "Boston Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Deyvison De Los Santos": {
+      "mlb_id": 691277,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Kyle Hurt": {
+      "mlb_id": 669165,
+      "on_roster": false,
+      "currentTeam": "Los Angeles Dodgers",
+      "rosterStatus": "Unknown"
+    },
+    "Logan Evans": {
+      "mlb_id": 688138,
+      "on_roster": false,
+      "currentTeam": "Tacoma Rainiers",
+      "rosterStatus": "Unknown"
+    },
+    "Dustin Harris": {
+      "mlb_id": 687957,
+      "on_roster": false,
+      "currentTeam": "Round Rock Express",
+      "rosterStatus": "Unknown"
+    },
+    "Jaden Hill": {
+      "mlb_id": 677955,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Logan Henderson": {
+      "mlb_id": 701656,
+      "on_roster": false,
+      "currentTeam": "Nashville Sounds",
+      "rosterStatus": "Unknown"
+    },
+    "Drew Romo": {
+      "mlb_id": 691011,
+      "on_roster": false,
+      "currentTeam": "Albuquerque Isotopes",
+      "rosterStatus": "Unknown"
+    },
+    "Gage Workman": {
+      "mlb_id": 669398,
+      "on_roster": true,
+      "currentTeam": "Chicago Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Colby White": {
+      "mlb_id": 686831,
+      "on_roster": false,
+      "currentTeam": "Somerset Patriots",
+      "rosterStatus": "Unknown"
+    },
+    "Quinn Priester": {
+      "mlb_id": 682990,
+      "on_roster": false,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Slade Cecconi": {
+      "mlb_id": 677944,
+      "on_roster": false,
+      "currentTeam": "Cleveland Guardians",
+      "rosterStatus": "Unknown"
+    },
+    "Diego Cartaya": {
+      "mlb_id": 682616,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Matt Waldron": {
+      "mlb_id": 663362,
+      "on_roster": false,
+      "currentTeam": "San Diego Padres",
+      "rosterStatus": "Unknown"
+    },
+    "Freddy Tarnok": {
+      "mlb_id": 676206,
+      "on_roster": false,
+      "currentTeam": "Jacksonville Jumbo Shrimp",
+      "rosterStatus": "Unknown"
+    },
+    "Eguy Rosario": {
+      "mlb_id": 666703,
+      "on_roster": false,
+      "currentTeam": "El Paso Chihuahuas",
+      "rosterStatus": "Unknown"
+    },
+    "Mason Montgomery": {
+      "mlb_id": 682254,
+      "on_roster": true,
+      "currentTeam": "Tampa Bay Rays",
+      "rosterStatus": "Unknown"
+    },
+    "Chris Murphy": {
+      "mlb_id": 669684,
+      "on_roster": false,
+      "currentTeam": "Boston Red Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Wade Meckler": {
+      "mlb_id": 685133,
+      "on_roster": false,
+      "currentTeam": "Sacramento River Cats",
+      "rosterStatus": "Unknown"
+    },
+    "Jordan Balazovic": {
+      "mlb_id": 666364,
+      "on_roster": false,
+      "currentTeam": "Toledo Mud Hens",
+      "rosterStatus": "Unknown"
+    },
+    "Caleb Kilian": {
+      "mlb_id": 668873,
+      "on_roster": false,
+      "currentTeam": "Iowa Cubs",
+      "rosterStatus": "Unknown"
+    },
+    "Mitch Spence": {
+      "mlb_id": 687765,
+      "on_roster": true,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Pedro Leon": {
+      "mlb_id": 694175,
+      "on_roster": false,
+      "currentTeam": "Houston Astros",
+      "rosterStatus": "Unknown"
+    },
+    "Jose A. Ferrer": {
+      "mlb_id": 678606,
+      "on_roster": true,
+      "currentTeam": "Washington Nationals",
+      "rosterStatus": "Unknown"
+    },
+    "Carmen Mlodzinski": {
+      "mlb_id": 669387,
+      "on_roster": true,
+      "currentTeam": "Pittsburgh Pirates",
+      "rosterStatus": "Unknown"
+    },
+    "Brock Wilken": {
+      "mlb_id": 694385,
+      "on_roster": false,
+      "currentTeam": "Biloxi Shuckers",
+      "rosterStatus": "Unknown"
+    },
+    "Grant Anderson": {
+      "mlb_id": 681982,
+      "on_roster": true,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Brooks Baldwin": {
+      "mlb_id": 681460,
+      "on_roster": true,
+      "currentTeam": "Chicago White Sox",
+      "rosterStatus": "Unknown"
+    },
+    "Stephen Kolek": {
+      "mlb_id": 663568,
+      "on_roster": false,
+      "currentTeam": "El Paso Chihuahuas",
+      "rosterStatus": "Unknown"
+    },
+    "Osvaldo Bido": {
+      "mlb_id": 674370,
+      "on_roster": true,
+      "currentTeam": "Athletics",
+      "rosterStatus": "Unknown"
+    },
+    "Pedro Avila": {
+      "mlb_id": 658648,
+      "on_roster": false,
+      "currentTeam": "Tiburones de La Guaira",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Hernandez": {
+      "mlb_id": 669796,
+      "on_roster": false,
+      "currentTeam": "Oklahoma City Comets",
+      "rosterStatus": "Unknown"
+    },
+    "Jose Soriano": {
+      "mlb_id": 667755,
+      "on_roster": true,
+      "currentTeam": "Los Angeles Angels",
+      "rosterStatus": "Unknown"
+    },
+    "Angel Zerpa": {
+      "mlb_id": 672582,
+      "on_roster": true,
+      "currentTeam": "Kansas City Royals",
+      "rosterStatus": "Unknown"
+    },
+    "Brett Harris": {
+      "mlb_id": 695391,
+      "on_roster": false,
+      "currentTeam": "Las Vegas Aviators",
+      "rosterStatus": "Unknown"
+    },
+    "Kyren Paris": {
+      "mlb_id": 677347,
+      "on_roster": true,
+      "currentTeam": "Los Angeles Angels",
+      "rosterStatus": "Unknown"
+    },
+    "Chad Patrick": {
+      "mlb_id": 694477,
+      "on_roster": true,
+      "currentTeam": "Milwaukee Brewers",
+      "rosterStatus": "Unknown"
+    },
+    "Everson Pereira": {
+      "mlb_id": 677592,
+      "on_roster": false,
+      "currentTeam": "Scranton/Wilkes-Barre RailRiders",
+      "rosterStatus": "Unknown"
+    },
+    "Jackson Holliday": {
+      "mlb_id": 702616,
+      "on_roster": true,
+      "currentTeam": "Baltimore Orioles",
+      "rosterStatus": "Unknown"
+    },
+    "Zebby Matthews": {
+      "mlb_id": 805673,
+      "on_roster": false,
+      "currentTeam": "St. Paul Saints",
+      "rosterStatus": "Unknown"
+    },
+    "Junior Caminero": {
+      "mlb_id": 691406,
+      "on_roster": true,
+      "currentTeam": "Tampa Bay Rays",
+      "rosterStatus": "Unknown"
+    }
+  }
+}
