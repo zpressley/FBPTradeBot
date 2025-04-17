@@ -50,10 +50,12 @@ class Trade(commands.Cog):
 
 
 # Main validation + preview
+from difflib import get_close_matches
+
 async def handle_trade_submission(interaction, user_id, team2, team3, players, wb):
-    from commands.lookup import extract_name
     from commands.utils import DISCORD_ID_TO_TEAM
-    from commands.lookup import combined_data
+    from commands.lookup import extract_name
+    from commands.lookup import combined_data  # now a flat list of player dicts
 
     team1 = DISCORD_ID_TO_TEAM.get(user_id)
     if not team1:
@@ -64,15 +66,15 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
     problems = []
     corrected_players = {}
 
-    # Validate WB
+    # WB validation
     for team in involved:
-        max_allowed = wb.get(team, 0)
+        max_allowed = wizbucks_data.get(team, 0)
         if wb.get(team, 0) % 5 != 0:
             problems.append(f"{team}: WB must be in $5 increments.")
         if wb.get(team, 0) > max_allowed:
             problems.append(f"{team}: Trying to send ${wb.get(team)} WB but only has ${max_allowed}.")
 
-    # Map team to their input field
+    # Map each team to its field key
     team_key_map = {
         team1: "team1",
         team2: "team2"
@@ -81,24 +83,25 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
         team_key_map[team3] = "team3"
 
     for team in involved:
-        roster = combined_data.get(team, [])
         corrected_players[team] = []
         submitted = players.get(team_key_map.get(team), [])
+        team_roster = [p for p in combined_data if p["manager"] == team]
 
         for raw in submitted:
             if is_wizbuck_entry(raw):
                 corrected_players[team].append(raw)
                 continue
 
-            submitted_clean = extract_name(raw)
-            roster_names = [extract_name(p) for p in roster]
+            submitted_clean = extract_name(raw).lower()
+            roster_names = [extract_name(p["name"]).lower() for p in team_roster]
 
-            from difflib import get_close_matches
             match = get_close_matches(submitted_clean, roster_names, n=1, cutoff=0.8)
 
             if match:
-                matched_index = roster_names.index(match[0])
-                corrected_players[team].append(roster[matched_index])
+                matched_name = match[0]
+                matched_player = next(p for p in team_roster if extract_name(p["name"]).lower() == matched_name)
+                formatted = f"{matched_player['position']} {matched_player['name']} [{matched_player['team']}] [{matched_player['years_simple'] or 'NA'}]"
+                corrected_players[team].append(formatted)
             else:
                 problems.append(f"{team}: `{raw}` is not on your roster.")
 
@@ -112,7 +115,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
         await interaction.response.send_message(content=msg, ephemeral=True)
         return
 
-    # Build trade preview
+    # Preview builder
     def block(team):
         lines = corrected_players.get(team, [])
         wb_val = wb.get(team, 0)
@@ -125,11 +128,10 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
 {block(team1)}
 
 {block(team2)}"""
-
     if team3:
         msg += f"\n\n{block(team3)}"
 
-    msg += "\n\n✏️ To edit this trade, re-send the `/trade` command."
+    msg += "\n\n✏️ To edit this trade, re-submit the `/trade` command."
 
     view = PreviewConfirmView(
         trade_data={
@@ -142,11 +144,9 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
             "team3_assets": corrected_players.get(team3, [])
         }
     )
-    print(f"🔍 Matching `{raw}` against roster: {roster_names}")
 
     await interaction.response.defer(ephemeral=True)
     await interaction.followup.send(content=msg, view=view, ephemeral=True)
-
 
 
 # Preview confirmation view

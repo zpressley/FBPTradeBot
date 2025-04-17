@@ -1,17 +1,11 @@
-# commands/roster.py
-
 import discord
 from discord.ext import commands
 from discord import app_commands
 import json
 from commands.utils import DISCORD_ID_TO_TEAM
 
-# Load data
 with open("data/combined_players.json", "r") as f:
     combined_data = json.load(f)
-
-with open("data/yahoo_players.json", "r") as f:
-    yahoo_data = json.load(f)
 
 TEAM_CHOICES = [
     app_commands.Choice(name="Hammers", value="HAM"),
@@ -40,96 +34,46 @@ class Roster(commands.Cog):
 
     @app_commands.command(name="roster", description="View the roster of a team")
     @app_commands.choices(team=TEAM_CHOICES, view=VIEW_CHOICES)
-    @app_commands.describe(
-        team="Optional: Choose a team (defaults to your own)",
-        view="Choose a roster type"
-    )
     async def roster(self, interaction: discord.Interaction, view: app_commands.Choice[str], team: app_commands.Choice[str] = None):
         view_type = view.value
+        team_abbr = team.value if team else DISCORD_ID_TO_TEAM.get(interaction.user.id)
 
-        if team:
-            team_abbr = team.value
-            team_name = team.name
-        else:
-            team_abbr = DISCORD_ID_TO_TEAM.get(interaction.user.id)
-            team_name = team_abbr if team_abbr else "Your Team"
-
-        if not team_abbr or team_abbr not in combined_data:
-            await interaction.response.send_message("❌ Unable to determine your team. Please select one manually.", ephemeral=True)
+        if not team_abbr:
+            await interaction.response.send_message("❌ Cannot determine team. Please select one.", ephemeral=True)
             return
 
-        combined = combined_data.get(team_abbr, [])
-        yahoo_roster = yahoo_data.get(team_abbr, [])
+        roster = [p for p in combined_data if p.get("manager") == team_abbr]
 
-        if view_type == "mlb":
-            batters, pitchers = split_mlb(combined, yahoo_roster)
-            msg = f"📋 **{team_name} Roster — MLB Only**\n\n"
-            msg += "🔹 **Batters**\n" + "\n".join(batters) + "\n\n"
-            msg += "🔹 **Pitchers**\n" + "\n".join(pitchers)
+        def format_player(p):
+            return f"{p['position']} {p['name']} [{p['team']}] [{p['years_simple'] or 'NA'}]"
 
-        elif view_type == "farm":
-            purchased, farm, dev = split_farm(combined, yahoo_roster)
-            msg = f"📋 **{team_name} Roster — Farm System**\n\n"
-            if purchased:
-                msg += "🔷 **Purchased**\n" + "\n".join(purchased) + "\n\n"
-            if farm:
-                msg += "🔷 **Farm**\n" + "\n".join(farm) + "\n\n"
-            if dev:
-                msg += "🔷 **Development**\n" + "\n".join(dev)
+        mlb = [p for p in roster if p.get("player_type") == "MLB"]
+        farm = [p for p in roster if p.get("player_type") == "Farm"]
 
-        elif view_type == "all":
-            batters, pitchers = split_mlb(combined, yahoo_roster)
-            purchased, farm, dev = split_farm(combined, yahoo_roster)
+        batters = [format_player(p) for p in mlb if p["position"] not in ["SP", "RP", "P"]]
+        pitchers = [format_player(p) for p in mlb if p["position"] in ["SP", "RP", "P"]]
 
-            msg = f"📋 **{team_name} Full Roster**\n\n"
+        purchased = [format_player(p) for p in farm if p["contract_type"] == "PC"]
+        farmed = [format_player(p) for p in farm if p["contract_type"] == "FC"]
+        devs = [format_player(p) for p in farm if p["contract_type"] == "DC"]
+
+        msg = f"📋 **{team_abbr} Roster**\n\n"
+
+        if view_type in ["mlb", "all"]:
             msg += "🔶 **MLB Players**\n"
             msg += "🔹 **Batters**\n" + "\n".join(batters) + "\n\n"
             msg += "🔹 **Pitchers**\n" + "\n".join(pitchers) + "\n\n"
+
+        if view_type in ["farm", "all"]:
             msg += "🟩 **Farm System**\n"
             if purchased:
                 msg += "🔷 **Purchased**\n" + "\n".join(purchased) + "\n\n"
-            if farm:
-                msg += "🔷 **Farm**\n" + "\n".join(farm) + "\n\n"
-            if dev:
-                msg += "🔷 **Development**\n" + "\n".join(dev)
-        else:
-            msg = "❌ Unknown view type."
+            if farmed:
+                msg += "🔷 **Farm**\n" + "\n".join(farmed) + "\n\n"
+            if devs:
+                msg += "🔷 **Development**\n" + "\n".join(devs) + "\n\n"
 
-        await interaction.response.send_message(msg, ephemeral=True)
-
-# ======== Helpers ========
-
-def split_mlb(combined, yahoo_roster):
-    yahoo_names = {p["name"].lower() for p in yahoo_roster}
-    batters, pitchers = [], []
-
-    for line in combined:
-        name = line.split(" ", 1)[1].split(" [")[0].lower()
-        if name in yahoo_names:
-            pos = line.split(" ")[0]
-            if pos in ["SP", "RP", "P", "RHP", "LHP"]:
-                pitchers.append(line)
-            else:
-                batters.append(line)
-
-    return batters, pitchers
-
-def split_farm(combined, yahoo_roster):
-    yahoo_names = {p["name"].lower() for p in yahoo_roster}
-    purchased, farm, dev = [], [], []
-
-    for line in combined:
-        name = line.split(" ", 1)[1].split(" [")[0].lower()
-        status = line.split(" - ")[-1].strip()
-        if "[P]" in status and name not in yahoo_names:
-            if "[PC]" in status:
-                purchased.append(line)
-            elif "[FC]" in status:
-                farm.append(line)
-            elif "[DC]" in status:
-                dev.append(line)
-
-    return purchased, farm, dev
+        await interaction.response.send_message(msg.strip(), ephemeral=True)
 
 async def setup(bot):
     await bot.add_cog(Roster(bot))

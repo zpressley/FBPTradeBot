@@ -9,9 +9,10 @@ TAB_NAME = "Player Data"
 
 # Headers we care about
 EXPECTED_HEADERS = [
-    "Player Name", "Team", "Pos", "Player Type", "Manager",
+    "UPID", "Player Name", "Team", "Pos", "Player Type", "Manager",
     "Contract Type", "Status", "Years (Simple)"
 ]
+
 
 def get_sheet_records():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -26,7 +27,7 @@ def get_sheet_records():
     for row in raw_records:
         player = {}
         for key in EXPECTED_HEADERS:
-            player[key] = row.get(key, "").strip()
+            player[key] = str(row.get(key, "")).strip()
         cleaned.append(player)
 
     return cleaned
