@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ui import View, Button
-from commands.lookup import extract_name, combined_data
+from commands.lookup import extract_name, all_players
 from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM
 from commands.trade_logic import create_trade_thread
 import re
@@ -85,7 +85,7 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
     for team in involved:
         corrected_players[team] = []
         submitted = players.get(team_key_map.get(team), [])
-        team_roster = [p for p in combined_data if p["manager"] == team]
+        team_roster = [p for p in all_players if p.get("manager") == team]
 
         for raw in submitted:
             if is_wizbuck_entry(raw):
