@@ -6,12 +6,11 @@ from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM
 from commands.trade_logic import create_trade_thread
 import re
 import json
+from difflib import get_close_matches
 
-# Load Wiz Bucks data
 with open("data/wizbucks.json", "r") as f:
     wizbucks_data = json.load(f)
 
-# Slash command setup
 class Trade(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -33,7 +32,6 @@ class Trade(commands.Cog):
 
         user_id = interaction.user.id
 
-        # Parse asset strings
         players = {
             "team1": [s.strip() for s in team1_assets.split(",") if s.strip()],
             "team2": [s.strip() for s in team2_assets.split(",") if s.strip()],
@@ -48,35 +46,18 @@ class Trade(commands.Cog):
 
         await handle_trade_submission(interaction, user_id, team2, team3, players, wb)
 
-
-# Main validation + preview
-from difflib import get_close_matches
-
 async def handle_trade_submission(interaction, user_id, team2, team3, players, wb):
-    from commands.utils import DISCORD_ID_TO_TEAM
-    from commands.lookup import extract_name
-    from commands.lookup import combined_data  # now a flat list of player dicts
     await interaction.response.defer(ephemeral=True)
-
 
     team1 = DISCORD_ID_TO_TEAM.get(user_id)
     if not team1:
-        await interaction.response.send_message("❌ You are not mapped to a team.", ephemeral=True)
+        await interaction.followup.send("❌ You are not mapped to a team.", ephemeral=True)
         return
 
     involved = [team1, team2] + ([team3] if team3 else [])
     problems = []
     corrected_players = {}
 
-    # WB validation
-    for team in involved:
-        max_allowed = wizbucks_data.get(team, 0)
-        if wb.get(team, 0) % 5 != 0:
-            problems.append(f"{team}: WB must be in $5 increments.")
-        if wb.get(team, 0) > max_allowed:
-            problems.append(f"{team}: Trying to send ${wb.get(team)} WB but only has ${max_allowed}.")
-
-    # Map each team to its field key
     team_key_map = {
         team1: "team1",
         team2: "team2"
@@ -114,22 +95,22 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
             "\n\n🔁 Please re-submit the trade using `/trade` and only include players currently on your team.\n" +
             "💡 Use `/roster` to view your current players."
         )
-        await interaction.response.send_message(content=msg, ephemeral=True)
+        await interaction.followup.send(content=msg, ephemeral=True)
         return
 
-    # Preview builder
     def block(team):
         lines = corrected_players.get(team, [])
-        wb_val = wb.get(team, 0)
+        wb_val = wb.get(team_key_map[team], 0)
         if wb_val > 0:
             lines.append(f"${wb_val} WB")
         return f"🔁 **{team} receives:**\n" + "\n".join(lines)
 
+    # Invert preview: show what each team RECEIVES
     msg = f"""📬 **TRADE PREVIEW**
 
-{block(team1)}
+{block(team2)}
 
-{block(team2)}"""
+{block(team1)}"""
     if team3:
         msg += f"\n\n{block(team3)}"
 
@@ -147,11 +128,8 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
         }
     )
 
-    await interaction.response.defer(ephemeral=True)
     await interaction.followup.send(content=msg, view=view, ephemeral=True)
 
-
-# Preview confirmation view
 class PreviewConfirmView(View):
     def __init__(self, trade_data):
         super().__init__(timeout=300)
@@ -190,16 +168,7 @@ class PreviewConfirmView(View):
         if interaction.user.id == self.trade_data["initiator_id"]:
             await interaction.response.send_message("❌ Trade canceled.", ephemeral=True)
 
-
-# Helper to parse 
-
-import re
-
 def extract_name(player_line):
-    """
-    Extracts the player's name from a line like:
-    'SS Trea Turner [PHI] - VC 1' → 'Trea Turner'
-    """
     try:
         match = re.match(r"^\w+\s+(.+?)\s+\[", player_line)
         return match.group(1).strip() if match else player_line.strip()
@@ -217,16 +186,11 @@ def extract_wb(asset_list):
                 continue
     return 0
 
-
-import re
-
 def is_wizbuck_entry(s):
     if not isinstance(s, str):
         return False
     s = s.lower().strip()
     return bool(re.match(r"^\$?\d+\s*wb?$", s))
 
-
-# Register the slash command cog
 async def setup(bot):
     await bot.add_cog(Trade(bot))
