@@ -1,15 +1,15 @@
 [
   {
-    "name": "Hunter Goodman",
-    "team": "COL",
-    "position": "C,OF",
+    "name": "Cal Raleigh",
+    "team": "SEA",
+    "position": "C",
     "manager": "WIZ",
     "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "12409",
-    "upid": "3836"
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "11531",
+    "upid": "2216"
   },
   {
     "name": "Josh Naylor",
@@ -24,16 +24,16 @@
     "upid": "2767"
   },
   {
-    "name": "Bryson Stott",
-    "team": "PHI",
-    "position": "2B,SS",
+    "name": "Jorge Polanco",
+    "team": "SEA",
+    "position": "2B,3B",
     "manager": "WIZ",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11817",
-    "upid": "4306"
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "9750",
+    "upid": "1954"
   },
   {
     "name": "Alec Bohm",
@@ -48,28 +48,28 @@
     "upid": "2039"
   },
   {
-    "name": "Nico Hoerner",
-    "team": "CHC",
+    "name": "Bryson Stott",
+    "team": "PHI",
     "position": "2B,SS",
     "manager": "WIZ",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11284",
-    "upid": "3054"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11817",
+    "upid": "4306"
   },
   {
-    "name": "Tommy Edman",
-    "team": "LAD",
-    "position": "2B,SS,CF",
+    "name": "Alex Call",
+    "team": "WSH",
+    "position": "CF",
     "manager": "WIZ",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "11596",
-    "upid": "1981"
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12653",
+    "upid": "4323"
   },
   {
     "name": "Lars Nootbaar",
@@ -96,18 +96,6 @@
     "upid": "1909"
   },
   {
-    "name": "Shohei Ohtani (Batter)",
-    "team": "LAD",
-    "position": "Util",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "1000001",
-    "upid": "1919"
-  },
-  {
     "name": "Spencer Steer",
     "team": "CIN",
     "position": "1B,OF",
@@ -120,40 +108,40 @@
     "upid": "3605"
   },
   {
-    "name": "JJ Bleday",
-    "team": "ATH",
-    "position": "CF",
+    "name": "Shohei Ohtani (Batter)",
+    "team": "LAD",
+    "position": "Util",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "1000001",
+    "upid": "1919"
+  },
+  {
+    "name": "Nico Hoerner",
+    "team": "CHC",
+    "position": "2B,SS",
     "manager": "WIZ",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11782",
-    "upid": "3695"
+    "yahoo_id": "11284",
+    "upid": "3054"
   },
   {
-    "name": "Tyler Fitzgerald",
-    "team": "SF",
+    "name": "Tommy Edman",
+    "team": "LAD",
     "position": "2B,SS,CF",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "61346",
-    "upid": "4783"
-  },
-  {
-    "name": "Cal Raleigh",
-    "team": "SEA",
-    "position": "C",
     "manager": "WIZ",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[4] TC2",
     "years_simple": "TC 2",
-    "yahoo_id": "11531",
-    "upid": "2216"
+    "yahoo_id": "11596",
+    "upid": "1981"
   },
   {
     "name": "Max Muncy",
@@ -168,6 +156,30 @@
     "upid": "4001"
   },
   {
+    "name": "Carson Kelly",
+    "team": "CHC",
+    "position": "C",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10395",
+    "upid": "2235"
+  },
+  {
+    "name": "Cristopher S\u00e1nchez",
+    "team": "PHI",
+    "position": "SP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11706",
+    "upid": "2314"
+  },
+  {
     "name": "Jos\u00e9 Alvarado",
     "team": "PHI",
     "position": "RP",
@@ -178,6 +190,78 @@
     "years_simple": "TC 1",
     "yahoo_id": "10692",
     "upid": "2737"
+  },
+  {
+    "name": "Matt Strahm",
+    "team": "PHI",
+    "position": "RP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10355",
+    "upid": "2956"
+  },
+  {
+    "name": "Eduardo Rodriguez",
+    "team": "AZ",
+    "position": "SP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9546",
+    "upid": "2434"
+  },
+  {
+    "name": "Brady Singer",
+    "team": "CIN",
+    "position": "SP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11323",
+    "upid": "2165"
+  },
+  {
+    "name": "JP Sears",
+    "team": "ATH",
+    "position": "SP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12333",
+    "upid": "4054"
+  },
+  {
+    "name": "Griffin Jax",
+    "team": "MIN",
+    "position": "RP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12203",
+    "upid": "2521"
+  },
+  {
+    "name": "Porter Hodge",
+    "team": "CHC",
+    "position": "RP",
+    "manager": "WIZ",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "60122",
+    "upid": "4266"
   },
   {
     "name": "Orion Kerkering",
@@ -204,40 +288,40 @@
     "upid": "4026"
   },
   {
-    "name": "Porter Hodge",
-    "team": "CHC",
-    "position": "RP",
+    "name": "Carlos Rod\u00f3n",
+    "team": "NYY",
+    "position": "SP",
     "manager": "WIZ",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "60122",
-    "upid": "4266"
+    "yahoo_id": "9823",
+    "upid": "1934"
   },
   {
-    "name": "Matt Strahm",
-    "team": "PHI",
-    "position": "RP",
+    "name": "Sandy Alcantara",
+    "team": "MIA",
+    "position": "SP",
     "manager": "WIZ",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10355",
-    "upid": "2956"
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "10597",
+    "upid": "1977"
   },
   {
-    "name": "Griffin Jax",
-    "team": "MIN",
-    "position": "RP",
+    "name": "David Fry",
+    "team": "CLE",
+    "position": "C,1B,OF",
     "manager": "WIZ",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12203",
-    "upid": "2521"
+    "yahoo_id": "61262",
+    "upid": "5674"
   },
   {
     "name": "Pablo L\u00f3pez",
@@ -264,66 +348,6 @@
     "upid": "1887"
   },
   {
-    "name": "Sandy Alcantara",
-    "team": "MIA",
-    "position": "SP",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "10597",
-    "upid": "1977"
-  },
-  {
-    "name": "Cristopher S\u00e1nchez",
-    "team": "PHI",
-    "position": "SP",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11706",
-    "upid": "2314"
-  },
-  {
-    "name": "Carlos Rod\u00f3n",
-    "team": "NYY",
-    "position": "SP",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9823",
-    "upid": "1934"
-  },
-  {
-    "name": "Brady Singer",
-    "team": "CIN",
-    "position": "SP",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11323",
-    "upid": "2165"
-  },
-  {
-    "name": "David Fry",
-    "team": "CLE",
-    "position": "C,1B,OF",
-    "manager": "WIZ",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "61262",
-    "upid": "5674"
-  },
-  {
     "name": "Shohei Ohtani (Pitcher)",
     "team": "LAD",
     "position": "SP",
@@ -336,16 +360,16 @@
     "upid": "1920"
   },
   {
-    "name": "Iv\u00e1n Herrera",
+    "name": "Pedro Pag\u00e9s",
     "team": "STL",
     "position": "C",
     "manager": "B2J",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "11836",
-    "upid": "3513"
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "61613",
+    "upid": ""
   },
   {
     "name": "Bryce Harper",
@@ -372,16 +396,16 @@
     "upid": "3069"
   },
   {
-    "name": "Rafael Devers",
-    "team": "BOS",
-    "position": "3B",
+    "name": "Brendan Donovan",
+    "team": "STL",
+    "position": "2B,3B,OF",
     "manager": "B2J",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10235",
-    "upid": "1915"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12351",
+    "upid": "3989"
   },
   {
     "name": "Willy Adames",
@@ -408,30 +432,6 @@
     "upid": "2176"
   },
   {
-    "name": "James Wood",
-    "team": "WSH",
-    "position": "OF",
-    "manager": "B2J",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "12521",
-    "upid": "3521"
-  },
-  {
-    "name": "Teoscar Hern\u00e1ndez",
-    "team": "LAD",
-    "position": "OF",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10366",
-    "upid": "1980"
-  },
-  {
     "name": "Nick Castellanos",
     "team": "PHI",
     "position": "OF",
@@ -444,40 +444,16 @@
     "upid": "1914"
   },
   {
-    "name": "Willi Castro",
-    "team": "MIN",
-    "position": "2B,3B,SS,CF",
+    "name": "James Wood",
+    "team": "WSH",
+    "position": "OF",
     "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10868",
-    "upid": "3380"
-  },
-  {
-    "name": "Connor Wong",
-    "team": "BOS",
-    "position": "C,1B",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11483",
-    "upid": "2300"
-  },
-  {
-    "name": "Brendan Donovan",
-    "team": "STL",
-    "position": "2B,3B,OF",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12351",
-    "upid": "3989"
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "12521",
+    "upid": "3521"
   },
   {
     "name": "Yandy D\u00edaz",
@@ -492,16 +468,76 @@
     "upid": "3399"
   },
   {
-    "name": "Zack Wheeler",
-    "team": "PHI",
+    "name": "Jacob Wilson",
+    "team": "ATH",
+    "position": "SS",
+    "manager": "B2J",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "62976",
+    "upid": "2581"
+  },
+  {
+    "name": "Rafael Devers",
+    "team": "BOS",
+    "position": "3B",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10235",
+    "upid": "1915"
+  },
+  {
+    "name": "Teoscar Hern\u00e1ndez",
+    "team": "LAD",
+    "position": "OF",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10366",
+    "upid": "1980"
+  },
+  {
+    "name": "Willi Castro",
+    "team": "MIN",
+    "position": "2B,3B,SS,CF",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10868",
+    "upid": "3380"
+  },
+  {
+    "name": "Matthew Boyd",
+    "team": "CHC",
     "position": "SP",
     "manager": "B2J",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[0] FC2",
-    "years_simple": "FC 2",
-    "yahoo_id": "9124",
-    "upid": "1901"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10011",
+    "upid": "2960"
+  },
+  {
+    "name": "Bryan Abreu",
+    "team": "HOU",
+    "position": "RP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11208",
+    "upid": "2202"
   },
   {
     "name": "Blake Treinen",
@@ -528,6 +564,18 @@
     "upid": "4046"
   },
   {
+    "name": "Yennier Cano",
+    "team": "BAL",
+    "position": "RP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12614",
+    "upid": "4255"
+  },
+  {
     "name": "Yimi Garc\u00eda",
     "team": "TOR",
     "position": "RP",
@@ -550,78 +598,6 @@
     "years_simple": "P",
     "yahoo_id": "10514",
     "upid": "7135"
-  },
-  {
-    "name": "Yennier Cano",
-    "team": "BAL",
-    "position": "RP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12614",
-    "upid": "4255"
-  },
-  {
-    "name": "Zac Gallen",
-    "team": "AZ",
-    "position": "SP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11116",
-    "upid": "1990"
-  },
-  {
-    "name": "Bryan Abreu",
-    "team": "HOU",
-    "position": "RP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11208",
-    "upid": "2202"
-  },
-  {
-    "name": "Jos\u00e9 Berr\u00edos",
-    "team": "TOR",
-    "position": "SP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9872",
-    "upid": "1891"
-  },
-  {
-    "name": "Kodai Senga",
-    "team": "NYM",
-    "position": "SP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "12776",
-    "upid": "3373"
-  },
-  {
-    "name": "Matthew Boyd",
-    "team": "CHC",
-    "position": "SP",
-    "manager": "B2J",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10011",
-    "upid": "2960"
   },
   {
     "name": "Kevin Gausman",
@@ -648,6 +624,54 @@
     "upid": "1906"
   },
   {
+    "name": "Zack Wheeler",
+    "team": "PHI",
+    "position": "SP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[0] FC2",
+    "years_simple": "FC 2",
+    "yahoo_id": "9124",
+    "upid": "1901"
+  },
+  {
+    "name": "Kodai Senga",
+    "team": "NYM",
+    "position": "SP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "12776",
+    "upid": "3373"
+  },
+  {
+    "name": "Zac Gallen",
+    "team": "AZ",
+    "position": "SP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11116",
+    "upid": "1990"
+  },
+  {
+    "name": "Jos\u00e9 Berr\u00edos",
+    "team": "TOR",
+    "position": "SP",
+    "manager": "B2J",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9872",
+    "upid": "1891"
+  },
+  {
     "name": "Clayton Kershaw",
     "team": "LAD",
     "position": "SP",
@@ -660,16 +684,16 @@
     "upid": "1939"
   },
   {
-    "name": "Alejandro Kirk",
-    "team": "TOR",
+    "name": "Sean Murphy",
+    "team": "ATL",
     "position": "C",
     "manager": "CFL",
     "player_type": "MLB",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11853",
-    "upid": "2045"
+    "yahoo_id": "10929",
+    "upid": "3213"
   },
   {
     "name": "Vinnie Pasquantino",
@@ -684,28 +708,28 @@
     "upid": "3489"
   },
   {
-    "name": "Marcus Semien",
-    "team": "TEX",
-    "position": "2B",
+    "name": "Tyler Fitzgerald",
+    "team": "SF",
+    "position": "2B,SS,CF",
     "manager": "CFL",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "9517",
-    "upid": "1964"
+    "yahoo_id": "61346",
+    "upid": "4783"
   },
   {
-    "name": "Alex Bregman",
-    "team": "BOS",
+    "name": "Ke'Bryan Hayes",
+    "team": "PIT",
     "position": "3B",
     "manager": "CFL",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10183",
-    "upid": "1882"
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "10566",
+    "upid": "2810"
   },
   {
     "name": "Corey Seager",
@@ -744,16 +768,16 @@
     "upid": "3986"
   },
   {
-    "name": "Ian Happ",
-    "team": "CHC",
-    "position": "OF",
+    "name": "Jonathan India",
+    "team": "KC",
+    "position": "2B,3B,OF",
     "manager": "CFL",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10440",
-    "upid": "2550"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11292",
+    "upid": "2713"
   },
   {
     "name": "Tyler Soderstrom",
@@ -768,6 +792,42 @@
     "upid": "3466"
   },
   {
+    "name": "Ian Happ",
+    "team": "CHC",
+    "position": "OF",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10440",
+    "upid": "2550"
+  },
+  {
+    "name": "Alejandro Kirk",
+    "team": "TOR",
+    "position": "C",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11853",
+    "upid": "2045"
+  },
+  {
+    "name": "Marcus Semien",
+    "team": "TEX",
+    "position": "2B",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9517",
+    "upid": "1964"
+  },
+  {
     "name": "Heliot Ramos",
     "team": "SF",
     "position": "CF",
@@ -780,52 +840,28 @@
     "upid": "3818"
   },
   {
-    "name": "Jeimer Candelario",
-    "team": "CIN",
-    "position": "1B,3B",
+    "name": "Tyler Holton",
+    "team": "DET",
+    "position": "SP,RP",
     "manager": "CFL",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10328",
-    "upid": "2646"
+    "yahoo_id": "12606",
+    "upid": "4138"
   },
   {
-    "name": "Jonathan India",
-    "team": "KC",
-    "position": "2B",
-    "manager": "CFL",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11292",
-    "upid": "2713"
-  },
-  {
-    "name": "J.P. Crawford",
-    "team": "SEA",
-    "position": "SS",
-    "manager": "CFL",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9610",
-    "upid": "2566"
-  },
-  {
-    "name": "Yoshinobu Yamamoto",
+    "name": "Tanner Scott",
     "team": "LAD",
-    "position": "SP",
+    "position": "RP",
     "manager": "CFL",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[3] VC1",
     "years_simple": "VC 1",
-    "yahoo_id": "63423",
-    "upid": "7287"
+    "yahoo_id": "10432",
+    "upid": "3265"
   },
   {
     "name": "Ryan Helsley",
@@ -852,18 +888,6 @@
     "upid": "2626"
   },
   {
-    "name": "Tyler Holton",
-    "team": "DET",
-    "position": "SP,RP",
-    "manager": "CFL",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12606",
-    "upid": "4138"
-  },
-  {
     "name": "Yuki Matsui",
     "team": "SD",
     "position": "RP",
@@ -876,40 +900,28 @@
     "upid": "7281"
   },
   {
-    "name": "Tanner Scott",
-    "team": "LAD",
+    "name": "Bryan Hudson",
+    "team": "MIL",
     "position": "RP",
     "manager": "CFL",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10432",
-    "upid": "3265"
-  },
-  {
-    "name": "Jacob deGrom",
-    "team": "TEX",
-    "position": "SP",
-    "manager": "CFL",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "9701",
-    "upid": "1876"
-  },
-  {
-    "name": "Walker Buehler",
-    "team": "BOS",
-    "position": "SP",
-    "manager": "CFL",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10509",
-    "upid": "1922"
+    "yahoo_id": "10444",
+    "upid": "7493"
+  },
+  {
+    "name": "Jake Irvin",
+    "team": "WSH",
+    "position": "SP",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11560",
+    "upid": "4553"
   },
   {
     "name": "Mitch Keller",
@@ -936,16 +948,52 @@
     "upid": "1892"
   },
   {
-    "name": "Merrill Kelly",
-    "team": "AZ",
+    "name": "Walker Buehler",
+    "team": "BOS",
+    "position": "SP",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10509",
+    "upid": "1922"
+  },
+  {
+    "name": "Jacob deGrom",
+    "team": "TEX",
+    "position": "SP",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "9701",
+    "upid": "1876"
+  },
+  {
+    "name": "Yoshinobu Yamamoto",
+    "team": "LAD",
+    "position": "SP",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "63423",
+    "upid": "7287"
+  },
+  {
+    "name": "Erick Fedde",
+    "team": "STL",
     "position": "SP",
     "manager": "CFL",
     "player_type": "MLB",
     "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "11251",
-    "upid": "2967"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10229",
+    "upid": "2463"
   },
   {
     "name": "Tyler Stephenson",
@@ -996,6 +1044,18 @@
     "upid": "4010"
   },
   {
+    "name": "Alex Bregman",
+    "team": "BOS",
+    "position": "3B",
+    "manager": "CFL",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10183",
+    "upid": "1882"
+  },
+  {
     "name": "Adley Rutschman",
     "team": "BAL",
     "position": "C",
@@ -1020,16 +1080,16 @@
     "upid": "1970"
   },
   {
-    "name": "Xander Bogaerts",
-    "team": "SD",
-    "position": "2B,SS",
+    "name": "Jonathan Aranda",
+    "team": "TB",
+    "position": "1B,2B",
     "manager": "HAM",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "9319",
-    "upid": "1881"
+    "yahoo_id": "12309",
+    "upid": "3998"
   },
   {
     "name": "Nolan Arenado",
@@ -1044,6 +1104,18 @@
     "upid": "1880"
   },
   {
+    "name": "Geraldo Perdomo",
+    "team": "AZ",
+    "position": "SS",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11417",
+    "upid": "4324"
+  },
+  {
     "name": "Oneil Cruz",
     "team": "PIT",
     "position": "SS,CF",
@@ -1056,28 +1128,16 @@
     "upid": "4308"
   },
   {
-    "name": "Michael Harris II",
-    "team": "ATL",
-    "position": "CF",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "12056",
-    "upid": ""
-  },
-  {
-    "name": "Jackson Merrill",
-    "team": "SD",
-    "position": "CF",
+    "name": "Yordan Alvarez",
+    "team": "HOU",
+    "position": "OF",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12522",
-    "upid": "2575"
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "10883",
+    "upid": "1989"
   },
   {
     "name": "Mike Trout",
@@ -1104,40 +1164,28 @@
     "upid": "3473"
   },
   {
-    "name": "Otto Lopez",
-    "team": "MIA",
-    "position": "2B,SS",
+    "name": "Michael Harris II",
+    "team": "ATL",
+    "position": "CF",
     "manager": "HAM",
-    "player_type": "Farm",
+    "player_type": "MLB",
     "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "12100",
-    "upid": "3860"
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "12056",
+    "upid": ""
   },
   {
-    "name": "Michael Toglia",
-    "team": "COL",
-    "position": "1B,OF",
+    "name": "Xander Bogaerts",
+    "team": "SD",
+    "position": "2B,SS",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11759",
-    "upid": "3624"
-  },
-  {
-    "name": "Yordan Alvarez",
-    "team": "HOU",
-    "position": "OF",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "10883",
-    "upid": "1989"
+    "yahoo_id": "9319",
+    "upid": "1881"
   },
   {
     "name": "Andy Pages",
@@ -1152,28 +1200,16 @@
     "upid": "3478"
   },
   {
-    "name": "Shota Imanaga",
-    "team": "CHC",
+    "name": "Bryce Miller",
+    "team": "SEA",
     "position": "SP",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "63640",
-    "upid": "7282"
-  },
-  {
-    "name": "Ryan Walker",
-    "team": "SF",
-    "position": "RP",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "61627",
-    "upid": "6748"
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "12540",
+    "upid": "2211"
   },
   {
     "name": "Carlos Est\u00e9vez",
@@ -1188,28 +1224,28 @@
     "upid": "2229"
   },
   {
-    "name": "Adrian Morejon",
-    "team": "SD",
+    "name": "Ryan Walker",
+    "team": "SF",
     "position": "RP",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "61627",
+    "upid": "6748"
+  },
+  {
+    "name": "Kris Bubic",
+    "team": "KC",
+    "position": "SP,RP",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10574",
-    "upid": "2025"
-  },
-  {
-    "name": "Bryce Miller",
-    "team": "SEA",
-    "position": "SP",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "12540",
-    "upid": "2211"
+    "yahoo_id": "11319",
+    "upid": "2844"
   },
   {
     "name": "Hunter Gaddis",
@@ -1224,16 +1260,40 @@
     "upid": "4273"
   },
   {
-    "name": "Sonny Gray",
-    "team": "STL",
+    "name": "Spencer Strider",
+    "team": "ATL",
     "position": "SP",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[3] VC1",
     "years_simple": "VC 1",
-    "yahoo_id": "9459",
-    "upid": "3236"
+    "yahoo_id": "12281",
+    "upid": "4005"
+  },
+  {
+    "name": "Bryan King",
+    "team": "HOU",
+    "position": "RP",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "64014",
+    "upid": "7345"
+  },
+  {
+    "name": "Adrian Morejon",
+    "team": "SD",
+    "position": "RP",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10574",
+    "upid": "2025"
   },
   {
     "name": "Yusei Kikuchi",
@@ -1248,6 +1308,18 @@
     "upid": "3415"
   },
   {
+    "name": "Shota Imanaga",
+    "team": "CHC",
+    "position": "SP",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "63640",
+    "upid": "7282"
+  },
+  {
     "name": "Framber Valdez",
     "team": "HOU",
     "position": "SP",
@@ -1260,28 +1332,16 @@
     "upid": "1946"
   },
   {
-    "name": "Logan Gilbert",
-    "team": "SEA",
+    "name": "Sonny Gray",
+    "team": "STL",
     "position": "SP",
     "manager": "HAM",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[2] VC2",
-    "years_simple": "VC 2",
-    "yahoo_id": "11381",
-    "upid": "2883"
-  },
-  {
-    "name": "Kris Bubic",
-    "team": "KC",
-    "position": "RP",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11319",
-    "upid": "2844"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "9459",
+    "upid": "3236"
   },
   {
     "name": "Nathan Eovaldi",
@@ -1296,6 +1356,30 @@
     "upid": "1969"
   },
   {
+    "name": "Logan Gilbert",
+    "team": "SEA",
+    "position": "SP",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
+    "yahoo_id": "11381",
+    "upid": "2883"
+  },
+  {
+    "name": "Jackson Merrill",
+    "team": "SD",
+    "position": "CF",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12522",
+    "upid": "2575"
+  },
+  {
     "name": "Ha-Seong Kim",
     "team": "TB",
     "position": "SS",
@@ -1308,6 +1392,18 @@
     "upid": "2523"
   },
   {
+    "name": "Spencer Horwitz",
+    "team": "PIT",
+    "position": "1B,2B",
+    "manager": "HAM",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12742",
+    "upid": "4125"
+  },
+  {
     "name": "Evan Phillips",
     "team": "LAD",
     "position": "RP",
@@ -1318,18 +1414,6 @@
     "years_simple": "TC 1",
     "yahoo_id": "11052",
     "upid": "2477"
-  },
-  {
-    "name": "Spencer Strider",
-    "team": "ATL",
-    "position": "SP",
-    "manager": "HAM",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "12281",
-    "upid": "4005"
   },
   {
     "name": "David Bednar",
@@ -1368,16 +1452,16 @@
     "upid": "1971"
   },
   {
-    "name": "Andr\u00e9s Gim\u00e9nez",
-    "team": "TOR",
+    "name": "Thomas Saggese",
+    "team": "STL",
     "position": "2B",
     "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10919",
-    "upid": "2073"
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "60431",
+    "upid": "3982"
   },
   {
     "name": "Isiah Kiner-Falefa",
@@ -1392,16 +1476,16 @@
     "upid": "2558"
   },
   {
-    "name": "CJ Abrams",
-    "team": "WSH",
+    "name": "Xavier Edwards",
+    "team": "MIA",
     "position": "SS",
     "manager": "JEP",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11822",
-    "upid": "4424"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11375",
+    "upid": "3840"
   },
   {
     "name": "Wilyer Abreu",
@@ -1428,42 +1512,6 @@
     "upid": "2624"
   },
   {
-    "name": "Adolis Garc\u00eda",
-    "team": "TEX",
-    "position": "OF",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11127",
-    "upid": "2022"
-  },
-  {
-    "name": "Jake Cronenworth",
-    "team": "SD",
-    "position": "1B,2B",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11692",
-    "upid": "2591"
-  },
-  {
-    "name": "Xavier Edwards",
-    "team": "MIA",
-    "position": "SS",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11375",
-    "upid": "3840"
-  },
-  {
     "name": "Taylor Ward",
     "team": "LAA",
     "position": "OF",
@@ -1476,136 +1524,76 @@
     "upid": "3277"
   },
   {
-    "name": "Luis Garc\u00eda Jr.",
-    "team": "WSH",
-    "position": "2B",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "10964",
-    "upid": ""
-  },
-  {
-    "name": "Ernie Clement",
-    "team": "TOR",
-    "position": "3B,SS",
+    "name": "Ty France",
+    "team": "MIN",
+    "position": "1B",
     "manager": "JEP",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11892",
-    "upid": "2467"
+    "yahoo_id": "11231",
+    "upid": "1983"
   },
   {
-    "name": "Dylan Crews",
-    "team": "WSH",
+    "name": "Zach McKinstry",
+    "team": "DET",
+    "position": "2B,3B,SS,OF",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11700",
+    "upid": "3423"
+  },
+  {
+    "name": "Andr\u00e9s Gim\u00e9nez",
+    "team": "TOR",
+    "position": "2B",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10919",
+    "upid": "2073"
+  },
+  {
+    "name": "Adolis Garc\u00eda",
+    "team": "TEX",
     "position": "OF",
     "manager": "JEP",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "62971",
-    "upid": "6562"
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11127",
+    "upid": "2022"
   },
   {
-    "name": "Max Fried",
+    "name": "Trent Grisham",
     "team": "NYY",
-    "position": "SP",
+    "position": "CF",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10522",
+    "upid": "1982"
+  },
+  {
+    "name": "CJ Abrams",
+    "team": "WSH",
+    "position": "SS",
     "manager": "JEP",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[3] VC1",
     "years_simple": "VC 1",
-    "yahoo_id": "9620",
-    "upid": "1913"
-  },
-  {
-    "name": "Kirby Yates",
-    "team": "LAD",
-    "position": "RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9727",
-    "upid": "2835"
-  },
-  {
-    "name": "Keegan Akin",
-    "team": "BAL",
-    "position": "RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10431",
-    "upid": "2812"
-  },
-  {
-    "name": "Pete Fairbanks",
-    "team": "TB",
-    "position": "RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11597",
-    "upid": "3092"
-  },
-  {
-    "name": "Trevor Megill",
-    "team": "MIL",
-    "position": "RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11717",
-    "upid": "3319"
-  },
-  {
-    "name": "Grant Holmes",
-    "team": "ATL",
-    "position": "SP,RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10549",
-    "upid": "6209"
-  },
-  {
-    "name": "Ryan Pepiot",
-    "team": "TB",
-    "position": "SP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12036",
-    "upid": "3506"
-  },
-  {
-    "name": "Luke Jackson",
-    "team": "TEX",
-    "position": "RP",
-    "manager": "JEP",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9632",
-    "upid": "2912"
+    "yahoo_id": "11822",
+    "upid": "4424"
   },
   {
     "name": "Ronel Blanco",
@@ -1620,16 +1608,52 @@
     "upid": "4190"
   },
   {
-    "name": "Cade Povich",
-    "team": "BAL",
-    "position": "SP",
+    "name": "Kyle Leahy",
+    "team": "STL",
+    "position": "RP",
     "manager": "JEP",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
+    "contract_type": "",
     "status": "[7] P",
     "years_simple": "P",
-    "yahoo_id": "60658",
-    "upid": "4563"
+    "yahoo_id": "61601",
+    "upid": "6950"
+  },
+  {
+    "name": "Pete Fairbanks",
+    "team": "TB",
+    "position": "RP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11597",
+    "upid": "3092"
+  },
+  {
+    "name": "Kirby Yates",
+    "team": "LAD",
+    "position": "RP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9727",
+    "upid": "2835"
+  },
+  {
+    "name": "Luke Jackson",
+    "team": "TEX",
+    "position": "RP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9632",
+    "upid": "2912"
   },
   {
     "name": "Nick Pivetta",
@@ -1644,6 +1668,54 @@
     "upid": "3043"
   },
   {
+    "name": "Ryan Pepiot",
+    "team": "TB",
+    "position": "SP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12036",
+    "upid": "3506"
+  },
+  {
+    "name": "Max Fried",
+    "team": "NYY",
+    "position": "SP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "9620",
+    "upid": "1913"
+  },
+  {
+    "name": "Keegan Akin",
+    "team": "BAL",
+    "position": "RP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10431",
+    "upid": "2812"
+  },
+  {
+    "name": "Grant Holmes",
+    "team": "ATL",
+    "position": "SP,RP",
+    "manager": "JEP",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10549",
+    "upid": "6209"
+  },
+  {
     "name": "Roki Sasaki",
     "team": "LAD",
     "position": "SP",
@@ -1654,6 +1726,18 @@
     "years_simple": "P",
     "yahoo_id": "64803",
     "upid": "7540"
+  },
+  {
+    "name": "Cade Povich",
+    "team": "BAL",
+    "position": "SP",
+    "manager": "JEP",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "60658",
+    "upid": "4563"
   },
   {
     "name": "Royce Lewis",
@@ -1728,28 +1812,28 @@
     "upid": "3462"
   },
   {
-    "name": "Ryan Mountcastle",
-    "team": "BAL",
+    "name": "Spencer Torkelson",
+    "team": "DET",
     "position": "1B",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "",
     "status": "",
     "years_simple": "",
-    "yahoo_id": "10429",
-    "upid": "3178"
+    "yahoo_id": "11914",
+    "upid": "4445"
   },
   {
-    "name": "Mookie Betts",
-    "team": "LAD",
-    "position": "2B,SS,OF",
+    "name": "Gleyber Torres",
+    "team": "DET",
+    "position": "2B",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "9552",
-    "upid": "1879"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10236",
+    "upid": "1905"
   },
   {
     "name": "Jordan Westburg",
@@ -1764,54 +1848,6 @@
     "upid": "3523"
   },
   {
-    "name": "Ezequiel Tovar",
-    "team": "COL",
-    "position": "SS",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "12322",
-    "upid": "3488"
-  },
-  {
-    "name": "Jazz Chisholm Jr.",
-    "team": "NYY",
-    "position": "2B,3B,CF",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[2] VC2",
-    "years_simple": "VC 2",
-    "yahoo_id": "10839",
-    "upid": "2636"
-  },
-  {
-    "name": "Fernando Tatis Jr.",
-    "team": "SD",
-    "position": "OF",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[1] FC1",
-    "years_simple": "FC 1",
-    "yahoo_id": "10639",
-    "upid": "1945"
-  },
-  {
-    "name": "Byron Buxton",
-    "team": "MIN",
-    "position": "CF",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9590",
-    "upid": "1931"
-  },
-  {
     "name": "Anthony Volpe",
     "team": "NYY",
     "position": "SS",
@@ -1822,42 +1858,6 @@
     "years_simple": "TC 1",
     "yahoo_id": "11809",
     "upid": "3441"
-  },
-  {
-    "name": "Anthony Santander",
-    "team": "TOR",
-    "position": "OF",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "10666",
-    "upid": "2109"
-  },
-  {
-    "name": "Jake Burger",
-    "team": "TEX",
-    "position": "1B,3B",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "10877",
-    "upid": "2588"
-  },
-  {
-    "name": "Spencer Torkelson",
-    "team": "DET",
-    "position": "1B",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "11914",
-    "upid": "4445"
   },
   {
     "name": "Randy Arozarena",
@@ -1872,16 +1872,112 @@
     "upid": "3116"
   },
   {
-    "name": "Tarik Skubal",
-    "team": "DET",
-    "position": "SP",
+    "name": "Jazz Chisholm Jr.",
+    "team": "NYY",
+    "position": "2B,3B,CF",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
+    "yahoo_id": "10839",
+    "upid": "2636"
+  },
+  {
+    "name": "Kameron Misner",
+    "team": "TB",
+    "position": "CF",
+    "manager": "LFB",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "11784",
+    "upid": "3846"
+  },
+  {
+    "name": "Jake Burger",
+    "team": "TEX",
+    "position": "1B,3B",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "10877",
+    "upid": "2588"
+  },
+  {
+    "name": "Fernando Tatis Jr.",
+    "team": "SD",
+    "position": "OF",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[1] FC1",
+    "years_simple": "FC 1",
+    "yahoo_id": "10639",
+    "upid": "1945"
+  },
+  {
+    "name": "Jeremy Pe\u00f1a",
+    "team": "HOU",
+    "position": "SS",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11768",
+    "upid": "4291"
+  },
+  {
+    "name": "Anthony Santander",
+    "team": "TOR",
+    "position": "OF",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "10666",
+    "upid": "2109"
+  },
+  {
+    "name": "Mookie Betts",
+    "team": "LAD",
+    "position": "2B,SS,OF",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[3] VC1",
     "years_simple": "VC 1",
-    "yahoo_id": "11763",
-    "upid": "3266"
+    "yahoo_id": "9552",
+    "upid": "1879"
+  },
+  {
+    "name": "Ezequiel Tovar",
+    "team": "COL",
+    "position": "SS",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "12322",
+    "upid": "3488"
+  },
+  {
+    "name": "Fernando Cruz",
+    "team": "NYY",
+    "position": "SP,RP",
+    "manager": "LFB",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "12690",
+    "upid": "7480"
   },
   {
     "name": "Andr\u00e9s Mu\u00f1oz",
@@ -1920,52 +2016,16 @@
     "upid": "2061"
   },
   {
-    "name": "Hunter Greene",
-    "team": "CIN",
-    "position": "SP",
+    "name": "Justin Sterner",
+    "team": "ATH",
+    "position": "RP",
     "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10862",
-    "upid": "4022"
-  },
-  {
-    "name": "Joe Ryan",
-    "team": "MIN",
-    "position": "SP",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11847",
-    "upid": "4016"
-  },
-  {
-    "name": "Zach Eflin",
-    "team": "BAL",
-    "position": "SP",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10141",
-    "upid": "3421"
-  },
-  {
-    "name": "Bowden Francis",
-    "team": "TOR",
-    "position": "SP,RP",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12085",
-    "upid": "4137"
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "63720",
+    "upid": "6810"
   },
   {
     "name": "Jes\u00fas Luzardo",
@@ -1980,76 +2040,64 @@
     "upid": "2654"
   },
   {
-    "name": "Reese Olson",
-    "team": "DET",
-    "position": "SP",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12429",
-    "upid": "3643"
-  },
-  {
-    "name": "Dedniel N\u00fa\u00f1ez",
+    "name": "Tylor Megill",
     "team": "NYM",
-    "position": "RP",
-    "manager": "LFB",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "11799",
-    "upid": "6305"
-  },
-  {
-    "name": "Gleyber Torres",
-    "team": "DET",
-    "position": "2B",
-    "manager": "LFB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10236",
-    "upid": "1905"
-  },
-  {
-    "name": "Josh Lowe",
-    "team": "TB",
-    "position": "CF",
+    "position": "SP",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10601",
-    "upid": "4344"
+    "yahoo_id": "12215",
+    "upid": "3353"
   },
   {
-    "name": "Shane McClanahan",
-    "team": "TB",
+    "name": "Joe Ryan",
+    "team": "MIN",
     "position": "SP",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "11398",
-    "upid": "3228"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11847",
+    "upid": "4016"
   },
   {
-    "name": "Alexis D\u00edaz",
+    "name": "Tarik Skubal",
+    "team": "DET",
+    "position": "SP",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11763",
+    "upid": "3266"
+  },
+  {
+    "name": "Hunter Greene",
     "team": "CIN",
-    "position": "RP",
+    "position": "SP",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10862",
+    "upid": "4022"
+  },
+  {
+    "name": "Bowden Francis",
+    "team": "TOR",
+    "position": "SP,RP",
     "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12301",
-    "upid": "4032"
+    "yahoo_id": "12085",
+    "upid": "4137"
   },
   {
     "name": "Clarke Schmidt",
@@ -2064,16 +2112,76 @@
     "upid": "3987"
   },
   {
-    "name": "Keibert Ruiz",
-    "team": "WSH",
+    "name": "Francisco Alvarez",
+    "team": "NYM",
     "position": "C",
-    "manager": "LAW",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11349",
+    "upid": "3435"
+  },
+  {
+    "name": "Josh Lowe",
+    "team": "TB",
+    "position": "CF",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10601",
+    "upid": "4344"
+  },
+  {
+    "name": "Hunter Harvey",
+    "team": "KC",
+    "position": "RP",
+    "manager": "LFB",
     "player_type": "MLB",
     "contract_type": "",
     "status": "",
     "years_simple": "",
-    "yahoo_id": "10899",
-    "upid": "2814"
+    "yahoo_id": "9547",
+    "upid": "4033"
+  },
+  {
+    "name": "Zach Eflin",
+    "team": "BAL",
+    "position": "SP",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10141",
+    "upid": "3421"
+  },
+  {
+    "name": "Shane McClanahan",
+    "team": "TB",
+    "position": "SP",
+    "manager": "LFB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "11398",
+    "upid": "3228"
+  },
+  {
+    "name": "Gabriel Moreno",
+    "team": "AZ",
+    "position": "C",
+    "manager": "LAW",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11855",
+    "upid": "3439"
   },
   {
     "name": "Nolan Schanuel",
@@ -2090,7 +2198,7 @@
   {
     "name": "Jackson Holliday",
     "team": "BAL",
-    "position": "2B",
+    "position": "2B,SS",
     "manager": "LAW",
     "player_type": "Farm",
     "contract_type": "Purchased Contract",
@@ -2100,16 +2208,16 @@
     "upid": "3884"
   },
   {
-    "name": "Austin Riley",
-    "team": "ATL",
+    "name": "Manny Machado",
+    "team": "SD",
     "position": "3B",
     "manager": "LAW",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[1] FC1",
-    "years_simple": "FC 1",
-    "yahoo_id": "10420",
-    "upid": "1927"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "9111",
+    "upid": "1963"
   },
   {
     "name": "Bobby Witt Jr.",
@@ -2122,6 +2230,18 @@
     "years_simple": "",
     "yahoo_id": "11771",
     "upid": ""
+  },
+  {
+    "name": "Kyle Stowers",
+    "team": "MIA",
+    "position": "CF",
+    "manager": "LAW",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "11733",
+    "upid": "3560"
   },
   {
     "name": "Cody Bellinger",
@@ -2160,28 +2280,28 @@
     "upid": "6558"
   },
   {
-    "name": "Manny Machado",
-    "team": "SD",
+    "name": "Keibert Ruiz",
+    "team": "WSH",
+    "position": "C",
+    "manager": "LAW",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "10899",
+    "upid": "2814"
+  },
+  {
+    "name": "Austin Riley",
+    "team": "ATL",
     "position": "3B",
     "manager": "LAW",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "9111",
-    "upid": "1963"
-  },
-  {
-    "name": "Gabriel Moreno",
-    "team": "AZ",
-    "position": "C",
-    "manager": "LAW",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11855",
-    "upid": "3439"
+    "status": "[1] FC1",
+    "years_simple": "FC 1",
+    "yahoo_id": "10420",
+    "upid": "1927"
   },
   {
     "name": "Ceddanne Rafaela",
@@ -2196,16 +2316,28 @@
     "upid": "4462"
   },
   {
-    "name": "Max Kepler",
-    "team": "PHI",
-    "position": "OF",
+    "name": "Brooks Lee",
+    "team": "MIN",
+    "position": "2B,3B,SS",
+    "manager": "LAW",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "60266",
+    "upid": "3885"
+  },
+  {
+    "name": "Freddie Freeman",
+    "team": "LAD",
+    "position": "1B",
     "manager": "LAW",
     "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10095",
-    "upid": "2963"
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "8658",
+    "upid": "1877"
   },
   {
     "name": "Colt Keith",
@@ -2218,18 +2350,6 @@
     "years_simple": "TC 1",
     "yahoo_id": "12430",
     "upid": "3640"
-  },
-  {
-    "name": "Maikel Garcia",
-    "team": "KC",
-    "position": "2B,3B",
-    "manager": "LAW",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12336",
-    "upid": "4361"
   },
   {
     "name": "Brandon Pfaadt",
@@ -2280,18 +2400,6 @@
     "upid": "5216"
   },
   {
-    "name": "Seth Halvorsen",
-    "team": "COL",
-    "position": "RP",
-    "manager": "LAW",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "63214",
-    "upid": "7395"
-  },
-  {
     "name": "Edwin Uceta",
     "team": "TB",
     "position": "RP",
@@ -2302,6 +2410,30 @@
     "years_simple": "TC 1",
     "yahoo_id": "11482",
     "upid": "4174"
+  },
+  {
+    "name": "Alexis D\u00edaz",
+    "team": "CIN",
+    "position": "RP",
+    "manager": "LAW",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12301",
+    "upid": "4032"
+  },
+  {
+    "name": "Robbie Ray",
+    "team": "SF",
+    "position": "SP",
+    "manager": "LAW",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9691",
+    "upid": "1973"
   },
   {
     "name": "Nick Lodolo",
@@ -2340,40 +2472,16 @@
     "upid": "4040"
   },
   {
-    "name": "Justin Steele",
-    "team": "CHC",
+    "name": "Tyler Mahle",
+    "team": "TEX",
     "position": "SP",
     "manager": "LAW",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11202",
-    "upid": "2801"
-  },
-  {
-    "name": "Robbie Ray",
-    "team": "SF",
-    "position": "SP",
-    "manager": "LAW",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "9691",
-    "upid": "1973"
-  },
-  {
-    "name": "Freddie Freeman",
-    "team": "LAD",
-    "position": "1B",
-    "manager": "LAW",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "8658",
-    "upid": "1877"
+    "yahoo_id": "10455",
+    "upid": "1984"
   },
   {
     "name": "Colton Cowser",
@@ -2388,16 +2496,16 @@
     "upid": "3472"
   },
   {
-    "name": "Brooks Lee",
-    "team": "MIN",
-    "position": "2B,3B,SS",
+    "name": "Justin Steele",
+    "team": "CHC",
+    "position": "SP",
     "manager": "LAW",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "60266",
-    "upid": "3885"
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11202",
+    "upid": "2801"
   },
   {
     "name": "Shane Bieber",
@@ -2424,6 +2532,18 @@
     "upid": "3437"
   },
   {
+    "name": "Spencer Arrighetti",
+    "team": "HOU",
+    "position": "SP",
+    "manager": "LAW",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "60188",
+    "upid": "4594"
+  },
+  {
     "name": "Noelvi Marte",
     "team": "CIN",
     "position": "3B",
@@ -2436,16 +2556,16 @@
     "upid": "3451"
   },
   {
-    "name": "J.T. Realmuto",
-    "team": "PHI",
-    "position": "C",
+    "name": "Willson Contreras",
+    "team": "STL",
+    "position": "C,1B",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9718",
-    "upid": "1889"
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "10166",
+    "upid": "3384"
   },
   {
     "name": "Matt Olson",
@@ -2496,18 +2616,6 @@
     "upid": "2445"
   },
   {
-    "name": "Julio Rodr\u00edguez",
-    "team": "SEA",
-    "position": "CF",
-    "manager": "SAD",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11384",
-    "upid": "4454"
-  },
-  {
     "name": "Jackson Chourio",
     "team": "MIL",
     "position": "CF",
@@ -2518,6 +2626,18 @@
     "years_simple": "TC 1",
     "yahoo_id": "12480",
     "upid": "3468"
+  },
+  {
+    "name": "Julio Rodr\u00edguez",
+    "team": "SEA",
+    "position": "CF",
+    "manager": "SAD",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11384",
+    "upid": "4454"
   },
   {
     "name": "Kyle Schwarber",
@@ -2532,16 +2652,28 @@
     "upid": "1959"
   },
   {
-    "name": "Carlos Correa",
-    "team": "MIN",
-    "position": "SS",
+    "name": "Junior Caminero",
+    "team": "TB",
+    "position": "3B",
+    "manager": "SAD",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "60419",
+    "upid": "4463"
+  },
+  {
+    "name": "J.T. Realmuto",
+    "team": "PHI",
+    "position": "C",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "9573",
-    "upid": "1933"
+    "yahoo_id": "9718",
+    "upid": "1889"
   },
   {
     "name": "Tyler O'Neill",
@@ -2556,40 +2688,16 @@
     "upid": "1985"
   },
   {
-    "name": "Junior Caminero",
-    "team": "TB",
-    "position": "3B",
-    "manager": "SAD",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "60419",
-    "upid": "4463"
-  },
-  {
-    "name": "Willson Contreras",
-    "team": "STL",
-    "position": "C",
-    "manager": "SAD",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "10166",
-    "upid": "3384"
-  },
-  {
-    "name": "Victor Robles",
-    "team": "SEA",
-    "position": "CF",
+    "name": "Carlos Correa",
+    "team": "MIN",
+    "position": "SS",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10227",
-    "upid": "3361"
+    "yahoo_id": "9573",
+    "upid": "1933"
   },
   {
     "name": "Jordan Walker",
@@ -2604,16 +2712,16 @@
     "upid": "3440"
   },
   {
-    "name": "Jeffrey Springs",
-    "team": "ATH",
+    "name": "Aaron Nola",
+    "team": "PHI",
     "position": "SP",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11121",
-    "upid": "2644"
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
+    "yahoo_id": "9882",
+    "upid": "2001"
   },
   {
     "name": "Tony Santillan",
@@ -2640,6 +2748,18 @@
     "upid": "4155"
   },
   {
+    "name": "Mason Miller",
+    "team": "ATH",
+    "position": "RP",
+    "manager": "SAD",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12505",
+    "upid": "3388"
+  },
+  {
     "name": "Cade Smith",
     "team": "CLE",
     "position": "RP",
@@ -2652,28 +2772,28 @@
     "upid": "6524"
   },
   {
-    "name": "Tanner Bibee",
-    "team": "CLE",
-    "position": "SP",
-    "manager": "SAD",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "60137",
-    "upid": "3995"
-  },
-  {
-    "name": "Mason Miller",
-    "team": "ATH",
+    "name": "Robert Garcia",
+    "team": "TEX",
     "position": "RP",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12505",
-    "upid": "3388"
+    "yahoo_id": "60615",
+    "upid": "7488"
+  },
+  {
+    "name": "Jeffrey Springs",
+    "team": "ATH",
+    "position": "SP",
+    "manager": "SAD",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11121",
+    "upid": "2644"
   },
   {
     "name": "Bryan Woo",
@@ -2688,6 +2808,18 @@
     "upid": "4286"
   },
   {
+    "name": "Tanner Bibee",
+    "team": "CLE",
+    "position": "SP",
+    "manager": "SAD",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "60137",
+    "upid": "3995"
+  },
+  {
     "name": "Logan Webb",
     "team": "SF",
     "position": "SP",
@@ -2698,18 +2830,6 @@
     "years_simple": "VC 2",
     "yahoo_id": "11235",
     "upid": "2884"
-  },
-  {
-    "name": "Aaron Nola",
-    "team": "PHI",
-    "position": "SP",
-    "manager": "SAD",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[2] VC2",
-    "years_simple": "VC 2",
-    "yahoo_id": "9882",
-    "upid": "2001"
   },
   {
     "name": "Jordan Hicks",
@@ -2724,16 +2844,28 @@
     "upid": "2719"
   },
   {
-    "name": "Robert Garcia",
-    "team": "TEX",
-    "position": "RP",
+    "name": "Edward Cabrera",
+    "team": "MIA",
+    "position": "SP",
+    "manager": "SAD",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10903",
+    "upid": "4077"
+  },
+  {
+    "name": "Bobby Miller",
+    "team": "LAD",
+    "position": "SP",
     "manager": "SAD",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "60615",
-    "upid": "7488"
+    "yahoo_id": "12037",
+    "upid": "3458"
   },
   {
     "name": "Zach Neto",
@@ -2796,18 +2928,6 @@
     "upid": "3448"
   },
   {
-    "name": "Bobby Miller",
-    "team": "LAD",
-    "position": "SP",
-    "manager": "SAD",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12037",
-    "upid": "3458"
-  },
-  {
     "name": "Austin Wells",
     "team": "NYY",
     "position": "C",
@@ -2832,16 +2952,16 @@
     "upid": "5891"
   },
   {
-    "name": "Jose Altuve",
-    "team": "HOU",
-    "position": "2B,OF",
+    "name": "Maikel Garcia",
+    "team": "KC",
+    "position": "2B,3B",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "8996",
-    "upid": "1907"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12336",
+    "upid": "4361"
   },
   {
     "name": "Mark Vientos",
@@ -2880,6 +3000,30 @@
     "upid": "1886"
   },
   {
+    "name": "Jung Hoo Lee",
+    "team": "SF",
+    "position": "CF",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "63494",
+    "upid": "7286"
+  },
+  {
+    "name": "Pavin Smith",
+    "team": "AZ",
+    "position": "1B,OF",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10842",
+    "upid": "3087"
+  },
+  {
     "name": "Brent Rooker",
     "team": "ATH",
     "position": "OF",
@@ -2890,6 +3034,18 @@
     "years_simple": "VC 1",
     "yahoo_id": "10917",
     "upid": "2184"
+  },
+  {
+    "name": "Jose Altuve",
+    "team": "HOU",
+    "position": "2B,OF",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "8996",
+    "upid": "1907"
   },
   {
     "name": "Sal Frelick",
@@ -2904,6 +3060,18 @@
     "upid": "3479"
   },
   {
+    "name": "Trevor Story",
+    "team": "BOS",
+    "position": "SS",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "9571",
+    "upid": "1899"
+  },
+  {
     "name": "Triston Casas",
     "team": "BOS",
     "position": "1B",
@@ -2916,124 +3084,16 @@
     "upid": "3447"
   },
   {
-    "name": "Jung Hoo Lee",
-    "team": "SF",
-    "position": "CF",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "63494",
-    "upid": "7286"
-  },
-  {
-    "name": "Christian Encarnacion-Strand",
-    "team": "CIN",
-    "position": "1B",
+    "name": "Edouard Julien",
+    "team": "MIN",
+    "position": "2B",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "60131",
-    "upid": "3992"
-  },
-  {
-    "name": "Jeremy Pe\u00f1a",
-    "team": "HOU",
-    "position": "SS",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11768",
-    "upid": "4291"
-  },
-  {
-    "name": "Brett Baty",
-    "team": "NYM",
-    "position": "3B",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11796",
-    "upid": "3452"
-  },
-  {
-    "name": "Spencer Schwellenbach",
-    "team": "ATL",
-    "position": "SP",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12363",
-    "upid": "3551"
-  },
-  {
-    "name": "Camilo Doval",
-    "team": "SF",
-    "position": "RP",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11536",
-    "upid": "4028"
-  },
-  {
-    "name": "Justin Slaten",
-    "team": "BOS",
-    "position": "RP",
-    "manager": "DRO",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "63500",
-    "upid": "6625"
-  },
-  {
-    "name": "Ben Casparius",
-    "team": "LAD",
-    "position": "RP",
-    "manager": "DRO",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "64785",
-    "upid": "6787"
-  },
-  {
-    "name": "Gavin Williams",
-    "team": "CLE",
-    "position": "SP",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12401",
-    "upid": "2502"
-  },
-  {
-    "name": "Dylan Lee",
-    "team": "ATL",
-    "position": "RP",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12275",
-    "upid": "2424"
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "12729",
+    "upid": "3655"
   },
   {
     "name": "Hunter Brown",
@@ -3048,16 +3108,64 @@
     "upid": "3514"
   },
   {
-    "name": "Michael King",
-    "team": "SD",
+    "name": "Drew Rasmussen",
+    "team": "TB",
+    "position": "SP,RP",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11789",
+    "upid": "2409"
+  },
+  {
+    "name": "Abner Uribe",
+    "team": "MIL",
+    "position": "RP",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "12746",
+    "upid": "6097"
+  },
+  {
+    "name": "Randy Rodr\u00edguez",
+    "team": "SF",
+    "position": "RP",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "12305",
+    "upid": ""
+  },
+  {
+    "name": "Ben Casparius",
+    "team": "LAD",
+    "position": "RP",
+    "manager": "DRO",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "64785",
+    "upid": "6787"
+  },
+  {
+    "name": "Spencer Schwellenbach",
+    "team": "ATL",
     "position": "SP",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11661",
-    "upid": "2974"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12363",
+    "upid": "3551"
   },
   {
     "name": "Dustin May",
@@ -3072,28 +3180,28 @@
     "upid": "2419"
   },
   {
-    "name": "Logan Allen",
-    "team": "CLE",
+    "name": "Casey Mize",
+    "team": "DET",
     "position": "SP",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "60139",
-    "upid": "6525"
+    "yahoo_id": "11083",
+    "upid": "2239"
   },
   {
-    "name": "Drew Rasmussen",
-    "team": "TB",
-    "position": "SP,RP",
+    "name": "Michael King",
+    "team": "SD",
+    "position": "SP",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "11789",
-    "upid": "2409"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11661",
+    "upid": "2974"
   },
   {
     "name": "Taj Bradley",
@@ -3108,16 +3216,28 @@
     "upid": "3464"
   },
   {
-    "name": "Spencer Arrighetti",
-    "team": "HOU",
+    "name": "Gavin Williams",
+    "team": "CLE",
     "position": "SP",
     "manager": "DRO",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "60188",
-    "upid": "4594"
+    "yahoo_id": "12401",
+    "upid": "2502"
+  },
+  {
+    "name": "Hayden Wesneski",
+    "team": "HOU",
+    "position": "SP,RP",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12497",
+    "upid": "2529"
   },
   {
     "name": "Jared Jones",
@@ -3144,18 +3264,6 @@
     "upid": "3993"
   },
   {
-    "name": "Robert Stephenson",
-    "team": "LAA",
-    "position": "RP",
-    "manager": "DRO",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "9563",
-    "upid": "3146"
-  },
-  {
     "name": "Alek Manoah",
     "team": "TOR",
     "position": "SP",
@@ -3180,6 +3288,18 @@
     "upid": "4048"
   },
   {
+    "name": "Kevin Ginkel",
+    "team": "AZ",
+    "position": "RP",
+    "manager": "DRO",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "11626",
+    "upid": "2824"
+  },
+  {
     "name": "Daniel Espino",
     "team": "CLE",
     "position": "SP",
@@ -3190,6 +3310,18 @@
     "years_simple": "P",
     "yahoo_id": "11753",
     "upid": "3444"
+  },
+  {
+    "name": "Craig Yoho",
+    "team": "MIL",
+    "position": "RP",
+    "manager": "DRO",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "63247",
+    "upid": "7335"
   },
   {
     "name": "Logan O'Hoppe",
@@ -3204,28 +3336,28 @@
     "upid": "3519"
   },
   {
-    "name": "Christian Walker",
-    "team": "HOU",
+    "name": "Kyle Manzardo",
+    "team": "CLE",
     "position": "1B",
     "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[2] VC2",
-    "years_simple": "VC 2",
-    "yahoo_id": "9846",
-    "upid": "2274"
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "60411",
+    "upid": "3994"
   },
   {
-    "name": "Ketel Marte",
-    "team": "AZ",
+    "name": "Kyren Paris",
+    "team": "LAA",
     "position": "2B",
     "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10036",
-    "upid": "1910"
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "11776",
+    "upid": "3674"
   },
   {
     "name": "Eugenio Su\u00e1rez",
@@ -3240,66 +3372,6 @@
     "upid": "2472"
   },
   {
-    "name": "Bo Bichette",
-    "team": "TOR",
-    "position": "SS",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10766",
-    "upid": "1928"
-  },
-  {
-    "name": "Bryan Reynolds",
-    "team": "PIT",
-    "position": "CF",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10577",
-    "upid": "1930"
-  },
-  {
-    "name": "Brenton Doyle",
-    "team": "COL",
-    "position": "CF",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12136",
-    "upid": "3623"
-  },
-  {
-    "name": "Kyle Tucker",
-    "team": "CHC",
-    "position": "OF",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10480",
-    "upid": "1960"
-  },
-  {
-    "name": "Kristian Campbell",
-    "team": "BOS",
-    "position": "2B",
-    "manager": "RV",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "63128",
-    "upid": "6707"
-  },
-  {
     "name": "Gunnar Henderson",
     "team": "BAL",
     "position": "SS",
@@ -3312,28 +3384,28 @@
     "upid": "3438"
   },
   {
-    "name": "Jordan Beck",
-    "team": "COL",
-    "position": "OF",
+    "name": "Cedric Mullins",
+    "team": "BAL",
+    "position": "CF",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10849",
+    "upid": "1935"
+  },
+  {
+    "name": "Bryan Reynolds",
+    "team": "PIT",
+    "position": "CF",
     "manager": "RV",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "60147",
-    "upid": "3946"
-  },
-  {
-    "name": "Kyle Manzardo",
-    "team": "CLE",
-    "position": "1B",
-    "manager": "RV",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "60411",
-    "upid": "3994"
+    "yahoo_id": "10577",
+    "upid": "1930"
   },
   {
     "name": "Kerry Carpenter",
@@ -3360,16 +3432,88 @@
     "upid": "2906"
   },
   {
-    "name": "Dylan Cease",
-    "team": "SD",
-    "position": "SP",
+    "name": "Christian Walker",
+    "team": "HOU",
+    "position": "1B",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
+    "yahoo_id": "9846",
+    "upid": "2274"
+  },
+  {
+    "name": "Kyle Tucker",
+    "team": "CHC",
+    "position": "OF",
     "manager": "RV",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[3] VC1",
     "years_simple": "VC 1",
-    "yahoo_id": "10438",
-    "upid": "1943"
+    "yahoo_id": "10480",
+    "upid": "1960"
+  },
+  {
+    "name": "Brenton Doyle",
+    "team": "COL",
+    "position": "CF",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12136",
+    "upid": "3623"
+  },
+  {
+    "name": "Bo Bichette",
+    "team": "TOR",
+    "position": "SS",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10766",
+    "upid": "1928"
+  },
+  {
+    "name": "George Springer",
+    "team": "TOR",
+    "position": "OF",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "9339",
+    "upid": "1950"
+  },
+  {
+    "name": "Kristian Campbell",
+    "team": "BOS",
+    "position": "2B",
+    "manager": "RV",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "63128",
+    "upid": "6707"
+  },
+  {
+    "name": "Clay Holmes",
+    "team": "NYM",
+    "position": "SP,RP",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10569",
+    "upid": "2278"
   },
   {
     "name": "Luke Weaver",
@@ -3396,16 +3540,16 @@
     "upid": "6784"
   },
   {
-    "name": "Cole Ragans",
-    "team": "KC",
-    "position": "SP",
+    "name": "Tim Herrin",
+    "team": "CLE",
+    "position": "RP",
     "manager": "RV",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10610",
-    "upid": "4085"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12733",
+    "upid": "6367"
   },
   {
     "name": "A.J. Puk",
@@ -3420,42 +3564,6 @@
     "upid": "4080"
   },
   {
-    "name": "Tim Herrin",
-    "team": "CLE",
-    "position": "RP",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12733",
-    "upid": "6367"
-  },
-  {
-    "name": "Clay Holmes",
-    "team": "NYM",
-    "position": "RP",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10569",
-    "upid": "2278"
-  },
-  {
-    "name": "Freddy Peralta",
-    "team": "MIL",
-    "position": "SP",
-    "manager": "RV",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11014",
-    "upid": "1949"
-  },
-  {
     "name": "Jos\u00e9 Soriano",
     "team": "LAA",
     "position": "SP",
@@ -3466,6 +3574,18 @@
     "years_simple": "P",
     "yahoo_id": "11327",
     "upid": "6259"
+  },
+  {
+    "name": "Dylan Cease",
+    "team": "SD",
+    "position": "SP",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10438",
+    "upid": "1943"
   },
   {
     "name": "Shane Baz",
@@ -3480,16 +3600,52 @@
     "upid": "4101"
   },
   {
-    "name": "Kumar Rocker",
-    "team": "TEX",
+    "name": "Freddy Peralta",
+    "team": "MIL",
+    "position": "SP",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11014",
+    "upid": "1949"
+  },
+  {
+    "name": "Cole Ragans",
+    "team": "KC",
+    "position": "SP",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10610",
+    "upid": "4085"
+  },
+  {
+    "name": "Chase Dollander",
+    "team": "COL",
     "position": "SP",
     "manager": "RV",
     "player_type": "Farm",
     "contract_type": "Purchased Contract",
     "status": "[7] P",
     "years_simple": "P",
-    "yahoo_id": "60427",
-    "upid": "3937"
+    "yahoo_id": "62975",
+    "upid": "6572"
+  },
+  {
+    "name": "Ketel Marte",
+    "team": "AZ",
+    "position": "2B",
+    "manager": "RV",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10036",
+    "upid": "1910"
   },
   {
     "name": "Gerrit Cole",
@@ -3540,28 +3696,28 @@
     "upid": "1978"
   },
   {
-    "name": "Salvador Perez",
-    "team": "KC",
+    "name": "Yainer Diaz",
+    "team": "HOU",
     "position": "C,1B",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9015",
-    "upid": "1976"
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "12435",
+    "upid": "3656"
   },
   {
-    "name": "Alec Burleson",
-    "team": "STL",
-    "position": "1B,OF",
+    "name": "Matt Mervis",
+    "team": "MIA",
+    "position": "1B",
     "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12550",
-    "upid": "3831"
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "12777",
+    "upid": "3653"
   },
   {
     "name": "Brice Turang",
@@ -3576,76 +3732,16 @@
     "upid": "3707"
   },
   {
-    "name": "Matt Chapman",
-    "team": "SF",
-    "position": "3B",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "10205",
-    "upid": "2946"
-  },
-  {
-    "name": "Trea Turner",
-    "team": "PHI",
-    "position": "SS",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10056",
-    "upid": "1885"
-  },
-  {
-    "name": "Jake Mangum",
+    "name": "Curtis Mead",
     "team": "TB",
-    "position": "CF",
-    "manager": "TBB",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "60623",
-    "upid": "5413"
-  },
-  {
-    "name": "Marcell Ozuna",
-    "team": "ATL",
-    "position": "OF",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "9385",
-    "upid": "2928"
-  },
-  {
-    "name": "Pete Crow-Armstrong",
-    "team": "CHC",
-    "position": "CF",
+    "position": "2B,3B",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12157",
-    "upid": "3508"
-  },
-  {
-    "name": "Garrett Mitchell",
-    "team": "MIL",
-    "position": "CF",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12152",
-    "upid": "3706"
+    "yahoo_id": "12558",
+    "upid": "3491"
   },
   {
     "name": "Joey Ortiz",
@@ -3660,16 +3756,28 @@
     "upid": "3670"
   },
   {
-    "name": "Rhys Hoskins",
+    "name": "Garrett Mitchell",
     "team": "MIL",
-    "position": "1B",
+    "position": "CF",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10556",
-    "upid": "3127"
+    "yahoo_id": "12152",
+    "upid": "3706"
+  },
+  {
+    "name": "Pete Crow-Armstrong",
+    "team": "CHC",
+    "position": "CF",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12157",
+    "upid": "3508"
   },
   {
     "name": "Lawrence Butler",
@@ -3684,40 +3792,76 @@
     "upid": "3854"
   },
   {
-    "name": "Yainer Diaz",
-    "team": "HOU",
+    "name": "Rhys Hoskins",
+    "team": "MIL",
+    "position": "1B",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10556",
+    "upid": "3127"
+  },
+  {
+    "name": "Trea Turner",
+    "team": "PHI",
+    "position": "SS",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10056",
+    "upid": "1885"
+  },
+  {
+    "name": "Salvador Perez",
+    "team": "KC",
     "position": "C,1B",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "12435",
-    "upid": "3656"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "9015",
+    "upid": "1976"
   },
   {
-    "name": "Jurickson Profar",
+    "name": "Marcell Ozuna",
     "team": "ATL",
     "position": "OF",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "9112",
-    "upid": "2795"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "9385",
+    "upid": "2928"
   },
   {
-    "name": "Curtis Mead",
-    "team": "TB",
-    "position": "2B,3B",
+    "name": "Alec Burleson",
+    "team": "STL",
+    "position": "1B,OF",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12558",
-    "upid": "3491"
+    "yahoo_id": "12550",
+    "upid": "3831"
+  },
+  {
+    "name": "Matt Chapman",
+    "team": "SF",
+    "position": "3B",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10205",
+    "upid": "2946"
   },
   {
     "name": "Max Meyer",
@@ -3744,28 +3888,16 @@
     "upid": "2448"
   },
   {
-    "name": "Kenley Jansen",
-    "team": "LAA",
+    "name": "Devin Williams",
+    "team": "NYY",
     "position": "RP",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "8758",
-    "upid": "1957"
-  },
-  {
-    "name": "Ben Joyce",
-    "team": "LAA",
-    "position": "RP",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "60218",
-    "upid": "3963"
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "11628",
+    "upid": "2378"
   },
   {
     "name": "Jeff Hoffman",
@@ -3780,16 +3912,28 @@
     "upid": "2641"
   },
   {
-    "name": "Jordan Romano",
-    "team": "PHI",
+    "name": "A.J. Minter",
+    "team": "NYM",
+    "position": "RP",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "",
+    "years_simple": "",
+    "yahoo_id": "10794",
+    "upid": "1994"
+  },
+  {
+    "name": "Kenley Jansen",
+    "team": "LAA",
     "position": "RP",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11253",
-    "upid": "2725"
+    "yahoo_id": "8758",
+    "upid": "1957"
   },
   {
     "name": "Paul Skenes",
@@ -3804,28 +3948,16 @@
     "upid": "6563"
   },
   {
-    "name": "Corbin Burnes",
-    "team": "AZ",
-    "position": "SP",
+    "name": "Jordan Romano",
+    "team": "PHI",
+    "position": "RP",
     "manager": "TBB",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10910",
-    "upid": "1940"
-  },
-  {
-    "name": "Ben Brown",
-    "team": "CHC",
-    "position": "SP,RP",
-    "manager": "TBB",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "12748",
-    "upid": "3586"
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "11253",
+    "upid": "2725"
   },
   {
     "name": "Chris Sale",
@@ -3852,6 +3984,42 @@
     "upid": "3338"
   },
   {
+    "name": "Corbin Burnes",
+    "team": "AZ",
+    "position": "SP",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10910",
+    "upid": "1940"
+  },
+  {
+    "name": "Ben Brown",
+    "team": "CHC",
+    "position": "SP,RP",
+    "manager": "TBB",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "12748",
+    "upid": "3586"
+  },
+  {
+    "name": "Ben Joyce",
+    "team": "LAA",
+    "position": "RP",
+    "manager": "TBB",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "60218",
+    "upid": "3963"
+  },
+  {
     "name": "DL Hall",
     "team": "MIL",
     "position": "SP,RP",
@@ -3862,18 +4030,6 @@
     "years_simple": "TC 1",
     "yahoo_id": "10848",
     "upid": "3497"
-  },
-  {
-    "name": "Devin Williams",
-    "team": "NYY",
-    "position": "RP",
-    "manager": "TBB",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "11628",
-    "upid": "2378"
   },
   {
     "name": "Kyle Harrison",
@@ -3900,6 +4056,18 @@
     "upid": "3381"
   },
   {
+    "name": "Vladimir Guerrero Jr.",
+    "team": "TOR",
+    "position": "1B,3B",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[1] FC1",
+    "years_simple": "FC 1",
+    "yahoo_id": "10621",
+    "upid": "1986"
+  },
+  {
     "name": "Brandon Lowe",
     "team": "TB",
     "position": "1B,2B",
@@ -3910,6 +4078,18 @@
     "years_simple": "TC 1",
     "yahoo_id": "11125",
     "upid": "1929"
+  },
+  {
+    "name": "Josh Jung",
+    "team": "TEX",
+    "position": "3B",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "11850",
+    "upid": "3461"
   },
   {
     "name": "Matt McLain",
@@ -3924,112 +4104,28 @@
     "upid": "2952"
   },
   {
-    "name": "Vladimir Guerrero Jr.",
-    "team": "TOR",
-    "position": "1B,3B",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[1] FC1",
-    "years_simple": "FC 1",
-    "yahoo_id": "10621",
-    "upid": "1986"
-  },
-  {
-    "name": "Dansby Swanson",
-    "team": "CHC",
-    "position": "SS",
+    "name": "Mike Yastrzemski",
+    "team": "SF",
+    "position": "CF",
     "manager": "WAR",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10234",
-    "upid": "1942"
+    "yahoo_id": "10119",
+    "upid": "3009"
   },
   {
-    "name": "Riley Greene",
-    "team": "DET",
-    "position": "CF",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "11760",
-    "upid": "4315"
-  },
-  {
-    "name": "Seiya Suzuki",
-    "team": "CHC",
-    "position": "OF",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "12588",
-    "upid": "4298"
-  },
-  {
-    "name": "Wyatt Langford",
-    "team": "TEX",
-    "position": "CF",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "62973",
-    "upid": "6565"
-  },
-  {
-    "name": "Christian Yelich",
-    "team": "MIL",
-    "position": "OF",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[2] VC2",
-    "years_simple": "VC 2",
-    "yahoo_id": "9320",
-    "upid": "2275"
-  },
-  {
-    "name": "Masyn Winn",
-    "team": "STL",
-    "position": "SS",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
-    "yahoo_id": "12025",
-    "upid": "3520"
-  },
-  {
-    "name": "Isaac Paredes",
-    "team": "HOU",
-    "position": "1B,3B",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[3] VC1",
-    "years_simple": "VC 1",
-    "yahoo_id": "10881",
-    "upid": "2555"
-  },
-  {
-    "name": "Matt Wallner",
-    "team": "MIN",
-    "position": "OF",
+    "name": "Jos\u00e9 Caballero",
+    "team": "TB",
+    "position": "2B,3B,SS,OF",
     "manager": "WAR",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "11795",
-    "upid": "3723"
+    "yahoo_id": "60776",
+    "upid": "5292"
   },
   {
     "name": "Josh Smith",
@@ -4044,16 +4140,76 @@
     "upid": ""
   },
   {
-    "name": "Seth Lugo",
-    "team": "KC",
-    "position": "SP",
+    "name": "Isaac Paredes",
+    "team": "HOU",
+    "position": "1B,3B",
     "manager": "WAR",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "10881",
+    "upid": "2555"
+  },
+  {
+    "name": "Riley Greene",
+    "team": "DET",
+    "position": "CF",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "11760",
+    "upid": "4315"
+  },
+  {
+    "name": "Christian Yelich",
+    "team": "MIL",
+    "position": "OF",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
+    "yahoo_id": "9320",
+    "upid": "2275"
+  },
+  {
+    "name": "Seiya Suzuki",
+    "team": "CHC",
+    "position": "OF",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[3] VC1",
+    "years_simple": "VC 1",
+    "yahoo_id": "12588",
+    "upid": "4298"
+  },
+  {
+    "name": "Matt Wallner",
+    "team": "MIN",
+    "position": "OF",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "10326",
-    "upid": "3225"
+    "yahoo_id": "11795",
+    "upid": "3723"
+  },
+  {
+    "name": "Erik Miller",
+    "team": "SF",
+    "position": "SP,RP",
+    "manager": "WAR",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "11815",
+    "upid": "3770"
   },
   {
     "name": "Raisel Iglesias",
@@ -4080,6 +4236,30 @@
     "upid": "2437"
   },
   {
+    "name": "Steven Okert",
+    "team": "HOU",
+    "position": "RP",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "10109",
+    "upid": "3255"
+  },
+  {
+    "name": "Jared Koenig",
+    "team": "MIL",
+    "position": "SP,RP",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12630",
+    "upid": "4226"
+  },
+  {
     "name": "Reed Garrett",
     "team": "NYM",
     "position": "RP",
@@ -4092,76 +4272,16 @@
     "upid": "4209"
   },
   {
-    "name": "Fernando Cruz",
-    "team": "NYY",
-    "position": "SP,RP",
-    "manager": "WAR",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "12690",
-    "upid": "7480"
-  },
-  {
-    "name": "Garrett Crochet",
-    "team": "BOS",
-    "position": "SP",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "12046",
-    "upid": "2494"
-  },
-  {
-    "name": "Chris Paddack",
-    "team": "MIN",
-    "position": "SP",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
-    "yahoo_id": "10575",
-    "upid": "2269"
-  },
-  {
-    "name": "Jackson Jobe",
-    "team": "DET",
-    "position": "RP",
-    "manager": "WAR",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "12422",
-    "upid": "3456"
-  },
-  {
-    "name": "Michael Wacha",
-    "team": "KC",
+    "name": "Chris Bassitt",
+    "team": "TOR",
     "position": "SP",
     "manager": "WAR",
     "player_type": "MLB",
     "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "9329",
-    "upid": "2984"
-  },
-  {
-    "name": "Richard Fitts",
-    "team": "BOS",
-    "position": "SP",
-    "manager": "WAR",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "60306",
-    "upid": "4030"
+    "yahoo_id": "9799",
+    "upid": "1936"
   },
   {
     "name": "Bailey Ober",
@@ -4176,40 +4296,88 @@
     "upid": "2138"
   },
   {
-    "name": "Josh Jung",
-    "team": "TEX",
-    "position": "3B",
+    "name": "Michael Wacha",
+    "team": "KC",
+    "position": "SP",
     "manager": "WAR",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[4] TC2",
-    "years_simple": "TC 2",
-    "yahoo_id": "11850",
-    "upid": "3461"
-  },
-  {
-    "name": "Spencer Horwitz",
-    "team": "PIT",
-    "position": "1B,2B",
-    "manager": "WAR",
-    "player_type": "MLB",
-    "contract_type": "Keeper Contract",
+    "contract_type": "",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "12742",
-    "upid": "4125"
+    "yahoo_id": "9329",
+    "upid": "2984"
   },
   {
-    "name": "Max Scherzer",
-    "team": "TOR",
+    "name": "Seth Lugo",
+    "team": "KC",
     "position": "SP",
     "manager": "WAR",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
-    "yahoo_id": "8193",
-    "upid": "1965"
+    "yahoo_id": "10326",
+    "upid": "3225"
+  },
+  {
+    "name": "Garrett Crochet",
+    "team": "BOS",
+    "position": "SP",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[4] TC2",
+    "years_simple": "TC 2",
+    "yahoo_id": "12046",
+    "upid": "2494"
+  },
+  {
+    "name": "Jackson Jobe",
+    "team": "DET",
+    "position": "SP,RP",
+    "manager": "WAR",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "12422",
+    "upid": "3456"
+  },
+  {
+    "name": "Shane Smith",
+    "team": "CWS",
+    "position": "SP,RP",
+    "manager": "WAR",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "63967",
+    "upid": "7330"
+  },
+  {
+    "name": "Masyn Winn",
+    "team": "STL",
+    "position": "SS",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "12025",
+    "upid": "3520"
+  },
+  {
+    "name": "Wyatt Langford",
+    "team": "TEX",
+    "position": "CF",
+    "manager": "WAR",
+    "player_type": "MLB",
+    "contract_type": "Keeper Contract",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
+    "yahoo_id": "62973",
+    "upid": "6565"
   },
   {
     "name": "Yu Darvish",
@@ -4462,6 +4630,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "5703"
+  },
+  {
+    "name": "Jake Mangum",
+    "team": "TBR",
+    "position": "CF",
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "5413"
   },
   {
     "name": "Sean Bouchard",
@@ -4848,6 +5028,18 @@
     "upid": "3647"
   },
   {
+    "name": "Justin Slaten",
+    "team": "BOS",
+    "position": "RP",
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "6625"
+  },
+  {
     "name": "David Hamilton",
     "team": "BOS",
     "position": "SS",
@@ -4968,30 +5160,6 @@
     "upid": "3241"
   },
   {
-    "name": "Kyle Stowers",
-    "team": "BAL",
-    "position": "OF",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3560"
-  },
-  {
-    "name": "Kameron Misner",
-    "team": "TB",
-    "position": "OF",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3846"
-  },
-  {
     "name": "Austin Shenton",
     "team": "TB",
     "position": "1B",
@@ -5014,18 +5182,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6641"
-  },
-  {
-    "name": "Erik Miller",
-    "team": "SF",
-    "position": "RP",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3770"
   },
   {
     "name": "Keaton Winn",
@@ -5062,18 +5218,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "3739"
-  },
-  {
-    "name": "Matt Mervis",
-    "team": "CHC",
-    "position": "1B",
-    "manager": "The Bluke Blokes",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3653"
   },
   {
     "name": "Darius Vines",
@@ -5458,6 +5602,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "3657"
+  },
+  {
+    "name": "Otto Lopez",
+    "team": "SF",
+    "position": "SS",
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "3860"
   },
   {
     "name": "Jake Eder",
@@ -6012,18 +6168,6 @@
     "upid": "5128"
   },
   {
-    "name": "Craig Yoho",
-    "team": "MIL",
-    "position": "RHP",
-    "manager": "Andromedans",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "7335"
-  },
-  {
     "name": "Gage Workman",
     "team": "CHC",
     "position": "3B",
@@ -6120,6 +6264,18 @@
     "upid": "7346"
   },
   {
+    "name": "Kumar Rocker",
+    "team": "TEX",
+    "position": "RHP",
+    "manager": "Rick Vaughn",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "3937"
+  },
+  {
     "name": "Cole Winn",
     "team": "TEX",
     "position": "RHP",
@@ -6166,6 +6322,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "4624"
+  },
+  {
+    "name": "Richard Fitts",
+    "team": "BOS",
+    "position": "RHP",
+    "manager": "Weekend Warriors",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "4030"
   },
   {
     "name": "Sean Burke",
@@ -6264,6 +6432,18 @@
     "upid": "3692"
   },
   {
+    "name": "Seth Halvorsen",
+    "team": "COL",
+    "position": "RHP",
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "7395"
+  },
+  {
     "name": "Justin Jarvis",
     "team": "NYM",
     "position": "SP",
@@ -6346,18 +6526,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "4307"
-  },
-  {
-    "name": "Shane Smith",
-    "team": "CWS",
-    "position": "RHP",
-    "manager": "Weekend Warriors",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "7330"
   },
   {
     "name": "Roddery Munoz",
@@ -6466,6 +6634,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6988"
+  },
+  {
+    "name": "Iv\u00e1n Herrera",
+    "team": "STL",
+    "position": "C",
+    "manager": "Btwn2Jackies",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "3513"
   },
   {
     "name": "Connor Norby",
@@ -7344,18 +7524,6 @@
     "upid": "3862"
   },
   {
-    "name": "Chase Dollander",
-    "team": "COL",
-    "position": "RHP",
-    "manager": "Rick Vaughn",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "6572"
-  },
-  {
     "name": "Matt Shaw",
     "team": "CHC",
     "position": "3B",
@@ -7366,18 +7534,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6592"
-  },
-  {
-    "name": "Kyren Paris",
-    "team": "LAA",
-    "position": "3B",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3674"
   },
   {
     "name": "Orelvis Martinez",
@@ -7462,6 +7618,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "7112"
+  },
+  {
+    "name": "Dylan Crews",
+    "team": "WSH",
+    "position": "OF",
+    "manager": "Jepordizers!",
+    "player_type": "Farm",
+    "contract_type": "Purchased Contract",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "6562"
   },
   {
     "name": "Colson Montgomery",
@@ -7560,18 +7728,6 @@
     "upid": "3573"
   },
   {
-    "name": "Jacob Wilson",
-    "team": "ATH",
-    "position": "SS",
-    "manager": "Btwn2Jackies",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "2581"
-  },
-  {
     "name": "Nick Yorke",
     "team": "PIT",
     "position": "2B",
@@ -7594,18 +7750,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "3906"
-  },
-  {
-    "name": "Thomas Saggese",
-    "team": "STL",
-    "position": "2B",
-    "manager": "Jepordizers!",
-    "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "3982"
   },
   {
     "name": "Royber Salinas",
@@ -10260,18 +10404,6 @@
     "upid": "3345"
   },
   {
-    "name": "Kyle Leahy",
-    "team": "",
-    "position": "",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "6950"
-  },
-  {
     "name": "Anthony Solometo",
     "team": "PIT",
     "position": "LHP",
@@ -10738,18 +10870,6 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6906"
-  },
-  {
-    "name": "Justin Sterner",
-    "team": "",
-    "position": "",
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "status": "[7] P",
-    "years_simple": "P",
-    "yahoo_id": "",
-    "upid": "6810"
   },
   {
     "name": "Teddy McGraw",
@@ -12766,6 +12886,18 @@
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "4777"
+  },
+  {
+    "name": "Dedniel N\u00fa\u00f1ez",
+    "team": "",
+    "position": "",
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "status": "[7] P",
+    "years_simple": "P",
+    "yahoo_id": "",
+    "upid": "6305"
   },
   {
     "name": "Austin Bergner",

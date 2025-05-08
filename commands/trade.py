@@ -56,6 +56,8 @@ async def handle_trade_submission(interaction, user_id, team2, team3, players, w
     from commands.utils import DISCORD_ID_TO_TEAM
     from commands.lookup import extract_name
     from commands.lookup import combined_data  # now a flat list of player dicts
+    await interaction.response.defer(ephemeral=True)
+
 
     team1 = DISCORD_ID_TO_TEAM.get(user_id)
     if not team1:
