@@ -1,15 +1,28 @@
+# commands/trade.py - Complete Updated Trade Command
+
 import discord
 from discord.ext import commands
 from discord.ui import View, Button
-from commands.lookup import extract_name, all_players
 from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM
 from commands.trade_logic import create_trade_thread
 import re
 import json
 from difflib import get_close_matches
 
-with open("data/wizbucks.json", "r") as f:
-    wizbucks_data = json.load(f)
+def load_combined_players():
+    try:
+        with open("data/combined_players.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print("❌ combined_players.json not found. Run data pipeline first.")
+        return []
+
+def load_wizbucks():
+    try:
+        with open("data/wizbucks.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
 
 class Trade(commands.Cog):
     def __init__(self, bot):
@@ -17,10 +30,10 @@ class Trade(commands.Cog):
 
     @discord.app_commands.command(name="trade", description="Submit a trade proposal")
     @discord.app_commands.describe(
-        team1_assets="Your assets (comma-separated list of players and/or $WB)",
-        team2="Second team (abbreviation)",
-        team2_assets="Assets from team 2",
-        team3="(Optional) Third team (abbreviation)",
+        team1_assets="Your assets (comma-separated: player names and/or $50WB)",
+        team2="Second team abbreviation (HAM, WIZ, WAR, etc.)",
+        team2_assets="Assets from team 2 (comma-separated)",
+        team3="(Optional) Third team abbreviation",
         team3_assets="(Optional) Assets from team 3"
     )
     async def trade(self, interaction: discord.Interaction,
@@ -30,167 +43,260 @@ class Trade(commands.Cog):
                     team3: str = None,
                     team3_assets: str = None):
 
+        await interaction.response.defer(ephemeral=True)
+        
         user_id = interaction.user.id
+        team1 = DISCORD_ID_TO_TEAM.get(user_id)
+        
+        if not team1:
+            await interaction.followup.send(
+                "❌ **You are not registered as a team manager.**\n" +
+                "Please contact an admin to get your Discord account linked to your team.",
+                ephemeral=True
+            )
+            return
 
+        # Validate team abbreviations
+        valid_teams = set(DISCORD_ID_TO_TEAM.values())
+        if team2.upper() not in valid_teams:
+            team_list = ", ".join(sorted(valid_teams))
+            await interaction.followup.send(
+                f"❌ **Invalid team abbreviation: '{team2}'**\n" +
+                f"Valid teams: {team_list}",
+                ephemeral=True
+            )
+            return
+            
+        if team3 and team3.upper() not in valid_teams:
+            team_list = ", ".join(sorted(valid_teams))
+            await interaction.followup.send(
+                f"❌ **Invalid team abbreviation: '{team3}'**\n" +
+                f"Valid teams: {team_list}",
+                ephemeral=True
+            )
+            return
+
+        # Parse assets
         players = {
             "team1": [s.strip() for s in team1_assets.split(",") if s.strip()],
             "team2": [s.strip() for s in team2_assets.split(",") if s.strip()],
             "team3": [s.strip() for s in team3_assets.split(",")] if team3 and team3_assets else []
         }
 
+        # Extract Wiz Bucks
         wb = {
             "team1": extract_wb(players["team1"]),
             "team2": extract_wb(players["team2"]),
             "team3": extract_wb(players["team3"]) if team3 else 0
         }
 
-        await handle_trade_submission(interaction, user_id, team2, team3, players, wb)
+        await self.handle_trade_submission(interaction, user_id, team1, team2.upper(), team3.upper() if team3 else None, players, wb)
 
-async def handle_trade_submission(interaction, user_id, team2, team3, players, wb):
-    await interaction.response.defer(ephemeral=True)
+    async def handle_trade_submission(self, interaction, user_id, team1, team2, team3, players, wb):
+        involved = [team1, team2] + ([team3] if team3 else [])
+        problems = []
+        suggestions = []
+        corrected_players = {}
+        all_players = load_combined_players()
+        wizbucks = load_wizbucks()
 
-    team1 = DISCORD_ID_TO_TEAM.get(user_id)
-    if not team1:
-        await interaction.followup.send("❌ You are not mapped to a team.", ephemeral=True)
-        return
+        team_key_map = {team1: "team1", team2: "team2"}
+        if team3:
+            team_key_map[team3] = "team3"
 
-    involved = [team1, team2] + ([team3] if team3 else [])
-    problems = []
-    corrected_players = {}
+        # Validate Wiz Bucks balances first
+        for team in involved:
+            wb_spent = wb.get(team_key_map.get(team), 0)
+            team_full_name = get_full_team_name(team)
+            current_balance = wizbucks.get(team_full_name, 0)
+            
+            if wb_spent > current_balance:
+                problems.append(f"**{team}** doesn't have enough Wiz Bucks (needs ${wb_spent}, has ${current_balance})")
 
-    team_key_map = {
-        team1: "team1",
-        team2: "team2"
-    }
-    if team3:
-        team_key_map[team3] = "team3"
-
-    for team in involved:
-        corrected_players[team] = []
-        submitted = players.get(team_key_map.get(team), [])
-        team_roster = [p for p in all_players if p.get("manager") == team]
-
-        for raw in submitted:
-            if is_wizbuck_entry(raw):
-                corrected_players[team].append(raw)
+        # Validate players exist on their respective rosters
+        for team in involved:
+            corrected_players[team] = []
+            submitted = players.get(team_key_map.get(team), [])
+            team_roster = [p for p in all_players if p.get("manager") == team]
+            
+            if not team_roster:
+                problems.append(f"**{team}** roster not found in database. Contact admin.")
                 continue
 
-            submitted_clean = extract_name(raw).lower()
-            roster_names = [extract_name(p["name"]).lower() for p in team_roster]
+            for raw_input in submitted:
+                if is_wizbuck_entry(raw_input):
+                    corrected_players[team].append(raw_input)
+                    continue
 
-            match = get_close_matches(submitted_clean, roster_names, n=1, cutoff=0.8)
+                # Try to find the player
+                found_player, match_type = find_player_on_roster(raw_input, team_roster)
+                
+                if found_player:
+                    formatted = format_player_display(found_player)
+                    corrected_players[team].append(formatted)
+                    
+                    if match_type == "fuzzy":
+                        suggestions.append(f"**{team}**: Matched '{raw_input}' → '{found_player['name']}'")
+                else:
+                    problems.append(f"**{team}**: '{raw_input}' not found on roster")
+                    
+                    # Suggest similar names
+                    similar = find_similar_players(raw_input, team_roster, n=3)
+                    if similar:
+                        similar_names = [p["name"] for p in similar]
+                        suggestions.append(f"**{team}**: Did you mean: {', '.join(similar_names)}?")
 
-            if match:
-                matched_name = match[0]
-                matched_player = next(p for p in team_roster if extract_name(p["name"]).lower() == matched_name)
-                formatted = f"{matched_player['position']} {matched_player['name']} [{matched_player['team']}] [{matched_player['years_simple'] or 'NA'}]"
-                corrected_players[team].append(formatted)
-            else:
-                problems.append(f"{team}: `{raw}` is not on your roster.")
+        # Build response message
+        if problems:
+            msg = "❌ **Trade submission failed:**\n\n"
+            msg += "\n".join(f"• {p}" for p in problems)
+            
+            if suggestions:
+                msg += "\n\n💡 **Suggestions:**\n"
+                msg += "\n".join(f"• {s}" for s in suggestions)
+            
+            msg += f"\n\n🔍 Use `/roster team:{team1}` to see your exact player names."
+            await interaction.followup.send(content=msg, ephemeral=True)
+            return
 
-    if problems:
-        msg = (
-            "❌ Trade could not be submitted due to the following issues:\n\n" +
-            "\n".join(f"- {p}" for p in problems) +
-            "\n\n🔁 Please re-submit the trade using `/trade` and only include players currently on your team.\n" +
-            "💡 Use `/roster` to view your current players."
+        # Show suggestions if we had fuzzy matches
+        if suggestions:
+            msg = "⚠️ **Player name corrections made:**\n\n"
+            msg += "\n".join(f"• {s}" for s in suggestions)
+            msg += "\n\nIf these look correct, the trade preview is below. If not, please re-submit with exact names."
+            await interaction.followup.send(content=msg, ephemeral=True)
+
+        # Create trade preview
+        preview_msg = create_trade_preview(involved, corrected_players, wb, team_key_map)
+        
+        view = PreviewConfirmView(
+            trade_data={
+                "initiator_id": user_id,
+                "teams": involved,
+                "players": corrected_players,
+                "wizbucks": {team: wb.get(team_key_map[team], 0) for team in involved}
+            }
         )
-        await interaction.followup.send(content=msg, ephemeral=True)
-        return
 
-    def block(team):
+        await interaction.followup.send(content=preview_msg, view=view, ephemeral=True)
+
+def find_player_on_roster(search_name, roster):
+    """
+    Find a player on the roster with improved matching
+    Returns (player_dict, match_type) or (None, None)
+    """
+    # First: Try exact match (case insensitive)
+    for player in roster:
+        if player["name"].lower() == search_name.lower():
+            return player, "exact"
+    
+    # Second: Use fuzzy matching with the same logic as the working test script
+    roster_names = [p["name"] for p in roster]
+    matches = get_close_matches(search_name, roster_names, n=1, cutoff=0.8)
+    
+    if matches:
+        matched_name = matches[0]
+        for player in roster:
+            if player["name"] == matched_name:  # Exact match on the original case
+                return player, "fuzzy"
+    
+    # Third: Try lower cutoff for broader matching
+    matches = get_close_matches(search_name, roster_names, n=1, cutoff=0.6)
+    
+    if matches:
+        matched_name = matches[0]
+        for player in roster:
+            if player["name"] == matched_name:
+                return player, "partial"
+    
+    return None, None
+
+def find_similar_players(search_name, roster, n=3):
+    """Find similar player names for suggestions"""
+    roster_names = [p["name"] for p in roster]
+    matches = get_close_matches(search_name, roster_names, n=n, cutoff=0.4)
+    return [p for p in roster if p["name"] in matches]
+
+def format_player_display(player):
+    """Format player for display in trade"""
+    pos = player.get("position", "?")
+    name = player.get("name", "Unknown")
+    team = player.get("team", "FA")
+    contract = player.get("years_simple", "?")
+    return f"{pos} {name} [{team}] [{contract}]"
+
+def create_trade_preview(teams, corrected_players, wb, team_key_map):
+    """Create the trade preview message"""
+    def create_block(team):
         lines = corrected_players.get(team, [])
         wb_val = wb.get(team_key_map[team], 0)
         if wb_val > 0:
             lines.append(f"${wb_val} WB")
-        return f"🔁 **{team} receives:**\n" + "\n".join(lines)
+        return f"🔁 **{team} receives:**\n" + ("\n".join(lines) if lines else "*Nothing*")
 
-    # Invert preview: show what each team RECEIVES
-    msg = f"""📬 **TRADE PREVIEW**
+    msg = "📬 **TRADE PREVIEW**\n\n"
+    for team in teams:
+        msg += create_block(team) + "\n\n"
+    
+    msg += "✏️ To edit this trade, re-submit the `/trade` command."
+    return msg
 
-{block(team2)}
-
-{block(team1)}"""
-    if team3:
-        msg += f"\n\n{block(team3)}"
-
-    msg += "\n\n✏️ To edit this trade, re-submit the `/trade` command."
-
-    view = PreviewConfirmView(
-        trade_data={
-            "initiator_id": user_id,
-            "initiator_name": team1,
-            "team1_assets": corrected_players[team1],
-            "team2": team2,
-            "team2_assets": corrected_players[team2],
-            "team3": team3,
-            "team3_assets": corrected_players.get(team3, [])
-        }
-    )
-
-    await interaction.followup.send(content=msg, view=view, ephemeral=True)
+def get_full_team_name(abbr):
+    """Convert team abbreviation to full name for wizbucks lookup"""
+    team_map = {
+        "HAM": "Hammers",
+        "RV": "Rick Vaughn", 
+        "B2J": "Btwn2Jackies",
+        "CFL": "Country Fried Lamb",
+        "LAW": "Law-Abiding Citizens",
+        "LFB": "La Flama Blanca",
+        "JEP": "Jepordizers!",
+        "TBB": "The Bluke Blokes",
+        "WIZ": "Whiz Kids",
+        "DRO": "Andromedans",
+        "SAD": "not much of a donkey",
+        "WAR": "Weekend Warriors"
+    }
+    return team_map.get(abbr, abbr)
 
 class PreviewConfirmView(View):
     def __init__(self, trade_data):
         super().__init__(timeout=300)
         self.trade_data = trade_data
 
-    @discord.ui.button(label="✅ Confirm", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="✅ Confirm Trade", style=discord.ButtonStyle.success)
     async def confirm(self, interaction: discord.Interaction, button: Button):
         if interaction.user.id != self.trade_data["initiator_id"]:
-            await interaction.response.send_message("Only the original submitter can confirm.", ephemeral=True)
+            await interaction.response.send_message("❌ Only the trade submitter can confirm.", ephemeral=True)
             return
 
-        reformatted_data = {
-            "teams": [
-                self.trade_data["initiator_name"],
-                self.trade_data["team2"]
-            ] + ([self.trade_data["team3"]] if self.trade_data.get("team3") else []),
-            "players": {
-                self.trade_data["initiator_name"]: self.trade_data["team1_assets"],
-                self.trade_data["team2"]: self.trade_data["team2_assets"],
-            },
-            "wizbucks": {
-                self.trade_data["initiator_name"]: extract_wb(self.trade_data["team1_assets"]),
-                self.trade_data["team2"]: extract_wb(self.trade_data["team2_assets"]),
-            }
-        }
+        await interaction.response.send_message("✅ Trade confirmed! Creating approval thread...", ephemeral=True)
+        await create_trade_thread(interaction.guild, self.trade_data)
 
-        if self.trade_data.get("team3"):
-            reformatted_data["players"][self.trade_data["team3"]] = self.trade_data["team3_assets"]
-            reformatted_data["wizbucks"][self.trade_data["team3"]] = extract_wb(self.trade_data["team3_assets"])
-
-        await interaction.response.send_message("✅ Trade confirmed! Creating private review thread...", ephemeral=True)
-        await create_trade_thread(interaction.guild, reformatted_data)
-
-    @discord.ui.button(label="❌ Cancel", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="❌ Cancel Trade", style=discord.ButtonStyle.danger)
     async def cancel(self, interaction: discord.Interaction, button: Button):
         if interaction.user.id == self.trade_data["initiator_id"]:
             await interaction.response.send_message("❌ Trade canceled.", ephemeral=True)
 
-def extract_name(player_line):
-    try:
-        match = re.match(r"^\w+\s+(.+?)\s+\[", player_line)
-        return match.group(1).strip() if match else player_line.strip()
-    except Exception:
-        return player_line.strip()
-
+# Helper functions
 def extract_wb(asset_list):
+    """Extract Wiz Bucks amount from asset list"""
     for item in asset_list:
-        cleaned = item.strip().lower()
-        match = re.match(r"\$?(\d+)\s*(wb)?", cleaned)
-        if match:
-            try:
+        if not isinstance(item, str):
+            continue
+        cleaned = item.strip().lower().replace("$", "").replace(" ", "")
+        if "wb" in cleaned:
+            match = re.search(r'(\d+)', cleaned)
+            if match:
                 return int(match.group(1))
-            except ValueError:
-                continue
     return 0
 
 def is_wizbuck_entry(s):
+    """Check if string represents Wiz Bucks"""
     if not isinstance(s, str):
         return False
     s = s.lower().strip()
-    return bool(re.match(r"^\$?\d+\s*wb?$", s))
+    return bool(re.search(r'\$?\d+\s*wb?', s))
 
 async def setup(bot):
     await bot.add_cog(Trade(bot))

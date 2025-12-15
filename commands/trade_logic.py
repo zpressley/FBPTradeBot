@@ -1,17 +1,35 @@
-# commands/trade_logic.py
+# commands/trade_logic.py - Simplified version with fixed rejection modal
 
 import discord
 from discord.ui import View, Button, Modal, TextInput
 from commands.utils import MANAGER_DISCORD_IDS, get_trade_dates, mention_manager
+import json
 
 # Channel IDs
-PENDING_CHANNEL_ID = 1356234086833848492
-ADMIN_REVIEW_CHANNEL_ID = 875594022033436683
-TRADE_CHANNEL_ID = 1197200421639438537
+PENDING_CHANNEL_ID = 1356234086833848492  # For trade discussion threads
+TRADE_CHANNEL_ID = 1197200421639438537    # For final approved trades
+
+# ========== TRADE VALIDATION ==========
+
+def validate_trade(trade_data):
+    """
+    Validate trade against FBP rules (post-TAC)
+    Returns (is_valid, error_messages)
+    """
+    errors = []
+    
+    # TODO: Add validation rules as needed
+    # - Wiz Bucks balance checking (already done in trade command)
+    # - Farm contract trading rules
+    # - Draft pick validation
+    # - Keeper limits
+    
+    return len(errors) == 0, errors
 
 # ========== CREATE TRADE THREAD ==========
 
 async def create_trade_thread(guild, trade_data):
+    """Create private thread for trade discussion"""
     channel = guild.get_channel(PENDING_CHANNEL_ID)
     if not channel:
         print("❌ Could not find #pending-trades channel.")
@@ -25,6 +43,7 @@ async def create_trade_thread(guild, trade_data):
         invitable=True
     )
 
+    # Add all involved managers to thread
     for team in teams:
         user_id = next((uid for label, uid in MANAGER_DISCORD_IDS.items() if label == team), None)
         if user_id:
@@ -34,11 +53,21 @@ async def create_trade_thread(guild, trade_data):
             except Exception as e:
                 print(f"⚠️ Could not add user {user_id}: {e}")
 
-    msg = format_trade_review(trade_data) + "\n\n🔘 Please review this trade below."
+    # Validate trade first
+    is_valid, errors = validate_trade(trade_data)
+    
+    if not is_valid:
+        msg = "❌ **TRADE VALIDATION FAILED**\n\n"
+        msg += "\n".join(f"• {error}" for error in errors)
+        msg += f"\n\n{format_trade_review(trade_data)}"
+        await thread.send(content=msg)
+        return thread
+
+    # If valid, show for approval
+    msg = format_trade_review(trade_data) + "\n\n🔘 Please review and approve this trade below."
     view = TradeApprovalView(trade_data)
     await thread.send(content=msg, view=view)
     return thread
-
 
 # ========== FORMATTING HELPERS ==========
 
@@ -49,8 +78,7 @@ def format_trade_review(trade_data):
     blocks = [format_block(team, trade_data["players"].get(team, [])) for team in trade_data["teams"]]
     return "\n\n".join(blocks)
 
-
-# ========== VOTING VIEWS ==========
+# ========== APPROVAL VIEW ==========
 
 class TradeApprovalView(View):
     def __init__(self, trade_data):
@@ -62,6 +90,18 @@ class TradeApprovalView(View):
     @discord.ui.button(label="✅ Approve", style=discord.ButtonStyle.success)
     async def approve(self, interaction: discord.Interaction, button: Button):
         user_id = interaction.user.id
+        
+        # Check if trade has been rejected
+        if self.rejected:
+            await interaction.response.send_message("❌ This trade has been rejected and cannot be approved.", ephemeral=True)
+            return
+        
+        # Check if user is involved in trade
+        involved_ids = [MANAGER_DISCORD_IDS.get(t) for t in self.trade_data["teams"]]
+        if user_id not in involved_ids:
+            await interaction.response.send_message("You are not involved in this trade.", ephemeral=True)
+            return
+            
         if user_id in self.approvals:
             await interaction.response.send_message("You've already approved this trade.", ephemeral=True)
             return
@@ -69,75 +109,60 @@ class TradeApprovalView(View):
         self.approvals.add(user_id)
         await interaction.response.send_message("✅ Your approval has been recorded.", ephemeral=True)
 
-        involved_ids = [
-            MANAGER_DISCORD_IDS.get(t) for t in self.trade_data["teams"]
-        ]
-        if all(uid in self.approvals for uid in involved_ids):
-            await interaction.channel.send("✅ All managers have approved! Sending to admin review...")
-            await send_to_admin_review(interaction.guild, self.trade_data)
+        # Check if all parties have approved
+        if all(uid in self.approvals for uid in involved_ids if uid is not None):
+            await interaction.channel.send("✅ All managers have approved! Posting trade...")
+            await post_approved_trade(interaction.guild, self.trade_data)
 
     @discord.ui.button(label="❌ Reject", style=discord.ButtonStyle.danger)
     async def reject(self, interaction: discord.Interaction, button: Button):
+        user_id = interaction.user.id
+        
+        # Check if user is involved in trade
+        involved_ids = [MANAGER_DISCORD_IDS.get(t) for t in self.trade_data["teams"]]
+        if user_id not in involved_ids:
+            await interaction.response.send_message("You are not involved in this trade.", ephemeral=True)
+            return
+            
         if self.rejected:
             await interaction.response.send_message("❌ Trade already rejected.", ephemeral=True)
             return
 
-        if interaction.user.id not in [MANAGER_DISCORD_IDS.get(t) for t in self.trade_data["teams"]]:
-            await interaction.response.send_message("You are not authorized to reject this trade.", ephemeral=True)
-            return
-
         self.rejected = True
-        modal = RejectionReasonModal(interaction.user, self.trade_data)
+        
+        # Disable all buttons after rejection
+        for item in self.children:
+            item.disabled = True
+        
+        modal = RejectionReasonModal(interaction.user, self.trade_data, interaction.channel, self)
         await interaction.response.send_modal(modal)
 
+# ========== POST APPROVED TRADE ==========
 
-class AdminReviewView(View):
-    def __init__(self, trade_data):
-        super().__init__(timeout=None)
-        self.trade_data = trade_data
-
-    @discord.ui.button(label="✅ Approve Trade", style=discord.ButtonStyle.success)
-    async def approve(self, interaction: discord.Interaction, button: Button):
-        sub_date, proc_date = get_trade_dates()
-
-        msg = format_trade_review(self.trade_data)
-        msg += f"\n\n📆 {sub_date}\n📆 {proc_date}"
-
-        trade_channel = interaction.guild.get_channel(TRADE_CHANNEL_ID)
-        if trade_channel:
-            await trade_channel.send(msg)
-            await interaction.response.send_message("✅ Trade approved and posted!", ephemeral=True)
-        else:
-            await interaction.response.send_message("❌ Could not find trade channel.", ephemeral=True)
-
-    @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger)
-    async def reject(self, interaction: discord.Interaction, button: Button):
-        modal = AdminRejectionModal(interaction.user, self.trade_data)
-        await interaction.response.send_modal(modal)
-
-
-# ========== SEND TO ADMIN ==========
-
-async def send_to_admin_review(guild, trade_data):
-    admin_channel = guild.get_channel(ADMIN_REVIEW_CHANNEL_ID)
-    if not admin_channel:
-        print("❌ Could not find admin review channel.")
+async def post_approved_trade(guild, trade_data):
+    """Post the approved trade to the main trade channel"""
+    trade_channel = guild.get_channel(TRADE_CHANNEL_ID)
+    if not trade_channel:
+        print("❌ Could not find trade channel.")
         return
 
+    sub_date, proc_date = get_trade_dates()
+    
     msg = format_trade_review(trade_data)
-    msg += "\n\n✅ Approve or ❌ Reject this trade below."
+    msg += f"\n\n📆 {sub_date}\n📆 {proc_date}"
+    msg += "\n\n✅ **TRADE APPROVED**"
 
-    view = AdminReviewView(trade_data)
-    await admin_channel.send(content=msg, view=view)
+    await trade_channel.send(msg)
 
-
-# ========== MODALS ==========
+# ========== REJECTION MODAL (FIXED) ==========
 
 class RejectionReasonModal(Modal):
-    def __init__(self, rejector: discord.User, trade_data):
+    def __init__(self, rejector: discord.User, trade_data, channel, view):
         super().__init__(title="Trade Rejection Reason")
         self.rejector = rejector
         self.trade_data = trade_data
+        self.channel = channel
+        self.view = view
 
         self.reason = TextInput(
             label="Why are you rejecting this trade?",
@@ -149,8 +174,16 @@ class RejectionReasonModal(Modal):
         self.add_item(self.reason)
 
     async def on_submit(self, interaction: discord.Interaction):
-        mentions = [mention_manager(team) for team in self.trade_data["teams"]]
-        msg = f"""❌ **Trade rejected by <@{self.rejector.id}>**
+        try:
+            # First respond to the interaction
+            await interaction.response.send_message("✅ Rejection recorded.", ephemeral=True)
+            
+            # Update the view to disable buttons
+            await interaction.edit_original_response(view=self.view)
+            
+            # Then send the rejection message to the channel
+            mentions = [mention_manager(team) for team in self.trade_data["teams"]]
+            msg = f"""❌ **Trade rejected by <@{self.rejector.id}>**
 💬 Reason: {self.reason.value}
 
 {' '.join(mentions)}
@@ -159,35 +192,13 @@ class RejectionReasonModal(Modal):
 
 {format_trade_review(self.trade_data)}
 """
-        await interaction.message.channel.send(msg)
-        pass  # No response needed
-
-
-class AdminRejectionModal(Modal):
-    def __init__(self, rejector: discord.User, trade_data):
-        super().__init__(title="Admin Rejection Reason")
-        self.rejector = rejector
-        self.trade_data = trade_data
-
-        self.reason = TextInput(
-            label="Why is this trade being rejected?",
-            style=discord.TextStyle.paragraph,
-            placeholder="Explain your admin-level rejection...",
-            required=True,
-            max_length=300
-        )
-        self.add_item(self.reason)
-
-    async def on_submit(self, interaction: discord.Interaction):
-        mentions = [mention_manager(team) for team in self.trade_data["teams"]]
-        msg = f"""❌ **Trade rejected by Admin <@{self.rejector.id}>**
-💬 Reason: {self.reason.value}
-
-{' '.join(mentions)}
-
----
-
-{format_trade_review(self.trade_data)}
-"""
-        await interaction.message.channel.send(msg)
-        await interaction.response.send_message("✅ Admin rejection sent to thread.", ephemeral=True)
+            await self.channel.send(msg)
+            
+        except Exception as e:
+            print(f"Error in rejection modal: {e}")
+            # If something fails, just respond with a simple message
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    f"❌ Trade rejected. Reason: {self.reason.value}",
+                    ephemeral=False
+                )

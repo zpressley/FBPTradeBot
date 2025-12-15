@@ -1,0 +1,420 @@
+# upid_google_sheets_mapper.py - Fixed to handle non-standard header layout
+
+import json
+import os
+import requests
+import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from difflib import get_close_matches
+import re
+from datetime import datetime
+import time
+import urllib3
+
+# Disable SSL warnings
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# Constants
+UPID_SHEET_KEY = "19hH-bUVbtbF4Qn4Ep6YRCK853eOvoI8lr2zNlRB1wgo"  # UPID Database Sheet
+UPID_TAB_NAME = "PlayerUPID"
+
+FBP_SHEET_KEY = "13oEFhmmVF82qMnX0NV_W0szmfGjZySNaOALg3MhoRzA"  # FBP Player Database
+PLAYER_TAB = "Player Data"
+MAP_TAB = "Player ID Map"
+CACHE_FILE = "data/enhanced_mlb_id_cache.json"
+
+class GoogleSheetsUPIDMapper:
+    def __init__(self):
+        self.upid_database = {}
+        self.external_mappings = {}
+        self.google_mappings = {}
+        self.prospects = []
+        self.session = requests.Session()
+        self.gclient = self.authorize_gsheets()
+        self.setup_session()
+        
+    def authorize_gsheets(self):
+        """Authorize Google Sheets access"""
+        try:
+            scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+            creds = ServiceAccountCredentials.from_json_keyfile_name("google_creds.json", scope)
+            return gspread.authorize(creds)
+        except Exception as e:
+            print(f"❌ Google Sheets authorization failed: {e}")
+            return None
+        
+    def setup_session(self):
+        """Configure requests session"""
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        })
+    
+    def find_header_row(self, data):
+        """Find the row that contains the actual headers (UPID, Player Name, etc.)"""
+        print("🔍 Searching for header row...")
+        
+        for row_idx, row in enumerate(data[:20]):  # Check first 20 rows
+            row_text = ' '.join(str(cell).lower() for cell in row)
+            print(f"  Row {row_idx}: {row[:5]}...")  # Show first 5 columns
+            
+            # Look for common header indicators
+            if any(keyword in row_text for keyword in ['upid', 'player name', 'name', 'team', 'position']):
+                print(f"✅ Found potential header row at index {row_idx}")
+                return row_idx
+        
+        print("❌ Could not find header row in first 20 rows")
+        return None
+    
+    def load_upid_database_from_google_sheets(self):
+        """Load the UPID database from Google Sheets with flexible header detection"""
+        print("🔄 Loading UPID database from Google Sheets...")
+        
+        if not self.gclient:
+            print("❌ Google Sheets client not available")
+            return False
+        
+        try:
+            # Open the UPID database sheet
+            sheet = self.gclient.open_by_key(UPID_SHEET_KEY)
+            worksheet = sheet.worksheet(UPID_TAB_NAME)
+            print(f"✅ Found worksheet: {UPID_TAB_NAME}")
+            
+            # Get all data from the worksheet
+            data = worksheet.get_all_values()
+            
+            if not data:
+                print("❌ No data found in worksheet")
+                return False
+            
+            print(f"📊 Total rows in sheet: {len(data)}")
+            
+            # Find the actual header row
+            header_row_idx = self.find_header_row(data)
+            
+            if header_row_idx is None:
+                print("❌ Could not find header row")
+                # Let's try to manually look at more rows
+                print("🔍 Showing first 10 rows to help identify structure:")
+                for i, row in enumerate(data[:10]):
+                    print(f"  Row {i}: {row[:8]}")  # Show first 8 columns
+                return False
+            
+            headers = data[header_row_idx]
+            data_rows = data[header_row_idx + 1:]  # Data starts after header row
+            
+            print(f"📊 Using headers from row {header_row_idx}: {headers[:8]}")
+            print(f"📊 Data rows to process: {len(data_rows)}")
+            
+            # Find the relevant columns with more flexible matching
+            upid_col = None
+            name_col = None
+            team_col = None
+            pos_col = None
+            alt_name_cols = []
+            
+            for i, header in enumerate(headers):
+                header_lower = str(header).lower().strip()
+                print(f"  Column {i}: '{header}' -> '{header_lower}'")
+                
+                if 'upid' in header_lower or header_lower == 'id':
+                    upid_col = i
+                    print(f"    → UPID column: {i}")
+                elif any(word in header_lower for word in ['player name', 'name', 'full name', 'fullname']):
+                    name_col = i
+                    print(f"    → Name column: {i}")
+                elif 'team' in header_lower or 'club' in header_lower:
+                    team_col = i
+                    print(f"    → Team column: {i}")  
+                elif any(word in header_lower for word in ['pos', 'position']):
+                    pos_col = i
+                    print(f"    → Position column: {i}")
+                elif 'alternate' in header_lower and 'name' in header_lower:
+                    alt_name_cols.append(i)
+                    print(f"    → Alt name column: {i}")
+            
+            # If we still can't find columns, try a different approach
+            if upid_col is None or name_cols is None:
+                print("🔍 Standard column detection failed. Trying pattern matching...")
+                
+                # Look for numeric data in first column (likely UPID)
+                for i in range(min(10, len(headers))):
+                    if len(data_rows) > 0 and data_rows[0][i].isdigit():
+                        upid_col = i
+                        print(f"    → Found numeric column at {i}, assuming UPID")
+                        break
+                
+                # Look for name-like data in subsequent columns
+                for i in range(min(10, len(headers))):
+                    if len(data_rows) > 0:
+                        cell_value = str(data_rows[0][i]).strip()
+                        # Check if it looks like a name (contains letters and possibly spaces)
+                        if len(cell_value) > 2 and any(c.isalpha() for c in cell_value) and ' ' in cell_value:
+                            name_col = i
+                            print(f"    → Found name-like data at column {i}")
+                            break
+            
+            if upid_col is None or name_col is None:
+                print(f"❌ Still could not find UPID or Player Name columns")
+                print(f"   UPID column: {upid_col}")
+                print(f"   Name column: {name_col}")
+                print("🔍 First few data rows:")
+                for i, row in enumerate(data_rows[:3]):
+                    print(f"  Data row {i}: {row[:8]}")
+                return False
+            
+            print(f"✅ Final columns - UPID: {upid_col}, Name: {name_col}, Team: {team_col}, Pos: {pos_col}")
+            
+            # Process the data
+            upid_data = {}
+            processed_count = 0
+            
+            for row_idx, row in enumerate(data_rows):
+                if len(row) <= max(upid_col, name_col):
+                    continue
+                
+                upid = str(row[upid_col]).strip() if upid_col < len(row) else ""
+                name = str(row[name_col]).strip() if name_col < len(row) else ""
+                team = str(row[team_col]).strip() if team_col is not None and team_col < len(row) else ""
+                pos = str(row[pos_col]).strip() if pos_col is not None and pos_col < len(row) else ""
+                
+                # Skip empty rows or invalid data
+                if not upid or not name or len(name) < 3:
+                    continue
+                
+                # Skip header-like rows that might have slipped through
+                if 'name' in name.lower() or 'upid' in upid.lower():
+                    continue
+                
+                # Create name variations for matching
+                name_variations = [name.lower().strip()]
+                
+                # Add alternate names if available
+                for alt_col in alt_name_cols:
+                    if alt_col < len(row):
+                        alt_name = str(row[alt_col]).strip()
+                        if alt_name and len(alt_name) > 2:
+                            name_variations.append(alt_name.lower().strip())
+                
+                upid_data[upid] = {
+                    'name': name,
+                    'team': team,
+                    'position': pos,
+                    'name_variations': name_variations,
+                    'upid': upid
+                }
+                processed_count += 1
+                
+                # Show progress every 1000 records
+                if processed_count % 1000 == 0:
+                    print(f"  📊 Processed {processed_count} records...")
+            
+            self.upid_database = upid_data
+            print(f"✅ Loaded {processed_count} players from UPID database")
+            
+            # Show some sample entries
+            if processed_count > 0:
+                print("📋 Sample entries:")
+                for i, (upid, data) in enumerate(list(upid_data.items())[:3]):
+                    print(f"  {upid}: {data['name']} ({data.get('team', 'N/A')}) - {data.get('position', 'N/A')}")
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Error loading UPID database: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    # [Rest of the methods remain the same as before - load_prospects_from_fbp_sheets, etc.]
+    def load_prospects_from_fbp_sheets(self):
+        """Load prospects from FBP Google Sheets"""
+        print("🔄 Loading prospects from FBP Google Sheets...")
+        
+        if not self.gclient:
+            return
+        
+        try:
+            sheet = self.gclient.open_by_key(FBP_SHEET_KEY).worksheet(PLAYER_TAB)
+            data = sheet.get_all_values()
+            headers = data[1]  # Headers are in row 2 (index 1)
+            data_rows = data[2:]  # Data starts from row 3
+            
+            upid_idx = headers.index("UPID")
+            name_idx = headers.index("Player Name")
+            player_type_idx = headers.index("Player Type")
+            
+            prospects = []
+            for row in data_rows:  # Use data starting from row 3
+                if len(row) <= max(upid_idx, name_idx, player_type_idx):
+                    continue
+                
+                player_type = row[player_type_idx].strip()
+                if player_type in ["Farm", "MLB"]:
+                    upid = str(row[upid_idx]).strip()
+                    name = row[name_idx].strip()
+                    
+                    if upid and name:
+                        prospects.append({
+                            "upid": upid,
+                            "name": name,
+                            "player_type": player_type
+                        })
+            
+            self.prospects = prospects
+            print(f"✅ Loaded {len(prospects)} prospects from FBP Google Sheets")
+            
+        except Exception as e:
+            print(f"❌ Error loading FBP prospects: {e}")
+    
+    def match_prospect_to_upid_database(self, prospect_name):
+        """Match a prospect name to the UPID database"""
+        prospect_name_clean = prospect_name.lower().strip()
+        
+        # Look for exact matches in name variations
+        for upid, data in self.upid_database.items():
+            if prospect_name_clean in data['name_variations']:
+                return upid, data, 'exact'
+        
+        # Try fuzzy matching
+        all_names = []
+        upid_lookup = {}
+        
+        for upid, data in self.upid_database.items():
+            for name_var in data['name_variations']:
+                all_names.append(name_var)
+                upid_lookup[name_var] = (upid, data)
+        
+        matches = get_close_matches(prospect_name_clean, all_names, n=3, cutoff=0.85)
+        if matches:
+            upid, data = upid_lookup[matches[0]]
+            return upid, data, 'fuzzy'
+        
+        return None, None, 'none'
+    
+    def generate_bbref_id(self, first_name, last_name):
+        """Generate BBRef ID using naming convention"""
+        if not first_name or not last_name:
+            return None
+        
+        first_clean = re.sub(r'[^a-zA-Z]', '', first_name.lower())
+        last_clean = re.sub(r'[^a-zA-Z]', '', last_name.lower())
+        
+        if len(first_clean) == 0 or len(last_clean) == 0:
+            return None
+        
+        last_part = last_clean[:5]
+        first_part = first_clean[:2]
+        return f"{last_part}{first_part}01"
+    
+    def build_enhanced_cache(self):
+        """Build enhanced cache using Google Sheets UPID database as primary source"""
+        print("🚀 Building enhanced cache using Google Sheets UPID database...")
+        
+        # Load all data sources
+        if not self.load_upid_database_from_google_sheets():
+            print("❌ Failed to load UPID database. Cannot continue.")
+            return None
+        
+        self.load_prospects_from_fbp_sheets()
+        
+        enhanced_cache = {}
+        stats = {
+            'upid_exact_matches': 0,
+            'upid_fuzzy_matches': 0,
+            'generated_bbref_ids': 0,
+            'no_matches': 0
+        }
+        
+        for prospect in self.prospects:
+            upid = prospect['upid']
+            name = prospect['name']
+            player_type = prospect['player_type']
+            
+            cache_entry = {
+                'name': name,
+                'player_type': player_type,
+                'mlb_id': None,
+                'bbref_id': None,
+                'upid': upid,
+                'match_source': None,
+                'match_confidence': 'none'
+            }
+            
+            # Try to match to UPID database
+            matched_upid, upid_data, match_type = self.match_prospect_to_upid_database(name)
+            
+            if matched_upid:
+                # Update the UPID if we found a better match
+                if matched_upid != upid:
+                    cache_entry['upid'] = matched_upid
+                    cache_entry['upid_corrected'] = True
+                
+                cache_entry['upid_match_type'] = match_type
+                cache_entry['upid_position'] = upid_data.get('position', '')
+                cache_entry['upid_team'] = upid_data.get('team', '')
+                
+                if match_type == 'exact':
+                    stats['upid_exact_matches'] += 1
+                else:
+                    stats['upid_fuzzy_matches'] += 1
+                
+                print(f"✅ UPID {match_type}: {name} → UPID {matched_upid} ({upid_data.get('position', '')})")
+                
+                # Generate BBRef ID
+                name_parts = upid_data['name'].split()
+                if len(name_parts) >= 2:
+                    bbref_id = self.generate_bbref_id(name_parts[0], name_parts[-1])
+                    if bbref_id:
+                        cache_entry['bbref_id'] = bbref_id
+                        cache_entry['bbref_generated'] = True
+                        stats['generated_bbref_ids'] += 1
+            
+            else:
+                # No UPID match found
+                stats['no_matches'] += 1
+                print(f"❌ No UPID match: {name}")
+            
+            enhanced_cache[upid] = cache_entry
+        
+        # Save cache
+        os.makedirs("data", exist_ok=True)
+        with open(CACHE_FILE, "w") as f:
+            json.dump(enhanced_cache, f, indent=2)
+        
+        # Print statistics
+        print(f"\n📊 Google Sheets UPID-Based Cache Statistics:")
+        print(f"  Total prospects processed: {len(self.prospects)}")
+        print(f"  UPID exact matches: {stats['upid_exact_matches']}")
+        print(f"  UPID fuzzy matches: {stats['upid_fuzzy_matches']}")
+        print(f"  Generated BBRef IDs: {stats['generated_bbref_ids']}")
+        print(f"  No matches found: {stats['no_matches']}")
+        
+        total_upid_matches = stats['upid_exact_matches'] + stats['upid_fuzzy_matches']
+        upid_coverage = (total_upid_matches / len(self.prospects)) * 100 if self.prospects else 0
+        
+        print(f"  UPID match coverage: {upid_coverage:.1f}%")
+        print(f"✅ Enhanced cache saved to {CACHE_FILE}")
+        
+        return enhanced_cache
+
+def main():
+    print("🎯 Google Sheets UPID-Based Enhanced MLB ID Mapper")
+    print("=" * 60)
+    
+    mapper = GoogleSheetsUPIDMapper()
+    enhanced_cache = mapper.build_enhanced_cache()
+    
+    if enhanced_cache:
+        print(f"\n🎉 UPID-based ID mapping complete!")
+        print(f"📁 Cache saved to: {CACHE_FILE}")
+        print(f"🔗 Next steps:")
+        print(f"   1. Run service tracker: python3 service_time/flagged_service_tracker.py")
+        print(f"   2. Update progress bar sheets")
+        print(f"   3. Verify player position classifications")
+    else:
+        print(f"\n❌ ID mapping failed")
+
+if __name__ == "__main__":
+    main()
