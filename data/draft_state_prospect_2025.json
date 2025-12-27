@@ -1,0 +1,22 @@
+{
+  "status": "paused",
+  "draft_type": "prospect",
+  "season": 2025,
+  "current_pick_index": 1,
+  "picks_made": [
+    {
+      "round": 1,
+      "pick": 1,
+      "team": "WIZ",
+      "round_type": "protected",
+      "player": "Daniel Palencia",
+      "timestamp": "2025-12-17T13:24:22.514565",
+      "pick_index": 0
+    }
+  ],
+  "timer_started_at": null,
+  "paused_at": "2025-12-17T13:24:49.263668",
+  "started_at": "2025-12-17T13:14:20.731596",
+  "completed_at": null,
+  "last_updated": "2025-12-17T13:24:49.263845"
+}

@@ -1,23 +1,20 @@
-# bot.py
+# bot.py - FBP Trade Bot with Draft System
 
 import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-# Load env vars from local .env (optional for local dev)
 load_dotenv()
 
-# Set up Discord token
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-# Write Google credentials from env (Render secret)
+# Write credentials from env
 google_creds = os.getenv("GOOGLE_CREDS_JSON")
 if google_creds:
     with open("google_creds.json", "w") as f:
         f.write(google_creds)
 
-# Write Yahoo token from env
 yahoo_token = os.getenv("YAHOO_TOKEN_JSON")
 if yahoo_token:
     with open("token.json", "w") as f:
@@ -30,12 +27,10 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# Only sync slash commands manually or during dev
 @bot.event
 async def on_ready():
     print(f"✅ {bot.user} is online.")
     
-    # Set custom status
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -43,17 +38,25 @@ async def on_ready():
         )
     )
 
-# Load commands when the bot is ready
 @bot.event
 async def setup_hook():
+    await bot.load_extension("commands.draft")
+    await bot.load_extension("commands.board")
     await bot.load_extension("commands.trade")
     await bot.load_extension("commands.roster")
     await bot.load_extension("commands.player")
     await bot.load_extension("commands.standings")
-    # Add more cogs here as needed
+    
+    print("🔄 Syncing slash commands...")
+    await bot.tree.sync()
+    print("✅ Slash commands synced")
+
+@bot.command()
+@commands.is_owner()
+async def sync(ctx):
+    """Manually sync slash commands (owner only)"""
+    await bot.tree.sync()
+    await ctx.send("✅ Commands synced!")
 
 if __name__ == "__main__":
     bot.run(TOKEN)
-
-
-

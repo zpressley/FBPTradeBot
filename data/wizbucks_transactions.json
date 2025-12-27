@@ -1,0 +1,2102 @@
+[
+  {
+    "id": 1,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 100
+  },
+  {
+    "id": 2,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 100
+  },
+  {
+    "id": 3,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "The Bluke Blokes",
+    "balance": 100
+  },
+  {
+    "id": 4,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 100
+  },
+  {
+    "id": 5,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 120,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 120
+  },
+  {
+    "id": 6,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 120,
+    "debit": 0,
+    "manager": "Rick Vaughn",
+    "balance": 120
+  },
+  {
+    "id": 7,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 120,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 120
+  },
+  {
+    "id": 8,
+    "action": "Admin Add",
+    "note": "Pre-season CB Reward",
+    "date": "1/28/2025",
+    "credit": 120,
+    "debit": 0,
+    "manager": "La Flama Blanca",
+    "balance": 120
+  },
+  {
+    "id": 9,
+    "action": "Admin Add",
+    "note": "Pre-season EB Reward",
+    "date": "1/28/2025",
+    "credit": 140,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 140
+  },
+  {
+    "id": 10,
+    "action": "Admin Add",
+    "note": "Pre-season EB Reward",
+    "date": "1/28/2025",
+    "credit": 140,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 140
+  },
+  {
+    "id": 11,
+    "action": "Admin Add",
+    "note": "Pre-season EB Reward",
+    "date": "1/28/2025",
+    "credit": 140,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 140
+  },
+  {
+    "id": 12,
+    "action": "Admin Add",
+    "note": "Pre-season EB Reward",
+    "date": "1/28/2025",
+    "credit": 140,
+    "debit": 0,
+    "manager": "Jepordizers!",
+    "balance": 140
+  },
+  {
+    "id": 13,
+    "action": "Buy-In RD",
+    "note": "Round 1 Buy in",
+    "date": "2/6/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Rick Vaughn",
+    "balance": 110
+  },
+  {
+    "id": 14,
+    "action": "PC",
+    "note": "PAD - 8 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 80,
+    "manager": "Hammers",
+    "balance": 40
+  },
+  {
+    "id": 15,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 30
+  },
+  {
+    "id": 16,
+    "action": "PC",
+    "note": "PAD - 8 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 80,
+    "manager": "Rick Vaughn",
+    "balance": 30
+  },
+  {
+    "id": 17,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Rick Vaughn",
+    "balance": 20
+  },
+  {
+    "id": 18,
+    "action": "PC",
+    "note": "PAD - 12 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 120,
+    "manager": "Btwn2Jackies",
+    "balance": 20
+  },
+  {
+    "id": 19,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Btwn2Jackies",
+    "balance": 10
+  },
+  {
+    "id": 20,
+    "action": "PC",
+    "note": "PAD - 12 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 120,
+    "manager": "Country Fried Lamb",
+    "balance": 20
+  },
+  {
+    "id": 21,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Country Fried Lamb",
+    "balance": 10
+  },
+  {
+    "id": 22,
+    "action": "PC",
+    "note": "PAD - 9 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 90,
+    "manager": "Law-Abiding Citizens",
+    "balance": 30
+  },
+  {
+    "id": 23,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Law-Abiding Citizens",
+    "balance": 20
+  },
+  {
+    "id": 24,
+    "action": "PC",
+    "note": "PAD - 10 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 100,
+    "manager": "La Flama Blanca",
+    "balance": 20
+  },
+  {
+    "id": 25,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "La Flama Blanca",
+    "balance": 10
+  },
+  {
+    "id": 26,
+    "action": "PC",
+    "note": "PAD - 7 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 70,
+    "manager": "Jepordizers!",
+    "balance": 70
+  },
+  {
+    "id": 27,
+    "action": "DC Slot",
+    "note": "PAD - 1 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 5,
+    "manager": "Jepordizers!",
+    "balance": 65
+  },
+  {
+    "id": 28,
+    "action": "PC",
+    "note": "PAD - 5 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 50,
+    "manager": "The Bluke Blokes",
+    "balance": 50
+  },
+  {
+    "id": 29,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "The Bluke Blokes",
+    "balance": 40
+  },
+  {
+    "id": 30,
+    "action": "PC",
+    "note": "PAD - 5 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 50,
+    "manager": "Whiz Kids",
+    "balance": 50
+  },
+  {
+    "id": 31,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 40
+  },
+  {
+    "id": 32,
+    "action": "PC",
+    "note": "PAD - 6 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 60,
+    "manager": "Andromedans",
+    "balance": 40
+  },
+  {
+    "id": 33,
+    "action": "DC Slot",
+    "note": "PAD - 1 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 5,
+    "manager": "Andromedans",
+    "balance": 35
+  },
+  {
+    "id": 34,
+    "action": "PC",
+    "note": "PAD - 10 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 100,
+    "manager": "not much of a donkey",
+    "balance": 0
+  },
+  {
+    "id": 35,
+    "action": "PC",
+    "note": "PAD - 6 PC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 60,
+    "manager": "Weekend Warriors",
+    "balance": 80
+  },
+  {
+    "id": 36,
+    "action": "DC Slot",
+    "note": "PAD - 2 DC Purchased",
+    "date": "2/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Weekend Warriors",
+    "balance": 70
+  },
+  {
+    "id": 37,
+    "action": "PC",
+    "note": "PAD - 1 PC Purchased",
+    "date": "2/12/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "The Bluke Blokes",
+    "balance": 30
+  },
+  {
+    "id": 38,
+    "action": "Buy-In RD",
+    "note": "Rd 1, 5, 6 Buy In",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Andromedans",
+    "balance": 5
+  },
+  {
+    "id": 39,
+    "action": "Buy-In RD",
+    "note": "Rd 1 Buy in",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "The Bluke Blokes",
+    "balance": 20
+  },
+  {
+    "id": 40,
+    "action": "Buy-In RD",
+    "note": "Rd 1, 5, 6, 7",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Whiz Kids",
+    "balance": 0
+  },
+  {
+    "id": 41,
+    "action": "Buy-In RD",
+    "note": "Rd 1, 5",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Hammers",
+    "balance": 10
+  },
+  {
+    "id": 42,
+    "action": "Buy-In RD",
+    "note": "Rd 1",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "La Flama Blanca",
+    "balance": 0
+  },
+  {
+    "id": 43,
+    "action": "Buy-In RD",
+    "note": "Rd 1",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Btwn2Jackies",
+    "balance": 0
+  },
+  {
+    "id": 44,
+    "action": "Buy-In RD",
+    "note": "Rd 1",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Country Fried Lamb",
+    "balance": 0
+  },
+  {
+    "id": 45,
+    "action": "Buy-In RD",
+    "note": "Rd 1, 5, 6 Buy In",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Weekend Warriors",
+    "balance": 40
+  },
+  {
+    "id": 46,
+    "action": "Buy-In RD",
+    "note": "Rd 1, 5, 6 Buy In",
+    "date": "2/17/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Jepordizers!",
+    "balance": 35
+  },
+  {
+    "id": 47,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 100
+  },
+  {
+    "id": 48,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 105
+  },
+  {
+    "id": 49,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "The Bluke Blokes",
+    "balance": 120
+  },
+  {
+    "id": 50,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 100
+  },
+  {
+    "id": 51,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 110
+  },
+  {
+    "id": 52,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Rick Vaughn",
+    "balance": 120
+  },
+  {
+    "id": 53,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 120
+  },
+  {
+    "id": 54,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "La Flama Blanca",
+    "balance": 100
+  },
+  {
+    "id": 55,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 100
+  },
+  {
+    "id": 56,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 100
+  },
+  {
+    "id": 57,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 140
+  },
+  {
+    "id": 58,
+    "action": "Admin Add",
+    "note": "Auction Portal Allotment",
+    "date": "2/19/2025",
+    "credit": 100,
+    "debit": 0,
+    "manager": "Jepordizers!",
+    "balance": 135
+  },
+  {
+    "id": 59,
+    "action": "Trade Sent",
+    "note": "2/20 12:10",
+    "date": "2/21/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Country Fried Lamb",
+    "balance": 90
+  },
+  {
+    "id": 60,
+    "action": "Trade Acq",
+    "note": "2/20 12:10",
+    "date": "2/21/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 115
+  },
+  {
+    "id": 61,
+    "action": "Trade Sent",
+    "note": "2/20 4:35",
+    "date": "2/21/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Andromedans",
+    "balance": 95
+  },
+  {
+    "id": 62,
+    "action": "Trade Acq",
+    "note": "2/20 4:35",
+    "date": "2/21/2025",
+    "credit": 20,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 120
+  },
+  {
+    "id": 63,
+    "action": "Trade Sent",
+    "note": "2/20 19:04",
+    "date": "2/21/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Law-Abiding Citizens",
+    "balance": 100
+  },
+  {
+    "id": 64,
+    "action": "Trade Acq",
+    "note": "2/20 19:04",
+    "date": "2/21/2025",
+    "credit": 20,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 110
+  },
+  {
+    "id": 65,
+    "action": "Trade Sent",
+    "note": "2/20 19:59",
+    "date": "2/21/2025",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Jepordizers!",
+    "balance": 95
+  },
+  {
+    "id": 66,
+    "action": "Trade Acq",
+    "note": "2/20 19:59",
+    "date": "2/21/2025",
+    "credit": 40,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 150
+  },
+  {
+    "id": 67,
+    "action": "PC",
+    "note": "Matthew Lugo",
+    "date": "2/22/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Weekend Warriors",
+    "balance": 130
+  },
+  {
+    "id": 68,
+    "action": "Trade Sent",
+    "note": "2/22 5:20",
+    "date": "2/24/2025",
+    "credit": 0,
+    "debit": 5,
+    "manager": "Hammers",
+    "balance": 105
+  },
+  {
+    "id": 69,
+    "action": "Trade Acq",
+    "note": "2/22 5:20",
+    "date": "2/24/2025",
+    "credit": 5,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 135
+  },
+  {
+    "id": 70,
+    "action": "Trade Sent",
+    "note": "2/22/25 12:12",
+    "date": "2/24/2025",
+    "credit": 30,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 180
+  },
+  {
+    "id": 71,
+    "action": "Trade Acq",
+    "note": "2/22/25 12:12",
+    "date": "2/24/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Hammers",
+    "balance": 75
+  },
+  {
+    "id": 72,
+    "action": "PC",
+    "note": "Cooper Ingle, Ryan Waldschmidt",
+    "date": "2/28/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Whiz Kids",
+    "balance": 100
+  },
+  {
+    "id": 73,
+    "action": "Trade Acq",
+    "note": "2/26 1:11",
+    "date": "2/28/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 110
+  },
+  {
+    "id": 74,
+    "action": "Trade Sent",
+    "note": "2/26 1:11",
+    "date": "2/28/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Country Fried Lamb",
+    "balance": 170
+  },
+  {
+    "id": 75,
+    "action": "Trade Sent",
+    "note": "",
+    "date": "",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Country Fried Lamb",
+    "balance": 155
+  },
+  {
+    "id": 76,
+    "action": "Trade Acq",
+    "note": "",
+    "date": "",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 125
+  },
+  {
+    "id": 77,
+    "action": "PC",
+    "note": "Marc Church",
+    "date": "",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 85
+  },
+  {
+    "id": 78,
+    "action": "Waiver",
+    "note": "Cory Lewis (MIN - RHP)",
+    "date": "3/22",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Jepordizers!",
+    "balance": 85
+  },
+  {
+    "id": 79,
+    "action": "Waiver",
+    "note": "Sawyer Gipson-Long (DET - SP), Gabriel Rincones (PHI - OF)",
+    "date": "3/22",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Weekend Warriors",
+    "balance": 95
+  },
+  {
+    "id": 80,
+    "action": "Waiver",
+    "note": "Shotaro Morii (ATH - SS)",
+    "date": "3/22",
+    "credit": 0,
+    "debit": 10,
+    "manager": "La Flama Blanca",
+    "balance": 90
+  },
+  {
+    "id": 81,
+    "action": "Waiver",
+    "note": "Logan Henderson (MIL - RHP)",
+    "date": "3/22",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 65
+  },
+  {
+    "id": 82,
+    "action": "Waiver",
+    "note": "Craig Yoho (MIL - RHP)",
+    "date": "3/22",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Andromedans",
+    "balance": 45
+  },
+  {
+    "id": 83,
+    "action": "PC",
+    "note": "Richard Fitts",
+    "date": "3/25/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 35
+  },
+  {
+    "id": 84,
+    "action": "PC",
+    "note": "Robert Hassell III",
+    "date": "3/25/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 25
+  },
+  {
+    "id": 85,
+    "action": "Trade Sent",
+    "note": "25",
+    "date": "3/27/2025",
+    "credit": 0,
+    "debit": 25,
+    "manager": "Weekend Warriors",
+    "balance": 70
+  },
+  {
+    "id": 86,
+    "action": "Trade Acq",
+    "note": "25",
+    "date": "3/27/2025",
+    "credit": 25,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 50
+  },
+  {
+    "id": 87,
+    "action": "Waiver",
+    "note": "Alan Roden (TOR - OF)",
+    "date": "4/7/2025",
+    "credit": 0,
+    "debit": 25,
+    "manager": "Country Fried Lamb",
+    "balance": 130
+  },
+  {
+    "id": 88,
+    "action": "Waiver",
+    "note": "Edgardo Henriquez (LAD - RHP)",
+    "date": "4/7/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "La Flama Blanca",
+    "balance": 70
+  },
+  {
+    "id": 89,
+    "action": "Waiver",
+    "note": "Mason Montgomery (TB - LHP)",
+    "date": "4/7/2025",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Whiz Kids",
+    "balance": 85
+  },
+  {
+    "id": 90,
+    "action": "Waiver",
+    "note": "Tyson Neighbors (SD - RHP)",
+    "date": "4/7/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 40
+  },
+  {
+    "id": 91,
+    "action": "Trade Acq",
+    "note": "30",
+    "date": "4/7/2025",
+    "credit": 30,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 115
+  },
+  {
+    "id": 92,
+    "action": "Trade Sent",
+    "note": "30",
+    "date": "4/7/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Country Fried Lamb",
+    "balance": 100
+  },
+  {
+    "id": 93,
+    "action": "PC",
+    "note": "Purchase Thomas Saggase",
+    "date": "4/11/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Jepordizers!",
+    "balance": 75
+  },
+  {
+    "id": 94,
+    "action": "Waiver",
+    "note": "Shane Smith (CWS - RHP)",
+    "date": "4/14/2025",
+    "credit": 0,
+    "debit": 40,
+    "manager": "Weekend Warriors",
+    "balance": 30
+  },
+  {
+    "id": 95,
+    "action": "Waiver",
+    "note": "Forrest Whitley (HOU - SP)",
+    "date": "4/14/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "The Bluke Blokes",
+    "balance": 100
+  },
+  {
+    "id": 96,
+    "action": "Waiver",
+    "note": "Hunter Barco (PIT - LHP)",
+    "date": "4/14/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Hammers",
+    "balance": 45
+  },
+  {
+    "id": 97,
+    "action": "Waiver",
+    "note": "Brice Matthews (HOU - SS)",
+    "date": "4/14/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 105
+  },
+  {
+    "id": 98,
+    "action": "Waiver",
+    "note": "Michael McGreevy (STL - RHP)",
+    "date": "4/21/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 95
+  },
+  {
+    "id": 99,
+    "action": "Waiver",
+    "note": "Cristian Mena (AZ - RHP)",
+    "date": "4/21/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 35
+  },
+  {
+    "id": 100,
+    "action": "Waiver",
+    "note": "Tim Tawa (ARI - 1B)",
+    "date": "4/28/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "La Flama Blanca",
+    "balance": 50
+  },
+  {
+    "id": 101,
+    "action": "Waiver",
+    "note": "Connelly Early (BOS - LHP)",
+    "date": "4/28/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 25
+  },
+  {
+    "id": 102,
+    "action": "Waiver",
+    "note": "Kameron Misner (TB - OF)",
+    "date": "4/28/2025",
+    "credit": 0,
+    "debit": 45,
+    "manager": "The Bluke Blokes",
+    "balance": 55
+  },
+  {
+    "id": 103,
+    "action": "PC",
+    "note": "Joey Cantillo",
+    "date": "4/28/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Jepordizers!",
+    "balance": 65
+  },
+  {
+    "id": 104,
+    "action": "Waiver",
+    "note": "Dasan Hill (MIN - LHP)",
+    "date": "5/5/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Rick Vaughn",
+    "balance": 100
+  },
+  {
+    "id": 105,
+    "action": "Waiver",
+    "note": "Otto Kemp (PHI - 3B)",
+    "date": "5/5/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Weekend Warriors",
+    "balance": 20
+  },
+  {
+    "id": 106,
+    "action": "Waiver",
+    "note": "Joe Mack (MIA - C)",
+    "date": "5/5/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Whiz Kids",
+    "balance": 80
+  },
+  {
+    "id": 107,
+    "action": "PC",
+    "note": "Caleb Durbin Purchase",
+    "date": "5/6/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 15
+  },
+  {
+    "id": 108,
+    "action": "Waiver",
+    "note": "Sean Linan (LAD - )",
+    "date": "5/13/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Btwn2Jackies",
+    "balance": 80
+  },
+  {
+    "id": 109,
+    "action": "Waiver",
+    "note": "Colton Gordon (HOU - LHP)",
+    "date": "5/19/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 30
+  },
+  {
+    "id": 110,
+    "action": "Trade Sent",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 70
+  },
+  {
+    "id": 111,
+    "action": "Trade Acq",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Rick Vaughn",
+    "balance": 110
+  },
+  {
+    "id": 112,
+    "action": "Trade Sent",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "not much of a donkey",
+    "balance": 90
+  },
+  {
+    "id": 113,
+    "action": "Trade Acq",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 40
+  },
+  {
+    "id": 114,
+    "action": "Trade Sent",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 30
+  },
+  {
+    "id": 115,
+    "action": "Trade Acq",
+    "note": "10",
+    "date": "5/20/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 110
+  },
+  {
+    "id": 116,
+    "action": "Refund",
+    "note": "Rayner Arias Released",
+    "date": "5/20/2025",
+    "credit": 5,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 20
+  },
+  {
+    "id": 117,
+    "action": "PC",
+    "note": "Logan Evans (SEA - RHP)",
+    "date": "5/20/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 10
+  },
+  {
+    "id": 118,
+    "action": "Waiver",
+    "note": "Luis Pena (MIL - SS)",
+    "date": "5/26/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Weekend Warriors",
+    "balance": 5
+  },
+  {
+    "id": 119,
+    "action": "Waiver",
+    "note": "Juan Mateo (ATL - SS)",
+    "date": "5/26/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 20
+  },
+  {
+    "id": 120,
+    "action": "PC",
+    "note": "Mick Abel",
+    "date": "5/26/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Law-Abiding Citizens",
+    "balance": 90
+  },
+  {
+    "id": 121,
+    "action": "PC",
+    "note": "Jacob Melton",
+    "date": "5/26/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "The Bluke Blokes",
+    "balance": 45
+  },
+  {
+    "id": 122,
+    "action": "Trade Sent",
+    "note": "Metlon/Darvish Trade",
+    "date": "5/26/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "The Bluke Blokes",
+    "balance": 25
+  },
+  {
+    "id": 123,
+    "action": "Trade Acq",
+    "note": "Metlon/Darvish Trade",
+    "date": "5/26/2025",
+    "credit": 20,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 25
+  },
+  {
+    "id": 124,
+    "action": "Waiver",
+    "note": "Hayden Harris (ATL - LHP)",
+    "date": "5/31/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Country Fried Lamb",
+    "balance": 95
+  },
+  {
+    "id": 125,
+    "action": "Refund",
+    "note": "Jobe",
+    "date": "6/6/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 40
+  },
+  {
+    "id": 126,
+    "action": "Refund",
+    "note": "Shane Smith",
+    "date": "6/6/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Weekend Warriors",
+    "balance": 55
+  },
+  {
+    "id": 127,
+    "action": "Refund",
+    "note": "AJSS",
+    "date": "6/6/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 25
+  },
+  {
+    "id": 128,
+    "action": "PC",
+    "note": "Chase Meirdroth",
+    "date": "6/6/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 10
+  },
+  {
+    "id": 129,
+    "action": "Trade Sent",
+    "note": "$15 - McLain Trade - WAR",
+    "date": "6/8/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Weekend Warriors",
+    "balance": 40
+  },
+  {
+    "id": 130,
+    "action": "Trade Acq",
+    "note": "$15 - McLain Trade - DRO",
+    "date": "6/8/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 25
+  },
+  {
+    "id": 131,
+    "action": "Refund",
+    "note": "NOEL",
+    "date": "6/6/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 40
+  },
+  {
+    "id": 132,
+    "action": "Waiver",
+    "note": "Luis Mey (CIN - RHP)",
+    "date": "6/9/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "La Flama Blanca",
+    "balance": 40
+  },
+  {
+    "id": 133,
+    "action": "Waiver",
+    "note": "Ryan Ritter (COL - SS)",
+    "date": "6/9/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Andromedans",
+    "balance": 20
+  },
+  {
+    "id": 134,
+    "action": "Refund",
+    "note": "Will Wagner",
+    "date": "6/9/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 35
+  },
+  {
+    "id": 135,
+    "action": "Waiver",
+    "note": "Aroon Escobar",
+    "date": "6/17/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "La Flama Blanca",
+    "balance": 20
+  },
+  {
+    "id": 136,
+    "action": "Waiver",
+    "note": "Mike Sirota",
+    "date": "6/17/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Whiz Kids",
+    "balance": 55
+  },
+  {
+    "id": 137,
+    "action": "PC",
+    "note": "Grant Taylor",
+    "date": "6/19/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "not much of a donkey",
+    "balance": 80
+  },
+  {
+    "id": 138,
+    "action": "Waiver",
+    "note": "Gage Jump (ATH - LHP)",
+    "date": "6/23/2025",
+    "credit": 0,
+    "debit": 25,
+    "manager": "Weekend Warriors",
+    "balance": 15
+  },
+  {
+    "id": 139,
+    "action": "Waiver",
+    "note": "Didier Fuentes (ATL - RHP)",
+    "date": "6/23/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Country Fried Lamb",
+    "balance": 80
+  },
+  {
+    "id": 140,
+    "action": "Waiver",
+    "note": "Jonathan Long (CHC - 1B)",
+    "date": "6/23/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 25
+  },
+  {
+    "id": 141,
+    "action": "Waiver",
+    "note": "James Tibbs III (SF - OF)",
+    "date": "6/23/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 45
+  },
+  {
+    "id": 142,
+    "action": "Trade Sent",
+    "note": "Rodriguez/Detmers/Altuve Trade",
+    "date": "7/3/2025",
+    "credit": 0,
+    "debit": 5,
+    "manager": "Andromedans",
+    "balance": 20
+  },
+  {
+    "id": 143,
+    "action": "Trade Acq",
+    "note": "Rodriguez/Detmers/Altuve Trade",
+    "date": "7/3/2025",
+    "credit": 5,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 95
+  },
+  {
+    "id": 144,
+    "action": "PC",
+    "note": "Carson Benge",
+    "date": "7/3/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Rick Vaughn",
+    "balance": 100
+  },
+  {
+    "id": 145,
+    "action": "Refund",
+    "note": "Caleb Durbin",
+    "date": "7/3/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 40
+  },
+  {
+    "id": 146,
+    "action": "Refund",
+    "note": "Alan Roden",
+    "date": "7/3/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 95
+  },
+  {
+    "id": 147,
+    "action": "Refund",
+    "note": "Adael Amador",
+    "date": "7/3/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 110
+  },
+  {
+    "id": 148,
+    "action": "Refund",
+    "note": "Cristhian Vaquero",
+    "date": "7/3/2025",
+    "credit": 5,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 115
+  },
+  {
+    "id": 149,
+    "action": "Trade Sent",
+    "note": "Anthony Volpe Trade",
+    "date": "7/3/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 35
+  },
+  {
+    "id": 150,
+    "action": "Trade Acq",
+    "note": "Anthony Volpe Trade",
+    "date": "7/3/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "La Flama Blanca",
+    "balance": 30
+  },
+  {
+    "id": 151,
+    "action": "Trade Sent",
+    "note": "Gore Carroll King Wacha Trade",
+    "date": "7/3/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Law-Abiding Citizens",
+    "balance": 85
+  },
+  {
+    "id": 152,
+    "action": "Trade Acq",
+    "note": "Gore Carroll King Wacha Trade",
+    "date": "7/3/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 125
+  },
+  {
+    "id": 153,
+    "action": "Trade Sent",
+    "note": "Snell Stott Bellinger Semien Trade",
+    "date": "7/3/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Law-Abiding Citizens",
+    "balance": 75
+  },
+  {
+    "id": 154,
+    "action": "Trade Acq",
+    "note": "Snell Stott Bellinger Semien Trade",
+    "date": "7/3/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 45
+  },
+  {
+    "id": 155,
+    "action": "Trade Acq",
+    "note": "6/9/25 Trade Correction",
+    "date": "7/5/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 55
+  },
+  {
+    "id": 156,
+    "action": "PC",
+    "note": "Trevor Harrison (Traded)",
+    "date": "7/5/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 10
+  },
+  {
+    "id": 157,
+    "action": "Trade Acq",
+    "note": "Woodruff/Bradley Trade",
+    "date": "7/5/2025",
+    "credit": 30,
+    "debit": 0,
+    "manager": "Country Fried Lamb",
+    "balance": 155
+  },
+  {
+    "id": 158,
+    "action": "Waiver",
+    "note": "Kaelen Culpepper",
+    "date": "7/8/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 45
+  },
+  {
+    "id": 159,
+    "action": "Waiver",
+    "note": "Payton Tolle (BOS - LHP)",
+    "date": "7/21/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Rick Vaughn",
+    "balance": 80
+  },
+  {
+    "id": 160,
+    "action": "Waiver",
+    "note": "Edward Florentino (PIT - 1B)",
+    "date": "7/21/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 35
+  },
+  {
+    "id": 161,
+    "action": "Waiver",
+    "note": "Roc Riggio (NYY - 2B)",
+    "date": "7/21/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Whiz Kids",
+    "balance": 30
+  },
+  {
+    "id": 162,
+    "action": "PC",
+    "note": "Ignacio Alvarez",
+    "date": "7/21/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Jepordizers!",
+    "balance": 55
+  },
+  {
+    "id": 163,
+    "action": "Refund",
+    "note": "Jordan Wicks Graduate",
+    "date": "7/25/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 95
+  },
+  {
+    "id": 164,
+    "action": "Waiver",
+    "note": "Eduardo Quintero",
+    "date": "7/28/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "not much of a donkey",
+    "balance": 75
+  },
+  {
+    "id": 165,
+    "action": "Refund",
+    "note": "James Wood",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 95
+  },
+  {
+    "id": 166,
+    "action": "Refund",
+    "note": "Ivan Herrera",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 110
+  },
+  {
+    "id": 167,
+    "action": "Refund",
+    "note": "Jacob Wilson",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 125
+  },
+  {
+    "id": 168,
+    "action": "Refund",
+    "note": "Jasson Dominguez",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Btwn2Jackies",
+    "balance": 140
+  },
+  {
+    "id": 169,
+    "action": "Refund",
+    "note": "Junior Caminero",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 90
+  },
+  {
+    "id": 170,
+    "action": "Refund",
+    "note": "Evan Carter",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 105
+  },
+  {
+    "id": 171,
+    "action": "Refund",
+    "note": "David Festa",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 90
+  },
+  {
+    "id": 172,
+    "action": "Refund",
+    "note": "Jackson Holliday",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 105
+  },
+  {
+    "id": 173,
+    "action": "Refund",
+    "note": "Brooks Lee",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 120
+  },
+  {
+    "id": 174,
+    "action": "Refund",
+    "note": "Jack Leiter",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Law-Abiding Citizens",
+    "balance": 135
+  },
+  {
+    "id": 175,
+    "action": "Refund",
+    "note": "Kyle Manzardo",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Rick Vaughn",
+    "balance": 95
+  },
+  {
+    "id": 176,
+    "action": "Refund",
+    "note": "Cam Smith",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Rick Vaughn",
+    "balance": 110
+  },
+  {
+    "id": 177,
+    "action": "Refund",
+    "note": "Agustin Ramirez",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 25
+  },
+  {
+    "id": 178,
+    "action": "Refund",
+    "note": "Ben Brown",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "The Bluke Blokes",
+    "balance": 40
+  },
+  {
+    "id": 179,
+    "action": "Refund",
+    "note": "Connor Norby",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "The Bluke Blokes",
+    "balance": 55
+  },
+  {
+    "id": 180,
+    "action": "Refund",
+    "note": "Max Meyer",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "The Bluke Blokes",
+    "balance": 70
+  },
+  {
+    "id": 181,
+    "action": "Refund",
+    "note": "Hayden Birdsong",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "La Flama Blanca",
+    "balance": 45
+  },
+  {
+    "id": 182,
+    "action": "Refund",
+    "note": "Will Warren",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Jepordizers!",
+    "balance": 70
+  },
+  {
+    "id": 183,
+    "action": "Refund",
+    "note": "Joey Cantillo",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Jepordizers!",
+    "balance": 85
+  },
+  {
+    "id": 184,
+    "action": "Refund",
+    "note": "Cade Povich",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Jepordizers!",
+    "balance": 100
+  },
+  {
+    "id": 185,
+    "action": "Refund",
+    "note": "Colton Gordon",
+    "date": "7/28/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Andromedans",
+    "balance": 40
+  },
+  {
+    "id": 186,
+    "action": "Trade Acq",
+    "note": "Evan Carter",
+    "date": "7/29/2025",
+    "credit": 10,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 115
+  },
+  {
+    "id": 187,
+    "action": "Trade Acq",
+    "note": "Evan Carter",
+    "date": "7/29/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Country Fried Lamb",
+    "balance": 145
+  },
+  {
+    "id": 188,
+    "action": "PC",
+    "note": "Tyler Locklear",
+    "date": "7/30/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Rick Vaughn",
+    "balance": 100
+  },
+  {
+    "id": 189,
+    "action": "PC",
+    "note": "Alex Freeland",
+    "date": "7/30/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Rick Vaughn",
+    "balance": 90
+  },
+  {
+    "id": 190,
+    "action": "Waiver",
+    "note": "Josh Adamczewski",
+    "date": "8/2/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Weekend Warriors",
+    "balance": 5
+  },
+  {
+    "id": 191,
+    "action": "Waiver",
+    "note": "Jaxon Wiggins",
+    "date": "8/2/2025",
+    "credit": 0,
+    "debit": 15,
+    "manager": "Country Fried Lamb",
+    "balance": 130
+  },
+  {
+    "id": 192,
+    "action": "Waiver",
+    "note": "Kendrys Rojas",
+    "date": "8/2/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Hammers",
+    "balance": 25
+  },
+  {
+    "id": 193,
+    "action": "Waiver",
+    "note": "Carlos LaGrange",
+    "date": "8/2/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Andromedans",
+    "balance": 30
+  },
+  {
+    "id": 194,
+    "action": "Waiver",
+    "note": "Nolan McLean",
+    "date": "8/2/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "not much of a donkey",
+    "balance": 85
+  },
+  {
+    "id": 195,
+    "action": "PC",
+    "note": "Hector Rodriguez (Traded)",
+    "date": "7/31/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "not much of a donkey",
+    "balance": 75
+  },
+  {
+    "id": 196,
+    "action": "Refund",
+    "note": "Jonatan Clase",
+    "date": "8/4/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 40
+  },
+  {
+    "id": 197,
+    "action": "Refund",
+    "note": "Logan Evans",
+    "date": "8/4/2025",
+    "credit": 15,
+    "debit": 0,
+    "manager": "Hammers",
+    "balance": 55
+  },
+  {
+    "id": 198,
+    "action": "Trade Acq",
+    "note": "Gavin Williams",
+    "date": "8/4/2025",
+    "credit": 20,
+    "debit": 0,
+    "manager": "not much of a donkey",
+    "balance": 95
+  },
+  {
+    "id": 199,
+    "action": "Trade Sent",
+    "note": "Gavin Williams",
+    "date": "8/4/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Andromedans",
+    "balance": 10
+  },
+  {
+    "id": 200,
+    "action": "PC",
+    "note": "Thomas White (Trade to B2J)",
+    "date": "8/4/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Jepordizers!",
+    "balance": 90
+  },
+  {
+    "id": 201,
+    "action": "Trade Acq",
+    "note": "7/21/25 Trade",
+    "date": "8/4/2025",
+    "credit": 30,
+    "debit": 0,
+    "manager": "Whiz Kids",
+    "balance": 60
+  },
+  {
+    "id": 202,
+    "action": "Trade Sent",
+    "note": "7/21/25 Trade",
+    "date": "8/4/2025",
+    "credit": 0,
+    "debit": 30,
+    "manager": "Country Fried Lamb",
+    "balance": 100
+  },
+  {
+    "id": 203,
+    "action": "Waiver",
+    "note": "Khal Stephen (TOR - RHP)",
+    "date": "8/9/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "not much of a donkey",
+    "balance": 85
+  },
+  {
+    "id": 204,
+    "action": "Waiver",
+    "note": "Dylan Beavers (BAL - OF)",
+    "date": "8/9/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Jepordizers!",
+    "balance": 70
+  },
+  {
+    "id": 205,
+    "action": "Waiver",
+    "note": "Jakob Marsee (MIA - OF)",
+    "date": "8/9/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Whiz Kids",
+    "balance": 50
+  },
+  {
+    "id": 206,
+    "action": "Waiver",
+    "note": "Kyle Karros (COL - 3B)",
+    "date": "8/17/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "Hammers",
+    "balance": 35
+  },
+  {
+    "id": 207,
+    "action": "Waiver",
+    "note": "Caleb Bonemer (CWS - SS)",
+    "date": "8/17/2025",
+    "credit": 0,
+    "debit": 20,
+    "manager": "not much of a donkey",
+    "balance": 65
+  },
+  {
+    "id": 208,
+    "action": "Waiver",
+    "note": "Rainel Rodriguez (STL-C)",
+    "date": "8/24/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Btwn2Jackies",
+    "balance": 130
+  },
+  {
+    "id": 209,
+    "action": "Waiver",
+    "note": "Charlee Soto",
+    "date": "9/1/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Btwn2Jackies",
+    "balance": 120
+  },
+  {
+    "id": 210,
+    "action": "PC",
+    "note": "Luis Morales",
+    "date": "9/1/2025",
+    "credit": 0,
+    "debit": 10,
+    "manager": "Btwn2Jackies",
+    "balance": 110
+  }
+]
