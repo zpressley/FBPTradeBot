@@ -1,0 +1,46 @@
+name: Notify Website of Data Changes
+
+on:
+  push:
+    paths:
+      - 'data/**'  # Only trigger when files in data/ directory change
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Log data change
+        run: |
+          echo "📊 Data files changed in bot repo"
+          echo "Commit: ${{ github.sha }}"
+          echo "Message: ${{ github.event.head_commit.message }}"
+      
+      - name: Trigger website update
+        run: |
+          echo "�� Notifying website repo..."
+          
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.WEBSITE_REPO_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository_owner }}/fbp-hub-website/dispatches \
+            -d '{
+              "event_type": "data_updated",
+              "client_payload": {
+                "source": "bot_repo",
+                "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",
+                "commit": "${{ github.sha }}",
+                "message": "${{ github.event.head_commit.message }}"
+              }
+            }'
+          
+          echo "✅ Website notification sent at $(date)"
+      
+      - name: Summary
+        run: |
+          echo "### 🎉 Website Update Triggered" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The FBP Hub website has been notified of data changes." >> $GITHUB_STEP_SUMMARY
+          echo "Website will pull latest data within ~30 seconds." >> $GITHUB_STEP_SUMMARY
