@@ -141,12 +141,13 @@ async def api_place_bid(
 
         # Fire-and-forget Discord log
         bid = result.get("bid", {})
-        emoji = "📣" if bid.get("bid_type") == "OB" else "⚔️"
+        is_ob = bid.get("bid_type", payload.bid_type) == "OB"
+        header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
         content = (
-            f"{emoji} **Auction Bid**\n"
-            f"Team: `{bid.get('team', payload.team)}`\n"
-            f"Prospect: `{bid.get('prospect_id', payload.prospect_id)}`\n"
-            f"Amount: ${bid.get('amount', payload.amount)} WB ({bid.get('bid_type', payload.bid_type)})\n"
+            f"{header}\n\n"
+            f"🏷️ Team: {bid.get('team', payload.team)}\n"
+            f"💰 Bid: ${bid.get('amount', payload.amount)}\n"
+            f"🧢 Player: {bid.get('prospect_id', payload.prospect_id)}\n\n"
             f"Source: Website Portal"
         )
         bot.loop.create_task(_send_auction_log_message(content))

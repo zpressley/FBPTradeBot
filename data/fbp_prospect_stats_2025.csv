@@ -1,0 +1,651 @@
+upid,name,manager,contract,mlb_id,player_type,rank,team,age,teamId,playerId,full_name,gamesPitched,whip,inningsPitched,hits,runs,earnedRuns,baseOnBalls,strikeOuts,homeRuns,outs,battersFaced,pitchesThrown,era,saves,holds,blownSaves,wins,losses,sportAbbrev,atBats,doubles,triples,obp,ops,slg,rbi,stolenBases,caughtStealing,leftOnBase,totalBases,avg,position
+3930,Brandon Sproat,Andromedans,Purchased Contract,687075,pitcher,5,nym,25,121.0,687075,Brandon Sproat,30.0,1.24,141.2,115,73,68.0,60,130,9,425.0,596.0,,4.32,0.0,0.0,0.0,8.0,8.0,ALL (2),,,,,,,,,,,,,
+3495,Nick Yorke,Andromedans,Purchased Contract,694377,batter,12,pit,23,,694377,Nick Yorke,,,,131,62,,39,112,8,,,,,,,,,,ALL (2),470.0,24.0,3.0,0.336,0.73,0.394,67.0,18.0,6.0,212.0,185.0,0.279,2B
+3997,Marc Church,Andromedans,Purchased Contract,687847,pitcher,25,tex,24,140.0,687847,Marc Church,13.0,2.67,12.0,17,10,10.0,15,15,1,36.0,67.0,,7.5,0.0,2.0,1.0,0.0,1.0,ALL (4),,,,,,,,,,,,,
+6649,Thayron Liranzo,Andromedans,Purchased Contract,699073,batter,5,det,22,,699073,Thayron Liranzo,,,,70,49,,47,125,11,,,,,,,,,,AA,339.0,16.0,0.0,0.308,0.659,0.351,45.0,0.0,0.0,181.0,119.0,0.206,C
+7635,Zyhir Hope,Andromedans,Development Cont.,814307,batter,2,la,20,,814307,Zyhir Hope,,,,122,69,,79,143,13,,,,,,,,,,ALL (2),458.0,29.0,3.0,0.376,0.804,0.428,80.0,27.0,6.0,249.0,196.0,0.266,CF
+7709,Jurrangelo Cijntje,Andromedans,Farm Contract,701388,pitcher,7,sea,22,136.0,701388,Jurrangelo Cijntje,26.0,1.22,108.1,81,50,48.0,51,120,15,325.0,459.0,,3.99,0.0,0.0,0.0,5.0,7.0,ALL (2),,,,,,,,,,,,,
+7743,Jonathon Long,Andromedans,Purchased Contract,675085,batter,7,chc,23,,675085,Jonathon Long,,,,157,86,,79,116,20,,,,,,,,,,AAA,514.0,23.0,3.0,0.404,0.883,0.479,91.0,2.0,0.0,225.0,246.0,0.305,1B
+2436,Edwin Arroyo,Btwn2Jackies,Farm Contract,695490,batter,8,cin,22,,695490,Edwin Arroyo,,,,132,63,,40,88,3,,,,,,,,,,AA,464.0,23.0,4.0,0.345,0.716,0.371,44.0,12.0,7.0,153.0,172.0,0.284,SS
+3579,Miguel Bleis,Btwn2Jackies,Purchased Contract,694194,batter,13,bos,21,,694194,Miguel Bleis,,,,88,58,,41,106,14,,,,,,,,,,ALL (2),397.0,21.0,1.0,0.3,0.685,0.385,51.0,27.0,6.0,175.0,153.0,0.222,OF
+3790,Moises Ballesteros,Btwn2Jackies,Purchased Contract,694208,batter,2,chc,22,,694208,Moises Ballesteros,,,,158,74,,58,79,15,,,,,,,,,,ALL (2),503.0,31.0,2.0,0.386,0.859,0.473,87.0,5.0,2.0,223.0,238.0,0.314,C
+3809,Lazaro Montes,Btwn2Jackies,Development Cont.,703155,batter,3,sea,21,,703155,Lazaro Montes,,,,118,76,,83,169,32,,,,,,,,,,ALL (2),490.0,19.0,7.0,0.354,0.858,0.504,89.0,7.0,3.0,268.0,247.0,0.241,OF
+3899,Jett Williams,Btwn2Jackies,Purchased Contract,702518,batter,3,nym,22,,702518,Jett Williams,,,,127,91,,76,131,17,,,,,,,,,,ALL (2),486.0,34.0,7.0,0.363,0.828,0.465,52.0,34.0,9.0,178.0,226.0,0.261,SS
+3910,Spencer Jones,Btwn2Jackies,Purchased Contract,682987,batter,4,nyy,24,,682987,Spencer Jones,,,,120,102,,58,179,35,,,,,,,,,,ALL (2),438.0,23.0,1.0,0.362,0.933,0.571,80.0,29.0,6.0,204.0,250.0,0.274,CF
+6145,Brailer Guerrero,Btwn2Jackies,Farm Contract,806967,batter,14,tb,19,,806967,Brailer Guerrero,,,,48,22,,25,65,6,,,,,,,,,,ALL (2),193.0,7.0,2.0,0.338,0.737,0.399,33.0,9.0,1.0,93.0,77.0,0.249,OF
+6566,Max Clark,Btwn2Jackies,Purchased Contract,703601,batter,2,det,21,,703601,Max Clark,,,,117,85,,94,90,14,,,,,,,,,,ALL (2),431.0,17.0,5.0,0.403,0.835,0.432,67.0,19.0,2.0,168.0,186.0,0.271,OF
+6569,Tommy Troy,Btwn2Jackies,Farm Contract,694371,batter,5,ari,23,,694371,Tommy Troy,,,,144,79,,67,98,15,,,,,,,,,,ALL (2),499.0,28.0,4.0,0.382,0.833,0.451,66.0,24.0,5.0,215.0,225.0,0.289,SS
+6579,Welbyn Francisca,Btwn2Jackies,Farm Contract,806988,batter,15,cle,19,,806988,Welbyn Francisca,,,,85,54,,51,73,3,,,,,,,,,,A,371.0,14.0,2.0,0.32,0.622,0.302,45.0,45.0,12.0,196.0,112.0,0.229,SS
+6705,Mike Boeve,Btwn2Jackies,Farm Contract,801670,batter,27,mil,23,,801670,Mike Boeve,,,,63,36,,35,68,5,,,,,,,,,,ALL (2),264.0,8.0,2.0,0.336,0.677,0.341,29.0,8.0,0.0,141.0,90.0,0.239,3B
+6723,Jonny Farmelo,Btwn2Jackies,Purchased Contract,806071,batter,6,sea,21,,806071,Jonny Farmelo,,,,26,18,,14,38,6,,,,,,,,,,A+,113.0,6.0,1.0,0.318,0.778,0.46,16.0,2.0,1.0,55.0,52.0,0.23,OF
+7470,Brody Hopkins,Btwn2Jackies,Farm Contract,811315,pitcher,3,tb,23,139.0,811315,Brody Hopkins,25.0,1.25,116.0,85,48,35.0,60,141,7,348.0,492.0,,2.72,0.0,0.0,0.0,5.0,7.0,AA,,,,,,,,,,,,,
+7578,Dante Nori,Btwn2Jackies,Farm Contract,807276,batter,6,phi,21,,807276,Dante Nori,,,,127,72,,75,85,4,,,,,,,,,,ALL (3),487.0,18.0,12.0,0.361,0.733,0.372,47.0,52.0,10.0,218.0,181.0,0.261,OF
+7609,Braylon Payne,Btwn2Jackies,Development Cont.,815520,batter,9,mil,19,,815520,Braylon Payne,,,,69,55,,52,103,8,,,,,,,,,,A,288.0,9.0,4.0,0.354,0.736,0.382,30.0,31.0,10.0,147.0,110.0,0.24,OF
+7662,Ben Hess,Btwn2Jackies,Purchased Contract,696292,pitcher,6,nyy,23,147.0,696292,Ben Hess,22.0,1.07,103.1,65,43,37.0,46,139,3,310.0,421.0,,3.22,0.0,0.0,0.0,7.0,4.0,ALL (2),,,,,,,,,,,,,
+7681,Bryce Rainer,Country Fried Lamb,Development Cont.,800614,batter,4,det,20,,800614,Bryce Rainer,,,,36,19,,20,33,5,,,,,,,,,,A,125.0,5.0,0.0,0.383,0.831,0.448,22.0,9.0,3.0,60.0,56.0,0.288,SS
+2236,Carson Williams,Country Fried Lamb,Purchased Contract,700246,batter,1,tb,22,,700246,Carson Williams,,,,100,83,,62,198,28,,,,,,,,,,ALL (2),488.0,15.0,5.0,0.299,0.727,0.428,67.0,24.0,7.0,226.0,209.0,0.205,SS
+2237,Carter Jensen,Country Fried Lamb,Farm Contract,695600,batter,1,kc,22,,695600,Carter Jensen,,,,142,84,,69,134,23,,,,,,,,,,ALL (3),487.0,26.0,5.0,0.379,0.886,0.507,89.0,10.0,1.0,199.0,247.0,0.292,C
+7112,Cooper Ingle,Country Fried Lamb,Purchased Contract,694876,batter,4,cle,23,,694876,Cooper Ingle,,,,108,68,,86,85,10,,,,,,,,,,ALL (2),415.0,36.0,0.0,0.389,0.808,0.419,55.0,0.0,2.0,168.0,174.0,0.26,C
+4675,Felnin Celesten,Country Fried Lamb,Purchased Contract,806958,batter,8,sea,20,,806958,Felnin Celesten,,,,115,58,,46,111,6,,,,,,,,,,ALL (2),421.0,19.0,3.0,0.345,0.72,0.375,59.0,21.0,9.0,204.0,158.0,0.273,SS
+6801,Gary Gill Hill,Country Fried Lamb,Farm Contract,804541,pitcher,18,tb,21,139.0,804541,Gary Gill Hill,25.0,1.16,136.2,129,63,58.0,30,107,17,410.0,569.0,,3.82,0.0,0.0,0.0,7.0,8.0,A+,,,,,,,,,,,,,
+7179,Hayden Harris,Country Fried Lamb,Purchased Contract,802686,pitcher,25,atl,26,144.0,802686,Hayden Harris,46.0,0.8,54.2,23,5,4.0,21,79,1,164.0,208.0,,0.66,4.0,8.0,1.0,6.0,0.0,ALL (3),,,,,,,,,,,,,
+7163,Henry Lalane,Country Fried Lamb,Farm Contract,700649,pitcher,9,nyy,21,147.0,700649,Henry Lalane,7.0,1.29,19.1,11,5,5.0,14,22,2,58.0,84.0,,2.33,0.0,0.0,0.0,0.0,0.0,ALL (2),,,,,,,,,,,,,
+3782,Jaison Chourio,Country Fried Lamb,Purchased Contract,702693,batter,5,cle,20,,702693,Jaison Chourio,,,,73,43,,70,87,2,,,,,,,,,,ALL (2),308.0,7.0,1.0,0.379,0.665,0.286,26.0,10.0,7.0,140.0,88.0,0.237,OF
+7199,Josue Briceño,Country Fried Lamb,Farm Contract,800522,batter,3,det,21,,800522,Josue Briceño,,,,97,60,,66,87,20,,,,,,,,,,ALL (2),364.0,19.0,3.0,0.383,0.883,0.5,76.0,1.0,1.0,167.0,182.0,0.266,C
+3895,Justin Crawford,Country Fried Lamb,Purchased Contract,702222,batter,3,phi,21,,702222,Justin Crawford,,,,147,88,,58,91,7,,,,,,,,,,AAA,440.0,23.0,4.0,0.411,0.863,0.452,47.0,46.0,11.0,137.0,199.0,0.334,OF
+7256,Paulino Santana,Country Fried Lamb,Farm Contract,815889,batter,19,tex,19,,815889,Paulino Santana,,,,69,44,,25,94,5,,,,,,,,,,ALL (2),271.0,11.0,6.0,0.33,0.725,0.395,32.0,11.0,8.0,110.0,107.0,0.255,OF
+6646,Sammy Stafura,Country Fried Lamb,Purchased Contract,806230,batter,8,pit,21,,806230,Sammy Stafura,,,,103,60,,74,129,6,,,,,,,,,,ALL (3),432.0,22.0,10.0,0.361,0.738,0.377,60.0,32.0,6.0,226.0,163.0,0.238,SS
+7595,Seaver King,Country Fried Lamb,Development Cont.,814409,batter,9,was,22,,814409,Seaver King,,,,123,65,,32,116,6,,,,,,,,,,ALL (2),505.0,19.0,5.0,0.294,0.631,0.337,43.0,30.0,4.0,216.0,170.0,0.244,SS
+7623,Slade Caldwell,Country Fried Lamb,Farm Contract,815154,batter,2,ari,19,,815154,Slade Caldwell,,,,106,83,,91,138,3,,,,,,,,,,ALL (2),407.0,29.0,3.0,0.408,0.777,0.369,38.0,25.0,10.0,170.0,150.0,0.26,OF
+7304,Didier Fuentes,Country Fried Lamb,Purchased Contract,800311,pitcher,7,atl,20,144.0,800311,Didier Fuentes,17.0,1.34,70.0,72,50,49.0,22,83,10,210.0,307.0,,6.3,0.0,0.0,0.0,1.0,10.0,ALL (4),,,,,,,,,,,,,
+7677,Travis Bazzana,Country Fried Lamb,Purchased Contract,683953,batter,1,cle,23,,683953,Travis Bazzana,,,,74,71,,66,91,9,,,,,,,,,,ALL (3),302.0,17.0,5.0,0.389,0.813,0.424,39.0,12.0,2.0,110.0,128.0,0.245,2B
+3947,Hunter Barco,Hammers,Purchased Contract,682995,pitcher,4,pit,25,134.0,682995,Hunter Barco,29.0,1.19,102.1,73,31,31.0,49,119,5,307.0,429.0,,2.73,0.0,0.0,0.0,5.0,1.0,ALL (3),,,,,,,,,,,,,
+4218,Cristian Mena,Hammers,Purchased Contract,691441,pitcher,11,ari,23,109.0,691441,Cristian Mena,12.0,1.32,51.1,49,31,25.0,19,60,7,154.0,218.0,,4.38,0.0,0.0,1.0,3.0,3.0,ALL (2),,,,,,,,,,,,,
+4610,Angel Genao,Hammers,Farm Contract,694197,batter,3,cle,21,,694197,Angel Genao,,,,88,49,,35,58,5,,,,,,,,,,ALL (2),335.0,17.0,4.0,0.332,0.714,0.382,42.0,6.0,1.0,154.0,128.0,0.263,3B
+6082,Logan Henderson,Hammers,Purchased Contract,701656,pitcher,5,mil,23,158.0,701656,Logan Henderson,21.0,1.08,103.0,79,37,36.0,32,120,12,309.0,411.0,,3.15,0.0,0.0,0.0,13.0,4.0,ALL (2),,,,,,,,,,,,,
+6615,Lucas Braun,Hammers,Farm Contract,814351,pitcher,12,atl,24,144.0,814351,Lucas Braun,27.0,1.06,149.2,119,67,61.0,39,145,19,449.0,597.0,,3.67,0.0,0.0,0.0,7.0,6.0,ALL (2),,,,,,,,,,,,,
+6808,Tre' Morgan,Hammers,Farm Contract,691003,batter,11,tb,23,,691003,Tre' Morgan,,,,90,53,,64,77,8,,,,,,,,,,AAA,328.0,15.0,3.0,0.398,0.81,0.412,45.0,8.0,4.0,114.0,135.0,0.274,1B
+6864,Jhostynxon Garcia,Hammers,Purchased Contract,691373,batter,6,pit,23,,691373,Jhostynxon Garcia,,,,117,79,,47,136,21,,,,,,,,,,ALL (3),441.0,18.0,4.0,0.34,0.807,0.467,75.0,7.0,1.0,216.0,206.0,0.265,CF
+7178,Jhancarlos Lara,Hammers,Development Cont.,702910,pitcher,21,atl,22,144.0,702910,Jhancarlos Lara,34.0,1.72,68.2,53,64,59.0,65,104,9,206.0,327.0,,7.73,0.0,2.0,0.0,0.0,9.0,ALL (2),,,,,,,,,,,,,
+7338,Chen-Wei Lin,Hammers,Farm Contract,813820,pitcher,18,stl,24,138.0,813820,Chen-Wei Lin,17.0,1.49,50.1,36,35,31.0,39,70,3,151.0,223.0,,5.54,0.0,0.0,0.0,0.0,2.0,ALL (3),,,,,,,,,,,,,
+7571,Edward Florentino,Hammers,Purchased Contract,821273,batter,5,pit,19,,821273,Edward Florentino,,,,84,60,,49,78,16,,,,,,,,,,ALL (2),290.0,23.0,2.0,0.4,0.948,0.548,59.0,35.0,6.0,143.0,159.0,0.29,OF
+7604,Tyson Lewis,Hammers,Farm Contract,815653,batter,3,cin,19,,815653,Tyson Lewis,,,,98,65,,29,102,9,,,,,,,,,,ALL (2),315.0,16.0,6.0,0.376,0.862,0.486,54.0,27.0,8.0,159.0,153.0,0.311,SS
+7632,Jared Thomas,Hammers,Farm Contract,703606,batter,8,col,22,,703606,Jared Thomas,,,,136,92,,70,145,14,,,,,,,,,,ALL (2),454.0,23.0,2.0,0.398,0.85,0.452,60.0,33.0,7.0,132.0,205.0,0.3,OF
+7690,Kaelen Culpepper,Hammers,Farm Contract,701785,batter,2,min,23,,701785,Kaelen Culpepper,,,,131,77,,50,90,20,,,,,,,,,,ALL (2),454.0,16.0,3.0,0.375,0.844,0.469,64.0,25.0,4.0,151.0,213.0,0.289,SS
+3580,James Triantos,Jepordizers!,Purchased Contract,701649,batter,10,chc,22,,701649,James Triantos,,,,114,69,,33,72,7,,,,,,,,,,ALL (2),440.0,24.0,2.0,0.315,0.685,0.37,47.0,31.0,10.0,200.0,163.0,0.259,2B
+3584,Owen Caissie,Jepordizers!,Purchased Contract,683357,batter,1,chc,23,,683357,Owen Caissie,,,,111,78,,58,132,23,,,,,,,,,,ALL (2),396.0,29.0,2.0,0.376,0.914,0.538,59.0,5.0,4.0,171.0,213.0,0.28,RF
+3708,Jeferson Quero,Jepordizers!,Purchased Contract,691620,batter,4,mil,23,,691620,Jeferson Quero,,,,68,42,,32,40,11,,,,,,,,,,ALL (2),251.0,17.0,1.0,0.361,0.839,0.478,57.0,2.0,0.0,128.0,120.0,0.271,C
+3900,Carson Whisenhunt,Jepordizers!,Farm Contract,687931,pitcher,7,sf,25,137.0,687931,Carson Whisenhunt,26.0,1.38,131.0,134,69,66.0,47,111,19,393.0,556.0,,4.53,0.0,0.0,0.0,11.0,6.0,ALL (2),,,,,,,,,,,,,
+4726,Winston Santos,Jepordizers!,Farm Contract,692437,pitcher,4,tex,23,140.0,692437,Winston Santos,6.0,1.67,17.1,22,13,13.0,7,26,0,52.0,78.0,,6.75,0.0,0.0,0.0,0.0,0.0,ALL (2),,,,,,,,,,,,,
+6072,Emiliano Teodo,Jepordizers!,Farm Contract,693713,pitcher,14,tex,24,140.0,693713,Emiliano Teodo,27.0,1.87,30.0,27,26,24.0,29,38,4,90.0,149.0,,7.2,0.0,3.0,1.0,3.0,2.0,ALL (3),,,,,,,,,,,,,
+6581,Thomas White,Btwn2Jackies,Purchased Contract,806258,pitcher,1,mia,21,146.0,806258,Thomas White,21.0,1.18,89.2,55,25,23.0,51,145,2,269.0,376.0,,2.31,0.0,0.0,0.0,4.0,3.0,ALL (3),,,,,,,,,,,,,
+6599,Bryce Eldridge,Jepordizers!,Development Cont.,805811,batter,1,sf,21,,805811,Bryce Eldridge,,,,103,47,,49,140,25,,,,,,,,,,ALL (4),412.0,23.0,0.0,0.33,0.818,0.488,88.0,1.0,1.0,199.0,201.0,0.25,1B
+7674,Hagen Smith,Jepordizers!,Development Cont.,696146,pitcher,5,cws,22,145.0,696146,Hagen Smith,20.0,1.3,75.2,42,31,30.0,56,108,5,227.0,319.0,,3.57,0.0,0.0,0.0,3.0,3.0,AA,,,,,,,,,,,,,
+3454,Zac Veen,La Flama Blanca,Purchased Contract,691728,batter,11,col,24,,691728,Zac Veen,,,,113,60,,41,100,12,,,,,,,,,,ALL (3),411.0,24.0,5.0,0.345,0.79,0.445,62.0,16.0,6.0,178.0,183.0,0.275,LF
+2450,Emmanuel Rodriguez,La Flama Blanca,Purchased Contract,691181,batter,4,min,22,,691181,Emmanuel Rodriguez,,,,56,43,,55,85,6,,,,,,,,,,ALL (3),208.0,9.0,1.0,0.431,0.84,0.409,31.0,10.0,3.0,103.0,85.0,0.269,CF
+3875,Jarlin Susana,La Flama Blanca,Purchased Contract,703186,pitcher,4,was,21,120.0,703186,Jarlin Susana,14.0,1.31,56.1,40,23,22.0,34,95,3,169.0,244.0,,3.51,0.0,0.0,0.0,1.0,4.0,ALL (2),,,,,,,,,,,,,
+3407,Andrew Salas,La Flama Blanca,Farm Contract,829035,batter,6,mia,17,,829035,Andrew Salas,,,,69,56,,72,110,3,,,,,,,,,,A,371.0,9.0,2.0,0.319,0.564,0.245,21.0,39.0,10.0,191.0,91.0,0.186,SS
+3499,Harry Ford,La Flama Blanca,Purchased Contract,695670,batter,2,was,22,,695670,Harry Ford,,,,107,69,,74,91,16,,,,,,,,,,ALL (2),380.0,18.0,0.0,0.406,0.861,0.455,75.0,7.0,4.0,200.0,173.0,0.282,C
+3607,Chase Petty,La Flama Blanca,Farm Contract,695534,pitcher,7,cin,22,113.0,695534,Chase Petty,29.0,1.71,118.2,137,105,93.0,66,109,20,356.0,560.0,,7.05,0.0,0.0,0.0,6.0,16.0,ALL (2),,,,,,,,,,,,,
+3746,Roderick Arias,La Flama Blanca,Development Cont.,703149,batter,20,nyy,21,,703149,Roderick Arias,,,,82,61,,65,134,7,,,,,,,,,,A,394.0,19.0,1.0,0.325,0.64,0.315,53.0,34.0,10.0,184.0,124.0,0.208,SS
+3883,Druw Jones,La Flama Blanca,Farm Contract,702258,batter,14,ari,22,,702258,Druw Jones,,,,122,77,,56,127,5,,,,,,,,,,A+,478.0,25.0,5.0,0.335,0.695,0.36,56.0,28.0,4.0,217.0,172.0,0.255,OF
+4570,Santiago Suarez,La Flama Blanca,Farm Contract,800571,pitcher,16,tb,20,139.0,800571,Santiago Suarez,12.0,1.01,51.2,44,29,18.0,8,54,7,155.0,210.0,,3.14,0.0,0.0,0.0,0.0,5.0,ALL (2),,,,,,,,,,,,,
+6140,Alfredo Duno,La Flama Blanca,Farm Contract,806957,batter,2,cin,19,,806957,Alfredo Duno,,,,112,78,,95,91,18,,,,,,,,,,A,390.0,32.0,2.0,0.43,0.948,0.518,81.0,6.0,6.0,165.0,202.0,0.287,C
+6571,Noble Meyer,La Flama Blanca,Purchased Contract,800611,pitcher,9,mia,20,146.0,800611,Noble Meyer,19.0,1.39,65.1,53,36,32.0,38,72,4,196.0,296.0,,4.41,0.0,0.0,0.0,1.0,7.0,A+,,,,,,,,,,,,,
+6616,Starlyn Caba,La Flama Blanca,Purchased Contract,806965,batter,5,mia,20,,806965,Starlyn Caba,,,,43,28,,34,34,1,,,,,,,,,,A,194.0,6.0,1.0,0.335,0.613,0.278,21.0,14.0,6.0,92.0,54.0,0.222,SS
+6617,Ralphy Velazquez,La Flama Blanca,Farm Contract,806252,batter,9,cle,20,,806252,Ralphy Velazquez,,,,128,77,,52,104,22,,,,,,,,,,ALL (2),483.0,28.0,9.0,0.342,0.839,0.497,85.0,1.0,3.0,233.0,240.0,0.265,1B
+6665,Aroon Escobar,La Flama Blanca,Purchased Contract,800169,batter,5,phi,21,,800169,Aroon Escobar,,,,124,82,,56,98,15,,,,,,,,,,ALL (3),460.0,13.0,4.0,0.361,0.774,0.413,62.0,24.0,5.0,176.0,190.0,0.27,3B
+7177,Jose Perdomo,La Flama Blanca,Development Cont.,815899,batter,15,atl,19,,815899,Jose Perdomo,,,,48,20,,14,45,1,,,,,,,,,,ROK,215.0,7.0,0.0,0.275,0.545,0.27,18.0,4.0,2.0,123.0,58.0,0.223,SS
+7347,Cam Caminiti,La Flama Blanca,Farm Contract,807284,pitcher,1,atl,19,144.0,807284,Cam Caminiti,17.0,1.26,70.0,60,28,24.0,28,90,5,210.0,295.0,,3.09,0.0,0.0,0.0,2.0,4.0,ALL (2),,,,,,,,,,,,,
+7612,Konnor Griffin,La Flama Blanca,Purchased Contract,804606,batter,1,pit,19,,804606,Konnor Griffin,,,,161,117,,50,122,21,,,,,,,,,,ALL (3),484.0,23.0,4.0,0.415,0.942,0.527,94.0,65.0,13.0,180.0,255.0,0.333,SS
+7746,Josuar Gonzalez,La Flama Blanca,Purchased Contract,829034,batter,2,sf,18,,829034,Josuar Gonzalez,,,,55,52,,37,36,4,,,,,,,,,,ROK,191.0,10.0,5.0,0.404,0.859,0.455,24.0,33.0,5.0,84.0,87.0,0.288,SS
+7776,Shotaro Morii,La Flama Blanca,Purchased Contract,829679,batter,21,oak,19,,829679,Shotaro Morii,,,,39,39,,36,47,3,,,,,,,,,,ROK,151.0,8.0,1.0,0.399,0.783,0.384,27.0,4.0,3.0,68.0,58.0,0.258,SS
+7785,Elian Peña,La Flama Blanca,Farm Contract,821262,batter,30,mil,19,,821262,José Anderson,,,,71,45,,35,110,11,,,,,,,,,,ALL (2),342.0,17.0,5.0,0.293,0.676,0.383,42.0,10.0,4.0,161.0,131.0,0.208,OF
+3444,Daniel Espino,Law-Abiding Citizens,Purchased Contract,682982,pitcher,29,cle,25,114.0,682982,Daniel Espino,1.0,4.5,0.2,3,3,3.0,0,1,0,2.0,5.0,,40.5,0.0,0.0,0.0,0.0,1.0,AAA,,,,,,,,,,,,,
+4678,Jairo Iriarte,Law-Abiding Citizens,Farm Contract,683568,pitcher,17,cws,24,145.0,683568,Jairo Iriarte,37.0,1.92,48.0,55,44,38.0,37,50,9,144.0,230.0,,7.13,1.0,4.0,1.0,3.0,3.0,ALL (2),,,,,,,,,,,,,
+6500,Cris Rodriguez,Law-Abiding Citizens,Farm Contract,829038,batter,7,det,17,,829038,Cris Rodriguez,,,,53,38,,11,42,10,,,,,,,,,,ROK,172.0,12.0,1.0,0.34,0.904,0.564,39.0,10.0,2.0,74.0,97.0,0.308,OF
+6568,Walker Jenkins,Law-Abiding Citizens,Purchased Contract,805805,batter,1,min,20,,805805,Walker Jenkins,,,,88,56,,50,76,10,,,,,,,,,,ALL (4),308.0,17.0,2.0,0.399,0.85,0.451,34.0,17.0,4.0,130.0,139.0,0.286,OF
+6602,Blake Mitchell,Law-Abiding Citizens,Purchased Contract,805810,batter,2,kc,21,,805810,Blake Mitchell,,,,43,28,,53,81,3,,,,,,,,,,ALL (2),197.0,9.0,1.0,0.39,0.71,0.32,19.0,12.0,5.0,93.0,63.0,0.218,C
+6618,Alex Clemmey,Law-Abiding Citizens,Purchased Contract,806046,pitcher,7,was,20,120.0,806046,Alex Clemmey,25.0,1.38,116.2,88,52,45.0,73,136,12,350.0,508.0,,3.47,0.0,0.0,0.0,7.0,5.0,ALL (2),,,,,,,,,,,,,
+7122,Trevor Harrison,Law-Abiding Citizens,Farm Contract,807314,pitcher,15,tb,20,139.0,807314,Trevor Harrison,22.0,1.26,107.0,86,41,33.0,49,100,3,321.0,440.0,,2.78,0.0,0.0,0.0,8.0,3.0,ALL (2),,,,,,,,,,,,,
+7619,JJ Wetherholt,Law-Abiding Citizens,Purchased Contract,802139,batter,1,stl,23,,802139,JJ Wetherholt,,,,125,82,,72,73,17,,,,,,,,,,ALL (2),408.0,28.0,2.0,0.421,0.931,0.51,59.0,23.0,3.0,162.0,208.0,0.306,SS
+7631,Brody Brecht,Law-Abiding Citizens,Farm Contract,701679,pitcher,5,col,23,115.0,701679,Brody Brecht,20.0,1.36,61.0,48,19,17.0,35,95,2,183.0,263.0,,2.51,0.0,0.0,0.0,1.0,5.0,ALL (2),,,,,,,,,,,,,
+3526,Kevin Alcántara,not much of a donkey,Purchased Contract,682634,batter,5,chc,23,,682634,Kevin Alcántara,,,,105,57,,49,132,17,,,,,,,,,,ALL (2),390.0,26.0,0.0,0.351,0.818,0.467,70.0,11.0,4.0,189.0,182.0,0.269,RF
+3709,Tyler Black,not much of a donkey,Farm Contract,672012,batter,24,mil,25,,672012,Tyler Black,,,,68,41,,56,75,5,,,,,,,,,,ALL (3),261.0,13.0,3.0,0.394,0.785,0.391,40.0,22.0,5.0,106.0,102.0,0.261,3B
+3816,Michael Arroyo,Law-Abiding Citizens,Purchased Contract,703197,batter,5,sea,21,,703197,Michael Arroyo,,,,118,78,,69,104,17,,,,,,,,,,ALL (2),450.0,24.0,1.0,0.401,0.834,0.433,54.0,12.0,5.0,177.0,195.0,0.262,SS
+3832,Tink Hence,not much of a donkey,Purchased Contract,693311,pitcher,14,stl,23,138.0,693311,Tink Hence,8.0,1.22,21.1,13,7,7.0,13,24,1,64.0,86.0,,2.95,0.0,0.0,0.0,0.0,1.0,ALL (4),,,,,,,,,,,,,
+3886,Termarr Johnson,not much of a donkey,Purchased Contract,702261,batter,7,pit,21,,702261,Termarr Johnson,,,,118,67,,59,93,9,,,,,,,,,,AA,434.0,15.0,3.0,0.363,0.745,0.382,35.0,20.0,12.0,161.0,166.0,0.272,SS
+3935,Ryan Clifford,not much of a donkey,Farm Contract,691775,batter,8,nym,22,,691775,Ryan Clifford,,,,114,71,,85,148,29,,,,,,,,,,ALL (2),481.0,23.0,1.0,0.356,0.826,0.47,93.0,7.0,4.0,214.0,226.0,0.237,1B
+3951,Sal Stewart,not much of a donkey,Purchased Contract,701398,batter,1,cin,22,,701398,Sal Stewart,,,,149,89,,49,92,25,,,,,,,,,,ALL (3),492.0,35.0,0.0,0.373,0.899,0.526,88.0,17.0,3.0,190.0,259.0,0.303,3B
+4593,Samuel Basallo,not much of a donkey,Purchased Contract,694212,batter,1,bal,21,,694212,Samuel Basallo,,,,91,59,,50,106,27,,,,,,,,,,ALL (2),379.0,23.0,0.0,0.337,0.852,0.515,82.0,0.0,0.0,172.0,195.0,0.24,C
+6532,Hector Rodriguez,Law-Abiding Citizens,Farm Contract,699302,batter,9,cin,21,,699302,Héctor Rodríguez,,,,149,92,,40,86,19,,,,,,,,,,ALL (2),527.0,23.0,4.0,0.336,0.786,0.45,65.0,15.0,7.0,225.0,237.0,0.283,LF
+6593,Jefferson Rojas,not much of a donkey,Farm Contract,800473,batter,4,chc,20,,800473,Jefferson Rojas,,,,94,67,,58,81,11,,,,,,,,,,ALL (2),398.0,19.0,4.0,0.343,0.73,0.387,59.0,19.0,3.0,168.0,154.0,0.236,SS
+6805,George Klassen,not much of a donkey,Purchased Contract,691946,pitcher,3,ana,23,108.0,691946,George Klassen,25.0,1.46,108.2,112,70,63.0,47,134,8,326.0,484.0,,5.22,0.0,0.0,0.0,4.0,12.0,ALL (2),,,,,,,,,,,,,
+6851,Jedixson Paez,not much of a donkey,Farm Contract,699151,pitcher,15,cws,21,145.0,699151,Jedixson Paez,7.0,1.09,19.1,18,12,6.0,3,23,4,58.0,83.0,,2.79,0.0,0.0,0.0,0.0,3.0,A+,,,,,,,,,,,,,
+6973,Yophery Rodriguez,not much of a donkey,Farm Contract,806983,batter,19,bos,20,,806983,Yophery Rodriguez,,,,86,47,,53,84,5,,,,,,,,,,ALL (2),390.0,18.0,7.0,0.316,0.657,0.341,48.0,10.0,6.0,178.0,133.0,0.221,CF
+7098,Jaden Hamm,not much of a donkey,Farm Contract,811290,pitcher,10,det,23,116.0,811290,Jaden Hamm,22.0,1.35,88.0,82,47,46.0,37,80,11,264.0,384.0,,4.7,0.0,0.0,0.0,2.0,5.0,ALL (2),,,,,,,,,,,,,
+7657,Braden Montgomery,Hammers,Purchased Contract,695731,batter,1,cws,22,,695731,Braden Montgomery,,,,121,64,,57,130,12,,,,,,,,,,ALL (3),448.0,34.0,4.0,0.36,0.804,0.444,68.0,14.0,7.0,192.0,199.0,0.27,OF
+3661,Josue De Paula,Rick Vaughn,Purchased Contract,800543,batter,1,la,20,,800543,Josue De Paula,,,,90,65,,82,91,12,,,,,,,,,,ALL (2),360.0,16.0,1.0,0.391,0.791,0.4,44.0,32.0,8.0,171.0,144.0,0.25,CF
+3779,Bubba Chandler,Rick Vaughn,Purchased Contract,696149,pitcher,2,pit,23,134.0,696149,Bubba Chandler,31.0,1.35,131.1,120,60,59.0,57,152,10,394.0,566.0,,4.04,1.0,0.0,0.0,9.0,7.0,ALL (2),,,,,,,,,,,,,
+3891,Cam Collier,Rick Vaughn,Purchased Contract,702253,batter,6,cin,21,,702253,Cam Collier,,,,93,48,,59,104,4,,,,,,,,,,ALL (3),333.0,21.0,1.0,0.391,0.775,0.384,48.0,1.0,1.0,136.0,128.0,0.279,3B
+3913,Parker Messick,Rick Vaughn,Purchased Contract,800048,pitcher,11,cle,25,114.0,800048,Parker Messick,27.0,1.24,138.1,124,51,50.0,48,157,13,415.0,574.0,,3.25,0.0,0.0,0.0,8.0,7.0,ALL (2),,,,,,,,,,,,,
+3920,Owen Murphy,Rick Vaughn,Farm Contract,702566,pitcher,8,atl,22,144.0,702566,Owen Murphy,7.0,0.69,30.1,15,6,4.0,6,34,1,91.0,110.0,,1.19,0.0,0.0,0.0,3.0,0.0,ALL (2),,,,,,,,,,,,,
+3934,Noah Schultz,Rick Vaughn,Purchased Contract,702273,pitcher,2,cws,22,145.0,702273,Noah Schultz,17.0,1.67,73.0,77,40,38.0,45,76,6,219.0,327.0,,4.68,0.0,0.0,0.0,4.0,5.0,ALL (2),,,,,,,,,,,,,
+3940,Robby Snelling,Rick Vaughn,Purchased Contract,702281,pitcher,3,mia,22,146.0,702281,Robby Snelling,25.0,1.11,136.0,112,43,38.0,39,166,10,408.0,547.0,,2.51,0.0,0.0,0.0,9.0,7.0,ALL (2),,,,,,,,,,,,,
+4609,Yoniel Curet,Rick Vaughn,Farm Contract,692414,pitcher,24,phi,23,143.0,692414,Yoniel Curet,16.0,1.43,55.1,48,27,24.0,31,62,2,166.0,243.0,,3.9,0.0,0.0,0.0,3.0,3.0,ALL (3),,,,,,,,,,,,,
+6141,Sebastian Walcott,Rick Vaughn,Purchased Contract,806964,batter,1,tex,19,,806964,Sebastian Walcott,,,,121,71,,70,108,13,,,,,,,,,,AA,474.0,19.0,2.0,0.355,0.741,0.386,59.0,32.0,10.0,209.0,183.0,0.255,SS
+6543,Alex Freeland,Rick Vaughn,Purchased Contract,690976,batter,4,la,24,,690976,Alex Freeland,,,,125,87,,94,146,18,,,,,,,,,,ALL (2),499.0,32.0,1.0,0.369,0.796,0.427,88.0,19.0,6.0,227.0,213.0,0.251,SS
+6583,Cooper Pratt,Rick Vaughn,Farm Contract,806198,batter,3,mil,21,,806198,Cooper Pratt,,,,104,71,,67,80,8,,,,,,,,,,AA,437.0,22.0,1.0,0.343,0.691,0.348,62.0,31.0,5.0,195.0,152.0,0.238,SS
+6785,Drue Hackenberg,Rick Vaughn,Farm Contract,802357,pitcher,10,atl,23,144.0,802357,Drue Hackenberg,21.0,1.82,74.0,81,65,56.0,54,67,9,222.0,358.0,,6.81,0.0,0.0,0.0,2.0,9.0,ALL (2),,,,,,,,,,,,,
+6834,Robert Calaz,Rick Vaughn,Development Cont.,806978,batter,4,col,20,,806978,Robert Calaz,,,,96,50,,37,110,10,,,,,,,,,,A,371.0,16.0,3.0,0.338,0.737,0.399,55.0,7.0,3.0,182.0,148.0,0.259,OF
+6888,Aidan Smith,Rick Vaughn,Farm Contract,806223,batter,10,tb,21,,806223,Aidan Smith,,,,94,77,,53,143,14,,,,,,,,,,A+,397.0,14.0,2.0,0.331,0.719,0.388,59.0,41.0,6.0,174.0,154.0,0.237,OF
+7213,Emil Morales,Rick Vaughn,Development Cont.,815896,batter,7,la,19,,815896,Emil Morales,,,,112,76,,48,109,14,,,,,,,,,,ALL (2),357.0,24.0,3.0,0.396,0.911,0.515,70.0,11.0,3.0,152.0,184.0,0.314,SS
+7591,Carson Benge,Rick Vaughn,Purchased Contract,701807,batter,2,nym,22,,701807,Carson Benge,,,,124,87,,68,92,15,,,,,,,,,,ALL (3),441.0,25.0,7.0,0.385,0.857,0.472,73.0,22.0,4.0,173.0,208.0,0.281,OF
+7626,Demetrio Crisantes,Rick Vaughn,Farm Contract,702679,batter,4,ari,21,,702679,Demetrio Crisantes,,,,31,18,,21,19,4,,,,,,,,,,A+,123.0,8.0,0.0,0.358,0.773,0.415,29.0,6.0,1.0,79.0,51.0,0.252,SS
+7658,Payton Tolle,Rick Vaughn,Purchased Contract,801139,pitcher,2,bos,23,111.0,801139,Payton Tolle,27.0,1.08,108.0,86,47,42.0,31,152,15,324.0,438.0,,3.5,1.0,0.0,0.0,3.0,6.0,ALL (4),,,,,,,,,,,,,
+7692,Dasan Hill,Rick Vaughn,Purchased Contract,815598,pitcher,7,min,20,142.0,815598,Dasan Hill,19.0,1.35,62.0,44,26,22.0,40,83,2,186.0,267.0,,3.19,0.0,0.0,0.0,0.0,4.0,ALL (2),,,,,,,,,,,,,
+7722,Quinn Matthews,Rick Vaughn,Purchased Contract,687273,pitcher,5,stl,25,138.0,687273,Quinn Mathews,24.0,1.55,99.0,79,44,41.0,74,115,6,297.0,440.0,,3.73,0.0,0.0,0.0,4.0,7.0,ALL (3),,,,,,,,,,,,,
+3467,Orelvis Martinez,The Bluke Blokes,Farm Contract,682619,batter,20,was,24,,682619,Orelvis Martinez,,,,59,38,,47,112,13,,,,,,,,,,AAA,336.0,17.0,1.0,0.288,0.636,0.348,32.0,2.0,0.0,203.0,117.0,0.176,2B
+3540,Deyvison De Los Santos,The Bluke Blokes,Purchased Contract,691277,batter,22,mia,22,,691277,Deyvison De Los Santos,,,,99,57,,39,103,12,,,,,,,,,,ALL (3),412.0,11.0,1.0,0.313,0.672,0.359,54.0,16.0,6.0,175.0,148.0,0.24,3B
+3924,Jackson Ferris,The Bluke Blokes,Farm Contract,701328,pitcher,6,la,21,119.0,701328,Jackson Ferris,26.0,1.46,126.0,118,59,54.0,66,135,9,378.0,557.0,,3.86,0.0,0.0,0.0,10.0,7.0,AA,,,,,,,,,,,,,
+3984,Xavier Isaac,The Bluke Blokes,Development Cont.,800060,batter,9,tb,22,,800060,Xavier Isaac,,,,28,21,,34,52,9,,,,,,,,,,AA,139.0,5.0,1.0,0.366,0.812,0.446,22.0,1.0,2.0,59.0,62.0,0.201,1B
+6137,Joendry Vargas,The Bluke Blokes,Farm Contract,806959,batter,12,la,20,,806959,Joendry Vargas,,,,30,17,,11,45,5,,,,,,,,,,ALL (2),133.0,3.0,1.0,0.284,0.66,0.376,24.0,17.0,2.0,85.0,50.0,0.226,SS
+6577,Rhett Lowder,The Bluke Blokes,Purchased Contract,695076,pitcher,5,cin,23,113.0,695076,Rhett Lowder,5.0,1.93,9.1,15,12,11.0,3,13,2,28.0,49.0,,10.61,0.0,0.0,0.0,0.0,3.0,ALL (3),,,,,,,,,,,,,
+6604,George Lombard Jr.,The Bluke Blokes,Farm Contract,806146,batter,1,nyy,20,,806146,George Lombard Jr.,,,,111,90,,87,146,9,,,,,,,,,,ALL (2),473.0,32.0,5.0,0.367,0.748,0.381,49.0,35.0,8.0,172.0,180.0,0.235,SS
+6702,Eric Bitonti,The Bluke Blokes,Purchased Contract,800724,batter,19,mil,20,,800724,Eric Bitonti,,,,102,58,,66,169,19,,,,,,,,,,A,428.0,21.0,0.0,0.341,0.762,0.421,77.0,17.0,10.0,245.0,180.0,0.238,SS
+6818,Jackson Baumeister,The Bluke Blokes,Farm Contract,691765,pitcher,27,tb,23,139.0,691765,Jackson Baumeister,15.0,1.25,62.1,53,37,32.0,25,51,6,187.0,261.0,,4.62,0.0,0.0,0.0,2.0,4.0,AA,,,,,,,,,,,,,
+6853,Connelly Early,The Bluke Blokes,Purchased Contract,813349,pitcher,4,bos,23,111.0,813349,Connelly Early,25.0,1.1,119.2,88,44,34.0,44,161,5,359.0,493.0,,2.56,0.0,0.0,1.0,11.0,5.0,ALL (3),,,,,,,,,,,,,
+7625,JD Dix,The Bluke Blokes,Farm Contract,807267,batter,7,ari,20,,807267,JD Dix,,,,101,65,,58,85,2,,,,,,,,,,ALL (2),340.0,19.0,6.0,0.404,0.81,0.406,34.0,28.0,8.0,128.0,138.0,0.297,SS
+3484,Andrew Painter,Weekend Warriors,Purchased Contract,691725,pitcher,1,phi,22,143.0,691725,Andrew Painter,26.0,1.49,118.0,129,72,69.0,47,123,20,354.0,520.0,,5.26,0.0,0.0,0.0,5.0,8.0,ALL (2),,,,,,,,,,,,,
+6677,Andrew Walters,Weekend Warriors,Purchased Contract,689958,pitcher,21,cle,25,114.0,689958,Andrew Walters,14.0,1.2,13.1,7,5,4.0,9,25,1,40.0,56.0,,2.7,0.0,2.0,0.0,0.0,0.0,ALL (2),,,,,,,,,,,,,
+7726,Bo Davidson,Weekend Warriors,Farm Contract,815589,batter,5,sf,23,,815589,Bo Davidson,,,,126,76,,68,119,18,,,,,,,,,,ALL (2),449.0,16.0,7.0,0.376,0.844,0.468,70.0,19.0,6.0,172.0,210.0,0.281,OF
+7630,Charlie Condon,Weekend Warriors,Development Cont.,809707,batter,2,col,22,,809707,Charlie Condon,,,,98,59,,52,112,14,,,,,,,,,,ALL (3),365.0,16.0,3.0,0.376,0.82,0.444,58.0,2.0,2.0,168.0,162.0,0.268,OF
+3720,Ethan Salas,Weekend Warriors,Purchased Contract,806956,batter,1,sd,19,,806956,Ethan Salas,,,,6,5,,6,5,0,,,,,,,,,,AA,32.0,1.0,0.0,0.325,0.544,0.219,5.0,2.0,0.0,12.0,7.0,0.188,C
+7130,Franklin Arias,Weekend Warriors,Farm Contract,808265,batter,1,bos,20,,808265,Franklin Arias,,,,133,62,,38,53,8,,,,,,,,,,ALL (3),479.0,27.0,1.0,0.335,0.723,0.388,66.0,12.0,9.0,169.0,186.0,0.278,SS
+3944,Jacob Melton,Weekend Warriors,Purchased Contract,689200,batter,4,tb,25,,689200,Jacob Melton,,,,47,33,,28,59,6,,,,,,,,,,ALL (2),196.0,16.0,1.0,0.336,0.759,0.423,24.0,19.0,5.0,84.0,83.0,0.24,LF
+7607,Jesus Made,Weekend Warriors,Farm Contract,815908,batter,1,mil,18,,815908,Jesús Made,,,,129,81,,67,108,6,,,,,,,,,,ALL (3),453.0,28.0,6.0,0.379,0.792,0.413,61.0,47.0,13.0,193.0,187.0,0.285,SS
+6910,Jonah Tong,Weekend Warriors,Farm Contract,804636,pitcher,4,nym,22,121.0,804636,Jonah Tong,27.0,1.04,132.1,82,40,34.0,56,201,5,397.0,529.0,,2.31,0.0,0.0,0.0,12.0,8.0,ALL (3),,,,,,,,,,,,,
+4151,Juan Brito,Weekend Warriors,Farm Contract,682877,batter,14,cle,24,,682877,Juan Brito,,,,25,17,,16,29,4,,,,,,,,,,ALL (2),103.0,6.0,1.0,0.355,0.792,0.437,17.0,4.0,3.0,34.0,45.0,0.243,SS
+7608,Luis Pena,Weekend Warriors,Purchased Contract,821270,batter,2,mil,19,,821270,Luis Peña,,,,101,69,,34,68,9,,,,,,,,,,ALL (2),374.0,18.0,6.0,0.335,0.757,0.422,64.0,44.0,7.0,169.0,158.0,0.27,SS
+3903,Chase DeLauter,Weekend Warriors,Purchased Contract,800050,batter,2,cle,24,,800050,Chase DeLauter,,,,39,28,,28,28,7,,,,,,,,,,ALL (2),148.0,8.0,1.0,0.379,0.852,0.473,24.0,1.0,0.0,63.0,70.0,0.264,RF
+7579,Moisés Chace,Weekend Warriors,Purchased Contract,691330,pitcher,8,phi,22,143.0,691330,Moisés Chace,6.0,1.62,16.2,15,6,6.0,12,19,3,50.0,75.0,,3.24,0.0,0.0,0.0,0.0,0.0,AA,,,,,,,,,,,,,
+7624,Ryan Waldschmidt,Weekend Warriors,Purchased Contract,814439,batter,1,ari,23,,814439,Ryan Waldschmidt,,,,140,114,,96,106,18,,,,,,,,,,ALL (2),484.0,27.0,4.0,0.419,0.892,0.473,78.0,29.0,10.0,235.0,229.0,0.289,OF
+7704,Tommy White,Weekend Warriors,Purchased Contract,695720,batter,7,oak,22,,695720,Tommy White,,,,99,49,,29,54,12,,,,,,,,,,ALL (2),360.0,23.0,0.0,0.334,0.773,0.439,51.0,3.0,1.0,184.0,158.0,0.275,3B
+6597,Travis Sykora,Weekend Warriors,Purchased Contract,805809,pitcher,3,was,21,120.0,805809,Travis Sykora,12.0,0.77,45.1,18,9,9.0,17,79,0,136.0,169.0,,1.79,0.0,0.0,0.0,3.0,1.0,ALL (4),,,,,,,,,,,,,
+7670,Trey Yesavage,Weekend Warriors,Development Cont.,702056,pitcher,1,tor,22,141.0,702056,Trey Yesavage,28.0,1.03,112.0,67,44,39.0,48,176,8,336.0,451.0,,3.13,0.0,0.0,0.0,6.0,1.0,ALL (5),,,,,,,,,,,,,
+6704,Yoeilin Cespedes,Weekend Warriors,Farm Contract,806985,batter,14,bos,20,,806985,Yoeilin Cespedes,,,,97,56,,41,101,10,,,,,,,,,,A,428.0,24.0,5.0,0.292,0.668,0.376,54.0,11.0,6.0,187.0,161.0,0.227,SS
+7705,Gage Jump,Weekend Warriors,Purchased Contract,695611,pitcher,3,oak,22,133.0,695611,Gage Jump,26.0,1.1,112.2,90,50,41.0,34,131,7,338.0,461.0,,3.28,0.0,0.0,0.0,9.0,7.0,ALL (2),,,,,,,,,,,,,
+2674,Joe Mack,Whiz Kids,Purchased Contract,691788,batter,4,mia,23,,691788,Joe Mack,,,,105,70,,45,127,21,,,,,,,,,,ALL (2),408.0,22.0,2.0,0.338,0.813,0.475,58.0,9.0,3.0,179.0,194.0,0.257,C
+3909,Connor Prielipp,Whiz Kids,Purchased Contract,687570,pitcher,9,min,24,142.0,687570,Connor Prielipp,24.0,1.51,82.2,94,48,37.0,31,98,7,248.0,363.0,,4.03,0.0,0.0,0.0,1.0,9.0,ALL (2),,,,,,,,,,,,,
+3941,Thomas Harrington,Whiz Kids,Purchased Contract,802419,pitcher,10,pit,24,134.0,802419,Thomas Harrington,24.0,1.44,104.2,111,74,72.0,40,97,23,314.0,465.0,,6.19,1.0,0.0,0.0,7.0,10.0,ALL (2),,,,,,,,,,,,,
+6578,Aidan Miller,Whiz Kids,Purchased Contract,805795,batter,2,phi,21,,805795,Aidan Miller,,,,114,82,,82,123,14,,,,,,,,,,ALL (2),432.0,27.0,2.0,0.392,0.825,0.433,42.0,59.0,15.0,162.0,187.0,0.264,SS
+6580,Enrique Bradfield Jr.,Law-Abiding Citizens,Farm Contract,690961,batter,4,bal,24,,690961,Enrique Bradfield Jr.,,,,64,49,,41,66,3,,,,,,,,,,ALL (4),264.0,15.0,2.0,0.348,0.696,0.348,19.0,36.0,4.0,86.0,92.0,0.242,OF
+6590,Arjun Nimmala,Whiz Kids,Development Cont.,805796,batter,3,tor,20,,805796,Arjun Nimmala,,,,106,70,,55,116,13,,,,,,,,,,A+,473.0,29.0,3.0,0.313,0.694,0.381,61.0,17.0,3.0,234.0,180.0,0.224,SS
+6591,Kevin McGonigle,Whiz Kids,Purchased Contract,805808,batter,1,det,21,,805808,Kevin McGonigle,,,,101,68,,59,46,19,,,,,,,,,,ALL (3),331.0,31.0,2.0,0.408,0.991,0.583,80.0,10.0,7.0,145.0,193.0,0.305,SS
+6595,Colt Emerson,Country Fried Lamb,Purchased Contract,806068,batter,1,sea,20,,806068,Colt Emerson,,,,144,82,,71,105,16,,,,,,,,,,ALL (3),506.0,28.0,6.0,0.383,0.841,0.458,78.0,14.0,5.0,225.0,232.0,0.285,SS
+6596,Brice Matthews,Whiz Kids,Purchased Contract,694728,batter,1,hou,23,,694728,Brice Matthews,,,,116,76,,72,159,21,,,,,,,,,,ALL (2),461.0,18.0,7.0,0.359,0.817,0.458,73.0,42.0,11.0,214.0,211.0,0.252,SS
+6696,Cole Carrigg,Whiz Kids,Purchased Contract,694249,batter,3,col,23,,694249,Cole Carrigg,,,,113,81,,45,145,15,,,,,,,,,,AA,477.0,18.0,6.0,0.316,0.71,0.394,64.0,46.0,10.0,182.0,188.0,0.237,OF
+6759,Roc Riggio,Country Fried Lamb,Purchased Contract,691792,batter,10,col,23,,691792,Roc Riggio,,,,84,60,,47,83,20,,,,,,,,,,ALL (4),321.0,20.0,1.0,0.363,0.88,0.517,59.0,17.0,11.0,120.0,166.0,0.262,2B
+7146,Eduardo Tait,Whiz Kids,Farm Contract,806953,batter,3,min,19,,806953,Eduardo Tait,,,,111,54,,36,99,14,,,,,,,,,,ALL (3),438.0,32.0,1.0,0.311,0.738,0.427,71.0,0.0,0.0,212.0,187.0,0.253,C
+7173,Leodalis De Vries,Whiz Kids,Development Cont.,815888,batter,1,oak,19,,815888,Leo De Vries,,,,116,72,,66,107,15,,,,,,,,,,ALL (3),455.0,28.0,8.0,0.355,0.806,0.451,74.0,11.0,8.0,204.0,205.0,0.255,SS
+7319,Dorian Soto,Whiz Kids,Farm Contract,829039,batter,9,bos,17,,829039,Dorian Soto,,,,51,27,,16,28,2,,,,,,,,,,ALL (2),166.0,10.0,2.0,0.362,0.79,0.428,18.0,1.0,4.0,74.0,71.0,0.307,SS
+7335,Craig Yoho,Law-Abiding Citizens,Purchased Contract,684974,pitcher,16,mil,26,158.0,684974,Craig Yoho,51.0,1.12,56.1,34,14,12.0,29,67,1,169.0,232.0,,1.92,8.0,3.0,2.0,6.0,1.0,ALL (2),,,,,,,,,,,,,
+7577,Griffin Burkholder,Whiz Kids,Farm Contract,816120,batter,12,phi,20,,816120,Griffin Burkholder,,,,25,16,,12,42,4,,,,,,,,,,ALL (2),127.0,10.0,1.0,0.29,0.676,0.386,13.0,1.0,0.0,63.0,49.0,0.197,OF
+7605,Mike Sirota,Whiz Kids,Purchased Contract,701527,batter,5,la,22,,701527,Mike Sirota,,,,72,48,,48,59,13,,,,,,,,,,ALL (2),216.0,16.0,3.0,0.452,1.068,0.616,54.0,5.0,5.0,101.0,133.0,0.333,CF
+7646,James Tibbs III,Whiz Kids,Purchased Contract,696486,batter,8,la,23,,696486,James Tibbs III,,,,111,82,,90,120,20,,,,,,,,,,ALL (3),457.0,17.0,4.0,0.373,0.802,0.429,71.0,10.0,3.0,194.0,196.0,0.243,RF
+7710,Ryan Sloan,Country Fried Lamb,Purchased Contract,815549,pitcher,4,sea,19,136.0,815549,Ryan Sloan,21.0,1.16,82.0,80,40,34.0,15,90,5,246.0,333.0,,3.73,0.0,0.0,0.0,2.0,4.0,ALL (2),,,,,,,,,,,,,
+7784,Yorger Bautista,Whiz Kids,Farm Contract,829045,batter,10,sea,18,,829045,Yorger Bautista,,,,43,38,,21,67,7,,,,,,,,,,ROK,193.0,8.0,3.0,0.326,0.73,0.404,25.0,10.0,0.0,99.0,78.0,0.223,OF
+2017,Adam Macko,,,671936,pitcher,22,tor,25,141.0,671936,Adam Macko,23.0,1.4,81.1,75,44,43.0,39,91,6,244.0,357.0,,4.76,0.0,1.0,0.0,3.0,9.0,ALL (2),,,,,,,,,,,,,
+2302,Cooper Kinney,,,695692,batter,23,tb,22,,695692,Cooper Kinney,,,,111,54,,36,125,13,,,,,,,,,,AA,458.0,21.0,3.0,0.299,0.685,0.386,62.0,0.0,1.0,210.0,177.0,0.242,2B
+2332,Daniel Vazquez,,,694187,batter,16,kc,22,,694187,Daniel Vazquez,,,,116,61,,51,106,2,,,,,,,,,,ALL (3),447.0,25.0,5.0,0.333,0.684,0.351,50.0,27.0,8.0,196.0,157.0,0.26,SS
+2486,Frank Mozzicato,,,700924,pitcher,22,kc,22,118.0,700924,Frank Mozzicato,24.0,1.59,93.0,73,53,52.0,75,85,12,279.0,419.0,,5.03,0.0,0.0,1.0,3.0,5.0,ALL (2),,,,,,,,,,,,,
+2490,Gabriel Gonzalez,,,694224,batter,8,min,22,,694224,Gabriel Gonzalez,,,,159,75,,48,80,15,,,,,,,,,,ALL (3),483.0,38.0,3.0,0.395,0.908,0.513,66.0,8.0,3.0,238.0,248.0,0.329,RF
+2542,Hunter Owen,,,694818,pitcher,27,kc,23,118.0,694818,Hunter Owen,22.0,1.33,94.2,86,49,40.0,40,107,10,284.0,413.0,,3.8,1.0,1.0,0.0,5.0,5.0,AA,,,,,,,,,,,,,
+3874,Cristhian Vaquero,,,703143,batter,27,was,21,,703143,Cristhian Vaquero,,,,97,54,,46,110,8,,,,,,,,,,A,379.0,13.0,8.0,0.342,0.738,0.396,47.0,27.0,5.0,155.0,150.0,0.256,OF
+2780,Joshua Baez,,,695491,batter,13,stl,22,,695491,Joshua Baez,,,,120,78,,59,103,20,,,,,,,,,,ALL (2),418.0,23.0,3.0,0.384,0.884,0.5,79.0,54.0,9.0,218.0,209.0,0.287,RF
+2980,Michael Morales,,,691786,pitcher,17,sea,23,136.0,691786,Michael Morales,22.0,1.4,101.2,105,57,52.0,37,70,5,305.0,435.0,,4.6,0.0,0.0,0.0,4.0,7.0,AA,,,,,,,,,,,,,
+3144,Robert Gasser,,,688107,pitcher,18,mil,26,158.0,688107,Robert Gasser,16.0,1.12,43.2,34,17,12.0,15,46,2,131.0,179.0,,2.47,0.0,0.0,0.0,3.0,4.0,ALL (4),,,,,,,,,,,,,
+3262,Tanner McDougal,,,701780,pitcher,7,cws,22,145.0,701780,Tanner McDougal,28.0,1.33,113.1,102,49,41.0,49,136,7,340.0,481.0,,3.26,0.0,0.0,0.0,3.0,5.0,ALL (2),,,,,,,,,,,,,
+3481,Kahlil Watson,,,696135,batter,18,cle,22,,696135,Kahlil Watson,,,,92,53,,48,119,16,,,,,,,,,,ALL (2),368.0,20.0,6.0,0.346,0.813,0.467,61.0,17.0,7.0,173.0,172.0,0.25,LF
+3565,Austin Peterson,,,804926,pitcher,30,cle,26,114.0,804926,Austin Peterson,28.0,1.17,145.2,130,58,52.0,40,127,15,437.0,591.0,,3.21,0.0,0.0,0.0,8.0,6.0,ALL (2),,,,,,,,,,,,,
+3566,Luis Baez,,,800232,batter,20,hou,21,,800232,Luis Baez,,,,63,29,,23,74,2,,,,,,,,,,ALL (2),254.0,14.0,2.0,0.312,0.655,0.343,28.0,7.0,1.0,128.0,87.0,0.248,OF
+3570,Blaze Jordan,,,691458,batter,20,stl,23,,691458,Blaze Jordan,,,,133,80,,43,60,19,,,,,,,,,,ALL (3),493.0,28.0,2.0,0.331,0.781,0.45,99.0,5.0,1.0,234.0,222.0,0.27,1B
+3596,Hao-Yu Lee,,,701678,batter,6,det,22,,701678,Hao-Yu  Lee,,,,121,81,,65,121,14,,,,,,,,,,AAA,497.0,23.0,8.0,0.342,0.748,0.406,61.0,22.0,5.0,230.0,202.0,0.243,2B
+3609,Tyler Callihan,,,682997,batter,19,cin,25,,682997,Tyler Callihan,,,,28,19,,16,30,4,,,,,,,,,,ALL (2),95.0,4.0,2.0,0.396,0.901,0.505,13.0,6.0,1.0,34.0,48.0,0.295,LF
+3635,Izaac Pacheco,,,691789,batter,21,det,23,,691789,Izaac Pacheco,,,,88,72,,74,123,17,,,,,,,,,,A+,341.0,25.0,3.0,0.388,0.887,0.499,68.0,0.0,0.0,185.0,170.0,0.258,SS
+3636,Dylan Smith,,,681916,pitcher,20,det,25,116.0,681916,Dylan Smith,37.0,0.95,52.2,28,12,12.0,22,61,1,158.0,199.0,,2.05,3.0,4.0,0.0,5.0,1.0,ALL (5),,,,,,,,,,,,,
+3663,Ben Kudrna,,,695667,pitcher,7,kc,22,118.0,695667,Ben Kudrna,24.0,1.44,105.1,102,68,62.0,50,106,10,316.0,463.0,,5.3,0.0,0.0,0.0,2.0,8.0,ALL (2),,,,,,,,,,,,,
+3675,Samuel Zavala,,,694214,batter,29,cws,21,,694214,Samuel Zavala,,,,104,65,,65,104,9,,,,,,,,,,A+,409.0,17.0,2.0,0.36,0.732,0.372,51.0,18.0,8.0,162.0,152.0,0.254,CF
+3676,Denzer Guzman,,,694203,batter,8,ana,21,,694203,Denzer Guzman,,,,123,69,,63,159,19,,,,,,,,,,ALL (3),507.0,31.0,1.0,0.333,0.753,0.42,77.0,14.0,3.0,245.0,213.0,0.243,SS
+3679,Carlos Jorge,,,699115,batter,21,cin,22,,699115,Carlos Jorge,,,,102,66,,52,87,6,,,,,,,,,,A+,406.0,16.0,4.0,0.342,0.697,0.355,37.0,40.0,7.0,166.0,144.0,0.251,SS
+3699,Dax Fulton,,,690978,pitcher,13,mia,24,146.0,690978,Dax Fulton,23.0,1.62,103.2,109,71,62.0,59,115,5,311.0,483.0,,5.38,0.0,0.0,0.0,5.0,11.0,ALL (2),,,,,,,,,,,,,
+3704,Victor Mesa Jr.,,,683748,batter,21,mia,24,,683748,Victor Mesa Jr.,,,,60,27,,24,37,8,,,,,,,,,,ALL (3),221.0,12.0,1.0,0.344,0.787,0.443,39.0,4.0,1.0,94.0,98.0,0.271,CF
+3722,Noah Miller,,,695653,batter,25,la,23,,695653,Noah Miller,,,,92,49,,23,69,5,,,,,,,,,,ALL (3),354.0,17.0,2.0,0.303,0.665,0.362,51.0,1.0,0.0,174.0,128.0,0.26,SS
+3749,Brock Selvidge,,,691795,pitcher,10,nyy,23,147.0,691795,Brock Selvidge,19.0,1.43,82.2,74,52,43.0,44,68,6,248.0,360.0,,4.68,0.0,0.0,0.0,2.0,7.0,ALL (3),,,,,,,,,,,,,
+3754,Gunnar Hoglund,,,680684,pitcher,13,oak,26,133.0,680684,Gunnar Hoglund,12.0,1.29,62.0,62,32,31.0,18,53,13,186.0,254.0,,4.5,0.0,0.0,0.0,2.0,5.0,ALL (2),,,,,,,,,,,,,
+3766,Pedro Ramirez,,,699393,batter,8,chc,21,,699393,Pedro Ramirez,,,,140,70,,46,85,8,,,,,,,,,,AA,500.0,21.0,4.0,0.346,0.732,0.386,73.0,28.0,10.0,220.0,193.0,0.28,2B
+3768,Griff McGarry,,,676046,pitcher,30,was,26,120.0,676046,Griff McGarry,21.0,1.22,83.2,53,39,32.0,49,124,5,251.0,353.0,,3.44,0.0,0.0,0.0,2.0,5.0,ALL (3),,,,,,,,,,,,,
+3778,Anthony Solometo,,,696143,pitcher,26,pit,23,134.0,696143,Anthony Solometo,3.0,0.84,10.2,4,4,3.0,5,8,0,32.0,42.0,,2.53,0.0,0.0,0.0,1.0,0.0,ALL (2),,,,,,,,,,,,,
+3793,Victor Lizarraga,,,694205,pitcher,28,sd,22,135.0,694205,Victor Lizarraga,27.0,1.63,101.1,105,72,65.0,60,92,10,304.0,462.0,,5.77,0.0,0.0,1.0,5.0,10.0,ALL (2),,,,,,,,,,,,,
+3799,Jagger Haynes,,,695247,pitcher,10,sd,23,135.0,695247,Jagger Haynes,26.0,1.41,103.0,83,55,47.0,62,101,12,309.0,443.0,,4.11,0.0,0.0,0.0,3.0,4.0,AA,,,,,,,,,,,,,
+3811,Sterlin Thompson,,,694514,batter,15,col,24,,694514,Sterlin Thompson,,,,130,82,,53,107,18,,,,,,,,,,AAA,439.0,28.0,8.0,0.392,0.911,0.519,66.0,12.0,4.0,191.0,228.0,0.296,OF
+3851,Henry Bolte,,,703607,batter,5,oak,22,,703607,Henry Bolte,,,,118,66,,57,141,9,,,,,,,,,,ALL (2),415.0,20.0,6.0,0.385,0.812,0.427,56.0,44.0,2.0,197.0,177.0,0.284,OF
+3855,Maximo Acosta,,,691185,batter,23,mia,23,,691185,Maximo Acosta,,,,103,63,,56,140,16,,,,,,,,,,ALL (2),464.0,14.0,3.0,0.312,0.681,0.369,55.0,34.0,11.0,206.0,171.0,0.222,SS
+3857,Tekoah Roby,,,694358,pitcher,8,stl,24,138.0,694358,Tekoah Roby,16.0,1.1,78.1,67,31,27.0,19,87,8,235.0,316.0,,3.1,0.0,0.0,0.0,7.0,4.0,ALL (2),,,,,,,,,,,,,
+3858,Anthony Gutierrez,,,703152,batter,24,tex,21,,703152,Anthony Gutierrez,,,,87,53,,31,79,2,,,,,,,,,,A+,337.0,15.0,0.0,0.333,0.653,0.32,28.0,48.0,9.0,166.0,108.0,0.258,CF
+3876,Andry Lara,,,691251,pitcher,22,was,22,120.0,691251,Andry Lara,31.0,1.99,70.1,101,67,61.0,39,51,7,211.0,348.0,,7.81,0.0,0.0,0.0,1.0,9.0,ALL (4),,,,,,,,,,,,,
+3897,Gavin Cross,,,688457,batter,24,kc,24,,688457,Gavin Cross,,,,112,75,,33,134,17,,,,,,,,,,AA,465.0,23.0,3.0,0.291,0.704,0.413,64.0,23.0,5.0,233.0,192.0,0.241,OF
+3907,Brandon Barriera,,,702255,pitcher,24,tor,21,141.0,702255,Brandon Barriera,5.0,1.94,5.2,3,9,9.0,8,6,0,17.0,28.0,,14.29,0.0,0.0,0.0,0.0,1.0,ROK,,,,,,,,,,,,,
+3912,Daniel Susac,,,691740,batter,15,sf,24,,691740,Daniel Susac,,,,99,48,,35,109,18,,,,,,,,,,AAA,360.0,19.0,1.0,0.349,0.832,0.483,68.0,7.0,3.0,200.0,174.0,0.275,C
+3915,Gabriel Hughes,,,687312,pitcher,14,col,24,115.0,687312,Gabriel Hughes,24.0,1.26,105.1,95,53,49.0,38,88,13,316.0,442.0,,4.19,0.0,0.0,0.0,5.0,6.0,ALL (3),,,,,,,,,,,,,
+3916,Blade Tidwell,,,694918,pitcher,13,sf,24,137.0,694918,Blade Tidwell,25.0,1.33,112.0,102,56,54.0,47,121,12,336.0,484.0,,4.34,0.0,0.0,0.0,7.0,5.0,ALL (3),,,,,,,,,,,,,
+3918,Josh Kasevich,,,688460,batter,12,tor,24,,688460,Josh Kasevich,,,,31,8,,21,24,0,,,,,,,,,,ALL (3),136.0,2.0,0.0,0.331,0.574,0.243,12.0,0.0,3.0,69.0,33.0,0.228,SS
+3919,Mikey Romero,,,702540,batter,6,bos,21,,702540,Mikey Romero,,,,109,61,,34,132,17,,,,,,,,,,ALL (2),445.0,33.0,4.0,0.3,0.752,0.452,76.0,5.0,3.0,173.0,201.0,0.245,SS
+3921,JR Ritchie,,,702275,pitcher,2,atl,22,144.0,702275,JR Ritchie,26.0,1.01,140.0,87,46,41.0,54,140,12,420.0,564.0,,2.64,0.0,0.0,0.0,8.0,6.0,ALL (3),,,,,,,,,,,,,
+3926,Dylan Beavers,Jepordizers!,Purchased Contract,687637,batter,2,bal,24,,687637,Dylan Beavers,,,,129,94,,94,112,22,,,,,,,,,,ALL (2),452.0,19.0,3.0,0.409,0.896,0.487,65.0,25.0,7.0,148.0,220.0,0.285,RF
+3933,Jake Bennett,,,687562,pitcher,7,bos,25,111.0,687562,Jake Bennett,19.0,1.08,75.1,62,20,19.0,19,64,3,226.0,297.0,,2.27,0.0,0.0,0.0,2.0,5.0,ALL (3),,,,,,,,,,,,,
+3945,Peyton Pallette,,,688883,pitcher,19,cle,24,114.0,688883,Peyton Pallette,52.0,1.12,64.1,44,30,29.0,28,86,6,193.0,265.0,,4.06,11.0,5.0,1.0,2.0,3.0,ALL (2),,,,,,,,,,,,,
+3949,Brycen Mautz,,,802408,pitcher,23,stl,24,138.0,802408,Brycen Mautz,25.0,1.11,114.2,94,39,38.0,33,134,13,344.0,468.0,,2.98,0.0,0.0,0.0,8.0,3.0,AA,,,,,,,,,,,,,
+3960,Brandon Birdsell,,,669361,pitcher,9,chc,25,112.0,669361,Brandon Birdsell,8.0,1.22,33.2,28,16,11.0,13,33,5,101.0,143.0,,2.94,0.0,0.0,0.0,2.0,2.0,ALL (3),,,,,,,,,,,,,
+3966,Nazier Mulé,,,702271,pitcher,26,chc,21,112.0,702271,Nazier Mulé,18.0,1.67,67.0,57,50,43.0,55,69,2,201.0,306.0,,5.78,0.0,0.0,0.0,3.0,8.0,ALL (2),,,,,,,,,,,,,
+3970,Kenya Huggins,,,695761,pitcher,22,oak,23,133.0,695761,Kenya Huggins,24.0,1.17,78.0,59,33,33.0,32,72,5,234.0,317.0,,3.81,0.0,1.0,0.0,2.0,3.0,ALL (2),,,,,,,,,,,,,
+4002,Cristian Hernandez,,,694183,batter,11,chc,22,,694183,Cristian Hernandez,,,,112,54,,53,105,7,,,,,,,,,,A+,444.0,25.0,2.0,0.329,0.694,0.365,53.0,52.0,9.0,174.0,162.0,0.252,SS
+4044,Hendry Mendez,,,694230,batter,25,min,22,,694230,Hendry Mendez,,,,122,68,,67,65,11,,,,,,,,,,ALL (2),408.0,16.0,4.0,0.399,0.838,0.439,62.0,10.0,4.0,167.0,179.0,0.299,OF
+4068,Jace Avina,,,701778,batter,24,nyy,22,,701778,Jace Avina,,,,90,55,,49,104,11,,,,,,,,,,ALL (2),346.0,24.0,0.0,0.366,0.791,0.425,45.0,5.0,3.0,165.0,147.0,0.26,LF
+4102,William Bergolla,,,703151,batter,12,cws,21,,703151,William Bergolla,,,,139,70,,37,26,0,,,,,,,,,,AA,486.0,19.0,2.0,0.342,0.675,0.333,36.0,40.0,11.0,218.0,162.0,0.286,2B
+4143,Brailyn Antunez,,,829073,batter,22,mil,18,,829073,Brailyn Antunez,,,,42,39,,30,41,1,,,,,,,,,,ROK,195.0,10.0,0.0,0.353,0.635,0.282,25.0,21.0,6.0,95.0,55.0,0.215,OF
+4210,Yunior Marte,,,805074,pitcher,27,sf,22,137.0,805074,Yunior Marte,24.0,1.04,102.0,77,37,33.0,29,96,4,306.0,403.0,,2.91,0.0,0.0,0.0,3.0,5.0,ALL (2),,,,,,,,,,,,,
+4216,Marco Raya,,,694397,pitcher,18,min,23,142.0,694397,Marco Raya,30.0,1.62,98.2,103,72,66.0,57,102,16,296.0,451.0,,6.02,0.0,1.0,0.0,2.0,8.0,AAA,,,,,,,,,,,,,
+4237,Mason Black,,,696131,pitcher,21,kc,26,118.0,696131,Mason Black,31.0,1.47,123.1,119,88,80.0,62,119,19,370.0,550.0,,5.84,0.0,0.0,0.0,3.0,10.0,ALL (2),,,,,,,,,,,,,
+4301,Gabriel Rincones Jr.,,,687282,batter,9,phi,24,,687282,Gabriel Rincones Jr.,,,,99,81,,80,114,18,,,,,,,,,,AAA,412.0,22.0,1.0,0.37,0.8,0.43,73.0,21.0,5.0,230.0,177.0,0.24,RF
+4309,Blake Burkhalter,,,686628,pitcher,11,atl,25,144.0,686628,Blake Burkhalter,32.0,1.32,103.0,91,41,38.0,45,88,4,309.0,437.0,,3.32,1.0,2.0,1.0,4.0,7.0,ALL (2),,,,,,,,,,,,,
+4314,Brayan Cortesia,,,829049,batter,24,was,18,,829049,Brayan Cortesia,,,,38,26,,25,25,0,,,,,,,,,,ROK,120.0,3.0,1.0,0.44,0.798,0.358,12.0,22.0,13.0,53.0,43.0,0.317,SS
+4349,Brendan Tunink,,,815665,batter,19,la,20,,815665,Brendan Tunink,,,,42,35,,27,51,5,,,,,,,,,,ROK,140.0,10.0,5.0,0.417,0.967,0.55,17.0,9.0,2.0,50.0,77.0,0.3,OF
+4443,Walbert Ureña,,,700712,pitcher,24,ana,21,108.0,700712,Walbert Urena,28.0,1.36,141.0,119,75,68.0,73,125,8,423.0,604.0,,4.34,0.0,0.0,0.0,6.0,9.0,ALL (2),,,,,,,,,,,,,
+4443,Walbert Urena,,,700712,pitcher,24,ana,21,108.0,700712,Walbert Urena,28.0,1.36,141.0,119,75,68.0,73,125,8,423.0,604.0,,4.34,0.0,0.0,0.0,6.0,9.0,ALL (2),,,,,,,,,,,,,
+4467,Randy De Jesus,,,703194,batter,27,ana,20,,703194,Randy De Jesus,,,,78,42,,49,164,18,,,,,,,,,,A+,421.0,11.0,0.0,0.28,0.62,0.34,55.0,3.0,2.0,218.0,143.0,0.185,OF
+4508,Christian Franklin,,,681047,batter,13,was,26,,681047,Christian Franklin,,,,121,77,,80,110,12,,,,,,,,,,ALL (2),445.0,23.0,5.0,0.39,0.817,0.427,64.0,19.0,9.0,169.0,190.0,0.272,LF
+4523,Tirso Ornelas,,,672359,batter,11,sd,25,,672359,Tirso Ornelas,,,,93,63,,48,66,10,,,,,,,,,,ALL (2),332.0,21.0,0.0,0.376,0.81,0.434,58.0,7.0,2.0,159.0,144.0,0.28,LF
+4552,Garrett Hawkins,,,678184,pitcher,19,sd,25,135.0,678184,Garrett Hawkins,45.0,0.85,60.0,28,10,10.0,23,80,1,180.0,228.0,,1.5,10.0,3.0,0.0,9.0,1.0,ALL (2),,,,,,,,,,,,,
+4558,Jackson Cox,,,702484,pitcher,30,col,22,115.0,702484,Jackson Cox,23.0,1.12,85.0,70,35,32.0,25,92,12,255.0,341.0,,3.39,0.0,0.0,0.0,4.0,6.0,A,,,,,,,,,,,,,
+4560,Leonardo Bernal,,,699024,batter,4,stl,21,,699024,Leonardo Bernal,,,,98,58,,49,77,13,,,,,,,,,,AA,396.0,19.0,0.0,0.332,0.726,0.394,70.0,13.0,3.0,191.0,156.0,0.247,C
+4561,Miguel Ullola,,,699044,pitcher,4,hou,23,117.0,699044,Miguel Ullola,28.0,1.35,113.2,75,49,49.0,78,131,7,341.0,492.0,,3.88,1.0,0.0,1.0,7.0,6.0,AAA,,,,,,,,,,,,,
+4562,Chen Zhong-Ao Zhuang,,,800018,pitcher,28,oak,25,133.0,800018,Chen Zhong-Ao Zhuang,28.0,1.28,145.2,151,79,66.0,35,145,22,437.0,617.0,,4.08,0.0,0.0,0.0,6.0,11.0,AA,,,,,,,,,,,,,
+4566,David McCabe,,,678173,batter,28,atl,25,,678173,David McCabe,,,,129,62,,71,121,14,,,,,,,,,,ALL (2),469.0,27.0,1.0,0.367,0.793,0.426,71.0,3.0,1.0,183.0,200.0,0.275,3B
+4569,Luis Lara,,,800325,batter,12,mil,21,,800325,Luis Lara,,,,132,79,,86,99,2,,,,,,,,,,AA,513.0,32.0,3.0,0.369,0.712,0.343,40.0,44.0,7.0,190.0,176.0,0.257,CF
+4576,Jesus Baez,,,800305,batter,10,stl,20,,800305,Jesus Baez,,,,94,60,,46,80,14,,,,,,,,,,ALL (3),388.0,14.0,0.0,0.326,0.713,0.387,57.0,9.0,5.0,198.0,150.0,0.242,SS
+4579,Mitch Bratt,,,683352,pitcher,9,ari,22,109.0,683352,Mitch Bratt,24.0,1.17,122.1,122,49,46.0,21,148,18,367.0,505.0,,3.38,0.0,0.0,0.0,7.0,4.0,ALL (2),,,,,,,,,,,,,
+4582,Ashton Izzi,,,802416,pitcher,18,ari,22,109.0,802416,Ashton Izzi,18.0,1.44,75.0,80,48,40.0,28,80,11,225.0,334.0,,4.8,0.0,0.0,0.0,3.0,6.0,ALL (2),,,,,,,,,,,,,
+4596,Yendry Rojas,,,696070,pitcher,5,min,23,142.0,696070,Kendry Rojas,19.0,1.55,69.0,75,42,36.0,32,90,7,207.0,312.0,,4.7,0.0,0.0,0.0,2.0,5.0,ALL (5),,,,,,,,,,,,,
+4597,Adrian Sugastey,,,814696,batter,26,la,21,,814696,Jaron Elkins,,,,118,81,,45,153,9,,,,,,,,,,A,447.0,30.0,5.0,0.35,0.764,0.414,72.0,63.0,6.0,234.0,185.0,0.264,OF
+4606,Rosman Verdugo,,,698916,batter,25,sd,20,,698916,Rosman Verdugo,,,,83,59,,72,158,13,,,,,,,,,,A+,404.0,15.0,3.0,0.339,0.693,0.354,43.0,6.0,3.0,214.0,143.0,0.205,SS
+4611,Bradgley Rodriguez,,,699134,pitcher,6,sd,22,135.0,699134,Bradgley Rodriguez,40.0,1.06,44.1,28,15,14.0,19,47,1,133.0,181.0,,2.84,5.0,5.0,3.0,7.0,0.0,ALL (3),,,,,,,,,,,,,
+4613,Cutter Coffey,,,702690,batter,27,tor,21,,702690,Cutter Coffey,,,,105,68,,47,100,11,,,,,,,,,,A+,384.0,26.0,0.0,0.359,0.786,0.427,62.0,10.0,3.0,192.0,164.0,0.273,3B
+4629,Mason Barnett,,,686930,pitcher,9,oak,25,133.0,686930,Mason Barnett,30.0,1.61,141.1,151,99,98.0,76,142,20,424.0,648.0,,6.24,0.0,0.0,0.0,7.0,3.0,ALL (2),,,,,,,,,,,,,
+4631,Nelson Rada,,,703185,batter,7,ana,20,,703185,Nelson Rada,,,,143,81,,75,117,2,,,,,,,,,,ALL (2),489.0,19.0,4.0,0.398,0.758,0.36,39.0,54.0,18.0,138.0,176.0,0.292,CF
+4634,T.J. Rumfield,,,681198,batter,25,nyy,25,,681198,T.J. Rumfield,,,,142,85,,70,108,16,,,,,,,,,,AAA,499.0,31.0,1.0,0.378,0.825,0.447,87.0,5.0,2.0,239.0,223.0,0.285,1B
+4641,Danny De Andrade,,,694185,batter,30,min,21,,694185,Danny De Andrade,,,,100,55,,43,115,9,,,,,,,,,,A+,437.0,26.0,8.0,0.317,0.704,0.387,58.0,15.0,6.0,205.0,169.0,0.229,SS
+4644,Isaiah Lowe,,,702584,pitcher,27,sd,22,135.0,702584,Isaiah Lowe,22.0,1.76,91.2,110,67,58.0,51,70,8,275.0,433.0,,5.69,0.0,0.0,0.0,3.0,12.0,A+,,,,,,,,,,,,,
+4649,Trevor McDonald,,,686790,pitcher,18,sf,24,137.0,686790,Trevor McDonald,32.0,1.4,157.1,157,104,87.0,64,158,23,472.0,689.0,,4.98,0.0,0.0,0.0,10.0,9.0,ALL (2),,,,,,,,,,,,,
+4651,Yu-Min Lin,,,801179,pitcher,20,ari,22,109.0,801179,Yu-Min Lin,23.0,1.81,101.2,124,81,75.0,60,85,18,305.0,481.0,,6.64,0.0,0.0,0.0,5.0,7.0,AAA,,,,,,,,,,,,,
+4655,Carson Palmquist,,,687223,pitcher,13,col,25,115.0,687223,Carson Palmquist,35.0,1.55,112.0,107,78,74.0,67,121,17,336.0,513.0,,5.95,0.0,0.0,0.0,4.0,9.0,ALL (2),,,,,,,,,,,,,
+4656,Gabriel Rodriguez,,,821657,batter,24,cle,18,,821657,Gabriel Rodriguez,,,,30,21,,15,23,1,,,,,,,,,,ROK,102.0,4.0,2.0,0.393,0.795,0.402,15.0,11.0,2.0,43.0,41.0,0.294,SS
+4661,Luis Baez,,,800232,batter,20,hou,21,,800232,Luis Baez,,,,63,29,,23,74,2,,,,,,,,,,ALL (2),254.0,14.0,2.0,0.312,0.655,0.343,28.0,7.0,1.0,128.0,87.0,0.248,OF
+4664,Shane Drohan,,,675660,pitcher,30,bos,26,111.0,675660,Shane Drohan,15.0,1.13,54.0,40,19,18.0,21,77,5,162.0,223.0,,3.0,0.0,0.0,0.0,5.0,2.0,ALL (2),,,,,,,,,,,,,
+4669,Yordany De Los Santos,,,703154,batter,15,pit,20,,703154,Yordany De Los Santos,,,,115,62,,40,140,11,,,,,,,,,,ALL (2),464.0,27.0,2.0,0.309,0.695,0.386,54.0,51.0,14.0,195.0,179.0,0.248,SS
+4683,Alex McFarlane,,,686934,pitcher,20,phi,24,143.0,686934,Alex McFarlane,28.0,1.38,80.0,67,46,43.0,43,82,4,240.0,346.0,,4.84,0.0,1.0,2.0,4.0,9.0,ALL (2),,,,,,,,,,,,,
+4686,Nick Morabito,,,703492,batter,16,nym,22,,703492,Nick Morabito,,,,119,63,,47,115,6,,,,,,,,,,AA,436.0,27.0,2.0,0.348,0.733,0.385,59.0,49.0,11.0,187.0,168.0,0.273,CF
+4923,Ricardo Olivar,,,691627,batter,26,min,24,,691627,Ricardo Olivar,,,,93,56,,49,74,13,,,,,,,,,,AA,352.0,13.0,0.0,0.356,0.768,0.412,59.0,13.0,3.0,172.0,145.0,0.264,C
+4966,Austin Charles,,,800051,batter,29,kc,22,,800051,Austin Charles,,,,45,24,,19,65,2,,,,,,,,,,ALL (2),220.0,10.0,2.0,0.26,0.555,0.295,20.0,11.0,5.0,95.0,65.0,0.205,SS
+5211,Kala'i Rosario,,,693850,batter,29,min,23,,693850,Kala'i Rosario,,,,127,92,,73,159,25,,,,,,,,,,AA,497.0,30.0,5.0,0.358,0.845,0.487,83.0,32.0,7.0,252.0,242.0,0.256,OF
+5242,Juan Sanchez,,,825646,batter,18,tor,18,,825646,Juan Sanchez,,,,73,47,,26,44,8,,,,,,,,,,ROK,214.0,16.0,4.0,0.439,1.004,0.565,40.0,4.0,3.0,82.0,121.0,0.341,SS
+5344,Jesus Rodriguez,,,683679,batter,16,sf,23,,683679,Jesus Rodriguez,,,,150,76,,66,78,7,,,,,,,,,,ALL (3),489.0,20.0,3.0,0.393,0.796,0.403,59.0,21.0,9.0,196.0,197.0,0.307,C
+5423,Jadher Areinamo,,,699130,batter,29,tb,22,,699130,Jadher Areinamo,,,,145,69,,46,67,15,,,,,,,,,,ALL (2),508.0,32.0,2.0,0.344,0.789,0.445,70.0,21.0,8.0,199.0,226.0,0.285,2B
+5433,Jacob Gonzalez,,,694378,batter,16,cws,23,,694378,Jacob Gonzalez,,,,110,56,,48,86,8,,,,,,,,,,ALL (2),475.0,26.0,2.0,0.307,0.652,0.345,61.0,17.0,3.0,224.0,164.0,0.232,SS
+5442,Jack Neely,,,680891,pitcher,25,chc,25,112.0,680891,Jack Neely,31.0,1.5,33.1,23,22,22.0,27,43,5,100.0,155.0,,5.94,5.0,5.0,0.0,0.0,2.0,ALL (2),,,,,,,,,,,,,
+5641,Diego Velasquez,,,694196,batter,23,sf,22,,694196,Diego Velasquez,,,,121,60,,70,81,2,,,,,,,,,,AA,473.0,20.0,1.0,0.362,0.677,0.315,32.0,19.0,6.0,157.0,149.0,0.256,SS
+5723,Creed Willems,,,695735,batter,30,bal,22,,695735,Creed Willems,,,,96,41,,38,83,16,,,,,,,,,,AA,379.0,21.0,1.0,0.338,0.779,0.441,59.0,1.0,2.0,175.0,167.0,0.253,C
+5819,Cameron Cauley,,,695508,batter,17,tex,22,,695508,Cameron Cauley,,,,110,74,,47,121,15,,,,,,,,,,AA,435.0,26.0,7.0,0.325,0.773,0.448,51.0,28.0,7.0,186.0,195.0,0.253,SS
+5881,Blake Hunt,,,687762,pitcher,21,bos,25,111.0,687762,Blake Wehunt,17.0,1.47,63.1,64,45,40.0,29,76,8,190.0,281.0,,5.68,0.0,0.0,0.0,2.0,8.0,AA,,,,,,,,,,,,,
+6007,Abimelec Ortiz,,,694673,batter,18,tex,23,,694673,Abimelec Ortiz,,,,123,85,,65,123,25,,,,,,,,,,ALL (2),478.0,25.0,3.0,0.356,0.835,0.479,89.0,4.0,2.0,225.0,229.0,0.257,1B
+6016,Jacob Reimer,,,702544,batter,6,nym,21,,702544,Jacob Reimer,,,,125,88,,58,112,17,,,,,,,,,,ALL (2),444.0,32.0,5.0,0.379,0.87,0.491,77.0,15.0,3.0,233.0,218.0,0.282,3B
+6019,Lamar King Jr.,,,702601,batter,14,sd,22,,702601,Lamar King Jr.,,,,110,54,,44,93,4,,,,,,,,,,ALL (2),401.0,30.0,1.0,0.353,0.737,0.384,44.0,21.0,3.0,218.0,154.0,0.274,C
+6025,Kenni Gomez,,,703198,batter,23,hou,20,,703198,Kenni Gomez,,,,79,34,,20,100,6,,,,,,,,,,A+,341.0,18.0,2.0,0.274,0.623,0.349,48.0,22.0,7.0,167.0,119.0,0.232,OF
+6028,Dominic Keegan,,,681371,batter,20,tb,25,,681371,Dominic Keegan,,,,71,41,,32,97,12,,,,,,,,,,ALL (2),290.0,18.0,2.0,0.322,0.767,0.445,40.0,0.0,1.0,152.0,129.0,0.245,C
+6040,Caleb Ricketts,,,681080,batter,22,phi,25,,681080,Caleb Ricketts,,,,69,32,,14,47,8,,,,,,,,,,ALL (3),251.0,17.0,0.0,0.315,0.753,0.438,34.0,0.0,1.0,113.0,110.0,0.275,C
+6050,Karson Milbrandt,,,703596,pitcher,18,mia,21,146.0,703596,Karson Milbrandt,22.0,1.28,90.0,67,33,30.0,48,113,3,270.0,389.0,,3.0,0.0,0.0,0.0,3.0,5.0,ALL (3),,,,,,,,,,,,,
+6066,Coleman Crow,,,689441,pitcher,25,mil,25,158.0,689441,Coleman Crow,12.0,1.04,50.0,40,18,18.0,12,64,3,150.0,200.0,,3.24,0.0,0.0,0.0,4.0,1.0,ALL (2),,,,,,,,,,,,,
+6068,Jean Cabrera,,,691893,pitcher,11,phi,24,143.0,691893,Jean Cabrera,26.0,1.23,137.0,107,62,58.0,61,127,11,411.0,573.0,,3.81,0.0,0.0,0.0,6.0,9.0,AA,,,,,,,,,,,,,
+6083,Luis Perales,,,691384,pitcher,5,was,22,120.0,691384,Luis Perales,3.0,1.29,2.1,0,2,2.0,3,4,0,7.0,9.0,,7.71,0.0,2.0,0.0,0.0,0.0,ALL (2),,,,,,,,,,,,,
+6101,Alimber Santa,,,695001,pitcher,11,hou,22,117.0,695001,Alimber Santa,46.0,1.21,70.0,46,21,18.0,39,82,2,210.0,294.0,,2.31,2.0,6.0,2.0,3.0,2.0,ALL (2),,,,,,,,,,,,,
+6120,Peter Heubeck,,,695646,pitcher,23,la,23,119.0,695646,Peter Heubeck,16.0,1.22,66.1,47,35,32.0,34,77,6,199.0,278.0,,4.34,0.0,0.0,0.0,2.0,5.0,AA,,,,,,,,,,,,,
+6139,Brando Mayea,,,806963,batter,27,nyy,20,,806963,Brando Mayea,,,,22,19,,6,19,3,,,,,,,,,,ROK,74.0,4.0,1.0,0.373,0.873,0.5,9.0,4.0,3.0,27.0,37.0,0.297,OF
+6149,Rayner Arias,,,806976,batter,8,sf,19,,806976,Rayner Arias,,,,38,28,,17,55,3,,,,,,,,,,ALL (2),178.0,6.0,2.0,0.304,0.624,0.32,20.0,5.0,2.0,87.0,57.0,0.213,OF
+6227,Drew Gray,,,695645,pitcher,27,chc,22,112.0,695645,Drew Gray,3.0,1.61,9.1,7,6,5.0,8,14,1,28.0,43.0,,4.82,0.0,0.0,0.0,0.0,2.0,ALL (2),,,,,,,,,,,,,
+6231,Tyler Schweitzer,,,805326,pitcher,30,cws,25,145.0,805326,Tyler Schweitzer,27.0,1.34,99.2,93,56,51.0,41,81,13,299.0,428.0,,4.61,0.0,1.0,0.0,8.0,2.0,ALL (2),,,,,,,,,,,,,
+6293,C.J. Culpepper,,,690217,pitcher,17,min,24,142.0,690217,C.J. Culpepper,17.0,1.33,59.1,48,20,16.0,31,53,4,178.0,250.0,,2.43,0.0,0.0,0.0,2.0,2.0,ALL (3),,,,,,,,,,,,,
+6356,Brendan Beck,,,694341,pitcher,11,nyy,27,147.0,694341,Brendan Beck,26.0,1.06,131.1,103,51,49.0,36,123,14,394.0,522.0,,3.36,0.0,0.0,0.0,13.0,5.0,ALL (2),,,,,,,,,,,,,
+6380,Hyun-Seok Jang,,,815794,pitcher,21,la,21,119.0,815794,Hyun-Seok Jang,13.0,1.35,40.2,23,21,21.0,32,54,4,122.0,175.0,,4.65,0.0,0.0,0.0,0.0,2.0,A,,,,,,,,,,,,,
+6381,Carlos Sanchez,,,800176,batter,30,cin,20,,800176,Carlos Sanchez,,,,115,62,,67,121,8,,,,,,,,,,ALL (2),415.0,20.0,6.0,0.379,0.791,0.412,62.0,20.0,14.0,188.0,171.0,0.277,3B
+6479,Rolddy Munoz,,,691548,pitcher,17,atl,25,144.0,691548,Rolddy Munoz,44.0,1.37,63.2,49,26,24.0,38,64,7,191.0,277.0,,3.39,6.0,3.0,2.0,3.0,3.0,ALL (3),,,,,,,,,,,,,
+6540,Jose Fleury,,,800067,pitcher,15,hou,23,117.0,800067,Jose Fleury,23.0,1.28,85.0,74,43,43.0,35,78,13,255.0,349.0,,4.55,1.0,0.0,3.0,5.0,2.0,ALL (2),,,,,,,,,,,,,
+6542,Luinder Avila,,,679883,pitcher,14,kc,24,118.0,679883,Luinder Avila,30.0,1.24,73.1,59,36,35.0,32,87,7,220.0,310.0,,4.3,0.0,0.0,0.0,3.0,4.0,ALL (3),,,,,,,,,,,,,
+6557,Jimmy Crooks,,,699625,batter,6,stl,24,,699625,Jimmy Crooks,,,,113,64,,36,131,15,,,,,,,,,,ALL (2),435.0,21.0,2.0,0.319,0.74,0.421,80.0,0.0,0.0,189.0,183.0,0.26,C
+6564,Eduardo Quintero,not much of a donkey,Purchased Contract,808234,batter,3,la,20,,808234,Eduardo Quintero,,,,127,101,,88,123,19,,,,,,,,,,ALL (2),433.0,22.0,7.0,0.415,0.923,0.508,69.0,47.0,13.0,210.0,220.0,0.293,OF
+6574,Yohandy Morales,,,691002,batter,21,was,24,,691002,Yohandy Morales,,,,135,85,,57,164,15,,,,,,,,,,ALL (2),509.0,31.0,4.0,0.339,0.769,0.43,71.0,7.0,2.0,230.0,219.0,0.265,3B
+6575,Jansel Luis,,,800306,batter,12,ari,20,,800306,Jansel Luis,,,,131,65,,27,74,5,,,,,,,,,,ALL (2),421.0,21.0,8.0,0.347,0.782,0.435,67.0,24.0,7.0,201.0,183.0,0.311,SS
+6576,Cristofer Torin,,,800198,batter,19,ari,20,,800198,Cristofer Torin,,,,142,83,,69,81,6,,,,,,,,,,ALL (2),488.0,26.0,3.0,0.383,0.776,0.393,59.0,16.0,7.0,224.0,192.0,0.291,SS
+6582,Alexander Albertus,,,800316,batter,23,cws,21,,800316,Alexander Albertus,,,,6,4,,6,3,0,,,,,,,,,,ROK,18.0,2.0,0.0,0.52,0.964,0.444,2.0,3.0,0.0,5.0,8.0,0.333,SS
+6585,Brock Wilken,,,694385,batter,17,mil,23,,694385,Brock Wilken,,,,61,46,,69,93,18,,,,,,,,,,AA,270.0,17.0,0.0,0.387,0.876,0.489,46.0,2.0,0.0,151.0,132.0,0.226,3B
+6589,Dillon Head,,,702977,batter,11,mia,21,,702977,Dillon Head,,,,81,60,,59,82,4,,,,,,,,,,ALL (2),362.0,4.0,9.0,0.336,0.654,0.318,39.0,37.0,9.0,148.0,115.0,0.224,CF
+6594,Tai Peete,,,806191,batter,11,sea,20,,806191,Tai Peete,,,,103,58,,46,162,19,,,,,,,,,,A+,475.0,24.0,4.0,0.288,0.692,0.404,63.0,25.0,11.0,247.0,192.0,0.217,OF
+6600,Joe Whitman,,,802126,pitcher,14,sf,24,137.0,802126,Joe Whitman,26.0,1.5,117.1,129,72,69.0,47,124,10,352.0,513.0,,5.29,0.0,0.0,0.0,5.0,11.0,AA,,,,,,,,,,,,,
+6607,Chase Davis,,,690971,batter,26,stl,24,,690971,Chase Davis,,,,100,61,,67,146,10,,,,,,,,,,AA,414.0,16.0,0.0,0.358,0.711,0.353,48.0,9.0,2.0,178.0,146.0,0.242,OF
+6610,Luis Guanipa,,,806994,batter,20,atl,20,,806994,Luis Guanipa,,,,33,20,,14,20,1,,,,,,,,,,ALL (2),126.0,5.0,0.0,0.345,0.67,0.325,15.0,2.0,1.0,43.0,41.0,0.262,OF
+6613,Garrett Baumann,,,803833,pitcher,6,atl,21,144.0,803833,Garrett Baumann,23.0,1.24,113.2,110,48,43.0,31,108,10,341.0,481.0,,3.4,0.0,0.0,0.0,6.0,9.0,A+,,,,,,,,,,,,,
+6614,Colton Ledbetter,,,807742,batter,24,tb,24,,807742,Colton Ledbetter,,,,123,67,,51,128,7,,,,,,,,,,AA,465.0,24.0,4.0,0.337,0.715,0.378,49.0,37.0,11.0,178.0,176.0,0.265,OF
+6620,Tony Blanco Jr.,,,703156,batter,30,pit,20,,703156,Tony Blanco Jr.,,,,29,11,,18,46,8,,,,,,,,,,ALL (2),112.0,3.0,0.0,0.359,0.859,0.5,23.0,0.0,0.0,46.0,56.0,0.259,OF
+6621,Zander Mueth,,,805800,pitcher,14,pit,20,134.0,805800,Zander Mueth,12.0,2.08,26.0,25,25,19.0,29,34,1,78.0,135.0,,6.58,0.0,0.0,0.0,0.0,4.0,ALL (2),,,,,,,,,,,,,
+6622,Carlos Jimenez,,,692039,batter,26,sea,22,,692039,Carlos Jimenez,,,,108,75,,60,116,14,,,,,,,,,,A,418.0,17.0,4.0,0.358,0.777,0.419,63.0,30.0,13.0,189.0,175.0,0.258,CF
+6629,Juaran Watts-Brown,,,695033,pitcher,10,bal,23,110.0,695033,Juaron Watts-Brown,26.0,1.13,124.1,90,58,50.0,50,158,16,373.0,515.0,,3.62,0.0,0.0,0.0,3.0,8.0,ALL (3),,,,,,,,,,,,,
+6633,Will Sanders,,,691739,pitcher,23,chc,23,112.0,691739,Will Sanders,26.0,1.35,123.1,125,77,69.0,41,123,15,370.0,531.0,,5.04,0.0,1.0,0.0,10.0,6.0,ALL (2),,,,,,,,,,,,,
+6634,Teddy McGraw,,,803141,pitcher,13,sea,24,136.0,803141,Teddy McGraw,14.0,1.41,28.1,32,10,10.0,8,33,1,85.0,120.0,,3.18,0.0,0.0,0.0,0.0,3.0,ALL (2),,,,,,,,,,,,,
+6636,Maui Ahuna,,,694757,batter,12,sf,23,,694757,Maui Ahuna,,,,63,49,,31,74,5,,,,,,,,,,ALL (3),234.0,22.0,3.0,0.37,0.823,0.453,36.0,12.0,2.0,109.0,106.0,0.269,SS
+6637,Walker Martin,,,806152,batter,28,sf,21,,806152,Walker Martin,,,,95,67,,69,137,12,,,,,,,,,,A,406.0,19.0,3.0,0.353,0.737,0.384,70.0,13.0,4.0,226.0,156.0,0.234,SS
+6638,Blake Wolters,,,806265,pitcher,18,kc,21,118.0,806265,Blake Wolters,12.0,1.56,47.1,34,25,21.0,40,40,3,142.0,207.0,,3.99,0.0,0.0,0.0,2.0,2.0,A,,,,,,,,,,,,,
+6640,Asbel Gonzalez,,,808706,batter,12,kc,20,,808706,Asbel Gonzalez,,,,99,82,,54,86,1,,,,,,,,,,A,415.0,12.0,3.0,0.365,0.654,0.289,21.0,78.0,26.0,135.0,120.0,0.239,OF
+6642,David Sandlin,,,689818,pitcher,8,bos,24,111.0,689818,David Sandlin,32.0,1.37,106.0,105,55,53.0,40,107,10,318.0,457.0,,4.5,0.0,2.0,2.0,9.0,6.0,ALL (2),,,,,,,,,,,,,
+6644,Jared Sundstrom,,,814791,batter,14,sea,24,,814791,Jared Sundstrom,,,,96,62,,40,145,12,,,,,,,,,,AA,438.0,22.0,5.0,0.297,0.671,0.374,53.0,35.0,4.0,231.0,164.0,0.219,OF
+6645,Ty Floyd,,,692226,pitcher,28,cin,24,113.0,692226,Ty Floyd,8.0,0.9,27.2,14,12,10.0,11,31,4,83.0,109.0,,3.25,0.0,0.0,0.0,0.0,1.0,A,,,,,,,,,,,,,
+6647,Steven Echavarria,,,806064,pitcher,12,oak,20,133.0,806064,Steven Echavarria,26.0,1.42,104.0,106,57,53.0,42,88,8,312.0,451.0,,4.59,0.0,0.0,0.0,3.0,7.0,A+,,,,,,,,,,,,,
+6648,Ryan Lasko,,,805782,batter,16,oak,23,,805782,Ryan Lasko,,,,76,52,,46,86,6,,,,,,,,,,ALL (3),312.0,9.0,2.0,0.355,0.698,0.343,42.0,14.0,5.0,150.0,107.0,0.244,OF
+6659,Kendall George,,,806077,batter,24,la,21,,806077,Kendall George,,,,125,93,,84,78,3,,,,,,,,,,A+,424.0,9.0,7.0,0.409,0.779,0.37,34.0,100.0,24.0,152.0,157.0,0.295,OF
+6660,Eriq Swan,,,811291,pitcher,18,was,24,120.0,811291,Eriq Swan,21.0,1.43,91.2,68,48,45.0,63,102,7,275.0,398.0,,4.42,0.0,0.0,0.0,4.0,6.0,ALL (2),,,,,,,,,,,,,
+6662,Dylan Campbell,,,694749,batter,28,phi,23,,694749,Dylan Campbell,,,,97,63,,51,110,14,,,,,,,,,,ALL (2),452.0,23.0,2.0,0.298,0.665,0.367,60.0,33.0,11.0,219.0,166.0,0.215,CF
+6670,Bryan Rincon,,,804858,batter,17,phi,21,,804858,Bryan Rincon,,,,54,58,,50,103,6,,,,,,,,,,A+,299.0,13.0,2.0,0.304,0.602,0.298,31.0,40.0,5.0,127.0,89.0,0.181,SS
+6672,T.J. Nichols,,,694375,pitcher,26,tb,23,139.0,694375,T.J. Nichols,25.0,1.02,133.2,106,47,43.0,30,156,21,401.0,524.0,,2.9,0.0,0.0,0.0,14.0,3.0,ALL (2),,,,,,,,,,,,,
+6678,Jake Miller,,,805725,pitcher,19,det,24,116.0,805725,Jake Miller,6.0,1.2,20.0,20,5,4.0,4,21,1,60.0,83.0,,1.8,0.0,0.0,0.0,0.0,0.0,ALL (2),,,,,,,,,,,,,
+6680,Nasim Nuñez,,,800957,batter,15,nyy,23,,800957,Brendan Jones,,,,112,89,,82,109,11,,,,,,,,,,ALL (2),458.0,20.0,8.0,0.359,0.754,0.395,69.0,51.0,9.0,180.0,181.0,0.245,OF
+6682,Kemp Alderman,,,694580,batter,10,mia,23,,694580,Kemp Alderman,,,,139,69,,39,124,22,,,,,,,,,,ALL (2),488.0,20.0,5.0,0.338,0.82,0.482,70.0,22.0,10.0,205.0,235.0,0.285,OF
+6689,Mitch Jebb,,,694991,batter,19,pit,23,,694991,Mitch Jebb,,,,118,55,,59,56,0,,,,,,,,,,AA,445.0,11.0,6.0,0.35,0.667,0.317,34.0,33.0,5.0,184.0,141.0,0.265,SS
+6690,Jhonny Severino,,,703177,batter,23,pit,21,,703177,Jhonny Severino,,,,91,44,,32,118,11,,,,,,,,,,A,423.0,24.0,2.0,0.277,0.636,0.359,49.0,10.0,8.0,188.0,152.0,0.215,SS
+6692,Michael Prosecky,,,687087,pitcher,22,col,24,115.0,687087,Michael Prosecky,27.0,1.35,126.2,107,65,59.0,64,127,13,380.0,550.0,,4.19,0.0,0.0,0.0,11.0,7.0,ALL (2),,,,,,,,,,,,,
+6693,Caden Scarborough,,,807291,pitcher,8,tex,20,140.0,807291,Caden Scarborough,22.0,0.88,88.0,56,26,24.0,21,114,7,264.0,343.0,,2.45,0.0,0.0,0.0,2.0,5.0,ALL (2),,,,,,,,,,,,,
+6698,Sean Sullivan,,,807743,pitcher,12,col,23,115.0,807743,Sean Sullivan,20.0,1.06,104.0,85,35,34.0,25,104,7,312.0,418.0,,2.94,0.0,0.0,0.0,9.0,6.0,ALL (3),,,,,,,,,,,,,
+6708,Yordanny Monegro,,,694057,pitcher,24,bos,23,111.0,694057,Yordanny Monegro,9.0,1.19,33.2,32,12,10.0,8,49,3,101.0,137.0,,2.67,0.0,0.0,0.0,2.0,1.0,AA,,,,,,,,,,,,,
+6714,Landon Maroudis,,,805793,pitcher,28,tor,21,141.0,805793,Landen Maroudis,18.0,1.79,45.1,36,35,33.0,45,34,1,136.0,216.0,,6.55,0.0,0.0,0.0,1.0,8.0,ALL (2),,,,,,,,,,,,,
+6716,Max Anderson,,,801194,batter,9,det,23,,801194,Max Anderson,,,,149,78,,36,87,19,,,,,,,,,,ALL (2),504.0,31.0,2.0,0.35,0.828,0.478,88.0,3.0,3.0,221.0,241.0,0.296,2B
+6718,Charlee Soto,Btwn2Jackies,Purchased Contract,805792,pitcher,15,min,20,142.0,805792,Charlee Soto,3.0,1.0,13.0,9,2,2.0,4,15,0,39.0,53.0,,1.38,0.0,0.0,0.0,0.0,1.0,A+,,,,,,,,,,,,,
+6721,Ethan Pecko,,,814490,pitcher,10,hou,23,117.0,814490,Ethan Pecko,20.0,1.25,80.0,73,37,34.0,27,95,6,240.0,331.0,,3.83,0.0,1.0,0.0,3.0,10.0,ALL (3),,,,,,,,,,,,,
+6722,Tyler Cleveland,,,804663,pitcher,29,sea,26,136.0,804663,Tyler Cleveland,41.0,0.75,51.2,22,9,5.0,17,50,0,155.0,196.0,,0.87,2.0,11.0,1.0,3.0,1.0,ALL (2),,,,,,,,,,,,,
+6725,Jaxon Wiggins,Country Fried Lamb,Purchased Contract,694393,pitcher,3,chc,24,112.0,694393,Jaxon Wiggins,19.0,1.03,78.0,44,24,19.0,36,97,4,234.0,313.0,,2.19,0.0,0.0,0.0,3.0,4.0,ALL (3),,,,,,,,,,,,,
+6728,Alonzo Tredwell,,,696280,pitcher,26,hou,23,117.0,696280,Alonzo Tredwell,26.0,1.3,100.0,85,46,41.0,45,122,9,300.0,427.0,,3.69,1.0,3.0,0.0,5.0,3.0,ALL (3),,,,,,,,,,,,,
+6731,RJ Schreck,,,702302,batter,10,tor,25,,702302,RJ Schreck,,,,85,62,,70,91,18,,,,,,,,,,ALL (4),342.0,14.0,2.0,0.395,0.854,0.459,53.0,9.0,1.0,162.0,157.0,0.249,LF
+6733,Jake Bloss,,,814005,pitcher,8,tor,24,141.0,814005,Jake Bloss,6.0,1.94,23.2,33,25,17.0,13,24,3,71.0,115.0,,6.46,0.0,0.0,0.0,0.0,5.0,AAA,,,,,,,,,,,,,
+6740,Daiverson Gutierrez,,,806987,batter,19,nym,20,,806987,Daiverson Gutierrez,,,,79,54,,53,58,4,,,,,,,,,,A,327.0,10.0,0.0,0.362,0.671,0.309,41.0,6.0,4.0,171.0,101.0,0.242,C
+6741,Tyler Schlaffer,,,690370,pitcher,30,chc,24,112.0,690370,Tyler Schlaffer,21.0,1.19,104.2,79,45,41.0,46,102,9,314.0,429.0,,3.53,0.0,0.0,0.0,7.0,3.0,ALL (2),,,,,,,,,,,,,
+6753,Steven Zobac,,,686632,pitcher,11,kc,25,118.0,686632,Steven Zobac,14.0,1.79,44.2,64,38,36.0,16,45,10,134.0,211.0,,7.25,0.0,0.0,0.0,0.0,4.0,ALL (2),,,,,,,,,,,,,
+6754,Hiro Wyatt,,,702965,pitcher,23,kc,21,118.0,702965,Hiro Wyatt,21.0,1.46,79.0,86,45,42.0,29,78,8,237.0,349.0,,4.78,0.0,0.0,0.0,2.0,7.0,A,,,,,,,,,,,,,
+6757,Kyle Carr,,,694805,pitcher,13,nyy,23,147.0,694805,Kyle Carr,25.0,1.13,133.0,95,48,39.0,55,117,8,399.0,538.0,,2.64,0.0,0.0,0.0,8.0,7.0,ALL (2),,,,,,,,,,,,,
+6772,Brett Bateman,,,703520,batter,21,chc,23,,703520,Brett Bateman,,,,86,42,,61,82,2,,,,,,,,,,AA,329.0,9.0,0.0,0.376,0.683,0.307,33.0,19.0,6.0,125.0,101.0,0.261,OF
+6773,Cole Schoenwetter,,,800616,pitcher,26,cin,21,113.0,800616,Cole Schoenwetter,26.0,1.61,78.1,66,62,51.0,60,75,9,235.0,358.0,,5.86,2.0,0.0,0.0,3.0,8.0,A,,,,,,,,,,,,,
+6775,Jackson Nezuh,,,694545,pitcher,12,hou,23,117.0,694545,Jackson Nezuh,20.0,1.29,76.2,71,40,37.0,28,76,10,230.0,325.0,,4.34,0.0,0.0,1.0,3.0,9.0,ALL (2),,,,,,,,,,,,,
+6782,Cole Miller,,,800612,pitcher,24,oak,20,133.0,800612,Cole Miller,15.0,1.08,52.0,45,19,11.0,11,45,1,156.0,210.0,,1.9,0.0,1.0,0.0,1.0,4.0,ALL (2),,,,,,,,,,,,,
+6786,Arnaldo Lantigua,,,806984,batter,12,cin,20,,806984,Arnaldo Lantigua,,,,80,50,,27,78,12,,,,,,,,,,ALL (2),302.0,26.0,3.0,0.334,0.824,0.49,56.0,2.0,4.0,164.0,148.0,0.265,OF
+6791,Payton Martin,,,806293,pitcher,20,la,21,119.0,806293,Payton Martin,21.0,1.28,81.1,79,41,39.0,25,82,10,244.0,341.0,,4.32,0.0,0.0,0.0,7.0,4.0,ALL (2),,,,,,,,,,,,,
+6795,Devin Saltiban,,,813880,batter,14,phi,20,,813880,Devin Saltiban,,,,55,42,,23,102,7,,,,,,,,,,ALL (3),305.0,11.0,3.0,0.259,0.564,0.305,26.0,19.0,5.0,144.0,93.0,0.18,SS
+6802,Antonio Jimenez,,,806128,batter,18,nym,21,,806128,Antonio Jimenez,,,,25,12,,12,15,0,,,,,,,,,,A,95.0,1.0,0.0,0.345,0.619,0.274,14.0,8.0,3.0,36.0,26.0,0.263,SS
+6806,Alexander Alberto,,,693739,pitcher,21,cws,24,145.0,693739,Alexander Alberto,42.0,1.17,48.2,36,16,14.0,21,64,1,146.0,209.0,,2.59,6.0,5.0,4.0,2.0,2.0,ALL (2),,,,,,,,,,,,,
+6826,Jack Brannigan,,,687394,batter,22,pit,24,,687394,Jack Brannigan,,,,46,29,,25,62,5,,,,,,,,,,AA,204.0,8.0,2.0,0.329,0.687,0.358,30.0,9.0,0.0,94.0,73.0,0.225,SS
+6850,Luke Adams,,,702726,batter,8,mil,21,,702726,Luke Adams,,,,54,58,,52,64,11,,,,,,,,,,ALL (2),234.0,15.0,0.0,0.417,0.853,0.436,42.0,10.0,3.0,116.0,102.0,0.231,3B
+6855,Allan Castro,,,691369,batter,20,bos,22,,691369,Allan Castro,,,,91,43,,44,79,7,,,,,,,,,,AA,340.0,20.0,2.0,0.353,0.753,0.4,37.0,15.0,3.0,135.0,136.0,0.268,CF
+6865,"Homer Bush, Jr.",,,683344,batter,28,tb,24,,683344,Homer Bush Jr.,,,,142,69,,48,98,0,,,,,,,,,,AA,472.0,12.0,8.0,0.375,0.735,0.36,45.0,57.0,12.0,164.0,170.0,0.301,CF
+6878,Lazaro Estrada,,,681751,pitcher,21,tor,26,141.0,681751,Lazaro Estrada,28.0,1.45,104.2,119,76,69.0,33,109,19,314.0,464.0,,5.93,0.0,0.0,1.0,4.0,7.0,ALL (2),,,,,,,,,,,,,
+6880,Brandon Winokur,,,806263,batter,13,min,21,,806263,Brandon Winokur,,,,107,65,,44,131,17,,,,,,,,,,A+,474.0,20.0,3.0,0.304,0.692,0.388,68.0,26.0,4.0,262.0,184.0,0.226,OF
+6884,Andrew Morris,,,702193,pitcher,19,min,24,142.0,702193,Andrew Morris,21.0,1.33,94.2,98,49,43.0,28,89,11,284.0,398.0,,4.09,0.0,0.0,1.0,4.0,6.0,AAA,,,,,,,,,,,,,
+6898,Eduarniel Nunez,,,674384,pitcher,15,oak,26,133.0,674384,Eduarniel Nunez,49.0,1.28,59.1,40,25,23.0,36,82,4,178.0,245.0,,3.49,7.0,4.0,1.0,6.0,1.0,ALL (5),,,,,,,,,,,,,
+6900,Chase Jaworsky,,,814172,batter,16,mia,21,,814172,Chase Jaworsky,,,,54,38,,34,64,4,,,,,,,,,,ALL (2),237.0,10.0,2.0,0.351,0.689,0.338,31.0,31.0,4.0,113.0,80.0,0.228,SS
+6901,Connor Noland,,,690939,pitcher,22,chc,26,112.0,690939,Connor Noland,27.0,1.42,132.2,133,69,60.0,55,115,13,398.0,579.0,,4.07,0.0,0.0,0.0,9.0,6.0,AAA,,,,,,,,,,,,,
+6909,Kade Morris,,,695034,pitcher,14,oak,23,133.0,695034,Kade Morris,28.0,1.35,150.0,154,81,73.0,48,128,16,450.0,643.0,,4.38,0.0,0.0,0.0,9.0,10.0,ALL (2),,,,,,,,,,,,,
+6911,Nolan McLean,not much of a donkey,Purchased Contract,690997,pitcher,1,nym,24,121.0,690997,Nolan McLean,29.0,1.1,161.2,112,48,42.0,66,184,12,485.0,655.0,,2.34,0.0,0.0,0.0,13.0,6.0,ALL (3),,,,,,,,,,,,,
+6916,Zach Thornton,,,804267,pitcher,23,nym,23,121.0,804267,Zach Thornton,14.0,0.81,72.2,48,21,16.0,11,78,5,218.0,274.0,,1.98,0.0,0.0,0.0,6.0,2.0,ALL (2),,,,,,,,,,,,,
+6917,James Hicks,,,801802,pitcher,24,hou,24,117.0,801802,James Hicks,11.0,1.52,46.2,57,33,29.0,14,46,7,140.0,206.0,,5.59,0.0,0.0,0.0,1.0,5.0,AA,,,,,,,,,,,,,
+6921,George Wolkow,,,805804,batter,10,cws,19,,805804,George Wolkow,,,,95,58,,54,147,13,,,,,,,,,,A,426.0,16.0,2.0,0.317,0.679,0.362,69.0,33.0,6.0,242.0,154.0,0.223,OF
+6926,Gerelmi Maldonado,,,698965,pitcher,24,sf,22,137.0,698965,Gerelmi Maldonado,23.0,1.58,59.0,49,34,26.0,44,69,2,177.0,272.0,,3.97,0.0,0.0,0.0,0.0,4.0,A,,,,,,,,,,,,,
+6938,Carlos Lagrange,Andromedans,Purchased Contract,801739,pitcher,2,nyy,22,147.0,801739,Carlos Lagrange,24.0,1.2,120.0,82,51,47.0,62,168,8,360.0,503.0,,3.53,0.0,0.0,0.0,11.0,8.0,ALL (2),,,,,,,,,,,,,
+6942,Barrett Kent,,,806010,pitcher,14,ana,21,108.0,806010,Barrett Kent,10.0,1.5,35.1,32,13,8.0,21,31,1,106.0,153.0,,2.04,0.0,0.0,0.0,1.0,0.0,ALL (2),,,,,,,,,,,,,
+6948,Deivid Coronil,,,829060,batter,9,sd,18,,829060,Deivid Coronil,,,,26,23,,21,47,0,,,,,,,,,,ROK,140.0,2.0,1.0,0.327,0.541,0.214,12.0,8.0,0.0,79.0,30.0,0.186,SS
+6971,Dario Laverde,,,800188,batter,19,ana,20,,800188,Dario Laverde,,,,80,39,,31,91,4,,,,,,,,,,ALL (2),373.0,13.0,2.0,0.289,0.581,0.292,40.0,0.0,0.0,180.0,109.0,0.214,C
+6978,Juan Flores,,,808129,batter,17,ana,19,,808129,Juan Flores,,,,63,38,,18,94,10,,,,,,,,,,A+,305.0,11.0,0.0,0.283,0.624,0.341,40.0,0.0,1.0,164.0,104.0,0.207,C
+6979,Enrique Jimenez,,,806992,batter,28,min,20,,806992,Enrique Jimenez,,,,63,42,,46,66,12,,,,,,,,,,ALL (2),246.0,12.0,3.0,0.371,0.847,0.476,50.0,5.0,1.0,116.0,117.0,0.256,C
+6985,Jose Urbina,,,808250,pitcher,17,tb,20,139.0,808250,Jose Urbina,20.0,1.06,96.1,72,31,23.0,30,101,9,289.0,380.0,,2.15,0.0,0.0,0.0,7.0,2.0,ALL (2),,,,,,,,,,,,,
+6986,Jeter Martinez,,,807002,pitcher,25,pit,19,134.0,807002,Jeter Martinez,18.0,1.72,65.0,70,58,51.0,42,66,1,195.0,306.0,,7.06,0.0,0.0,0.0,2.0,7.0,ALL (2),,,,,,,,,,,,,
+6987,Juan De La Cruz,,,829063,batter,17,sd,18,,829063,Jhoan De La Cruz,,,,36,37,,46,45,1,,,,,,,,,,ROK,139.0,5.0,3.0,0.477,0.837,0.36,21.0,11.0,4.0,71.0,50.0,0.259,SS
+6990,Angel Cepeda,,,806980,batter,24,chc,20,,806980,Angel Cepeda,,,,95,47,,40,136,8,,,,,,,,,,A,381.0,14.0,5.0,0.339,0.714,0.375,49.0,27.0,7.0,165.0,143.0,0.249,SS
+7004,Juaron Watts-Brown,,,695033,pitcher,10,bal,23,110.0,695033,Juaron Watts-Brown,26.0,1.13,124.1,90,58,50.0,50,158,16,373.0,515.0,,3.62,0.0,0.0,0.0,3.0,8.0,ALL (3),,,,,,,,,,,,,
+7007,Landen Maroudis,,,805793,pitcher,28,tor,21,141.0,805793,Landen Maroudis,18.0,1.79,45.1,36,35,33.0,45,34,1,136.0,216.0,,6.55,0.0,0.0,0.0,1.0,8.0,ALL (2),,,,,,,,,,,,,
+7016,Homer Bush Jr.,,,683344,batter,28,tb,24,,683344,Homer Bush Jr.,,,,142,69,,48,98,0,,,,,,,,,,AA,472.0,12.0,8.0,0.375,0.735,0.36,45.0,57.0,12.0,164.0,170.0,0.301,CF
+7017,Levi Wells,,,694370,pitcher,19,bal,24,110.0,694370,Levi Wells,25.0,1.32,95.2,87,46,37.0,39,96,7,287.0,417.0,,3.48,2.0,0.0,0.0,2.0,6.0,ALL (2),,,,,,,,,,,,,
+7033,Carson Roccaforte,,,811287,batter,20,kc,23,,811287,Carson Roccaforte,,,,119,81,,82,162,18,,,,,,,,,,ALL (2),462.0,30.0,7.0,0.373,0.843,0.47,74.0,43.0,12.0,219.0,217.0,0.258,OF
+7058,Ixan Henderson,,,809100,pitcher,17,stl,23,138.0,809100,Ixan Henderson,25.0,1.14,132.0,99,41,38.0,51,134,5,396.0,532.0,,2.59,0.0,0.0,0.0,9.0,7.0,AA,,,,,,,,,,,,,
+7059,Tayshaun Walton,,,807737,batter,19,phi,20,,807737,TJayy Walton,,,,36,27,,20,63,0,,,,,,,,,,ALL (2),161.0,4.0,3.0,0.315,0.601,0.286,17.0,15.0,5.0,75.0,46.0,0.224,OF
+7065,Kehden Hettiger,,,800607,batter,23,phi,21,,800607,Kehden Hettiger,,,,77,43,,54,120,9,,,,,,,,,,ALL (3),353.0,21.0,2.0,0.322,0.687,0.365,55.0,2.0,1.0,159.0,129.0,0.218,C
+7066,Bishop Letson,,,811309,pitcher,7,mil,21,158.0,811309,Bishop Letson,11.0,1.04,41.1,31,14,11.0,12,49,2,124.0,159.0,,2.4,0.0,0.0,0.0,2.0,2.0,ALL (2),,,,,,,,,,,,,
+7090,Kannon Kemp,,,807748,pitcher,29,sd,21,135.0,807748,Kannon Kemp,18.0,1.52,77.2,86,51,48.0,32,64,4,233.0,350.0,,5.56,0.0,0.0,0.0,3.0,7.0,ALL (2),,,,,,,,,,,,,
+7096,Andrew Pinckney,,,687605,batter,29,was,25,,687605,Andrew Pinckney,,,,121,77,,44,148,20,,,,,,,,,,AAA,450.0,9.0,2.0,0.348,0.779,0.431,66.0,34.0,5.0,217.0,194.0,0.269,OF
+7099,Patrick Reilly,,,694345,pitcher,20,bal,24,110.0,694345,Patrick Reilly,3.0,1.03,9.2,6,2,2.0,4,8,0,29.0,37.0,,1.86,0.0,0.0,0.0,0.0,1.0,AA,,,,,,,,,,,,,
+7104,Boston Baro,,,805951,batter,21,nym,21,,805951,Boston Baro,,,,88,43,,31,88,4,,,,,,,,,,A+,393.0,16.0,5.0,0.282,0.603,0.321,38.0,28.0,2.0,173.0,126.0,0.224,SS
+7105,Christian Oppor,,,803291,pitcher,8,cws,21,145.0,803291,Christian Oppor,22.0,1.19,87.2,62,35,30.0,42,116,6,263.0,366.0,,3.08,0.0,0.0,0.0,4.0,8.0,ALL (2),,,,,,,,,,,,,
+7109,Matthew Etzel,,,803033,batter,29,mia,23,,803033,Matthew Etzel,,,,78,47,,59,93,7,,,,,,,,,,ALL (4),314.0,11.0,2.0,0.363,0.726,0.363,49.0,27.0,9.0,135.0,114.0,0.248,LF
+7110,Josh Grosz,,,701056,pitcher,20,col,23,115.0,701056,Josh Grosz,23.0,1.3,125.1,108,71,65.0,55,135,14,376.0,535.0,,4.67,0.0,0.0,0.0,5.0,14.0,ALL (2),,,,,,,,,,,,,
+7120,John Peck,,,807726,batter,16,det,23,,807726,John Peck,,,,141,88,,41,125,11,,,,,,,,,,ALL (2),469.0,27.0,1.0,0.359,0.792,0.433,69.0,19.0,6.0,223.0,203.0,0.301,SS
+7121,Dean Curley,,,806053,batter,10,cle,21,,806053,Dean Curley,,,,8,4,,2,11,0,,,,,,,,,,A,33.0,1.0,0.0,0.286,0.559,0.273,2.0,1.0,1.0,16.0,9.0,0.242,SS
+7129,Sam Aldegheri,,,691951,pitcher,13,ana,24,108.0,691951,Sam Aldegheri,28.0,1.44,147.0,141,75,68.0,70,125,16,441.0,651.0,,4.16,0.0,0.0,1.0,8.0,10.0,ALL (3),,,,,,,,,,,,,
+7131,Johanfran Garcia,,,703190,batter,25,bos,21,,703190,Johanfran Garcia,,,,55,37,,19,68,12,,,,,,,,,,ALL (2),211.0,7.0,0.0,0.328,0.792,0.464,41.0,1.0,0.0,90.0,98.0,0.261,C
+7134,Sheng-En Lin,,,806823,batter,14,cin,20,,806823,Sheng-En Lin,,,,15,14,,24,30,2,,,,,,,,,,ROK,87.0,4.0,1.0,0.348,0.658,0.31,13.0,1.0,2.0,38.0,27.0,0.172,SS
+7137,Zach Cole,,,805904,batter,17,hou,25,,805904,Zach Cole,,,,112,72,,57,166,23,,,,,,,,,,ALL (3),405.0,24.0,7.0,0.372,0.913,0.541,76.0,21.0,7.0,174.0,219.0,0.277,CF
+7150,Nerwilian Cedeño,,,807083,batter,30,tb,19,,807083,Nathan Flewelling,,,,81,48,,94,127,6,,,,,,,,,,ALL (2),352.0,17.0,2.0,0.393,0.734,0.341,52.0,9.0,3.0,164.0,120.0,0.23,C
+7154,Jose Corniell,,,692030,pitcher,3,tex,22,140.0,692030,Jose Corniell,14.0,0.91,39.2,26,14,11.0,10,42,2,119.0,155.0,,2.5,0.0,0.0,0.0,1.0,3.0,ALL (4),,,,,,,,,,,,,
+7156,Kendry Rojas,Hammers,Purchased Contract,696070,pitcher,5,min,23,142.0,696070,Kendry Rojas,19.0,1.55,69.0,75,42,36.0,32,90,7,207.0,312.0,,4.7,0.0,0.0,0.0,2.0,5.0,ALL (5),,,,,,,,,,,,,
+7165,Luis De León,,,801725,pitcher,18,bal,22,110.0,801725,Luis De León,20.0,1.21,87.1,65,40,32.0,41,107,0,262.0,375.0,,3.3,0.0,0.0,0.0,5.0,3.0,ALL (3),,,,,,,,,,,,,
+7169,Adam Serwinowski,,,703445,pitcher,13,la,21,119.0,703445,Adam Serwinowski,25.0,1.36,111.2,97,57,50.0,55,140,12,335.0,491.0,,4.03,0.0,0.0,0.0,5.0,7.0,ALL (3),,,,,,,,,,,,,
+7171,Zach Maxwell,,,687209,pitcher,23,cin,24,113.0,687209,Zach Maxwell,59.0,1.47,59.2,52,28,28.0,36,72,9,179.0,263.0,,4.22,5.0,6.0,3.0,1.0,3.0,ALL (2),,,,,,,,,,,,,
+7172,Marcelo Perez,,,681041,pitcher,18,sea,26,136.0,681041,Marcelo Perez,19.0,1.12,91.2,80,35,35.0,23,62,10,275.0,370.0,,3.44,0.0,0.0,0.0,6.0,6.0,ALL (2),,,,,,,,,,,,,
+7175,Yassel Soler,,,807957,batter,23,ari,19,,807957,Yassel Soler,,,,82,42,,42,90,12,,,,,,,,,,A,342.0,13.0,2.0,0.342,0.737,0.395,46.0,5.0,0.0,189.0,135.0,0.24,3B
+7180,Ian Mejia,,,681256,pitcher,19,atl,25,144.0,681256,Ian Mejia,25.0,1.1,131.1,103,42,39.0,41,109,10,394.0,525.0,,2.67,1.0,0.0,0.0,12.0,3.0,ALL (2),,,,,,,,,,,,,
+7181,Diego Tornes,,,829053,batter,14,atl,17,,829053,Diego Tornes,,,,34,20,,23,32,0,,,,,,,,,,ROK,122.0,5.0,5.0,0.395,0.797,0.402,13.0,24.0,4.0,55.0,49.0,0.279,OF
+7183,Stiven Martinez,,,815913,batter,17,bal,18,,815913,Stiven Martinez,,,,43,34,,46,100,3,,,,,,,,,,ALL (2),232.0,10.0,4.0,0.333,0.635,0.302,22.0,5.0,6.0,147.0,70.0,0.185,OF
+7188,Javier Mogollon,,,808684,batter,18,cws,20,,808684,Javier Mogollon,,,,41,36,,30,56,5,,,,,,,,,,A,186.0,10.0,3.0,0.347,0.734,0.387,19.0,15.0,6.0,76.0,72.0,0.22,2B
+7190,Mathias LaCombe,,,807187,pitcher,22,cws,23,145.0,807187,Mathias LaCombe,19.0,1.11,53.1,35,20,18.0,24,73,3,160.0,224.0,,3.04,0.0,0.0,0.0,0.0,1.0,ALL (2),,,,,,,,,,,,,
+7191,Adolfo Sanchez,,,807645,batter,11,cin,19,,807645,Adolfo Sanchez,,,,41,36,,24,21,2,,,,,,,,,,ROK,121.0,8.0,3.0,0.474,0.978,0.504,27.0,10.0,4.0,61.0,61.0,0.339,OF
+7195,Robert Arias,,,815897,batter,22,cle,19,,815897,Robert Arias,,,,47,33,,29,22,2,,,,,,,,,,ROK,164.0,11.0,1.0,0.389,0.791,0.402,28.0,29.0,4.0,61.0,66.0,0.287,OF
+7196,Ashly Andujar,,,815903,batter,28,col,18,,815903,Ashly Andujar,,,,61,32,,15,31,0,,,,,,,,,,ROK,191.0,7.0,0.0,0.37,0.726,0.356,23.0,7.0,2.0,90.0,68.0,0.319,SS
+7200,Nestor Miranda,,,815930,batter,27,det,19,,815930,Nestor Miranda,,,,30,17,,15,39,6,,,,,,,,,,ROK,116.0,3.0,2.0,0.37,0.844,0.474,24.0,3.0,4.0,60.0,55.0,0.259,3B
+7202,A.J. Blubaugh,,,805123,pitcher,14,hou,25,117.0,805123,AJ Blubaugh,33.0,1.4,131.0,114,75,64.0,69,136,16,393.0,576.0,,4.4,2.0,0.0,1.0,8.0,9.0,ALL (2),,,,,,,,,,,,,
+7206,Yandel Ricardo,,,815902,batter,5,kc,19,,815902,Yandel Ricardo,,,,79,50,,31,76,2,,,,,,,,,,ALL (2),299.0,13.0,7.0,0.346,0.721,0.375,35.0,31.0,8.0,115.0,112.0,0.264,SS
+7210,Joswa Lugo,,,815915,batter,5,ana,18,,815915,Joswa Lugo,,,,35,19,,19,40,2,,,,,,,,,,ROK,129.0,7.0,0.0,0.375,0.747,0.372,23.0,1.0,4.0,58.0,48.0,0.271,SS
+7211,Joel Hurtado,,,805871,pitcher,22,ana,24,108.0,805871,Joel Hurtado,19.0,1.22,91.2,84,31,28.0,28,59,6,275.0,381.0,,2.75,0.0,0.0,0.0,5.0,6.0,ALL (2),,,,,,,,,,,,,
+7212,Hayden Alvarez,,,820986,batter,23,ana,18,,820986,Hayden Alvarez,,,,83,50,,41,49,2,,,,,,,,,,ALL (2),244.0,10.0,3.0,0.435,0.865,0.43,44.0,33.0,9.0,105.0,105.0,0.34,OF
+7214,Luis Cova,,,815909,batter,17,mia,18,,815909,Luis Cova,,,,53,49,,34,40,9,,,,,,,,,,ROK,177.0,11.0,2.0,0.422,0.959,0.537,35.0,35.0,6.0,75.0,95.0,0.299,OF
+7218,Jorge Quintana,,,815894,batter,7,sd,18,,815894,Jorge Quintana,,,,69,42,,39,84,4,,,,,,,,,,ALL (2),284.0,16.0,3.0,0.339,0.702,0.363,28.0,26.0,8.0,142.0,103.0,0.243,SS
+7225,Yovanny Rodriguez,,,815898,batter,24,nym,19,,815898,Yovanny Rodriguez,,,,45,26,,25,39,2,,,,,,,,,,ALL (2),136.0,14.0,1.0,0.446,0.939,0.493,26.0,3.0,0.0,50.0,67.0,0.331,C
+7227,Edward Lantigua,,,815928,batter,28,nym,19,,815928,Edward Lantigua,,,,44,23,,33,29,3,,,,,,,,,,ROK,153.0,6.0,1.0,0.433,0.832,0.399,27.0,13.0,10.0,55.0,61.0,0.288,OF
+7229,Francisco Vilorio,,,815910,batter,28,nyy,19,,815910,Francisco Vilorio,,,,51,39,,30,54,0,,,,,,,,,,ROK,183.0,10.0,3.0,0.387,0.753,0.366,19.0,8.0,5.0,81.0,67.0,0.279,OF
+7246,Braden Nett,,,804556,pitcher,4,oak,23,133.0,804556,Braden Nett,24.0,1.47,105.2,107,49,44.0,48,116,8,317.0,468.0,,3.75,0.0,0.0,0.0,6.0,7.0,ALL (2),,,,,,,,,,,,,
+7248,Jhonny Level,,,815929,batter,4,sf,18,,815929,Jhonny Level,,,,93,80,,50,70,12,,,,,,,,,,ALL (2),346.0,12.0,5.0,0.36,0.796,0.436,50.0,21.0,7.0,124.0,151.0,0.269,SS
+7250,Brock Rodden,,,801126,batter,21,sea,25,,801126,Brock Rodden,,,,46,24,,15,53,5,,,,,,,,,,ALL (2),157.0,10.0,0.0,0.365,0.817,0.452,23.0,16.0,2.0,54.0,71.0,0.293,SS
+7257,Braylin Morel,,,808281,batter,27,tex,19,,808281,Braylin Morel,,,,59,29,,10,66,5,,,,,,,,,,ALL (2),232.0,14.0,2.0,0.293,0.69,0.397,28.0,3.0,1.0,110.0,92.0,0.254,OF
+7260,Fernando Perez,,,800125,pitcher,17,tor,21,141.0,800125,Fernando Perez,26.0,1.16,121.1,113,50,41.0,28,105,7,364.0,503.0,,3.04,0.0,0.0,0.0,6.0,7.0,ALL (2),,,,,,,,,,,,,
+7262,Sam Shaw,,,802511,batter,19,tor,20,,802511,Sam Shaw,,,,60,44,,46,63,7,,,,,,,,,,ALL (2),252.0,11.0,3.0,0.361,0.75,0.389,28.0,9.0,0.0,158.0,98.0,0.238,OF
+7264,Angel Feliz,,,815906,batter,14,was,19,,815906,Angel Feliz,,,,74,53,,42,71,4,,,,,,,,,,ALL (2),293.0,10.0,5.0,0.346,0.708,0.362,43.0,15.0,7.0,136.0,106.0,0.253,SS
+7270,Jeral Perez,,,800419,batter,19,cws,21,,800419,Jeral Perez,,,,117,65,,44,112,22,,,,,,,,,,A+,480.0,24.0,4.0,0.315,0.763,0.448,70.0,10.0,3.0,215.0,215.0,0.244,3B
+7271,Luis Suisbel,,,692044,batter,19,sea,22,,692044,Luis Suisbel,,,,90,62,,48,135,23,,,,,,,,,,A+,427.0,15.0,1.0,0.308,0.72,0.412,68.0,8.0,1.0,241.0,176.0,0.211,3B
+7272,Nehomar Ochoa Jr.,,,806441,batter,25,hou,20,,806441,Nehomar Ochoa Jr.,,,,15,13,,8,34,1,,,,,,,,,,ALL (2),95.0,1.0,0.0,0.229,0.429,0.2,5.0,1.0,2.0,53.0,19.0,0.158,OF
+7277,Victor Arias,,,692478,batter,9,tor,22,,692478,Victor Arias,,,,112,69,,50,102,7,,,,,,,,,,ALL (2),412.0,19.0,7.0,0.353,0.756,0.403,47.0,18.0,5.0,162.0,166.0,0.272,CF
+7280,Yeremi Cabrera,,,800393,batter,16,tex,20,,800393,Yeremy Cabrera,,,,98,66,,52,86,8,,,,,,,,,,A,383.0,12.0,3.0,0.364,0.73,0.366,52.0,43.0,4.0,183.0,140.0,0.256,CF
+7284,A.J. Ewing,,,805999,batter,7,nym,21,,805999,A.J. Ewing,,,,153,87,,68,105,3,,,,,,,,,,ALL (3),485.0,26.0,10.0,0.401,0.83,0.429,55.0,70.0,11.0,175.0,208.0,0.315,SS
+7305,John Gil,,,808535,batter,13,atl,19,,808535,John Gil,,,,107,76,,61,71,7,,,,,,,,,,ALL (3),424.0,25.0,1.0,0.348,0.714,0.366,49.0,54.0,14.0,186.0,155.0,0.252,SS
+7320,Mavis Graves,,,703496,pitcher,25,phi,22,143.0,703496,Mavis Graves,21.0,1.53,81.2,74,51,40.0,51,103,6,245.0,372.0,,4.41,0.0,0.0,0.0,6.0,7.0,A+,,,,,,,,,,,,,
+7351,Jonathon Long,,,675085,batter,7,chc,23,,675085,Jonathon Long,,,,157,86,,79,116,20,,,,,,,,,,AAA,514.0,23.0,3.0,0.404,0.883,0.479,91.0,2.0,0.0,225.0,246.0,0.305,1B
+7353,Charles McAdoo,,,807727,batter,15,tor,23,,807727,Charles McAdoo,,,,110,62,,45,137,16,,,,,,,,,,AA,445.0,24.0,1.0,0.318,0.731,0.413,45.0,34.0,6.0,197.0,184.0,0.247,2B
+7358,Theo Gillen,,,815394,batter,2,tb,20,,815394,Theo Gillen,,,,65,62,,64,75,5,,,,,,,,,,A,243.0,12.0,1.0,0.433,0.82,0.387,18.0,36.0,3.0,96.0,94.0,0.267,OF
+7380,Romeo Sanabria,,,703804,batter,21,sd,23,,703804,Romeo Sanabria,,,,116,54,,38,107,12,,,,,,,,,,AA,452.0,18.0,0.0,0.309,0.685,0.376,56.0,4.0,1.0,193.0,170.0,0.257,1B
+7383,Henry Baez,,,692013,pitcher,8,oak,23,133.0,692013,Henry Baez,23.0,1.05,109.0,79,35,29.0,35,100,3,327.0,436.0,,2.39,0.0,0.0,0.0,5.0,3.0,ALL (2),,,,,,,,,,,,,
+7391,Andy Perez,,,700321,batter,23,col,21,,700321,Andy Perez,,,,130,63,,25,94,9,,,,,,,,,,ALL (2),493.0,27.0,3.0,0.304,0.689,0.385,65.0,22.0,4.0,220.0,190.0,0.264,SS
+7399,Jordan Sanchez,,,820847,batter,24,bal,20,,820847,Jordan Sanchez,,,,50,34,,31,62,7,,,,,,,,,,ALL (2),172.0,16.0,3.0,0.41,0.951,0.541,49.0,3.0,2.0,90.0,93.0,0.291,OF
+7400,PJ Morlando,,,703563,batter,14,mia,20,,703563,PJ Morlando,,,,44,38,,46,71,5,,,,,,,,,,ALL (2),205.0,7.0,1.0,0.371,0.703,0.332,30.0,8.0,1.0,113.0,68.0,0.215,OF
+7402,Tristan Smith,,,702280,pitcher,25,cin,22,113.0,702280,Tristan Smith,6.0,2.75,8.0,11,10,10.0,11,12,0,24.0,46.0,,11.25,0.0,0.0,1.0,0.0,1.0,ALL (2),,,,,,,,,,,,,
+7417,Felix Arronde,,,702373,pitcher,13,kc,22,118.0,702373,Felix Arronde,26.0,1.08,128.2,97,45,40.0,42,101,9,386.0,517.0,,2.8,0.0,0.0,0.0,5.0,7.0,A+,,,,,,,,,,,,,
+7428,Aldrin Batista,,,702881,pitcher,27,cws,22,145.0,702881,Aldrin Batista,7.0,1.43,14.0,13,12,9.0,7,17,0,42.0,66.0,,5.79,0.0,1.0,0.0,2.0,0.0,A+,,,,,,,,,,,,,
+7461,Carlos Pacheco,,,800149,batter,20,oak,21,,800149,Carlos Pacheco,,,,32,30,,40,65,1,,,,,,,,,,ALL (3),194.0,3.0,1.0,0.337,0.543,0.206,19.0,19.0,2.0,95.0,40.0,0.165,OF
+7484,Ty Southisene,,,807257,batter,28,chc,20,,807257,Ty Southisene,,,,78,69,,63,59,0,,,,,,,,,,ALL (2),318.0,6.0,2.0,0.388,0.665,0.277,36.0,41.0,8.0,129.0,88.0,0.245,SS
+7485,Austin Overn,,,702556,batter,22,tb,22,,702556,Austin Overn,,,,100,74,,62,130,13,,,,,,,,,,ALL (2),401.0,13.0,4.0,0.355,0.754,0.399,43.0,64.0,8.0,174.0,160.0,0.249,OF
+7507,Jakob Wright,,,809915,pitcher,28,la,22,119.0,809915,Jakob Wright,9.0,1.37,19.2,19,11,7.0,8,24,0,59.0,90.0,,3.2,0.0,0.0,0.0,0.0,1.0,A,,,,,,,,,,,,,
+7514,Khadim Diaw,,,813715,batter,21,min,22,,813715,Khadim Diaw,,,,38,25,,20,30,4,,,,,,,,,,ALL (2),128.0,5.0,1.0,0.45,0.895,0.445,24.0,4.0,1.0,69.0,57.0,0.297,C
+7523,Sean Keys,,,815873,batter,26,tor,22,,815873,Sean Keys,,,,92,67,,86,117,19,,,,,,,,,,A+,424.0,22.0,1.0,0.365,0.773,0.408,72.0,8.0,1.0,220.0,173.0,0.217,3B
+7524,Hunter Cranton,,,675450,pitcher,28,ari,25,109.0,675450,Hunter Cranton,10.0,0.8,10.0,5,1,1.0,3,14,0,30.0,37.0,,0.9,3.0,0.0,0.0,2.0,0.0,ALL (2),,,,,,,,,,,,,
+7526,Ivan Luciano,,,813930,batter,29,ari,19,,813930,Ivan Luciano,,,,40,18,,28,36,2,,,,,,,,,,ALL (2),145.0,7.0,1.0,0.389,0.768,0.379,21.0,1.0,0.0,84.0,55.0,0.276,C
+7529,Ethan Bagwell,,,815626,pitcher,26,atl,19,144.0,815626,Ethan Bagwell,13.0,1.03,59.0,42,25,20.0,19,45,4,177.0,232.0,,3.05,0.0,0.0,0.0,1.0,6.0,ALL (2),,,,,,,,,,,,,
+7531,Dylan Jordan,,,813335,pitcher,16,ana,20,108.0,813335,Dylan Jordan,19.0,1.22,76.1,63,32,20.0,30,85,3,229.0,318.0,,2.36,0.0,0.0,0.0,4.0,1.0,ALL (2),,,,,,,,,,,,,
+7532,Ronny Cruz,,,826723,batter,17,was,19,,826723,Ronny Cruz,,,,47,20,,10,35,2,,,,,,,,,,ROK,174.0,10.0,6.0,0.314,0.745,0.431,21.0,10.0,7.0,70.0,75.0,0.27,SS
+7533,Herick Hernandez,,,803349,pitcher,18,atl,22,144.0,803349,Herick Hernandez,22.0,1.34,103.1,70,42,41.0,68,127,14,310.0,443.0,,3.57,0.0,0.0,0.0,3.0,6.0,A+,,,,,,,,,,,,,
+7537,Elian Pena,,,829033,batter,10,nym,18,,829033,Elian Peña,,,,52,47,,36,36,9,,,,,,,,,,ROK,178.0,13.0,1.0,0.421,0.949,0.528,33.0,21.0,4.0,66.0,94.0,0.292,SS
+7547,Ubaldo Soto,,,808161,pitcher,28,ana,19,108.0,808161,Ubaldo Soto,18.0,1.17,73.2,51,34,32.0,35,83,7,221.0,308.0,,3.91,1.0,0.0,0.0,6.0,1.0,ALL (2),,,,,,,,,,,,,
+7548,Will Johnston,,,690658,pitcher,17,oak,25,133.0,690658,Will Johnston,43.0,1.4,70.0,59,42,38.0,39,87,7,210.0,301.0,,4.89,5.0,1.0,1.0,2.0,6.0,ALL (2),,,,,,,,,,,,,
+7550,Yairo Padilla,,,821107,batter,11,stl,18,,821107,Yairo Padilla,,,,34,21,,18,21,0,,,,,,,,,,ROK,120.0,4.0,3.0,0.396,0.763,0.367,10.0,24.0,4.0,45.0,44.0,0.283,SS
+7554,Keeler Morfe,,,808323,pitcher,16,bal,19,110.0,808323,Keeler Morfe,12.0,2.17,21.2,15,21,18.0,32,24,0,65.0,118.0,,7.48,0.0,0.0,0.0,0.0,3.0,ALL (2),,,,,,,,,,,,,
+7555,Juan Valera,,,813536,pitcher,12,bos,19,111.0,813536,Juan Valera,10.0,1.39,38.0,43,25,23.0,10,46,6,114.0,167.0,,5.45,0.0,0.0,0.0,1.0,2.0,A+,,,,,,,,,,,,,
+7561,Ching-Hsien Ko,,,828667,batter,10,la,19,,828667,Ching-Hsien Ko,,,,91,61,,62,72,4,,,,,,,,,,ALL (2),294.0,18.0,4.0,0.437,0.876,0.439,34.0,6.0,3.0,141.0,129.0,0.31,OF
+7563,Keyner Benitez,,,808547,pitcher,15,mia,19,146.0,808547,Keyner Benitez,15.0,1.5,54.0,50,20,19.0,31,51,1,162.0,239.0,,3.17,0.0,0.0,0.0,2.0,1.0,ALL (2),,,,,,,,,,,,,
+7567,Adrian Bohorquez,,,807974,pitcher,23,min,20,142.0,807974,Adrian Bohorquez,19.0,1.18,71.1,53,38,34.0,31,85,7,214.0,312.0,,4.29,0.0,1.0,0.0,3.0,4.0,ALL (2),,,,,,,,,,,,,
+7570,Alirio Ferrebus,,,808232,batter,27,phi,20,,808232,Alirio Ferrebus,,,,59,37,,17,45,5,,,,,,,,,,ALL (2),250.0,11.0,1.0,0.308,0.656,0.348,43.0,2.0,1.0,126.0,87.0,0.236,C
+7575,Francis Pena,,,800212,pitcher,20,sd,24,135.0,800212,Francis Pena,43.0,1.61,52.1,50,33,29.0,34,47,4,157.0,237.0,,4.99,0.0,5.0,4.0,4.0,4.0,AAA,,,,,,,,,,,,,
+7576,Trent Harris,,,805345,pitcher,17,sf,26,137.0,805345,Trent Harris,43.0,1.27,57.1,54,28,28.0,19,65,6,172.0,240.0,,4.4,2.0,8.0,2.0,4.0,2.0,ALL (2),,,,,,,,,,,,,
+7580,John Spikerman,,,701811,batter,21,phi,22,,701811,John Spikerman,,,,47,29,,38,77,3,,,,,,,,,,ALL (3),210.0,7.0,2.0,0.355,0.674,0.319,20.0,30.0,0.0,109.0,67.0,0.224,OF
+7581,Carson DeMartini,,,701831,batter,13,phi,23,,701831,Carson DeMartini,,,,106,71,,59,139,10,,,,,,,,,,ALL (2),447.0,20.0,4.0,0.34,0.707,0.367,52.0,45.0,12.0,219.0,164.0,0.237,SS
+7585,Luke Sinnard,,,820827,pitcher,16,atl,23,144.0,820827,Luke Sinnard,16.0,1.18,72.1,58,29,23.0,27,86,3,217.0,304.0,,2.86,0.0,0.0,0.0,2.0,6.0,ALL (2),,,,,,,,,,,,,
+7586,Carter Johnson,,,815793,batter,24,mia,19,,815793,Carter Johnson,,,,72,42,,47,134,3,,,,,,,,,,A,406.0,17.0,4.0,0.275,0.536,0.261,43.0,11.0,3.0,231.0,106.0,0.177,SS
+7587,P.J. Morlando,,,703563,batter,14,mia,20,,703563,PJ Morlando,,,,44,38,,46,71,5,,,,,,,,,,ALL (2),205.0,7.0,1.0,0.371,0.703,0.332,30.0,8.0,1.0,113.0,68.0,0.215,OF
+7590,Fenwick Trimble,,,814458,batter,26,mia,23,,814458,Fenwick Trimble,,,,75,39,,49,67,7,,,,,,,,,,ALL (3),296.0,19.0,2.0,0.372,0.774,0.402,41.0,31.0,4.0,133.0,119.0,0.253,OF
+7592,Jonathan Santucci,,,695558,pitcher,14,nym,23,121.0,695558,Jonathan Santucci,25.0,1.16,117.2,95,51,40.0,41,138,9,353.0,481.0,,3.06,0.0,0.0,0.0,9.0,4.0,ALL (2),,,,,,,,,,,,,
+7593,Trey Snyder,,,815551,batter,29,nym,20,,815551,Trey Snyder,,,,95,58,,72,96,5,,,,,,,,,,A,431.0,12.0,1.0,0.336,0.624,0.288,48.0,41.0,8.0,198.0,124.0,0.22,SS
+7594,Nate Dohm,,,702296,pitcher,19,stl,22,138.0,702296,Nate Dohm,23.0,1.32,75.0,67,35,27.0,32,90,7,225.0,323.0,,3.24,0.0,0.0,0.0,3.0,7.0,ALL (3),,,,,,,,,,,,,
+7596,Caleb Lomavita,,,701616,batter,12,was,23,,701616,Caleb Lomavita,,,,109,35,,23,92,6,,,,,,,,,,ALL (2),396.0,17.0,2.0,0.34,0.714,0.374,47.0,7.0,1.0,165.0,148.0,0.275,C
+7597,Luke Dickerson,,,815380,batter,6,was,20,,815380,Luke Dickerson,,,,64,39,,45,88,6,,,,,,,,,,ALL (2),307.0,14.0,2.0,0.315,0.641,0.326,41.0,22.0,6.0,160.0,100.0,0.208,SS
+7599,Jackson Kent,,,800600,pitcher,19,was,22,120.0,800600,Jackson Kent,24.0,1.22,123.0,112,67,63.0,38,132,14,369.0,509.0,,4.61,0.0,0.0,0.0,7.0,10.0,ALL (2),,,,,,,,,,,,,
+7601,Cole Mathis,,,695573,batter,17,chc,22,,695573,Cole Mathis,,,,23,16,,17,29,3,,,,,,,,,,A,107.0,9.0,1.0,0.336,0.738,0.402,14.0,0.0,2.0,56.0,43.0,0.215,3B
+7603,Luke Holman,,,695705,pitcher,17,cin,22,113.0,695705,Luke Holman,2.0,0.67,9.0,2,1,1.0,4,10,0,27.0,33.0,,1.0,0.0,0.0,0.0,0.0,0.0,A,,,,,,,,,,,,,
+7610,Bryce Meccage,,,815501,pitcher,15,mil,19,158.0,815501,Bryce Meccage,19.0,1.24,70.1,61,36,34.0,26,69,4,211.0,292.0,,4.35,0.0,0.0,0.0,1.0,4.0,A,,,,,,,,,,,,,
+7611,Blake Burke,,,695501,batter,29,mil,22,,695501,Blake Burke,,,,143,64,,65,135,16,,,,,,,,,,ALL (2),490.0,27.0,2.0,0.379,0.832,0.453,82.0,15.0,5.0,201.0,222.0,0.292,1B
+7613,Wyatt Sanford,,,815608,batter,11,pit,20,,815608,Wyatt Sanford,,,,53,46,,34,54,5,,,,,,,,,,ALL (2),218.0,8.0,3.0,0.384,0.76,0.376,25.0,34.0,8.0,98.0,82.0,0.243,SS
+7614,Levi Sterling,,,815552,pitcher,13,pit,19,134.0,815552,Levi Sterling,12.0,1.76,34.0,37,23,23.0,23,34,2,102.0,162.0,,6.09,0.0,0.0,0.0,3.0,2.0,ALL (2),,,,,,,,,,,,,
+7615,Josh Hartle,,,691776,pitcher,25,cle,22,114.0,691776,Josh Hartle,24.0,1.09,113.1,85,37,32.0,39,107,2,340.0,459.0,,2.54,0.0,0.0,0.0,10.0,3.0,ALL (2),,,,,,,,,,,,,
+7616,Omar Alfonzo,,,692657,batter,20,pit,22,,692657,Omar Alfonzo,,,,98,56,,63,137,14,,,,,,,,,,ALL (2),404.0,18.0,1.0,0.354,0.75,0.396,56.0,2.0,0.0,171.0,160.0,0.243,C
+7622,Rainiel Rodriguez,Btwn2Jackies,Purchased Contract,823787,batter,3,stl,19,,823787,Rainiel Rodriguez,,,,83,59,,54,65,20,,,,,,,,,,ALL (3),301.0,22.0,1.0,0.399,0.954,0.555,63.0,4.0,5.0,138.0,167.0,0.276,C
+7627,Daniel Eagen,,,811666,pitcher,13,ari,23,109.0,811666,Daniel Eagen,23.0,1.12,117.1,79,49,39.0,52,153,12,352.0,472.0,,2.99,0.0,0.0,0.0,7.0,8.0,ALL (2),,,,,,,,,,,,,
+7629,Yordin Chalas,,,808054,pitcher,21,ari,21,109.0,808054,Yordin Chalas,26.0,1.64,71.1,79,53,48.0,38,68,4,214.0,330.0,,6.06,0.0,2.0,0.0,2.0,4.0,ALL (2),,,,,,,,,,,,,
+7633,Cole Messina,,,701783,batter,25,col,22,,701783,Cole Messina,,,,99,49,,51,73,7,,,,,,,,,,ALL (2),384.0,23.0,1.0,0.354,0.732,0.378,42.0,14.0,6.0,165.0,145.0,0.258,C
+7636,Kellon Lindsey,,,813916,batter,11,la,20,,813916,Kellon Lindsey,,,,37,32,,23,51,3,,,,,,,,,,ALL (2),135.0,8.0,0.0,0.379,0.779,0.4,22.0,11.0,2.0,61.0,54.0,0.274,SS
+7637,Chase Harlan,,,815792,batter,18,la,19,,815792,Chase Harlan,,,,70,43,,36,67,9,,,,,,,,,,ALL (2),260.0,16.0,1.0,0.357,0.799,0.442,58.0,3.0,2.0,153.0,115.0,0.269,3B
+7638,Kash Mayfield,,,824026,pitcher,4,sd,20,135.0,824026,Kash Mayfield,19.0,1.22,60.2,46,26,20.0,28,88,2,182.0,258.0,,2.97,0.0,0.0,0.0,1.0,5.0,A,,,,,,,,,,,,,
+7639,Boston Bateman,,,815348,pitcher,8,bal,20,110.0,815348,Boston Bateman,20.0,1.45,87.0,88,43,40.0,38,94,2,261.0,380.0,,4.14,0.0,0.0,0.0,5.0,5.0,ALL (3),,,,,,,,,,,,,
+7640,Humberto Cruz,,,814232,pitcher,3,sd,19,135.0,814232,Humberto Cruz,14.0,1.53,38.0,41,32,32.0,17,35,8,114.0,171.0,,7.58,0.0,0.0,0.0,0.0,7.0,ALL (2),,,,,,,,,,,,,
+7641,Kavares Tears,,,701837,batter,18,sd,23,,701837,Kavares Tears,,,,93,49,,58,138,13,,,,,,,,,,A,410.0,22.0,2.0,0.32,0.705,0.385,65.0,6.0,5.0,217.0,158.0,0.227,OF
+7643,Kale Fountain,,,806495,batter,8,sd,20,,806495,Kale Fountain,,,,52,40,,35,65,3,,,,,,,,,,ALL (2),230.0,8.0,1.0,0.346,0.655,0.309,34.0,21.0,1.0,127.0,71.0,0.226,3B
+7645,Cobb Hightower,,,826932,batter,23,bal,20,,826932,Cobb Hightower,,,,59,39,,38,52,2,,,,,,,,,,ALL (2),243.0,10.0,1.0,0.354,0.671,0.317,28.0,14.0,2.0,104.0,77.0,0.243,SS
+7647,Dakota Jordan,,,702607,batter,6,sf,22,,702607,Dakota Jordan,,,,115,71,,37,95,14,,,,,,,,,,A,370.0,15.0,6.0,0.377,0.874,0.497,82.0,27.0,4.0,186.0,184.0,0.311,OF
+7650,Jacob Bresnahan,,,815298,pitcher,11,sf,20,137.0,815298,Jacob Bresnahan,22.0,1.18,93.0,67,32,27.0,43,124,2,279.0,381.0,,2.61,0.0,0.0,0.0,9.0,3.0,A,,,,,,,,,,,,,
+7651,Vance Honeycutt,,,701689,batter,15,bal,22,,701689,Vance Honeycutt,,,,64,48,,56,178,5,,,,,,,,,,A+,374.0,12.0,6.0,0.284,0.559,0.275,24.0,32.0,7.0,171.0,103.0,0.171,OF
+7652,Michael Forret,,,702650,pitcher,7,tb,21,139.0,702650,Michael Forret,19.0,0.82,74.0,40,17,13.0,21,91,3,222.0,282.0,,1.58,0.0,0.0,0.0,2.0,2.0,ALL (2),,,,,,,,,,,,,
+7654,Griff O'Ferrall,,,803172,batter,28,bal,22,,803172,Griff O'Ferrall,,,,102,61,,59,77,4,,,,,,,,,,ALL (2),447.0,16.0,3.0,0.322,0.626,0.304,38.0,44.0,8.0,151.0,136.0,0.228,SS
+7656,Ethan Anderson,,,803175,batter,27,bal,22,,803175,Ethan Anderson,,,,77,35,,43,64,4,,,,,,,,,,ALL (2),310.0,14.0,1.0,0.338,0.677,0.339,45.0,15.0,3.0,136.0,105.0,0.248,C
+7659,Conrad Cason,,,815359,batter,23,bos,19,,815359,Conrad Cason,,,,1,0,,0,2,0,,,,,,,,,,,4.0,0.0,0.0,0.25,0.5,0.25,1.0,0.0,0.0,5.0,1.0,0.25,ROK
+7663,Bryce Cunningham,,,701480,pitcher,5,nyy,23,147.0,701480,Bryce Cunningham,12.0,1.12,54.1,42,20,17.0,19,55,4,163.0,220.0,,2.82,0.0,0.0,0.0,5.0,3.0,A+,,,,,,,,,,,,,
+7665,Edgleen Perez,,,814297,batter,18,pit,19,,814297,Edgleen Perez,,,,73,46,,84,84,0,,,,,,,,,,ALL (2),357.0,10.0,0.0,0.368,0.6,0.232,30.0,5.0,1.0,166.0,83.0,0.204,C
+7666,Gage Ziehl,,,695721,pitcher,14,cws,22,145.0,695721,Gage Ziehl,22.0,1.26,107.0,116,61,49.0,19,90,7,321.0,455.0,,4.12,0.0,0.0,0.0,7.0,6.0,ALL (4),,,,,,,,,,,,,
+7671,Khal Stephen,not much of a donkey,Purchased Contract,701590,pitcher,6,cle,23,114.0,701590,Khal Stephen,22.0,0.99,103.0,82,32,29.0,20,110,5,309.0,406.0,,2.53,1.0,0.0,0.0,9.0,2.0,ALL (4),,,,,,,,,,,,,
+7672,Johnny King,,,803516,pitcher,5,tor,19,141.0,803516,Johnny King,18.0,1.31,61.2,44,22,17.0,37,105,4,185.0,266.0,,2.48,0.0,1.0,0.0,1.0,3.0,ALL (2),,,,,,,,,,,,,
+7673,Carson Messina,,,703566,pitcher,30,tor,19,141.0,703566,Carson Messina,1.0,1.5,2.0,3,2,2.0,0,2,0,6.0,9.0,,9.0,0.0,0.0,0.0,0.0,0.0,ROK,,,,,,,,,,,,,
+7675,Caleb Bonemer,not much of a donkey,Purchased Contract,815352,batter,4,cws,20,,815352,Caleb Bonemer,,,,108,77,,75,101,12,,,,,,,,,,ALL (2),385.0,30.0,4.0,0.401,0.874,0.473,64.0,29.0,8.0,163.0,182.0,0.281,SS
+7679,Braylon Doughty,,,815785,pitcher,8,cle,20,114.0,815785,Braylon Doughty,22.0,1.25,85.1,84,39,33.0,23,99,4,256.0,362.0,,3.48,0.0,0.0,0.0,0.0,7.0,A,,,,,,,,,,,,,
+7680,Joey Oakie,,,815841,pitcher,16,cle,19,114.0,815841,Joey Oakie,18.0,1.53,59.1,53,38,35.0,38,78,4,178.0,271.0,,5.31,0.0,0.0,0.0,3.0,4.0,ALL (2),,,,,,,,,,,,,
+7682,Owen Hall,,,815157,pitcher,13,det,20,116.0,815157,Owen Hall,4.0,1.78,9.0,7,8,7.0,9,9,1,27.0,39.0,,7.0,0.0,0.0,0.0,0.0,0.0,A,,,,,,,,,,,,,
+7683,Ethan Schiefelbein,,,815162,pitcher,30,det,19,116.0,815162,Ethan Schiefelbein,3.0,1.56,9.0,9,6,6.0,5,9,0,27.0,40.0,,6.0,0.0,0.0,0.0,2.0,0.0,ROK,,,,,,,,,,,,,
+7684,Franyerber Montilla,,,800508,batter,12,det,20,,800508,Franyerber Montilla,,,,70,43,,38,74,4,,,,,,,,,,A,258.0,16.0,2.0,0.368,0.763,0.395,29.0,27.0,7.0,123.0,102.0,0.271,SS
+7686,Drew Beam,,,701795,pitcher,10,kc,22,118.0,701795,Drew Beam,26.0,1.19,131.2,127,72,56.0,30,110,8,395.0,536.0,,3.83,0.0,0.0,0.0,7.0,10.0,A+,,,,,,,,,,,,,
+7687,David Shields,,,815789,pitcher,6,kc,19,118.0,815789,David Shields,19.0,1.02,75.2,62,26,20.0,15,86,4,227.0,302.0,,2.38,0.0,0.0,0.0,3.0,2.0,ALL (2),,,,,,,,,,,,,
+7691,Billy Amick,,,701771,batter,16,min,23,,701771,Billy Amick,,,,67,42,,33,70,4,,,,,,,,,,ALL (3),218.0,17.0,1.0,0.417,0.867,0.45,31.0,1.0,2.0,92.0,98.0,0.307,3B
+7693,Kyle DeBarge,,,814414,batter,11,min,22,,814414,Kyle DeBarge,,,,109,77,,70,121,8,,,,,,,,,,A+,459.0,23.0,5.0,0.347,0.709,0.362,65.0,66.0,8.0,195.0,166.0,0.237,SS
+7694,Walker Janek,,,801075,batter,3,hou,23,,801075,Walker Janek,,,,94,58,,30,106,12,,,,,,,,,,A+,358.0,21.0,2.0,0.333,0.766,0.433,46.0,30.0,2.0,145.0,155.0,0.263,C
+7697,Anderson Brito,,,820901,pitcher,6,tb,21,139.0,820901,Anderson Brito,12.0,1.3,49.1,36,20,18.0,28,65,1,148.0,209.0,,3.28,0.0,0.0,0.0,0.0,1.0,A+,,,,,,,,,,,,,
+7700,Ryan Johnson,,,696270,pitcher,2,ana,23,108.0,696270,Ryan Johnson,26.0,1.11,72.0,65,28,24.0,15,81,7,216.0,291.0,,3.0,1.0,1.0,2.0,5.0,4.0,ALL (2),,,,,,,,,,,,,
+7701,Chris Cortez,,,700933,pitcher,10,ana,23,108.0,700933,Chris Cortez,26.0,1.57,113.2,94,64,54.0,84,114,5,341.0,513.0,,4.28,0.0,0.0,0.0,3.0,8.0,A+,,,,,,,,,,,,,
+7702,Trey Gregory-Alford,,,807281,pitcher,9,ana,19,108.0,807281,Trey Gregory-Alford,18.0,1.3,78.2,69,29,25.0,33,68,2,236.0,329.0,,2.86,0.0,0.0,1.0,5.0,4.0,ALL (2),,,,,,,,,,,,,
+7707,Josh Kuroda-Grauer,,,811965,batter,10,oak,22,,811965,Joshua Kuroda-Grauer,,,,147,63,,40,49,2,,,,,,,,,,ALL (2),497.0,30.0,1.0,0.359,0.731,0.372,47.0,27.0,6.0,202.0,185.0,0.296,SS
+7711,Grant Knipp,,,805990,pitcher,19,chc,26,112.0,805990,Grant Kipp,26.0,1.32,108.2,86,55,51.0,57,110,10,326.0,469.0,,4.22,0.0,0.0,0.0,6.0,7.0,AA,,,,,,,,,,,,,
+7712,Josh Caron,,,701805,batter,15,sea,22,,701805,Josh Caron,,,,59,39,,25,96,9,,,,,,,,,,A+,299.0,9.0,2.0,0.269,0.6,0.331,26.0,11.0,2.0,152.0,99.0,0.197,C
+7713,Brandyn Garcia,,,805299,pitcher,22,ari,25,109.0,805299,Brandyn Garcia,52.0,1.48,58.2,54,34,26.0,33,69,5,176.0,262.0,,3.99,5.0,7.0,1.0,6.0,7.0,ALL (5),,,,,,,,,,,,,
+7714,Malcolm Moore,,,702270,batter,11,tex,22,,702270,Malcolm Moore,,,,43,27,,26,51,3,,,,,,,,,,ALL (2),221.0,9.0,0.0,0.3,0.576,0.276,27.0,5.0,1.0,100.0,61.0,0.195,C
+7715,Dylan Dreiling,,,702662,batter,15,tex,22,,702662,Dylan Dreiling,,,,95,50,,58,101,12,,,,,,,,,,A+,420.0,21.0,4.0,0.319,0.7,0.381,62.0,15.0,5.0,193.0,160.0,0.226,OF
+7716,Yolfran Castillo,,,815931,batter,13,tex,18,,815931,Yolfran Castillo,,,,88,49,,26,69,1,,,,,,,,,,ALL (2),341.0,13.0,8.0,0.315,0.667,0.352,41.0,29.0,2.0,159.0,120.0,0.258,SS
+7728,Kohl Drake,,,684442,pitcher,6,ari,25,109.0,684442,Kohl Drake,20.0,1.25,89.1,76,46,42.0,36,106,10,268.0,376.0,,4.23,0.0,0.0,0.0,6.0,6.0,ALL (3),,,,,,,,,,,,,
+7731,Eli Serrano III,,,702501,batter,12,nym,22,,702501,Eli Serrano III,,,,72,51,,50,77,7,,,,,,,,,,A+,324.0,21.0,1.0,0.332,0.69,0.358,46.0,9.0,3.0,133.0,116.0,0.222,OF
+7734,Elorky Rodriguez,,,829069,batter,10,tex,18,,829069,Elorky Rodriguez,,,,60,46,,39,38,6,,,,,,,,,,ROK,178.0,10.0,1.0,0.473,0.979,0.506,48.0,9.0,8.0,72.0,90.0,0.337,OF
+7735,Gabriel Davalillo,,,829058,batter,11,ana,18,,829058,Gabriel Davalillo,,,,42,28,,23,21,7,,,,,,,,,,ROK,139.0,7.0,1.0,0.408,0.926,0.518,31.0,3.0,0.0,58.0,72.0,0.302,C
+7737,Grant Shephardson,,,824415,pitcher,25,mia,20,146.0,824415,Grant Shepardson,17.0,1.43,55.1,46,33,26.0,33,59,3,166.0,247.0,,4.23,0.0,0.0,1.0,4.0,5.0,ALL (2),,,,,,,,,,,,,
+7738,Griff O’Ferrall,,,803172,batter,28,bal,22,,803172,Griff O'Ferrall,,,,102,61,,59,77,4,,,,,,,,,,ALL (2),447.0,16.0,3.0,0.322,0.626,0.304,38.0,44.0,8.0,151.0,136.0,0.228,SS
+7739,Harold Rivas,,,829093,batter,28,bos,17,,829093,Harold Rivas,,,,41,41,,35,35,2,,,,,,,,,,ROK,159.0,6.0,4.0,0.393,0.777,0.384,20.0,18.0,8.0,82.0,61.0,0.258,OF
+7741,Jake Cozart,,,695524,batter,17,cle,22,,695524,Jacob Cozart,,,,80,48,,49,89,9,,,,,,,,,,ALL (2),340.0,15.0,2.0,0.341,0.712,0.371,49.0,0.0,0.0,154.0,126.0,0.235,C
+7744,Joseph Sullivan,,,813896,batter,5,hou,23,,813896,Joseph Sullivan,,,,82,68,,88,133,17,,,,,,,,,,ALL (2),372.0,13.0,2.0,0.395,0.798,0.403,49.0,42.0,9.0,152.0,150.0,0.22,OF
+7745,Joshua Kuroda-Grauer,,,811965,batter,10,oak,22,,811965,Joshua Kuroda-Grauer,,,,147,63,,40,49,2,,,,,,,,,,ALL (2),497.0,30.0,1.0,0.359,0.731,0.372,47.0,27.0,6.0,202.0,185.0,0.296,SS
+7748,Juan Cabada,,,829040,batter,14,chc,17,,829040,Juan Cabada,,,,39,22,,20,31,3,,,,,,,,,,ROK,136.0,10.0,0.0,0.429,0.855,0.426,29.0,20.0,3.0,60.0,58.0,0.287,SS
+7749,Juan Tomas,,,829823,batter,16,chc,18,,829823,Juan Tomas,,,,21,19,,30,42,1,,,,,,,,,,ROK,113.0,6.0,2.0,0.352,0.653,0.301,18.0,9.0,4.0,52.0,34.0,0.186,SS
+7750,Juneiker Caceres,,,821181,batter,13,cle,18,,821181,Juneiker Caceres,,,,66,40,,36,35,4,,,,,,,,,,ALL (2),244.0,18.0,2.0,0.379,0.789,0.41,27.0,7.0,5.0,115.0,100.0,0.27,OF
+7752,Kelvin Hidalgo,,,800193,batter,24,col,20,,800193,Kelvin Hidalgo,,,,111,65,,37,125,5,,,,,,,,,,A,449.0,21.0,4.0,0.311,0.656,0.345,52.0,43.0,6.0,187.0,155.0,0.247,SS
+7753,Kenly Hunter,,,829077,batter,30,stl,17,,829077,Kenly Hunter,,,,44,41,,24,20,0,,,,,,,,,,ROK,140.0,6.0,3.0,0.442,0.842,0.4,15.0,25.0,2.0,58.0,56.0,0.314,OF
+7755,Kevin Alvarez,,,829037,batter,6,hou,17,,829037,Kevin Alvarez,,,,47,31,,23,19,2,,,,,,,,,,ROK,156.0,12.0,3.0,0.419,0.874,0.455,33.0,11.0,5.0,76.0,71.0,0.301,OF
+7756,Kevin De Frank,,,829074,pitcher,8,mia,17,146.0,829074,Kevin Defrank,10.0,1.29,31.0,30,15,11.0,10,34,1,93.0,141.0,,3.19,0.0,0.0,0.0,0.0,1.0,ROK,,,,,,,,,,,,,
+7758,Kolton Curtis,,,806641,pitcher,23,tex,21,140.0,806641,Kolton Curtis,19.0,1.42,66.0,50,43,38.0,44,75,4,198.0,290.0,,5.18,0.0,0.0,1.0,3.0,3.0,A+,,,,,,,,,,,,,
+7759,Mani Cedeno,,,829041,batter,21,nyy,17,,829041,Mani Cedeno,,,,30,41,,43,76,3,,,,,,,,,,ROK,164.0,5.0,3.0,0.371,0.676,0.305,19.0,21.0,2.0,76.0,50.0,0.183,SS
+7760,Moises Marchan,,,829081,batter,26,kc,18,,829081,Moises Marchán,,,,29,14,,9,20,0,,,,,,,,,,ROK,98.0,5.0,2.0,0.369,0.757,0.388,11.0,6.0,1.0,45.0,38.0,0.296,C
+7762,Nathan Church,,,701675,batter,16,stl,25,,701675,Nathan Church,,,,124,76,,36,55,14,,,,,,,,,,ALL (4),403.0,20.0,5.0,0.368,0.854,0.486,58.0,17.0,5.0,153.0,196.0,0.308,LF
+7764,Nestor German,,,815148,pitcher,11,bal,23,110.0,815148,Nestor German,26.0,1.18,123.2,100,62,54.0,46,143,13,371.0,510.0,,3.93,0.0,0.0,0.0,6.0,7.0,ALL (3),,,,,,,,,,,,,
+7767,Paul Bonzagni,,,805823,pitcher,26,tex,23,140.0,805823,Paul Bonzagni,3.0,1.71,9.1,11,6,5.0,5,15,1,28.0,45.0,,4.82,0.0,0.0,0.0,0.0,1.0,A+,,,,,,,,,,,,,
+7769,Ramcell Medina,,,829096,batter,19,kc,18,,829096,Ramcell Medina,,,,38,32,,31,26,2,,,,,,,,,,ROK,146.0,7.0,4.0,0.398,0.802,0.404,25.0,7.0,2.0,69.0,59.0,0.26,SS
+7777,Tanner McDougall,,,701780,pitcher,7,cws,22,145.0,701780,Tanner McDougal,28.0,1.33,113.1,102,49,41.0,49,136,7,340.0,481.0,,3.26,0.0,0.0,0.0,3.0,5.0,ALL (2),,,,,,,,,,,,,
+7778,Trey Gibson,,,694346,pitcher,9,bal,23,110.0,694346,Trey Gibson,26.0,1.21,120.1,102,67,57.0,44,166,13,361.0,514.0,,4.26,0.0,0.0,0.0,5.0,8.0,ALL (3),,,,,,,,,,,,,
+7780,Warren Calcano,,,803849,batter,12,tex,20,,803849,Devin Fitz-Gerald,,,,42,33,,28,24,6,,,,,,,,,,ALL (2),139.0,7.0,0.0,0.428,0.91,0.482,20.0,8.0,2.0,49.0,67.0,0.302,SS
+7782,Wilfri De La Cruz,,,829043,batter,21,bal,18,,829043,Wilfri De La Cruz,,,,31,26,,46,36,0,,,,,,,,,,ALL (2),120.0,11.0,3.0,0.465,0.865,0.4,18.0,15.0,7.0,52.0,48.0,0.258,SS
+7786,Daniel Hernandez,,,829747,batter,25,was,17,,829747,Daniel Hernandez,,,,31,19,,8,16,0,,,,,,,,,,ROK,138.0,7.0,0.0,0.277,0.552,0.275,11.0,3.0,2.0,59.0,38.0,0.225,C
+7789,Darell Morel,,,829716,batter,17,pit,18,,829716,Darell Morel,,,,45,45,,37,45,1,,,,,,,,,,ROK,157.0,9.0,4.0,0.425,0.839,0.414,25.0,26.0,7.0,62.0,65.0,0.287,SS
+7790,Jhoan De La Cruz,,,829063,batter,17,sd,18,,829063,Jhoan De La Cruz,,,,36,37,,46,45,1,,,,,,,,,,ROK,139.0,5.0,3.0,0.477,0.837,0.36,21.0,11.0,4.0,71.0,50.0,0.259,SS
+7791,Kendry Martinez,,,829036,batter,20,sea,18,,829036,Kendry Martínez,,,,17,12,,21,37,0,,,,,,,,,,ROK,108.0,1.0,0.0,0.308,0.475,0.167,10.0,1.0,3.0,76.0,18.0,0.157,SS
+7792,Warren Calcaño,,,829071,batter,17,kc,18,,829071,Warren Calcaño,,,,9,7,,8,10,1,,,,,,,,,,ROK,26.0,2.0,0.0,0.514,1.052,0.538,2.0,7.0,1.0,8.0,14.0,0.346,SS
+7796,Kevin Defrank,,,829074,pitcher,8,mia,17,146.0,829074,Kevin Defrank,10.0,1.29,31.0,30,15,11.0,10,34,1,93.0,141.0,,3.19,0.0,0.0,0.0,0.0,1.0,ROK,,,,,,,,,,,,,
+7800,Lieberts Aponte,,,829051,batter,18,cin,18,,829051,Liberts Aponte,,,,38,34,,29,35,7,,,,,,,,,,ROK,154.0,6.0,3.0,0.368,0.829,0.461,36.0,9.0,0.0,73.0,71.0,0.247,SS
+7805,Samy Natera Jr.,,,696519,pitcher,20,ana,26,108.0,696519,Samy Natera Jr.,49.0,1.35,57.0,35,28,18.0,42,85,5,171.0,248.0,,2.84,8.0,7.0,4.0,4.0,1.0,ALL (2),,,,,,,,,,,,,
+7807,Edgar Montero,,,815911,batter,23,oak,19,,815911,Edgar Montero,,,,55,47,,60,54,9,,,,,,,,,,ROK,176.0,14.0,3.0,0.484,1.064,0.58,50.0,11.0,4.0,88.0,102.0,0.313,SS
+7808,Eric Reyzelman,,,801432,pitcher,26,nyy,24,147.0,801432,Eric Reyzelman,34.0,1.62,42.0,26,20,20.0,42,45,5,126.0,188.0,,4.29,1.0,7.0,1.0,1.0,2.0,AAA,,,,,,,,,,,,,
+7811,Welinton Herrera,,,700327,pitcher,19,col,21,115.0,700327,Welinton Herrera,52.0,1.14,64.2,49,23,19.0,25,99,2,194.0,272.0,,2.64,17.0,5.0,4.0,5.0,5.0,ALL (2),,,,,,,,,,,,,
+7822,Eli Lovich,,,815654,batter,29,chc,20,,815654,Eli Lovich,,,,63,33,,27,88,4,,,,,,,,,,ALL (2),271.0,7.0,3.0,0.307,0.632,0.325,36.0,18.0,4.0,112.0,88.0,0.232,OF
+7827,Darwin Ozuna,,,829048,batter,30,oak,17,,829048,Darwing Ozuna,,,,19,12,,9,25,2,,,,,,,,,,ROK,90.0,3.0,0.0,0.301,0.612,0.311,11.0,2.0,1.0,47.0,28.0,0.211,OF
+7848,Austin Gordon,,,803135,pitcher,30,ana,22,108.0,803135,Austin Gordon,21.0,1.36,84.1,88,54,51.0,27,95,12,253.0,375.0,,5.44,0.0,0.0,0.0,4.0,5.0,A+,,,,,,,,,,,,,
+7850,Nate Nankil,,,694977,batter,18,oak,23,,694977,Nate Nankil,,,,130,71,,49,85,3,,,,,,,,,,ALL (2),468.0,26.0,3.0,0.359,0.724,0.365,56.0,10.0,3.0,242.0,171.0,0.278,OF
+7861,Ben Shields,,,815456,pitcher,29,col,26,115.0,815456,Ben Shields,14.0,1.15,55.0,43,19,17.0,20,66,2,165.0,224.0,,2.78,0.0,0.0,0.0,2.0,2.0,ALL (5),,,,,,,,,,,,,
+7896,Josh Adamczewski,Weekend Warriors,Purchased Contract,815304,batter,13,mil,20,,815304,Josh Adamczewski,,,,81,55,,43,53,5,,,,,,,,,,ALL (3),253.0,18.0,5.0,0.42,0.91,0.49,46.0,7.0,1.0,108.0,124.0,0.32,SS
+7898,Keaton Anthony,,,805704,batter,15,phi,24,,805704,Keaton Anthony,,,,102,37,,26,73,6,,,,,,,,,,ALL (2),316.0,31.0,1.0,0.378,0.862,0.484,39.0,0.0,0.0,143.0,153.0,0.323,OF
+7899,Carlos Gutierrez,,,806872,batter,20,sf,21,,806872,Carlos Gutierrez,,,,87,60,,37,40,2,,,,,,,,,,A,248.0,11.0,4.0,0.445,0.897,0.452,30.0,26.0,3.0,89.0,112.0,0.351,OF
+7900,Will Bush,,,813844,batter,16,hou,21,,813844,Will Bush,,,,75,53,,58,105,15,,,,,,,,,,ALL (2),327.0,16.0,0.0,0.361,0.777,0.416,47.0,10.0,1.0,155.0,136.0,0.229,C
+7901,Edward Duran,,,698927,batter,13,tor,21,,698927,Edward Duran,,,,103,55,,42,88,8,,,,,,,,,,ALL (2),375.0,15.0,5.0,0.362,0.767,0.405,47.0,7.0,4.0,179.0,152.0,0.275,C
+7902,Liberts Aponte,,,829051,batter,18,cin,18,,829051,Liberts Aponte,,,,38,34,,29,35,7,,,,,,,,,,ROK,154.0,6.0,3.0,0.368,0.829,0.461,36.0,9.0,0.0,73.0,71.0,0.247,SS
+7903,Marlon Quintero,,,821238,batter,26,ana,19,,821238,Marlon Quintero,,,,66,28,,9,41,1,,,,,,,,,,ALL (2),223.0,11.0,0.0,0.324,0.683,0.359,41.0,7.0,0.0,104.0,80.0,0.296,C
+7905,Sam Petersen,,,695763,batter,26,was,22,,695763,Sam Petersen,,,,57,44,,26,42,7,,,,,,,,,,ALL (3),184.0,8.0,2.0,0.416,0.905,0.489,28.0,23.0,1.0,56.0,90.0,0.31,OF
+7906,Marcelo Alcala,,,808708,batter,28,cws,19,,808708,Marcelo Alcala,,,,34,33,,14,63,7,,,,,,,,,,ROK,146.0,7.0,4.0,0.325,0.804,0.479,19.0,14.0,1.0,65.0,70.0,0.233,OF
+7907,Dillon Lewis,,,827665,batter,16,nyy,22,,827665,Dillon Lewis,,,,110,72,,54,124,22,,,,,,,,,,ALL (2),465.0,21.0,5.0,0.321,0.766,0.445,79.0,26.0,2.0,199.0,207.0,0.237,OF
+7908,Zach Ehrhard,,,701394,batter,27,la,22,,701394,Zach Ehrhard,,,,123,85,,67,97,14,,,,,,,,,,ALL (3),453.0,30.0,2.0,0.374,0.813,0.439,65.0,37.0,4.0,196.0,199.0,0.272,OF
+7910,Maxton Martin,,,807722,batter,28,tex,20,,807722,Maxton Martin,,,,115,81,,52,115,14,,,,,,,,,,ALL (2),445.0,27.0,7.0,0.347,0.792,0.445,67.0,15.0,0.0,211.0,198.0,0.258,OF
+7897,Brandon Clarke,,,700251,pitcher,7,stl,22,138.0,700251,Brandon Clarke,14.0,1.16,38.0,17,21,17.0,27,60,0,114.0,174.0,,4.03,0.0,0.0,0.0,0.0,3.0,ALL (2),,,,,,,,,,,,,
+7911,Braxton Bragg,,,688867,pitcher,12,bal,25,110.0,688867,Braxton Bragg,12.0,1.0,59.0,42,20,11.0,17,77,3,177.0,235.0,,1.68,0.0,0.0,0.0,4.0,2.0,ALL (2),,,,,,,,,,,,,
+7912,Miguel Mendez,,,700280,pitcher,5,sd,23,135.0,700280,Miguel Mendez,21.0,1.22,95.0,71,38,34.0,45,118,7,285.0,402.0,,3.22,0.0,0.0,0.0,8.0,7.0,ALL (3),,,,,,,,,,,,,
+7913,Gage Stanifer,,,804948,pitcher,6,tor,22,141.0,804948,Gage Stanifer,27.0,1.17,110.0,71,38,35.0,58,161,4,330.0,453.0,,2.86,4.0,0.0,0.0,8.0,6.0,ALL (3),,,,,,,,,,,,,
+7914,Ryan Gallagher,,,801594,pitcher,14,min,22,142.0,801594,Ryan Gallagher,24.0,1.21,121.2,117,64,55.0,30,133,17,365.0,509.0,,4.07,0.0,0.0,0.0,8.0,7.0,ALL (3),,,,,,,,,,,,,
+7915,Argenis Cayama,,,821783,pitcher,9,sf,19,137.0,821783,Argenis Cayama,18.0,1.36,62.1,57,28,25.0,28,62,2,187.0,271.0,,3.61,0.0,0.0,0.0,2.0,1.0,ALL (2),,,,,,,,,,,,,
+7916,Bryce Mayer,,,809343,pitcher,9,hou,23,117.0,809343,Bryce Mayer,21.0,1.17,87.2,76,47,40.0,27,112,8,263.0,371.0,,4.11,0.0,1.0,0.0,4.0,6.0,ALL (3),,,,,,,,,,,,,
+7917,Keyner Martinez,,,815212,pitcher,10,sf,21,137.0,815212,Keyner Martinez,21.0,1.21,69.1,63,22,17.0,21,97,3,208.0,284.0,,2.21,2.0,0.0,0.0,5.0,2.0,ALL (2),,,,,,,,,,,,,
+7918,Kendry Chourio,,,830402,pitcher,8,kc,18,118.0,830402,Kendry Chourio,14.0,0.95,51.1,44,24,20.0,5,63,2,154.0,211.0,,3.51,0.0,0.0,0.0,2.0,3.0,ALL (3),,,,,,,,,,,,,
+7919,David Hagaman,,,701908,pitcher,15,ari,22,109.0,701908,David Hagaman,13.0,0.85,42.1,26,17,14.0,10,55,3,127.0,163.0,,2.98,0.0,0.0,0.0,1.0,1.0,ALL (3),,,,,,,,,,,,,
+7920,Yoel Tejeda Jr.,,,701347,pitcher,23,was,22,120.0,701347,Yoel Tejeda Jr.,18.0,1.23,87.0,80,42,39.0,27,79,6,261.0,363.0,,4.03,0.0,0.0,0.0,4.0,5.0,ALL (2),,,,,,,,,,,,,
+7921,Alberto Laroche,,,823929,pitcher,19,sf,20,137.0,823929,Alberto Laroche,10.0,0.94,38.1,30,14,9.0,6,34,0,115.0,153.0,,2.11,0.0,0.0,0.0,1.0,3.0,ROK,,,,,,,,,,,,,
+7922,Christian Zazueta,,,800537,pitcher,16,la,21,119.0,800537,Christian Zazueta,17.0,1.02,67.1,53,19,18.0,16,81,7,202.0,273.0,,2.41,0.0,0.0,0.0,7.0,2.0,ALL (2),,,,,,,,,,,,,
+7923,Will Watson,,,814492,pitcher,11,nym,23,121.0,814492,Will Watson,28.0,1.2,121.1,88,39,35.0,58,142,8,364.0,499.0,,2.6,1.0,0.0,0.0,3.0,9.0,ALL (3),,,,,,,,,,,,,
+7926,Wellington Aracena,,,800286,pitcher,26,bal,21,110.0,800286,Wellington Aracena,23.0,1.09,92.0,49,31,23.0,51,114,0,276.0,376.0,,2.25,0.0,3.0,1.0,2.0,2.0,ALL (3),,,,,,,,,,,,,
+7927,Wei-En Lin,,,827734,pitcher,19,oak,20,133.0,827734,Wei-En Lin,26.0,1.06,87.0,70,41,36.0,22,117,9,261.0,350.0,,3.72,0.0,0.0,0.0,4.0,5.0,ALL (3),,,,,,,,,,,,,
+7928,Sean Paul Liñan,,,800344,pitcher,15,was,21,120.0,800344,Sean Paul Liñan,19.0,1.13,77.1,54,30,26.0,33,106,5,232.0,321.0,,3.03,1.0,0.0,0.0,3.0,4.0,ALL (4),,,,,,,,,,,,,
+7929,Tyson Hardin,,,824620,pitcher,20,mil,24,158.0,824620,Tyson Hardin,21.0,1.18,96.0,96,33,29.0,17,96,3,288.0,388.0,,2.72,0.0,0.0,0.0,6.0,5.0,ALL (2),,,,,,,,,,,,,
+7931,Ethan Dorchies,,,828475,pitcher,21,mil,19,158.0,828475,Ethan Dorchies,19.0,1.05,82.0,51,31,25.0,35,89,4,246.0,333.0,,2.74,4.0,1.0,0.0,0.0,3.0,ALL (2),,,,,,,,,,,,,
+7932,Luis De La Torre,,,815219,pitcher,25,sf,22,137.0,815219,Luis De La Torre,18.0,1.04,74.1,50,25,23.0,27,109,2,223.0,302.0,,2.78,0.0,0.0,0.0,4.0,3.0,ALL (2),,,,,,,,,,,,,
+7933,Jonathan Pintaro,,,702752,pitcher,17,nym,28,121.0,702752,Jonathan Pintaro,29.0,1.42,82.2,71,45,41.0,46,104,9,248.0,361.0,,4.46,1.0,0.0,0.0,2.0,5.0,ALL (3),,,,,,,,,,,,,
+7934,Dylan Ross,,,697811,pitcher,20,nym,25,121.0,697811,Dylan Ross,49.0,1.15,54.0,29,19,13.0,33,80,4,162.0,224.0,,2.17,7.0,9.0,2.0,2.0,0.0,ALL (3),,,,,,,,,,,,,
+7936,Blake Wehunt,,,687762,pitcher,21,bos,25,111.0,687762,Blake Wehunt,17.0,1.47,63.1,64,45,40.0,29,76,8,190.0,281.0,,5.68,0.0,0.0,0.0,2.0,8.0,AA,,,,,,,,,,,,,
+7938,Josh Ekness,,,694795,pitcher,19,mia,23,146.0,694795,Josh Ekness,46.0,1.33,54.0,46,34,25.0,26,68,2,162.0,247.0,,4.17,10.0,1.0,2.0,4.0,1.0,ALL (2),,,,,,,,,,,,,
+7939,Sadbiel Delzine,,,829094,pitcher,22,bos,17,111.0,829094,Sadbiel Delzine,3.0,1.29,9.1,11,5,5.0,1,9,0,28.0,39.0,,4.82,0.0,0.0,0.0,0.0,0.0,ROK,,,,,,,,,,,,,

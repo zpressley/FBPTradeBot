@@ -139,18 +139,108 @@ class Auction(commands.Cog):
         # Log to test auction channel
         channel = self.bot.get_channel(TEST_AUCTION_CHANNEL_ID)
         if channel:
-            emoji = "📣" if bid_data["bid_type"] == "OB" else "⚔️"
+            is_ob = bid_data["bid_type"] == "OB"
+            header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
             content = (
-                f"{emoji} **Auction Bid**\n"
-                f"Team: `{bid_data['team']}`\n"
-                f"Prospect: `{bid_data['prospect_id']}`\n"
-                f"Amount: ${bid_data['amount']} WB ({bid_data['bid_type']})\n"
+                f"{header}\\n\\n"
+                f"🏷️ Team: {bid_data['team']}\\n"
+                f"💰 Bid: ${bid_data['amount']}\\n"
+                f"🧢 Player: {bid_data['prospect_id']}\\n\\n"
                 f"Source: Discord /bid"
             )
             try:
                 await channel.send(content)
             except Exception as exc:  # pragma: no cover - logging only
                 print(f"⚠️ Failed to send auction log message: {exc}")
+
+    # ------------------------------------------------------------------
+    # /auction_weekly_results - Saturday-style summary
+    # ------------------------------------------------------------------
+
+    @app_commands.command(
+        name="auction_weekly_results",
+        description="Post weekly auction winners and OB decisions to the test channel",
+    )
+    async def auction_weekly_results(self, interaction: discord.Interaction) -> None:
+        """Summarize current auction state for Saturday morning review.
+
+        This does *not* run resolution; it only inspects current bids
+        and match decisions to show:
+        - Winners (OBs with no challengers)
+        - Entries waiting on OB managers to Match/Forfeit
+        """
+
+        await interaction.response.defer(ephemeral=True)
+
+        state = self.manager._load_or_initialize_auction(self.manager._monday_for_date(self.manager._monday_for_date))  # type: ignore[attr-defined]
+        bids = state.get("bids", [])
+        matches = state.get("matches", [])
+
+        # Index matches (team, prospect) -> decision
+        match_map = {(m["team"], str(m["prospect_id"])): m for m in matches}
+
+        # Group bids by prospect
+        by_prospect = {}
+        for b in bids:
+            pid = str(b["prospect_id"])
+            by_prospect.setdefault(pid, []).append(b)
+
+        winners_lines = []
+        waiting_lines = []
+
+        for prospect_id, pbids in by_prospect.items():
+            ob = next((b for b in pbids if b["type"] == "OB"), None)
+            cbs = [b for b in pbids if b["type"] == "CB"]
+
+            if not ob:
+                continue
+
+            ob_team = ob["team"]
+
+            if not cbs:
+                # Winner by default at $10
+                winners_lines.append(f"• {ob_team} wins {prospect_id} for $10 (no challengers)")
+                continue
+
+            # At least one CB, check for match decision
+            key = (ob_team, prospect_id)
+            decision = match_map.get(key, {}).get("decision")
+
+            # Determine current high CB
+            max_amt = max(int(cb["amount"]) for cb in cbs)
+            top_cbs = [cb for cb in cbs if int(cb["amount"]) == max_amt]
+            top_cb = top_cbs[0]
+            cb_team = top_cb["team"]
+
+            if decision == "match":
+                winners_lines.append(
+                    f"• {ob_team} (OB) matched and wins {prospect_id} for ${max_amt} over {cb_team}"
+                )
+            elif decision == "forfeit":
+                winners_lines.append(
+                    f"• {cb_team} (CB) wins {prospect_id} for ${max_amt}; {ob_team} forfeited"
+                )
+            else:
+                waiting_lines.append(
+                    f"• {ob_team}: high bid ${max_amt} by {cb_team} for {prospect_id} – OB may Match or Forfeit"
+                )
+
+        channel = self.bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+        if not channel:
+            await interaction.followup.send("❌ Test auction channel not found.", ephemeral=True)
+            return
+
+        parts = ["🏁 Weekly Auction Results"]
+        if winners_lines:
+            parts.append("\n✅ Winners")
+            parts.extend(winners_lines)
+        if waiting_lines:
+            parts.append("\n⏳ Waiting on OB Manager")
+            parts.extend(waiting_lines)
+
+        message = "\n".join(parts)
+        await channel.send(message)
+        await interaction.followup.send("Posted weekly auction results to test channel.", ephemeral=True)
 
 
 async def setup(bot: commands.Bot) -> None:
