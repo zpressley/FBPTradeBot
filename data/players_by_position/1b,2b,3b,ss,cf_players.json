@@ -1,0 +1,58 @@
+[
+  {
+    "player_key": "458.p.9754",
+    "player_id": "9754",
+    "name": "Enrique Hern\u00e1ndez",
+    "first_name": "Enrique",
+    "last_name": "Hern\u00e1ndez",
+    "position": "1B,2B,3B,SS,CF",
+    "eligible_positions": [],
+    "team": "LAD",
+    "team_full": "Los Angeles Dodgers",
+    "status": "NA",
+    "ownership_type": "freeagents",
+    "owned_by": null,
+    "percent_owned": 5,
+    "stats": {
+      "stat_60": "47/232",
+      "stat_7": 30,
+      "stat_8": 47,
+      "stat_12": 10,
+      "stat_13": 35,
+      "stat_16": 0,
+      "stat_18": 18,
+      "stat_21": 68,
+      "stat_23": 85,
+      "stat_3": 0.203,
+      "stat_55": 0.621
+    }
+  },
+  {
+    "player_key": "458.p.10524",
+    "player_id": "10524",
+    "name": "Mauricio Dub\u00f3n",
+    "first_name": "Mauricio",
+    "last_name": "Dub\u00f3n",
+    "position": "1B,2B,3B,SS,CF",
+    "eligible_positions": [],
+    "team": "ATL",
+    "team_full": "Atlanta Braves",
+    "status": "",
+    "ownership_type": "freeagents",
+    "owned_by": null,
+    "percent_owned": 2,
+    "stats": {
+      "stat_60": "89/369",
+      "stat_7": 43,
+      "stat_8": 89,
+      "stat_12": 7,
+      "stat_13": 33,
+      "stat_16": 3,
+      "stat_18": 24,
+      "stat_21": 42,
+      "stat_23": 131,
+      "stat_3": 0.241,
+      "stat_55": 0.644
+    }
+  }
+]

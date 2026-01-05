@@ -62,6 +62,16 @@ python data_pipeline/merge_players.py
 python data_pipeline/save_standings.py
 ```
 
+### Service-time daily pipeline
+The `service_time/daily_service_tracker.py` script orchestrates the fuller daily pipeline for prospect service-time tracking (Yahoo/Hub updates, roster events, service-day calculations, and merge back into `data/`).
+
+```bash
+source venv/bin/activate
+python service_time/daily_service_tracker.py
+```
+
+This wrapper will call the underlying `service_time/*.py` and `random/*.py` helpers referenced inside that script.
+
 Important: several commands load JSON at import time (notably `commands/roster.py`), so after updating `data/*.json` you typically need to restart the bot process for changes to be reflected.
 
 Note: the Yahoo-related pipeline scripts import `token_manager` (e.g. `from token_manager import get_access_token`). In this repo, the implementation currently lives in `random/token_manager.py`, so running the pipeline may require fixing the import path (e.g., moving/duplicating the module or adjusting imports).
@@ -70,12 +80,14 @@ Note: the Yahoo-related pipeline scripts import `token_manager` (e.g. `from toke
 No linter/typechecker is configured in-repo (no Ruff/Black/Mypy config files).
 
 ### Tests
-No automated test runner is configured. The repo contains a few ad-hoc scripts under `random/` that are used like manual tests.
+No automated test runner is configured. The repo contains ad-hoc scripts under `random/`, `service_time/`, and the repo root that are used like manual tests.
 
-Example:
+Examples (run one at a time):
 ```bash
 source venv/bin/activate
-python random/test_trade_logic.py
+python random/test_trade_logic.py           # trade workflow checks
+python service_time/test_service-commands.py  # service command data sanity checks
+python test_robust_parser.py               # CSV rank parser
 ```
 
 ## Code architecture (big picture)
@@ -107,6 +119,7 @@ Key cogs/modules:
   - `commands/lookup.py` loads `data/combined_players.json` and exposes `fuzzy_lookup_all`.
 - `commands/standings.py`: `/standings` reads from `data/standings.json`.
 - `commands/service.py`: `/service`, `/prospects`, `/alerts` read from `data/service_stats.json`.
+- `commands/database_commands.py`: admin commands (`/db_setup`, `/db_status`, `/db_refresh`, `/db_find`) that manage a dedicated prospect database Discord channel, backed by `draft/database_channel_manager.py` and `draft/database_tracker.py`.
 
 Shared constants/helpers:
 - `commands/utils.py`: maps manager/team <-> Discord IDs and contains trade timestamp helpers (`get_trade_dates`).
@@ -125,6 +138,14 @@ The draft feature is split between Discord cogs and pure “state manager” cod
   - Stores per-team ordered target lists in `data/manager_boards_2025.json`.
   - Draft autopick prefers the team’s board (`BoardManager.get_next_available(...)`).
 - `draft/pick_validator.py`: rule validation logic (wired for use, but the Discord draft flow currently uses a lightweight confirmation flow).
+
+### Prospect database & live pick tracking
+The prospect database subsystem ties together Discord commands, a dedicated database channel, and MLB stats/ownership data.
+
+- `draft/database_channel_manager.py` + `draft/database_tracker.py`: manage a “prospect database” channel and per-position threads, posting ranked prospect lists and tracking the location of each player’s status line in Discord messages for later edits.
+- `commands/database_commands.py`: admin slash commands that create/refresh the database channel, check status, and look up player locations, persisting config to `data/database_config.json` and tracker state to `data/database_tracker.json`.
+- `draft/draft_database_integration.py`: optional integration layer that lets the draft flow enqueue pick updates into the database so tracked prospect lines are marked as picked in place.
+- `prospect_stats_repository.py`: pulls MLB Stats API data and combines it with ownership data and cached MLB IDs under `data/prospect_stats/`, which the database channel manager uses when building prospect lists.
 
 ### Data model: `data/` as the contract between scripts and bot
 The bot expects JSON files under `data/` to exist and match the schema produced by pipeline scripts.

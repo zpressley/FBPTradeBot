@@ -1,0 +1,30 @@
+[
+  {
+    "player_key": "458.p.12562",
+    "player_id": "12562",
+    "name": "Josh Smith",
+    "first_name": "Josh",
+    "last_name": "Smith",
+    "position": "1B,3B,SS,OF",
+    "eligible_positions": [],
+    "team": "TEX",
+    "team_full": "Texas Rangers",
+    "status": "",
+    "ownership_type": "freeagents",
+    "owned_by": null,
+    "percent_owned": 18,
+    "stats": {
+      "stat_60": "124/495",
+      "stat_7": 70,
+      "stat_8": 124,
+      "stat_12": 10,
+      "stat_13": 35,
+      "stat_16": 12,
+      "stat_18": 55,
+      "stat_21": 100,
+      "stat_23": 181,
+      "stat_3": 0.251,
+      "stat_55": 0.701
+    }
+  }
+]

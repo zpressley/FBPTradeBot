@@ -9,7 +9,7 @@ import os
 
 # Your league + team mapping
 LEAGUE_ID = "15505"
-GAME_KEY = "mlb"  # This may need to be dynamically fetched via API, but 'mlb' usually works
+GAME_KEY = "404"  # This may need to be dynamically fetched via API, but 'mlb' usually works
 
 YAHOO_TEAM_MAP = {
     "1": "WIZ",
@@ -33,7 +33,7 @@ def fetch_yahoo_rosters():
         "Accept": "application/json"
     }
 
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/mlb.l.{LEAGUE_ID}/teams;out=roster"
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/404.l.{LEAGUE_ID}/teams;out=roster"
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:

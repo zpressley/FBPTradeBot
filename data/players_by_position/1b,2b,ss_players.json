@@ -1,0 +1,58 @@
+[
+  {
+    "player_key": "458.p.11692",
+    "player_id": "11692",
+    "name": "Jake Cronenworth",
+    "first_name": "Jake",
+    "last_name": "Cronenworth",
+    "position": "1B,2B,SS",
+    "eligible_positions": [],
+    "team": "SD",
+    "team_full": "San Diego Padres",
+    "status": "",
+    "ownership_type": "team",
+    "owned_by": "458.l.15505.t.3",
+    "percent_owned": 20,
+    "stats": {
+      "stat_60": "103/419",
+      "stat_7": 61,
+      "stat_8": 103,
+      "stat_12": 11,
+      "stat_13": 59,
+      "stat_16": 3,
+      "stat_18": 69,
+      "stat_21": 107,
+      "stat_23": 158,
+      "stat_3": 0.246,
+      "stat_55": 0.744
+    }
+  },
+  {
+    "player_key": "458.p.11883",
+    "player_id": "11883",
+    "name": "Liover Peguero",
+    "first_name": "Liover",
+    "last_name": "Peguero",
+    "position": "1B,2B,SS",
+    "eligible_positions": [],
+    "team": "PHI",
+    "team_full": "Philadelphia Phillies",
+    "status": "NA",
+    "ownership_type": "freeagents",
+    "owned_by": null,
+    "percent_owned": 0,
+    "stats": {
+      "stat_60": "16/80",
+      "stat_7": 9,
+      "stat_8": 16,
+      "stat_12": 4,
+      "stat_13": 8,
+      "stat_16": 4,
+      "stat_18": 6,
+      "stat_21": 25,
+      "stat_23": 29,
+      "stat_3": 0.2,
+      "stat_55": 0.636
+    }
+  }
+]
