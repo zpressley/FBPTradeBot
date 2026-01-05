@@ -8,6 +8,8 @@ import uvicorn
 
 from auction_manager import AuctionManager
 
+TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
+
 # ---- Discord Bot Setup ----
 TOKEN = os.getenv("DISCORD_TOKEN")
 API_KEY = os.getenv("BOT_API_KEY")  # for FastAPI authentication
@@ -70,6 +72,17 @@ class MatchRequest(BaseModel):
     source: str = "web"  # or "discord"
 
 
+async def _send_auction_log_message(content: str) -> None:
+    """Post an auction log message to the test channel, if available."""
+
+    try:
+        channel = bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+        if channel:
+            await channel.send(content)
+    except Exception as exc:  # pragma: no cover - logging only
+        print(f"⚠️ Failed to send auction log message: {exc}")
+
+
 def _commit_and_push(file_paths: list[str], message: str) -> None:
     """Best-effort helper to commit and push data updates.
 
@@ -126,6 +139,18 @@ async def api_place_bid(
         _commit_and_push(["data/auction_current.json"],
                          f"Auction bid: {payload.bid_type} ${payload.amount} on {payload.prospect_id} by {payload.team}")
 
+        # Fire-and-forget Discord log
+        bid = result.get("bid", {})
+        emoji = "📣" if bid.get("bid_type") == "OB" else "⚔️"
+        content = (
+            f"{emoji} **Auction Bid**\n"
+            f"Team: `{bid.get('team', payload.team)}`\n"
+            f"Prospect: `{bid.get('prospect_id', payload.prospect_id)}`\n"
+            f"Amount: ${bid.get('amount', payload.amount)} WB ({bid.get('bid_type', payload.bid_type)})\n"
+            f"Source: Website Portal"
+        )
+        bot.loop.create_task(_send_auction_log_message(content))
+
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
 
@@ -150,6 +175,18 @@ async def api_record_match(
     if result.get("success"):
         _commit_and_push(["data/auction_current.json"],
                          f"Auction match: {payload.decision} on {payload.prospect_id} by {payload.team}")
+
+        # Fire-and-forget Discord log
+        match = result.get("match", {})
+        decision = match.get("decision", payload.decision)
+        emoji = "✅" if decision == "match" else "🚫"
+        content = (
+            f"{emoji} **OB Decision**\n"
+            f"Team: `{match.get('team', payload.team)}`\n"
+            f"Prospect: `{match.get('prospect_id', payload.prospect_id)}`\n"
+            f"Decision: `{decision}` (via Website Portal)"
+        )
+        bot.loop.create_task(_send_auction_log_message(content))
 
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))

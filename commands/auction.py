@@ -5,6 +5,8 @@ from discord import app_commands
 from auction_manager import AuctionManager, AuctionPhase
 from commands.utils import DISCORD_ID_TO_TEAM
 
+TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
+
 
 class Auction(commands.Cog):
     """Discord interface for the Prospect Auction Portal.
@@ -125,14 +127,30 @@ class Auction(commands.Cog):
         bid_data = result["bid"]
         await interaction.followup.send(
             (
-                f"✅ Bid placed!\n"
-                f"Team: `{bid_data['team']}`\n"
-                f"Prospect: `{bid_data['prospect_id']}`\n"
-                f"Amount: ${bid_data['amount']} WB\n"
-                f"Type: {bid_data['bid_type']}\n"
+                f"✅ Bid placed!\\n"
+                f"Team: `{bid_data['team']}`\\n"
+                f"Prospect: `{bid_data['prospect_id']}`\\n"
+                f"Amount: ${bid_data['amount']} WB\\n"
+                f"Type: {bid_data['bid_type']}\\n"
             ),
             ephemeral=True,
         )
+
+        # Log to test auction channel
+        channel = self.bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+        if channel:
+            emoji = "📣" if bid_data["bid_type"] == "OB" else "⚔️"
+            content = (
+                f"{emoji} **Auction Bid**\n"
+                f"Team: `{bid_data['team']}`\n"
+                f"Prospect: `{bid_data['prospect_id']}`\n"
+                f"Amount: ${bid_data['amount']} WB ({bid_data['bid_type']})\n"
+                f"Source: Discord /bid"
+            )
+            try:
+                await channel.send(content)
+            except Exception as exc:  # pragma: no cover - logging only
+                print(f"⚠️ Failed to send auction log message: {exc}")
 
 
 async def setup(bot: commands.Bot) -> None:
