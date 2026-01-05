@@ -92,6 +92,10 @@ class AuctionManager:
         self.standings_file = self.data_dir / "standings.json"
         self.wizbucks_file = self.data_dir / "wizbucks.json"
 
+        # Config lives one level up from data/ by convention
+        root_dir = self.data_dir.parent
+        self.season_dates_file = root_dir / "config" / "season_dates.json"
+
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
@@ -460,10 +464,29 @@ class AuctionManager:
     def _default_schedule_meta(self) -> Dict[str, Any]:
         """Return default season schedule configuration.
 
-        These dates should be updated each season.
+        Primary source of truth is config/season_dates.json. If that
+        file is missing or incomplete, fall back to baked-in defaults.
         """
 
-        # Placeholder hard-coded dates; adjust per-season.
+        # Try config/season_dates.json first
+        conf = self._load_json(self.season_dates_file) or {}
+        auction_conf = conf.get("auction") or {}
+
+        try:
+            season_start = auction_conf["start"]
+            all_star = auction_conf["all_star_break_start"]
+            restart = auction_conf["restart"]
+            playoffs = auction_conf["playoffs_start"]
+            return {
+                "season_start": season_start,
+                "all_star_break_start": all_star,
+                "auction_restart": restart,
+                "playoffs_start": playoffs,
+            }
+        except KeyError:
+            pass
+
+        # Fallback: baked-in dates (keep behavior stable if config missing)
         return {
             "season_start": "2026-04-01",  # first auction week start (Monday)
             "all_star_break_start": "2026-07-13",  # Monday of All-Star break
