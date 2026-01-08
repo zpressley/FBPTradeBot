@@ -1,0 +1,492 @@
+change_type,yahoo_id,name,team,position,player_type,old_manager,new_manager
+removed,7048,Adam Wainwright,STL,P,MLB,Whiz Kids,
+removed,7257,Zack Greinke,KC,P,MLB,BATI,
+removed,7345,Yadier Molina,STL,C,MLB,BATI,
+removed,7578,Rich Hill,KC,P,MLB,TROU,
+removed,7590,Justin Verlander,SF,P,MLB,TROU,
+removed,7681,Nelson Cruz,SD,Util,MLB,GANG,
+removed,7790,Jon Lester,STL,P,MLB,GANG,
+removed,7914,Evan Longoria,AZ,3B,MLB,Weekend Warriors,
+removed,7946,Joey Votto,TOR,1B,MLB,Whiz Kids,
+removed,8099,Ian Kennedy,TEX,P,MLB,TROU,
+removed,8176,Jake McGee,SF,P,MLB,Rick Vaughn,
+removed,8180,Clayton Kershaw,LAD,P,MLB,TROU,Btwn2Jackies
+added,8180,Clayton Kershaw,LAD,P,MLB,TROU,Btwn2Jackies
+removed,8185,Carlos Carrasco,ATL,P,MLB,BATI,
+removed,8193,Max Scherzer,TOR,P,MLB,Rick Vaughn,
+removed,8270,Charlie Morton,ATL,P,MLB,Btwn2Jackies,
+removed,8458,Mark Melancon,AZ,P,MLB,CASC,
+removed,8480,Craig Stammen,SD,P,MLB,BATI,
+removed,8562,Stephen Strasburg,WSH,P,MLB,Whiz Kids,
+removed,8578,Buster Posey,SF,"C,1B",MLB,PLAY,
+removed,8588,Justin Turner,CHC,3B,MLB,Andromedans,
+removed,8616,Aroldis Chapman,BOS,P,MLB,Andromedans,Whiz Kids
+added,8616,Aroldis Chapman,BOS,P,MLB,Andromedans,Whiz Kids
+removed,8619,Carlos Santana,CHC,1B,MLB,TROU,
+removed,8622,Craig Kimbrel,HOU,P,MLB,Rick Vaughn,
+removed,8623,Jake Arrieta,CHC,P,MLB,TROU,
+removed,8634,Giancarlo Stanton,NYY,OF,MLB,TROU,
+removed,8650,Lance Lynn,STL,P,MLB,Whiz Kids,
+removed,8658,Freddie Freeman,LAD,1B,MLB,CASC,Law-Abiding Citizens
+added,8658,Freddie Freeman,LAD,1B,MLB,CASC,Law-Abiding Citizens
+removed,8723,Josh Donaldson,MIL,3B,MLB,Whiz Kids,
+removed,8736,Adam Ottavino,NYY,P,MLB,CASC,
+removed,8758,Kenley Jansen,DET,P,MLB,TROU,The Bluke Blokes
+added,8758,Kenley Jansen,DET,P,MLB,TROU,The Bluke Blokes
+removed,8759,Michael Pineda,DET,P,MLB,PLAY,
+removed,8780,Chris Sale,ATL,P,MLB,ANGE,Hammers
+added,8780,Chris Sale,ATL,P,MLB,ANGE,Hammers
+removed,8795,Brandon Belt,TOR,"1B,OF",MLB,Btwn2Jackies,
+removed,8856,Jordan Lyles,KC,P,MLB,BATI,
+removed,8859,Wil Myers,CIN,"1B,CF",MLB,PINS,
+removed,8861,Mike Trout,LAA,CF,MLB,Weekend Warriors,The Bluke Blokes
+added,8861,Mike Trout,LAA,CF,MLB,Weekend Warriors,The Bluke Blokes
+removed,8864,Kyle Gibson,BAL,P,MLB,Weekend Warriors,
+removed,8868,Anthony Rizzo,NYY,1B,MLB,PINS,
+kept,8875,Bryce Harper,PHI,OF,MLB,Btwn2Jackies,Btwn2Jackies
+removed,8932,Danny Duffy,TEX,P,MLB,PLAY,
+removed,8945,Brandon Crawford,STL,SS,MLB,Rick Vaughn,
+removed,8949,DJ LeMahieu,NYY,"1B,2B,3B",MLB,PINS,
+removed,8950,Josh Harrison,CIN,"2B,3B,SS,OF",MLB,BATI,
+removed,8957,Charlie Blackmon,COL,OF,MLB,TROU,
+removed,8958,Tony Watson,PHI,P,MLB,Weekend Warriors,
+removed,8967,Paul Goldschmidt,NYY,1B,MLB,ANGE,
+removed,8996,Jose Altuve,HOU,2B,MLB,ANGE,Law-Abiding Citizens
+added,8996,Jose Altuve,HOU,2B,MLB,ANGE,Law-Abiding Citizens
+removed,9002,J.D. Martinez,NYM,OF,MLB,Andromedans,
+removed,9007,Nathan Eovaldi,TEX,P,MLB,PINS,not much of a donkey
+added,9007,Nathan Eovaldi,TEX,P,MLB,PINS,not much of a donkey
+removed,9015,Salvador Perez,KC,C,MLB,HURL,The Bluke Blokes
+added,9015,Salvador Perez,KC,C,MLB,HURL,The Bluke Blokes
+removed,9019,Wily Peralta,PIT,P,MLB,Weekend Warriors,
+removed,9048,Corey Kluber,BOS,P,MLB,CASC,
+removed,9054,Eduardo Escobar,TOR,"1B,2B,3B",MLB,CASC,
+removed,9057,Liam Hendriks,BOS,P,MLB,Andromedans,
+removed,9095,Yu Darvish,SD,P,MLB,Weekend Warriors,The Bluke Blokes
+added,9095,Yu Darvish,SD,P,MLB,Weekend Warriors,The Bluke Blokes
+removed,9098,Yasmani Grandal,PIT,"C,1B",MLB,Andromedans,
+removed,9103,Kolten Wong,BAL,2B,MLB,Weekend Warriors,
+removed,9104,Jonathan Schoop,DET,"1B,2B",MLB,HURL,
+removed,9105,Nolan Arenado,STL,3B,MLB,PLAY,
+removed,9108,Nick Castellanos,PHI,OF,MLB,Whiz Kids,
+removed,9110,Miguel Sanó,LAA,"1B,3B",MLB,GANG,
+removed,9111,Manny Machado,SD,"3B,SS",MLB,HURL,Law-Abiding Citizens
+added,9111,Manny Machado,SD,"3B,SS",MLB,HURL,Law-Abiding Citizens
+removed,9116,Francisco Lindor,NYM,SS,MLB,BATI,Andromedans
+added,9116,Francisco Lindor,NYM,SS,MLB,BATI,Andromedans
+removed,9118,Starling Marte,NYM,CF,MLB,Weekend Warriors,
+removed,9121,Gerrit Cole,NYY,P,MLB,Andromedans,Rick Vaughn
+added,9121,Gerrit Cole,NYY,P,MLB,Andromedans,Rick Vaughn
+removed,9122,Trevor Bauer,LAD,P,MLB,JESÚ,
+removed,9124,Zack Wheeler,PHI,P,MLB,Whiz Kids,Btwn2Jackies
+added,9124,Zack Wheeler,PHI,P,MLB,Whiz Kids,Btwn2Jackies
+removed,9217,Dallas Keuchel,MIL,P,MLB,PINS,
+removed,9228,Jorge Soler,LAA,OF,MLB,Weekend Warriors,
+removed,9236,Aaron Loup,LAA,P,MLB,ANGE,
+removed,9247,Jean Segura,MIA,"2B,3B,SS",MLB,CASC,
+removed,9281,Avisaíl García,MIA,CF,MLB,PINS,
+removed,9310,Jake Odorizzi,TB,P,MLB,PINS,
+removed,9317,Hyun Jin Ryu,TOR,P,MLB,GANG,
+removed,9319,Xander Bogaerts,SD,SS,MLB,HURL,Law-Abiding Citizens
+added,9319,Xander Bogaerts,SD,SS,MLB,HURL,Law-Abiding Citizens
+removed,9320,Christian Yelich,MIL,OF,MLB,Andromedans,Weekend Warriors
+added,9320,Christian Yelich,MIL,OF,MLB,Andromedans,Weekend Warriors
+removed,9333,Matt Barnes,WSH,P,MLB,PINS,
+removed,9334,Kevin Gausman,TOR,P,MLB,CASC,Btwn2Jackies
+added,9334,Kevin Gausman,TOR,P,MLB,CASC,Btwn2Jackies
+removed,9339,George Springer,TOR,CF,MLB,BATI,Whiz Kids
+added,9339,George Springer,TOR,CF,MLB,BATI,Whiz Kids
+removed,9345,Leury García,ATL,"2B,3B,SS,CF",MLB,PLAY,
+removed,9358,Ryan Pressly,CHC,P,MLB,Rick Vaughn,
+removed,9376,Carlos Martínez,SF,P,MLB,TROU,
+removed,9378,Robbie Grossman,CWS,OF,MLB,Rick Vaughn,
+removed,9413,Alex Colomé,WSH,P,MLB,PINS,
+removed,9415,Alex Wood,ATH,P,MLB,CASC,
+removed,9429,José Álvarez,SF,P,MLB,BATI,
+removed,9455,Luis García,LAA,P,MLB,GANG,
+removed,9459,Sonny Gray,BOS,P,MLB,GANG,Hammers
+added,9459,Sonny Gray,BOS,P,MLB,GANG,Hammers
+removed,9507,José Ramírez,CLE,3B,MLB,BATI,not much of a donkey
+added,9507,José Ramírez,CLE,3B,MLB,BATI,not much of a donkey
+removed,9517,Marcus Semien,NYM,"2B,SS",MLB,PLAY,
+removed,9540,José Abreu,HOU,1B,MLB,GANG,
+removed,9546,Eduardo Rodriguez,AZ,P,MLB,TROU,
+removed,9552,Mookie Betts,LAD,"2B,CF",MLB,Andromedans,La Flama Blanca
+added,9552,Mookie Betts,LAD,"2B,CF",MLB,Andromedans,La Flama Blanca
+removed,9557,Javier Báez,DET,"2B,SS",MLB,BATI,
+removed,9558,Kris Bryant,COL,"1B,3B,CF",MLB,Rick Vaughn,
+removed,9561,Jesse Winker,NYM,CF,MLB,Weekend Warriors,
+removed,9567,Jon Gray,TEX,P,MLB,Whiz Kids,
+removed,9571,Trevor Story,BOS,SS,MLB,Whiz Kids,I'LL
+added,9571,Trevor Story,BOS,SS,MLB,Whiz Kids,I'LL
+removed,9573,Carlos Correa,HOU,SS,MLB,PINS,Country Fried Lamb
+added,9573,Carlos Correa,HOU,SS,MLB,PINS,Country Fried Lamb
+removed,9575,Lance McCullers Jr.,HOU,P,MLB,Weekend Warriors,
+removed,9579,Hunter Dozier,LAA,"1B,3B,OF",MLB,Btwn2Jackies,
+removed,9581,Adalberto Mondesi,KC,"3B,SS",MLB,TROU,
+removed,9582,Sean Manaea,NYM,P,MLB,PLAY,Andromedans
+added,9582,Sean Manaea,NYM,P,MLB,PLAY,Andromedans
+removed,9583,C.J. Cron,BOS,1B,MLB,JESÚ,
+removed,9584,Corey Seager,TEX,SS,MLB,GANG,Hammers
+added,9584,Corey Seager,TEX,SS,MLB,GANG,Hammers
+removed,9585,Julio Urías,LAD,P,MLB,Andromedans,
+removed,9590,Byron Buxton,MIN,CF,MLB,HURL,La Flama Blanca
+added,9590,Byron Buxton,MIN,CF,MLB,HURL,La Flama Blanca
+removed,9591,Eddie Rosario,ATL,OF,MLB,GANG,
+removed,9597,Noah Syndergaard,CLE,P,MLB,ANGE,
+removed,9599,Steven Matz,TB,P,MLB,CASC,
+removed,9605,Matt Olson,ATL,1B,MLB,HURL,not much of a donkey
+added,9605,Matt Olson,ATL,1B,MLB,HURL,not much of a donkey
+removed,9606,Max Muncy,LAD,"1B,2B,3B",MLB,CASC,Whiz Kids
+added,9606,Max Muncy,LAD,"1B,2B,3B",MLB,CASC,Whiz Kids
+removed,9612,Austin Meadows,DET,OF,MLB,GANG,
+removed,9616,Tyler Glasnow,LAD,P,MLB,ANGE,The Bluke Blokes
+added,9616,Tyler Glasnow,LAD,P,MLB,ANGE,The Bluke Blokes
+removed,9620,Max Fried,NYY,P,MLB,Rick Vaughn,Btwn2Jackies
+added,9620,Max Fried,NYY,P,MLB,Rick Vaughn,Btwn2Jackies
+removed,9627,Marco Gonzales,PIT,P,MLB,Rick Vaughn,
+removed,9630,Joey Gallo,CWS,CF,MLB,ANGE,
+removed,9632,Luke Jackson,SEA,P,MLB,Btwn2Jackies,
+removed,9637,Marcus Stroman,NYY,P,MLB,TROU,
+removed,9640,Lucas Giolito,BOS,P,MLB,Btwn2Jackies,
+removed,9672,Blake Treinen,LAD,P,MLB,Weekend Warriors,Law-Abiding Citizens
+added,9672,Blake Treinen,LAD,P,MLB,Weekend Warriors,Law-Abiding Citizens
+removed,9686,Casey Sadler,SEA,P,MLB,Whiz Kids,
+removed,9691,Robbie Ray,SF,P,MLB,Btwn2Jackies,not much of a donkey
+added,9691,Robbie Ray,SF,P,MLB,Btwn2Jackies,not much of a donkey
+removed,9701,Jacob deGrom,TEX,P,MLB,JESÚ,Whiz Kids
+added,9701,Jacob deGrom,TEX,P,MLB,JESÚ,Whiz Kids
+removed,9703,Anthony DeSclafani,AZ,P,MLB,PINS,
+removed,9718,J.T. Realmuto,PHI,"C,1B",MLB,Whiz Kids,Btwn2Jackies
+added,9718,J.T. Realmuto,PHI,"C,1B",MLB,Whiz Kids,Btwn2Jackies
+removed,9730,Tyler Matzek,NYY,P,MLB,CASC,
+removed,9750,Jorge Polanco,NYM,"2B,SS",MLB,PINS,Hammers
+added,9750,Jorge Polanco,NYM,"2B,SS",MLB,PINS,Hammers
+removed,9758,Kyle Hendricks,LAA,P,MLB,CASC,The Bluke Blokes
+added,9758,Kyle Hendricks,LAA,P,MLB,CASC,The Bluke Blokes
+removed,9762,Christian Vázquez,MIN,"C,1B",MLB,TROU,
+removed,9771,Chris Taylor,LAA,"2B,3B,SS,CF",MLB,ANGE,
+removed,9779,Héctor Neris,HOU,P,MLB,Whiz Kids,
+removed,9782,Andrew Chafin,LAA,P,MLB,Whiz Kids,
+removed,9783,Trevor May,ATH,P,MLB,ANGE,
+removed,9799,Chris Bassitt,TOR,P,MLB,PLAY,The Bluke Blokes
+added,9799,Chris Bassitt,TOR,P,MLB,PLAY,The Bluke Blokes
+removed,9815,Yimi García,TOR,P,MLB,GANG,Btwn2Jackies
+added,9815,Yimi García,TOR,P,MLB,GANG,Btwn2Jackies
+removed,9823,Carlos Rodón,NYY,P,MLB,Rick Vaughn,Whiz Kids
+added,9823,Carlos Rodón,NYY,P,MLB,Rick Vaughn,Whiz Kids
+removed,9855,Touki Toussaint,LAA,P,MLB,JESÚ,
+removed,9861,Kyle Schwarber,PHI,"1B,OF",MLB,HURL,not much of a donkey
+added,9861,Kyle Schwarber,PHI,"1B,OF",MLB,HURL,not much of a donkey
+removed,9863,Kyle Freeland,COL,P,MLB,PLAY,
+removed,9872,José Berríos,TOR,P,MLB,Andromedans,
+removed,9874,Nick Gordon,KC,"2B,SS,CF",MLB,GANG,
+removed,9875,Michael Conforto,LAD,CF,MLB,Rick Vaughn,
+removed,9876,Brandon Nimmo,TEX,CF,MLB,GANG,Btwn2Jackies
+added,9876,Brandon Nimmo,TEX,CF,MLB,GANG,Btwn2Jackies
+removed,9877,Aaron Judge,NYY,CF,MLB,TROU,Andromedans
+added,9877,Aaron Judge,NYY,CF,MLB,TROU,Andromedans
+removed,9879,Luis Severino,ATH,P,MLB,PINS,Whiz Kids
+added,9879,Luis Severino,ATH,P,MLB,PINS,Whiz Kids
+removed,9882,Aaron Nola,PHI,P,MLB,Whiz Kids,Law-Abiding Citizens
+added,9882,Aaron Nola,PHI,P,MLB,Whiz Kids,Law-Abiding Citizens
+removed,9883,Josh Bell,MIN,"1B,OF",MLB,Weekend Warriors,
+removed,9889,Hunter Renfroe,KC,CF,MLB,CASC,
+removed,9892,Alex Reyes,STL,P,MLB,ANGE,
+removed,9893,Willy Adames,SF,SS,MLB,CASC,Whiz Kids
+added,9893,Willy Adames,SF,SS,MLB,CASC,Whiz Kids
+removed,9897,Tim Anderson,LAA,SS,MLB,Andromedans,
+removed,9898,Mark Canha,KC,"1B,CF",MLB,GANG,
+removed,9900,Yoán Moncada,LAA,3B,MLB,TROU,The Bluke Blokes
+added,9900,Yoán Moncada,LAA,3B,MLB,TROU,The Bluke Blokes
+removed,9902,Raisel Iglesias,ATL,P,MLB,PLAY,Andromedans
+added,9902,Raisel Iglesias,ATL,P,MLB,PLAY,Andromedans
+removed,9949,Michael Lorenzen (Pitcher),KC,P,MLB,BATI,
+removed,9959,Ryan Tepera,LAA,P,MLB,Btwn2Jackies,
+removed,10003,Mychal Givens,MIA,P,MLB,PLAY,
+removed,10012,Deolis Guerra,ATH,P,MLB,GANG,
+removed,10027,Frankie Montas,NYM,P,MLB,GANG,
+kept,10036,Ketel Marte,AZ,"2B,SS,CF",MLB,Rick Vaughn,Rick Vaughn
+removed,10039,Tyler Duffey,KC,P,MLB,ANGE,
+removed,10056,Trea Turner,PHI,"2B,SS",MLB,ANGE,The Bluke Blokes
+added,10056,Trea Turner,PHI,"2B,SS",MLB,ANGE,The Bluke Blokes
+removed,10069,Domingo Germán,PIT,P,MLB,Rick Vaughn,
+removed,10076,Elias Díaz,SD,C,MLB,GANG,
+removed,10098,Adrian Houser,SF,P,MLB,BATI,The Bluke Blokes
+added,10098,Adrian Houser,SF,P,MLB,BATI,The Bluke Blokes
+removed,10119,Mike Yastrzemski,ATL,CF,MLB,PINS,
+removed,10131,Josh Hader,HOU,P,MLB,PLAY,La Flama Blanca
+added,10131,Josh Hader,HOU,P,MLB,PLAY,La Flama Blanca
+removed,10141,Zach Eflin,BAL,P,MLB,CASC,
+removed,10147,Ryan Yarbrough,NYY,P,MLB,TROU,
+removed,10148,Blake Snell,LAD,P,MLB,TROU,Law-Abiding Citizens
+added,10148,Blake Snell,LAD,P,MLB,TROU,Law-Abiding Citizens
+removed,10157,Trey Mancini,AZ,"1B,OF",MLB,BATI,
+removed,10159,Andrew Benintendi,CWS,CF,MLB,PINS,
+removed,10166,Willson Contreras,BOS,C,MLB,Btwn2Jackies,not much of a donkey
+added,10166,Willson Contreras,BOS,C,MLB,Btwn2Jackies,not much of a donkey
+removed,10175,Ryan McMahon,NYY,"1B,2B,3B",MLB,PLAY,
+removed,10176,Antonio Senzatela,COL,P,MLB,PLAY,
+removed,10183,Alex Bregman,BOS,"3B,SS",MLB,Whiz Kids,Country Fried Lamb
+added,10183,Alex Bregman,BOS,"3B,SS",MLB,Whiz Kids,Country Fried Lamb
+removed,10185,Joe Musgrove,SD,P,MLB,ANGE,
+removed,10194,Brett Phillips,CWS,CF,MLB,GANG,
+removed,10200,James Kaprielian,ATH,P,MLB,PLAY,
+kept,10214,Edwin Díaz,LAD,P,MLB,Andromedans,Andromedans
+removed,10215,Tyler O'Neill,BAL,OF,MLB,CASC,
+removed,10229,Erick Fedde,MIL,P,MLB,ANGE,
+removed,10230,Brendan Rodgers,HOU,"2B,SS",MLB,Rick Vaughn,
+removed,10234,Dansby Swanson,CHC,SS,MLB,JESÚ,
+removed,10235,Rafael Devers,SF,3B,MLB,ANGE,Btwn2Jackies
+added,10235,Rafael Devers,SF,3B,MLB,ANGE,Btwn2Jackies
+removed,10236,Gleyber Torres,DET,"2B,SS",MLB,PINS,La Flama Blanca
+added,10236,Gleyber Torres,DET,"2B,SS",MLB,PINS,La Flama Blanca
+removed,10237,Ozzie Albies,ATL,2B,MLB,BATI,Btwn2Jackies
+added,10237,Ozzie Albies,ATL,2B,MLB,BATI,Btwn2Jackies
+removed,10293,Chad Green,TOR,P,MLB,HURL,
+removed,10296,Mike Clevinger,CWS,P,MLB,Weekend Warriors,
+removed,10298,Whit Merrifield,ATL,"2B,CF",MLB,TROU,
+removed,10311,Chris Stratton,LAD,P,MLB,GANG,
+removed,10328,Jeimer Candelario,CIN,"1B,3B",MLB,Weekend Warriors,
+removed,10337,Omar Narváez,TEX,C,MLB,ANGE,
+removed,10338,Dylan Floro,ATH,P,MLB,PLAY,
+removed,10344,Yuli Gurriel,SD,"1B,3B",MLB,Rick Vaughn,
+removed,10366,Teoscar Hernández,LAD,CF,MLB,Btwn2Jackies,
+removed,10369,Mitch Haniger,SEA,CF,MLB,HURL,
+removed,10380,Joey Wendle,ATL,"2B,3B,SS",MLB,TROU,
+removed,10402,Germán Márquez,COL,P,MLB,PINS,
+removed,10412,Michael Kopech,LAD,P,MLB,CASC,
+removed,10420,Austin Riley,ATL,"1B,3B,OF",MLB,Rick Vaughn,Andromedans
+added,10420,Austin Riley,ATL,"1B,3B,OF",MLB,Rick Vaughn,Andromedans
+removed,10423,Michael Soroka,AZ,P,MLB,JESÚ,
+removed,10424,Ian Anderson,LAA,P,MLB,GANG,
+removed,10429,Ryan Mountcastle,BAL,"1B,OF",MLB,CASC,
+removed,10438,Dylan Cease,TOR,P,MLB,Whiz Kids,Law-Abiding Citizens
+added,10438,Dylan Cease,TOR,P,MLB,Whiz Kids,Law-Abiding Citizens
+removed,10439,Eloy Jiménez,TB,OF,MLB,TROU,
+removed,10440,Ian Happ,CHC,"2B,3B,CF",MLB,Whiz Kids,Country Fried Lamb
+added,10440,Ian Happ,CHC,"2B,3B,CF",MLB,Whiz Kids,Country Fried Lamb
+removed,10451,Dane Dunning,ATL,P,MLB,ANGE,
+removed,10452,Vladimir Gutierrez,MIA,P,MLB,JESÚ,
+removed,10455,Tyler Mahle,SF,P,MLB,Weekend Warriors,
+removed,10456,Tyler Stephenson,CIN,"C,1B",MLB,CASC,
+removed,10461,Bobby Bradley,CLE,1B,MLB,BATI,
+removed,10462,Triston McKenzie,SD,P,MLB,Btwn2Jackies,
+kept,10480,Kyle Tucker,CHC,OF,MLB,Rick Vaughn,Rick Vaughn
+removed,10492,Josh Staumont,CIN,P,MLB,PLAY,
+removed,10501,Jaime Barria,CLE,P,MLB,TROU,
+removed,10504,Cody Bellinger,NYY,"1B,CF",MLB,TROU,Whiz Kids
+added,10504,Cody Bellinger,NYY,"1B,CF",MLB,TROU,Whiz Kids
+removed,10505,Alex Verdugo,ATL,CF,MLB,HURL,
+removed,10509,Walker Buehler,PHI,P,MLB,GANG,
+removed,10511,Gavin Lux,CIN,"2B,SS,CF",MLB,JESÚ,
+removed,10514,Luis Castillo,SEA,P,MLB,HURL,Btwn2Jackies
+added,10514,Luis Castillo,SEA,P,MLB,HURL,Btwn2Jackies
+removed,10522,Trent Grisham,NYY,CF,MLB,JESÚ,Btwn2Jackies
+added,10522,Trent Grisham,NYY,CF,MLB,JESÚ,Btwn2Jackies
+removed,10532,Alex Kirilloff,MIN,"1B,OF",MLB,JESÚ,
+removed,10556,Rhys Hoskins,MIL,1B,MLB,HURL,
+removed,10566,Ke'Bryan Hayes,CIN,3B,MLB,JESÚ,
+removed,10570,Luis Urías,ATH,"2B,3B,SS",MLB,Andromedans,
+removed,10573,Cal Quantrill,ATL,P,MLB,Andromedans,
+removed,10575,Chris Paddack,DET,P,MLB,ANGE,
+removed,10576,Eric Lauer,TOR,P,MLB,Rick Vaughn,
+removed,10577,Bryan Reynolds,PIT,CF,MLB,PLAY,
+removed,10584,Kyle Lewis,AZ,CF,MLB,Whiz Kids,
+removed,10592,Jack Flaherty,DET,P,MLB,Andromedans,I'LL
+added,10592,Jack Flaherty,DET,P,MLB,Andromedans,I'LL
+removed,10597,Sandy Alcantara,MIA,P,MLB,Btwn2Jackies,Rick Vaughn
+added,10597,Sandy Alcantara,MIA,P,MLB,Btwn2Jackies,Rick Vaughn
+removed,10598,Dakota Hudson,LAA,P,MLB,Rick Vaughn,
+removed,10607,Andy Ibáñez,DET,"1B,2B,3B",MLB,Andromedans,
+removed,10616,Lourdes Gurriel Jr.,AZ,"1B,2B,OF",MLB,Btwn2Jackies,Hammers
+added,10616,Lourdes Gurriel Jr.,AZ,"1B,2B,OF",MLB,Btwn2Jackies,Hammers
+removed,10621,Vladimir Guerrero Jr.,TOR,"1B,3B",MLB,Weekend Warriors,Whiz Kids
+added,10621,Vladimir Guerrero Jr.,TOR,"1B,3B",MLB,Weekend Warriors,Whiz Kids
+removed,10626,Juan Soto,NYM,OF,MLB,Whiz Kids,Andromedans
+added,10626,Juan Soto,NYM,OF,MLB,Whiz Kids,Andromedans
+removed,10627,Jesús Luzardo,PHI,P,MLB,JESÚ,La Flama Blanca
+added,10627,Jesús Luzardo,PHI,P,MLB,JESÚ,La Flama Blanca
+removed,10639,Fernando Tatis Jr.,SD,"SS,CF",MLB,Btwn2Jackies,La Flama Blanca
+added,10639,Fernando Tatis Jr.,SD,"SS,CF",MLB,Btwn2Jackies,La Flama Blanca
+removed,10642,Will Smith,LAD,C,MLB,Weekend Warriors,I'LL
+added,10642,Will Smith,LAD,C,MLB,Weekend Warriors,I'LL
+removed,10643,Dylan Carlson,BAL,CF,MLB,Btwn2Jackies,
+removed,10646,Ronald Acuña Jr.,ATL,CF,MLB,GANG,I'LL
+added,10646,Ronald Acuña Jr.,ATL,CF,MLB,GANG,I'LL
+removed,10657,Paul Sewald,DET,P,MLB,GANG,
+removed,10660,Jordan Montgomery,AZ,P,MLB,JESÚ,
+removed,10692,José Alvarado,PHI,P,MLB,CASC,Law-Abiding Citizens
+added,10692,José Alvarado,PHI,P,MLB,CASC,Law-Abiding Citizens
+removed,10700,Giovanny Gallegos,LAD,P,MLB,GANG,
+removed,10702,Paolo Espino,TOR,P,MLB,TROU,
+removed,10703,Dinelson Lamet,LAD,P,MLB,GANG,
+removed,10730,Brandon Woodruff,MIL,P,MLB,HURL,La Flama Blanca
+added,10730,Brandon Woodruff,MIL,P,MLB,HURL,La Flama Blanca
+removed,10765,Luis Robert Jr.,CWS,CF,MLB,Rick Vaughn,Btwn2Jackies
+added,10765,Luis Robert Jr.,CWS,CF,MLB,Rick Vaughn,Btwn2Jackies
+removed,10766,Bo Bichette,TOR,SS,MLB,Weekend Warriors,Btwn2Jackies
+added,10766,Bo Bichette,TOR,SS,MLB,Weekend Warriors,Btwn2Jackies
+removed,10769,Chris Flexen,CHC,P,MLB,PINS,
+removed,10773,Aaron Bummer,ATL,P,MLB,Whiz Kids,
+removed,10775,Kyle Farmer,COL,"C,1B,2B,3B,SS",MLB,Rick Vaughn,
+removed,10787,Tim Mayza,PHI,P,MLB,Btwn2Jackies,
+removed,10811,Richard Rodríguez,PIT,P,MLB,BATI,
+removed,10826,Austin Hays,CIN,CF,MLB,PINS,
+removed,10839,Jazz Chisholm Jr.,NYY,"2B,SS",MLB,BATI,La Flama Blanca
+added,10839,Jazz Chisholm Jr.,NYY,"2B,SS",MLB,BATI,La Flama Blanca
+removed,10843,Daulton Varsho,TOR,"C,CF",MLB,Btwn2Jackies,Andromedans
+added,10843,Daulton Varsho,TOR,"C,CF",MLB,Btwn2Jackies,Andromedans
+removed,10849,Cedric Mullins,TB,CF,MLB,TROU,
+removed,10858,Adbert Alzolay,NYM,P,MLB,JESÚ,
+removed,10860,Alex Lange,KC,P,MLB,Weekend Warriors,
+removed,10865,Jose Siri,NYM,CF,MLB,PLAY,
+removed,10867,Shane Bieber,TOR,P,MLB,HURL,Btwn2Jackies
+added,10867,Shane Bieber,TOR,P,MLB,HURL,Btwn2Jackies
+removed,10869,Aaron Civale,CHC,P,MLB,PINS,
+removed,10883,Yordan Alvarez,HOU,OF,MLB,PLAY,Hammers
+added,10883,Yordan Alvarez,HOU,OF,MLB,PLAY,Hammers
+removed,10893,Jo Adell,LAA,OF,MLB,Weekend Warriors,not much of a donkey
+added,10893,Jo Adell,LAA,OF,MLB,Weekend Warriors,not much of a donkey
+removed,10898,Dustin May,STL,P,MLB,Btwn2Jackies,
+removed,10909,Trevor Rogers,BAL,P,MLB,Rick Vaughn,The Bluke Blokes
+added,10909,Trevor Rogers,BAL,P,MLB,Rick Vaughn,The Bluke Blokes
+removed,10910,Corbin Burnes,AZ,P,MLB,BATI,The Bluke Blokes
+added,10910,Corbin Burnes,AZ,P,MLB,BATI,The Bluke Blokes
+removed,10913,Akil Baddoo,MIL,CF,MLB,PINS,
+removed,10918,Pete Alonso,BAL,1B,MLB,Btwn2Jackies,I'LL
+added,10918,Pete Alonso,BAL,1B,MLB,Btwn2Jackies,I'LL
+removed,10919,Andrés Giménez,TOR,"2B,3B,SS",MLB,JESÚ,
+removed,10927,Nick Solak,PIT,"2B,3B,CF",MLB,Whiz Kids,
+removed,10963,Wil Crowe,PHI,P,MLB,Weekend Warriors,
+removed,10966,Carter Kieboom,LAA,"3B,SS",MLB,Whiz Kids,
+removed,10970,Nestor Cortes,SD,P,MLB,TROU,
+removed,10972,Elieser Hernández,MIL,P,MLB,JESÚ,
+removed,10979,Adam Cimber,LAA,P,MLB,Weekend Warriors,
+removed,10989,Tanner Rainey,DET,P,MLB,Btwn2Jackies,
+removed,10992,Isiah Kiner-Falefa,TOR,"C,3B,SS",MLB,JESÚ,
+removed,10997,Lou Trivino,PHI,P,MLB,Whiz Kids,
+removed,10998,Scott Barlow,CIN,P,MLB,HURL,
+kept,11014,Freddy Peralta,MIL,P,MLB,Rick Vaughn,Rick Vaughn
+removed,11016,Franmil Reyes,KC,OF,MLB,BATI,
+removed,11037,Diego Castillo,COL,P,MLB,BATI,
+removed,11044,Jonathan Loáisiga,NYY,P,MLB,PINS,
+removed,11057,Pablo López,MIN,P,MLB,HURL,Whiz Kids
+added,11057,Pablo López,MIN,P,MLB,HURL,Whiz Kids
+removed,11074,Bobby Dalbec,CWS,"1B,3B",MLB,JESÚ,
+removed,11083,Casey Mize,DET,P,MLB,PLAY,
+removed,11086,Cavan Biggio,KC,"2B,3B,OF",MLB,JESÚ,
+removed,11093,Patrick Wisdom,CHC,"1B,3B,OF",MLB,HURL,
+removed,11103,Cole Irvin,MIN,P,MLB,ANGE,
+removed,11104,Randy Arozarena,SEA,OF,MLB,JESÚ,La Flama Blanca
+added,11104,Randy Arozarena,SEA,OF,MLB,JESÚ,La Flama Blanca
+removed,11105,Frank Schwindel,CHC,"1B,OF",MLB,JESÚ,
+removed,11112,Brusdar Graterol,LAD,P,MLB,Btwn2Jackies,
+removed,11116,Zac Gallen,AZ,P,MLB,Weekend Warriors,
+removed,11117,Ranger Suárez,PHI,P,MLB,JESÚ,Country Fried Lamb
+added,11117,Ranger Suárez,PHI,P,MLB,JESÚ,Country Fried Lamb
+removed,11125,Brandon Lowe,PIT,"1B,2B,OF",MLB,CASC,Hammers
+added,11125,Brandon Lowe,PIT,"1B,2B,OF",MLB,CASC,Hammers
+removed,11127,Adolis García,PHI,CF,MLB,JESÚ,
+removed,11138,Framber Valdez,HOU,P,MLB,BATI,Hammers
+added,11138,Framber Valdez,HOU,P,MLB,BATI,Hammers
+removed,11140,Josh Rogers,COL,P,MLB,ANGE,
+removed,11168,John Means,BAL,P,MLB,HURL,
+removed,11174,LaMonte Wade Jr.,LAA,"1B,CF",MLB,Andromedans,
+removed,11191,Jonathan Hernández,TB,P,MLB,Whiz Kids,
+removed,11192,Julian Merryweather,CHC,P,MLB,Andromedans,
+removed,11197,Huascar Ynoa,LAA,P,MLB,JESÚ,
+removed,11231,Ty France,TOR,"1B,2B,3B",MLB,CASC,
+removed,11235,Logan Webb,SF,P,MLB,HURL,Hammers
+added,11235,Logan Webb,SF,P,MLB,HURL,Hammers
+removed,11237,Génesis Cabrera,MIN,P,MLB,ANGE,
+removed,11238,Lane Thomas,KC,CF,MLB,CASC,
+removed,11253,Jordan Romano,LAA,P,MLB,PLAY,
+removed,11256,Connor Joe,CIN,"1B,OF",MLB,ANGE,
+removed,11284,Nico Hoerner,CHC,"2B,3B,SS",MLB,TROU,Whiz Kids
+added,11284,Nico Hoerner,CHC,"2B,3B,SS",MLB,TROU,Whiz Kids
+removed,11292,Jonathan India,KC,"2B,3B",MLB,Whiz Kids,
+removed,11306,Nick Madrigal,NYM,2B,MLB,JESÚ,
+removed,11315,Cristian Javier,HOU,P,MLB,PINS,Law-Abiding Citizens
+added,11315,Cristian Javier,HOU,P,MLB,PINS,Law-Abiding Citizens
+removed,11319,Kris Bubic,KC,P,MLB,TROU,Weekend Warriors
+added,11319,Kris Bubic,KC,P,MLB,TROU,Weekend Warriors
+removed,11320,Jackson Kowar,SEA,P,MLB,Whiz Kids,
+removed,11321,Nicky Lopez,COL,"2B,SS",MLB,CASC,
+removed,11331,Tony Gonsolin,LAD,P,MLB,ANGE,
+removed,11333,DJ Peters,DET,CF,MLB,Andromedans,
+removed,11347,Trevor Larnach,MIN,OF,MLB,HURL,
+removed,11358,Garrett Whitlock,BOS,P,MLB,ANGE,Law-Abiding Citizens
+added,11358,Garrett Whitlock,BOS,P,MLB,ANGE,Law-Abiding Citizens
+removed,11365,Alec Bohm,PHI,"1B,3B",MLB,PINS,
+removed,11377,Luis Patiño,SD,P,MLB,PINS,
+removed,11381,Logan Gilbert,SEA,P,MLB,PLAY,Hammers
+added,11381,Logan Gilbert,SEA,P,MLB,PLAY,Hammers
+removed,11382,Jarred Kelenic,CWS,CF,MLB,Weekend Warriors,
+removed,11391,Nolan Gorman,STL,3B,MLB,Andromedans,
+removed,11398,Shane McClanahan,TB,P,MLB,Andromedans,La Flama Blanca
+added,11398,Shane McClanahan,TB,P,MLB,Andromedans,La Flama Blanca
+removed,11447,Eli Morgan,CHC,P,MLB,Weekend Warriors,
+removed,11470,Carlos Hernández,CLE,P,MLB,Btwn2Jackies,
+removed,11471,Kyle Isbel,KC,CF,MLB,HURL,
+removed,11478,Patrick Sandoval,BOS,P,MLB,HURL,
+removed,11489,Aaron Ashby,MIL,P,MLB,Whiz Kids,La Flama Blanca
+added,11489,Aaron Ashby,MIL,P,MLB,Whiz Kids,La Flama Blanca
+removed,11549,A.J. Alexy,CWS,P,MLB,Andromedans,
+removed,11585,Jared Walsh,TEX,"1B,OF",MLB,PLAY,
+removed,11590,Zach Plesac,LAA,P,MLB,BATI,
+removed,11596,Tommy Edman,LAD,"2B,3B,SS,OF",MLB,JESÚ,Country Fried Lamb
+added,11596,Tommy Edman,LAD,"2B,3B,SS,OF",MLB,JESÚ,Country Fried Lamb
+removed,11597,Pete Fairbanks,MIA,P,MLB,Rick Vaughn,I'LL
+added,11597,Pete Fairbanks,MIA,P,MLB,Rick Vaughn,I'LL
+removed,11608,José Urquidy,DET,P,MLB,PLAY,
+removed,11623,Josh Rojas,CWS,"2B,3B,SS,OF",MLB,PINS,
+removed,11625,Emmanuel Clase,CLE,P,MLB,Btwn2Jackies,Law-Abiding Citizens
+added,11625,Emmanuel Clase,CLE,P,MLB,Btwn2Jackies,Law-Abiding Citizens
+removed,11628,Devin Williams,NYM,P,MLB,Rick Vaughn,The Bluke Blokes
+added,11628,Devin Williams,NYM,P,MLB,Rick Vaughn,The Bluke Blokes
+removed,11632,James Karinchak,ATL,P,MLB,JESÚ,
+removed,11642,Abraham Toro,KC,"2B,3B",MLB,Btwn2Jackies,
+removed,11644,Tyler Rogers,TOR,P,MLB,Btwn2Jackies,Hammers
+added,11644,Tyler Rogers,TOR,P,MLB,Btwn2Jackies,Hammers
+removed,11689,Luis Gil,NYY,P,MLB,CASC,I'LL
+added,11689,Luis Gil,NYY,P,MLB,CASC,I'LL
+removed,11692,Jake Cronenworth,SD,"1B,2B,SS",MLB,Btwn2Jackies,Country Fried Lamb
+added,11692,Jake Cronenworth,SD,"1B,2B,SS",MLB,Btwn2Jackies,Country Fried Lamb
+removed,11702,J.P. Feyereisen,LAD,P,MLB,Weekend Warriors,
+removed,11718,Yoshi Tsutsugo,SF,"1B,3B,OF",MLB,ANGE,
+removed,11763,Tarik Skubal,DET,P,MLB,JESÚ,La Flama Blanca
+added,11763,Tarik Skubal,DET,P,MLB,JESÚ,La Flama Blanca
+removed,11789,Drew Rasmussen,TB,P,MLB,Andromedans,Hammers
+added,11789,Drew Rasmussen,TB,P,MLB,Andromedans,Hammers
+removed,11853,Alejandro Kirk,TOR,C,MLB,Andromedans,Country Fried Lamb
+added,11853,Alejandro Kirk,TOR,C,MLB,Andromedans,Country Fried Lamb
+removed,11854,Alek Manoah,LAA,P,MLB,HURL,
+removed,11866,Andrew Vaughn,MIL,"1B,OF",MLB,PINS,I'LL
+added,11866,Andrew Vaughn,MIL,"1B,OF",MLB,PINS,I'LL
+removed,11894,Nick Sandlin,TOR,P,MLB,Btwn2Jackies,
+removed,11903,Luis Garcia,HOU,P,MLB,JESÚ,I'LL
+added,11903,Luis Garcia,HOU,P,MLB,JESÚ,I'LL
+removed,11913,Jake Meyers,HOU,CF,MLB,Andromedans,
+removed,11920,Alex Vesia,LAD,P,MLB,HURL,La Flama Blanca
+added,11920,Alex Vesia,LAD,P,MLB,HURL,La Flama Blanca
+removed,11926,Reid Detmers,LAA,P,MLB,TROU,
+removed,11959,Codi Heuer,CLE,P,MLB,ANGE,
+removed,12046,Garrett Crochet,BOS,P,MLB,Andromedans,Weekend Warriors
+added,12046,Garrett Crochet,BOS,P,MLB,Andromedans,Weekend Warriors
+removed,12052,Domingo Tapia,SD,P,MLB,Weekend Warriors,
+removed,12096,Bailey Ober,MIN,P,MLB,PLAY,
+removed,12114,Tyler Wells,BAL,P,MLB,HURL,
+removed,12194,Anthony Bender,MIA,P,MLB,GANG,
+removed,12196,Cody Poteet,BAL,P,MLB,Andromedans,
+removed,12202,Zach Thompson,ATL,P,MLB,HURL,
+removed,12215,Tylor Megill,NYM,P,MLB,HURL,La Flama Blanca
+added,12215,Tylor Megill,NYM,P,MLB,HURL,La Flama Blanca
+removed,12216,Joe Barlow,TEX,P,MLB,Andromedans,
+removed,12236,Bryan De La Cruz,NYY,CF,MLB,ANGE,
+removed,12237,Austin Warren,NYM,P,MLB,HURL,
+removed,12246,Yonny Hernández,NYM,"2B,3B",MLB,Andromedans,
+removed,1000001,Shohei Ohtani (Batter),LAD,Util,MLB,ANGE,Whiz Kids
+added,1000001,Shohei Ohtani (Batter),LAD,Util,MLB,ANGE,Whiz Kids
+removed,1000002,Shohei Ohtani (Pitcher),LAD,P,MLB,ANGE,Whiz Kids
+added,1000002,Shohei Ohtani (Pitcher),LAD,P,MLB,ANGE,Whiz Kids

@@ -1,0 +1,616 @@
+FBP_Team,manager,name,team,position,player_type,contract_type,status,years_simple,yahoo_id,upid
+DRO,Andromedans,Aaron Judge,NYY,CF,MLB,Keeper Contract,[0] FC2,FC 2,9877,1886
+DRO,Andromedans,Juan Soto,NYM,OF,MLB,Keeper Contract,[0] FC2,FC 2,10626,1909
+DRO,Andromedans,Austin Riley,ATL,"1B,3B,OF",MLB,Keeper Contract,[1] FC1,FC 1,10420,1927
+WIZ,Whiz Kids,George Springer,TOR,CF,MLB,Keeper Contract,[5] TC1,TC 1,9339,1950
+DRO,Andromedans,Sean Manaea,NYM,P,MLB,Keeper Contract,[5] TC1,TC 1,9582,1978
+DRO,Andromedans,Adrian Morejon,SD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2025
+DRO,Andromedans,Brandon Sproat,NYM,RHP,Farm,Purchased Contract,[5] TC1,TC 1,,3930
+DRO,Andromedans,Clay Holmes,NYM,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2278
+DRO,Andromedans,Edwin Díaz,LAD,P,MLB,Keeper Contract,[3] VC1,VC 1,10214,2437
+DRO,Andromedans,Francisco Lindor,NYM,SS,MLB,Keeper Contract,[2] VC2,VC 2,9116,2483
+DRO,Andromedans,Gavin Sheets,CWS,"1B,OF",MLB,,[5] TC1,TC 1,,2501
+DRO,Andromedans,Gavin Williams,CLE,SP,MLB,Keeper Contract,[5] TC1,TC 1,,2502
+DRO,Andromedans,Maddux Bruns,LAD,LHP,Farm,Development Cont.,[7] P,P,,2919
+DRO,Andromedans,Triston Casas,BOS,1B,MLB,Keeper Contract,[3] VC1,VC 1,,3447
+DRO,Andromedans,Matt McLain,CIN,"2B, SS",MLB,Keeper Contract,[4] TC2,TC 2,,2952
+DRO,Andromedans,Robert Hassell III,WSH,OF,Farm,Purchased Contract,[7] P,P,,3455
+DRO,Andromedans,Cade Cavalli,WSH,RHP,Farm,Purchased Contract,[7] P,P,,3477
+DRO,Andromedans,Sal Frelick,MIL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3479
+DRO,Andromedans,Nick Yorke,PIT,2B,Farm,Purchased Contract,[7] P,P,,3495
+DRO,Andromedans,Austin Wells,NYY,C,MLB,Keeper Contract,[5] TC1,TC 1,,3502
+DRO,Andromedans,Hunter Brown,HOU,SP,MLB,Keeper Contract,[4] TC2,TC 2,,3514
+DRO,Andromedans,Slade Cecconi,AZ,SP,Farm,,[7] P,P,,3538
+DRO,Andromedans,Heston Kjerstad,BAL,OF,MLB,Keeper Contract,[5] TC1,TC 1,,3562
+DRO,Andromedans,Spencer Steer,CIN,"1B, OF",MLB,Keeper Contract,[4] TC2,TC 2,,3605
+DRO,Andromedans,Reese Olson,DET,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3643
+DRO,Andromedans,Mark Vientos,NYM,3B,MLB,Keeper Contract,[4] TC2,TC 2,,3732
+DRO,Andromedans,Luis Robert,CWS,CF,MLB,Keeper Contract,[5] TC1,TC 1,,2907
+DRO,Andromedans,Marc Church,TEX,RHP,Farm,Purchased Contract,[7] P,P,,3997
+RV,Rick Vaughn,Félix Bautista,BAL,RP,MLB,Keeper Contract,[4] TC2,TC 2,,4026
+DRO,Andromedans,Camilo Doval,SF,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4028
+DRO,Andromedans,Tommy Kahnle,DET,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4178
+DRO,Andromedans,Spencer Arrighetti,HOU,SP,MLB,Keeper Contract,[5] TC1,TC 1,,4594
+DRO,Andromedans,Yilber Diaz,AZ,RHP,Farm,Farm Contract,[7] P,P,,4668
+DRO,Andromedans,Ben Rice,NYY,C,MLB,Keeper Contract,[5] TC1,TC 1,,5891
+DRO,Andromedans,Agustin Ramirez,MIA,C,MLB,Keeper Contract,[6] TCR,TC R,,5996
+DRO,Andromedans,Ryan Ritter,COL,SS,Farm,Purchased Contract,[7] P,P,,6035
+DRO,Andromedans,Joe Boyle,OAK,RHP,Farm,,[7] P,P,,6069
+DRO,Andromedans,Thayron Liranzo,DET,C,Farm,Purchased Contract,[7] P,P,,6649
+DRO,Andromedans,Raisel Iglesias,ATL,P,MLB,Keeper Contract,[4] TC2,TC 2,9902,1916
+DRO,Andromedans,Robert Garcia,TEX,RP,MLB,Keeper Contract,[5] TC1,TC 1,,7488
+DRO,Andromedans,Vinnie Pasquantino,KC,1B,MLB,Keeper Contract,[3] VC1,VC 1,,3489
+DRO,Andromedans,Zyhir Hope,LAD,OF,Farm,Development Cont.,[7] P,P,,7635
+DRO,Andromedans,Tyson Neighbors,SD,RHP,Farm,Purchased Contract,[7] P,P,,7642
+DRO,Andromedans,Jurrangelo Cijntje,SEA,SHP,Farm,Farm Contract,[7] P,P,,7709
+DRO,Andromedans,Jonathon Long,CHC,1B,Farm,Purchased Contract,[7] P,P,,7743
+B2J,Btwn2Jackies,Zack Wheeler,PHI,P,MLB,Keeper Contract,[0] FC2,FC 2,9124,1901
+I'LL,I'LL,Jack Flaherty,DET,P,MLB,Keeper Contract,[5] TC1,TC 1,10592,1906
+B2J,Btwn2Jackies,Luis Castillo,SEA,P,MLB,Keeper Contract,[3] VC1,VC 1,10514,1912
+B2J,Btwn2Jackies,Rafael Devers,SF,3B,MLB,Keeper Contract,[3] VC1,VC 1,10235,1915
+B2J,Btwn2Jackies,Clayton Kershaw,LAD,P,MLB,Keeper Contract,[5] TC1,TC 1,8180,1939
+B2J,Btwn2Jackies,Kevin Gausman,TOR,P,MLB,Keeper Contract,[5] TC1,TC 1,9334,1958
+LAW,Law-Abiding Citizens,Blake Treinen,LAD,P,MLB,Keeper Contract,[5] TC1,TC 1,9672,2152
+B2J,Btwn2Jackies,Brandon Nimmo,TEX,CF,MLB,Keeper Contract,[5] TC1,TC 1,9876,2176
+B2J,Btwn2Jackies,Bryan Abreu,HOU,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2202
+B2J,Btwn2Jackies,Bryce Harper,PHI,OF,MLB,Keeper Contract,[2] VC2,VC 2,8875,2210
+B2J,Btwn2Jackies,Connor Wong,BOS,"C, 1B",MLB,Keeper Contract,[5] TC1,TC 1,,2300
+B2J,Btwn2Jackies,Edwin Arroyo,CIN,SS,Farm,Farm Contract,[7] P,P,,2436
+B2J,Btwn2Jackies,Jacob Wilson,ATH,SS,MLB,Keeper Contract,[6] TCR,TC R,,2581
+B2J,Btwn2Jackies,Matthew Boyd,CHC,SP,MLB,Keeper Contract,[5] TC1,TC 1,,2960
+B2J,Btwn2Jackies,Ozzie Albies,ATL,2B,MLB,Keeper Contract,[2] VC2,VC 2,10237,3069
+B2J,Btwn2Jackies,Kodai Senga,NYM,SP,MLB,Keeper Contract,[4] TC2,TC 2,,3373
+B2J,Btwn2Jackies,Willi Castro,MIN,"2B, 3B, SS, CF",MLB,Keeper Contract,[5] TC1,TC 1,,3380
+WIZ,Whiz Kids,Willy Adames,SF,SS,MLB,Keeper Contract,[4] TC2,TC 2,9893,3385
+B2J,Btwn2Jackies,Yandy Díaz,TB,1B,MLB,Keeper Contract,[5] TC1,TC 1,,3399
+B2J,Btwn2Jackies,Yimi García,TOR,P,MLB,Keeper Contract,[5] TC1,TC 1,9815,3406
+RV,Rick Vaughn,Jordan Lawlar,AZ,SS,Farm,Purchased Contract,[7] P,P,,3445
+B2J,Btwn2Jackies,Jasson Domínguez,NYY,OF,MLB,Keeper Contract,[6] TCR,TC R,,3470
+B2J,Btwn2Jackies,Iván Herrera,STL,C,MLB,Keeper Contract,[6] TCR,TC R,,3513
+JEP,Jepordizers!,James Wood,WSH,OF,MLB,Keeper Contract,[6] TCR,TC R,,3521
+B2J,Btwn2Jackies,Miguel Bleis,BOS,OF,Farm,Purchased Contract,[7] P,P,,3579
+B2J,Btwn2Jackies,Moises Ballesteros,CHC,C,Farm,Purchased Contract,[7] P,P,,3790
+B2J,Btwn2Jackies,Lazaro Montes,SEA,OF,Farm,Development Cont.,[7] P,P,,3809
+B2J,Btwn2Jackies,Jett Williams,NYM,SS,Farm,Purchased Contract,[7] P,P,,3899
+B2J,Btwn2Jackies,Spencer Jones,NYY,OF,Farm,Purchased Contract,[7] P,P,,3910
+B2J,Btwn2Jackies,Brendan Donovan,STL,"2B, 3B, OF",MLB,Keeper Contract,[5] TC1,TC 1,,3989
+B2J,Btwn2Jackies,Robert Suarez,SD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4046
+B2J,Btwn2Jackies,José Leclerc,OAK,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4053
+B2J,Btwn2Jackies,Bowden Francis,TOR,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,4137
+B2J,Btwn2Jackies,Luis Morales,ATH,RHP,Farm,Farm Contract,[7] P,P,,4628
+B2J,Btwn2Jackies,River Ryan,LAD,RHP,Farm,Purchased Contract,[7] P,P,,4687
+B2J,Btwn2Jackies,Brailer Guerrero,TB,OF,Farm,Farm Contract,[7] P,P,,6145
+B2J,Btwn2Jackies,Max Clark,DET,OF,Farm,Purchased Contract,[7] P,P,,6566
+B2J,Btwn2Jackies,Tommy Troy,AZ,2B,Farm,Farm Contract,[7] P,P,,6569
+B2J,Btwn2Jackies,Welbyn Francisca,CLE,SS,Farm,Farm Contract,[7] P,P,,6579
+B2J,Btwn2Jackies,Mike Boeve,MIL,3B,Farm,Farm Contract,[7] P,P,,6705
+B2J,Btwn2Jackies,Jonny Farmelo,SEA,OF,Farm,Purchased Contract,[7] P,P,,6723
+B2J,Btwn2Jackies,Zebby Matthews,MIN,RHP,Farm,Purchased Contract,[7] P,P,,6988
+B2J,Btwn2Jackies,Brody Hopkins,TB,RHP,Farm,Farm Contract,[7] P,P,,7470
+B2J,Btwn2Jackies,Dante Nori,PHI,OF,Farm,Farm Contract,[7] P,P,,7578
+RV,Rick Vaughn,Chase Burns,CIN,RHP,Farm,Purchased Contract,[7] P,P,,7602
+B2J,Btwn2Jackies,Braylon Payne,MIL,OF,Farm,Development Cont.,[7] P,P,,7609
+B2J,Btwn2Jackies,Ben Hess,NYY,RHP,Farm,Purchased Contract,[7] P,P,,7662
+CFL,Country Fried Lamb,Adley Rutschman,BAL,C,MLB,Keeper Contract,[3] VC1,VC 1,,4283
+CFL,Country Fried Lamb,Alejandro Rosario,TEX,RHP,Farm,Purchased Contract,[7] P,P,,6842
+CFL,Country Fried Lamb,Alex Bregman,BOS,"3B,SS",MLB,Keeper Contract,[3] VC1,VC 1,10183,1882
+CFL,Country Fried Lamb,Brady Singer,CIN,SP,MLB,,[5] TC1,TC 1,,2165
+CFL,Country Fried Lamb,Bryce Rainer,DET,SS,Farm,Development Cont.,[7] P,P,,7681
+CFL,Country Fried Lamb,Caden Dana,LAA,RHP,Farm,Purchased Contract,[7] P,P,,4612
+CFL,Country Fried Lamb,Carson Williams,TB,SS,Farm,Purchased Contract,[7] P,P,,2236
+CFL,Country Fried Lamb,Carter Jensen,KC,C,Farm,Farm Contract,[7] P,P,,2237
+CFL,Country Fried Lamb,Cooper Ingle,CLE,C,Farm,Purchased Contract,[7] P,P,,7112
+CFL,Country Fried Lamb,Daylen Lile,WSH,OF,Farm,Farm Contract,[7] P,P,,2362
+CFL,Country Fried Lamb,Mitch Keller,PIT,SP,MLB,,[5] TC1,TC 1,,3014
+CFL,Country Fried Lamb,DJ Herz,WSH,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3585
+CFL,Country Fried Lamb,Felnin Celesten,SEA,SS,Farm,Purchased Contract,[7] P,P,,4675
+CFL,Country Fried Lamb,Gary Gill Hill,TB,RHP,Farm,Farm Contract,[7] P,P,,6801
+CFL,Country Fried Lamb,George Kirby,SEA,SP,MLB,Keeper Contract,[3] VC1,VC 1,,4010
+CFL,Country Fried Lamb,Geraldo Perdomo,AZ,SS,MLB,,[5] TC1,TC 1,,4324
+CFL,Country Fried Lamb,Hayden Harris,ATL,LHP,Farm,Purchased Contract,[7] P,P,,7179
+CFL,Country Fried Lamb,Heliot Ramos,SF,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3818
+CFL,Country Fried Lamb,Henry Lalane,NYY,LHP,Farm,Farm Contract,[7] P,P,,7163
+CFL,Country Fried Lamb,Ian Happ,CHC,"2B,3B,CF",MLB,Keeper Contract,[3] VC1,VC 1,10440,2550
+CFL,Country Fried Lamb,J.P. Crawford,SEA,SS,MLB,Keeper Contract,[5] TC1,TC 1,,2566
+CFL,Country Fried Lamb,Jaison Chourio,CLE,OF,Farm,Purchased Contract,[7] P,P,,3782
+CFL,Country Fried Lamb,Jason Adam,SD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2626
+CFL,Country Fried Lamb,Josue Briceño,DET,C/1B,Farm,Farm Contract,[7] P,P,,7199
+CFL,Country Fried Lamb,MacKenzie Gore,WSH,SP,MLB,Keeper Contract,[5] TC1,TC 1,,4040
+CFL,Country Fried Lamb,Justin Crawford,PHI,OF,Farm,Purchased Contract,[7] P,P,,3895
+CFL,Country Fried Lamb,Paulino Santana,TEX,OF,Farm,Farm Contract,[7] P,P,,7256
+CFL,Country Fried Lamb,Payton Eeles,MIN,2B,Farm,Farm Contract,[7] P,P,,7346
+CFL,Country Fried Lamb,Ranger Suárez,PHI,P,MLB,Keeper Contract,[5] TC1,TC 1,11117,1972
+CFL,Country Fried Lamb,Ryan Helsley,STL,RP,MLB,Keeper Contract,[3] VC1,VC 1,,3170
+CFL,Country Fried Lamb,Sammy Stafura,CIN,SS,Farm,Purchased Contract,[7] P,P,,6646
+CFL,Country Fried Lamb,Seaver King,WSH,SS,Farm,Development Cont.,[7] P,P,,7595
+CFL,Country Fried Lamb,Slade Caldwell,AZ,OF,Farm,Farm Contract,[7] P,P,,7623
+CFL,Country Fried Lamb,Steven Kwan,CLE,OF,MLB,Keeper Contract,[3] VC1,VC 1,,3986
+CFL,Country Fried Lamb,Tanner Scott,LAD,RP,MLB,Keeper Contract,[3] VC1,VC 1,,3265
+CFL,Country Fried Lamb,Didier Fuentes,ATL,RHP,Farm,Purchased Contract,[7] P,P,,7304
+CFL,Country Fried Lamb,Tommy Edman,LAD,"2B,3B,SS,OF",MLB,Keeper Contract,[4] TC2,TC 2,11596,1981
+CFL,Country Fried Lamb,Travis Bazzana,CLE,2B,Farm,Purchased Contract,[7] P,P,,7677
+CFL,Country Fried Lamb,Tyler Holton,DET,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,4138
+WIZ,Whiz Kids,Vladimir Guerrero Jr.,TOR,"1B,3B",MLB,Keeper Contract,[1] FC1,FC 1,10621,1986
+CFL,Country Fried Lamb,Yoshinobu Yamamoto,LAD,SP,MLB,Keeper Contract,[3] VC1,VC 1,,7287
+CFL,Country Fried Lamb,Yuki Matsui,SD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,7281
+LAW,Law-Abiding Citizens,Xander Bogaerts,SD,SS,MLB,Keeper Contract,[5] TC1,TC 1,9319,1881
+HAM,Hammers,Chris Sale,ATL,P,MLB,Keeper Contract,[1] FC1,FC 1,8780,1937
+HAM,Hammers,Corey Seager,TEX,SS,MLB,Keeper Contract,[1] FC1,FC 1,9584,1941
+HAM,Hammers,Framber Valdez,HOU,P,MLB,Keeper Contract,[1] FC1,FC 1,11138,1946
+SAD,not much of a donkey,Nathan Eovaldi,TEX,P,MLB,Keeper Contract,[5] TC1,TC 1,9007,1969
+HAM,Hammers,Yordan Alvarez,HOU,OF,MLB,Keeper Contract,[4] TC2,TC 2,10883,1989
+HAM,Hammers,Bryce Miller,SEA,SP,MLB,Keeper Contract,[4] TC2,TC 2,,2211
+SAD,not much of a donkey,David Bednar,PIT,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2349
+HAM,Hammers,Dylan Lee,ATL,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2424
+HAM,Hammers,Evan Phillips,LAD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2477
+HAM,Hammers,Jackson Merrill,SD,CF,MLB,Keeper Contract,[5] TC1,TC 1,,2575
+HAM,Hammers,Logan Gilbert,SEA,P,MLB,Keeper Contract,[2] VC2,VC 2,11381,2883
+HAM,Hammers,Matt Chapman,SF,3B,MLB,Keeper Contract,[5] TC1,TC 1,,2946
+HAM,Hammers,Sonny Gray,BOS,P,MLB,Keeper Contract,[3] VC1,VC 1,9459,3236
+HAM,Hammers,Yusei Kikuchi,LAA,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3415
+HAM,Hammers,Michael Busch,CHC,1B,MLB,Keeper Contract,[5] TC1,TC 1,,3473
+HAM,Hammers,Andy Pages,LAD,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3478
+HAM,Hammers,Brady House,WSH,3B,Farm,Purchased Contract,[7] P,P,,3482
+HAM,Hammers,Ricky Tiedemann,TOR,LHP,Farm,Development Cont.,[7] P,P,,3494
+HAM,Hammers,Matthew Lugo,LAA,3B,Farm,Purchased Contract,[7] P,P,,3575
+HAM,Hammers,Michael Toglia,COL,"1B, OF",MLB,Keeper Contract,[5] TC1,TC 1,,3624
+HAM,Hammers,Drew Thorpe,CWS,RHP,Farm,Purchased Contract,[7] P,P,,3904
+HAM,Hammers,Hunter Barco,PIT,LHP,Farm,Purchased Contract,[7] P,P,,3947
+HAM,Hammers,Chandler Simpson,TB,OF,Farm,Purchased Contract,[7] P,P,,3953
+HAM,Hammers,Spencer Strider,ATL,SP,MLB,Keeper Contract,[3] VC1,VC 1,,4005
+HAM,Hammers,Cristian Mena,AZ,RHP,Farm,Purchased Contract,[7] P,P,,4218
+HAM,Hammers,Michael Harris,ATL,CF,MLB,Keeper Contract,[3] VC1,VC 1,,4284
+HAM,Hammers,Oneil Cruz,PIT,"SS, CF",MLB,Keeper Contract,[3] VC1,VC 1,,4308
+HAM,Hammers,Drake Baldwin,ATL,C,Farm,Purchased Contract,[7] P,P,,4575
+HAM,Hammers,Angel Genao,CLE,SS,Farm,Farm Contract,[7] P,P,,4610
+HAM,Hammers,Logan Henderson,MIL,RHP,Farm,Purchased Contract,[7] P,P,,6082
+HAM,Hammers,Hurston Waldrep,ATL,RHP,Farm,Purchased Contract,[7] P,P,,6570
+HAM,Hammers,Gino Groover,AZ,3B,Farm,Purchased Contract,[7] P,P,,6605
+HAM,Hammers,Lucas Braun,ATL,RHP,Farm,Farm Contract,[7] P,P,,6615
+HAM,Hammers,Ryan Walker,SF,RP,MLB,Keeper Contract,[3] VC1,VC 1,,6748
+HAM,Hammers,Tre' Morgan,TB,1B,Farm,Farm Contract,[7] P,P,,6808
+HAM,Hammers,Jhostynxon Garcia,BOS,OF,Farm,Purchased Contract,[7] P,P,,6864
+HAM,Hammers,Jhancarlos Lara,ATL,RHP,Farm,Development Cont.,[7] P,P,,7178
+HAM,Hammers,Shota Imanaga,CHC,SP,MLB,Keeper Contract,[3] VC1,VC 1,,7282
+HAM,Hammers,Chen-Wei Lin,STL,RHP,Farm,Farm Contract,[7] P,P,,7338
+HAM,Hammers,Edward Florentino,PIT,1B,Farm,Purchased Contract,[7] P,P,,7571
+HAM,Hammers,Tyson Lewis,CIN,SS,Farm,Farm Contract,[7] P,P,,7604
+HAM,Hammers,Jared Thomas,COL,OF,Farm,Farm Contract,[7] P,P,,7632
+HAM,Hammers,Kaelen Culpepper,MIN,SS,Farm,Farm Contract,[7] P,P,,7690
+SAD,not much of a donkey,Christian Moore,LAA,2B,Farm,Purchased Contract,[7] P,P,,7699
+B2J,Btwn2Jackies,Max Fried,NYY,P,MLB,Keeper Contract,[3] VC1,VC 1,9620,1913
+I'LL,I'LL,Ronald Acuña Jr.,ATL,CF,MLB,Keeper Contract,[0] FC2,FC 2,10646,1917
+I'LL,I'LL,Pete Alonso,BAL,1B,MLB,Keeper Contract,[3] VC1,VC 1,10918,1971
+I'LL,I'LL,Will Smith,LAD,C,MLB,Keeper Contract,[3] VC1,VC 1,10642,1987
+CFL,Country Fried Lamb,Jake Cronenworth,SD,"1B,2B,SS",MLB,Keeper Contract,[5] TC1,TC 1,11692,2591
+B2J,Btwn2Jackies,Jarren Duran,BOS,CF,MLB,Keeper Contract,[4] TC2,TC 2,,2624
+JEP,Jepordizers!,Keegan Akin,BAL,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2812
+JEP,Jepordizers!,Kirby Yates,LAD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2835
+I'LL,I'LL,Luis Garcia,HOU,P,MLB,Keeper Contract,[5] TC1,TC 1,11903,2897
+JEP,Jepordizers!,Nick Pivetta,BOS,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3043
+I'LL,I'LL,Pete Fairbanks,MIA,P,MLB,Keeper Contract,[5] TC1,TC 1,11597,3092
+JEP,Jepordizers!,Taylor Ward,LAA,OF,MLB,Keeper Contract,[5] TC1,TC 1,,3277
+JEP,Jepordizers!,Trevor Megill,MIL,RP,MLB,Keeper Contract,[5] TC1,TC 1,,3319
+JEP,Jepordizers!,Royce Lewis,MIN,3B,MLB,Keeper Contract,[4] TC2,TC 2,,3471
+JEP,Jepordizers!,Ronny Mauricio,NYM,2B,Farm,Purchased Contract,[7] P,P,,3483
+JEP,Jepordizers!,Ryan Pepiot,TB,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3506
+JEP,Jepordizers!,Seth Johnson,PHI,RHP,Farm,Purchased Contract,[7] P,P,,3561
+JEP,Jepordizers!,James Triantos,CHC,2B,Farm,Purchased Contract,[7] P,P,,3580
+JEP,Jepordizers!,Owen Caissie,CHC,OF,Farm,Purchased Contract,[7] P,P,,3584
+JEP,Jepordizers!,Joey Cantillo,CLE,LHP,MLB,Keeper Contract,[6] TCR,TC R,,3613
+JEP,Jepordizers!,Jeferson Quero,MIL,C,Farm,Purchased Contract,[7] P,P,,3708
+JEP,Jepordizers!,Xavier Edwards,MIA,SS,MLB,Keeper Contract,[5] TC1,TC 1,,3840
+JEP,Jepordizers!,Luisangel Acuña,NYM,SS,Farm,Purchased Contract,[7] P,P,,3853
+JEP,Jepordizers!,Carson Whisenhunt,SF,LHP,Farm,Farm Contract,[7] P,P,,3900
+JEP,Jepordizers!,Jacob Misiorowski,MIL,RHP,Farm,Purchased Contract,[7] P,P,,3906
+JEP,Jepordizers!,Thomas Saggese,STL,2B,Farm,Purchased Contract,[7] P,P,,3982
+JEP,Jepordizers!,Reynaldo López,ATL,SP,MLB,Keeper Contract,[5] TC1,TC 1,,4017
+I'LL,I'LL,Luis Gil,NYY,P,MLB,Keeper Contract,[5] TC1,TC 1,11689,4090
+JEP,Jepordizers!,Ronel Blanco,HOU,SP,MLB,Keeper Contract,[4] TC2,TC 2,,4190
+JEP,Jepordizers!,CJ Abrams,WSH,SS,MLB,Keeper Contract,[3] VC1,VC 1,,4424
+JEP,Jepordizers!,Doug Nikhazy,CLE,LHP,Farm,Farm Contract,[7] P,P,,4549
+JEP,Jepordizers!,Cade Povich,BAL,LHP,MLB,Keeper Contract,[6] TCR,TC R,,4563
+JEP,Jepordizers!,Will Warren,NYY,RHP,MLB,Keeper Contract,[6] TCR,TC R,,4688
+JEP,Jepordizers!,Winston Santos,TEX,RHP,Farm,Farm Contract,[7] P,P,,4726
+JEP,Jepordizers!,Wilyer Abreu,BOS,CF,MLB,Keeper Contract,[5] TC1,TC 1,,4727
+JEP,Jepordizers!,Emiliano Teodo,TEX,RHP,Farm,Farm Contract,[7] P,P,,6072
+JEP,Jepordizers!,Grant Holmes,ATL,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,6209
+JEP,Jepordizers!,Tobias Myers,MIL,SP,MLB,Keeper Contract,[5] TC1,TC 1,,6283
+JEP,Jepordizers!,Ignacio Alvarez,ATL,3B,Farm,Purchased Contract,[7] P,P,,6476
+JEP,Jepordizers!,Dylan Crews,WSH,OF,Farm,Purchased Contract,[7] P,P,,6562
+B2J,Btwn2Jackies,Thomas White,MIA,LHP,Farm,Purchased Contract,[7] P,P,,6581
+JEP,Jepordizers!,Bryce Eldridge,SF,1B,Farm,Development Cont.,[7] P,P,,6599
+JEP,Jepordizers!,Luke Keaschall,MIN,2B,Farm,Purchased Contract,[7] P,P,,6720
+JEP,Jepordizers!,Cory Lewis,MIN,RHP,Farm,Purchased Contract,[7] P,P,,6874
+JEP,Jepordizers!,Roki Sasaki,LAD,RHP,Farm,Purchased Contract,[7] P,P,,7540
+JEP,Jepordizers!,Hagen Smith,CWS,LHP,Farm,Development Cont.,[7] P,P,,7674
+LFB,La Flama Blanca,Mookie Betts,LAD,"2B,CF",MLB,Keeper Contract,[3] VC1,VC 1,9552,1879
+LFB,La Flama Blanca,Gleyber Torres,DET,"2B,SS",MLB,Keeper Contract,[5] TC1,TC 1,10236,1905
+LFB,La Flama Blanca,Fernando Tatis Jr.,SD,"SS,CF",MLB,Keeper Contract,[1] FC1,FC 1,10639,1945
+LFB,La Flama Blanca,Brandon Woodruff,MIL,P,MLB,Keeper Contract,[4] TC2,TC 2,10730,1903
+LFB,La Flama Blanca,Zac Veen,COL,OF,Farm,Purchased Contract,[7] P,P,,3454
+LFB,La Flama Blanca,Emmanuel Rodriguez,MIN,OF,Farm,Purchased Contract,[7] P,P,,2450
+LFB,La Flama Blanca,Jake Burger,TEX,"1B, 3B",MLB,Keeper Contract,[4] TC2,TC 2,,2588
+LFB,La Flama Blanca,Jazz Chisholm Jr.,NYY,"2B,SS",MLB,Keeper Contract,[2] VC2,VC 2,10839,2636
+LFB,La Flama Blanca,Jesús Luzardo,PHI,P,MLB,Keeper Contract,[5] TC1,TC 1,10627,2654
+LFB,La Flama Blanca,Kyle Finnegan,WSH,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2854
+LFB,La Flama Blanca,Jarlin Susana,WSH,RHP,Farm,Purchased Contract,[7] P,P,,3875
+LFB,La Flama Blanca,Randy Arozarena,SEA,OF,MLB,Keeper Contract,[5] TC1,TC 1,11104,3116
+LFB,La Flama Blanca,Shane McClanahan,TB,P,MLB,Keeper Contract,[4] TC2,TC 2,11398,3228
+LFB,La Flama Blanca,Tarik Skubal,DET,P,MLB,Keeper Contract,[3] VC1,VC 1,11763,3266
+LFB,La Flama Blanca,Andrew Salas,MIA,SS,Farm,Farm Contract,[7] P,P,,3407
+LFB,La Flama Blanca,Francisco Alvarez,NYM,C,MLB,Keeper Contract,[5] TC1,TC 1,,3435
+LFB,La Flama Blanca,Grayson Rodriguez,BAL,SP,MLB,Keeper Contract,[4] TC2,TC 2,,3437
+LFB,La Flama Blanca,Shea Langeliers,OAK,C,MLB,Keeper Contract,[5] TC1,TC 1,,3462
+LFB,La Flama Blanca,Taj Bradley,TB,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3464
+LFB,La Flama Blanca,Ezequiel Tovar,COL,SS,MLB,Keeper Contract,[3] VC1,VC 1,,3488
+LFB,La Flama Blanca,Harry Ford,SEA,C,Farm,Purchased Contract,[7] P,P,,3499
+LFB,La Flama Blanca,Jordan Westburg,BAL,"2B, 3B",MLB,Keeper Contract,[4] TC2,TC 2,,3523
+LFB,La Flama Blanca,Coby Mayo,BAL,3B,Farm,Purchased Contract,[7] P,P,,3559
+LFB,La Flama Blanca,Chase Petty,CIN,RHP,Farm,Farm Contract,[7] P,P,,3607
+LFB,La Flama Blanca,Parker Meadows,DET,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3644
+LFB,La Flama Blanca,Roderick Arias,NYY,SS,Farm,Development Cont.,[7] P,P,,3746
+LFB,La Flama Blanca,Simeon Woods Richardson,MIN,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3781
+LFB,La Flama Blanca,Druw Jones,AZ,OF,Farm,Farm Contract,[7] P,P,,3883
+LFB,La Flama Blanca,Elijah Green,WSH,OF,Farm,Purchased Contract,[7] P,P,,3893
+LFB,La Flama Blanca,Drew Gilbert,NYM,OF,Farm,Purchased Contract,[7] P,P,,3898
+LFB,La Flama Blanca,Jace Jung,DET,3B,Farm,Purchased Contract,[7] P,P,,3902
+LFB,La Flama Blanca,Joe Ryan,MIN,SP,MLB,Keeper Contract,[3] VC1,VC 1,,4016
+LFB,La Flama Blanca,Andrés Muñoz,SEA,RP,MLB,Keeper Contract,[4] TC2,TC 2,,4018
+LFB,La Flama Blanca,Hunter Greene,CIN,SP,MLB,Keeper Contract,[3] VC1,VC 1,,4022
+LAW,Law-Abiding Citizens,Jhoan Duran,MIN,RP,MLB,Keeper Contract,[4] TC2,TC 2,,4023
+LFB,La Flama Blanca,Alexis Díaz,CIN,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4032
+LFB,La Flama Blanca,Santiago Suarez,TB,RHP,Farm,Farm Contract,[7] P,P,,4570
+LFB,La Flama Blanca,Tim Tawa,ARI,1B,Farm,Purchased Contract,[7] P,P,,4808
+LFB,La Flama Blanca,Edgardo Henriquez,LAD,RHP,Farm,Purchased Contract,[7] P,P,,6075
+LFB,La Flama Blanca,Alfredo Duno,CIN,C,Farm,Farm Contract,[7] P,P,,6140
+LFB,La Flama Blanca,Hayden Birdsong,SF,RHP,MLB,Keeper Contract,[6] TCR,TC R,,6556
+LFB,La Flama Blanca,Noble Meyer,MIA,RHP,Farm,Purchased Contract,[7] P,P,,6571
+LFB,La Flama Blanca,Brayden Taylor,TB,3B,Farm,Purchased Contract,[7] P,P,,6609
+LFB,La Flama Blanca,Starlyn Caba,MIA,SS,Farm,Purchased Contract,[7] P,P,,6616
+LFB,La Flama Blanca,Ralphy Velazquez,CLE,1B,Farm,Farm Contract,[7] P,P,,6617
+LFB,La Flama Blanca,Aroon Escobar,PHI,2B,Farm,Purchased Contract,[7] P,P,,6665
+LAW,Law-Abiding Citizens,Luis Mey,CIN,RHP,Farm,Purchased Contract,[7] P,P,,6963
+LFB,La Flama Blanca,Jose Perdomo,ATL,SS,Farm,Development Cont.,[7] P,P,,7177
+LFB,La Flama Blanca,Cam Caminiti,ATL,LHP,Farm,Farm Contract,[7] P,P,,7347
+LFB,La Flama Blanca,Konnor Griffin,PIT,SS,Farm,Purchased Contract,[7] P,P,,7612
+LFB,La Flama Blanca,Josuar Gonzalez,SF,SS,Farm,Purchased Contract,[7] P,P,,7746
+LFB,La Flama Blanca,Shotaro Morii,ATH,SS,Farm,Purchased Contract,[7] P,P,,7776
+LFB,La Flama Blanca,Elian Peña,NYM,3B,Farm,Farm Contract,[7] P,P,,7785
+LAW,Law-Abiding Citizens,Freddie Freeman,LAD,1B,MLB,Keeper Contract,[3] VC1,VC 1,8658,1877
+LAW,Law-Abiding Citizens,Blake Snell,LAD,P,MLB,Keeper Contract,[3] VC1,VC 1,10148,1887
+WIZ,Whiz Kids,Aroldis Chapman,BOS,P,MLB,Keeper Contract,[5] TC1,TC 1,8616,1902
+LAW,Law-Abiding Citizens,Jose Altuve,HOU,2B,MLB,Keeper Contract,[3] VC1,VC 1,8996,1907
+LFB,La Flama Blanca,Josh Hader,HOU,P,MLB,Keeper Contract,[3] VC1,VC 1,10131,1908
+LAW,Law-Abiding Citizens,Dylan Cease,TOR,P,MLB,Keeper Contract,[3] VC1,VC 1,10438,1943
+LAW,Law-Abiding Citizens,Manny Machado,SD,"3B,SS",MLB,Keeper Contract,[3] VC1,VC 1,9111,1963
+SAD,not much of a donkey,Robbie Ray,SF,P,MLB,Keeper Contract,[5] TC1,TC 1,9691,1973
+LAW,Law-Abiding Citizens,Emmanuel Clase,CLE,P,MLB,Keeper Contract,[4] TC2,TC 2,11625,2448
+LAW,Law-Abiding Citizens,Corbin Carroll,AZ,CF,MLB,Keeper Contract,[4] TC2,TC 2,,3436
+LAW,Law-Abiding Citizens,Justin Steele,CHC,SP,MLB,Keeper Contract,[3] VC1,VC 1,,2801
+LAW,Law-Abiding Citizens,Michael King,SD,SP,MLB,Keeper Contract,[3] VC1,VC 1,,2974
+LAW,Law-Abiding Citizens,Michael Wacha,KC,SP,MLB,,[5] TC1,TC 1,,2984
+LAW,Law-Abiding Citizens,Sean Murphy,ATL,C,MLB,Keeper Contract,[5] TC1,TC 1,,3213
+LAW,Law-Abiding Citizens,Tanner Houck,BOS,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3261
+LAW,Law-Abiding Citizens,Gabriel Moreno,AZ,C,MLB,Keeper Contract,[5] TC1,TC 1,,3439
+LAW,Law-Abiding Citizens,Daniel Espino,CLE,RHP,Farm,Purchased Contract,[7] P,P,,3444
+LAW,Law-Abiding Citizens,Jack Leiter,TEX,RHP,MLB,Keeper Contract,[6] TCR,TC R,,3449
+LAW,Law-Abiding Citizens,Noelvi Marte,CIN,3B,MLB,Keeper Contract,[5] TC1,TC 1,,3451
+LAW,Law-Abiding Citizens,Brandon Pfaadt,AZ,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3532
+LAW,Law-Abiding Citizens,Angel Martínez,CLE,2B,MLB,Keeper Contract,[5] TC1,TC 1,,3615
+LAW,Law-Abiding Citizens,Colt Keith,DET,2B,MLB,Keeper Contract,[5] TC1,TC 1,,3640
+LAW,Law-Abiding Citizens,Roman Anthony,BOS,OF,Farm,Purchased Contract,[7] P,P,,3852
+LAW,Law-Abiding Citizens,Jackson Holliday,BAL,SS,MLB,Keeper Contract,[6] TCR,TC R,,3884
+LAW,Law-Abiding Citizens,Brooks Lee,MIN,SS,MLB,Keeper Contract,[6] TCR,TC R,,3885
+LAW,Law-Abiding Citizens,Dylan Lesko,TB,RHP,Farm,Purchased Contract,[7] P,P,,3889
+LAW,Law-Abiding Citizens,Cade Horton,CHC,RHP,Farm,Purchased Contract,[7] P,P,,3894
+LFB,La Flama Blanca,Nick Lodolo,CIN,SP,MLB,Keeper Contract,[5] TC1,TC 1,,4019
+LAW,Law-Abiding Citizens,Edwin Uceta,TB,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4174
+LAW,Law-Abiding Citizens,Bobby Witt,KC,SS,MLB,Keeper Contract,[3] VC1,VC 1,,4295
+LAW,Law-Abiding Citizens,Bryson Stott,PHI,"2B, SS",MLB,Keeper Contract,[3] VC1,VC 1,,4306
+LAW,Law-Abiding Citizens,Maikel Garcia,KC,"2B, 3B",MLB,Keeper Contract,[5] TC1,TC 1,,4361
+LAW,Law-Abiding Citizens,David Festa,MIN,RHP,MLB,Keeper Contract,[6] TCR,TC R,,4556
+LAW,Law-Abiding Citizens,Jairo Iriarte,CWS,RHP,Farm,Farm Contract,[7] P,P,,4678
+LAW,Law-Abiding Citizens,Justin Martinez,AZ,RP,MLB,Keeper Contract,[5] TC1,TC 1,,5216
+LAW,Law-Abiding Citizens,Cris Rodriguez,DET,OF,Farm,Farm Contract,[7] P,P,,6500
+LAW,Law-Abiding Citizens,Walker Jenkins,MIN,OF,Farm,Purchased Contract,[7] P,P,,6568
+LAW,Law-Abiding Citizens,Blake Mitchell,KC,C,Farm,Purchased Contract,[7] P,P,,6602
+LAW,Law-Abiding Citizens,Nolan Schanuel,LAA,1B,MLB,Keeper Contract,[5] TC1,TC 1,,6606
+LAW,Law-Abiding Citizens,Alex Clemmey,WSH,LHP,Farm,Purchased Contract,[7] P,P,,6618
+LAW,Law-Abiding Citizens,Trevor Harrison,TB,RHP,Farm,Farm Contract,[7] P,P,,7122
+LAW,Law-Abiding Citizens,Eduardo Beltre,MIN,OF,Farm,Farm Contract,[7] P,P,,7565
+LAW,Law-Abiding Citizens,JJ Wetherholt,STL,SS,Farm,Purchased Contract,[7] P,P,,7619
+LAW,Law-Abiding Citizens,Brody Brecht,COL,RHP,Farm,Farm Contract,[7] P,P,,7631
+LAW,Law-Abiding Citizens,Theodore Gillen,TB,OF,Farm,Development Cont.,[7] P,P,,7669
+LAW,Law-Abiding Citizens,Jac Caglianone,KC,1B,Farm,Development Cont.,[7] P,P,,7685
+LAW,Law-Abiding Citizens,Roman Angelo,AZ,RHP,Farm,Farm Contract,[7] P,P,,7772
+LAW,Law-Abiding Citizens,Juan Mateo,ATL,SS,Farm,Purchased Contract,[7] P,P,,7359
+SAD,not much of a donkey,José Ramírez,CLE,3B,MLB,Keeper Contract,[3] VC1,VC 1,9507,1884
+B2J,Btwn2Jackies,J.T. Realmuto,PHI,"C,1B",MLB,Keeper Contract,[5] TC1,TC 1,9718,1889
+SAD,not much of a donkey,Matt Olson,ATL,1B,MLB,Keeper Contract,[0] FC2,FC 2,9605,1893
+CFL,Country Fried Lamb,Carlos Correa,HOU,SS,MLB,Keeper Contract,[5] TC1,TC 1,9573,1933
+SAD,not much of a donkey,Kyle Schwarber,PHI,"1B,OF",MLB,Keeper Contract,[3] VC1,VC 1,9861,1959
+LAW,Law-Abiding Citizens,Aaron Nola,PHI,P,MLB,Keeper Contract,[2] VC2,VC 2,9882,2001
+HAM,Hammers,Drew Rasmussen,TB,P,MLB,Keeper Contract,[5] TC1,TC 1,11789,2409
+SAD,not much of a donkey,Elly De La Cruz,CIN,SS,MLB,Keeper Contract,[4] TC2,TC 2,,2445
+CFL,Country Fried Lamb,Evan Carter,TEX,OF,MLB,Keeper Contract,[6] TCR,TC R,,2474
+SAD,not much of a donkey,Jake Cousins,NYY,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2590
+SAD,not much of a donkey,Jeffrey Springs,OAK,SP,MLB,Keeper Contract,[5] TC1,TC 1,,2644
+HAM,Hammers,Logan Webb,SF,P,MLB,Keeper Contract,[2] VC2,VC 2,11235,2884
+SAD,not much of a donkey,Luis Arraez,SD,"1B, 2B",MLB,Keeper Contract,[2] VC2,VC 2,,2893
+SAD,not much of a donkey,Tony Santillan,CIN,RP,MLB,Keeper Contract,[5] TC1,TC 1,,3300
+SAD,not much of a donkey,Victor Robles,SEA,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3361
+SAD,not much of a donkey,Willson Contreras,BOS,C,MLB,Keeper Contract,[4] TC2,TC 2,10166,3384
+SAD,not much of a donkey,Mason Miller,OAK,RP,MLB,Keeper Contract,[5] TC1,TC 1,,3388
+SAD,not much of a donkey,Eury Pérez,MIA,SP,MLB,Keeper Contract,[4] TC2,TC 2,,3448
+SAD,not much of a donkey,Bobby Miller,LAD,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3458
+SAD,not much of a donkey,Jackson Chourio,MIL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3468
+SAD,not much of a donkey,Kevin Alcántara,CHC,OF,Farm,Purchased Contract,[7] P,P,,3526
+SAD,not much of a donkey,Tyler Black,MIL,1B,Farm,Farm Contract,[7] P,P,,3709
+LAW,Law-Abiding Citizens,Michael Arroyo,SEA,2B,Farm,Purchased Contract,[7] P,P,,3816
+SAD,not much of a donkey,Tink Hence,STL,RHP,Farm,Purchased Contract,[7] P,P,,3832
+SAD,not much of a donkey,Termarr Johnson,PIT,2B,Farm,Purchased Contract,[7] P,P,,3886
+SAD,not much of a donkey,Zach Neto,LAA,SS,MLB,Keeper Contract,[5] TC1,TC 1,,3887
+SAD,not much of a donkey,Ryan Clifford,NYM,1B,Farm,Farm Contract,[7] P,P,,3935
+SAD,not much of a donkey,Sal Stewart,CIN,2B,Farm,Purchased Contract,[7] P,P,,3951
+HAM,Hammers,Tanner Bibee,CLE,SP,MLB,Keeper Contract,[4] TC2,TC 2,,3995
+SAD,not much of a donkey,Kyle Bradish,BAL,SP,MLB,Keeper Contract,[5] TC1,TC 1,,4045
+SAD,not much of a donkey,Cole Ragans,KC,SP,MLB,Keeper Contract,[3] VC1,VC 1,,4085
+SAD,not much of a donkey,Jeremiah Estrada,SD,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4155
+SAD,not much of a donkey,Bryan Woo,SEA,SP,MLB,Keeper Contract,[4] TC2,TC 2,,4286
+SAD,not much of a donkey,Kerry Carpenter,DET,OF,MLB,Keeper Contract,[5] TC1,TC 1,,4333
+SAD,not much of a donkey,Julio Rodríguez,SEA,CF,MLB,Keeper Contract,[3] VC1,VC 1,,4454
+SAD,not much of a donkey,Junior Caminero,TB,3B,MLB,Keeper Contract,[6] TCR,TC R,,4463
+SAD,not much of a donkey,Samuel Basallo,BAL,C,Farm,Purchased Contract,[7] P,P,,4593
+SAD,not much of a donkey,Cade Smith,CLE,LHP,MLB,Keeper Contract,[5] TC1,TC 1,,6524
+LAW,Law-Abiding Citizens,Hector Rodriguez,CIN,OF,Farm,Farm Contract,[7] P,P,,6532
+SAD,not much of a donkey,Matt Shaw,CHC,3B,Farm,Purchased Contract,[7] P,P,,6592
+SAD,not much of a donkey,Jefferson Rojas,CHC,SS,Farm,Farm Contract,[7] P,P,,6593
+SAD,not much of a donkey,Grant Taylor,CWS,RHP,Farm,Purchased Contract,[7] P,P,,6752
+SAD,not much of a donkey,George Klassen,LAA,RHP,Farm,Purchased Contract,[7] P,P,,6805
+SAD,not much of a donkey,Jedixson Paez,BOS,RHP,Farm,Farm Contract,[7] P,P,,6851
+SAD,not much of a donkey,Yophery Rodriguez,MIL,OF,Farm,Farm Contract,[7] P,P,,6973
+SAD,not much of a donkey,Jaden Hamm,DET,RHP,Farm,Farm Contract,[7] P,P,,7098
+HAM,Hammers,Braden Montgomery,CWS,OF,Farm,Purchased Contract,[7] P,P,,7657
+RV,Rick Vaughn,Gerrit Cole,NYY,P,MLB,Keeper Contract,[5] TC1,TC 1,9121,1888
+RV,Rick Vaughn,Ketel Marte,AZ,"2B,SS,CF",MLB,Keeper Contract,[3] VC1,VC 1,10036,1910
+B2J,Btwn2Jackies,Shane Bieber,TOR,P,MLB,Keeper Contract,[5] TC1,TC 1,10867,1918
+B2J,Btwn2Jackies,Bo Bichette,TOR,SS,MLB,Keeper Contract,[3] VC1,VC 1,10766,1928
+RV,Rick Vaughn,Freddy Peralta,MIL,P,MLB,Keeper Contract,[3] VC1,VC 1,11014,1949
+RV,Rick Vaughn,Kyle Tucker,CHC,OF,MLB,Keeper Contract,[3] VC1,VC 1,10480,1960
+RV,Rick Vaughn,Anthony Santander,TOR,OF,MLB,Keeper Contract,[4] TC2,TC 2,,2109
+RV,Rick Vaughn,Christian Walker,HOU,1B,MLB,Keeper Contract,[2] VC2,VC 2,,2274
+RV,Rick Vaughn,Eugenio Suárez,AZ,3B,MLB,Keeper Contract,[5] TC1,TC 1,,2472
+RV,Rick Vaughn,Luis Rengifo,LAA,"2B, 3B",MLB,Keeper Contract,[5] TC1,TC 1,,2906
+RV,Rick Vaughn,Luke Weaver,NYY,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2916
+RV,Rick Vaughn,Ryan Weathers,MIA,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3183
+RV,Rick Vaughn,Gunnar Henderson,BAL,SS,MLB,Keeper Contract,[4] TC2,TC 2,,3438
+RV,Rick Vaughn,Colton Cowser,BAL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3472
+RV,Rick Vaughn,Miguel Vargas,CWS,"3B, OF",MLB,Keeper Contract,[5] TC1,TC 1,,3501
+RV,Rick Vaughn,Logan O'Hoppe,LAA,C,MLB,Keeper Contract,[5] TC1,TC 1,,3519
+RV,Rick Vaughn,Spencer Schwellenbach,ATL,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3551
+RV,Rick Vaughn,Andrew Abbott,CIN,SP,MLB,,[5] TC1,TC 1,,3612
+RV,Rick Vaughn,Brenton Doyle,COL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3623
+RV,Rick Vaughn,Josue De Paula,LAD,OF,Farm,Purchased Contract,[7] P,P,,3661
+RV,Rick Vaughn,Bubba Chandler,PIT,RHP,Farm,Purchased Contract,[7] P,P,,3779
+RV,Rick Vaughn,Lawrence Butler,OAK,OF,MLB,Keeper Contract,[5] TC1,TC 1,,3854
+RV,Rick Vaughn,Cam Collier,CIN,3B,Farm,Purchased Contract,[7] P,P,,3891
+RV,Rick Vaughn,Tyler Locklear,SEA,1B,Farm,Purchased Contract,[7] P,P,,3905
+RV,Rick Vaughn,Parker Messick,CLE,LHP,Farm,Purchased Contract,[7] P,P,,3913
+RV,Rick Vaughn,Owen Murphy,ATL,RHP,Farm,Farm Contract,[7] P,P,,3920
+RV,Rick Vaughn,Noah Schultz,CWS,LHP,Farm,Purchased Contract,[7] P,P,,3934
+RV,Rick Vaughn,Kumar Rocker,TEX,RHP,Farm,Purchased Contract,[7] P,P,,3937
+RV,Rick Vaughn,Robby Snelling,MIA,LHP,Farm,Purchased Contract,[7] P,P,,3940
+RV,Rick Vaughn,Jordan Beck,COL,OF,MLB,Keeper Contract,[5] TC1,TC 1,,3946
+RV,Rick Vaughn,Kyle Manzardo,CLE,1B,MLB,Keeper Contract,[6] TCR,TC R,,3994
+RV,Rick Vaughn,Matt Brash,SEA,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4048
+RV,Rick Vaughn,A.J. Puk,AZ,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,4080
+DRO,Andromedans,Shane Baz,TB,SP,MLB,Keeper Contract,[4] TC2,TC 2,,4101
+RV,Rick Vaughn,Ceddanne Rafaela,BOS,"2B, SS, CF",MLB,Keeper Contract,[5] TC1,TC 1,,4462
+RV,Rick Vaughn,Yoniel Curet,TB,RHP,Farm,Farm Contract,[7] P,P,,4609
+RV,Rick Vaughn,Sebastian Walcott,TEX,SS,Farm,Purchased Contract,[7] P,P,,6141
+RV,Rick Vaughn,Tim Herrin,CLE,RP,MLB,Keeper Contract,[5] TC1,TC 1,,6367
+RV,Rick Vaughn,Alex Freeland,LAD,SS,Farm,Purchased Contract,[7] P,P,,6543
+RV,Rick Vaughn,Chase Dollander,COL,RHP,Farm,Purchased Contract,[7] P,P,,6572
+RV,Rick Vaughn,Kyle Teel,CWS,C,Farm,Purchased Contract,[7] P,P,,6573
+RV,Rick Vaughn,Cooper Pratt,MIL,SS,Farm,Farm Contract,[7] P,P,,6583
+RV,Rick Vaughn,Kristian Campbell,BOS,2B,Farm,Purchased Contract,[7] P,P,,6707
+RV,Rick Vaughn,Lucas Erceg,KC,RP,MLB,Keeper Contract,[5] TC1,TC 1,,6784
+RV,Rick Vaughn,Drue Hackenberg,ATL,RHP,Farm,Farm Contract,[7] P,P,,6785
+RV,Rick Vaughn,Robert Calaz,COL,OF,Farm,Development Cont.,[7] P,P,,6834
+RV,Rick Vaughn,Aidan Smith,TB,OF,Farm,Farm Contract,[7] P,P,,6888
+RV,Rick Vaughn,Emil Morales,LAD,SS,Farm,Development Cont.,[7] P,P,,7213
+RV,Rick Vaughn,Carson Benge,NYM,OF,Farm,Purchased Contract,[7] P,P,,7591
+RV,Rick Vaughn,Cam Smith,HOU,3B,MLB,Keeper Contract,[6] TCR,TC R,,7600
+RV,Rick Vaughn,Demetrio Crisantes,AZ,2B,Farm,Farm Contract,[7] P,P,,7626
+RV,Rick Vaughn,Payton Tolle,BOS,LHP,Farm,Purchased Contract,[7] P,P,,7658
+RV,Rick Vaughn,Dasan Hill,MIN,LHP,Farm,Purchased Contract,[7] P,P,,7692
+RV,Rick Vaughn,Nick Kurtz,ATH,1B,Farm,Purchased Contract,[7] P,P,,7703
+RV,Rick Vaughn,Quinn Matthews,STL,LHP,Farm,Purchased Contract,[7] P,P,,7722
+TBB,The Bluke Blokes,Trea Turner,PHI,"2B,SS",MLB,Keeper Contract,[3] VC1,VC 1,10056,1885
+TBB,The Bluke Blokes,Yu Darvish,SD,P,MLB,Keeper Contract,[5] TC1,TC 1,9095,1924
+TBB,The Bluke Blokes,Chris Bassitt,TOR,P,MLB,,[5] TC1,TC 1,9799,1936
+TBB,The Bluke Blokes,Corbin Burnes,AZ,P,MLB,Keeper Contract,[3] VC1,VC 1,10910,1940
+TBB,The Bluke Blokes,Kenley Jansen,DET,P,MLB,Keeper Contract,[5] TC1,TC 1,8758,1957
+TBB,The Bluke Blokes,Mike Trout,LAA,CF,MLB,Keeper Contract,[3] VC1,VC 1,8861,1967
+TBB,The Bluke Blokes,Salvador Perez,KC,C,MLB,Keeper Contract,[5] TC1,TC 1,9015,1976
+TBB,The Bluke Blokes,Devin Williams,NYM,P,MLB,Keeper Contract,[3] VC1,VC 1,11628,2378
+TBB,The Bluke Blokes,Edgar Quero,CWS,C,Farm,Purchased Contract,[7] P,P,,2429
+TBB,The Bluke Blokes,Jeff Hoffman,TOR,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2641
+TBB,The Bluke Blokes,Jurickson Profar,ATL,OF,MLB,Keeper Contract,[5] TC1,TC 1,,2795
+TBB,The Bluke Blokes,Marcell Ozuna,ATL,OF,MLB,Keeper Contract,[3] VC1,VC 1,,2928
+TBB,The Bluke Blokes,Tyler Glasnow,LAD,P,MLB,Keeper Contract,[3] VC1,VC 1,9616,3338
+TBB,The Bluke Blokes,Max Meyer,MIA,RHP,MLB,Keeper Contract,[6] TCR,TC R,,3453
+TBB,The Bluke Blokes,Kyle Harrison,SF,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3457
+TBB,The Bluke Blokes,Orelvis Martinez,TOR,2B,Farm,Farm Contract,[7] P,P,,3467
+TBB,The Bluke Blokes,Mick Abel,PHI,RHP,Farm,Purchased Contract,[7] P,P,,3486
+TBB,The Bluke Blokes,Curtis Mead,TB,"2B, 3B",MLB,Keeper Contract,[5] TC1,TC 1,,3491
+TBB,The Bluke Blokes,DL Hall,MIL,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,3497
+TBB,The Bluke Blokes,Pete Crow-Armstrong,CHC,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3508
+TBB,The Bluke Blokes,Deyvison De Los Santos,MIA,1B,Farm,Purchased Contract,[7] P,P,,3540
+TBB,The Bluke Blokes,Connor Norby,MIA,2B,MLB,Keeper Contract,[6] TCR,TC R,,3563
+TBB,The Bluke Blokes,Ben Brown,CHC,SP,MLB,Keeper Contract,[6] TCR,TC R,,3586
+TBB,The Bluke Blokes,Forrest Whitley,HOU,SP,Farm,Purchased Contract,[7] P,P,,3647
+TBB,The Bluke Blokes,Matt Mervis,CHC,1B,Farm,Purchased Contract,[7] P,P,,3653
+TBB,The Bluke Blokes,Yainer Diaz,HOU,"C, 1B",MLB,Keeper Contract,[4] TC2,TC 2,,3656
+TBB,The Bluke Blokes,Joey Ortiz,MIL,"3B, SS",MLB,Keeper Contract,[5] TC1,TC 1,,3670
+TBB,The Bluke Blokes,Garrett Mitchell,MIL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3706
+TBB,The Bluke Blokes,Brice Turang,MIL,2B,MLB,Keeper Contract,[3] VC1,VC 1,,3707
+TBB,The Bluke Blokes,Alec Burleson,STL,"1B, OF",MLB,Keeper Contract,[5] TC1,TC 1,,3831
+TBB,The Bluke Blokes,Kameron Misner,TB,OF,Farm,Purchased Contract,[7] P,P,,3846
+TBB,The Bluke Blokes,Cole Young,SEA,SS,Farm,Purchased Contract,[7] P,P,,3901
+TBB,The Bluke Blokes,Jackson Ferris,LAD,LHP,Farm,Farm Contract,[7] P,P,,3924
+TBB,The Bluke Blokes,Ben Joyce,LAA,RP,MLB,Keeper Contract,[5] TC1,TC 1,,3963
+TBB,The Bluke Blokes,Xavier Isaac,TB,1B,Farm,Development Cont.,[7] P,P,,3984
+TBB,The Bluke Blokes,Hunter Gaddis,CLE,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4273
+TBB,The Bluke Blokes,Kyle Hurt,LAD,RHP,Farm,Purchased Contract,[7] P,P,,6064
+TBB,The Bluke Blokes,Joendry Vargas,LAD,SS,Farm,Farm Contract,[7] P,P,,6137
+TBB,The Bluke Blokes,Paul Skenes,PIT,SP,MLB,Keeper Contract,[5] TC1,TC 1,,6563
+TBB,The Bluke Blokes,Rhett Lowder,CIN,RHP,Farm,Purchased Contract,[7] P,P,,6577
+TBB,The Bluke Blokes,George Lombard Jr.,NYY,SS,Farm,Farm Contract,[7] P,P,,6604
+TBB,The Bluke Blokes,Eric Bitonti,MIL,3B,Farm,Purchased Contract,[7] P,P,,6702
+TBB,The Bluke Blokes,Jackson Baumeister,TB,RHP,Farm,Farm Contract,[7] P,P,,6818
+TBB,The Bluke Blokes,Connelly Early,BOS,LHP,Farm,Purchased Contract,[7] P,P,,6853
+TBB,The Bluke Blokes,C.J. Kayfus,CLE,1B,Farm,Farm Contract,[7] P,P,,7048
+TBB,The Bluke Blokes,Johnathan Rodriguez,CLE,OF,Farm,Purchased Contract,[7] P,P,,7409
+TBB,The Bluke Blokes,JD Dix,AZ,SS,Farm,Farm Contract,[7] P,P,,7625
+WAR,Weekend Warriors,Adrian Del Castillo,AZ,C,Farm,Purchased Contract,[7] P,P,,3543
+LFB,La Flama Blanca,Alex Vesia,LAD,P,MLB,Keeper Contract,[5] TC1,TC 1,11920,2061
+WAR,Weekend Warriors,Andrew Painter,PHI,RHP,Farm,Purchased Contract,[7] P,P,,3484
+WAR,Weekend Warriors,Andrew Walters,CLE,RHP,Farm,Purchased Contract,[7] P,P,,6677
+WAR,Weekend Warriors,Bo Davidson,SF,OF,Farm,Farm Contract,[7] P,P,,7726
+HAM,Hammers,Brandon Lowe,PIT,"1B,2B,OF",MLB,Keeper Contract,[5] TC1,TC 1,11125,1929
+WAR,Weekend Warriors,Brandon Marsh,PHI,CF,MLB,Keeper Contract,[5] TC1,TC 1,,2175
+WAR,Weekend Warriors,Charlie Condon,COL,3B,Farm,Development Cont.,[7] P,P,,7630
+WAR,Weekend Warriors,Christian Scott,NYM,RHP,Farm,Purchased Contract,[7] P,P,,6124
+WAR,Weekend Warriors,Christian Yelich,MIL,OF,MLB,Keeper Contract,[2] VC2,VC 2,9320,2275
+WAR,Weekend Warriors,Colby Thomas,ATH,OF,Farm,Purchased Contract,[7] P,P,,6443
+WAR,Weekend Warriors,Colson Montgomery,CWS,SS,Farm,Purchased Contract,[7] P,P,,3522
+WAR,Weekend Warriors,Dalton Rushing,LAD,C,Farm,Purchased Contract,[7] P,P,,3914
+WAR,Weekend Warriors,David Robertson,TEX,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2360
+WAR,Weekend Warriors,Derek Law,WSH,"SP, RP",MLB,Keeper Contract,[5] TC1,TC 1,,2375
+WAR,Weekend Warriors,Ethan Salas,SD,C,Farm,Purchased Contract,[7] P,P,,3720
+WAR,Weekend Warriors,Franklin Arias,BOS,SS,Farm,Farm Contract,[7] P,P,,7130
+WAR,Weekend Warriors,Gabriel Rincones,PHI,OF,Farm,Purchased Contract,[7] P,P,,7236
+WAR,Weekend Warriors,Garrett Crochet,BOS,P,MLB,Keeper Contract,[4] TC2,TC 2,12046,2494
+WAR,Weekend Warriors,Tyler Soderstrom,OAK,1B,MLB,Keeper Contract,[5] TC1,TC 1,,3466
+WAR,Weekend Warriors,Ian Seymour,TB,LHP,Farm,Farm Contract,[7] P,P,,3845
+WAR,Weekend Warriors,Isaac Paredes,HOU,"1B, 3B",MLB,Keeper Contract,[3] VC1,VC 1,,2555
+WAR,Weekend Warriors,Jackson Jobe,DET,RHP,MLB,Keeper Contract,[6] TCR,TC R,,3456
+WAR,Weekend Warriors,Jacob Melton,HOU,OF,Farm,Purchased Contract,[7] P,P,,3944
+WAR,Weekend Warriors,Jared Jones,PIT,SP,MLB,Keeper Contract,[5] TC1,TC 1,,2620
+WAR,Weekend Warriors,Jesus Made,MIL,SS,Farm,Farm Contract,[7] P,P,,7607
+WAR,Weekend Warriors,JJ Bleday,OAK,CF,MLB,Keeper Contract,[5] TC1,TC 1,,3695
+WAR,Weekend Warriors,Jonah Tong,NYM,RHP,Farm,Farm Contract,[7] P,P,,6910
+WAR,Weekend Warriors,Josh H. Smith,TEX,"3B, SS, OF",MLB,Keeper Contract,[5] TC1,TC 1,,2774
+WAR,Weekend Warriors,Josh Jung,TEX,3B,MLB,Keeper Contract,[4] TC2,TC 2,,3461
+WAR,Weekend Warriors,Juan Brito,CLE,2B,Farm,Farm Contract,[7] P,P,,4151
+WAR,Weekend Warriors,Kris Bubic,KC,P,MLB,Keeper Contract,[5] TC1,TC 1,11319,2844
+WAR,Weekend Warriors,Luis Pena,MIL,SS,Farm,Purchased Contract,[7] P,P,,7608
+WAR,Weekend Warriors,Marcelo Mayer,BOS,SS,Farm,Purchased Contract,[7] P,P,,3443
+WAR,Weekend Warriors,Masyn Winn,STL,SS,MLB,Keeper Contract,[5] TC1,TC 1,,3520
+WAR,Weekend Warriors,Chase DeLauter,CLE,OF,Farm,Purchased Contract,[7] P,P,,3903
+WAR,Weekend Warriors,Moisés Chace,PHI,RHP,Farm,Purchased Contract,[7] P,P,,7579
+WAR,Weekend Warriors,Chase Meidroth,CWS,SS,Farm,Purchased Contract,[7] P,P,,6530
+WAR,Weekend Warriors,Otto Kemp,PHI,3B,Farm,Purchased Contract,[7] P,P,,7569
+WAR,Weekend Warriors,Richard Fitts,BOS,RHP,Farm,Purchased Contract,[7] P,P,,4030
+WAR,Weekend Warriors,Riley Greene,DET,CF,MLB,Keeper Contract,[4] TC2,TC 2,,4315
+WAR,Weekend Warriors,Ryan Waldschmidt,AZ,OF,Farm,Purchased Contract,[7] P,P,,7624
+WAR,Weekend Warriors,Sawyer Gipson-Long,DET,SP,Farm,Purchased Contract,[7] P,P,,6868
+WAR,Weekend Warriors,Seiya Suzuki,CHC,OF,MLB,Keeper Contract,[3] VC1,VC 1,,4298
+WAR,Weekend Warriors,Seth Lugo,KC,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3225
+WAR,Weekend Warriors,Shane Smith,CWS,RHP,MLB,Keeper Contract,[6] TCR,TC R,,7330
+WAR,Weekend Warriors,Spencer Horwitz,PIT,"1B, 2B",MLB,Keeper Contract,[5] TC1,TC 1,,4125
+WAR,Weekend Warriors,Tommy White,ATH,3B,Farm,Purchased Contract,[7] P,P,,7704
+WAR,Weekend Warriors,Travis Sykora,WSH,RHP,Farm,Purchased Contract,[7] P,P,,6597
+WAR,Weekend Warriors,Trey Yesavage,TOR,RHP,Farm,Development Cont.,[7] P,P,,7670
+WAR,Weekend Warriors,William Contreras,MIL,C,MLB,Keeper Contract,[3] VC1,VC 1,,3381
+WAR,Weekend Warriors,Wyatt Langford,TEX,CF,MLB,Keeper Contract,[5] TC1,TC 1,,6565
+WAR,Weekend Warriors,Yoeilin Cespedes,BOS,2B,Farm,Farm Contract,[7] P,P,,6704
+WAR,Weekend Warriors,Gage Jump,ATH,LHP,Farm,Purchased Contract,[7] P,P,,7705
+WIZ,Whiz Kids,Jacob deGrom,TEX,P,MLB,Keeper Contract,[3] VC1,VC 1,9701,1876
+WIZ,Whiz Kids,Cody Bellinger,NYY,"1B,CF",MLB,Keeper Contract,[3] VC1,VC 1,10504,1883
+WIZ,Whiz Kids,Max Muncy,LAD,"1B,2B,3B",MLB,Keeper Contract,[5] TC1,TC 1,9606,1894
+WIZ,Whiz Kids,Shohei Ohtani (Batter),LAD,Util,MLB,Keeper Contract,[3] VC1,VC 1,1000001,1919
+WIZ,Whiz Kids,Shohei Ohtani (Pitcher),LAD,P,MLB,Keeper Contract,[3] VC1,VC 1,1000002,1920
+WIZ,Whiz Kids,Carlos Rodón,NYY,P,MLB,Keeper Contract,[5] TC1,TC 1,9823,1934
+RV,Rick Vaughn,Sandy Alcantara,MIA,P,MLB,Keeper Contract,[4] TC2,TC 2,10597,1977
+WIZ,Whiz Kids,Masataka Yoshida,BOS,OF,MLB,Keeper Contract,[5] TC1,TC 1,,2038
+WIZ,Whiz Kids,Brent Rooker,OAK,OF,MLB,Keeper Contract,[3] VC1,VC 1,,2184
+WIZ,Whiz Kids,Cal Raleigh,SEA,C,MLB,Keeper Contract,[4] TC2,TC 2,,2216
+WIZ,Whiz Kids,Cristopher Sánchez,PHI,SP,MLB,Keeper Contract,[3] VC1,VC 1,,2314
+WIZ,Whiz Kids,Griffin Jax,MIN,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2521
+WIZ,Whiz Kids,Joe Mack,MIA,C,Farm,Purchased Contract,[7] P,P,,2674
+LAW,Law-Abiding Citizens,José Alvarado,PHI,P,MLB,Keeper Contract,[5] TC1,TC 1,10692,2737
+WIZ,Whiz Kids,Josh Naylor,AZ,1B,MLB,Keeper Contract,[3] VC1,VC 1,,2767
+WIZ,Whiz Kids,Lars Nootbaar,STL,CF,MLB,Keeper Contract,[5] TC1,TC 1,,2872
+WIZ,Whiz Kids,Matt Strahm,PHI,RP,MLB,Keeper Contract,[5] TC1,TC 1,,2956
+CFL,Country Fried Lamb,Michael McGreevy,STL,RHP,Farm,Purchased Contract,[7] P,P,,2979
+WIZ,Whiz Kids,Nico Hoerner,CHC,"2B,3B,SS",MLB,Keeper Contract,[5] TC1,TC 1,11284,3054
+WIZ,Whiz Kids,Pablo López,MIN,P,MLB,Keeper Contract,[2] VC2,VC 2,11057,3071
+WIZ,Whiz Kids,Anthony Volpe,NYY,SS,MLB,Keeper Contract,[5] TC1,TC 1,,3441
+WIZ,Whiz Kids,Mason Montgomery,TB,LHP,Farm,Purchased Contract,[7] P,P,,3730
+WIZ,Whiz Kids,Connor Prielipp,MIN,LHP,Farm,Purchased Contract,[7] P,P,,3909
+WIZ,Whiz Kids,Thomas Harrington,PIT,RHP,Farm,Purchased Contract,[7] P,P,,3941
+WIZ,Whiz Kids,Clarke Schmidt,NYY,SP,MLB,Keeper Contract,[5] TC1,TC 1,,3987
+WIZ,Whiz Kids,Max Muncy,ATH,SS,Farm,Purchased Contract,[7] P,P,,4001
+WIZ,Whiz Kids,Porter Hodge,CHC,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4266
+WIZ,Whiz Kids,Orion Kerkering,PHI,RP,MLB,Keeper Contract,[5] TC1,TC 1,,4604
+WIZ,Whiz Kids,Tyler Fitzgerald,SF,"SS, CF",MLB,Keeper Contract,[5] TC1,TC 1,,4783
+WIZ,Whiz Kids,Tyler Mattison,DET,RHP,Farm,Farm Contract,[7] P,P,,6102
+WIZ,Whiz Kids,Braxton Ashcraft,PIT,RHP,Farm,Purchased Contract,[7] P,P,,6263
+WIZ,Whiz Kids,Aidan Miller,PHI,SS,Farm,Purchased Contract,[7] P,P,,6578
+LAW,Law-Abiding Citizens,Enrique Bradfield Jr.,BAL,OF,Farm,Farm Contract,[7] P,P,,6580
+WIZ,Whiz Kids,Arjun Nimmala,TOR,SS,Farm,Development Cont.,[7] P,P,,6590
+WIZ,Whiz Kids,Kevin McGonigle,DET,SS,Farm,Purchased Contract,[7] P,P,,6591
+CFL,Country Fried Lamb,Colt Emerson,SEA,SS,Farm,Purchased Contract,[7] P,P,,6595
+WIZ,Whiz Kids,Brice Matthews,HOU,SS,Farm,Purchased Contract,[7] P,P,,6596
+WIZ,Whiz Kids,Cole Carrigg,COL,OF,Farm,Purchased Contract,[7] P,P,,6696
+CFL,Country Fried Lamb,Roc Riggio,NYY,2B,Farm,Purchased Contract,[7] P,P,,6759
+WIZ,Whiz Kids,Eduardo Tait,PHI,C,Farm,Farm Contract,[7] P,P,,7146
+WIZ,Whiz Kids,Leodalis De Vries,SD,SS,Farm,Development Cont.,[7] P,P,,7173
+WIZ,Whiz Kids,Jung Hoo Lee,SF,CF,MLB,Keeper Contract,[5] TC1,TC 1,,7286
+WIZ,Whiz Kids,Dorian Soto,BOS,SS,Farm,Farm Contract,[7] P,P,,7319
+LAW,Law-Abiding Citizens,Craig Yoho,MIL,RHP,Farm,Purchased Contract,[7] P,P,,7335
+WIZ,Whiz Kids,Griffin Burkholder,PHI,OF,Farm,Farm Contract,[7] P,P,,7577
+WIZ,Whiz Kids,Mike Sirota,LAD,OF,Farm,Purchased Contract,[7] P,P,,7605
+WIZ,Whiz Kids,James Tibbs III,SF,OF,Farm,Purchased Contract,[7] P,P,,7646
+CFL,Country Fried Lamb,Ryan Sloan,SEA,RHP,Farm,Purchased Contract,[7] P,P,,7710
+WIZ,Whiz Kids,Yorger Bautista,SEA,OF,Farm,Farm Contract,[7] P,P,,7784
+,PLAY,Michael Brantley,HOU,OF,RETIRED,,,,8575,1895
+I'LL,I'LL,Trevor Story,BOS,SS,MLB,,,,9571,1899
+TBB,The Bluke Blokes,Yoán Moncada,LAA,3B,MLB,,[5] TC1,TC 1,9900,1923
+LFB,La Flama Blanca,Byron Buxton,MIN,CF,MLB,,[5] TC1,TC 1,9590,1931
+HAM,Hammers,Jorge Polanco,NYM,"2B,SS",MLB,,,,9750,1954
+B2J,Btwn2Jackies,Trent Grisham,NYY,CF,MLB,,[5] TC1,TC 1,10522,1982
+LFB,La Flama Blanca,Aaron Ashby,MIL,P,MLB,,,,11489,1995
+TBB,The Bluke Blokes,Adrian Houser,SF,P,MLB,,[5] TC1,TC 1,10098,2024
+CFL,Country Fried Lamb,Alejandro Kirk,TOR,C,MLB,,[5] TC1,TC 1,11853,2045
+I'LL,I'LL,Andrew Vaughn,MIL,"1B,OF",MLB,,[5] TC1,TC 1,11866,2088
+LAW,Law-Abiding Citizens,Cristian Javier,HOU,P,MLB,,,,11315,2313
+DRO,Andromedans,Daulton Varsho,TOR,"C,CF",MLB,,[5] TC1,TC 1,10843,2347
+LAW,Law-Abiding Citizens,Garrett Whitlock,BOS,P,MLB,,[5] TC1,TC 1,11358,2498
+SAD,not much of a donkey,Jo Adell,LAA,OF,MLB,,[5] TC1,TC 1,10893,2667
+TBB,The Bluke Blokes,Kyle Hendricks,LAA,P,MLB,,[5] TC1,TC 1,9758,2859
+HAM,Hammers,Lourdes Gurriel Jr.,AZ,"1B,2B,OF",MLB,,[5] TC1,TC 1,10616,2889
+WIZ,Whiz Kids,Luis Severino,ATH,P,MLB,,[5] TC1,TC 1,9879,2908
+TBB,The Bluke Blokes,Trevor Rogers,BAL,P,MLB,,[5] TC1,TC 1,10909,3321
+HAM,Hammers,Tyler Rogers,TOR,P,MLB,,[5] TC1,TC 1,11644,3346
+LFB,La Flama Blanca,Tylor Megill,NYM,P,MLB,,[5] TC1,TC 1,12215,3353
+,PLAY,Wander Franco,TB,"3B,SS",JAIL,,[5] TC1,TC 1,11573,3368
+JEP,Jepordizers!,Dylan Beavers,BAL,OF,Farm,Purchased Contract,[7] P,P,,3926
+WIZ,Whiz Kids,Jakob Marsee,MIA,OF,Farm,Purchased Contract,[7] P,P,,6555
+SAD,not much of a donkey,Eduardo Quintero,LAD,OF,Farm,Purchased Contract,[7] P,P,,6564
+B2J,Btwn2Jackies,Charlee Soto,MIN,RHP,Farm,Purchased Contract,[7] P,P,,6718
+CFL,Country Fried Lamb,Jaxon Wiggins,CHC,RHP,Farm,Purchased Contract,[7] P,P,,6725
+SAD,not much of a donkey,Nolan McLean,NYM,RHP,Farm,Purchased Contract,[7] P,P,,6911
+DRO,Andromedans,Carlos Lagrange,NYY,RHP,Farm,Purchased Contract,[7] P,P,,6938
+RV,Rick Vaughn,Jack Perkins,ATH,RHP,MLB,Keeper Contract,[6] TCR,TC R,,6983
+HAM,Hammers,Kyle Karros,COL,3B,Farm,Purchased Contract,[7] P,P,,7037
+HAM,Hammers,Kendry Rojas,TOR,LHP,Farm,Purchased Contract,[7] P,P,,7156
+WIZ,Whiz Kids,Bryan King,HOU,RP,MLB,,[5] TC1,TC 1,,7345
+B2J,Btwn2Jackies,Rainiel Rodriguez,STL,C,Farm,Purchased Contract,[7] P,P,,7622
+SAD,not much of a donkey,Khal Stephen,TOR,RHP,Farm,Purchased Contract,[7] P,P,,7671
+SAD,not much of a donkey,Caleb Bonemer,CWS,SS,Farm,Purchased Contract,[7] P,P,,7675
+WAR,Weekend Warriors,Josh Adamczewski,MIL,SS,Farm,Purchased Contract,[7] P,P,,7896
+B2J,Btwn2Jackies,Luis Robert Jr.,CWS,CF,MLB,,,,10765,

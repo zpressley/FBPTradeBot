@@ -1,0 +1,331 @@
+{
+  "official": {
+    "AZ": {
+      "aliases": [
+        "ARI",
+        "Arizona Diamondbacks",
+        "Diamondbacks",
+        "ari"
+      ]
+    },
+    "ATL": {
+      "aliases": [
+        "Atlanta Braves",
+        "Braves",
+        "atl"
+      ]
+    },
+    "BAL": {
+      "aliases": [
+        "Baltimore Orioles",
+        "Orioles",
+        "bal"
+      ]
+    },
+    "BOS": {
+      "aliases": [
+        "Boston Red Sox",
+        "Red Sox",
+        "bos"
+      ]
+    },
+    "CHC": {
+      "aliases": [
+        "Chicago Cubs",
+        "Cubs",
+        "chc"
+      ]
+    },
+    "CIN": {
+      "aliases": [
+        "Cincinnati Reds",
+        "Reds",
+        "cin"
+      ]
+    },
+    "CLE": {
+      "aliases": [
+        "Cleveland Guardians",
+        "Guardians",
+        "cle"
+      ]
+    },
+    "COL": {
+      "aliases": [
+        "Colorado Rockies",
+        "Rockies",
+        "col"
+      ]
+    },
+    "CWS": {
+      "aliases": [
+        "CHW",
+        "Chicago White Sox",
+        "White Sox",
+        "cws",
+        "White"
+      ]
+    },
+    "DET": {
+      "aliases": [
+        "Detroit Tigers",
+        "Tigers",
+        "det"
+      ]
+    },
+    "HOU": {
+      "aliases": [
+        "Houston Astros",
+        "Astros",
+        "hou"
+      ]
+    },
+    "KC": {
+      "aliases": [
+        "KCR",
+        "Kansas City Royals",
+        "Royals",
+        "kc"
+      ]
+    },
+    "LAA": {
+      "aliases": [
+        "ANA",
+        "Los Angeles Angels",
+        "Angels",
+        "ana",
+        "laa"
+      ]
+    },
+    "LAD": {
+      "aliases": [
+        "Los Angeles Dodgers",
+        "Dodgers",
+        "la",
+        "lad"
+      ]
+    },
+    "MIA": {
+      "aliases": [
+        "Miami Marlins",
+        "Marlins",
+        "mia"
+      ]
+    },
+    "MIL": {
+      "aliases": [
+        "Milwaukee Brewers",
+        "Brewers",
+        "mil"
+      ]
+    },
+    "MIN": {
+      "aliases": [
+        "Minnesota Twins",
+        "Twins",
+        "min"
+      ]
+    },
+    "NYM": {
+      "aliases": [
+        "New York Mets",
+        "Mets",
+        "nym"
+      ]
+    },
+    "NYY": {
+      "aliases": [
+        "New York Yankees",
+        "Yankees",
+        "nyy"
+      ]
+    },
+    "ATH": {
+      "aliases": [
+        "Oakland Athletics",
+        "Athletics",
+        "oak",
+        "OAK"
+      ]
+    },
+    "PHI": {
+      "aliases": [
+        "Philadelphia Phillies",
+        "Phillies",
+        "phi"
+      ]
+    },
+    "PIT": {
+      "aliases": [
+        "Pittsburgh Pirates",
+        "Pirates",
+        "pit"
+      ]
+    },
+    "SD": {
+      "aliases": [
+        "SDP",
+        "San Diego Padres",
+        "Padres",
+        "sd"
+      ]
+    },
+    "SEA": {
+      "aliases": [
+        "Seattle Mariners",
+        "Mariners",
+        "sea"
+      ]
+    },
+    "SF": {
+      "aliases": [
+        "SFG",
+        "San Francisco Giants",
+        "Giants",
+        "sf"
+      ]
+    },
+    "STL": {
+      "aliases": [
+        "St. Louis Cardinals",
+        "Cardinals",
+        "stl"
+      ]
+    },
+    "TB": {
+      "aliases": [
+        "TBR",
+        "Tampa Bay Rays",
+        "Rays",
+        "tb"
+      ]
+    },
+    "TEX": {
+      "aliases": [
+        "Texas Rangers",
+        "Rangers",
+        "tex"
+      ]
+    },
+    "TOR": {
+      "aliases": [
+        "Toronto Blue Jays",
+        "Blue Jays",
+        "tor"
+      ]
+    },
+    "WSH": {
+      "aliases": [
+        "WSN",
+        "was",
+        "Washington Nationals",
+        "Nationals",
+        "WAS"
+      ]
+    }
+  },
+  "aliases": {
+    "ari": "AZ",
+    "arizona diamondbacks": "AZ",
+    "diamondbacks": "AZ",
+    "az": "AZ",
+    "atlanta braves": "ATL",
+    "braves": "ATL",
+    "atl": "ATL",
+    "baltimore orioles": "BAL",
+    "orioles": "BAL",
+    "bal": "BAL",
+    "boston red sox": "BOS",
+    "red sox": "BOS",
+    "bos": "BOS",
+    "chicago cubs": "CHC",
+    "cubs": "CHC",
+    "chc": "CHC",
+    "cincinnati reds": "CIN",
+    "reds": "CIN",
+    "cin": "CIN",
+    "cleveland guardians": "CLE",
+    "guardians": "CLE",
+    "cle": "CLE",
+    "colorado rockies": "COL",
+    "rockies": "COL",
+    "col": "COL",
+    "chw": "CWS",
+    "chicago white sox": "CWS",
+    "white sox": "CWS",
+    "cws": "CWS",
+    "white": "CWS",
+    "detroit tigers": "DET",
+    "tigers": "DET",
+    "det": "DET",
+    "houston astros": "HOU",
+    "astros": "HOU",
+    "hou": "HOU",
+    "kcr": "KC",
+    "kansas city royals": "KC",
+    "royals": "KC",
+    "kc": "KC",
+    "ana": "LAA",
+    "los angeles angels": "LAA",
+    "angels": "LAA",
+    "laa": "LAA",
+    "los angeles dodgers": "LAD",
+    "dodgers": "LAD",
+    "la": "LAD",
+    "lad": "LAD",
+    "miami marlins": "MIA",
+    "marlins": "MIA",
+    "mia": "MIA",
+    "milwaukee brewers": "MIL",
+    "brewers": "MIL",
+    "mil": "MIL",
+    "minnesota twins": "MIN",
+    "twins": "MIN",
+    "min": "MIN",
+    "new york mets": "NYM",
+    "mets": "NYM",
+    "nym": "NYM",
+    "new york yankees": "NYY",
+    "yankees": "NYY",
+    "nyy": "NYY",
+    "oakland athletics": "ATH",
+    "athletics": "ATH",
+    "oak": "ATH",
+    "ath": "ATH",
+    "philadelphia phillies": "PHI",
+    "phillies": "PHI",
+    "phi": "PHI",
+    "pittsburgh pirates": "PIT",
+    "pirates": "PIT",
+    "pit": "PIT",
+    "sdp": "SD",
+    "san diego padres": "SD",
+    "padres": "SD",
+    "sd": "SD",
+    "seattle mariners": "SEA",
+    "mariners": "SEA",
+    "sea": "SEA",
+    "sfg": "SF",
+    "san francisco giants": "SF",
+    "giants": "SF",
+    "sf": "SF",
+    "st. louis cardinals": "STL",
+    "cardinals": "STL",
+    "stl": "STL",
+    "tbr": "TB",
+    "tampa bay rays": "TB",
+    "rays": "TB",
+    "tb": "TB",
+    "texas rangers": "TEX",
+    "rangers": "TEX",
+    "tex": "TEX",
+    "toronto blue jays": "TOR",
+    "blue jays": "TOR",
+    "tor": "TOR",
+    "wsn": "WSH",
+    "was": "WSH",
+    "washington nationals": "WSH",
+    "nationals": "WSH",
+    "wsh": "WSH"
+  }
+}

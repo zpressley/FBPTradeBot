@@ -42,6 +42,7 @@ python health.py
 This starts:
 - the Discord bot (same `DISCORD_TOKEN` expectation)
 - a FastAPI server (defaults to port `8000`, or uses `$PORT`)
+- the auction web API endpoints (`/api/auction/current`, `/api/auction/bid`, `/api/auction/match`), which require `BOT_API_KEY` and delegate to `auction_manager.AuctionManager`
 
 ### Update the local data cache (data pipeline)
 Most bot commands rely on JSON files under `data/`. The pipeline scripts are in `data_pipeline/`.
@@ -118,6 +119,7 @@ Key cogs/modules:
 - `commands/player.py` + `commands/lookup.py`: `/player` lookup + fuzzy matching utilities.
   - `commands/lookup.py` loads `data/combined_players.json` and exposes `fuzzy_lookup_all`.
 - `commands/standings.py`: `/standings` reads from `data/standings.json`.
+- `commands/auction.py`: prospect auction portal Discord interface (`/auction`, `/bid`) backed by `auction_manager.AuctionManager` and a background `auction_tick` task for scheduled alerts.
 - `commands/service.py`: `/service`, `/prospects`, `/alerts` read from `data/service_stats.json`.
 - `commands/database_commands.py`: admin commands (`/db_setup`, `/db_status`, `/db_refresh`, `/db_find`) that manage a dedicated prospect database Discord channel, backed by `draft/database_channel_manager.py` and `draft/database_tracker.py`.
 
@@ -138,6 +140,7 @@ The draft feature is split between Discord cogs and pure “state manager” cod
   - Stores per-team ordered target lists in `data/manager_boards_2025.json`.
   - Draft autopick prefers the team’s board (`BoardManager.get_next_available(...)`).
 - `draft/pick_validator.py`: rule validation logic (wired for use, but the Discord draft flow currently uses a lightweight confirmation flow).
+- Additional narrative documentation for the draft system lives in `DRAFT_SYSTEM_HANDOFF.md` and the `docs/` directory.
 
 ### Prospect database & live pick tracking
 The prospect database subsystem ties together Discord commands, a dedicated database channel, and MLB stats/ownership data.
@@ -146,6 +149,13 @@ The prospect database subsystem ties together Discord commands, a dedicated data
 - `commands/database_commands.py`: admin slash commands that create/refresh the database channel, check status, and look up player locations, persisting config to `data/database_config.json` and tracker state to `data/database_tracker.json`.
 - `draft/draft_database_integration.py`: optional integration layer that lets the draft flow enqueue pick updates into the database so tracked prospect lines are marked as picked in place.
 - `prospect_stats_repository.py`: pulls MLB Stats API data and combines it with ownership data and cached MLB IDs under `data/prospect_stats/`, which the database channel manager uses when building prospect lists.
+
+### Prospect auction subsystem & web API
+The prospect auction flow centralizes business rules in `auction_manager.py` and exposes them via both Discord slash commands and HTTP endpoints.
+
+- `auction_manager.AuctionManager`: single source of truth for auction phases, bid validation, match/forfeit decisions, and persistence to `data/auction_current.json`. Also reads from `data/combined_players.json`, `data/wizbucks.json`, `data/standings.json`, and `config/season_dates.json`.
+- `commands/auction.py`: Discord cog that wires `/auction` and `/bid` to `AuctionManager` and runs a background `auction_tick` task to send scheduled alerts based on the current auction phase.
+- `health.py`: in addition to the health check, hosts the auction FastAPI endpoints (`/api/auction/current`, `/api/auction/bid`, `/api/auction/match`) protected by `BOT_API_KEY`. Successful bid/match calls both log to Discord and attempt a best-effort `git add/commit/push` of `data/auction_current.json` so downstream consumers (such as the web portal) can sync state.
 
 ### Data model: `data/` as the contract between scripts and bot
 The bot expects JSON files under `data/` to exist and match the schema produced by pipeline scripts.
