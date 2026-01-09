@@ -107,7 +107,10 @@ def normalize_row(row: dict, source: str, row_index: int) -> TransactionRecord:
     eta = (row.get("ETA") or "").strip()
     player_type = (row.get("Player Type") or "").strip()
     owner = (row.get("Owner") or "").strip()
-    contract = (row.get("Contract") or "").strip()
+    # History books use a single "Contract Status" column; newer logs may
+    # eventually split this into separate Contract/Status fields. Prefer the
+    # explicit Contract field if present, else fall back to Contract Status.
+    contract = (row.get("Contract") or row.get("Contract Status") or "").strip()
     status = (row.get("Status") or "").strip()
     years = (row.get("Years") or "").strip()
     update_type = (row.get("Update Type") or "").strip()
@@ -168,15 +171,47 @@ def build_history() -> None:
             continue
 
         source = csv_path.stem  # e.g. "FBP History Book - Page 1"
-        with csv_path.open(newline="", encoding="utf-8-sig") as f:
-            reader = csv.DictReader(f)
-            for idx, row in enumerate(reader, start=2):  # 2 = first data row after header
-                # Skip completely empty rows
-                if not any((v or "").strip() for v in row.values()):
-                    continue
 
-                rec = normalize_row(row, source=source, row_index=idx)
-                records.append(rec)
+        # Some sheets (notably Page 4) have a banner row above the real header
+        # ("Player History Audit"). To normalize across all history files, we
+        # manually locate the row whose first column is "Admin" and treat that
+        # as the header row.
+        with csv_path.open(newline="", encoding="utf-8-sig") as f:
+            raw_reader = csv.reader(f)
+            rows = [r for r in raw_reader]
+
+        if not rows:
+            continue
+
+        # Find header row (first row whose first cell is "Admin" after stripping)
+        header_index = None
+        for i, r in enumerate(rows):
+            if r and r[0].strip() == "Admin":
+                header_index = i
+                break
+
+        if header_index is None:
+            # Fallback: use first row as header
+            header_index = 0
+
+        header = rows[header_index]
+        data_rows = rows[header_index + 1 :]
+
+        # Build DictReader-like rows from the located header
+        for offset, raw_row in enumerate(data_rows, start=header_index + 2):
+            # Map header -> value, trimming header cells
+            row = {
+                (header[i].strip() if i < len(header) else f"col_{i}"):
+                    (raw_row[i] if i < len(raw_row) else "")
+                for i in range(len(header))
+            }
+
+            # Skip completely empty rows
+            if not any((v or "").strip() for v in row.values()):
+                continue
+
+            rec = normalize_row(row, source=source, row_index=offset)
+            records.append(rec)
 
     # Sort newest first by timestamp (best-effort)
     def sort_key(rec: TransactionRecord):
