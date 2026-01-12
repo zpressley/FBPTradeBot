@@ -38,8 +38,26 @@ if not ACCESS_TOKEN:
     exit()
 
 # League / season configuration
-# For 2025, MLB game_id is 458 and this script targets league 15505.
-GAME_ID = 458
+# Default season is 2025. Override by passing a season year on the command line,
+# e.g. `python fetch_players_with_stats.py 2024`.
+MLB_GAME_IDS = {
+    2025: 458,
+    2024: 404,
+}
+DEFAULT_SEASON = 2025
+
+season = DEFAULT_SEASON
+if len(sys.argv) > 1:
+    try:
+        season_arg = int(sys.argv[1])
+        if season_arg in MLB_GAME_IDS:
+            season = season_arg
+        else:
+            print(f"⚠️ Season {season_arg} not configured; defaulting to {DEFAULT_SEASON}.")
+    except ValueError:
+        print(f"⚠️ Invalid season '{sys.argv[1]}'; defaulting to {DEFAULT_SEASON}.")
+
+GAME_ID = MLB_GAME_IDS[season]
 LEAGUE_NUM = "15505"
 LEAGUE_KEY = f"{GAME_ID}.l.{LEAGUE_NUM}"
 
@@ -185,7 +203,7 @@ while True:
 
 # Save to CSV under data/
 os.makedirs("data", exist_ok=True)
-csv_filename = os.path.join("data", "yahoo_players_2025_stats.csv")
+csv_filename = os.path.join("data", f"yahoo_players_{season}_stats.csv")
 
 # Use discovered stat labels in the order returned by settings
 stat_columns = ordered_labels if ordered_labels else sorted(
@@ -200,4 +218,4 @@ with open(csv_filename, "w", newline="") as csv_file:
     for player in players_list:
         writer.writerow(player)
 
-print(f"\n✅ Successfully saved all 2025 player stats to {csv_filename}!")
+print(f"\n✅ Successfully saved all {season} player stats to {csv_filename}!")
