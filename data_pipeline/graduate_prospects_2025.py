@@ -119,7 +119,18 @@ def load_team_aliases() -> set:
     return aliases
 
 
-def _load_fg_hitter_file(path: Path, usage: Dict[int, MLBUsage], team_aliases: set) -> None:
+def _load_fg_hitter_file(
+    path: Path,
+    usage: Dict[int, MLBUsage],
+    team_aliases: set,
+    seen_keys: set,
+) -> None:
+    """Load Fangraphs hitter rows, deduping by (mlbam, season, team).
+
+    Some players appear in both the main and small-sample leaderboard
+    exports. If Season+Team+MLBAMID match, we treat the row as the same
+    season context and skip it to avoid double-counting PA/G.
+    """
     if not path.exists():
         return
     with path.open(newline="", encoding="utf-8-sig") as f:
@@ -137,6 +148,22 @@ def _load_fg_hitter_file(path: Path, usage: Dict[int, MLBUsage], team_aliases: s
                 # Skip any non-MLB or weird combined rows
                 continue
 
+            # Season is important for de-duplication across files.
+            # If missing/garbage, fall back to 0 so we at least coalesce
+            # obvious exact duplicates.
+            try:
+                season = int(row.get("Season") or 0)
+            except (TypeError, ValueError):
+                season = 0
+
+            key = ("bat", mlbam, season, team)
+            if key in seen_keys:
+                # Same player + season + team already counted from another
+                # leaderboard export; treat as duplicate view of the same
+                # season and ignore for aggregation.
+                continue
+            seen_keys.add(key)
+
             try:
                 g = int(float(row.get("G") or 0))
             except ValueError:
@@ -151,7 +178,17 @@ def _load_fg_hitter_file(path: Path, usage: Dict[int, MLBUsage], team_aliases: s
             stat.g_bat += g
 
 
-def _load_fg_pitcher_file(path: Path, usage: Dict[int, MLBUsage], team_aliases: set) -> None:
+def _load_fg_pitcher_file(
+    path: Path,
+    usage: Dict[int, MLBUsage],
+    team_aliases: set,
+    seen_keys: set,
+) -> None:
+    """Load Fangraphs pitcher rows, deduping by (mlbam, season, team).
+
+    This prevents counting the same season twice when a player appears
+    in both the main and alternate pitcher leaderboards.
+    """
     if not path.exists():
         return
     with path.open(newline="", encoding="utf-8-sig") as f:
@@ -167,6 +204,16 @@ def _load_fg_pitcher_file(path: Path, usage: Dict[int, MLBUsage], team_aliases: 
             team = (row.get("Team") or "").upper().strip()
             if team_aliases and team not in team_aliases:
                 continue
+
+            try:
+                season = int(row.get("Season") or 0)
+            except (TypeError, ValueError):
+                season = 0
+
+            key = ("pit", mlbam, season, team)
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
 
             try:
                 g = int(float(row.get("G") or 0))
@@ -188,15 +235,24 @@ def build_mlb_usage() -> Dict[int, MLBUsage]:
 
     We sum across all seasons present in the leaderboards; this approximates
     career totals well enough for graduation purposes.
+
+    To avoid double-counting, we treat rows with the same
+    (stat_type, mlbam, season, team) across multiple exports as the
+    same season and only count them once.
     """
 
     usage: Dict[int, MLBUsage] = {}
     team_aliases = load_team_aliases()
 
-    _load_fg_hitter_file(FG_HITTERS_MAIN, usage, team_aliases)
-    _load_fg_hitter_file(FG_HITTERS_SMALL, usage, team_aliases)
-    _load_fg_pitcher_file(FG_PITCHERS_MAIN, usage, team_aliases)
-    _load_fg_pitcher_file(FG_PITCHERS_ALT, usage, team_aliases)
+    # Tracks which (stat_type, mlbam, season, team) combinations we've
+    # already incorporated. This lets us safely load multiple leaderboard
+    # variants without inflating career totals.
+    seen_keys: set = set()
+
+    _load_fg_hitter_file(FG_HITTERS_MAIN, usage, team_aliases, seen_keys)
+    _load_fg_hitter_file(FG_HITTERS_SMALL, usage, team_aliases, seen_keys)
+    _load_fg_pitcher_file(FG_PITCHERS_MAIN, usage, team_aliases, seen_keys)
+    _load_fg_pitcher_file(FG_PITCHERS_ALT, usage, team_aliases, seen_keys)
 
     print(f"📊 Aggregated MLB usage for {len(usage)} players from Fangraphs")
     return usage
