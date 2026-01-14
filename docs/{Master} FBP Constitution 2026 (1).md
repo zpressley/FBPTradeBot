@@ -179,7 +179,7 @@
 Age 25 & under (turn 26 you aren't a prospect anymore)
 
 Batter:
-350 PA -or- 80 GP
+350 PA -or- 90 GP
 
 Pitcher:
 100 IP -or- 30 Pitching Appearances

@@ -7,7 +7,6 @@ upid,name,manager,owned,mlb_id,reason,age,pa,g_bat,ip,g_pitch,before_player_type
 7346,Payton Eeles,Country Fried Lamb,True,823356,age>=26 (26),26.0,0.0,0.0,0.0,0.0,Farm,Farm Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 3953,Chandler Simpson,Hammers,True,802415,PA>=350 (405),25.0,405.0,101.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 4575,Drake Baldwin,Hammers,True,686948,PA>=350 (401),24.0,401.0,114.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
-3483,Ronny Mauricio,Jepordizers!,True,677595,G_bat>=80 (83),24.0,281.0,83.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 3853,Luisangel Acuña,Jepordizers!,True,682668,G_bat>=80 (102),23.0,227.0,102.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 3982,Thomas Saggese,Jepordizers!,True,695336,G_bat>=80 (90),23.0,305.0,90.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 6562,Dylan Crews,Jepordizers!,True,686611,PA>=350 (418),23.0,418.0,107.0,0.0,0.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
@@ -28,9 +27,6 @@ upid,name,manager,owned,mlb_id,reason,age,pa,g_bat,ip,g_pitch,before_player_type
 4030,Richard Fitts,Weekend Warriors,True,690916,age>=26 (26),26.0,0.0,15.0,65.2,15.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 6868,Sawyer Gipson-Long,Weekend Warriors,True,687830,age>=26 (28),28.0,0.0,12.0,51.1,12.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
 7335,Craig Yoho,Law-Abiding Citizens,True,684974,age>=26 (26),26.0,0.0,8.0,8.2,8.0,Farm,Purchased Contract,[7] P,P,MLB,Keeper Contract,[6] TCR,TC R
-3674,Kyren Paris,,False,677347,G_bat>=80 (80),24.0,245.0,80.0,0.0,0.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
-3861,Leo Jimenez,,False,677870,G_bat>=80 (81),24.0,242.0,81.0,0.0,0.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
 4011,Joey Estes,,False,683155,IP>=100.0 (148.2),24.0,0.0,30.0,148.2,30.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
-4087,Darell Hernaiz,,False,687231,G_bat>=80 (89),24.0,293.0,89.0,0.0,0.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
 4546,Lyon Richardson,,False,680689,G_pitch>=30 (39),25.0,0.0,39.0,53.60000000000001,39.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
 5298,Jose A. Ferrer,,False,678606,IP>=100.0 (137.1),25.0,0.0,138.0,137.1,138.0,Farm,,[7] P,P,MLB,,[5] TC1,TC 1
