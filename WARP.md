@@ -9,6 +9,10 @@ A Python Discord bot for an FBP fantasy league with:
 - A draft system (stateful, persisted to `data/`)
 - Service-days tracking commands backed by a generated stats JSON
 
+Rules: 
+For fbp-trade-bot and fbp-hub repos make sure to always run player data through UPID first to ensure that there is a unique ID for players that connects it with all other players in the system. 
+
+
 ## Common commands
 This repo does not include a formal task runner (no `Makefile`, `pyproject.toml`, `pytest.ini`, etc.). The commands below reflect what exists in the code today.
 
@@ -81,15 +85,23 @@ Note: the Yahoo-related pipeline scripts import `token_manager` (e.g. `from toke
 No linter/typechecker is configured in-repo (no Ruff/Black/Mypy config files).
 
 ### Tests
-No automated test runner is configured. The repo contains ad-hoc scripts under `random/`, `service_time/`, and the repo root that are used like manual tests.
+No automated test runner is configured. The repo contains ad-hoc scripts under `random/`, `service_time/`, and the `tests/` directory that are used like manual tests.
 
 Examples (run one at a time):
 ```bash
 source venv/bin/activate
 python random/test_trade_logic.py           # trade workflow checks
 python service_time/test_service-commands.py  # service command data sanity checks
-python test_robust_parser.py               # CSV rank parser
+python tests/test_robust_parser.py          # CSV rank parser
 ```
+
+### One-off scripts
+For any future one-off or maintenance workflows (e.g., reading or manipulating data with standalone Python processes), prefer placing them under the `scripts/` directory.
+
+- Use `scripts/` for reusable but non-core tooling.
+- Use `scripts/archive/` for one-time or historical cleanup scripts that are kept only for reference.
+
+This keeps the repository root and `data_pipeline/` focused on core, recurring processes.
 
 ## Code architecture (big picture)
 

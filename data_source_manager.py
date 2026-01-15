@@ -63,13 +63,14 @@ class DataSourceManager:
         self.current_phase = self.determine_current_phase()
         
     def load_season_dates(self) -> Dict[str, str]:
-        """Load season dates from config file"""
-        if os.path.exists(self.config_file):
-            with open(self.config_file, 'r') as f:
-                return json.load(f)
-        
-        # Default 2026 dates (update annually)
-        return {
+        """Load season dates from config file, with safe defaults.
+
+        The config file can override any of the known keys. If some keys are
+        missing, we fall back to sensible defaults so downstream code does not
+        crash with KeyError.
+        """
+        # Base defaults (update annually if needed)
+        defaults: Dict[str, str] = {
             "pad_date": "2026-02-10",
             "ppd_date": "2026-02-17",
             "franchise_tag_date": "2026-02-19",
@@ -80,8 +81,32 @@ class DataSourceManager:
             "division_draft": "2026-03-10",
             "week_1_start": "2026-03-17",
             "regular_season_end": "2026-08-31",
-            "playoffs_end": "2026-09-14"
+            "playoffs_end": "2026-09-14",
         }
+
+        if os.path.exists(self.config_file):
+            with open(self.config_file, 'r') as f:
+                raw = json.load(f)
+
+            # Start with defaults, then override with any matching keys in config
+            merged = defaults.copy()
+            for key, value in raw.items():
+                if key in merged:
+                    merged[key] = value
+
+            # Map legacy/alternate keys if present
+            # e.g. config uses "preseason-trade deadline" for trade window end
+            if "preseason-trade deadline" in raw:
+                merged["trade_window_end"] = raw["preseason-trade deadline"]
+            # KAP open/end can approximate trade window + keeper deadline
+            if "kap_open_date" in raw:
+                merged["trade_window_start"] = raw["kap_open_date"]
+            if "kap_end_date" in raw:
+                merged["keeper_deadline"] = raw["kap_end_date"]
+
+            return merged
+
+        return defaults
     
     def determine_current_phase(self) -> SeasonPhase:
         """Determine which phase of the season we're currently in"""

@@ -36,13 +36,40 @@ jobs:
         # The smart pipeline automatically detects season phase
         # and only runs necessary updates
         python3 data_pipeline/smart_update_all.py
-    
-    - name: Commit and push if changes
+
+    - name: Commit and push if changes (fbp-trade-bot)
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data/
         git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Daily data update - $(date)" && git push)
+
+    # Optional: sync Top 100 prospects into the fbp-hub repo for the website.
+    # This assumes you have created a personal access token with repo write
+    # access to the fbp-hub repository and stored it in the secret
+    # FBP_HUB_PUSH_TOKEN. Adjust the `repository` value if your GitHub org/user
+    # or repo name differs.
+    - name: Checkout fbp-hub repository
+      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      uses: actions/checkout@v3
+      with:
+        repository: "zpressley/fbp-hub"
+        path: fbp-hub
+        token: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+
+    - name: Update top100_prospects.json in fbp-hub
+      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      run: |
+        python3 data_pipeline/update_top100_prospects_for_hub.py --hub-path fbp-hub
+
+    - name: Commit and push Top 100 to fbp-hub
+      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      working-directory: fbp-hub
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/top100_prospects.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update top100_prospects from pipeline - $(date)" && git push)
 
     - name: Resolve weekly auction (Sundays only)
       if: "${{ github.event_name == 'schedule' && startsWith(github.event.schedule, '0 18') }}"
