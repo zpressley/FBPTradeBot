@@ -2,18 +2,24 @@ import os
 import asyncio
 from datetime import datetime
 from zoneinfo import ZoneInfo
+import threading
+import sys
 
 import discord
 from discord.ext import commands
 from fastapi import FastAPI, Depends, HTTPException, Header
 from pydantic import BaseModel
 import uvicorn
+from dotenv import load_dotenv
 
 from auction_manager import AuctionManager
 from draft.draft_manager import DraftManager
 from draft.prospect_database import ProspectDatabase
 from draft.pick_validator import PickValidator
 from draft.board_manager import BoardManager
+
+# Load environment variables
+load_dotenv()
 
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2025
@@ -23,26 +29,70 @@ TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 # ---- Discord Bot Setup ----
 TOKEN = os.getenv("DISCORD_TOKEN")
 API_KEY = os.getenv("BOT_API_KEY")  # for FastAPI authentication
+PORT = int(os.getenv("PORT", 8000))
+
+if not TOKEN:
+    print("❌ DISCORD_TOKEN not set in environment")
+    sys.exit(1)
+
+# Write credentials from environment (for Render deployment)
+google_creds = os.getenv("GOOGLE_CREDS_JSON")
+if google_creds:
+    with open("google_creds.json", "w") as f:
+        f.write(google_creds)
+    print("✅ Google credentials written")
+
+yahoo_token = os.getenv("YAHOO_TOKEN_JSON")
+if yahoo_token:
+    with open("token.json", "w") as f:
+        f.write(yahoo_token)
+    print("✅ Yahoo token written")
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
     print(f"✅ Bot is online as {bot.user}")
+    print(f"   Connected to {len(bot.guilds)} guild(s)")
+    
+    await bot.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.watching,
+            name="FBP League | /help for commands"
+        )
+    )
 
 @bot.event
 async def setup_hook():
-    await bot.load_extension("commands.trade")
-    await bot.load_extension("commands.roster")
-    await bot.load_extension("commands.player")
-    await bot.load_extension("commands.standings")
-    # Auction commands (Prospect Auction Portal)
+    extensions = [
+        "commands.trade",
+        "commands.roster",
+        "commands.player",
+        "commands.standings",
+        "commands.draft",
+        "commands.board"
+    ]
+    
+    for ext in extensions:
+        try:
+            await bot.load_extension(ext)
+            print(f"   ✅ Loaded: {ext}")
+        except Exception as e:
+            print(f"   ⚠️ Failed to load {ext}: {e}")
+    
+    # Auction commands (optional)
     try:
         await bot.load_extension("commands.auction")
-    except Exception as exc:  # pragma: no cover - defensive
-        print(f"⚠️ Failed to load auction commands: {exc}")
+        print(f"   ✅ Loaded: commands.auction")
+    except Exception as exc:
+        print(f"   ⚠️ Failed to load auction commands: {exc}")
+    
+    print("🔄 Syncing slash commands...")
+    await bot.tree.sync()
+    print("✅ Slash commands synced")
 
 # ---- FastAPI Web Server ----
 app = FastAPI()
@@ -51,7 +101,30 @@ app = FastAPI()
 # Health check
 @app.get("/")
 def health():
-    return {"status": "ok", "bot": str(bot.user)}
+    bot_status = "connected" if bot.is_ready() else "connecting"
+    return {
+        "status": "ok",
+        "bot": str(bot.user) if bot.user else "Not connected",
+        "bot_status": bot_status,
+        "guilds": len(bot.guilds) if bot.is_ready() else 0
+    }
+
+@app.get("/health")
+def detailed_health():
+    """Detailed health check for monitoring"""
+    return {
+        "status": "ok",
+        "discord_bot": {
+            "connected": bot.is_ready(),
+            "user": str(bot.user) if bot.user else None,
+            "guilds": len(bot.guilds) if bot.is_ready() else 0,
+            "latency_ms": round(bot.latency * 1000, 2) if bot.is_ready() else None
+        },
+        "server": {
+            "port": PORT,
+            "pid": os.getpid()
+        }
+    }
 
 
 # ---- API auth helpers ----
@@ -93,12 +166,7 @@ class BoardUpdateRequest(BaseModel):
 
 
 def _get_prospect_draft_components():
-    """Factory for prospect-draft components (fresh per request).
-
-    Using fresh instances ensures we always read the latest JSON state on
-    disk (draft_state_*.json and combined_players.json) that Discord
-    commands have written.
-    """
+    """Factory for prospect-draft components (fresh per request)."""
     draft_manager = DraftManager(draft_type="prospect", season=PROSPECT_DRAFT_SEASON)
     db = ProspectDatabase(season=PROSPECT_DRAFT_SEASON, draft_type="prospect")
     validator = PickValidator(db, draft_manager)
@@ -107,48 +175,32 @@ def _get_prospect_draft_components():
 
 async def _send_auction_log_message(content: str) -> None:
     """Post an auction log message to the test channel, if available."""
-
     try:
         channel = bot.get_channel(TEST_AUCTION_CHANNEL_ID)
         if channel:
             await channel.send(content)
-    except Exception as exc:  # pragma: no cover - logging only
+    except Exception as exc:
         print(f"⚠️ Failed to send auction log message: {exc}")
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
-    """Best-effort helper to commit and push data updates.
-
-    This assumes Git is configured on the Render instance with a remote
-    that has push access. Failures are logged to stdout but do not
-    raise, so API callers get a result even if sync fails.
-    """
-
+    """Best-effort helper to commit and push data updates."""
     try:
         import subprocess
-
         if file_paths:
             subprocess.run(["git", "add", *file_paths], check=True)
         subprocess.run(["git", "commit", "-m", message], check=True)
         subprocess.run(["git", "push"], check=True)
-    except Exception as exc:  # pragma: no cover - side-effect helper
+    except Exception as exc:
         print(f"⚠️ Git commit/push failed: {exc}")
 
 
 @app.get("/api/auction/current")
 async def get_current_auction(authorized: bool = Depends(verify_api_key)):
-    """Return the current auction state for API consumers.
-
-    For now this simply returns the raw auction_current.json contents
-    (initial version). The website will mostly consume the mirrored
-    copy under fbp-hub/data/, but this endpoint allows the Worker or
-    tools to introspect state directly.
-    """
-
+    """Return the current auction state for API consumers."""
     manager = AuctionManager()
-    # Use internal loader; it's fine for API surface.
     now = datetime.now(tz=ET)
-    state = manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
+    state = manager._load_or_initialize_auction(now)
     return state
 
 
@@ -158,7 +210,6 @@ async def api_place_bid(
     authorized: bool = Depends(verify_api_key),
 ):
     """Place an OB or CB bid from the website via Cloudflare Worker."""
-
     manager = AuctionManager()
     result = manager.place_bid(
         team=payload.team,
@@ -167,12 +218,10 @@ async def api_place_bid(
         bid_type=payload.bid_type,
     )
 
-    # Persist auction_current.json and push so website can sync data.
     if result.get("success"):
         _commit_and_push(["data/auction_current.json"],
                          f"Auction bid: {payload.bid_type} ${payload.amount} on {payload.prospect_id} by {payload.team}")
 
-        # Fire-and-forget Discord log
         bid = result.get("bid", {})
         is_ob = bid.get("bid_type", payload.bid_type) == "OB"
         header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
@@ -197,7 +246,6 @@ async def api_record_match(
     authorized: bool = Depends(verify_api_key),
 ):
     """Record an explicit Match / Forfeit decision from OB manager."""
-    
     manager = AuctionManager()
     result = manager.record_match(
         team=payload.team,
@@ -210,7 +258,6 @@ async def api_record_match(
         _commit_and_push(["data/auction_current.json"],
                          f"Auction match: {payload.decision} on {payload.prospect_id} by {payload.team}")
     
-        # Fire-and-forget Discord log
         match = result.get("match", {})
         decision = match.get("decision", payload.decision)
         emoji = "✅" if decision == "match" else "🚫"
@@ -255,14 +302,8 @@ async def api_validate_prospect_pick(
     payload: ProspectValidateRequest,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Validate a prospective pick for the current prospect draft.
-
-    This is used by the website for previewing picks; it does NOT
-    mutate draft state – Discord remains the source of truth for
-    actually confirming picks.
-    """
+    """Validate a prospective pick for the current prospect draft."""
     draft_manager, _, validator = _get_prospect_draft_components()
-    # get_validation_summary includes ambiguity handling and suggestions
     summary = validator.get_validation_summary(payload.team, payload.player)
     return summary
 
@@ -274,15 +315,7 @@ async def get_draft_board(
     team: str,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Return the current personal draft board for a team.
-
-    Response shape is stable for the website Draft Board page:
-    {
-      "team": "WIZ",
-      "board": ["Player A", "Player B", ...],
-      "max_size": 50
-    }
-    """
+    """Return the current personal draft board for a team."""
     manager = BoardManager(season=PROSPECT_DRAFT_SEASON)
     board = manager.get_board(team)
     return {
@@ -298,31 +331,21 @@ async def update_draft_board(
     payload: BoardUpdateRequest,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Replace a team's personal draft board with the provided list.
-
-    This endpoint is designed for the website UI; it enforces the
-    BoardManager MAX_BOARD_SIZE and returns the updated board.
-    """
+    """Replace a team's personal draft board with the provided list."""
     if payload.team != team:
         raise HTTPException(status_code=400, detail="Team in path and body must match")
 
     manager = BoardManager(season=PROSPECT_DRAFT_SEASON)
 
-    # Basic size guard before delegating to BoardManager semantics.
     if len(payload.board) > manager.MAX_BOARD_SIZE:
         raise HTTPException(
             status_code=400,
             detail=f"Board too large (max {manager.MAX_BOARD_SIZE})",
         )
 
-    # Use BoardManager.reorder_board if the team already has a board with
-    # the same players; otherwise, we treat this as a fresh board for the
-    # team and assign directly.
     existing = manager.get_board(team)
     if existing:
-        # Ensure same set of players when reordering
         if set(existing) != set(payload.board):
-            # Fallback: treat as fresh board assignment.
             manager.boards[team] = payload.board[: manager.MAX_BOARD_SIZE]
             manager.save_boards()
         else:
@@ -330,7 +353,6 @@ async def update_draft_board(
             if not ok:
                 raise HTTPException(status_code=400, detail=msg)
     else:
-        # No existing board for team, just assign.
         manager.boards[team] = payload.board[: manager.MAX_BOARD_SIZE]
         manager.save_boards()
 
@@ -342,14 +364,58 @@ async def update_draft_board(
 
 
 # ---- Orchestrate Both ----
-async def start_all():
-    await bot.start(TOKEN)
+async def start_bot():
+    """Start Discord bot with error handling"""
+    try:
+        print(f"🤖 Starting Discord bot...")
+        await bot.start(TOKEN)
+    except KeyboardInterrupt:
+        print("⏸️ Received interrupt signal")
+        await bot.close()
+    except Exception as e:
+        print(f"❌ Bot error: {e}")
+        raise
+
 def run_server():
-    config = uvicorn.Config(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    """Run FastAPI server (blocking)"""
+    print(f"🌐 Starting FastAPI server on port {PORT}...")
+    
+    config = uvicorn.Config(
+        app, 
+        host="0.0.0.0", 
+        port=PORT,
+        log_level="info",
+        access_log=True
+    )
+    
     server = uvicorn.Server(config)
-    return server.serve()
+    server.run()
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.create_task(start_all())
-    loop.run_until_complete(run_server())
+    print("=" * 60)
+    print("🚀 FBP Trade Bot - Production Mode (Full API)")
+    print("=" * 60)
+    print(f"   Port: {PORT}")
+    print(f"   Discord Token: {'✅ Set' if TOKEN else '❌ Missing'}")
+    print(f"   API Key: {'✅ Set' if API_KEY else '⚠️ Not set (auth disabled)'}")
+    print(f"   Google Creds: {'✅ Set' if google_creds else '⚠️ Not set'}")
+    print(f"   Yahoo Token: {'✅ Set' if yahoo_token else '⚠️ Not set'}")
+    print("=" * 60)
+    print()
+    
+    # Start FastAPI server in background thread (daemon)
+    server_thread = threading.Thread(target=run_server, daemon=True, name="FastAPI-Server")
+    server_thread.start()
+    print("✅ FastAPI server thread started")
+    
+    # Run Discord bot in main thread (blocks until shutdown)
+    try:
+        print("🤖 Starting Discord bot (main thread)...")
+        asyncio.run(start_bot())
+    except KeyboardInterrupt:
+        print("\n👋 Shutting down gracefully...")
+    except Exception as e:
+        print(f"\n❌ Fatal error: {e}")
+        sys.exit(1)
+    finally:
+        print("✅ Cleanup complete")

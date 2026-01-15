@@ -1,0 +1,39 @@
+services:
+  # FBP Trade Bot Service
+  - type: web
+    name: fbp-trade-bot
+    runtime: python
+    plan: free  # Change to 'starter' or higher for production
+    region: oregon  # or your preferred region
+    
+    # Build command
+    buildCommand: pip install -r requirements.txt
+    
+    # Start command - runs health.py
+    startCommand: python health.py
+    
+    # Environment variables (set these in Render dashboard)
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false  # Set manually in dashboard
+      
+      - key: GOOGLE_CREDS_JSON
+        sync: false
+      
+      - key: YAHOO_TOKEN_JSON
+        sync: false
+      
+      - key: PORT
+        value: 8000
+      
+      - key: PYTHON_VERSION
+        value: 3.10
+    
+    # Health check configuration
+    healthCheckPath: /health
+    
+    # Auto-deploy settings
+    autoDeploy: true
+    
+    # Branch to deploy from
+    branch: main  # or master, depending on your setup
