@@ -1,0 +1,96 @@
+{
+  "status": "paused",
+  "draft_type": "prospect",
+  "season": 2025,
+  "current_pick_index": 1,
+  "picks_made": [
+    {
+      "round": 1,
+      "pick": 1,
+      "team": "WIZ",
+      "round_type": "protected",
+      "player": "Jonathon Long",
+      "timestamp": "2026-01-15T15:59:18.677992",
+      "pick_index": 0
+    }
+  ],
+  "timer_started_at": null,
+  "paused_at": "2026-01-15T16:01:42.296240",
+  "started_at": "2026-01-15T15:49:16.501459",
+  "completed_at": null,
+  "team_slots": {
+    "WIZ": {
+      "bc_slots": 2,
+      "dc_slots": 4,
+      "bc_used": 1,
+      "dc_used": 0
+    },
+    "B2J": {
+      "bc_slots": 2,
+      "dc_slots": 3,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "CFL": {
+      "bc_slots": 2,
+      "dc_slots": 3,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "HAM": {
+      "bc_slots": 2,
+      "dc_slots": 4,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "RV": {
+      "bc_slots": 2,
+      "dc_slots": 4,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "SAD": {
+      "bc_slots": 2,
+      "dc_slots": 3,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "JEP": {
+      "bc_slots": 2,
+      "dc_slots": 5,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "TBB": {
+      "bc_slots": 2,
+      "dc_slots": 5,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "DRO": {
+      "bc_slots": 2,
+      "dc_slots": 5,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "LAW": {
+      "bc_slots": 2,
+      "dc_slots": 5,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "LFB": {
+      "bc_slots": 2,
+      "dc_slots": 4,
+      "bc_used": 0,
+      "dc_used": 0
+    },
+    "WAR": {
+      "bc_slots": 2,
+      "dc_slots": 4,
+      "bc_used": 0,
+      "dc_used": 0
+    }
+  },
+  "last_updated": "2026-01-15T16:01:42.296406"
+}

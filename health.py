@@ -1,9 +1,10 @@
 import os
 import asyncio
-from datetime import datetime
+from datetime import datetime, date
 from zoneinfo import ZoneInfo
 import threading
 import sys
+import json
 
 import discord
 from discord.ext import commands
@@ -23,6 +24,7 @@ load_dotenv()
 
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2025
+SEASON_DATES_PATH = "config/season_dates.json"
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 
@@ -163,6 +165,116 @@ class ProspectValidateRequest(BaseModel):
 class BoardUpdateRequest(BaseModel):
     team: str
     board: list[str]
+
+
+# ---- Draft schedule helpers ----
+
+def load_season_dates() -> dict:
+    """Load season date configuration from config/season_dates.json."""
+    with open(SEASON_DATES_PATH, "r") as f:
+        return json.load(f)
+
+
+def get_draft_date(draft_type: str) -> date | None:
+    """Return the scheduled calendar date for a given draft type.
+
+    Draft type → date key mapping:
+      - "keeper"   → season_dates["keeper_draft"]
+      - "prospect" → season_dates["prospect_draft"]
+    """
+    data = load_season_dates()
+    if draft_type == "keeper":
+        key = "keeper_draft"
+    elif draft_type == "prospect":
+        key = "prospect_draft"
+    else:
+        return None
+
+    raw = data.get(key)
+    if not raw:
+        return None
+    # Dates are stored as YYYY-MM-DD; interpret in ET.
+    return datetime.fromisoformat(raw).date()
+
+
+def compute_draft_status(draft_type: str, state: dict) -> str:
+    """Compute high-level draft status.
+
+    Returns one of: 'pre_draft', 'draft_day', 'active_draft', 'post_draft'.
+
+    Priority:
+      1) If DraftManager.state.status is 'active' or 'paused' → 'active_draft'.
+      2) Else compare today's date to the scheduled draft date.
+    """
+    raw_state = state.get("status", "not_started")
+    today = datetime.now(tz=ET).date()
+    draft_date = get_draft_date(draft_type)
+
+    # Bot state has priority
+    if raw_state in ("active", "paused"):
+        return "active_draft"
+
+    # Calendar-based states
+    if draft_date:
+        if today < draft_date:
+            return "pre_draft"
+        elif today == draft_date:
+            return "draft_day"
+        else:
+            return "post_draft"
+
+    # No configured date: treat completed as post_draft, otherwise pre_draft.
+    if raw_state == "completed":
+        return "post_draft"
+    return "pre_draft"
+
+
+def build_draft_payload(draft_type: str) -> dict:
+    """Build unified draft payload for keeper or prospect draft."""
+    season_dates = load_season_dates()
+    season = season_dates.get("season_year")
+
+    # DraftManager will choose the appropriate state file based on type/season.
+    mgr = DraftManager(draft_type=draft_type, season=season)
+    state = mgr.state
+    order = mgr.draft_order
+    current_pick = mgr.get_current_pick()
+
+    status = compute_draft_status(draft_type, state)
+    draft_date = get_draft_date(draft_type)
+
+    total_rounds = max((p["round"] for p in order), default=0)
+    draft_order_teams = [p["team"] for p in order]
+
+    picks = []
+    for rec in state.get("picks_made", []):
+        picks.append(
+            {
+                "pick_number": rec.get("pick"),
+                "round": rec.get("round"),
+                "team": rec.get("team"),
+                "player_name": rec.get("player", ""),
+                "position": rec.get("position", ""),
+                "mlb_team": rec.get("mlb_team", ""),
+                "picked_at": rec.get("timestamp"),
+            }
+        )
+
+    return {
+        "draft_id": f"fbp_{draft_type}_draft_{season}",
+        "draft_type": draft_type,
+        "season": season,
+        "status": status,  # pre_draft | draft_day | active_draft | post_draft
+        "scheduled_date": draft_date.isoformat() if draft_date else None,
+        "current_round": current_pick["round"] if current_pick else None,
+        "current_pick": current_pick["pick"] if current_pick else None,
+        "current_team": current_pick["team"] if current_pick else None,
+        "total_rounds": total_rounds,
+        "pick_clock_seconds": 600,  # keep in sync with Discord timer
+        "clock_started_at": state.get("timer_started_at"),
+        "draft_order": draft_order_teams,
+        "picks": picks,
+    }
 
 
 def _get_prospect_draft_components():
@@ -306,6 +418,52 @@ async def api_validate_prospect_pick(
     draft_manager, _, validator = _get_prospect_draft_components()
     summary = validator.get_validation_summary(payload.team, payload.player)
     return summary
+
+
+# ---- Unified Draft API ----
+
+@app.get("/api/draft/active")
+async def get_active_draft(
+    draft_type: str = "keeper",  # 'keeper' or 'prospect'
+    authorized: bool = Depends(verify_api_key),
+):
+    """Unified draft endpoint for website (keeper or prospect).
+
+    Example:
+      /api/draft/active?draft_type=keeper
+      /api/draft/active?draft_type=prospect
+    """
+    if draft_type not in ("keeper", "prospect"):
+        raise HTTPException(status_code=400, detail="draft_type must be 'keeper' or 'prospect'")
+
+    payload = build_draft_payload(draft_type)
+    return payload
+
+
+@app.get("/api/draft/config")
+async def get_draft_config(
+    authorized: bool = Depends(verify_api_key),
+):
+    """Return scheduled dates and season metadata for keeper/prospect drafts.
+
+    This is a small helper for the website to display labels like
+    "Keeper Draft: March 8, 2026" and "Prospect Draft: March 10, 2026".
+    """
+    data = load_season_dates()
+    season = data.get("season_year")
+
+    keeper_date = get_draft_date("keeper")
+    prospect_date = get_draft_date("prospect")
+
+    return {
+        "season": season,
+        "keeper": {
+            "scheduled_date": keeper_date.isoformat() if keeper_date else None,
+        },
+        "prospect": {
+            "scheduled_date": prospect_date.isoformat() if prospect_date else None,
+        },
+    }
 
 
 # ---- Draft Board APIs ----
