@@ -232,7 +232,8 @@ Recent Picks:
 - Parse CSV, add all at once
 
 ### Optional Future Features
-1. **Prospect Database Channel** - Searchable channel with position threads
+1. **Prospect Database Channel** (legacy) - previously a searchable Discord
+   channel with position threads; now replaced by website prospect tools.
 2. **Keeper Draft Support** - Same system, different player pool
 3. **Post-Draft Export** - Auto-update Google Sheets
 4. **Trade Integration** - Pick trading during draft

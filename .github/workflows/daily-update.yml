@@ -11,6 +11,8 @@ on:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    env:
+      FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
     
     steps:
     - name: Checkout repository
@@ -50,20 +52,20 @@ jobs:
     # FBP_HUB_PUSH_TOKEN. Adjust the `repository` value if your GitHub org/user
     # or repo name differs.
     - name: Checkout fbp-hub repository
-      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       uses: actions/checkout@v3
       with:
         repository: "zpressley/fbp-hub"
         path: fbp-hub
-        token: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+        token: ${{ env.FBP_HUB_PUSH_TOKEN }}
 
     - name: Update top100_prospects.json in fbp-hub
-      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       run: |
         python3 data_pipeline/update_top100_prospects_for_hub.py --hub-path fbp-hub
 
     - name: Commit and push Top 100 to fbp-hub
-      if: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       working-directory: fbp-hub
       run: |
         git config --local user.email "action@github.com"

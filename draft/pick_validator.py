@@ -1,7 +1,14 @@
 """
-Pick Validator - Draft rule validation
-Validates picks against FBP rules for protected/unprotected rounds,
-ownership status (PC/FC/UC), and availability
+Pick Validator - Draft rule validation for 2026 Constitution
+
+New prospect-draft rules (2026):
+- Rounds 1–2: FYPD-only, consume BC slots.
+- Rounds 3+: General prospect pool, consume DC slots.
+- Eligible players must be current Farm prospects (player_type == "Farm")
+  with no existing BC/DC/PC contract (contract_type blank).
+- No duplicate picks.
+
+Protected/unprotected rounds and UC/FC-based rules are removed.
 """
 
 from typing import Dict, Tuple, Optional
@@ -9,17 +16,11 @@ from difflib import get_close_matches
 
 
 class PickValidator:
-    """
-    Validates draft picks against FBP rules.
-    
-    Rules:
-    - Protected rounds (1-6): Can only pick UC or own PC/FC
-    - Unprotected rounds (7+): Can pick any available player
-    - No duplicate picks
-    """
+    """Validate draft picks against 2026 FBP prospect-draft rules."""
     
     def __init__(self, prospect_database, draft_manager):
-        """
+        """Wire validator to ProspectDatabase and DraftManager.
+
         Args:
             prospect_database: ProspectDatabase instance
             draft_manager: DraftManager instance
@@ -27,9 +28,8 @@ class PickValidator:
         self.db = prospect_database
         self.draft = draft_manager
         
-        # Round type rules
-        self.PROTECTED_ROUNDS = [1, 2, 3, 4, 5, 6]
-        self.UNPROTECTED_ROUNDS_START = 7
+        # FYPD-only rounds
+        self.FYPD_ROUNDS = {1, 2}
     
     def validate_pick(
         self, 
@@ -57,7 +57,6 @@ class PickValidator:
             return False, "Draft is complete", None
         
         round_num = current_pick["round"]
-        round_type = current_pick["round_type"]
         
         # 1. Find player in database
         player = self._find_player(player_input)
@@ -73,11 +72,22 @@ class PickValidator:
         if is_drafted:
             return False, f"❌ {player['name']} already drafted by {drafted_by}", None
         
-        # 3. Check protected/unprotected rules
-        if self.is_protected_round(round_num):
-            valid, msg = self._validate_protected_pick(team, player)
-            if not valid:
-                return False, msg, player
+        # 3. Enforce core prospect eligibility
+        ok, reason = self._is_prospect_eligible(player)
+        if not ok:
+            return False, f"❌ {reason}", player
+        
+        # 4. Enforce FYPD-only constraint in rounds 1–2
+        if round_num in self.FYPD_ROUNDS and not bool(player.get("fypd")):
+            return False, (
+                "❌ Rounds 1–2 are FYPD-only. "
+                f"{player['name']} is not in the FYPD pool."
+            ), player
+        
+        # 5. Enforce BC/DC slot availability
+        ok, reason = self._has_available_slot(team, round_num)
+        if not ok:
+            return False, f"❌ {reason}", player
         
         # If we get here, pick is valid
         return True, f"✅ Valid pick: {player['name']}", player
@@ -111,43 +121,55 @@ class PickValidator:
         
         return matches[0] if matches else None
     
-    def is_protected_round(self, round_num: int) -> bool:
-        """Check if round is protected (1-6) or unprotected (7+)"""
-        return round_num in self.PROTECTED_ROUNDS
-    
-    def _validate_protected_pick(
-        self, 
-        team: str, 
-        player: Dict
-    ) -> Tuple[bool, str]:
+    def _is_prospect_eligible(self, player: Dict) -> Tuple[bool, str]:
+        """Check that a player is an eligible prospect for this draft.
+
+        Rules enforced here:
+        - Must be a Farm prospect: player_type == "Farm".
+        - Must not already have a BC/DC/PC contract: contract_type blank.
+        - (Service-time / graduation limits are assumed to be baked into
+          combined_players via the graduation pipeline.)
         """
-        Validate pick in a protected round.
-        
-        Protected round rules:
-        - Can pick UC (uncontracted) players
-        - Can pick own PC/FC players
-        - Cannot pick another team's PC/FC players
-        
-        Returns:
-            (valid: bool, message: str)
+        if player.get("player_type") != "Farm":
+            return False, "Player is not a Farm prospect."
+
+        contract_type = (player.get("contract_type") or "").strip()
+        if contract_type:
+            return False, "Player already has a prospect contract (BC/DC/PC)."
+
+        return True, "Eligible prospect"
+
+    def _has_available_slot(self, team: str, round_num: int) -> Tuple[bool, str]:
+        """Check that the team has an available BC/DC slot for this round.
+
+        DraftManager.state.team_slots structure:
+        {
+            "TEAM": {"bc_slots": int, "dc_slots": int, "bc_used": int, "dc_used": int},
+            ...
+        }
         """
-        ownership_status = player.get("ownership", "UC")
-        owner = player.get("owner")
-        
-        # UC players are always available
-        if ownership_status == "UC":
-            return True, "Available (UC)"
-        
-        # Own PC/FC players are available
-        if owner == team:
-            return True, f"Your own {ownership_status} player"
-        
-        # Other team's PC/FC players are NOT available in protected rounds
-        return False, (
-            f"❌ Protected player owned by {owner}\n"
-            f"{player['name']} has {ownership_status} contract with {owner}\n"
-            f"Available in unprotected rounds only (Round 7+)"
-        )
+        state = getattr(self.draft, "state", {}) or {}
+        team_slots = state.get("team_slots") or {}
+        info = team_slots.get(team)
+
+        # If no slot info exists (e.g. non-prospect drafts or legacy state),
+        # treat as unlimited to avoid hard failures.
+        if not info:
+            return True, "No slot limits configured for team."
+
+        if round_num in self.FYPD_ROUNDS:
+            bc_slots = info.get("bc_slots", 0)
+            bc_used = info.get("bc_used", 0)
+            if bc_used >= bc_slots:
+                return False, f"No BC slots remaining for {team} (used {bc_used}/{bc_slots})."
+            return True, "BC slot available"
+
+        # Rounds 3+ use DC slots
+        dc_slots = info.get("dc_slots", 0)
+        dc_used = info.get("dc_used", 0)
+        if dc_used >= dc_slots:
+            return False, f"No DC slots remaining for {team} (used {dc_used}/{dc_slots})."
+        return True, "DC slot available"
     
     def validate_multiple_matches(
         self, 
@@ -185,34 +207,6 @@ class PickValidator:
         
         return True, msg, matches
     
-    def can_poach_in_unprotected(
-        self, 
-        team: str, 
-        player: Dict
-    ) -> Tuple[bool, str]:
-        """
-        Check if team can poach a protected player in unprotected round.
-        
-        In unprotected rounds, ANY player can be picked (poaching allowed).
-        
-        Returns:
-            (can_poach: bool, message: str)
-        """
-        ownership_status = player.get("ownership", "UC")
-        owner = player.get("owner")
-        
-        if ownership_status == "UC":
-            return True, "Available (UC)"
-        
-        if owner == team:
-            return True, f"Your own {ownership_status} player"
-        
-        # Poaching another team's PC/FC
-        return True, (
-            f"🏴‍☠️ POACH from {owner}\n"
-            f"{player['name']} is {ownership_status} with {owner}\n"
-            f"You can poach in unprotected rounds"
-        )
     
     def get_validation_summary(self, team: str, player_input: str) -> Dict:
         """
@@ -262,89 +256,73 @@ class PickValidator:
             "message": message,
             "player": player_data,
             "round": current_pick["round"],
-            "round_type": current_pick["round_type"],
-            "is_protected_round": self.is_protected_round(current_pick["round"])
+            # Round type is now implicit: R1–2 = FYPD/BC, R3+ = prospect/DC.
+            "round_type": "fypd" if current_pick["round"] in self.FYPD_ROUNDS else "prospect",
         }
 
 
 # Testing / CLI usage
 if __name__ == "__main__":
-    print("🧪 Testing PickValidator")
+    print("🧪 Testing PickValidator (2026 rules)")
     print("=" * 50)
     
     # Mock database for testing
     class MockProspectDB:
         def __init__(self):
             self.prospects = {
-                "Jackson Chourio": {
-                    "name": "Jackson Chourio",
-                    "position": "CF",
-                    "team": "MIL",
-                    "rank": 3,
-                    "ownership": "UC",
-                    "owner": None
+                "FYPD Prospect": {
+                    "name": "FYPD Prospect",
+                    "player_type": "Farm",
+                    "contract_type": "",
+                    "fypd": True,
                 },
-                "Paul Skenes": {
-                    "name": "Paul Skenes",
-                    "position": "SP",
-                    "team": "PIT",
-                    "rank": 1,
-                    "ownership": "PC",
-                    "owner": "HAM"
+                "Existing DC Prospect": {
+                    "name": "Existing DC Prospect",
+                    "player_type": "Farm",
+                    "contract_type": "Development Cont.",
+                    "fypd": False,
                 },
-                "Kyle Teel": {
-                    "name": "Kyle Teel",
-                    "position": "C",
-                    "team": "BOS",
-                    "rank": 47,
-                    "ownership": "FC",
-                    "owner": "WIZ"
-                }
+                "Non-FYPD Prospect": {
+                    "name": "Non-FYPD Prospect",
+                    "player_type": "Farm",
+                    "contract_type": "",
+                    "fypd": False,
+                },
             }
     
     # Mock draft manager
     class MockDraftManager:
         def __init__(self):
             self.picks_made = []
+            self.state = {
+                "team_slots": {
+                    "WIZ": {"bc_slots": 1, "dc_slots": 1, "bc_used": 0, "dc_used": 0}
+                }
+            }
         
         def get_current_pick(self):
-            return {
-                "round": 1,
-                "pick": 1,
-                "team": "WIZ",
-                "round_type": "protected"
-            }
+            # Round will be overridden in individual tests
+            return {"round": 1, "pick": 1, "team": "WIZ"}
         
         def is_player_drafted(self, player_name):
             return False, None
     
-    # Initialize
     mock_db = MockProspectDB()
     mock_draft = MockDraftManager()
     validator = PickValidator(mock_db, mock_draft)
     
-    # Test cases
-    print("\n📋 Test Case 1: Valid UC pick in protected round")
-    valid, msg, player = validator.validate_pick("WIZ", "Jackson Chourio")
+    print("\n📋 Test Case 1: FYPD prospect in Round 1 (BC)")
+    mock_draft.state["team_slots"]["WIZ"]["bc_used"] = 0
+    valid, msg, _ = validator.validate_pick("WIZ", "FYPD Prospect")
     print(f"   Result: {valid}")
     print(f"   Message: {msg}")
     
-    print("\n📋 Test Case 2: Own FC player in protected round")
-    valid, msg, player = validator.validate_pick("WIZ", "Kyle Teel")
+    print("\n📋 Test Case 2: Non-FYPD prospect in Round 1 (should fail)")
+    valid, msg, _ = validator.validate_pick("WIZ", "Non-FYPD Prospect")
     print(f"   Result: {valid}")
     print(f"   Message: {msg}")
     
-    print("\n📋 Test Case 3: Another team's PC in protected round")
-    valid, msg, player = validator.validate_pick("WIZ", "Paul Skenes")
-    print(f"   Result: {valid}")
-    print(f"   Message: {msg}")
-    
-    print("\n📋 Test Case 4: Player not found")
-    valid, msg, player = validator.validate_pick("WIZ", "Fake Player")
-    print(f"   Result: {valid}")
-    print(f"   Message: {msg}")
-    
-    print("\n📋 Test Case 5: Fuzzy match suggestion")
-    valid, msg, player = validator.validate_pick("WIZ", "Chourio")
+    print("\n📋 Test Case 3: Existing DC prospect (should fail)")
+    valid, msg, _ = validator.validate_pick("WIZ", "Existing DC Prospect")
     print(f"   Result: {valid}")
     print(f"   Message: {msg}")

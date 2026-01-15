@@ -133,7 +133,6 @@ Key cogs/modules:
 - `commands/standings.py`: `/standings` reads from `data/standings.json`.
 - `commands/auction.py`: prospect auction portal Discord interface (`/auction`, `/bid`) backed by `auction_manager.AuctionManager` and a background `auction_tick` task for scheduled alerts.
 - `commands/service.py`: `/service`, `/prospects`, `/alerts` read from `data/service_stats.json`.
-- `commands/database_commands.py`: admin commands (`/db_setup`, `/db_status`, `/db_refresh`, `/db_find`) that manage a dedicated prospect database Discord channel, backed by `draft/database_channel_manager.py` and `draft/database_tracker.py`.
 
 Shared constants/helpers:
 - `commands/utils.py`: maps manager/team <-> Discord IDs and contains trade timestamp helpers (`get_trade_dates`).
@@ -155,12 +154,13 @@ The draft feature is split between Discord cogs and pure “state manager” cod
 - Additional narrative documentation for the draft system lives in `DRAFT_SYSTEM_HANDOFF.md` and the `docs/` directory.
 
 ### Prospect database & live pick tracking
-The prospect database subsystem ties together Discord commands, a dedicated database channel, and MLB stats/ownership data.
+Historically this used a dedicated Discord database channel, but that flow is
+now deprecated in favor of the website’s prospect pages and the FastAPI draft
+validation/state endpoints.
 
-- `draft/database_channel_manager.py` + `draft/database_tracker.py`: manage a “prospect database” channel and per-position threads, posting ranked prospect lists and tracking the location of each player’s status line in Discord messages for later edits.
-- `commands/database_commands.py`: admin slash commands that create/refresh the database channel, check status, and look up player locations, persisting config to `data/database_config.json` and tracker state to `data/database_tracker.json`.
-- `draft/draft_database_integration.py`: optional integration layer that lets the draft flow enqueue pick updates into the database so tracked prospect lines are marked as picked in place.
-- `prospect_stats_repository.py`: pulls MLB Stats API data and combines it with ownership data and cached MLB IDs under `data/prospect_stats/`, which the database channel manager uses when building prospect lists.
+- `prospect_stats_repository.py`: pulls MLB Stats API data and combines it with
+  ownership data and cached MLB IDs under `data/prospect_stats/`, which the
+  website uses when building prospect lists.
 
 ### Prospect auction subsystem & web API
 The prospect auction flow centralizes business rules in `auction_manager.py` and exposes them via both Discord slash commands and HTTP endpoints.

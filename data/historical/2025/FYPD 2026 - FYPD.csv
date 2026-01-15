@@ -1,251 +1,307 @@
-UPID,Rank,Player,Team,Position,School,Level,eta,Age,Height / Weight,Bats,Throws
-7940,1,Ethan Holliday,COL,SS,Stillwater (OK),A,2029,18,"6' 4"" / 210 lbs",L,R
-7941,2,Kade Anderson,SEA,LHP,Louisiana State,ROK,2027,21,"6' 2"" / 179 lbs",L,L
-7942,3,Seth Hernandez,PIT,RHP,Corona (CA),ROK,2028,19,"6' 4"" / 190 lbs",R,R
-7943,4,Jamie Arnold,ATH,LHP,Florida State,ROK,2027,21,"6' 1"" / 188 lbs",L,L
-7944,5,Eli Willits,WSN,SS,Fort Cobb-Broxton (OK),A,2029,18,"6' 1"" / 180 lbs",S,R
-7945,6,Aiva Arquette,MIA,SS,Oregon State,A+,2028,22,"6' 5"" / 220 lbs",R,R
-7946,7,Billy Carlson,CHW,SS,Corona (CA),ROK,2029,19,"6' 1"" / 185 lbs",R,R
-7947,8,Liam Doyle,STL,LHP,Tennessee,AA,2027,21,"6' 2"" / 220 lbs",R,L
-7948,9,JoJo Parker,TOR,SS,Purvis (MS),ROK,2029,19,"6' 2"" / 200 lbs",L,R
-7949,10,Kyson Witherspoon,BOS,RHP,Oklahoma,ROK,2027,21,"6' 2"" / 206 lbs",R,R
-7950,11,Ike Irish,BAL,C/OF,Auburn,A,2028,22,"6' 2"" / 201 lbs",L,R
-7951,12,Steele Hall,CIN,SS,Hewitt-Trussville (AL),ROK,2029,18,"6' 0"" / 180 lbs",R,R
-7952,13,Daniel Pierce,TBR,SS,Mill Creek (GA),ROK,2029,19,"6' 0"" / 185 lbs",R,R
-7953,14,Kayson Cunningham,ARI,SS,Johnson (TX),A,2029,19,"5' 10"" / 182 lbs",L,R
-7954,15,Marek Houston,MIN,SS,Wake Forest,A+,2028,21,"6' 3"" / 205 lbs",R,R
-7955,16,Brendan Summerhill,TBR,OF,Arizona,A,2028,22,"6' 3"" / 200 lbs",L,R
-7956,17,Wehiwa Aloy,BAL,SS,Arkansas,A,2028,21,"6' 2"" / 200 lbs",R,R
-7957,18,Tyler Bremner,LAA,RHP,UC Santa Barbara,ROK,2026,21,"6' 2"" / 190 lbs",R,R
-7958,19,Kruz Schoolcraft,SDP,LHP,Sunset (OR),A,2029,18,"6' 8"" / 229 lbs",L,L
-7959,20,Jace LaViolette,CLE,OF,Texas A&M,ROK,2028,22,"6' 6"" / 230 lbs",L,L
-7960,21,Gavin Kilen,SFG,2B/SS,Tennessee,A,2028,21,"5' 11"" / 187 lbs",L,R
-7961,22,Gavin Fien,TEX,SS,Great Oak (CA),A,2029,18,"6' 3"" / 200 lbs",R,R
-7962,23,Gage Wood,PHI,RHP,Arkansas,A,2028,22,"6' 0"" / 205 lbs",R,R
-7963,24,Slater de Brun,BAL,OF,Summit (OR),ROK,2029,18,"5' 10"" / 187 lbs",L,L
-7964,25,Xavier Neyens,HOU,SS,Mount Vernon (WA),ROK,2029,19,"6' 4"" / 210 lbs",L,R
-7965,26,Josh Hammond,KCR,3B,Wesleyan Christian (NC),ROK,2029,19,"6' 1"" / 210 lbs",R,R
-7966,27,Sean Gamble,KCR,OF/2B,IMG Academy (FL),ROK,2029,19,"6' 1"" / 188 lbs",L,R
-7967,28,Ethan Conrad,CHC,OF,Wake Forest,ROK,2028,21,"6' 3"" / 220 lbs",L,L
-7968,29,Andrew Fischer,MIL,3B/1B,Tennessee,A+,2027,21,"6' 1"" / 210 lbs",L,R
-7969,30,Devin Taylor,ATH,OF,Indiana,A,2028,22,"6' 1"" / 215 lbs",L,R
-7970,31,Patrick Forbes,ARI,RHP,Louisville,ROK,2028,21,"6' 3"" / 220 lbs",R,R
-7971,32,Caden Bodine,BAL,C,Coastal Carolina,A,2028,22,"5' 10"" / 200 lbs",S,R
-7972,33,Luke Stevenson,SEA,C,North Carolina,A,2028,21,"6' 1"" / 200 lbs",L,R
-7973,34,Max Belyeu,COL,OF,Texas,A+,2028,22,"6' 2"" / 215 lbs",L,R
-7974,35,Mason Neville,CIN,OF,Oregon,A,2028,22,"6' 3"" / 210 lbs",L,L
-7975,36,Cam Cannarella,MIA,OF,Clemson,A+,2028,22,"6' 0"" / 185 lbs",L,R
-7976,37,Quentin Young,MIN,SS,Oaks Christian (CA),A,2029,18,"6' 6"" / 225 lbs",R,R
-7977,38,Riley Quick,MIN,RHP,Alabama,ROK,2028,21,"6' 6"" / 255 lbs",R,R
-7978,39,Tate Southisene,ATL,SS/OF,Basic (NV),A,2029,19,"5' 11"" / 180 lbs",R,R
-7979,40,Anthony Eyanson,BOS,RHP,Louisiana State,ROK,2028,21,"6' 2"" / 208 lbs",R,R
-7980,41,JB Middleton,COL,RHP,Southern Mississippi,ROK,2028,22,"6' 0"" / 178 lbs",R,R
-7981,42,Zachary Root,,LHP,Arkansas,ROK,2028,21,"6' 2"" / 210 lbs",L,L
-7982,43,Alex Lodise,ATL,SS,Florida State,A+,2028,21,"6' 1"" / 190 lbs",R,R
-7983,44,Jack Bauer,,LHP,Lincoln-Way East (IL),-,-,19,"6' 3"" / 190 lbs",L,L
-7984,45,Aaron Watson,CIN,RHP,Trinity Christian (FL),ROK,2029,19,"6' 5"" / 205 lbs",R,R
-7985,46,Matthew Fisher,PHI,RHP,Memorial (IN),ROK,2029,19,"6' 3"" / 200 lbs",R,R
-7986,47,Brandon Compton,MIA,OF,Arizona State,A+,2028,22,"6' 1"" / 225 lbs",L,L
-7987,48,Landon Harmon,WSN,RHP,East Union (MS),ROK,2029,19,"6' 5"" / 190 lbs",R,R
-7988,49,Angel Cervantes,PIT,RHP,Warren (CA),-,-,18,"6' 3"" / 195 lbs",R,R
-7989,50,Jordan Yost,DET,SS,Sickles (FL),ROK,2029,19,"6' 0"" / 170 lbs",L,R
-7990,51,Nick Becker,SEA,SS,Don Bosco Prep (NJ),A,2029,19,"6' 4"" / 190 lbs",R,R
-7991,52,Alec Blair,,OF,De La Salle (CA),-,-,19,"6' 6"" / 195 lbs",L,L
-7992,53,Cade Obermueller,PHI,LHP,Iowa,ROK,2028,22,"6' 0"" / 170 lbs",L,L
-7993,54,Charles Davalan,LAD,OF,Arkansas,A,2028,22,"5' 9"" / 190 lbs",L,R
-7994,55,Ryan Mitchell,STL,OF/INF,Houston (TN),ROK,2029,18,"6' 2"" / 185 lbs",L,R
-7995,56,Dean Moss,TBR,OF,IMG Academy (FL),ROK,2029,19,"6' 0"" / 180 lbs",L,R
-7996,57,Jaden Fauske,CHW,OF,Nazareth Academy (IL),ROK,2029,19,"6' 3"" / 200 lbs",L,R
-7997,58,Cameron Appenzeller,,LHP,Glenwood (IL),-,-,18,"6' 6"" / 180 lbs",L,L
-7998,59,Ethan Petry,WSN,OF/1B,South Carolina,A,2028,21,"6' 4"" / 235 lbs",R,R
-7121,60,Dean Curley,CLE,INF,Tennessee,A,2028,21,"6' 3"" / 218 lbs",R,R
-8000,61,Marcus Phillips,BOS,RHP,Tennessee,ROK,2028,21,"6' 4"" / 246 lbs",R,R
-8001,62,Dax Kilby,NYY,SS,Newnan (GA),A,2029,19,"6' 2"" / 190 lbs",L,R
-8002,63,Mitch Voit,NYM,2B,Michigan,A,2028,21,"6' 0"" / 201 lbs",R,R
-8003,64,Brady Ebel,MIL,SS,Corona (CA),A,2029,18,"6' 3"" / 195 lbs",L,R
-8004,65,Brock Sell,,OF,Stanford,-,-,19,"6' 1"" / 176 lbs",L,R
-8005,66,J.D. Thompson,,LHP,Vanderbilt,ROK,2028,22,"6' 0"" / 199 lbs",R,L
-8006,67,Lucas Franco,,SS,Texas Christian,-,-,18,"6' 3"" / 180 lbs",L,R
-8007,68,Johnny Slawinski,LAA,LHP,Johnson (TX),ROK,2029,18,"6' 3"" / 180 lbs",L,L
-8008,69,Briggs McKenzie,ATL,LHP,Corinth Holders (NC),ROK,2029,19,"6' 2"" / 190 lbs",L,L
-8009,70,AJ Russell,TEX,RHP,Tennessee,ROK,2028,21,"6' 6"" / 223 lbs",R,R
-8010,71,Zach Strickland,,RHP,Maranatha (CA),-,-,19,"6' 2"" / 180 lbs",S,R
-8011,72,Henry Godbout,BOS,2B,Virginia,A+,2028,22,"6' 2"" / 190 lbs",R,R
-8012,73,Henry Ford,,OF,Tennessee,-,-,21,"6' 5"" / 220 lbs",R,R
-8013,74,Joseph Dzierwa,BAL,LHP,Michigan State,ROK,2028,21,"6' 8"" / 200 lbs",R,L
-8014,75,Michael Lombardi,KCR,RHP,Tulane,ROK,2028,22,"6' 3"" / 201 lbs",R,R
-7023,76,James Ellwanger,MIN,RHP,Dallas Baptist,ROK,2028,21,"6' 4"" / 205 lbs",R,R
-8016,77,Chase Shores,LAA,RHP,Louisiana State,ROK,2027,21,"6' 8"" / 245 lbs",R,R
-8017,78,Gavin Turley,ATH,OF,Oregon State,A,2028,22,"6' 1"" / 196 lbs",R,R
-8018,79,Kyle Lodise,CHW,SS,Georgia Tech,A+,2028,22,"5' 11"" / 180 lbs",R,R
-8019,80,Daniel Dickinson,MIL,SS/2B,Louisiana State,ROK,2028,22,"6' 0"" / 180 lbs",R,R
-8020,81,Max Williams,MIA,OF,Florida State,A,2028,21,"6' 2"" / 207 lbs",L,L
-8021,82,Cooper Flemming,TBR,SS,Aliso Niguel (CA),ROK,2029,19,"6' 3"" / 190 lbs",L,R
-8022,83,Korbyn Dickerson,SEA,OF,Indiana,A,2028,22,"6' 1"" / 205 lbs",R,R
-8023,84,Kane Kepley,CHC,OF,North Carolina,A,2028,21,"5' 8"" / 180 lbs",L,L
-8024,85,Uli Fernsler,,LHP,Texas Christian,-,-,18,"6' 4"" / 225 lbs",L,L
-8025,86,Miguel Sime Jr.,WSH,RHP,Poly Prep (NY),ROK,2029,18,"6' 4"" / 235 lbs",R,R
-8026,87,Kaleb Wing,CHC,RHP,Scotts Valley (CA),ROK,2029,19,"6' 2"" / 180 lbs",R,R
-8027,88,Brayden Jaksa,,C,Irvington (CA),-,-,18,"6' 5"" / 215 lbs",R,R
-8028,89,Josh Owens,TEX,SS,Providence (TN),A,2029,19,"6' 3"" / 185 lbs",L,R
-8029,90,William Patrick,,OF,Louisiana State,-,-,19,"6' 2"" / 200 lbs",R,R
-8030,91,Talon Haley,,LHP,Lewisburg (MS),ROK,2029,19,"6' 2"" / 200 lbs",R,L
-8031,92,Taitn Gray,TBR,C/OF,Dallas Center-Grimes (IA),ROK,2029,18,"6' 4"" / 220 lbs",S,R
-8032,93,Easton Carmichael,PIT,C,Oklahoma,A+,2028,22,"6' 1"" / 200 lbs",R,R
-8033,94,Coy James,WSH,SS,Davie County (NC),ROK,2029,18,"6' 0"" / 185 lbs",R,R
-8034,95,Dean Livingston,,RHP,Hebron Christian (GA),ROK,2029,19,"6' 4"" / 205 lbs",R,R
-8035,96,Brett Crossland,,RHP,Texas,-,-,19,"6' 5"" / 240 lbs",R,R
-8036,97,Colin Yeaman,BAL,SS,UC Irvine,A,2028,21,"6' 2"" / 200 lbs",R,R
-8037,98,Luke Hill,,3B/2B,Mississippi,A,2028,21,"6' 1"" / 200 lbs",R,R
-8038,99,River Hamilton,,RHP,Barlow (OR),A,2029,19,"6' 3"" / 195 lbs",R,R
-8039,100,Ethan Moore,,SS/2B,Oak Park & River Forest (IL),-,-,19,"6' 0"" / 190 lbs",S,R
-8040,101,Jared Jones,,1B,Louisiana State,A+,2028,22,"6' 4"" / 246 lbs",R,R
-8041,102,Brian Curley,ARI,RHP,Georgia,ROK,2028,22,"5' 10"" / 212 lbs",R,R
-8042,103,Marcos Paz,,RHP,Louisiana State,-,-,19,"6' 1"" / 225 lbs",R,R
-8043,104,Jack Lafflam,,RHP,Brophy Prep (AZ),-,-,19,"6' 6"" / 178 lbs",R,R
-8044,105,Aiden Stillman,,LHP,Vanderbilt,-,-,19,"6' 3"" / 205 lbs",R,L
-8045,106,Jake Cook,TOR,OF,Southern MIssissippi,ROK,2028,22,"6' 3"" / 185 lbs",L,L
-8046,107,Ben Jacobs,DET,LHP,Arizona State,ROK,2028,21,"6' 1"" / 195 lbs",L,L
-8047,108,Josiah Hartshorn,,OF,Orange Lutheran (CA),ROK,2029,18,"6' 2"" / 220 lbs",S,L
-8048,109,Jacob Parker,,OF,Purvis (MS),-,-,19,"6' 3"" / 215 lbs",L,R
-8049,110,Trent Grindlinger,,C,Huntington Beach (CA),-,-,19,"6' 2"" / 195 lbs",R,R
-8050,111,Justin Lamkin,KCR,LHP,Texas A&M,ROK,2028,21,"6' 4"" / 210 lbs",R,L
-8051,112,RJ Austin,BAL,OF,Vanderbilt,A,-,22,"5' 11"" / 199 lbs",R,R
-8052,113,Jared Spencer,,LHP,Texas,ROK,2028,22,"6' 3"" / 210 lbs",L,L
-8053,114,Cam Leiter,LAD,RHP,Florida State,ROK,2028,21,"6' 5"" / 234 lbs",R,R
-8054,115,Shane Sdao,,LHP,Texas A&M,-,-,22,"6' 2"" / 170 lbs",L,L
-8055,116,Sean Youngerman,,RHP,Oklahoma State,ROK,2028,21,"6' 3"" / 230 lbs",R,R
-8056,117,Mason Morris,CIN,RHP,Mississippi,A,2028,22,"6' 4"" / 225 lbs",R,R
-8057,118,Nick Dumesnil,,OF,California Baptist,A,2028,21,"6' 2"" / 210 lbs",R,R
-8058,119,Ethan Frey,HOU,OF,Louisiana State,A,2028,21,"6' 6"" / 225 lbs",R,R
-8059,120,Blaine Bullard,,OF,Klein Cain (TX),ROK,2029,19,"6' 2"" / 180 lbs",S,L
-8060,121,Malachi Witherspoon,DET,RHP,Oklahoma,ROK,2028,21,"6' 3"" / 211 lbs",R,R
-8061,122,Pico Kohn,,LHP,Mississippi State,ROK,2028,23,"6' 4"" / 200 lbs",L,L
-8062,123,Aidan West,LAD,SS,Long Reach (MD),ROK,2029,18,"6' 2"" / 205 lbs",L,R
-8063,124,Tanner Franklin,STL,RHP,Tennessee,A+,2028,21,"6' 5"" / 225 lbs",R,R
-8064,125,Landon Schaefer,,SS/3B,Fayetteville (AR),-,-,19,"6' 3"" / 190 lbs",R,R
-8065,126,Nolan Schubart,CLE,OF,Oklahoma State,A,2028,21,"6' 5"" / 223 lbs",L,R
-8066,127,JT Quinn,BAL,RHP,Georgia,ROK,2028,21,"6' 6"" / 210 lbs",R,R
-8067,128,Sam Horn,,RHP,Missouri,-,-,22,"6' 4"" / 217 lbs",R,R
-8068,129,Brandon Shannon,,RHP,McHenry (IL),-,-,19,"6' 4"" / 175 lbs",R,R
-8069,130,Jayden Stroman,,RHP,Patchogue-Medford (NY),-,-,18,"6' 0"" / 197 lbs",S,R
-8070,131,Micah Bucknam,TOR,RHP,Dallas Baptist,ROK,2028,22,"6' 1"" / 212 lbs",R,R
-8071,132,Omar Serna Jr.,,C,Louisiana State,-,-,19,"6' 2"" / 225 lbs",R,R
-8072,133,Cooper Underwood,,LHP,Allatoona (GA),-,-,19,"6' 2"" / 185 lbs",R,L
-8073,134,John Paone,,RHP,Lawrence Academy (MA),-,-,19,"6' 3"" / 210 lbs",R,R
-8074,135,Mason Pike,,SS/RHP,Puyallup (WA),-,-,19,"6' 0"" / 193 lbs",S,R
-8075,136,Matt Barr,,RHP,SUNY NIagara CC,ROK,2029,19,"6' 6"" / 195 lbs",R,R
-8076,137,Tre Phelps,,OF/1B,Georgia,-,-,21,"6' 2"" / 202 lbs",R,R
-8077,138,Cameron Millar,KCR,RHP,Alhambra (CA),ROK,2029,18,"6' 2"" / 200 lbs",R,R
-8078,139,Riley Kelly,,RHP,UC Irvine,ROK,2028,21,"6' 5"" / 215 lbs",R,R
-8079,140,Gustavo Melendez,PIT,SS,La Merced (PR),ROK,2029,18,"5' 8"" / 160 lbs",L,R
-8080,141,Murf Gray,PIT,3B,Fresno State,ROK,2028,22,"6' 4"" / 230 lbs",R,R
-8081,142,Colby Shelton,,SS,Florida,A,-,23,"6' 0"" / 205 lbs",L,R
-8082,143,Mason White,BOS,SS,Arizona,A+,-,22,"5' 11"" / 178 lbs",L,R
-8083,144,Jack Gurevitch,STL,1B,San Diego,A,2028,21,"6' 0"" / 215 lbs",L,R
-7006,145,Trent Caraway,,3B,Louisiana State,-,-,21,"6' 2"" / 203 lbs",R,R
-8085,146,Ryan Wideman,SDP,OF,Western Kentucky,A,2028,22,"6' 5"" / 204 lbs",R,R
-8086,147,Gabe Davis,,RHP,Oklahoma State,ROK,-,22,"6' 9"" / 234 lbs",R,R
-8087,148,Nate Snead,LAA,RHP,Tennessee,ROK,2028,21,"6' 2"" / 212 lbs",R,R
-8088,149,Caden Hunter,,LHP,Southern California,ROK,-,22,"6' 2"" / 205 lbs",R,L
-8089,150,Ethin Bingaman,,RHP/OF,Corona (CA),-,-,19,"6' 1"" / 201 lbs",R,R
-8090,151,Tanner Thach,,1B,UNC Wilmington,A,2028,21,"6' 4"" / 225 lbs",L,L
-8091,152,Angel Laya,,OF,Eastlake (CA),-,-,19,"6' 3"" / 190 lbs",L,R
-8092,153,Ty Harvey,SDP,C,Inspiration Academy (FL),A,2029,19,"6' 2"" / 215 lbs",R,R
-8093,154,Matt Scott,,RHP,Stanford,-,-,22,"6' 7"" / 245 lbs",R,R
-8094,155,Joshua Jannicelli,,RHP,Cardinal Newman (CA),-,-,18,"6' 6"" / 185 lbs",R,R
-8095,156,Reagan Ricken,,RHP,Louisiana State,-,-,19,"6' 5"" / 220 lbs",R,R
-8096,157,Marcelo Harsch,,RHP,Seton Hall Prep (NJ),-,-,18,"6' 4"" / 175 lbs",R,R
-8097,158,Drew Faurot,MIA,2B,Florida State,A,-,22,"6' 3"" / 207 lbs",S,R
-8098,159,Ethan Hedges,COL,3B,Southern California,A+,2028,21,"6' 1"" / 185 lbs",R,R
-8099,160,Tim Piasentin,,3B,Foothills Composite (AB),ROK,2029,18,"6' 3"" / 200 lbs",L,R
-8100,161,Aaron Walton,CLE,OF,Arizona,A,2028,21,"6' 3"" / 219 lbs",R,R
-8101,162,Paxton Kling,,OF,Penn State,A+,-,22,"6' 2"" / 210 lbs",R,R
-8102,163,Will Hynes,CLE,RHP,Lorne Park (ON),ROK,2029,18,"6' 2"" / 180 lbs",R,R
-8103,164,Landon Hodge,,C,Crespi Carmelite (CA),ROK,2029,18,"6' 1"" / 175 lbs",L,R
-8104,165,Brock Ketelsen,,OF/LHP,Stanford,-,-,18,"6' 4"" / 206 lbs",L,L
-8105,166,Noah Yoder,,RHP,Atlee (VA),-,-,18,"6' 6"" / 230 lbs",R,R
-8106,167,Myles Upchurch,,RHP,St. Albans (DC),-,-,19,"6' 3"" / 215 lbs",R,R
-8107,168,Xavier Mitchell,,LHP,Prestonwood Christian (TX),ROK,2029,19,"6' 3"" / 165 lbs",L,L
-8108,169,Griffin Hugus,SEA,RHP,Miami,ROK,2028,21,"6' 2"" / 210 lbs",L,R
-8109,170,Grant Jay,,C/OF,Dallas Baptist,ROK,-,22,"6' 0"" / 225 lbs",R,R
-8110,171,Anthony Martinez,,1B,UC Irvine,A,-,21,"6' 3"" / 230 lbs",L,R
-6802,172,Antonio Jimenez,NYM,SS,Central Florida,A,2028,21,"6' 1"" / 200 lbs",R,R
-8112,173,Jacob Morrison,MIL,RHP,Coastal Carolina,ROK,-,22,"6' 8"" / 245 lbs",R,R
-8113,174,Zane Taylor,,RHP,UNC Wilmington,AAA,2027,23,"6' 0"" / 200 lbs",R,R
-8114,175,James Quinn-Irons,TBR,OF,George Mason,A,2028,22,"6' 5"" / 230 lbs",R,R
-8115,176,Rylan Galvan,,C,Texas,A,-,22,"6' 0"" / 215 lbs",R,R
-8116,177,Brent Iredale,,3B,Arkansas,A,-,22,"6' 3"" / 200 lbs",R,R
-8117,178,CJ Gray,LAA,RHP,Brown (NC),ROK,2029,18,"6' 2"" / 205 lbs",R,R
-8118,179,John Stuetzer,,OF/SS,Pope (GA),-,-,19,"5' 11"" / 190 lbs",R,R
-8119,180,Jacob McCombs,,OF,UC Irvine,A,-,21,"6' 2"" / 200 lbs",L,R
-8120,181,Trey Morris,,LHP,Washington Union (CA),-,-,19,"6' 3"" / 220 lbs",L,L
-8121,182,Nelson Keljo,,LHP,Oregon State,ROK,-,22,"6' 4"" / 228 lbs",L,L
-8122,183,Lorenzo Meola,,SS,Stetson,A,2028,22,"5' 11"" / 172 lbs",R,R
-8123,184,Aidan Teel,,OF,Mississippi State,-,-,21,"6' 0"" / 195 lbs",L,R
-8124,185,Brooks Bryan,,C,Troy,ROK,-,21,"6' 2"" / 222 lbs",L,R
-8125,186,Damian Bravo,,OF,Texas Tech,A+,-,22,"6' 2"" / 195 lbs",R,R
-8126,187,Cody Bowker,PHI,RHP,Vanderbilt,ROK,2028,22,"6' 1"" / 212 lbs",R,R
-8127,188,Bobby Boser,,3B/2B/SS,Florida,A,2028,23,"6' 1"" / 215 lbs",R,R
-8128,189,Jake Clemente,,RHP,Florida,A,-,22,"6' 3"" / 225 lbs",R,R
-8129,190,Grayson Grinsell,,LHP,Oregon,ROK,2028,21,"6' 1"" / 195 lbs",L,L
-8130,191,Jason Reitz,,RHP,Oregon,ROK,2028,21,"6' 11"" / 215 lbs",R,R
-8131,192,Ethan Grim,,RHP,Governor Mifflin (PA),-,-,18,"6' 0"" / 190 lbs",R,R
-8132,193,Chris Arroyo,MIA,1B/OF,Virginia,A,-,21,"6' 2"" / 225 lbs",L,L
-8133,194,Cam Maldonado,,OF,Northeastern,A,2028,22,"6' 3"" / 200 lbs",R,R
-8134,195,Nic Partridge,,3B,Florida,-,-,19,"6' 2"" / 170 lbs",L,R
-8135,196,Antoine Jean,,LHP,Houston,ROK,-,24,"6' 2"" / 190 lbs",R,L
-8136,197,Kyle McCoy,,LHP,Maryland,ROK,-,21,"6' 6"" / 205 lbs",L,L
-8137,198,Jack Anker,,RHP,Fresno State,A,-,21,"6' 2"" / 200 lbs",R,R
-8138,199,Brody Irlbeck,,LHP,Staley (MO),-,-,18,"6' 0"" / 175 lbs",L,L
-8139,200,Michael Winter,,RHP,Texas,-,-,18,"6' 5"" / 235 lbs",R,R
-8140,201,Peter Kussow,,RHP,Arrowhead Union (WI),ROK,2029,19,"6' 5"" / 205 lbs",R,R
-8141,202,Dylan Dubovik,,OF/3B,American Heritage (FL),-,-,18,"6' 4"" / 210 lbs",R,R
-8142,203,Gabe Graulau,,OF,Jupiter (FL),-,-,19,"6' 3"" / 200 lbs",R,R
-8143,204,Remo Indomenico,,OF,The First Academy (FL),-,-,18,"6' 0"" / 185 lbs",L,L
-8144,205,Ben Abeldt,,LHP,Texas Christian,ROK,-,22,"6' 3"" / 210 lbs",R,L
-8145,206,Trace Phillips,,RHP,Middle Tennessee State,ROK,-,21,"6' 4"" / 205 lbs",R,R
-8146,207,Cade Crossland,STL,LHP,Oklahoma,ROK,2028,21,"6' 2"" / 210 lbs",R,L
-8147,208,Landon Beidelschies,ATL,LHP,Arkansas,A,2028,21,"6' 3"" / 230 lbs",L,L
-8148,209,Dominick Reid,CHC,RHP,Abilene Christian,ROK,2028,22,"6' 3"" / 201 lbs",R,R
-8149,210,Michael Salina,,RHP,St. Bonaventure,ROK,2028,21,"6' 1"" / 215 lbs",R,R
-8150,211,Payton Graham,,RHP,Gonzaga,ROK,-,22,"6' 2"" / 220 lbs",R,R
-8151,212,Alan Soler,,LHP,True North (FL),-,-,19,"6' 3"" / 173 lbs",S,L
-8152,213,Justice de Jong,,RHP,Poly Prep (NY),-,-,18,"6' 3"" / 210 lbs",R,R
-8153,214,Isaiah Jackson,,OF,Arizona State,A,2028,21,"6' 3"" / 220 lbs",L,R
-8154,215,Sean Episcope,,RHP,Princeton,ROK,-,21,"6' 0"" / 210 lbs",R,R
-8155,216,Joey Volini,MIA,LHP,Florida State,A+,-,23,"6' 4"" / 247 lbs",L,L
-8156,217,Mason Ligenza,LAD,OF,Tamaqua Area (PA),-,-,18,"6' 5"" / 197 lbs",L,L
-8157,218,Diego Velazquez,,SS,Crespi Carmelite (CA),-,-,18,"6' 2"" / 200 lbs",L,R
-8158,219,Michael Oliveto,DET,C,Hauppauge (NY),ROK,2029,18,"6' 3"" / 185 lbs",L,R
-8159,220,Camden Lohman,,RHP,Fort Zumwalt North (MO),ROK,2029,19,"6' 4"" / 195 lbs",R,R
-8160,221,Conor Essenburg,,OF,Lincoln-Way West (IL),ROK,2029,19,"6' 2"" / 200 lbs",R,L
-8161,222,Carson Brumbaugh,,SS,Santa Fe (OK),-,-,19,"6' 2"" / 198 lbs",R,R
-8162,223,Maximus Martin,,SS/OF,Kansas State,A+,-,22,"6' 0"" / 190 lbs",R,R
-8163,224,Matt Klein,,C,Louisville,A,-,22,"6' 2"" / 210 lbs",L,R
-8164,225,Sawyer Hawks,,RHP,Vanderbilt,A,-,22,"6' 4"" / 225 lbs",R,R
-8165,226,Gabe Craig,,RHP,Baylor,A,-,24,"6' 5"" / 209 lbs",R,R
-8166,227,Kade Snell,,OF,Alabama,A+,2028,23,"6' 1"" / 220 lbs",L,L
-8167,228,Jake McCutcheon,,OF,Missouri State,A,-,22,"6' 0"" / 195 lbs",L,R
-7008,229,Zane Adams,,LHP,Alabama,-,-,21,"6' 4"" / 195 lbs",L,L
-8169,230,Brandon Arvidson,,LHP,Tennessee,-,-,21,"6' 5"" / 215 lbs",R,L
-8170,231,Christian Foutch,,RHP,Arkansas,-,-,22,"6' 3"" / 240 lbs",R,R
-8171,232,Ryan DeSanto,,LHP,Penn State,ROK,-,22,"6' 4"" / 218 lbs",L,L
-8172,233,Charlie Willcox,,RHP,South Walton (FL),-,-,19,"6' 4"" / 210 lbs",S,R
-8173,234,Bruin Agbayani,,SS,St. Louis (HI),A,-,18,"6' 2"" / 185 lbs",L,R
-8174,235,Jalin Flores,,SS,Texas,A,-,22,"6' 2"" / 210 lbs",R,R
-8175,236,Griffin Stieg,,RHP,Virginia Tech,-,-,22,"6' 4"" / 220 lbs",R,R
-8176,237,Ben Moore,,LHP,Old Dominion,A,-,21,"6' 4"" / 215 lbs",L,L
-8177,238,Cal Scolari,,RHP,Oregon,-,-,21,"6' 4"" / 200 lbs",R,R
-8178,239,Brady Dallimore,,C/OF,Texas Christian,-,-,19,"6' 4"" / 230 lbs",R,R
-8179,240,Anthony Pack Jr.,,OF,Millikan (CA),-,-,19,"5' 10"" / 160 lbs",L,L
-8180,241,Joe Ariola,,LHP,Wake Forest,ROK,-,21,"6' 2"" / 190 lbs",L,L
-8181,242,Ty Peeples,,OF,Franklin County (GA),-,-,19,"6' 2"" / 185 lbs",L,R
-8182,243,Joshua Flores,,RHP,Lake Central (IN),ROK,-,18,"6' 1"" / 205 lbs",R,R
-8183,244,Mario Magana,,3B/SS,Columbus (FL),-,-,19,"6' 3"" / 190 lbs",S,R
-8184,245,Ryan Weingartner,,SS,Penn State,A,-,21,"5' 11"" / 184 lbs",R,R
-8185,246,Jase Mitchell,,C,Cape Henlopen (DE),ROK,2029,19,"6' 3"" / 205 lbs",L,R
-8186,247,Boston Kellner,,3B,Hamilton (AZ),-,-,19,"6' 0"" / 195 lbs",R,R
-8187,248,Brody Donay,,C,Florida,A,-,22,"6' 5"" / 235 lbs",R,R
-8188,249,Nick Frusco,,LHP,Miller Place (NY),-,-,18,"6' 4"" / 208 lbs",L,L
-8189,250,Kelvyn Paulino Jr.,,3B,IMG Academy (FL),-,-,19,"6' 1"" / 195 lbs",R,R
+UPID,Rank,Player,Team,Position,School,Level,eta,Age,Height / Weight,Bats,Throws,FV,composite score
+7999,1,Wandy Asigen,NYM,SS,,,,,,,,47.5,14.28571429
+8015,2,Angeibel Gomez,KCR,RF,,,,,,,,45,14.28571429
+7941,3,Kade Anderson,SEA,LHP,Louisiana State,ROK,2027,21,"6' 2"" / 179 lbs",L,L,50,16.42857143
+7942,4,Seth Hernandez,PIT,RHP,Corona (CA),ROK,2028,19,"6' 4"" / 190 lbs",R,R,47.5,16.42857143
+7943,5,Jamie Arnold,ATH,LHP,Florida State,ROK,2027,21,"6' 1"" / 188 lbs",L,L,45,16.42857143
+8084,6,Johenssy Colome,ATH,3B,,,,,,,,45,17.14285714
+7940,7,Ethan Holliday,COL,SS,Stillwater (OK),A,2029,18,"6' 4"" / 210 lbs",L,R,55,20.71428571
+8111,8,Francisco Renteria,PHI,LF,,,,,,,,45,18.57142857
+8168,9,Victor Valdez,TBR,2B,,,,,,,,45,19.28571429
+8190,10,Randy Santana,DET,CF,,,,,,,,42.5,19.28571429
+7944,11,Eli Willits,WSN,SS,Fort Cobb-Broxton (OK),A,2029,18,"6' 1"" / 180 lbs",S,R,50,22.14285714
+8191,12,AngelNuñez Jr.,CIN,CF,,,,,,,,42.5,20.71428571
+7945,13,Aiva Arquette,MIA,SS,Oregon State,A+,2028,22,"6' 5"" / 220 lbs",R,R,50,23.57142857
+7946,14,Billy Carlson,CHW,SS,Corona (CA),ROK,2029,19,"6' 1"" / 185 lbs",R,R,47.5,23.57142857
+8192,15,Jose Luis Acevedo,BAL,SS,,,,,,,,42.5,22.85714286
+7948,16,JoJo Parker,TOR,SS,Purvis (MS),ROK,2029,19,"6' 2"" / 200 lbs",L,R,45,24.28571429
+8193,17,Manuel Bolivar,DET,C,,,,,,,,42.5,24.28571429
+8194,18,Juan Caricote,TOR,C,,,,,,,,42.5,25
+7951,19,Steele Hall,CIN,SS,Hewitt-Trussville (AL),ROK,2029,18,"6' 0"" / 180 lbs",R,R,42.5,25.71428571
+8195,20,Isaias Suarez,WSN,CF,,,,,,,,42.5,26.42857143
+7947,21,Liam Doyle,STL,LHP,Tennessee,AA,2027,21,"6' 2"" / 220 lbs",R,L,55,30.71428571
+7949,22,Kyson Witherspoon,BOS,RHP,Oklahoma,ROK,2027,21,"6' 2"" / 206 lbs",R,R,50,30
+7950,23,Ike Irish,BAL,C/OF,Auburn,A,2028,22,"6' 2"" / 201 lbs",L,R,47.5,30
+7952,24,Daniel Pierce,TBR,SS,Mill Creek (GA),ROK,2029,19,"6' 0"" / 185 lbs",R,R,42.5,29.28571429
+8196,25,Samil Serrano,WSN,LF,,,,,,,,42.5,30
+8197,26,Albert Fermin,HOU,3B,,,,,,,,42.5,30.71428571
+8198,27,Ariel Roque,BAL,CF,,,,,,,,42.5,31.42857143
+7954,28,Marek Houston,MIN,SS,Wake Forest,A+,2028,21,"6' 3"" / 205 lbs",R,R,45,32.85714286
+7955,29,Brendan Summerhill,TBR,OF,Arizona,A,2028,22,"6' 3"" / 200 lbs",L,R,42.5,32.85714286
+8199,30,Oscar Tineo,DET,SS,,,,,,,,42.5,33.57142857
+7953,31,Kayson Cunningham,ARI,SS,Johnson (TX),A,2029,19,"5' 10"" / 182 lbs",L,R,50,36.42857143
+8200,32,Juan Rijo,SEA,CF,,,,,,,,42.5,35
+8201,33,Edelson Cabral,ATL,SS,,,,,,,,42.5,35.71428571
+7956,34,Wehiwa Aloy,BAL,SS,Arkansas,A,2028,21,"6' 2"" / 200 lbs",R,R,47.5,37.85714286
+7958,35,Kruz Schoolcraft,SDP,LHP,Sunset (OR),A,2029,18,"6' 8"" / 229 lbs",L,L,42.5,37.14285714
+8202,36,Fabricio Blanco,TBR,2B,,,,,,,,42.5,37.85714286
+8203,37,Jeancer Custodio,PIT,RF,,,,,,,,40,37.85714286
+8204,38,Enmanuel Luna,STL,OF,,,,,,,,40,38.57142857
+7957,39,Tyler Bremner,LAA,RHP,UC Santa Barbara,ROK,2026,21,"6' 2"" / 190 lbs",R,R,50,42.14285714
+7959,40,Jace LaViolette,CLE,OF,Texas A&M,ROK,2028,22,"6' 6"" / 230 lbs",L,L,45,41.42857143
+8205,41,Elian Rosario,TEX,RF,,,,,,,,40,40.71428571
+7960,42,Gavin Kilen,SFG,2B/SS,Tennessee,A,2028,21,"5' 11"" / 187 lbs",L,R,45,42.85714286
+7961,43,Gavin Fien,TEX,SS,Great Oak (CA),A,2029,18,"6' 3"" / 200 lbs",R,R,42.5,42.85714286
+8206,44,Pedro Gomez,BAL,RF,,,,,,,,40,42.85714286
+8207,45,Rubel Arias,LAD,CF,,,,,,,,40,43.57142857
+7962,46,Gage Wood,PHI,RHP,Arkansas,A,2028,22,"6' 0"" / 205 lbs",R,R,45,45.71428571
+7963,47,Slater de Brun,BAL,OF,Summit (OR),ROK,2029,18,"5' 10"" / 187 lbs",L,L,42.5,45.71428571
+8208,48,Santiago Solarte,MIA,3B,,,,,,,,40,45.71428571
+8209,49,Enmanuel Merlo,MIN,3B,,,,,,,,40,46.42857143
+7981,50,Zachary Root,,LHP,Arkansas,ROK,2028,21,"6' 2"" / 210 lbs",L,L,0,35.71428571
+7964,51,Xavier Neyens,HOU,SS,Mount Vernon (WA),ROK,2029,19,"6' 4"" / 210 lbs",L,R,45,49.28571429
+7965,52,Josh Hammond,KCR,3B,Wesleyan Christian (NC),ROK,2029,19,"6' 1"" / 210 lbs",R,R,42.5,49.28571429
+7966,53,Sean Gamble,KCR,OF/2B,IMG Academy (FL),ROK,2029,19,"6' 1"" / 188 lbs",L,R,42.5,50
+8210,54,Fernando Graterol,CHW,C,,,,,,,,40,50
+8211,55,Yeison Horton,LAA,SS,,,,,,,,40,50.71428571
+8212,56,Diego Frontado,MIL,SS,,,,,,,,37.5,50.71428571
+7967,57,Ethan Conrad,CHC,OF,Wake Forest,ROK,2028,21,"6' 3"" / 220 lbs",L,L,45,53.57142857
+8213,58,Ruben Gallego,ARI,SS,,,,,,,,37.5,52.14285714
+7968,59,Andrew Fischer,MIL,3B/1B,Tennessee,A+,2027,21,"6' 1"" / 210 lbs",L,R,45,55
+8214,60,Garielvin Silverio,BOS,LF,,,,,,,,37.5,53.57142857
+7969,61,Devin Taylor,ATH,OF,Indiana,A,2028,22,"6' 1"" / 215 lbs",L,R,45,56.42857143
+7970,62,Patrick Forbes,ARI,RHP,Louisville,ROK,2028,21,"6' 3"" / 220 lbs",R,R,42.5,56.42857143
+8215,63,Gabriel Rosario,BAL,LF,,,,,,,,37.5,55.71428571
+8216,64,Sebastian Romero,CHW,LF,,,,,,,,37.5,56.42857143
+7971,65,Caden Bodine,BAL,C,Coastal Carolina,A,2028,22,"5' 10"" / 200 lbs",S,R,45,59.28571429
+7972,66,Luke Stevenson,SEA,C,North Carolina,A,2028,21,"6' 1"" / 200 lbs",L,R,42.5,59.28571429
+7973,67,Max Belyeu,COL,OF,Texas,A+,2028,22,"6' 2"" / 215 lbs",L,R,40,59.28571429
+8217,68,Carlos Castillo,LAA,OF,,,,,,,,37.5,59.28571429
+7974,69,Mason Neville,CIN,OF,Oregon,A,2028,22,"6' 3"" / 210 lbs",L,L,40,60.71428571
+8218,70,Richard De Los Santos,COL,3B,,,,,,,,37.5,60.71428571
+8219,71,Rickey Moneys,MIL,3B,,,,,,,,37.5,61.42857143
+8220,72,Carlos Carrion,STL,3B,,,,,,,,37.5,62.14285714
+7975,73,Cam Cannarella,MIA,OF,Clemson,A+,2028,22,"6' 0"" / 185 lbs",L,R,45,65
+7976,74,Quentin Young,MIN,SS,Oaks Christian (CA),A,2029,18,"6' 6"" / 225 lbs",R,R,42.5,65
+8221,75,Jose Mañon,ATL,SS,,,,,,,,37.5,64.28571429
+7977,76,Riley Quick,MIN,RHP,Alabama,ROK,2028,21,"6' 6"" / 255 lbs",R,R,42.5,66.42857143
+8222,77,Gregory Pio,SEA,CF,,,,,,,,37.5,65.71428571
+7978,78,Tate Southisene,ATL,SS/OF,Basic (NV),A,2029,19,"5' 11"" / 180 lbs",R,R,42.5,67.85714286
+8223,79,Joniel Hernandez,SDP,SS,,,,,,,,37.5,67.14285714
+7979,80,Anthony Eyanson,BOS,RHP,Louisiana State,ROK,2028,21,"6' 2"" / 208 lbs",R,R,42.5,69.28571429
+7980,81,JB Middleton,COL,RHP,Southern Mississippi,ROK,2028,22,"6' 0"" / 178 lbs",R,R,40,69.28571429
+8224,82,Kendri Faña,LAA,RHP,,,,,,,,37.5,69.28571429
+8225,83,Ricky Duran,ATH,3B,,,,,,,,37.5,70
+7997,84,Cameron Appenzeller,,LHP,Glenwood (IL),-,-,18,"6' 6"" / 180 lbs",L,L,0,60
+7982,85,Alex Lodise,ATL,SS,Florida State,A+,2028,21,"6' 1"" / 190 lbs",R,R,40,72.14285714
+8226,86,Randy Arias,HOU,SS,,,,,,,,37.5,72.14285714
+8227,87,Angel Ramirez,WSN,OF,,,,,,,,37.5,72.85714286
+7983,88,Jack Bauer,,LHP,Lincoln-Way East (IL),-,-,19,"6' 3"" / 190 lbs",L,L,42.5,75
+8228,89,Ronny Muñoz Aleman,MIA,3B,,,,,,,,37.5,74.28571429
+7984,90,Aaron Watson,CIN,RHP,Trinity Christian (FL),ROK,2029,19,"6' 5"" / 205 lbs",R,R,42.5,76.42857143
+8229,91,Jean Paredes,TBR,CF,,,,,,,,37.5,75.71428571
+7986,92,Brandon Compton,MIA,OF,Arizona State,A+,2028,22,"6' 1"" / 225 lbs",L,L,40,77.14285714
+8230,93,Wilton Guerrero Jr.,PIT,SS,,,,,,,,37.5,77.14285714
+7985,94,Matthew Fisher,PHI,RHP,Memorial (IN),ROK,2029,19,"6' 3"" / 200 lbs",R,R,45,80
+8231,95,Jaider Suarez,KCR,SS,,,,,,,,37.5,78.57142857
+8232,96,Starling De La Cruz,ATL,CF,,,,,,,,37.5,79.28571429
+7987,97,Landon Harmon,WSN,RHP,East Union (MS),ROK,2029,19,"6' 5"" / 190 lbs",R,R,45,82.14285714
+8233,98,Cleiner Ramirez,NYM?,OF,,,,,,,,37.5,80.71428571
+8234,99,Juan Duran,WSN,RF,,,,,,,,35,80.71428571
+8005,100,J.D. Thompson,,LHP,Vanderbilt,ROK,2028,22,"6' 0"" / 199 lbs",R,L,0,71.42857143
+7988,101,Angel Cervantes,PIT,RHP,Warren (CA),-,-,18,"6' 3"" / 195 lbs",R,R,45,85
+7989,102,Jordan Yost,DET,SS,Sickles (FL),ROK,2029,19,"6' 0"" / 170 lbs",L,R,42.5,85
+8235,103,Diego Serna,SDP,SP,,,,,,,,35,83.57142857
+7990,104,Nick Becker,SEA,SS,Don Bosco Prep (NJ),A,2029,19,"6' 4"" / 190 lbs",R,R,42.5,86.42857143
+8236,105,Yadier Muñoz,CHC,SS,,,,,,,,35,85
+7991,106,Alec Blair,,OF,De La Salle (CA),-,-,19,"6' 6"" / 195 lbs",L,L,42.5,87.85714286
+7992,107,Cade Obermueller,PHI,LHP,Iowa,ROK,2028,22,"6' 0"" / 170 lbs",L,L,40,87.85714286
+8237,108,DawvrisBrito,BOS,SS,,,,,,,,35,87.14285714
+7993,109,Charles Davalan,LAD,OF,Arkansas,A,2028,22,"5' 9"" / 190 lbs",L,R,42.5,90
+8238,110,Jaims Martinez,CHC,SS,,,,,,,,35,88.57142857
+8010,111,Zach Strickland,,RHP,Maranatha (CA),-,-,19,"6' 2"" / 180 lbs",S,R,0,79.28571429
+7994,112,Ryan Mitchell,STL,OF/INF,Houston (TN),ROK,2029,18,"6' 2"" / 185 lbs",L,R,42.5,92.14285714
+8239,113,Douglas Olivo,DET,CF,,,,,,,,35,90.71428571
+7995,114,Dean Moss,TBR,OF,IMG Academy (FL),ROK,2029,19,"6' 0"" / 180 lbs",L,R,42.5,93.57142857
+8240,115,Ismael Contreras,COL,RHP,,,,,,,,35,92.14285714
+7996,116,Jaden Fauske,CHW,OF,Nazareth Academy (IL),ROK,2029,19,"6' 3"" / 200 lbs",L,R,42.5,95
+7998,117,Ethan Petry,WSN,OF/1B,South Carolina,A,2028,21,"6' 4"" / 235 lbs",R,R,40,95
+7121,118,Dean Curley,CLE,INF,Tennessee,A,2028,21,"6' 3"" / 218 lbs",R,R,40,95.71428571
+8002,119,Mitch Voit,NYM,2B,Michigan,A,2028,21,"6' 0"" / 201 lbs",R,R,40,96.42857143
+8000,120,Marcus Phillips,BOS,RHP,Tennessee,ROK,2028,21,"6' 4"" / 246 lbs",R,R,47.5,99.28571429
+8001,121,Dax Kilby,NYY,SS,Newnan (GA),A,2029,19,"6' 2"" / 190 lbs",L,R,45,99.28571429
+8003,122,Brady Ebel,MIL,SS,Corona (CA),A,2029,18,"6' 3"" / 195 lbs",L,R,40,98.57142857
+8004,123,Brock Sell,,OF,Stanford,-,-,19,"6' 1"" / 176 lbs",L,R,40,99.28571429
+8006,124,Lucas Franco,,SS,Texas Christian,-,-,18,"6' 3"" / 180 lbs",L,R,40,100
+8007,125,Johnny Slawinski,LAA,LHP,Johnson (TX),ROK,2029,18,"6' 3"" / 180 lbs",L,L,40,100.7142857
+8008,126,Briggs McKenzie,ATL,LHP,Corinth Holders (NC),ROK,2029,19,"6' 2"" / 190 lbs",L,L,37.5,100.7142857
+8009,127,AJ Russell,TEX,RHP,Tennessee,ROK,2028,21,"6' 6"" / 223 lbs",R,R,42.5,102.8571429
+8027,128,Brayden Jaksa,,C,Irvington (CA),-,-,18,"6' 5"" / 215 lbs",R,R,0,91.42857143
+8011,129,Henry Godbout,BOS,2B,Virginia,A+,2028,22,"6' 2"" / 190 lbs",R,R,42.5,104.2857143
+8013,130,Joseph Dzierwa,BAL,LHP,Michigan State,ROK,2028,21,"6' 8"" / 200 lbs",R,L,40,104.2857143
+8012,131,Henry Ford,,OF,Tennessee,-,-,21,"6' 5"" / 220 lbs",R,R,45,106.4285714
+8014,132,Michael Lombardi,KCR,RHP,Tulane,ROK,2028,22,"6' 3"" / 201 lbs",R,R,40,105.7142857
+7023,133,James Ellwanger,MIN,RHP,Dallas Baptist,ROK,2028,21,"6' 4"" / 205 lbs",R,R,40,106.4285714
+8016,134,Chase Shores,LAA,RHP,Louisiana State,ROK,2027,21,"6' 8"" / 245 lbs",R,R,40,107.1428571
+8017,135,Gavin Turley,ATH,OF,Oregon State,A,2028,22,"6' 1"" / 196 lbs",R,R,37.5,107.1428571
+8018,136,Kyle Lodise,CHW,SS,Georgia Tech,A+,2028,22,"5' 11"" / 180 lbs",R,R,40,108.5714286
+8034,137,Dean Livingston,,RHP,Hebron Christian (GA),ROK,2029,19,"6' 4"" / 205 lbs",R,R,0,97.85714286
+8019,138,Daniel Dickinson,MIL,SS/2B,Louisiana State,ROK,2028,22,"6' 0"" / 180 lbs",R,R,40,110
+8020,139,Max Williams,MIA,OF,Florida State,A,2028,21,"6' 2"" / 207 lbs",L,L,37.5,110
+8021,140,Cooper Flemming,TBR,SS,Aliso Niguel (CA),ROK,2029,19,"6' 3"" / 190 lbs",L,R,40,111.4285714
+8037,141,Luke Hill,,3B/2B,Mississippi,A,2028,21,"6' 1"" / 200 lbs",R,R,0,100.7142857
+8022,142,Korbyn Dickerson,SEA,OF,Indiana,A,2028,22,"6' 1"" / 205 lbs",R,R,40,112.8571429
+8023,143,Kane Kepley,CHC,OF,North Carolina,A,2028,21,"5' 8"" / 180 lbs",L,L,40,113.5714286
+8025,144,Miguel Sime Jr.,WSH,RHP,Poly Prep (NY),ROK,2029,18,"6' 4"" / 235 lbs",R,R,37.5,113.5714286
+8024,145,Uli Fernsler,,LHP,Texas Christian,-,-,18,"6' 4"" / 225 lbs",L,L,42.5,115.7142857
+8026,146,Kaleb Wing,CHC,RHP,Scotts Valley (CA),ROK,2029,19,"6' 2"" / 180 lbs",R,R,37.5,115
+8042,147,Marcos Paz,,RHP,Louisiana State,-,-,19,"6' 1"" / 225 lbs",R,R,0,105
+8029,148,William Patrick,,OF,Louisiana State,-,-,19,"6' 2"" / 200 lbs",R,R,37.5,116.4285714
+8028,149,Josh Owens,TEX,SS,Providence (TN),A,2029,19,"6' 3"" / 185 lbs",L,R,42.5,118.5714286
+8030,150,Talon Haley,,LHP,Lewisburg (MS),ROK,2029,19,"6' 2"" / 200 lbs",R,L,37.5,117.8571429
+8047,151,Josiah Hartshorn,,OF,Orange Lutheran (CA),ROK,2029,18,"6' 2"" / 220 lbs",S,L,0,107.8571429
+8031,152,Taitn Gray,TBR,C/OF,Dallas Center-Grimes (IA),ROK,2029,18,"6' 4"" / 220 lbs",S,R,42.5,120.7142857
+8032,153,Easton Carmichael,PIT,C,Oklahoma,A+,2028,22,"6' 1"" / 200 lbs",R,R,40,120.7142857
+8048,154,Jacob Parker,,OF,Purvis (MS),-,-,19,"6' 3"" / 215 lbs",L,R,0,110
+8033,155,Coy James,WSH,SS,Davie County (NC),ROK,2029,18,"6' 0"" / 185 lbs",R,R,42.5,122.8571429
+8050,156,Justin Lamkin,KCR,LHP,Texas A&M,ROK,2028,21,"6' 4"" / 210 lbs",R,L,,111.4285714
+8035,157,Brett Crossland,,RHP,Texas,-,-,19,"6' 5"" / 240 lbs",R,R,40,123.5714286
+8036,158,Colin Yeaman,BAL,SS,UC Irvine,A,2028,21,"6' 2"" / 200 lbs",R,R,45,125.7142857
+8038,159,River Hamilton,,RHP,Barlow (OR),A,2029,19,"6' 3"" / 195 lbs",R,R,40,125
+8039,160,Ethan Moore,,SS/2B,Oak Park & River Forest (IL),-,-,19,"6' 0"" / 190 lbs",S,R,40,125.7142857
+8040,161,Jared Jones,,1B,Louisiana State,A+,2028,22,"6' 4"" / 246 lbs",R,R,37.5,125.7142857
+8055,162,Sean Youngerman,,RHP,Oklahoma State,ROK,2028,21,"6' 3"" / 230 lbs",R,R,0,115.7142857
+8041,163,Brian Curley,ARI,RHP,Georgia,ROK,2028,22,"5' 10"" / 212 lbs",R,R,40,127.8571429
+8057,164,Nick Dumesnil,,OF,California Baptist,A,2028,21,"6' 2"" / 210 lbs",R,R,0,117.1428571
+8058,165,Ethan Frey,HOU,OF,Louisiana State,A,2028,21,"6' 6"" / 225 lbs",R,R,,117.8571429
+8044,166,Aiden Stillman,,LHP,Vanderbilt,-,-,19,"6' 3"" / 205 lbs",R,L,37.5,129.2857143
+8059,167,Blaine Bullard,,OF,Klein Cain (TX),ROK,2029,19,"6' 2"" / 180 lbs",S,L,0,119.2857143
+8043,168,Jack Lafflam,,RHP,Brophy Prep (AZ),-,-,19,"6' 6"" / 178 lbs",R,R,42.5,132.1428571
+8045,169,Jake Cook,TOR,OF,Southern MIssissippi,ROK,2028,22,"6' 3"" / 185 lbs",L,L,40,132.1428571
+8061,170,Pico Kohn,,LHP,Mississippi State,ROK,2028,23,"6' 4"" / 200 lbs",L,L,0,121.4285714
+8046,171,Ben Jacobs,DET,LHP,Arizona State,ROK,2028,21,"6' 1"" / 195 lbs",L,L,40,133.5714286
+8049,172,Trent Grindlinger,,C,Huntington Beach (CA),-,-,19,"6' 2"" / 195 lbs",R,R,37.5,133.5714286
+8051,173,RJ Austin,BAL,OF,Vanderbilt,A,-,22,"5' 11"" / 199 lbs",R,R,37.5,134.2857143
+8066,174,JT Quinn,BAL,RHP,Georgia,ROK,2028,21,"6' 6"" / 210 lbs",R,R,,124.2857143
+8067,175,Sam Horn,,RHP,Missouri,-,-,22,"6' 4"" / 217 lbs",R,R,0,125
+8052,176,Jared Spencer,,LHP,Texas,ROK,2028,22,"6' 3"" / 210 lbs",L,L,40,137.1428571
+8068,177,Brandon Shannon,,RHP,McHenry (IL),-,-,19,"6' 4"" / 175 lbs",R,R,0,126.4285714
+8053,178,Cam Leiter,LAD,RHP,Florida State,ROK,2028,21,"6' 5"" / 234 lbs",R,R,40,138.5714286
+8054,179,Shane Sdao,,LHP,Texas A&M,-,-,22,"6' 2"" / 170 lbs",L,L,40,139.2857143
+8071,180,Omar Serna Jr.,,C,Louisiana State,-,-,19,"6' 2"" / 225 lbs",R,R,0,128.5714286
+8072,181,Cooper Underwood,,LHP,Allatoona (GA),-,-,19,"6' 2"" / 185 lbs",R,L,0,129.2857143
+8056,182,Mason Morris,CIN,RHP,Mississippi,A,2028,22,"6' 4"" / 225 lbs",R,R,42.5,142.1428571
+8073,183,John Paone,,RHP,Lawrence Academy (MA),-,-,19,"6' 3"" / 210 lbs",R,R,0,130.7142857
+8075,184,Matt Barr,,RHP,SUNY NIagara CC,ROK,2029,19,"6' 6"" / 195 lbs",R,R,0,131.4285714
+8060,185,Malachi Witherspoon,DET,RHP,Oklahoma,ROK,2028,21,"6' 3"" / 211 lbs",R,R,40,143.5714286
+8062,186,Aidan West,LAD,SS,Long Reach (MD),ROK,2029,18,"6' 2"" / 205 lbs",L,R,37.5,143.5714286
+8077,187,Cameron Millar,KCR,RHP,Alhambra (CA),ROK,2029,18,"6' 2"" / 200 lbs",R,R,,133.5714286
+8063,188,Tanner Franklin,STL,RHP,Tennessee,A+,2028,21,"6' 5"" / 225 lbs",R,R,37.5,145
+8078,189,Riley Kelly,,RHP,UC Irvine,ROK,2028,21,"6' 5"" / 215 lbs",R,R,0,135
+8064,190,Landon Schaefer,,SS/3B,Fayetteville (AR),-,-,19,"6' 3"" / 190 lbs",R,R,37.5,146.4285714
+8065,191,Nolan Schubart,CLE,OF,Oklahoma State,A,2028,21,"6' 5"" / 223 lbs",L,R,37.5,147.1428571
+8081,192,Colby Shelton,,SS,Florida,A,-,23,"6' 0"" / 205 lbs",L,R,0,137.1428571
+8069,193,Jayden Stroman,,RHP,Patchogue-Medford (NY),-,-,18,"6' 0"" / 197 lbs",S,R,37.5,148.5714286
+7006,194,Trent Caraway,,3B,Louisiana State,-,-,21,"6' 2"" / 203 lbs",R,R,0,138.5714286
+8085,195,Ryan Wideman,SDP,OF,Western Kentucky,A,2028,22,"6' 5"" / 204 lbs",R,R,,139.2857143
+8070,196,Micah Bucknam,TOR,RHP,Dallas Baptist,ROK,2028,22,"6' 1"" / 212 lbs",R,R,40,151.4285714
+8086,197,Gabe Davis,,RHP,Oklahoma State,ROK,-,22,"6' 9"" / 234 lbs",R,R,0,140.7142857
+8087,198,Nate Snead,LAA,RHP,Tennessee,ROK,2028,21,"6' 2"" / 212 lbs",R,R,,141.4285714
+8088,199,Caden Hunter,,LHP,Southern California,ROK,-,22,"6' 2"" / 205 lbs",R,L,0,142.1428571
+8074,200,Mason Pike,,SS/RHP,Puyallup (WA),-,-,19,"6' 0"" / 193 lbs",S,R,37.5,153.5714286
+8089,201,Ethin Bingaman,,RHP/OF,Corona (CA),-,-,19,"6' 1"" / 201 lbs",R,R,0,143.5714286
+8090,202,Tanner Thach,,1B,UNC Wilmington,A,2028,21,"6' 4"" / 225 lbs",L,L,0,144.2857143
+8076,203,Tre Phelps,,OF/1B,Georgia,-,-,21,"6' 2"" / 202 lbs",R,R,37.5,155.7142857
+8093,204,Matt Scott,,RHP,Stanford,-,-,22,"6' 7"" / 245 lbs",R,R,0,145.7142857
+8094,205,Joshua Jannicelli,,RHP,Cardinal Newman (CA),-,-,18,"6' 6"" / 185 lbs",R,R,0,146.4285714
+8095,206,Reagan Ricken,,RHP,Louisiana State,-,-,19,"6' 5"" / 220 lbs",R,R,0,147.1428571
+8079,207,Gustavo Melendez,PIT,SS,La Merced (PR),ROK,2029,18,"5' 8"" / 160 lbs",L,R,42.5,160
+8096,208,Marcelo Harsch,,RHP,Seton Hall Prep (NJ),-,-,18,"6' 4"" / 175 lbs",R,R,0,148.5714286
+8080,209,Murf Gray,PIT,3B,Fresno State,ROK,2028,22,"6' 4"" / 230 lbs",R,R,45,162.1428571
+8082,210,Mason White,BOS,SS,Arizona,A+,-,22,"5' 11"" / 178 lbs",L,R,40,161.4285714
+8099,211,Tim Piasentin,,3B,Foothills Composite (AB),ROK,2029,18,"6' 3"" / 200 lbs",L,R,0,150.7142857
+8083,212,Jack Gurevitch,STL,1B,San Diego,A,2028,21,"6' 0"" / 215 lbs",L,R,42.5,163.5714286
+8100,213,Aaron Walton,CLE,OF,Arizona,A,2028,21,"6' 3"" / 219 lbs",R,R,,152.1428571
+8101,214,Paxton Kling,,OF,Penn State,A+,-,22,"6' 2"" / 210 lbs",R,R,0,152.8571429
+8102,215,Will Hynes,CLE,RHP,Lorne Park (ON),ROK,2029,18,"6' 2"" / 180 lbs",R,R,,153.5714286
+8103,216,Landon Hodge,,C,Crespi Carmelite (CA),ROK,2029,18,"6' 1"" / 175 lbs",L,R,0,154.2857143
+8104,217,Brock Ketelsen,,OF/LHP,Stanford,-,-,18,"6' 4"" / 206 lbs",L,L,0,155
+8105,218,Noah Yoder,,RHP,Atlee (VA),-,-,18,"6' 6"" / 230 lbs",R,R,0,155.7142857
+8091,219,Angel Laya,,OF,Eastlake (CA),-,-,19,"6' 3"" / 190 lbs",L,R,37.5,167.1428571
+8106,220,Myles Upchurch,,RHP,St. Albans (DC),-,-,19,"6' 3"" / 215 lbs",R,R,0,157.1428571
+8092,221,Ty Harvey,SDP,C,Inspiration Academy (FL),A,2029,19,"6' 2"" / 215 lbs",R,R,37.5,168.5714286
+8107,222,Xavier Mitchell,,LHP,Prestonwood Christian (TX),ROK,2029,19,"6' 3"" / 165 lbs",L,L,0,158.5714286
+8108,223,Griffin Hugus,SEA,RHP,Miami,ROK,2028,21,"6' 2"" / 210 lbs",L,R,,159.2857143
+8110,224,Anthony Martinez,,1B,UC Irvine,A,-,21,"6' 3"" / 230 lbs",L,R,0,160
+6802,225,Antonio Jimenez,NYM,SS,Central Florida,A,2028,21,"6' 1"" / 200 lbs",R,R,,160.7142857
+8097,226,Drew Faurot,MIA,2B,Florida State,A,-,22,"6' 3"" / 207 lbs",S,R,37.5,172.1428571
+8112,227,Jacob Morrison,MIL,RHP,Coastal Carolina,ROK,-,22,"6' 8"" / 245 lbs",R,R,,162.1428571
+8113,228,Zane Taylor,,RHP,UNC Wilmington,AAA,2027,23,"6' 0"" / 200 lbs",R,R,0,162.8571429
+8098,229,Ethan Hedges,COL,3B,Southern California,A+,2028,21,"6' 1"" / 185 lbs",R,R,40,175
+8115,230,Rylan Galvan,,C,Texas,A,-,22,"6' 0"" / 215 lbs",R,R,0,164.2857143
+8116,231,Brent Iredale,,3B,Arkansas,A,-,22,"6' 3"" / 200 lbs",R,R,0,165
+8118,232,John Stuetzer,,OF/SS,Pope (GA),-,-,19,"5' 11"" / 190 lbs",R,R,0,165.7142857
+8119,233,Jacob McCombs,,OF,UC Irvine,A,-,21,"6' 2"" / 200 lbs",L,R,0,166.4285714
+8120,234,Trey Morris,,LHP,Washington Union (CA),-,-,19,"6' 3"" / 220 lbs",L,L,0,167.1428571
+8121,235,Nelson Keljo,,LHP,Oregon State,ROK,-,22,"6' 4"" / 228 lbs",L,L,0,167.8571429
+8122,236,Lorenzo Meola,,SS,Stetson,A,2028,22,"5' 11"" / 172 lbs",R,R,0,168.5714286
+8109,237,Grant Jay,,C/OF,Dallas Baptist,ROK,-,22,"6' 0"" / 225 lbs",R,R,37.5,180
+8125,238,Damian Bravo,,OF,Texas Tech,A+,-,22,"6' 2"" / 195 lbs",R,R,0,170
+8126,239,Cody Bowker,PHI,RHP,Vanderbilt,ROK,2028,22,"6' 1"" / 212 lbs",R,R,,170.7142857
+8127,240,Bobby Boser,,3B/2B/SS,Florida,A,2028,23,"6' 1"" / 215 lbs",R,R,0,171.4285714
+8128,241,Jake Clemente,,RHP,Florida,A,-,22,"6' 3"" / 225 lbs",R,R,0,172.1428571
+8129,242,Grayson Grinsell,,LHP,Oregon,ROK,2028,21,"6' 1"" / 195 lbs",L,L,0,172.8571429
+8114,243,James Quinn-Irons,TBR,OF,George Mason,A,2028,22,"6' 5"" / 230 lbs",R,R,40,185
+8130,244,Jason Reitz,,RHP,Oregon,ROK,2028,21,"6' 11"" / 215 lbs",R,R,0,174.2857143
+8131,245,Ethan Grim,,RHP,Governor Mifflin (PA),-,-,18,"6' 0"" / 190 lbs",R,R,0,175
+8117,246,CJ Gray,LAA,RHP,Brown (NC),ROK,2029,18,"6' 2"" / 205 lbs",R,R,37.5,186.4285714
+8133,247,Cam Maldonado,,OF,Northeastern,A,2028,22,"6' 3"" / 200 lbs",R,R,0,176.4285714
+8134,248,Nic Partridge,,3B,Florida,-,-,19,"6' 2"" / 170 lbs",L,R,0,177.1428571
+8135,249,Antoine Jean,,LHP,Houston,ROK,-,24,"6' 2"" / 190 lbs",R,L,0,177.8571429
+8136,250,Kyle McCoy,,LHP,Maryland,ROK,-,21,"6' 6"" / 205 lbs",L,L,0,178.5714286
+8137,251,Jack Anker,,RHP,Fresno State,A,-,21,"6' 2"" / 200 lbs",R,R,0,179.2857143
+8138,252,Brody Irlbeck,,LHP,Staley (MO),-,-,18,"6' 0"" / 175 lbs",L,L,0,180
+8124,253,Brooks Bryan,,C,Troy,ROK,-,21,"6' 2"" / 222 lbs",L,R,37.5,191.4285714
+8139,254,Michael Winter,,RHP,Texas,-,-,18,"6' 5"" / 235 lbs",R,R,0,181.4285714
+8123,255,Aidan Teel,,OF,Mississippi State,-,-,21,"6' 0"" / 195 lbs",L,R,42.5,194.2857143
+8140,256,Peter Kussow,,RHP,Arrowhead Union (WI),ROK,2029,19,"6' 5"" / 205 lbs",R,R,0,182.8571429
+8142,257,Gabe Graulau,,OF,Jupiter (FL),-,-,19,"6' 3"" / 200 lbs",R,R,0,183.5714286
+8143,258,Remo Indomenico,,OF,The First Academy (FL),-,-,18,"6' 0"" / 185 lbs",L,L,0,184.2857143
+8144,259,Ben Abeldt,,LHP,Texas Christian,ROK,-,22,"6' 3"" / 210 lbs",R,L,0,185
+8145,260,Trace Phillips,,RHP,Middle Tennessee State,ROK,-,21,"6' 4"" / 205 lbs",R,R,0,185.7142857
+8148,261,Dominick Reid,CHC,RHP,Abilene Christian,ROK,2028,22,"6' 3"" / 201 lbs",R,R,,186.4285714
+8132,262,Chris Arroyo,MIA,1B/OF,Virginia,A,-,21,"6' 2"" / 225 lbs",L,L,42.5,199.2857143
+8149,263,Michael Salina,,RHP,St. Bonaventure,ROK,2028,21,"6' 1"" / 215 lbs",R,R,0,187.8571429
+8150,264,Payton Graham,,RHP,Gonzaga,ROK,-,22,"6' 2"" / 220 lbs",R,R,0,188.5714286
+8151,265,Alan Soler,,LHP,True North (FL),-,-,19,"6' 3"" / 173 lbs",S,L,0,189.2857143
+8152,266,Justice de Jong,,RHP,Poly Prep (NY),-,-,18,"6' 3"" / 210 lbs",R,R,0,190
+8153,267,Isaiah Jackson,,OF,Arizona State,A,2028,21,"6' 3"" / 220 lbs",L,R,0,190.7142857
+8154,268,Sean Episcope,,RHP,Princeton,ROK,-,21,"6' 0"" / 210 lbs",R,R,0,191.4285714
+8141,269,Dylan Dubovik,,OF/3B,American Heritage (FL),-,-,18,"6' 4"" / 210 lbs",R,R,37.5,202.8571429
+8157,270,Diego Velazquez,,SS,Crespi Carmelite (CA),-,-,18,"6' 2"" / 200 lbs",L,R,0,192.8571429
+8159,271,Camden Lohman,,RHP,Fort Zumwalt North (MO),ROK,2029,19,"6' 4"" / 195 lbs",R,R,0,193.5714286
+8160,272,Conor Essenburg,,OF,Lincoln-Way West (IL),ROK,2029,19,"6' 2"" / 200 lbs",R,L,0,194.2857143
+8161,273,Carson Brumbaugh,,SS,Santa Fe (OK),-,-,19,"6' 2"" / 198 lbs",R,R,0,195
+8146,274,Cade Crossland,STL,LHP,Oklahoma,ROK,2028,21,"6' 2"" / 210 lbs",R,L,40,207.1428571
+8162,275,Maximus Martin,,SS/OF,Kansas State,A+,-,22,"6' 0"" / 190 lbs",R,R,0,196.4285714
+8147,276,Landon Beidelschies,ATL,LHP,Arkansas,A,2028,21,"6' 3"" / 230 lbs",L,L,40,208.5714286
+8163,277,Matt Klein,,C,Louisville,A,-,22,"6' 2"" / 210 lbs",L,R,0,197.8571429
+8164,278,Sawyer Hawks,,RHP,Vanderbilt,A,-,22,"6' 4"" / 225 lbs",R,R,0,198.5714286
+8165,279,Gabe Craig,,RHP,Baylor,A,-,24,"6' 5"" / 209 lbs",R,R,0,199.2857143
+8166,280,Kade Snell,,OF,Alabama,A+,2028,23,"6' 1"" / 220 lbs",L,L,0,200
+8167,281,Jake McCutcheon,,OF,Missouri State,A,-,22,"6' 0"" / 195 lbs",L,R,0,200.7142857
+7008,282,Zane Adams,,LHP,Alabama,-,-,21,"6' 4"" / 195 lbs",L,L,0,201.4285714
+8169,283,Brandon Arvidson,,LHP,Tennessee,-,-,21,"6' 5"" / 215 lbs",R,L,0,202.1428571
+8170,284,Christian Foutch,,RHP,Arkansas,-,-,22,"6' 3"" / 240 lbs",R,R,0,202.8571429
+8155,285,Joey Volini,MIA,LHP,Florida State,A+,-,23,"6' 4"" / 247 lbs",L,L,40,215
+8171,286,Ryan DeSanto,,LHP,Penn State,ROK,-,22,"6' 4"" / 218 lbs",L,L,0,204.2857143
+8172,287,Charlie Willcox,,RHP,South Walton (FL),-,-,19,"6' 4"" / 210 lbs",S,R,0,205
+8156,288,Mason Ligenza,LAD,OF,Tamaqua Area (PA),-,-,18,"6' 5"" / 197 lbs",L,L,42.5,217.8571429
+8173,289,Bruin Agbayani,,SS,St. Louis (HI),A,-,18,"6' 2"" / 185 lbs",L,R,0,206.4285714
+8158,290,Michael Oliveto,DET,C,Hauppauge (NY),ROK,2029,18,"6' 3"" / 185 lbs",L,R,42.5,219.2857143
+8175,291,Griffin Stieg,,RHP,Virginia Tech,-,-,22,"6' 4"" / 220 lbs",R,R,0,207.8571429
+8176,292,Ben Moore,,LHP,Old Dominion,A,-,21,"6' 4"" / 215 lbs",L,L,0,208.5714286
+8177,293,Cal Scolari,,RHP,Oregon,-,-,21,"6' 4"" / 200 lbs",R,R,0,209.2857143
+8178,294,Brady Dallimore,,C/OF,Texas Christian,-,-,19,"6' 4"" / 230 lbs",R,R,0,210
+8179,295,Anthony Pack Jr.,,OF,Millikan (CA),-,-,19,"5' 10"" / 160 lbs",L,L,0,210.7142857
+8180,296,Joe Ariola,,LHP,Wake Forest,ROK,-,21,"6' 2"" / 190 lbs",L,L,0,211.4285714
+8182,297,Joshua Flores,,RHP,Lake Central (IN),ROK,-,18,"6' 1"" / 205 lbs",R,R,0,212.1428571
+8183,298,Mario Magana,,3B/SS,Columbus (FL),-,-,19,"6' 3"" / 190 lbs",S,R,0,212.8571429
+8184,299,Ryan Weingartner,,SS,Penn State,A,-,21,"5' 11"" / 184 lbs",R,R,0,213.5714286
+8185,300,Jase Mitchell,,C,Cape Henlopen (DE),ROK,2029,19,"6' 3"" / 205 lbs",L,R,0,214.2857143
+8186,301,Boston Kellner,,3B,Hamilton (AZ),-,-,19,"6' 0"" / 195 lbs",R,R,0,215
+8187,302,Brody Donay,,C,Florida,A,-,22,"6' 5"" / 235 lbs",R,R,0,215.7142857
+8188,303,Nick Frusco,,LHP,Miller Place (NY),-,-,18,"6' 4"" / 208 lbs",L,L,0,216.4285714
+8174,304,Jalin Flores,,SS,Texas,A,-,22,"6' 2"" / 210 lbs",R,R,37.5,227.8571429
+8189,305,Kelvyn Paulino Jr.,,3B,IMG Academy (FL),-,-,19,"6' 1"" / 195 lbs",R,R,0,217.8571429
+8181,306,Ty Peeples,,OF,Franklin County (GA),-,-,19,"6' 2"" / 185 lbs",L,R,37.5,229.2857143

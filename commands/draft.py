@@ -97,7 +97,6 @@ class DraftCommands(commands.Cog):
         self.pick_validator = None
         self.board_manager = None
         self.prospect_db = None
-        self.db_channel_manager = None  # DatabaseChannelManager
         self.pending_confirmations = {}
         self.status_message = None
         self.draft_board_thread = None
@@ -687,8 +686,6 @@ class DraftCommands(commands.Cog):
         app_commands.Choice(name="status", value="status"),
         app_commands.Choice(name="undo", value="undo"),
         app_commands.Choice(name="order", value="order"),
-        app_commands.Choice(name="db_setup", value="db_setup"),
-        app_commands.Choice(name="db_refresh", value="db_refresh"),
     ])
     @app_commands.choices(draft_type=[
         app_commands.Choice(name="Prospect Draft", value="prospect"),
@@ -714,10 +711,6 @@ class DraftCommands(commands.Cog):
             await self._handle_undo(interaction)
         elif action_value == "order":
             await self._handle_order(interaction)
-        elif action_value == "db_setup":
-            await self._handle_db_setup(interaction, draft_type)
-        elif action_value == "db_refresh":
-            await self._handle_db_refresh(interaction, draft_type)
     
     async def _handle_start(self, interaction, draft_type):
         if draft_type is None:
@@ -899,68 +892,6 @@ class DraftCommands(commands.Cog):
         
         await interaction.response.send_message(embed=embed, ephemeral=True)
     
-    async def _handle_db_setup(self, interaction, draft_type):
-        """Setup database channel with position threads"""
-        if draft_type is None:
-            await interaction.response.send_message("❌ Specify draft type", ephemeral=True)
-            return
-        
-        await interaction.response.defer(ephemeral=True)
-        
-        try:
-            # Load prospect database
-            from draft.prospect_database import ProspectDatabase
-            from draft.database_channel_manager import DatabaseChannelManager
-            
-            self.prospect_db = ProspectDatabase(season=2025, draft_type=draft_type.value)
-            self.db_channel_manager = DatabaseChannelManager(
-                bot=self.bot,
-                channel_id=1450548156118077532,
-                season=2025,
-                draft_type=draft_type.value
-            )
-            
-            # Setup channel
-            await self.db_channel_manager.setup_database_channel(interaction.guild, self.prospect_db)
-            
-            # Show index
-            index = self.db_channel_manager.format_thread_index()
-            
-            await interaction.followup.send(
-                f"✅ Database channel setup complete!\n\n**Position Threads:**\n{index}",
-                ephemeral=True
-            )
-            
-        except Exception as e:
-            await interaction.followup.send(f"❌ Error: {str(e)}", ephemeral=True)
-    
-    async def _handle_db_refresh(self, interaction, draft_type):
-        """Refresh database channel with current draft state"""
-        if draft_type is None:
-            await interaction.response.send_message("❌ Specify draft type", ephemeral=True)
-            return
-        
-        if not self.db_channel_manager:
-            await interaction.response.send_message(
-                "❌ Run /draft db_setup first",
-                ephemeral=True
-            )
-            return
-        
-        await interaction.response.defer(ephemeral=True)
-        
-        try:
-            # Apply current draft picks to database
-            if self.draft_manager and self.draft_manager.draft_type == draft_type.value:
-                self.prospect_db.apply_draft_picks(self.draft_manager.state["picks_made"])
-            
-            # Refresh all threads
-            await self.db_channel_manager.refresh_all(interaction.guild, self.prospect_db)
-            
-            await interaction.followup.send("✅ Database refreshed!", ephemeral=True)
-            
-        except Exception as e:
-            await interaction.followup.send(f"❌ Error: {str(e)}", ephemeral=True)
 
 
 async def setup(bot):

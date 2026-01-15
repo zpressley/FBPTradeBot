@@ -24,21 +24,29 @@ class ProspectDatabase:
         self.season = season
         self.draft_type = draft_type
 
-        # Internal canonical store
+        # Internal canonical store used by Discord and the website.
         self.players: Dict[str, Dict] = {}
         self.players_by_position: Dict[str, List[str]] = {}
-
-        # PickValidator compatibility view
+        
+        # PickValidator compatibility view (iterates self.db.prospects.items()).
         self.prospects: Dict[str, Dict] = {}
-
+        
         self.load_from_combined_players()
     
     def load_from_combined_players(self) -> None:
-        """
-        Load prospects from combined_players.json.
-        
-        For prospect drafts: Load Farm players (player_type == "Farm")
-        For keeper drafts: Load MLB players (player_type == "MLB")
+        """Load players from combined_players.json for the given draft type.
+
+        Prospect draft:
+        - Primary pool is Farm players (player_type == "Farm").
+        - We carry through:
+          - name / upid / team / position / status / years_simple
+          - player_type (Farm vs MLB/etc.)
+          - contract_type (BC/DC/PC or blank)
+          - fypd (bool; True if in the current FYPD pool)
+          - manager (owner, if any)
+
+        Keeper draft:
+        - Uses MLB players (player_type == "MLB") with similar fields.
         """
         data_file = "data/combined_players.json"
         
@@ -51,30 +59,29 @@ class ProspectDatabase:
         
         # Filter by draft type
         if self.draft_type == "prospect":
-            # Farm players for prospect draft
             filtered = [p for p in all_players if p.get("player_type") == "Farm"]
         else:
-            # MLB players for keeper draft
             filtered = [p for p in all_players if p.get("player_type") == "MLB"]
         
         # Build player database
         for player in filtered:
-            name = player.get("name", "").strip()
+            name = (player.get("name") or "").strip()
             if not name:
                 continue
             
-            # Extract key info
             manager = player.get("manager", "")
             contract_type = player.get("contract_type", "")
             years_simple = player.get("years_simple", "")
 
-            # Owner is the team abbreviation (manager) when present.
             owner = manager.strip() if manager and str(manager).strip() else None
 
-            # Ownership for *prospect* validation is based on contract_type.
+            # Ownership categories (PC/FC/DC/UC) are still exposed for
+            # compatibility with existing displays, but the *rules* no
+            # longer rely on them for the prospect draft. They are
+            # derived purely from contract_type.
             ownership = self._parse_ownership(contract_type) if self.draft_type == "prospect" else ("PC" if owner else "UC")
 
-            self.players[name] = {
+            record = {
                 "name": name,
                 "position": player.get("position", ""),
                 "team": player.get("team", ""),
@@ -83,44 +90,35 @@ class ProspectDatabase:
                 "years_simple": years_simple,
                 "upid": player.get("upid", ""),
                 "yahoo_id": player.get("yahoo_id", ""),
+                "player_type": player.get("player_type"),
+                "fypd": bool(player.get("fypd", False)),
 
-                # PickValidator-relevant fields
+                # PickValidator / UI helpers
                 "ownership": ownership,
                 "owner": owner,
-
-                # Placeholder for rank/stats (TODO)
-                "rank": "?",
-
-                # Keeper display helper
+                "rank": player.get("rank", "?"),
                 "status_code": years_simple or "",
             }
+
+            self.players[name] = record
             
             # Index by position
-            pos = player.get("position", "")
+            pos = record.get("position", "")
             if pos:
-                if pos not in self.players_by_position:
-                    self.players_by_position[pos] = []
-                self.players_by_position[pos].append(name)
+                self.players_by_position.setdefault(pos, []).append(name)
         
         # Build PickValidator compatibility view.
-        # (PickValidator iterates `self.db.prospects.items()`.)
         self.prospects = self.players
-
+        
         print(f"✅ Loaded {len(self.players)} {self.draft_type} players")
         print(f"   Positions: {list(self.players_by_position.keys())}")
     
     def _parse_ownership(self, contract_type: str) -> str:
-        """Parse ownership status for prospect-draft rules.
+        """Parse ownership status from contract_type for display.
 
-        For Farm players, we care about PC/FC/DC/UC.
-
-        In `combined_players.json`, `contract_type` comes from the sheet's "Contract Type" field
-        and typically contains values like:
-        - "Purchased Contract" -> PC
-        - "Farm Contract" -> FC
-        - "Development Cont." -> DC
-
-        If contract_type is blank, treat as UC.
+        Historically, prospect rules used UC/PC/FC/DC. The new 2026
+        Constitution removes protected/unprotected rounds, but we keep
+        this helper for backward-compatible displays.
         """
         s = (contract_type or "").strip().lower()
 
@@ -133,7 +131,6 @@ class ProspectDatabase:
         if "development" in s:
             return "DC"
 
-        # Fallback for unexpected values.
         if "pc" in s:
             return "PC"
         if "fc" in s:

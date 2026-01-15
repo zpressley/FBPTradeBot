@@ -29,6 +29,13 @@ class DraftManager:
         # Load or initialize state
         self.state = self.load_or_init_state()
         
+        # Initialize per-team slot limits/usage for prospect drafts.
+        # For now we derive BC/DC slot limits directly from the draft order:
+        # - Rounds 1–2: BC slots (FYPD-only rounds)
+        # - Rounds 3+: DC slots (general prospect rounds)
+        if self.draft_type == "prospect":
+            self._init_team_slots_from_order()
+        
         # Current position in draft
         self.current_pick_index = self.state.get("current_pick_index", 0)
         
@@ -125,7 +132,15 @@ class DraftManager:
             "timer_started_at": None,
             "paused_at": None,
             "started_at": None,
-            "completed_at": None
+            "completed_at": None,
+            # Per-team slot usage for prospect drafts (populated via
+            # _init_team_slots_from_order for draft_type == "prospect").
+            # Structure:
+            # "team_slots": {
+            #   "WIZ": {"bc_slots": 2, "dc_slots": 5, "bc_used": 0, "dc_used": 0},
+            #   ...
+            # }
+            "team_slots": {}
         }
         
         self.save_state(state)
@@ -175,6 +190,34 @@ class DraftManager:
         
         return self.draft_order[next_index].copy()
     
+    def _init_team_slots_from_order(self) -> None:
+        """Initialize per-team BC/DC slot limits from draft order if missing.
+
+        We derive effective slot counts from the number of picks each team
+        has in rounds 1–2 (BC slots) and rounds 3+ (DC slots). This keeps the
+        draft engine self-contained: PAD purchases are reflected in the
+        custom draft order, and we mirror that here for validation and UI.
+        """
+        team_slots = self.state.get("team_slots") or {}
+
+        # Only derive limits if they are not already present (e.g., from a
+        # previous run or an external PAD-driven import).
+        if not team_slots:
+            for pick in self.draft_order:
+                team = pick["team"]
+                round_num = pick["round"]
+                entry = team_slots.setdefault(
+                    team,
+                    {"bc_slots": 0, "dc_slots": 0, "bc_used": 0, "dc_used": 0},
+                )
+                if round_num <= 2:
+                    entry["bc_slots"] += 1
+                else:
+                    entry["dc_slots"] += 1
+
+            self.state["team_slots"] = team_slots
+            self.save_state()
+
     def make_pick(self, team: str, player_name: str) -> Dict:
         """
         Record a pick and advance to next pick.
@@ -212,6 +255,19 @@ class DraftManager:
         
         self.state["picks_made"].append(pick_record)
         
+        # Track BC/DC slot usage for prospect drafts
+        if self.draft_type == "prospect":
+            team_slots = self.state.setdefault("team_slots", {})
+            slot_info = team_slots.setdefault(
+                team,
+                {"bc_slots": 0, "dc_slots": 0, "bc_used": 0, "dc_used": 0},
+            )
+            round_num = current_pick["round"]
+            if round_num <= 2:
+                slot_info["bc_used"] = slot_info.get("bc_used", 0) + 1
+            else:
+                slot_info["dc_used"] = slot_info.get("dc_used", 0) + 1
+
         # Advance to next pick
         self.current_pick_index += 1
         self.state["current_pick_index"] = self.current_pick_index
