@@ -240,7 +240,7 @@ class DraftCommands(commands.Cog):
                 inline=True
             )
         
-        view = PickConfirmationView(self, team, player_data, pick_info, is_dm, self.DRAFT_CHANNEL_ID if is_dm else None)
+        view = PickConfirmationView(self, team, player_data, pick_info)
         
         mention = user.mention if not self.TEST_MODE else f"**{team}**"
         
