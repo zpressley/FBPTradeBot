@@ -314,15 +314,35 @@ class DraftManager:
         return undone_pick
     
     def start_draft(self) -> None:
-        """Start the draft (change status to active)"""
-        if self.state["status"] == "active":
-            raise ValueError("Draft is already active")
-        
+        """Start the draft (change status to active).
+
+        Designed to be *idempotent* so that calling it again after a bot
+        restart just re-attaches to an already-active draft instead of
+        throwing an error.
+        """
+        status = self.state.get("status")
+
+        # If the draft is already active, treat this as a no-op so that
+        # /draft start can be used to reattach to existing state.
+        if status == "active":
+            print("🔁 Draft already active; reusing existing state")
+            return
+
+        # If the draft was completed, require a manual reset (e.g. removing
+        # the state file) before starting over to avoid accidental resets.
+        if status == "completed":
+            raise ValueError(
+                "Draft is already complete. Delete the draft_state file "
+                "if you really want to restart from scratch."
+            )
+
         self.state["status"] = "active"
-        self.state["started_at"] = datetime.now().isoformat()
+        # Only set started_at if it wasn't already recorded.
+        if not self.state.get("started_at"):
+            self.state["started_at"] = datetime.now().isoformat()
         self.save_state()
-        
-        print(f"🏟️ Draft started!")
+
+        print("🏟️ Draft started!")
     
     def pause_draft(self) -> None:
         """Pause the draft"""
