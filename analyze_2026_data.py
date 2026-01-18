@@ -6,6 +6,7 @@ This shows what data you'll get and how to use it
 
 import json
 import os
+import shutil
 
 # Expected data structure from fetch_2026_yahoo_data.py
 EXAMPLE_OUTPUT = {
@@ -272,8 +273,15 @@ def export_positions_csv():
                 writer = csv.DictWriter(f, fieldnames=csv_data[0].keys())
                 writer.writeheader()
                 writer.writerows(csv_data)
-        
+
+        # Also archive a copy under data/historical/2026
+        hist_dir = os.path.join("data", "historical", "2026")
+        os.makedirs(hist_dir, exist_ok=True)
+        hist_file = os.path.join(hist_dir, "2026_yahoo_positions.csv")
+        shutil.copyfile(output_file, hist_file)
+
         print(f"✅ Position data exported to: {output_file}")
+        print(f"✅ Historical position data exported to: {hist_file}")
         print(f"   Total players: {len(csv_data)}")
         
     except Exception as e:

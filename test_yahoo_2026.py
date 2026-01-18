@@ -4,6 +4,14 @@ Quick test to verify Yahoo API access for 2026 season
 """
 
 import requests
+import os
+import sys
+
+# Ensure token_manager from random/ is importable
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, "random"))
+
 from token_manager import get_access_token
 
 LEAGUE_ID = "15505"

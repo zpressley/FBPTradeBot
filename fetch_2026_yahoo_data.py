@@ -8,7 +8,14 @@ import json
 import requests
 from xml.etree import ElementTree as ET
 import os
+import sys
 from datetime import datetime
+
+# Ensure token_manager from random/ is importable
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, "random"))
+
 from token_manager import get_access_token
 
 # League Configuration
@@ -268,12 +275,12 @@ class YahooDataFetcher:
         
         # Create data directory
         os.makedirs("data", exist_ok=True)
-        
+
         # Fetch all data
         league_info = self.fetch_league_info()
         roster_data = self.fetch_rosters_with_details()
         stat_mappings = self.fetch_player_stats_mappings()
-        
+
         # Combine into single output
         output = {
             "league_info": league_info,
@@ -281,13 +288,13 @@ class YahooDataFetcher:
             "teams": roster_data,
             "fetched_at": datetime.now().isoformat()
         }
-        
+
         # Save complete dataset
         complete_file = "data/yahoo_2026_complete.json"
         with open(complete_file, "w") as f:
             json.dump(output, f, indent=2)
         print(f"\n✅ Complete data saved: {complete_file}")
-        
+
         # Save simplified roster-only file (backward compatible)
         simple_rosters = {}
         for team_abbr, team_data in roster_data.items():
@@ -300,12 +307,26 @@ class YahooDataFetcher:
                 }
                 for p in team_data["players"]
             ]
-        
+
         simple_file = "data/yahoo_players.json"
         with open(simple_file, "w") as f:
             json.dump(simple_rosters, f, indent=2)
         print(f"✅ Simple rosters saved: {simple_file}")
-        
+
+        # Also archive copies under data/historical/2026
+        hist_dir = os.path.join("data", "historical", "2026")
+        os.makedirs(hist_dir, exist_ok=True)
+
+        hist_complete_file = os.path.join(hist_dir, "yahoo_2026_complete.json")
+        with open(hist_complete_file, "w") as f:
+            json.dump(output, f, indent=2)
+        print(f"✅ Historical complete data saved: {hist_complete_file}")
+
+        hist_simple_file = os.path.join(hist_dir, "yahoo_players_2026.json")
+        with open(hist_simple_file, "w") as f:
+            json.dump(simple_rosters, f, indent=2)
+        print(f"✅ Historical simple rosters saved: {hist_simple_file}")
+
         # Print summary
         print(f"\n📊 Data Summary:")
         print(f"  League: {league_info.get('name', 'Unknown')}")

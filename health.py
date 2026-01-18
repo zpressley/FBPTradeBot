@@ -230,9 +230,21 @@ def compute_draft_status(draft_type: str, state: dict) -> str:
 
 
 def build_draft_payload(draft_type: str) -> dict:
-    """Build unified draft payload for keeper or prospect draft."""
+    """Build unified draft payload for keeper or prospect draft.
+
+    Important: the prospect draft currently uses a separate season
+    constant (PROSPECT_DRAFT_SEASON) so that Discord + API both read
+    from the same state file (e.g. data/draft_state_prospect_2025.json).
+    """
     season_dates = load_season_dates()
-    season = season_dates.get("season_year")
+    configured_season = season_dates.get("season_year")
+
+    # Use the prospect-specific season for prospect drafts so that the
+    # website sees the same state that the Discord bot is mutating.
+    if draft_type == "prospect":
+        season = PROSPECT_DRAFT_SEASON
+    else:
+        season = configured_season
 
     # DraftManager will choose the appropriate state file based on type/season.
     mgr = DraftManager(draft_type=draft_type, season=season)
