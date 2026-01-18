@@ -15,7 +15,7 @@ class DraftManager:
     Loads custom draft order, tracks picks, handles state persistence.
     """
     
-    def __init__(self, draft_type: str = "prospect", season: int = 2025):
+    def __init__(self, draft_type: str = "prospect", season: int = 2026):
         self.draft_type = draft_type
         self.season = season
         

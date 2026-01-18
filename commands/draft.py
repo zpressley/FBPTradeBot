@@ -88,8 +88,8 @@ class DraftCommands(commands.Cog):
         self.bot = bot
         self.DRAFT_CHANNEL_ID = None
         self.ADMIN_ROLE_NAMES = ["Admin", "Commissioner"]
-        self.PICK_TIMER_DURATION = 600
-        self.WARNING_TIME = 120
+        self.PICK_TIMER_DURATION = 30
+        self.WARNING_TIME = 10
         
         self.TEST_MODE = True
         
@@ -230,8 +230,9 @@ class DraftCommands(commands.Cog):
             player_info_parts.append(f"Position: {player_data['position']}")
         if player_data.get('team') and player_data['team'] != '?':
             player_info_parts.append(f"MLB Team: {player_data['team']}")
-        if player_data.get('ownership'):
-            player_info_parts.append(f"Status: {player_data['ownership']}")
+        
+        # Do not surface internal ownership codes like UC/PC/FC/DC in the UI
+        # Prospect draft only shows unowned prospects, so contracts are implicit.
         
         if player_info_parts:
             embed.add_field(
@@ -370,45 +371,87 @@ class DraftCommands(commands.Cog):
                     pass
     
     async def execute_autopick(self, channel):
-        """Execute autopick when timer expires - uses manager's board first, then universal"""
+        """Execute autopick when timer expires.
+
+        Rules:
+        - Always prefer a valid player from the manager's board.
+        - In rounds 1–2 (FYPD rounds), fallback must be the top *FYPD* player
+          from the universal pool.
+        - In later rounds, fallback is the top eligible prospect overall.
+        - All autopicks MUST pass PickValidator (same rules as manual picks).
+        """
         current_pick = self.draft_manager.get_current_pick()
         if not current_pick:
             return
         
         team = current_pick['team']
+        round_num = current_pick['round']
         
-        # Get list of already drafted players
-        drafted_players = [p['player'] for p in self.draft_manager.state["picks_made"]]
+        # Helper to test whether a candidate is valid under PickValidator.
+        def _is_valid_autopick(name: str):
+            if not self.pick_validator:
+                # Shouldn't happen in prospect draft, but be defensive.
+                return True, None
+            valid, _msg, player = self.pick_validator.validate_pick(team, name)
+            return valid, player
         
-        # Try to get from manager's board first
         autopicked_name = None
+        player_data = None
         source = "universal board"
         
+        # 1) Try manager's personal board, in order.
         if self.board_manager:
-            autopicked_name = self.board_manager.get_next_available(team, drafted_players)
-            if autopicked_name:
-                source = f"{team}'s board"
-        
-        # Fall back to universal board (top UC prospect)
-        if not autopicked_name and self.prospect_db:
-            # Get first available UC player
-            for name, player in self.prospect_db.players.items():
-                if player["ownership"] == "UC" and name not in drafted_players:
-                    autopicked_name = name
-                    source = "universal board (top UC)"
+            board = self.board_manager.get_board(team)
+            for candidate in board:
+                valid, player = _is_valid_autopick(candidate)
+                if valid:
+                    autopicked_name = player["name"] if player else candidate
+                    player_data = player
+                    source = f"{team}'s board"
                     break
         
-        # Last resort placeholder
-        if not autopicked_name:
-            autopicked_name = f"[AUTOPICK - No players available]"
-            source = "ERROR: no players"
+        # 2) Fall back to universal pool from ProspectDatabase.
+        if not autopicked_name and self.prospect_db:
+            candidates = list(self.prospect_db.players.values())
+            
+            # In FYPD rounds, restrict to FYPD pool.
+            if self.pick_validator and round_num in self.pick_validator.FYPD_ROUNDS:
+                candidates = [p for p in candidates if p.get("fypd")]
+                # Round 1 uses dedicated FYPD_rank; later rounds use global rank.
+                if round_num == min(self.pick_validator.FYPD_ROUNDS):
+                    source_label = "FYPD rankings (top eligible)"
+                    rank_field = "fypd_rank"
+                else:
+                    source_label = "universal board (top eligible)"
+                    rank_field = "rank"
+            else:
+                source_label = "universal board (top eligible)"
+                rank_field = "rank"
+            
+            # Sort by the chosen rank field; unknown ranks go last.
+            def _rank_key(p):
+                r = p.get(rank_field)
+                return r if isinstance(r, int) else 9999
+            candidates.sort(key=_rank_key)
+            
+            for p in candidates:
+                name = p["name"]
+                valid, player = _is_valid_autopick(name)
+                if valid:
+                    autopicked_name = player["name"] if player else name
+                    player_data = player or p
+                    source = source_label
+                    break
         
-        # Get player data
-        player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
-        if self.prospect_db:
-            resolved = self.prospect_db.resolve_name(autopicked_name)
-            if resolved and resolved in self.prospect_db.players:
-                player_data = self.prospect_db.players[resolved]
+        # 3) Last resort placeholder if absolutely nothing is valid.
+        if not autopicked_name:
+            autopicked_name = "[AUTOPICK - No eligible players available]"
+            player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
+            source = "ERROR: no eligible players"
+        
+        # Ensure we have a player_data dict for announcement.
+        if not player_data:
+            player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
         
         # Record the pick (this advances draft)
         pick_record = self.draft_manager.make_pick(team, autopicked_name)

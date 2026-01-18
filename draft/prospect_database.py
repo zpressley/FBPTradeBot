@@ -62,7 +62,11 @@ class ProspectDatabase:
             filtered = [p for p in all_players if p.get("player_type") == "Farm"]
         else:
             filtered = [p for p in all_players if p.get("player_type") == "MLB"]
-        
+
+        # Build player database. We assume data_pipeline/compute_prospect_ranks.py
+        # has already attached precomputed `rank` and `fypd_rank` fields to each
+        # prospect record in combined_players.json.
+
         # Build player database
         for player in filtered:
             name = (player.get("name") or "").strip()
@@ -73,6 +77,7 @@ class ProspectDatabase:
             contract_type = player.get("contract_type", "")
             years_simple = player.get("years_simple", "")
 
+            upid = str(player.get("upid") or "").strip()
             owner = manager.strip() if manager and str(manager).strip() else None
 
             # Ownership categories (PC/FC/DC/UC) are still exposed for
@@ -81,6 +86,10 @@ class ProspectDatabase:
             # derived purely from contract_type.
             ownership = self._parse_ownership(contract_type) if self.draft_type == "prospect" else ("PC" if owner else "UC")
 
+            # Rankings come precomputed from the data pipeline.
+            fypd_rank = player.get("fypd_rank")
+            base_rank = player.get("rank")
+
             record = {
                 "name": name,
                 "position": player.get("position", ""),
@@ -88,7 +97,7 @@ class ProspectDatabase:
                 "manager": manager,
                 "contract_type": contract_type,
                 "years_simple": years_simple,
-                "upid": player.get("upid", ""),
+                "upid": upid,
                 "yahoo_id": player.get("yahoo_id", ""),
                 "player_type": player.get("player_type"),
                 "fypd": bool(player.get("fypd", False)),
@@ -96,7 +105,8 @@ class ProspectDatabase:
                 # PickValidator / UI helpers
                 "ownership": ownership,
                 "owner": owner,
-                "rank": player.get("rank", "?"),
+                "rank": base_rank,
+                "fypd_rank": fypd_rank,
                 "status_code": years_simple or "",
             }
 
@@ -114,7 +124,7 @@ class ProspectDatabase:
         print(f"   Positions: {list(self.players_by_position.keys())}")
     
     def _parse_ownership(self, contract_type: str) -> str:
-        """Parse ownership status from contract_type for display.
+        """Parse ownership status from contract_type for internal filters.
 
         Historically, prospect rules used UC/PC/FC/DC. The new 2026
         Constitution removes protected/unprotected rounds, but we keep
