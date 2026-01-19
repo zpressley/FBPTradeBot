@@ -14,8 +14,8 @@ sys.path.append(os.path.join(BASE_DIR, "random"))
 
 from token_manager import get_access_token
 
-LEAGUE_ID = "15505"
-GAME_KEY = "mlb"
+LEAGUE_ID = "8560"
+GAME_KEY = "469"
 
 def test_yahoo_connection():
     """Test basic Yahoo API connectivity"""

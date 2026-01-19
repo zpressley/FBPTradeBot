@@ -1,6 +1,18 @@
 {
-  "league_info": null,
-  "stat_categories": {},
+  "league_info": {
+    "league_id": "8560",
+    "league_key": "469.l.8560",
+    "season": "2026",
+    "name": "Unknown",
+    "current_week": "0",
+    "start_week": "1",
+    "end_week": "26",
+    "fetched_at": "2026-01-18T22:36:59.003279"
+  },
+  "stat_categories": {
+    "batting": [],
+    "pitching": []
+  },
   "teams": {},
-  "fetched_at": "2026-01-18T16:53:35.298980"
+  "fetched_at": "2026-01-18T22:37:00.172016"
 }

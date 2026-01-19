@@ -2,7 +2,7 @@
   "status": "paused",
   "draft_type": "prospect",
   "season": 2025,
-  "current_pick_index": 2,
+  "current_pick_index": 13,
   "picks_made": [
     {
       "round": 1,
@@ -10,7 +10,7 @@
       "team": "WIZ",
       "round_type": "protected",
       "player": "Wandy Asigen",
-      "timestamp": "2026-01-18T20:54:45.693059",
+      "timestamp": "2026-01-18T23:52:52.328552",
       "pick_index": 0
     },
     {
@@ -19,13 +19,112 @@
       "team": "B2J",
       "round_type": "protected",
       "player": "Angeibel Gomez",
-      "timestamp": "2026-01-18T20:55:16.846854",
+      "timestamp": "2026-01-18T23:53:23.360484",
       "pick_index": 1
+    },
+    {
+      "round": 1,
+      "pick": 3,
+      "team": "CFL",
+      "round_type": "protected",
+      "player": "Kade Anderson",
+      "timestamp": "2026-01-18T23:53:54.535629",
+      "pick_index": 2
+    },
+    {
+      "round": 1,
+      "pick": 4,
+      "team": "HAM",
+      "round_type": "protected",
+      "player": "Seth Hernandez",
+      "timestamp": "2026-01-19T00:23:00.866659",
+      "pick_index": 3
+    },
+    {
+      "round": 1,
+      "pick": 5,
+      "team": "RV",
+      "round_type": "protected",
+      "player": "Jamie Arnold",
+      "timestamp": "2026-01-19T00:23:32.322622",
+      "pick_index": 4
+    },
+    {
+      "round": 1,
+      "pick": 6,
+      "team": "SAD",
+      "round_type": "protected",
+      "player": "Johenssy Colome",
+      "timestamp": "2026-01-19T00:24:03.538298",
+      "pick_index": 5
+    },
+    {
+      "round": 1,
+      "pick": 7,
+      "team": "JEP",
+      "round_type": "protected",
+      "player": "Ethan Holliday",
+      "timestamp": "2026-01-19T00:24:34.821215",
+      "pick_index": 6
+    },
+    {
+      "round": 1,
+      "pick": 8,
+      "team": "TBB",
+      "round_type": "protected",
+      "player": "Francisco Renteria",
+      "timestamp": "2026-01-19T00:25:06.124294",
+      "pick_index": 7
+    },
+    {
+      "round": 1,
+      "pick": 9,
+      "team": "DRO",
+      "round_type": "protected",
+      "player": "Victor Valdez",
+      "timestamp": "2026-01-19T00:25:37.260621",
+      "pick_index": 8
+    },
+    {
+      "round": 1,
+      "pick": 10,
+      "team": "LAW",
+      "round_type": "protected",
+      "player": "Randy Santana",
+      "timestamp": "2026-01-19T00:26:08.885543",
+      "pick_index": 9
+    },
+    {
+      "round": 1,
+      "pick": 11,
+      "team": "LFB",
+      "round_type": "protected",
+      "player": "Eli Willits",
+      "timestamp": "2026-01-19T00:26:40.286252",
+      "pick_index": 10
+    },
+    {
+      "round": 1,
+      "pick": 12,
+      "team": "WAR",
+      "round_type": "protected",
+      "player": "AngelNu\u00f1ez Jr.",
+      "timestamp": "2026-01-19T00:27:11.652681",
+      "pick_index": 11
+    },
+    {
+      "round": 2,
+      "pick": 13,
+      "team": "WAR",
+      "round_type": "protected",
+      "player": "Liam Doyle",
+      "timestamp": "2026-01-19T00:27:43.060864",
+      "pick_index": 12
     }
   ],
   "timer_started_at": null,
-  "paused_at": "2026-01-18T20:55:35.308468",
-  "started_at": "2026-01-18T20:54:13.825356",
+  "paused_at": "2026-01-19T00:27:58.581543",
+  "started_at": "2026-01-18T23:52:19.525766",
   "completed_at": null,
   "team_slots": {
     "WIZ": {
@@ -43,63 +142,63 @@
     "CFL": {
       "bc_slots": 2,
       "dc_slots": 3,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "HAM": {
       "bc_slots": 2,
       "dc_slots": 4,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "RV": {
       "bc_slots": 2,
       "dc_slots": 4,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "SAD": {
       "bc_slots": 2,
       "dc_slots": 3,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "JEP": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "TBB": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "DRO": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "LAW": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "LFB": {
       "bc_slots": 2,
       "dc_slots": 4,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "WAR": {
       "bc_slots": 2,
       "dc_slots": 4,
-      "bc_used": 0,
+      "bc_used": 2,
       "dc_used": 0
     }
   },
-  "last_updated": "2026-01-18T20:55:35.308809"
+  "last_updated": "2026-01-19T00:27:58.583299"
 }

@@ -1,5 +1,8 @@
 name: Daily Data Pipeline
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # Run daily at 6am EST (11am UTC)

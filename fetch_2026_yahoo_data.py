@@ -19,8 +19,8 @@ sys.path.append(os.path.join(BASE_DIR, "random"))
 from token_manager import get_access_token
 
 # League Configuration
-LEAGUE_ID = "15505"
-GAME_KEY = "mlb"  # Yahoo game key for MLB
+LEAGUE_ID = "8560"
+GAME_KEY = "469"  # Yahoo game key for MLB 2026
 
 YAHOO_TEAM_MAP = {
     "1": "WIZ", "2": "B2J", "3": "CFL", "4": "HAM",
