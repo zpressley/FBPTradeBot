@@ -1,8 +1,8 @@
 {
-  "status": "active",
+  "status": "paused",
   "draft_type": "keeper",
   "season": 2025,
-  "current_pick_index": 14,
+  "current_pick_index": 17,
   "picks_made": [
     {
       "round": 1,
@@ -129,12 +129,39 @@
       "player": "[AUTOPICK - No eligible players available]",
       "timestamp": "2026-01-18T21:03:02.972008",
       "pick_index": 13
+    },
+    {
+      "round": 2,
+      "pick": 15,
+      "team": "LAW",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:03:34.732664",
+      "pick_index": 14
+    },
+    {
+      "round": 2,
+      "pick": 16,
+      "team": "DRO",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:04:06.102682",
+      "pick_index": 15
+    },
+    {
+      "round": 2,
+      "pick": 17,
+      "team": "TBB",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:04:37.432422",
+      "pick_index": 16
     }
   ],
   "timer_started_at": null,
-  "paused_at": null,
+  "paused_at": "2026-01-18T21:04:37.842453",
   "started_at": "2026-01-18T20:55:42.151156",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-01-18T21:03:02.972175"
+  "last_updated": "2026-01-18T21:04:37.842526"
 }
