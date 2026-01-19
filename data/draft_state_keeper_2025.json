@@ -1,0 +1,140 @@
+{
+  "status": "active",
+  "draft_type": "keeper",
+  "season": 2025,
+  "current_pick_index": 14,
+  "picks_made": [
+    {
+      "round": 1,
+      "pick": 1,
+      "team": "WIZ",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:56:13.649157",
+      "pick_index": 0
+    },
+    {
+      "round": 1,
+      "pick": 2,
+      "team": "B2J",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:56:45.072997",
+      "pick_index": 1
+    },
+    {
+      "round": 1,
+      "pick": 3,
+      "team": "CFL",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:57:16.374811",
+      "pick_index": 2
+    },
+    {
+      "round": 1,
+      "pick": 4,
+      "team": "HAM",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:57:47.883791",
+      "pick_index": 3
+    },
+    {
+      "round": 1,
+      "pick": 5,
+      "team": "RV",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:58:19.517419",
+      "pick_index": 4
+    },
+    {
+      "round": 1,
+      "pick": 6,
+      "team": "SAD",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:58:51.065404",
+      "pick_index": 5
+    },
+    {
+      "round": 1,
+      "pick": 7,
+      "team": "JEP",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:59:22.353163",
+      "pick_index": 6
+    },
+    {
+      "round": 1,
+      "pick": 8,
+      "team": "TBB",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T20:59:53.561695",
+      "pick_index": 7
+    },
+    {
+      "round": 1,
+      "pick": 9,
+      "team": "DRO",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:00:26.448534",
+      "pick_index": 8
+    },
+    {
+      "round": 1,
+      "pick": 10,
+      "team": "LAW",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:00:57.857467",
+      "pick_index": 9
+    },
+    {
+      "round": 1,
+      "pick": 11,
+      "team": "LFB",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:01:29.129692",
+      "pick_index": 10
+    },
+    {
+      "round": 1,
+      "pick": 12,
+      "team": "WAR",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:02:00.431635",
+      "pick_index": 11
+    },
+    {
+      "round": 2,
+      "pick": 13,
+      "team": "WAR",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:02:31.574608",
+      "pick_index": 12
+    },
+    {
+      "round": 2,
+      "pick": 14,
+      "team": "LFB",
+      "round_type": "protected",
+      "player": "[AUTOPICK - No eligible players available]",
+      "timestamp": "2026-01-18T21:03:02.972008",
+      "pick_index": 13
+    }
+  ],
+  "timer_started_at": null,
+  "paused_at": null,
+  "started_at": "2026-01-18T20:55:42.151156",
+  "completed_at": null,
+  "team_slots": {},
+  "last_updated": "2026-01-18T21:03:02.972175"
+}
