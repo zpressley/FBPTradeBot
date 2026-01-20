@@ -13,7 +13,7 @@ from discord.ext import commands
 import sys
 import os
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -54,15 +54,11 @@ class PickConfirmationView(discord.ui.View):
             # Announce pick
             await self.draft_cog.announce_pick(interaction.channel, pick_record, self.player)
             
-            # Start timer for NEXT pick
-            await self.draft_cog.start_pick_timer(interaction.channel)
-            
             # Update confirmation message
             await interaction.response.edit_message(content="✅ Pick confirmed!", embed=None, view=None)
             
-            # Update UI
-            if self.draft_cog.status_message:
-                await self.draft_cog.update_status_message()
+            # Update draft board thread (status card + timer are handled
+            # inside announce_pick and the timer loop).
             if self.draft_cog.draft_board_thread:
                 await self.draft_cog.update_draft_board()
             
@@ -285,25 +281,19 @@ class DraftCommands(commands.Cog):
         # Visual separator (shortened for mobile)
         pick_text += "\n" + "─" * 35
         
-        # Show CURRENT pick (draft already advanced after make_pick)
+        # First message: pick summary (no on-the-clock info here).
+        await channel.send(pick_text)
+        
+        # Second message: status / ON THE CLOCK card for the NEXT pick.
         current_pick = self.draft_manager.get_current_pick()
         if current_pick:
-            if self.TEST_MODE:
-                next_display = f"**{current_pick['team']}**"
-            else:
-                next_user_id = self._get_user_for_team(current_pick['team'])
-                next_display = f"<@{next_user_id}>" if next_user_id else current_pick['team']
-            
-            pick_text += f"\n\n**⏰ ON THE CLOCK**\n"
-            pick_text += f"# {next_display}\n"
-            pick_text += f"Pick {current_pick['pick']}"
-            
             if not self.TEST_MODE:
                 await self.notify_manager_on_clock(current_pick['team'])
+            await self.start_pick_timer(channel)
+            await self.post_on_clock_status(channel)
         else:
-            pick_text += f"\n\n🏁 **DRAFT COMPLETE!**"
-        
-        await channel.send(pick_text)
+            # Draft complete after this pick.
+            await channel.send("🏁 **DRAFT COMPLETE!**")
     
     async def start_pick_timer(self, channel):
         """Start pick timer for current pick (duration = PICK_TIMER_DURATION)."""
@@ -329,9 +319,6 @@ class DraftCommands(commands.Cog):
                 if elapsed >= (self.PICK_TIMER_DURATION - self.WARNING_TIME) and not self.warning_sent:
                     await self.send_time_warning(channel)
                     self.warning_sent = True
-                
-                if int(elapsed) % 30 == 0 and self.status_message:
-                    await self.update_status_message()
             
             await self.execute_autopick(channel)
             
@@ -476,48 +463,31 @@ class DraftCommands(commands.Cog):
         pick_text += f"Source: {source}\n"
         pick_text += "─" * 35
         
-        # Show CURRENT pick (draft already advanced)
-        current_pick = self.draft_manager.get_current_pick()
-        if current_pick:
-            if self.TEST_MODE:
-                next_display = f"**{current_pick['team']}**"
-            else:
-                next_user_id = self._get_user_for_team(current_pick['team'])
-                next_display = f"<@{next_user_id}>" if next_user_id else current_pick['team']
-            
-            pick_text += f"\n\n**⏰ ON THE CLOCK**\n"
-            pick_text += f"# {next_display}\n"
-            pick_text += f"Pick {current_pick['pick']}"
-        
         await channel.send(pick_text)
         
-        if self.status_message:
-            await self.update_status_message()
-        if self.draft_board_thread:
-            await self.update_draft_board()
-        
-        # Start timer for next pick
-        await self.start_pick_timer(channel)
+        current_pick = self.draft_manager.get_current_pick()
+        if current_pick:
+            if not self.TEST_MODE:
+                await self.notify_manager_on_clock(current_pick['team'])
+            if self.draft_board_thread:
+                await self.update_draft_board()
+            await self.start_pick_timer(channel)
+            await self.post_on_clock_status(channel)
+        else:
+            # No more picks; finalize board if present and announce completion.
+            if self.draft_board_thread:
+                await self.update_draft_board()
+            await channel.send("🏁 **DRAFT COMPLETE!**")
     
-    async def create_status_message(self, channel):
-        """Create and pin live status message"""
+    async def post_on_clock_status(self, channel):
+        """Post a non-pinned status card for the current pick.
+
+        This uses the same embed builder as the old pinned scoreboard,
+        but sends a fresh message so the status "follows" the draft
+        down the channel instead of living at the top.
+        """
         embed = self.build_status_embed()
-        self.status_message = await channel.send(embed=embed)
-        try:
-            await self.status_message.pin()
-        except:
-            pass
-        return self.status_message
-    
-    async def update_status_message(self):
-        """Update pinned status message"""
-        if not self.status_message:
-            return
-        embed = self.build_status_embed()
-        try:
-            await self.status_message.edit(embed=embed)
-        except:
-            pass
+        await channel.send(embed=embed)
     
     def build_status_embed(self):
         """Build status embed with current draft info"""
@@ -553,9 +523,23 @@ class DraftCommands(commands.Cog):
         if self.timer_start_time and progress['status'] == 'active':
             elapsed = (datetime.now() - self.timer_start_time).total_seconds()
             remaining = max(0, self.PICK_TIMER_DURATION - elapsed)
-            minutes = int(remaining // 60)
-            seconds = int(remaining % 60)
-            embed.add_field(name="⏱️ Time", value=f"{minutes}:{seconds:02d}", inline=True)
+
+            # Show coarse buckets instead of exact mm:ss, since the
+            # status embed only updates every ~30 seconds.
+            if remaining <= 0:
+                time_label = "Autodraft"
+            elif remaining <= 30:
+                time_label = "30 Seconds Left"
+            elif remaining <= 60:
+                time_label = "1 Minute Left"
+            elif remaining <= 120:
+                time_label = "2 Minutes Left"
+            elif remaining <= 180:
+                time_label = "3 Minutes Left"
+            else:
+                time_label = "4 Minutes Left"
+
+            embed.add_field(name="⏱️ Time", value=time_label, inline=True)
         
         if current_pick:
             team_display = f"**{current_pick['team']}**"
@@ -582,7 +566,14 @@ class DraftCommands(commands.Cog):
             picks_text = "\n".join(f"• {p['team']} - {p['player']}" for p in reversed(recent))
             embed.add_field(name="Recent Picks", value=picks_text, inline=False)
         
-        embed.set_footer(text=f"Updated: {datetime.now().strftime('%I:%M:%S %p')}")
+        # Footer shows both the update time and the exact scheduled
+        # autodraft time for the current pick (if a timer is running).
+        now = datetime.now()
+        footer = f"Updated: {now.strftime('%I:%M:%S %p')}"
+        if self.timer_start_time and progress['status'] == 'active':
+            deadline = self.timer_start_time + timedelta(seconds=self.PICK_TIMER_DURATION)
+            footer += f" | Autodraft at {deadline.strftime('%I:%M:%S %p')}"
+        embed.set_footer(text=footer)
         return embed
     
     async def create_draft_board_thread(self, channel):
@@ -698,7 +689,7 @@ class DraftCommands(commands.Cog):
                 inline=False
             )
             
-            embed.add_field(name="Time Limit", value="10 minutes", inline=True)
+            embed.add_field(name="Time Limit", value="4 minutes", inline=True)
             embed.add_field(
                 name="Round Type",
                 value=current_pick['round_type'].title(),
@@ -809,7 +800,7 @@ class DraftCommands(commands.Cog):
             
             progress = self.draft_manager.get_draft_progress()
             embed.add_field(name="Total Picks", value=f"{progress['total_picks']} picks", inline=True)
-            embed.add_field(name="Timer", value="10 minutes per pick", inline=True)
+            embed.add_field(name="Timer", value="4 minutes per pick", inline=True)
             
             # Show database info
             if self.prospect_db:
@@ -821,9 +812,9 @@ class DraftCommands(commands.Cog):
             
             await interaction.followup.send(embed=embed)
             
-            await self.create_status_message(interaction.channel)
             await self.create_draft_board_thread(interaction.channel)
             await self.start_pick_timer(interaction.channel)
+            await self.post_on_clock_status(interaction.channel)
             
         except FileNotFoundError as e:
             await interaction.followup.send(f"❌ {str(e)}", ephemeral=True)
@@ -848,9 +839,6 @@ class DraftCommands(commands.Cog):
             embed.add_field(name="Next Pick", value=f"{current_pick['team']} - Pick {current_pick['pick']}", inline=False)
         
         await interaction.response.send_message(embed=embed)
-        
-        if self.status_message:
-            await self.update_status_message()
     
     async def _handle_continue(self, interaction):
         if not self.draft_manager or self.draft_manager.state["status"] != "paused":
@@ -868,9 +856,7 @@ class DraftCommands(commands.Cog):
         
         await interaction.response.send_message(embed=embed)
         await self.start_pick_timer(interaction.channel)
-        
-        if self.status_message:
-            await self.update_status_message()
+        await self.post_on_clock_status(interaction.channel)
     
     async def _handle_status(self, interaction):
         if not self.draft_manager:
@@ -905,9 +891,8 @@ class DraftCommands(commands.Cog):
         
         if self.draft_manager.state["status"] == "active":
             await self.start_pick_timer(interaction.channel)
+            await self.post_on_clock_status(interaction.channel)
         
-        if self.status_message:
-            await self.update_status_message()
         if self.draft_board_thread:
             await self.update_draft_board()
     

@@ -2,7 +2,7 @@
   "status": "paused",
   "draft_type": "prospect",
   "season": 2025,
-  "current_pick_index": 19,
+  "current_pick_index": 29,
   "picks_made": [
     {
       "round": 1,
@@ -174,10 +174,100 @@
       "player": "Steele Hall",
       "timestamp": "2026-01-20T07:13:24.495732",
       "pick_index": 18
+    },
+    {
+      "round": 3,
+      "pick": 20,
+      "team": "TBB",
+      "round_type": "dc",
+      "player": "JR Ritchie",
+      "timestamp": "2026-01-20T09:42:03.682622",
+      "pick_index": 19
+    },
+    {
+      "round": 3,
+      "pick": 21,
+      "team": "DRO",
+      "round_type": "dc",
+      "player": "Kyson Witherspoon",
+      "timestamp": "2026-01-20T13:39:50.815457",
+      "pick_index": 20
+    },
+    {
+      "round": 3,
+      "pick": 22,
+      "team": "LAW",
+      "round_type": "dc",
+      "player": "Tyler Bremner",
+      "timestamp": "2026-01-20T13:40:23.999509",
+      "pick_index": 21
+    },
+    {
+      "round": 3,
+      "pick": 23,
+      "team": "LFB",
+      "round_type": "dc",
+      "player": "Leonardo Bernal",
+      "timestamp": "2026-01-20T13:40:55.539885",
+      "pick_index": 22
+    },
+    {
+      "round": 3,
+      "pick": 24,
+      "team": "WAR",
+      "round_type": "dc",
+      "player": "Kruz Schoolcraft",
+      "timestamp": "2026-01-20T13:41:26.857192",
+      "pick_index": 23
+    },
+    {
+      "round": 4,
+      "pick": 25,
+      "team": "WAR",
+      "round_type": "dc",
+      "player": "Ryan Johnson",
+      "timestamp": "2026-01-20T13:41:58.333105",
+      "pick_index": 24
+    },
+    {
+      "round": 4,
+      "pick": 26,
+      "team": "LFB",
+      "round_type": "dc",
+      "player": "Ike Irish",
+      "timestamp": "2026-01-20T13:42:29.947174",
+      "pick_index": 25
+    },
+    {
+      "round": 4,
+      "pick": 27,
+      "team": "LAW",
+      "round_type": "dc",
+      "player": "Gavin Fien",
+      "timestamp": "2026-01-20T13:43:01.360642",
+      "pick_index": 26
+    },
+    {
+      "round": 4,
+      "pick": 28,
+      "team": "DRO",
+      "round_type": "dc",
+      "player": "Kayson Cunningham",
+      "timestamp": "2026-01-20T13:43:32.668279",
+      "pick_index": 27
+    },
+    {
+      "round": 4,
+      "pick": 29,
+      "team": "TBB",
+      "round_type": "dc",
+      "player": "Gavin Kilen",
+      "timestamp": "2026-01-20T13:44:04.258585",
+      "pick_index": 28
     }
   ],
   "timer_started_at": null,
-  "paused_at": "2026-01-20T07:13:28.279447",
+  "paused_at": "2026-01-20T13:44:24.097505",
   "started_at": "2026-01-18T23:52:19.525766",
   "completed_at": null,
   "team_slots": {
@@ -227,32 +317,32 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 2
     },
     "DRO": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 2
     },
     "LAW": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 2
     },
     "LFB": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 2
     },
     "WAR": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 2
     }
   },
-  "last_updated": "2026-01-20T07:13:28.279778"
+  "last_updated": "2026-01-20T13:44:24.097698"
 }
