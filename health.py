@@ -282,7 +282,7 @@ def build_draft_payload(draft_type: str) -> dict:
         "current_pick": current_pick["pick"] if current_pick else None,
         "current_team": current_pick["team"] if current_pick else None,
         "total_rounds": total_rounds,
-        "pick_clock_seconds": 600,  # keep in sync with Discord timer
+        "pick_clock_seconds": 240,  # keep in sync with Discord timer (4 minutes)
         "clock_started_at": state.get("timer_started_at"),
         "draft_order": draft_order_teams,
         "picks": picks,

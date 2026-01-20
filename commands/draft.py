@@ -88,8 +88,9 @@ class DraftCommands(commands.Cog):
         self.bot = bot
         self.DRAFT_CHANNEL_ID = None
         self.ADMIN_ROLE_NAMES = ["Admin", "Commissioner"]
-        self.PICK_TIMER_DURATION = 30
-        self.WARNING_TIME = 10
+        # 4-minute pick clock (240s) with 1-minute warning.
+        self.PICK_TIMER_DURATION = 240
+        self.WARNING_TIME = 60
         
         self.TEST_MODE = True
         
@@ -305,7 +306,7 @@ class DraftCommands(commands.Cog):
         await channel.send(pick_text)
     
     async def start_pick_timer(self, channel):
-        """Start 10-minute timer for current pick"""
+        """Start pick timer for current pick (duration = PICK_TIMER_DURATION)."""
         if self.pick_timer_task:
             self.pick_timer_task.cancel()
         
@@ -338,7 +339,7 @@ class DraftCommands(commands.Cog):
             pass
     
     async def send_time_warning(self, channel):
-        """Send 2-minute warning"""
+        """Send warning near end of clock (WARNING_TIME seconds remaining)."""
         current_pick = self.draft_manager.get_current_pick()
         if not current_pick:
             return
@@ -349,9 +350,10 @@ class DraftCommands(commands.Cog):
             user_id = self._get_user_for_team(current_pick['team'])
             team_display = f"<@{user_id}>" if user_id else current_pick['team']
         
+        remaining_minutes = max(1, int(self.WARNING_TIME // 60))
         embed = discord.Embed(
-            title="⚠️ 2 Minutes Remaining",
-            description=f"{team_display} you have 2 minutes to make your pick!",
+            title=f"⚠️ {remaining_minutes} Minute Warning",
+            description=f"{team_display} you have about {remaining_minutes} minute(s) to make your pick!",
             color=discord.Color.orange()
         )
         
@@ -363,7 +365,7 @@ class DraftCommands(commands.Cog):
                 try:
                     user = await self.bot.fetch_user(user_id)
                     await user.send(
-                        f"⏰ **2 minutes left!**\n\n"
+                        f"⏰ **Clock almost up!**\n\n"
                         f"Round {current_pick['round']}, Pick {current_pick['pick']}\n"
                         f"Make your pick now!"
                     )

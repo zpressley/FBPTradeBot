@@ -275,7 +275,7 @@ Recent Picks:
 
 **If timer doesn't work:**
 - Ensure `asyncio` task isn't cancelled prematurely
-- Check `PICK_TIMER_DURATION` = 600 seconds
+- Check `PICK_TIMER_DURATION` = 240 seconds
 
 **If autopick fails:**
 - Check `board_manager` initialized in `/draft start`
