@@ -2,7 +2,7 @@
   "status": "paused",
   "draft_type": "prospect",
   "season": 2025,
-  "current_pick_index": 13,
+  "current_pick_index": 19,
   "picks_made": [
     {
       "round": 1,
@@ -120,10 +120,64 @@
       "player": "Liam Doyle",
       "timestamp": "2026-01-19T00:27:43.060864",
       "pick_index": 12
+    },
+    {
+      "round": 3,
+      "pick": 14,
+      "team": "B2J",
+      "round_type": "dc",
+      "player": "Aiva Arquette",
+      "timestamp": "2026-01-20T07:10:47.965934",
+      "pick_index": 13
+    },
+    {
+      "round": 3,
+      "pick": 15,
+      "team": "CFL",
+      "round_type": "dc",
+      "player": "JoJo Parker",
+      "timestamp": "2026-01-20T07:11:19.129433",
+      "pick_index": 14
+    },
+    {
+      "round": 3,
+      "pick": 16,
+      "team": "HAM",
+      "round_type": "dc",
+      "player": "Theo Gillen",
+      "timestamp": "2026-01-20T07:11:50.263156",
+      "pick_index": 15
+    },
+    {
+      "round": 3,
+      "pick": 17,
+      "team": "RV",
+      "round_type": "dc",
+      "player": "Billy Carlson",
+      "timestamp": "2026-01-20T07:12:21.765129",
+      "pick_index": 16
+    },
+    {
+      "round": 3,
+      "pick": 18,
+      "team": "SAD",
+      "round_type": "dc",
+      "player": "Troy Melton",
+      "timestamp": "2026-01-20T07:12:53.026394",
+      "pick_index": 17
+    },
+    {
+      "round": 3,
+      "pick": 19,
+      "team": "JEP",
+      "round_type": "dc",
+      "player": "Steele Hall",
+      "timestamp": "2026-01-20T07:13:24.495732",
+      "pick_index": 18
     }
   ],
   "timer_started_at": null,
-  "paused_at": "2026-01-19T00:27:58.581543",
+  "paused_at": "2026-01-20T07:13:28.279447",
   "started_at": "2026-01-18T23:52:19.525766",
   "completed_at": null,
   "team_slots": {
@@ -137,37 +191,37 @@
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "CFL": {
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "HAM": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "RV": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "SAD": {
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "JEP": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "TBB": {
       "bc_slots": 2,
@@ -200,5 +254,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-01-19T00:27:58.583299"
+  "last_updated": "2026-01-20T07:13:28.279778"
 }
