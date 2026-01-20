@@ -1,8 +1,8 @@
 {
-  "status": "paused",
+  "status": "active",
   "draft_type": "prospect",
   "season": 2025,
-  "current_pick_index": 29,
+  "current_pick_index": 44,
   "picks_made": [
     {
       "round": 1,
@@ -264,10 +264,145 @@
       "player": "Gavin Kilen",
       "timestamp": "2026-01-20T13:44:04.258585",
       "pick_index": 28
+    },
+    {
+      "round": 4,
+      "pick": 30,
+      "team": "JEP",
+      "round_type": "dc",
+      "player": "Joseph Sullivan",
+      "timestamp": "2026-01-20T16:05:11.911202",
+      "pick_index": 29
+    },
+    {
+      "round": 4,
+      "pick": 31,
+      "team": "SAD",
+      "round_type": "dc",
+      "player": "Henry Bolte",
+      "timestamp": "2026-01-20T16:05:43.831209",
+      "pick_index": 30
+    },
+    {
+      "round": 4,
+      "pick": 32,
+      "team": "RV",
+      "round_type": "dc",
+      "player": "Jacob Reimer",
+      "timestamp": "2026-01-20T16:11:02.079497",
+      "pick_index": 31
+    },
+    {
+      "round": 4,
+      "pick": 33,
+      "team": "HAM",
+      "round_type": "dc",
+      "player": "Gage Stanifer",
+      "timestamp": "2026-01-20T16:11:33.272625",
+      "pick_index": 32
+    },
+    {
+      "round": 4,
+      "pick": 34,
+      "team": "CFL",
+      "round_type": "dc",
+      "player": "Gage Wood",
+      "timestamp": "2026-01-20T16:12:04.602302",
+      "pick_index": 33
+    },
+    {
+      "round": 4,
+      "pick": 35,
+      "team": "B2J",
+      "round_type": "dc",
+      "player": "Dakota Jordan",
+      "timestamp": "2026-01-20T16:12:35.929938",
+      "pick_index": 34
+    },
+    {
+      "round": 4,
+      "pick": 36,
+      "team": "WIZ",
+      "round_type": "dc",
+      "player": "A.J. Ewing",
+      "timestamp": "2026-01-20T16:13:07.378523",
+      "pick_index": 35
+    },
+    {
+      "round": 5,
+      "pick": 37,
+      "team": "WIZ",
+      "round_type": "dc",
+      "player": "Wehiwa Aloy",
+      "timestamp": "2026-01-20T16:13:38.763688",
+      "pick_index": 36
+    },
+    {
+      "round": 5,
+      "pick": 38,
+      "team": "B2J",
+      "round_type": "dc",
+      "player": "Jonathon Long",
+      "timestamp": "2026-01-20T16:14:10.174997",
+      "pick_index": 37
+    },
+    {
+      "round": 5,
+      "pick": 39,
+      "team": "CFL",
+      "round_type": "dc",
+      "player": "Nelson Rada",
+      "timestamp": "2026-01-20T16:14:41.627675",
+      "pick_index": 38
+    },
+    {
+      "round": 5,
+      "pick": 40,
+      "team": "HAM",
+      "round_type": "dc",
+      "player": "Marek Houston",
+      "timestamp": "2026-01-20T16:15:15.167686",
+      "pick_index": 39
+    },
+    {
+      "round": 5,
+      "pick": 41,
+      "team": "RV",
+      "round_type": "dc",
+      "player": "Tate Southisene",
+      "timestamp": "2026-01-20T16:15:47.020148",
+      "pick_index": 40
+    },
+    {
+      "round": 5,
+      "pick": 42,
+      "team": "SAD",
+      "round_type": "dc",
+      "player": "Michael Forret",
+      "timestamp": "2026-01-20T16:16:18.578097",
+      "pick_index": 41
+    },
+    {
+      "round": 5,
+      "pick": 43,
+      "team": "JEP",
+      "round_type": "dc",
+      "player": "Jhonny Level",
+      "timestamp": "2026-01-20T16:16:50.367660",
+      "pick_index": 42
+    },
+    {
+      "round": 5,
+      "pick": 44,
+      "team": "TBB",
+      "round_type": "dc",
+      "player": "Gabriel Gonzalez",
+      "timestamp": "2026-01-20T16:17:22.104905",
+      "pick_index": 43
     }
   ],
   "timer_started_at": null,
-  "paused_at": "2026-01-20T13:44:24.097505",
+  "paused_at": "2026-01-20T16:05:50.519841",
   "started_at": "2026-01-18T23:52:19.525766",
   "completed_at": null,
   "team_slots": {
@@ -275,49 +410,49 @@
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 2
     },
     "B2J": {
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "CFL": {
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "HAM": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "RV": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "SAD": {
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "JEP": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 3
     },
     "TBB": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "DRO": {
       "bc_slots": 2,
@@ -344,5 +479,5 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-01-20T13:44:24.097698"
+  "last_updated": "2026-01-20T16:17:22.105305"
 }
