@@ -35,9 +35,9 @@ fbp-trade-bot/
 │   ├── draft.py                    # Discord integration (MAIN FILE)
 │   └── board.py                    # Board management commands
 └── data/
-    ├── draft_order_2025.json       # Custom pick order
-    ├── draft_state_prospect_2025.json  # Live state (auto-created)
-    ├── manager_boards_2025.json    # Personal boards (auto-created)
+    ├── draft_order_2026.json       # Custom pick order
+    ├── draft_state_prospect_2026.json  # Live state (auto-created)
+    ├── manager_boards_2026.json    # Personal boards (auto-created)
     └── combined_players.json       # Your existing player database
 ```
 
@@ -55,7 +55,7 @@ When `TEST_MODE = True`:
 - No DMs to managers
 - Shows "[TEST MODE]" in status
 
-### Draft Order (data/draft_order_2025.json)
+### Draft Order (data/draft_order_2026.json)
 ```json
 {
   "picks": [
@@ -93,7 +93,7 @@ Supports:
 
 ### Pre-Draft
 1. Managers build boards: `/add Jackson Chourio`, `/add Kyle Teel`, etc.
-2. Admin creates `draft_order_2025.json` with custom order
+2. Admin creates `draft_order_2026.json` with custom order
 3. Bot loads `combined_players.json` for validation
 
 ### Draft Day
@@ -136,7 +136,7 @@ Supports:
 ## 💾 Data Persistence
 
 ### Draft State (auto-saves after each pick)
-`data/draft_state_prospect_2025.json`:
+`data/draft_state_prospect_2026.json`:
 - Current pick index
 - All picks made
 - Timer state
@@ -144,7 +144,7 @@ Supports:
 - Survives bot restarts!
 
 ### Manager Boards (auto-saves)
-`data/manager_boards_2025.json`:
+`data/manager_boards_2026.json`:
 - Each team's 50-player list
 - Persists between sessions
 - Used for autopick

@@ -23,7 +23,7 @@ from draft.board_manager import BoardManager
 load_dotenv()
 
 ET = ZoneInfo("US/Eastern")
-PROSPECT_DRAFT_SEASON = 2025
+PROSPECT_DRAFT_SEASON = 2026
 SEASON_DATES_PATH = "config/season_dates.json"
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs

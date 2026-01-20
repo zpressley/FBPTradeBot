@@ -525,7 +525,8 @@ class DraftCommands(commands.Cog):
         status_emoji = {"not_started": "⏸️", "active": "🟢", "paused": "⏸️", "completed": "✅"}
         emoji = status_emoji.get(progress['status'], "❓")
         
-        title = f"{emoji} 2025 {self.draft_manager.draft_type.upper()} DRAFT"
+        season = getattr(self.draft_manager, "season", 2026)
+        title = f"{emoji} {season} {self.draft_manager.draft_type.upper()} DRAFT"
         if self.TEST_MODE:
             title += " [TEST MODE]"
         
@@ -584,8 +585,9 @@ class DraftCommands(commands.Cog):
     
     async def create_draft_board_thread(self, channel):
         """Create thread for full draft board"""
+        season = getattr(self.draft_manager, "season", 2026)
         thread = await channel.create_thread(
-            name="📊 2025 Draft Board",
+            name=f"📊 {season} Draft Board",
             type=discord.ChannelType.public_thread
         )
         
@@ -767,15 +769,16 @@ class DraftCommands(commands.Cog):
         await interaction.response.defer()
         
         try:
-            self.draft_manager = DraftManager(draft_type=draft_type.value, season=2025)
+            # Use 2026 season for both keeper and prospect drafts
+            self.draft_manager = DraftManager(draft_type=draft_type.value, season=2026)
             
             # Initialize BoardManager for autopick
             from draft.board_manager import BoardManager
-            self.board_manager = BoardManager(season=2025)
+            self.board_manager = BoardManager(season=2026)
             
             # Initialize ProspectDatabase for validation
             from draft.prospect_database import ProspectDatabase
-            self.prospect_db = ProspectDatabase(season=2025, draft_type=draft_type.value)
+            self.prospect_db = ProspectDatabase(season=2026, draft_type=draft_type.value)
             
             # Initialize PickValidator
             self.pick_validator = PickValidator(self.prospect_db, self.draft_manager)
@@ -787,7 +790,7 @@ class DraftCommands(commands.Cog):
             current_pick = self.draft_manager.get_current_pick()
             
             embed = discord.Embed(
-                title=f"🏟️ 2025 {draft_type.value.upper()} DRAFT STARTING",
+                title=f"🏟️ 2026 {draft_type.value.upper()} DRAFT STARTING",
                 description="Draft is now live!" + (" [TEST MODE]" if self.TEST_MODE else ""),
                 color=discord.Color.green()
             )

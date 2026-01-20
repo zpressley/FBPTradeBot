@@ -16,7 +16,7 @@ class BoardManager:
     Boards persist between sessions and are used for autopick.
     """
     
-    def __init__(self, season: int = 2025):
+    def __init__(self, season: int = 2026):
         self.season = season
         self.boards_file = f"data/manager_boards_{season}.json"
         self.boards = self.load_boards()

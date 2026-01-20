@@ -28,7 +28,8 @@ class BoardCommands(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
-        self.board_manager = BoardManager(season=2025)
+        # Use 2026 draft season for manager boards
+        self.board_manager = BoardManager(season=2026)
         
         print("✅ Board commands loaded")
     

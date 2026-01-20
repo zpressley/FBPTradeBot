@@ -479,9 +479,9 @@ if __name__ == "__main__":
     print("🧪 Testing DraftManager")
     print("=" * 50)
     
-    # Note: Requires data/draft_order_2025.json to exist
+    # Note: Requires data/draft_order_2026.json to exist
     try:
-        dm = DraftManager(draft_type="prospect", season=2025)
+        dm = DraftManager(draft_type="prospect", season=2026)
         
         print(f"\n📊 Draft Progress:")
         progress = dm.get_draft_progress()
@@ -507,4 +507,4 @@ if __name__ == "__main__":
         
     except FileNotFoundError as e:
         print(f"\n❌ Error: {e}")
-        print(f"\n💡 Create data/draft_order_2025.json first")
+        print(f"\n💡 Create data/draft_order_2026.json first")

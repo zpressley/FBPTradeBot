@@ -99,7 +99,7 @@ Main Process
 2. Discord → Bot gateway
 3. Bot loads `DraftManager`, `ProspectDatabase`, `PickValidator`
 4. Validates pick against FBP rules
-5. Records pick in `data/draft_state_prospect_2025.json`
+        Records pick in `data/draft_state_prospect_2026.json`
 6. Updates draft board in Discord channel
 7. Commits/pushes to GitHub (website stays in sync)
 
@@ -108,7 +108,7 @@ Main Process
 1. User visits `draft.html`
 2. JavaScript → Cloudflare Worker
 3. Worker → Bot API: `GET /api/draft/boards/WIZ` with `X-API-Key`
-4. Bot loads `BoardManager`, reads `data/manager_boards_2025.json`
+    4. Bot loads `BoardManager`, reads `data/manager_boards_2026.json`
 5. Returns board data as JSON
 6. Website renders board with drag-drop UI
 
