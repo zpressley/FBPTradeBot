@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 1,
+  "current_pick_index": 3,
   "picks_made": [
     {
       "round": 1,
@@ -12,6 +12,24 @@
       "player": "Wandy Asigen",
       "timestamp": "2026-01-20T16:56:29.578040",
       "pick_index": 0
+    },
+    {
+      "round": 1,
+      "pick": 2,
+      "team": "B2J",
+      "round_type": "fypd",
+      "player": "Angeibel Gomez",
+      "timestamp": "2026-01-20T17:00:31.120098",
+      "pick_index": 1
+    },
+    {
+      "round": 1,
+      "pick": 3,
+      "team": "CFL",
+      "round_type": "fypd",
+      "player": "Kade Anderson",
+      "timestamp": "2026-01-20T17:04:32.992277",
+      "pick_index": 2
     }
   ],
   "timer_started_at": null,
@@ -28,13 +46,13 @@
     "B2J": {
       "bc_slots": 1,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "CFL": {
       "bc_slots": 1,
       "dc_slots": 6,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "HAM": {
@@ -92,5 +110,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-01-20T16:56:29.578213"
+  "last_updated": "2026-01-20T17:04:32.993498"
 }
