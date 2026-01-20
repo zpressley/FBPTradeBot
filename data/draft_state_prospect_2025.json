@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2025,
-  "current_pick_index": 44,
+  "current_pick_index": 49,
   "picks_made": [
     {
       "round": 1,
@@ -399,6 +399,51 @@
       "player": "Gabriel Gonzalez",
       "timestamp": "2026-01-20T16:17:22.104905",
       "pick_index": 43
+    },
+    {
+      "round": 5,
+      "pick": 45,
+      "team": "DRO",
+      "round_type": "dc",
+      "player": "Walker Janek",
+      "timestamp": "2026-01-20T16:17:53.546495",
+      "pick_index": 44
+    },
+    {
+      "round": 5,
+      "pick": 46,
+      "team": "LAW",
+      "round_type": "dc",
+      "player": "Hao-Yu Lee",
+      "timestamp": "2026-01-20T16:18:24.922060",
+      "pick_index": 45
+    },
+    {
+      "round": 5,
+      "pick": 47,
+      "team": "LFB",
+      "round_type": "dc",
+      "player": "Miguel Mendez",
+      "timestamp": "2026-01-20T16:18:56.290834",
+      "pick_index": 46
+    },
+    {
+      "round": 5,
+      "pick": 48,
+      "team": "WAR",
+      "round_type": "dc",
+      "player": "Caden Scarborough",
+      "timestamp": "2026-01-20T16:19:28.134900",
+      "pick_index": 47
+    },
+    {
+      "round": 6,
+      "pick": 49,
+      "team": "WAR",
+      "round_type": "dc",
+      "player": "Alex Lodise",
+      "timestamp": "2026-01-20T16:19:59.612800",
+      "pick_index": 48
     }
   ],
   "timer_started_at": null,
@@ -458,26 +503,26 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "LAW": {
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "LFB": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "WAR": {
       "bc_slots": 2,
       "dc_slots": 4,
       "bc_used": 2,
-      "dc_used": 2
+      "dc_used": 4
     }
   },
-  "last_updated": "2026-01-20T16:17:22.105305"
+  "last_updated": "2026-01-20T16:19:59.613063"
 }

@@ -319,6 +319,17 @@ class DraftCommands(commands.Cog):
                 if elapsed >= (self.PICK_TIMER_DURATION - self.WARNING_TIME) and not self.warning_sent:
                     await self.send_time_warning(channel)
                     self.warning_sent = True
+
+                # Every 30s, refresh the on-the-clock status embed so the
+                # coarse time bucket (4/3/2/1 min, 30s, Autodraft) stays
+                # reasonably up to date.
+                if int(elapsed) % 30 == 0 and self.status_message:
+                    try:
+                        embed = self.build_status_embed()
+                        await self.status_message.edit(embed=embed)
+                    except Exception:
+                        # If the message was deleted or edit fails, stop trying.
+                        self.status_message = None
             
             await self.execute_autopick(channel)
             
@@ -484,10 +495,17 @@ class DraftCommands(commands.Cog):
 
         This uses the same embed builder as the old pinned scoreboard,
         but sends a fresh message so the status "follows" the draft
-        down the channel instead of living at the top.
+        down the channel instead of living at the top. We also retain
+        a reference to the most recent status message so the timer
+        loop can edit it with updated remaining time buckets.
         """
         embed = self.build_status_embed()
-        await channel.send(embed=embed)
+        try:
+            msg = await channel.send(embed=embed)
+            self.status_message = msg
+        except Exception:
+            # If send fails for any reason, don't crash the draft flow.
+            self.status_message = None
     
     def build_status_embed(self):
         """Build status embed with current draft info"""
