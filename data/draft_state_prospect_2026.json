@@ -1,8 +1,8 @@
 {
-  "status": "active",
+  "status": "paused",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 3,
+  "current_pick_index": 7,
   "picks_made": [
     {
       "round": 1,
@@ -30,10 +30,46 @@
       "player": "Kade Anderson",
       "timestamp": "2026-01-20T17:04:32.992277",
       "pick_index": 2
+    },
+    {
+      "round": 1,
+      "pick": 4,
+      "team": "HAM",
+      "round_type": "fypd",
+      "player": "Seth Hernandez",
+      "timestamp": "2026-01-20T17:08:35.086578",
+      "pick_index": 3
+    },
+    {
+      "round": 1,
+      "pick": 5,
+      "team": "RV",
+      "round_type": "fypd",
+      "player": "Jamie Arnold",
+      "timestamp": "2026-01-20T17:12:36.949500",
+      "pick_index": 4
+    },
+    {
+      "round": 1,
+      "pick": 6,
+      "team": "JEP",
+      "round_type": "fypd",
+      "player": "Johenssy Colome",
+      "timestamp": "2026-01-20T17:16:38.833023",
+      "pick_index": 5
+    },
+    {
+      "round": 2,
+      "pick": 7,
+      "team": "WAR",
+      "round_type": "fypd",
+      "player": "Eli Willits",
+      "timestamp": "2026-01-20T17:20:40.312869",
+      "pick_index": 6
     }
   ],
   "timer_started_at": null,
-  "paused_at": "2026-01-20T16:52:20.157255",
+  "paused_at": "2026-01-20T17:21:26.662329",
   "started_at": "2026-01-20T16:46:57.037459",
   "completed_at": null,
   "team_slots": {
@@ -58,25 +94,25 @@
     "HAM": {
       "bc_slots": 1,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "RV": {
       "bc_slots": 1,
       "dc_slots": 6,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "JEP": {
       "bc_slots": 1,
       "dc_slots": 6,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "WAR": {
       "bc_slots": 1,
       "dc_slots": 6,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "LFB": {
@@ -110,5 +146,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-01-20T17:04:32.993498"
+  "last_updated": "2026-01-20T17:21:26.662462"
 }

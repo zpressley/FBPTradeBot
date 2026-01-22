@@ -18,6 +18,12 @@ from draft.draft_manager import DraftManager
 from draft.prospect_database import ProspectDatabase
 from draft.pick_validator import PickValidator
 from draft.board_manager import BoardManager
+from pad.pad_processor import (
+    PadSubmissionPayload,
+    PadAlreadySubmittedError,
+    apply_pad_submission,
+    announce_pad_submission_to_discord,
+)
 
 # Load environment variables
 load_dotenv()
@@ -25,6 +31,12 @@ load_dotenv()
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
 SEASON_DATES_PATH = "config/season_dates.json"
+
+# PAD (Prospect Allocation Day) config
+PAD_SEASON = PROSPECT_DRAFT_SEASON
+PAD_TEST_MODE = os.getenv("PAD_TEST_MODE", "false").lower() == "true"
+PAD_TEST_CHANNEL_ID = int(os.getenv("PAD_TEST_CHANNEL_ID", "0"))  # test PAD announcements
+PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live PAD announcements
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 
@@ -430,6 +442,45 @@ async def api_validate_prospect_pick(
     draft_manager, _, validator = _get_prospect_draft_components()
     summary = validator.get_validation_summary(payload.team, payload.player)
     return summary
+
+
+# ---- PAD APIs ----
+
+
+@app.post("/api/pad/submit")
+async def api_pad_submit(
+    payload: PadSubmissionPayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Apply a single PAD submission from the website.
+
+    The Worker forwards website PAD submissions here with X-API-Key. We
+    delegate to pad.pad_processor.apply_pad_submission, which handles
+    validation, data updates, and draft-order rebuilds. This endpoint
+    also schedules a Discord announcement task.
+    """
+    if payload.season != PAD_SEASON:
+        raise HTTPException(status_code=400, detail="Season mismatch for PAD")
+
+    try:
+        result = apply_pad_submission(payload, PAD_TEST_MODE)
+    except PadAlreadySubmittedError as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print(f"❌ PAD processing error: {e}")
+        raise HTTPException(status_code=500, detail="PAD processing error")
+
+    # Fire-and-forget Discord announcement; channel selection happens
+    # inside the announce helper based on PAD_TEST_MODE.
+    try:
+        bot.loop.create_task(announce_pad_submission_to_discord(result, bot))
+    except RuntimeError:
+        # In unit tests / non-bot contexts, bot.loop may not be running.
+        pass
+
+    return {"ok": True, "timestamp": result.timestamp}
 
 
 # ---- Unified Draft API ----

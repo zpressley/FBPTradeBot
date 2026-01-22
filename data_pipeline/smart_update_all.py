@@ -133,16 +133,19 @@ class SmartDataPipeline:
         print("✅ Prospect data updated")
     
     def update_wizbucks(self):
-        """Update WizBucks data from Google Sheets"""
+        """Update WizBucks data.
+
+        As of 2026, WizBucks are managed exclusively by the bot's
+        on-chain ledger (update_wizbucks_ledger.py and in-season
+        auction flows). The legacy Google Sheets sync is disabled to
+        avoid stale data and broken credentials.
+        """
         print("\n💰 UPDATING WIZBUCKS")
         print("=" * 50)
-        
-        self.run_script(
-            "update_wizbucks.py",
-            "Sync WizBucks balances from FBP Hub"
-        )
-        
-        print("✅ WizBucks updated")
+        print("ℹ️ Skipping Google Sheets sync; WizBucks now sourced from bot ledger only.")
+        # Record a no-op result so the pipeline summary stays accurate.
+        self.results.append(("update_wizbucks (skipped)", "SUCCESS", "Using bot ledger as source of truth"))
+        print("✅ WizBucks step skipped (bot ledger is source of truth)")
     
     def update_standings(self):
         """
@@ -257,11 +260,10 @@ class SmartDataPipeline:
         
         # Only update:
         # 1. MLB bio data (trades, signings)
-        # 2. WizBucks (if managers are planning)
-        # 3. Merge with bot keeper data
+        # 2. Merge with bot keeper data (WizBucks already tracked by bot)
         
         self.update_player_bio_data()
-        self.update_wizbucks()
+        # self.update_wizbucks()  # Legacy Sheets sync disabled; bot ledger is source of truth.
         self.merge_all_data()
         
         print("✅ Offseason update complete")
@@ -271,9 +273,11 @@ class SmartDataPipeline:
         print("\n📝 DRAFT MODE - Extended Updates")
         print("=" * 50)
         
-        # During drafts, need everything except Yahoo rosters
+        # During drafts, need everything except Yahoo rosters. WizBucks
+        # remain managed by the bot ledger, so we do not hit Google
+        # Sheets here either.
         self.update_player_bio_data()
-        self.update_wizbucks()
+        # self.update_wizbucks()  # Legacy Sheets sync disabled.
         self.update_prospect_data()
         self.merge_all_data()
         
