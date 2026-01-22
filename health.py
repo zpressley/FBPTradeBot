@@ -467,9 +467,23 @@ async def api_pad_submit(
     except PadAlreadySubmittedError as e:
         raise HTTPException(status_code=409, detail=str(e))
     except ValueError as e:
+        # Validation / data-shape problems we want to surface clearly.
+        print("❌ PAD ValueError while processing submission:")
+        try:
+            print("   payload=", payload.model_dump())
+        except Exception:
+            print("   (failed to dump payload)")
+        print(f"   error={e}")
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:  # pragma: no cover - defensive
-        print(f"❌ PAD processing error: {e}")
+        import traceback
+        print("❌ PAD processing error (unexpected exception):")
+        try:
+            print("   payload=", payload.model_dump())
+        except Exception:
+            print("   (failed to dump payload)")
+        print(f"   PAD_TEST_MODE={PAD_TEST_MODE}")
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail="PAD processing error")
 
     # Fire-and-forget Discord announcement; channel selection happens

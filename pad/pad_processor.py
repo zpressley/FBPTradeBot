@@ -333,7 +333,15 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         if not name_lower:
             return None
         matches = [p for p in combined_players if str(p.get("name") or "").strip().lower() == name_lower]
-        return matches[0] if matches else None
+        if not matches:
+            print(f"⚠️ PAD: could not find player for submission ref: name='{pref.name}', upid='{pref.upid}'")
+            return None
+        if len(matches) > 1:
+            print(
+                "⚠️ PAD: multiple players matched by name; using first:",
+                {"name": pref.name, "upid": pref.upid, "count": len(matches)},
+            )
+        return matches[0]
 
     # Helper to normalize status string so trailing code is 'P' while
     # preserving any numeric prefix "[7]" etc.
@@ -365,6 +373,11 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         return team_abbr
 
     franchise_name = _resolve_franchise_name(team)
+    if franchise_name not in wizbucks:
+        print(
+            "⚠️ PAD: franchise_name not found in wizbucks; defaulting balance to 0",
+            {"team": team, "franchise_name": franchise_name, "keys": list(wizbucks.keys())},
+        )
     wb_balance = int(wizbucks.get(franchise_name, 0))
 
     # Apply contract changes and track affected players for summary & logging.
@@ -375,9 +388,14 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     def _apply_contract(pref: PadPlayerRef, label: str) -> None:
         p = _find_player(pref)
         if not p:
+            # _find_player already logged a warning.
             return
         # Only touch prospects
         if (p.get("player_type") or "").strip() != "Farm":
+            print(
+                "⚠️ PAD: skipping non-prospect in submission",
+                {"name": p.get("name"), "upid": p.get("upid"), "player_type": p.get("player_type")},
+            )
             return
         p["manager"] = franchise_name
         p["FBP_Team"] = team
