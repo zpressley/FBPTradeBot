@@ -144,14 +144,20 @@ def detailed_health():
 # ---- API auth helpers ----
 
 def verify_api_key(x_api_key: str = Header(...)) -> bool:
-    """Simple API key gate for Cloudflare Worker → bot API traffic."""
+    """Simple API key gate for Cloudflare Worker → bot API traffic.
+
+    Logs minimal diagnostics for debugging, without exposing the key value.
+    """
 
     if not API_KEY:
-        # If not configured, treat as disabled rather than locking everything.
+        print("❌ API request received but BOT_API_KEY is not configured in environment")
         raise HTTPException(status_code=500, detail="BOT_API_KEY not configured")
 
     if x_api_key != API_KEY:
+        # Do NOT log the provided key; just note that it was invalid.
+        print("❌ API request with invalid X-API-Key header")
         raise HTTPException(status_code=401, detail="Invalid API key")
+
     return True
 
 
@@ -459,7 +465,18 @@ async def api_pad_submit(
     validation, data updates, and draft-order rebuilds. This endpoint
     also schedules a Discord announcement task.
     """
+    print(
+        "📥 Incoming PAD submission",
+        {
+            "team": payload.team,
+            "season": payload.season,
+            "expected_season": PAD_SEASON,
+            "test_mode": PAD_TEST_MODE,
+        },
+    )
+
     if payload.season != PAD_SEASON:
+        print("❌ PAD season mismatch", {"payload_season": payload.season, "PAD_SEASON": PAD_SEASON})
         raise HTTPException(status_code=400, detail="Season mismatch for PAD")
 
     try:
