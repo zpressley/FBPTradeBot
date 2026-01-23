@@ -24,7 +24,9 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo("US/Eastern")
 
 # Path to managers config used for final_rank_2025 (prospect draft order)
-MANAGERS_CONFIG_PATH = Path("../fbp-hub/config/managers.json").resolve()
+# In production (Render), the bot repo is deployed alone, so we keep a
+# copy of managers.json under this repo's config/ directory.
+MANAGERS_CONFIG_PATH = Path("config/managers.json").resolve()
 
 
 # ---------------------------------------------------------------------------
@@ -215,6 +217,7 @@ def rebuild_draft_order_from_pad(submissions: Dict[str, Any], test_mode: bool) -
     cfg = load_managers_config()
     teams_cfg = cfg.get("teams") or {}
     if not teams_cfg:
+        print("⚠️ PAD: managers.json missing or empty; draft order rebuild skipped")
         return
 
     # Build base order by reverse final_rank_2025 (worst rank -> earliest pick)
@@ -362,13 +365,22 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     # NOTE: PAD UI already guards against overspend; backend will trust values
     # here and just apply deltas.
 
-    # Map from FBP team abbreviation to franchise name comes from hub config,
-    # but for PAD we can approximate by scanning wizbucks keys that contain
-    # the abbreviation. This may be refined once a canonical mapping is
-    # centralized.
+    # Map from FBP team abbreviation to franchise display name used as
+    # the key in wizbucks.json. Prefer managers.json when available,
+    # and fall back to a case-insensitive scan of wizbucks keys.
+    managers_cfg = load_managers_config() or {}
+    teams_meta = managers_cfg.get("teams") or {}
+
     def _resolve_franchise_name(team_abbr: str) -> str:
+        meta = teams_meta.get(team_abbr)
+        if meta and isinstance(meta, dict):
+            name = meta.get("name")
+            if name and name in wizbucks:
+                return name
+        # Fallback: case-insensitive search through wizbucks keys
+        upper_abbr = team_abbr.upper()
         for name in wizbucks.keys():
-            if team_abbr in name or name.startswith(team_abbr):
+            if upper_abbr in name.upper() or name.upper().startswith(upper_abbr):
                 return name
         return team_abbr
 

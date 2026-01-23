@@ -1,0 +1,630 @@
+{
+  "_comment": "FBP Hub manager/league configuration. WARNING: This file must remain valid JSON (no // comments). Use _comment fields like this one to document schema and league rules.",
+  "teams": {
+    "WIZ": {
+      "name": "Whiz Kids",
+      "discord_id": "161967242118955008",
+      "manager": "WIZ",
+      "final_rank_2025": 1,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "WizBucks pre-season config for Season 13 (2026). See docs/{Master} FBP Constitution 2026 (1).md, Article I & Article 4.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 1,
+            "finishBracket": "championship"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "B2J": {
+      "name": "Btwn2Jackies",
+      "discord_id": "689952988957245578",
+      "manager": "B2J",
+      "final_rank_2025": 6,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config, including Optional Rollover and Leftovers (PAD→KAP, KAP→APA).",
+          "meta": {
+            "season": 2026,
+            "finalRank": 6,
+            "finishBracket": "consolation"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 120,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 120
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 25,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 400
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "CFL": {
+      "name": "Country Fried Lamb",
+      "discord_id": "689887002887454815",
+      "manager": "CFL",
+      "final_rank_2025": 8,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 8,
+            "finishBracket": "consolation"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 120,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 120
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "HAM": {
+      "name": "Hammers",
+      "discord_id": "347571660230230017",
+      "manager": "HAM",
+      "final_rank_2025": 9,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config. Elimination bracket winner receives +$20 PAD bonus.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 9,
+            "finishBracket": "elimination"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 140,
+              "bonus": 20,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 160
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "RV": {
+      "name": "Rick Vaughn",
+      "discord_id": "689911142432112657",
+      "manager": "RV",
+      "final_rank_2025": 10,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config. Elimination bracket runner-up receives +$10 PAD bonus.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 10,
+            "finishBracket": "elimination"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 140,
+              "bonus": 10,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 150
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "LAW": {
+      "name": "Law-Abiding Citizens",
+      "discord_id": "892152416718422056",
+      "manager": "LAW",
+      "final_rank_2025": 7,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 7,
+            "finishBracket": "consolation"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 120,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 120
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "LFB": {
+      "name": "La Flama Blanca",
+      "discord_id": "890059214586773574",
+      "manager": "LFB",
+      "final_rank_2025": 2,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 2,
+            "finishBracket": "championship"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "JEP": {
+      "name": "Jepordizers!",
+      "discord_id": "814294382529347594",
+      "manager": "JEP",
+      "final_rank_2025": 11,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 11,
+            "finishBracket": "elimination"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 140,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 140
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "TBB": {
+      "name": "The Bluke Blokes",
+      "discord_id": "161932197308137473",
+      "manager": "TBB",
+      "final_rank_2025": 5,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config. Consolation bracket champion receives +$50 KAP bonus.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 5,
+            "finishBracket": "consolation"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 120,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 120
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 50,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 425
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "DRO": {
+      "name": "Andromedans",
+      "discord_id": "541092942455242754",
+      "manager": "DRO",
+      "final_rank_2025": 4,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 4,
+            "finishBracket": "championship"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "SAD": {
+      "name": "not much of a donkey",
+      "discord_id": "875750135005597728",
+      "manager": "SAD",
+      "final_rank_2025": 3,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 3,
+            "finishBracket": "championship"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "WAR": {
+      "name": "Weekend Warriors",
+      "discord_id": "664280448788201522",
+      "manager": "WAR",
+      "final_rank_2025": 12,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 12,
+            "finishBracket": "elimination"
+          },
+          "optionalRollover": {
+            "PAD": 0,
+            "KAP": 0,
+            "APA": 0
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 140,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 140
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    }
+  },
+  "commissioner": "161967242118955008"
+}
