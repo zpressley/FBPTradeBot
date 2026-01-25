@@ -39,27 +39,15 @@ def configure_git() -> None:
 
         email = os.getenv("GIT_USER_EMAIL", "bot@fbp.com")
         name = os.getenv("GIT_USER_NAME", "FBP Bot")
-        token = os.getenv("GITHUB_TOKEN")
-        repo_root = os.getenv("REPO_ROOT", "/opt/render/project/src")
 
         subprocess.run(["git", "config", "--global", "user.email", email], check=True)
         subprocess.run(["git", "config", "--global", "user.name", name], check=True)
 
+        token = os.getenv("GITHUB_TOKEN")
         if token:
-            subprocess.run(
-                [
-                    "git",
-                    "remote",
-                    "set-url",
-                    "origin",
-                    f"https://{token}@github.com/zpressley/fbp-trade-bot.git",
-                ],
-                check=True,
-                cwd=repo_root,
-            )
-            print("✅ Git configured with token authentication")
+            print("✅ Git token detected; git push will use token URL when available")
         else:
-            print("⚠️ GITHUB_TOKEN not set - git push will fail")
+            print("⚠️ GITHUB_TOKEN not set - git push will use default remote auth (may fail)")
     except Exception as exc:
         print(f"❌ Git configuration error: {exc}")
 
@@ -78,6 +66,9 @@ PAD_TEST_CHANNEL_ID = int(os.getenv("PAD_TEST_CHANNEL_ID", "0"))  # test PAD ann
 PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live PAD announcements
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
+
+# Repo root used for git operations (Render default path, override via env)
+REPO_ROOT = os.getenv("REPO_ROOT", "/opt/render/project/src")
 
 # ---- Discord Bot Setup ----
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -365,13 +356,31 @@ async def _send_auction_log_message(content: str) -> None:
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
-    """Best-effort helper to commit and push data updates."""
+    """Best-effort helper to commit and push data updates.
+
+    Uses GITHUB_TOKEN if available to push directly to the GitHub repo,
+    otherwise falls back to `git push` with the existing remote config.
+    """
     try:
         import subprocess
+
+        repo_root = REPO_ROOT
+
         if file_paths:
-            subprocess.run(["git", "add", *file_paths], check=True)
-        subprocess.run(["git", "commit", "-m", message], check=True)
-        subprocess.run(["git", "push"], check=True)
+            subprocess.run(["git", "add", *file_paths], check=True, cwd=repo_root)
+        subprocess.run(["git", "commit", "-m", message], check=True, cwd=repo_root)
+
+        token = os.getenv("GITHUB_TOKEN")
+        if token:
+            remote_url = f"https://{token}@github.com/zpressley/fbp-trade-bot.git"
+            # Push current HEAD to main explicitly via token-auth URL
+            subprocess.run(
+                ["git", "push", remote_url, "HEAD:main"],
+                check=True,
+                cwd=repo_root,
+            )
+        else:
+            subprocess.run(["git", "push"], check=True, cwd=repo_root)
     except Exception as exc:
         print(f"⚠️ Git commit/push failed: {exc}")
 
