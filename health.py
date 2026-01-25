@@ -28,6 +28,45 @@ from pad.pad_processor import (
 # Load environment variables
 load_dotenv()
 
+
+def configure_git() -> None:
+    """Configure git identity and remote for Render deployments.
+
+    This is a no-op locally if env vars are not set.
+    """
+    try:
+        import subprocess
+
+        email = os.getenv("GIT_USER_EMAIL", "bot@fbp.com")
+        name = os.getenv("GIT_USER_NAME", "FBP Bot")
+        token = os.getenv("GITHUB_TOKEN")
+        repo_root = os.getenv("REPO_ROOT", "/opt/render/project/src")
+
+        subprocess.run(["git", "config", "--global", "user.email", email], check=True)
+        subprocess.run(["git", "config", "--global", "user.name", name], check=True)
+
+        if token:
+            subprocess.run(
+                [
+                    "git",
+                    "remote",
+                    "set-url",
+                    "origin",
+                    f"https://{token}@github.com/zpressley/fbp-trade-bot.git",
+                ],
+                check=True,
+                cwd=repo_root,
+            )
+            print("✅ Git configured with token authentication")
+        else:
+            print("⚠️ GITHUB_TOKEN not set - git push will fail")
+    except Exception as exc:
+        print(f"❌ Git configuration error: {exc}")
+
+
+# Configure git once on process start (safe no-op locally)
+configure_git()
+
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
 SEASON_DATES_PATH = "config/season_dates.json"
@@ -502,6 +541,21 @@ async def api_pad_submit(
         print(f"   PAD_TEST_MODE={PAD_TEST_MODE}")
         traceback.print_exc()
         raise HTTPException(status_code=500, detail="PAD processing error")
+
+    # In live mode, auto-commit PAD data files back to GitHub so the
+    # bot repo (and downstream FBP Hub sync) stay in sync.
+    if not PAD_TEST_MODE:
+        core_files = [
+            "data/combined_players.json",
+            "data/wizbucks.json",
+            "data/player_log.json",
+            "data/pad_submissions_2026.json",
+            "data/draft_order_2026.json",
+        ]
+        _commit_and_push(
+            core_files,
+            f"PAD: {result.team} submission ({result.season})",
+        )
 
     # Fire-and-forget Discord announcement; channel selection happens
     # inside the announce helper based on PAD_TEST_MODE.
