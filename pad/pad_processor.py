@@ -301,7 +301,10 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     team = payload.team
     season = payload.season
 
-    if team in submissions:
+    # In live mode we strictly enforce one submission per team. In test
+    # mode we allow repeated submissions so commissioners can iterate on
+    # PAD behavior without having to manually edit JSON on the server.
+    if team in submissions and not test_mode:
         raise PadAlreadySubmittedError(f"PAD already submitted for team {team}")
 
     # Load main data files
