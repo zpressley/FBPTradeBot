@@ -13,10 +13,12 @@ from datetime import datetime
 from token_manager import get_access_token
 
 # League settings
-LEAGUE_ID = "15505"  # League context (used mainly for ownership). Adjust if needed.
+# For 2026, league 8560 is the correct context (used mainly for ownership).
+LEAGUE_ID = "8560"
 
 # MLB game IDs by season (mirrors mapping in fetch_historical_yahoo.py)
 MLB_GAME_IDS = {
+    2026: 469,
     2025: 458,
     2024: 404,
     2023: 412,
@@ -38,7 +40,7 @@ DEFAULT_SEASON = 2024
 CURRENT_SEASON = DEFAULT_SEASON
 CURRENT_GAME_ID = MLB_GAME_IDS[CURRENT_SEASON]
 
-def fetch_all_players_batch(start=0, count=25, position_filter=None):
+def fetch_all_players_batch(start=0, count=25, position_filter=None, *, _retry=False):
     """
     Fetch a batch of players from Yahoo with stats
     
@@ -73,6 +75,13 @@ def fetch_all_players_batch(start=0, count=25, position_filter=None):
     
     try:
         response = requests.get(url, headers=headers, timeout=30)
+        
+        # If we get unauthorized/forbidden once, try a token refresh + single retry
+        if response.status_code in (401, 403) and not _retry:
+            print(f"  ⚠️ HTTP {response.status_code} - refreshing token and retrying batch {start}-{start+count}...")
+            # Force token refresh in token_manager; implementation there handles persistence.
+            _ = get_access_token()
+            return fetch_all_players_batch(start=start, count=count, position_filter=position_filter, _retry=True)
         
         if response.status_code != 200:
             print(f"  ❌ HTTP {response.status_code}")

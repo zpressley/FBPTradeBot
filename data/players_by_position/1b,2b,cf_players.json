@@ -1,6 +1,6 @@
 [
   {
-    "player_key": "458.p.60064",
+    "player_key": "469.p.60064",
     "player_id": "60064",
     "name": "Tim Tawa",
     "first_name": "Tim",
@@ -14,45 +14,17 @@
     "owned_by": null,
     "percent_owned": 0,
     "stats": {
-      "stat_60": "40/199",
-      "stat_7": 29,
-      "stat_8": 40,
-      "stat_12": 7,
-      "stat_13": 18,
-      "stat_16": 8,
-      "stat_18": 20,
-      "stat_21": 64,
-      "stat_23": 69,
-      "stat_3": 0.201,
-      "stat_55": 0.621
-    }
-  },
-  {
-    "player_key": "458.p.63023",
-    "player_id": "63023",
-    "name": "Luke Keaschall",
-    "first_name": "Luke",
-    "last_name": "Keaschall",
-    "position": "1B,2B,CF",
-    "eligible_positions": [],
-    "team": "MIN",
-    "team_full": "Minnesota Twins",
-    "status": "DTD",
-    "ownership_type": "team",
-    "owned_by": "458.l.15505.t.5",
-    "percent_owned": 45,
-    "stats": {
-      "stat_60": "55/182",
-      "stat_7": 25,
-      "stat_8": 55,
-      "stat_12": 4,
-      "stat_13": 28,
-      "stat_16": 14,
-      "stat_18": 19,
-      "stat_21": 29,
-      "stat_23": 81,
-      "stat_3": 0.302,
-      "stat_55": 0.827
+      "stat_60": "-/-",
+      "stat_7": "-",
+      "stat_8": "-",
+      "stat_12": "-",
+      "stat_13": "-",
+      "stat_16": "-",
+      "stat_18": "-",
+      "stat_21": "-",
+      "stat_23": "-",
+      "stat_3": "-",
+      "stat_55": "-"
     }
   }
 ]

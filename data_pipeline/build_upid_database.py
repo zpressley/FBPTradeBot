@@ -107,10 +107,19 @@ def build_upid_database(sheet: gspread.Worksheet) -> Dict[str, Any]:
     name_index: Dict[str, List[str]] = {}
 
     def add_name_index(name: str, upid: str) -> None:
+        """Add a name→UPID mapping, avoiding empty keys and duplicates.
+
+        Some sheet rows (e.g., sample/header rows) can introduce junk like
+        "Player Name" → "UPID". We still rely on row filtering below to
+        skip those, but this helper also ensures we don't store duplicate
+        UPIDs for a given key.
+        """
         key = name.strip().lower()
         if not key:
             return
-        name_index.setdefault(key, []).append(upid)
+        bucket = name_index.setdefault(key, [])
+        if upid not in bucket:
+            bucket.append(upid)
 
     for row in rows:
         # Pad short rows so indexing is safe
@@ -123,8 +132,14 @@ def build_upid_database(sheet: gspread.Worksheet) -> Dict[str, Any]:
         pos = row[COL_POS].strip()
         upid = row[COL_UPID].strip()
 
+        # Skip completely empty rows
         if not upid and not name:
             continue
+
+        # Skip rows that look like header/sample rows, e.g. "Player Name" / "UPID"
+        if upid.upper() == "UPID" or name.lower() == "player name":
+            continue
+
         if not upid:
             # Skip rows without a UPID; they aren't part of the canonical index
             continue
