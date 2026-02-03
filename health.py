@@ -636,7 +636,14 @@ async def api_pad_submit(
         # In unit tests / non-bot contexts, bot.loop may not be running.
         pass
 
-    return {"ok": True, "timestamp": result.timestamp}
+    return {
+        "ok": True,
+        "timestamp": result.timestamp,
+        "team": result.team,
+        "season": result.season,
+        "wb_spent": result.wb_spent,
+        "wb_remaining": result.wb_remaining,
+    }
 
 
 # ---- Admin APIs ----
