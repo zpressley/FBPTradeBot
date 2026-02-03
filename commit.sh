@@ -54,7 +54,7 @@ git add .
 
 # Commit
 echo -e "${GREEN}💾 Committing...${NC}"
-git commit -m "$commit_message"
+git commit -m "$commit_message" -m "Co-Authored-By: Warp <agent@warp.dev>"
 
 # Ask about pushing
 echo ""
@@ -63,9 +63,44 @@ echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "${GREEN}🚀 Pushing to GitHub...${NC}"
-    git push origin main
-    echo ""
-    echo -e "${GREEN}✅ Done! Changes committed and pushed.${NC}"
+    # Attempt a normal push first. If it fails because the remote has
+    # new commits, offer a simple guided option to pull (with rebase)
+    # and retry the push.
+    if git push origin main; then
+        echo ""
+        echo -e "${GREEN}✅ Done! Changes committed and pushed.${NC}"
+    else
+        echo ""
+        echo -e "${RED}⚠️  Push failed. The remote probably has new commits you don't have locally.${NC}"
+        echo -e "${YELLOW}Options:${NC}"
+        echo -e "  1) ${GREEN}Pull remote changes with rebase and re-try push (recommended)${NC}"
+        echo -e "  2) ${RED}Abort now and handle manually later${NC}"
+        echo ""
+        read -p "Choose 1 or 2: " -r choice
+
+        if [[ "$choice" == "1" ]]; then
+            echo ""
+            echo -e "${GREEN}📥 Running 'git pull --rebase origin main'...${NC}"
+            if git pull --rebase origin main; then
+                echo -e "${GREEN}🔁 Re-trying push...${NC}"
+                if git push origin main; then
+                    echo ""
+                    echo -e "${GREEN}✅ Done! Changes committed and pushed.${NC}"
+                else
+                    echo ""
+                    echo -e "${RED}❌ Push still failed. Please run 'git status' and resolve any issues manually.${NC}"
+                fi
+            else
+                echo ""
+                echo -e "${RED}❌ Pull with rebase failed (likely due to conflicts).${NC}"
+                echo -e "${YELLOW}Run 'git status' and resolve merge conflicts, then push again when ready.${NC}"
+            fi
+        else
+            echo ""
+            echo -e "${YELLOW}✅ Done! Changes committed locally, but NOT pushed.${NC}"
+            echo -e "${YELLOW}💡 When ready, run 'git pull --rebase origin main' then 'git push origin main'.${NC}"
+        fi
+    fi
 else
     echo ""
     echo -e "${YELLOW}✅ Done! Changes committed locally.${NC}"
