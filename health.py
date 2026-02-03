@@ -399,7 +399,8 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         # Prepare push command
         token = os.getenv("GITHUB_TOKEN")
         if token:
-            repo = os.getenv("GITHUB_REPO", "zpressley/fbp-trade-bot")
+            # Default to the actual bot repo name; allow override via GITHUB_REPO.
+            repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
             username = os.getenv("GITHUB_USER", "x-access-token")
             remote_url = f"https://{username}:{token}@github.com/{repo}.git"
             push_cmd = ["git", "push", remote_url, "HEAD:main"]
