@@ -42,12 +42,25 @@ jobs:
         # and only runs necessary updates
         python3 data_pipeline/smart_update_all.py
 
-    - name: Commit and push if changes (fbp-trade-bot)
+    - name: Commit and push if data/ changed (fbp-trade-bot)
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+
+        # Stage only data/ so secrets in token.json/google_creds.json never
+        # affect this commit step. We intentionally ignore working-tree
+        # changes outside data/ (like token.json).
         git add data/
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Daily data update - $(date)" && git push)
+
+        # If there are no staged changes under data/, exit successfully
+        # without committing.
+        if git diff --cached --quiet; then
+          echo "No data/ changes to commit."
+          exit 0
+        fi
+
+        git commit -m "🔄 Daily data update - $(date)"
+        git push
 
     # Optional: sync Top 100 prospects into the fbp-hub repo for the website.
     # This assumes you have created a personal access token with repo write

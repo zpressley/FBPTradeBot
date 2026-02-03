@@ -23,6 +23,13 @@ from pad.pad_processor import (
     PadAlreadySubmittedError,
     apply_pad_submission,
     announce_pad_submission_to_discord,
+    load_managers_config,
+)
+from admin.admin_processor import (
+    AdminPlayerUpdatePayload,
+    AdminWBAdjustmentPayload,
+    apply_admin_player_update,
+    apply_admin_wb_adjustment,
 )
 
 # Load environment variables
@@ -575,6 +582,143 @@ async def api_pad_submit(
         pass
 
     return {"ok": True, "timestamp": result.timestamp}
+
+
+# ---- Admin APIs ----
+
+
+@app.post("/api/admin/update-player")
+async def api_admin_update_player(
+    payload: AdminPlayerUpdatePayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Apply a single admin player update and persist to JSON.
+
+    This endpoint is designed to be called by the Cloudflare Worker that
+    fronts the FBP Hub admin portal. It mirrors the PAD pattern by routing
+    all data mutation through a pure helper and then committing core data
+    files back to Git.
+    """
+    try:
+        result = apply_admin_player_update(payload, test_mode=False)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print("❌ Admin update error:", e)
+        raise HTTPException(status_code=500, detail="Admin update error")
+
+    core_files = [
+        "data/combined_players.json",
+        "data/wizbucks.json",
+        "data/player_log.json",
+    ]
+    try:
+        _commit_and_push(
+            core_files,
+            f"Admin update: {result['player'].get('name', payload.upid)}",
+        )
+    except Exception as exc:
+        # Commit/push failures should not hide the fact that the data files
+        # were already updated on disk.
+        print("⚠️ Admin update git commit/push failed:", exc)
+
+    return result
+
+
+@app.post("/api/admin/wizbucks-adjustment")
+async def api_admin_wizbucks_adjustment(
+    payload: AdminWBAdjustmentPayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Apply a manual WizBucks adjustment and persist to wizbucks data files."""
+    try:
+        result = apply_admin_wb_adjustment(payload, test_mode=False)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print("❌ Admin WB adjustment error:", e)
+        raise HTTPException(status_code=500, detail="Admin WB adjustment error")
+
+    core_files = [
+        "data/wizbucks.json",
+        "data/wizbucks_transactions.json",
+    ]
+    try:
+        _commit_and_push(
+            core_files,
+            f"Admin WB: {result['team']} {result['amount']} ({result['installment']})",
+        )
+    except Exception as exc:
+        print("⚠️ Admin WB git commit/push failed:", exc)
+
+    return result
+
+
+@app.get("/api/admin/player-log")
+async def api_admin_player_log(
+    limit: int = 50,
+    update_type: str | None = None,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Return recent player_log entries for the admin portal.
+
+    Entries are ordered newest-first, optionally filtered by update_type and
+    truncated by limit.
+    """
+    try:
+        with open("data/player_log.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            data = []
+    except FileNotFoundError:
+        data = []
+
+    # Newest first
+    data = list(reversed(data))
+
+    if update_type:
+        data = [rec for rec in data if rec.get("update_type") == update_type]
+
+    if limit and limit > 0:
+        data = data[:limit]
+
+    return data
+
+
+@app.get("/api/admin/wizbucks-balances")
+async def api_admin_wizbucks_balances(
+    authorized: bool = Depends(verify_api_key),
+):
+    """Return current WizBucks balances keyed by FBP team abbreviation.
+
+    Uses managers.json to map abbreviations to franchise display names used
+    as keys in wizbucks.json.
+    """
+    try:
+        with open("data/wizbucks.json", "r", encoding="utf-8") as f:
+            wizbucks = json.load(f)
+        if not isinstance(wizbucks, dict):
+            wizbucks = {}
+    except FileNotFoundError:
+        wizbucks = {}
+
+    managers_cfg = load_managers_config() or {}
+    teams_meta = managers_cfg.get("teams") or {}
+
+    balances: dict[str, int] = {}
+    for abbr, meta in teams_meta.items():
+        if not isinstance(meta, dict):
+            continue
+        name = meta.get("name")
+        if not name:
+            continue
+        if name in wizbucks:
+            try:
+                balances[abbr] = int(wizbucks.get(name, 0))
+            except Exception:
+                continue
+
+    return {"balances": balances}
 
 
 # ---- Unified Draft API ----

@@ -529,11 +529,23 @@ async def announce_pad_submission_to_discord(result: PadResult, bot) -> None:
     live_channel_id = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))
     channel_id = test_channel_id if test_mode else live_channel_id
 
+    print(
+        "🔔 PAD Discord announce debug",
+        {
+            "test_mode": test_mode,
+            "test_channel_id": test_channel_id,
+            "live_channel_id": live_channel_id,
+            "chosen_channel_id": channel_id,
+        },
+    )
+
     if not channel_id:
+        print("⚠️ PAD announce: no channel id configured; skipping Discord message")
         return
 
     channel = bot.get_channel(channel_id)
     if channel is None:
+        print("⚠️ PAD announce: bot.get_channel returned None; check channel ID and bot guilds")
         return
 
     import discord

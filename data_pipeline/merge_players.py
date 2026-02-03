@@ -2,11 +2,15 @@ import json
 import os
 
 YAHOO_FILE = "data/yahoo_players.json"
-SHEET_FILE = "data/sheet_players.json"
+# SHEET_FILE is intentionally no longer part of the live pipeline. It
+# remains in the repo as a historical snapshot of the legacy Google
+# Sheets “Player Data” tab.
+SHEET_FILE = "data/sheet_players.json"  # legacy/historical only
 OUTPUT_FILE = "data/combined_players.json"
 UPID_DB_FILE = "data/upid_database.json"
 MLB_ID_CACHE_FILE = "data/mlb_id_cache.json"
 MLB_TEAM_MAP_FILE = "data/mlb_team_map.json"
+MANAGERS_FILE = "config/managers.json"
 
 
 def load_json(path):
@@ -23,46 +27,21 @@ def load_optional_json(path, default):
         return default
 
 
-def _base_from_sheet(player: dict) -> dict:
-    """Build the base combined-player record from a sheet row.
+def merge_players(yahoo_data, _legacy_sheet_data=None):
+    """Merge Yahoo roster snapshot with existing combined_players data.
 
-    This is used for *all* players in the sheet (MLB + Farm). Yahoo data
-    will be layered on top later where available.
-    """
-
-    name = (player.get("Player Name") or "").strip()
-    team = (player.get("Team") or "").strip()
-    pos = (player.get("Pos") or "").strip()
-
-    return {
-        "name": name,
-        "team": team,
-        "position": pos,
-        "manager": (player.get("Manager") or "").strip(),
-        "player_type": (player.get("Player Type") or "MLB").strip() or "MLB",
-        "contract_type": (player.get("Contract Type") or "").strip(),
-        "status": (player.get("Status") or "").strip(),
-        "years_simple": (player.get("Years (Simple)") or "").strip(),
-        "yahoo_id": "",
-        "upid": (player.get("UPID") or "").strip(),
-        "mlb_id": None,
-    }
-
-
-def merge_players(yahoo_data, sheet_data):
-    """Merge Yahoo roster snapshot with sheet master list.
-
-    Goals:
-    - Every player in the sheet (MLB or Farm) appears at least once in
-      combined_players.json.
-    - Yahoo roster info (team/position/FBP owner) is layered on top
-      when available.
+    Live pipeline behavior (post-2026):
+    - We NO LONGER seed from sheet_players.json or Google Sheets.
+    - Existing combined_players.json is treated as the base of truth for
+      contracts, prospect flags, ranks, etc.
+    - Yahoo roster info (team/position/FBP owner) is layered on top.
+    - FBP_Team and display manager name are driven by config/managers.json.
     - Matching prefers UPID when we have it, otherwise falls back to
       exact lowercased name.
     """
 
     combined_by_key = {}
-    sheet_name_index = {}
+    existing_name_index = {}
 
     # Load identity/ID helpers
     upid_db = load_optional_json(UPID_DB_FILE, {"by_upid": {}, "name_index": {}})
@@ -72,6 +51,9 @@ def merge_players(yahoo_data, sheet_data):
     mlb_id_cache = load_optional_json(MLB_ID_CACHE_FILE, {})
     team_map = load_optional_json(MLB_TEAM_MAP_FILE, {"aliases": {}, "official": {}})
     alias_map = team_map.get("aliases", {})
+
+    managers_cfg = load_optional_json(MANAGERS_FILE, {"teams": {}})
+    teams_cfg = managers_cfg.get("teams", {})
 
     def canonical_team(team: str) -> str:
         key = (team or "").strip().lower()
@@ -116,17 +98,30 @@ def merge_players(yahoo_data, sheet_data):
             return ("upid", upid)
         return ("name", name.lower())
 
-    # 1) Seed from sheet: all MLB + Farm players
-    for p in sheet_data:
-        name = (p.get("Player Name") or "").strip()
-        if not name:
-            continue
-        upid = (p.get("UPID") or "").strip()
+    def owner_labels(fbp_team: str) -> tuple[str, str]:
+        """Return (FBP_Team code, display manager name) for a team.
 
-        rec = _base_from_sheet(p)
+        - FBP_Team code is the canonical abbreviation (teams[key].manager
+          if present, otherwise the key itself).
+        - Display name is teams[key].name or the code.
+        """
+
+        meta = teams_cfg.get(fbp_team, {})
+        code = (meta.get("manager") or fbp_team or "").strip() or fbp_team
+        name = (meta.get("name") or code).strip()
+        return code, name
+
+    # 1) Seed from existing combined_players.json (if present)
+    existing = load_optional_json(OUTPUT_FILE, [])
+    for rec in existing:
+        name = (rec.get("name") or "").strip()
+        upid = (rec.get("upid") or "").strip()
+        if not name and not upid:
+            continue
         k = key_for(upid, name)
         combined_by_key[k] = rec
-        sheet_name_index.setdefault(name.lower(), []).append(k)
+        if name:
+            existing_name_index.setdefault(name.lower(), []).append(k)
 
     # 2) Layer Yahoo roster info on top
     for fbp_team, roster in yahoo_data.items():
@@ -139,15 +134,15 @@ def merge_players(yahoo_data, sheet_data):
             if not name and not yahoo_id:
                 continue
 
-            # Try to find a matching sheet record by exact name
+            # Try to find a matching existing record by exact name
             key = None
             if name:
-                for k in sheet_name_index.get(name.lower(), []):
+                for k in existing_name_index.get(name.lower(), []):
                     key = k
                     break
 
             if key is None:
-                # Player not in sheet at all (e.g., FA only in Yahoo).
+                # Player not in existing combined file (e.g., new FA only in Yahoo).
                 # Try to attach a UPID via the UPID database.
                 guessed_upid = find_upid_for_player(name, team)
                 mlb_id = None
@@ -157,11 +152,13 @@ def merge_players(yahoo_data, sheet_data):
                 # Create a new MLB record keyed off Yahoo id + name.
                 key = ("yahoo", yahoo_id or name.lower())
                 if key not in combined_by_key:
+                    fbp_code, display_name = owner_labels(fbp_team)
                     combined_by_key[key] = {
                         "name": name,
                         "team": team,
                         "position": pos,
-                        "manager": fbp_team,
+                        "FBP_Team": fbp_code,
+                        "manager": display_name,
                         "player_type": "MLB",
                         "contract_type": "",
                         "status": "",
@@ -172,15 +169,18 @@ def merge_players(yahoo_data, sheet_data):
                     }
                     continue
 
-            # Update the existing sheet-based record with live Yahoo info
+            # Update the existing record with live Yahoo + ownership info
             rec = combined_by_key[key]
             if team:
                 rec["team"] = team
             if pos:
                 rec["position"] = pos
 
-            # Yahoo is the source of truth for current FBP owner.
-            rec["manager"] = fbp_team
+            # Yahoo is the source of truth for current FBP owner; we map
+            # this into FBP_Team (code) and display manager name.
+            fbp_code, display_name = owner_labels(fbp_team)
+            rec["FBP_Team"] = fbp_code
+            rec["manager"] = display_name
             if yahoo_id:
                 rec["yahoo_id"] = yahoo_id
 
@@ -201,7 +201,10 @@ def save_json(data, path):
 
 
 if __name__ == "__main__":
-    yahoo = load_json(YAHOO_FILE)
-    sheet = load_json(SHEET_FILE)
-    merged = merge_players(yahoo, sheet)
+    yahoo = load_optional_json(YAHOO_FILE, {})
+    # Legacy sheet data is ignored by the live pipeline, but we keep the
+    # parameter for merge_players so historical/one-off workflows can
+    # still pass it if needed.
+    legacy_sheet = load_optional_json(SHEET_FILE, [])
+    merged = merge_players(yahoo, legacy_sheet)
     save_json(merged, OUTPUT_FILE)
