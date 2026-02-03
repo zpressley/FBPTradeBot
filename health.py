@@ -367,29 +367,70 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
 
     Uses GITHUB_TOKEN if available to push directly to the GitHub repo,
     otherwise falls back to `git push` with the existing remote config.
+
+    Notes:
+      * We capture stdout/stderr so Render logs show *why* a push failed.
+      * We redact the raw token from any error output before printing.
     """
+    import subprocess
+
+    repo_root = REPO_ROOT
+
     try:
-        import subprocess
-
-        repo_root = REPO_ROOT
-
+        # Stage files (if any)
         if file_paths:
-            subprocess.run(["git", "add", *file_paths], check=True, cwd=repo_root)
-        subprocess.run(["git", "commit", "-m", message], check=True, cwd=repo_root)
-
-        token = os.getenv("GITHUB_TOKEN")
-        if token:
-            remote_url = f"https://{token}@github.com/zpressley/fbp-trade-bot.git"
-            # Push current HEAD to main explicitly via token-auth URL
             subprocess.run(
-                ["git", "push", remote_url, "HEAD:main"],
+                ["git", "add", *file_paths],
                 check=True,
                 cwd=repo_root,
+                capture_output=True,
+                text=True,
             )
+
+        # Commit (this may fail with code 1 if there are no changes)
+        subprocess.run(
+            ["git", "commit", "-m", message],
+            check=True,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+        )
+
+        # Prepare push command
+        token = os.getenv("GITHUB_TOKEN")
+        if token:
+            repo = os.getenv("GITHUB_REPO", "zpressley/fbp-trade-bot")
+            username = os.getenv("GITHUB_USER", "x-access-token")
+            remote_url = f"https://{username}:{token}@github.com/{repo}.git"
+            push_cmd = ["git", "push", remote_url, "HEAD:main"]
         else:
-            subprocess.run(["git", "push"], check=True, cwd=repo_root)
+            push_cmd = ["git", "push"]
+
+        # Push current HEAD
+        subprocess.run(
+            push_cmd,
+            check=True,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+        )
+        print("✅ Git commit and push succeeded")
+
+    except subprocess.CalledProcessError as exc:
+        # Provide detailed context without leaking the raw token.
+        token = os.getenv("GITHUB_TOKEN") or ""
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        combined = (stdout + "\n" + stderr).strip()
+        if token:
+            combined = combined.replace(token, "***")
+        print(f"⚠️ Git commit/push failed with code {exc.returncode}.")
+        if combined:
+            print(combined)
+
     except Exception as exc:
-        print(f"⚠️ Git commit/push failed: {exc}")
+        # Fallback for non-subprocess exceptions.
+        print(f"⚠️ Git commit/push failed with unexpected error: {exc}")
 
 
 @app.get("/api/auction/current")
