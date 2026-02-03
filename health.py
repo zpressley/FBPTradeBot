@@ -558,9 +558,22 @@ async def api_pad_submit(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail="PAD processing error")
 
-    # In live mode, auto-commit PAD data files back to GitHub so the
+    # Auto-commit PAD data files back to GitHub so the
     # bot repo (and downstream FBP Hub sync) stay in sync.
-    if not PAD_TEST_MODE:
+    if PAD_TEST_MODE:
+        # Test mode: commit to *_test.json variants so we can safely
+        # exercise the full git commit/push flow without touching
+        # live data files.
+        core_files = [
+            "data/combined_players_test.json",
+            "data/wizbucks_test.json",
+            "data/player_log_test.json",
+        ]
+        _commit_and_push(
+            core_files,
+            f"PAD TEST: {result.team} submission ({result.season})",
+        )
+    else:
         core_files = [
             "data/combined_players.json",
             "data/wizbucks.json",
