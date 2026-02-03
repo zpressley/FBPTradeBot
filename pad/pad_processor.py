@@ -525,9 +525,15 @@ async def announce_pad_submission_to_discord(result: PadResult, bot) -> None:
     import os  # local import to avoid side effects at module import time
 
     test_mode = os.getenv("PAD_TEST_MODE", "false").lower() == "true"
-    test_channel_id = int(os.getenv("PAD_TEST_CHANNEL_ID", "0"))
+
+    # Default the test PAD channel to the known test channel ID so that
+    # PAD_TEST_MODE can work out of the box without extra env wiring.
+    # A non-zero PAD_TEST_CHANNEL_ID / PAD_LIVE_PAD_CHANNEL_ID in the
+    # environment will still override this default.
+    default_test_id = "1197200421639438537"  # FBP test PAD channel
+    test_channel_id = int(os.getenv("PAD_TEST_CHANNEL_ID", default_test_id if test_mode else "0"))
     live_channel_id = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))
-    channel_id = test_channel_id if test_mode else live_channel_id
+    channel_id = test_mode and test_channel_id or live_channel_id
 
     print(
         "🔔 PAD Discord announce debug",
