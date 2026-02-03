@@ -130,6 +130,7 @@ class PadResult:
     team: str
     timestamp: str
     wb_spent: int
+    wb_remaining: int
     dc_players: List[Dict[str, Any]]
     pc_players: List[Dict[str, Any]]
     bc_players: List[Dict[str, Any]]
@@ -471,10 +472,20 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     for pref in payload.bc_players:
         _apply_contract(pref, "BC")
 
-    # Apply WB spending as a single delta. PAD UI computed total_spend; we
-    # treat it as authoritative and subtract it from the manager's balance.
+    # Apply WB spending as a single delta. PAD UI computed total_spend;
+    # we still trust that value but enforce that managers cannot spend
+    # more than their current WizBucks balance. This keeps PAD behavior
+    # aligned with the league ledger and prevents negative balances.
     wb_spent = int(payload.total_spend)
-    wizbucks[franchise_name] = wb_balance - wb_spent
+    if wb_spent < 0:
+        raise ValueError("PAD total_spend cannot be negative")
+    if wb_spent > wb_balance:
+        raise ValueError(
+            "PAD spend exceeds available WizBucks; "
+            "check PAD allocation / rollover and try again.",
+        )
+    wb_remaining = wb_balance - wb_spent
+    wizbucks[franchise_name] = wb_remaining
 
     # Record submission metadata (slots + WB) for future draft-order rebuild.
     now = datetime.now(tz=ET).isoformat()
@@ -502,6 +513,7 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         team=team,
         timestamp=now,
         wb_spent=wb_spent,
+        wb_remaining=wb_remaining,
         dc_players=dc_players,
         pc_players=pc_players,
         bc_players=bc_players,
