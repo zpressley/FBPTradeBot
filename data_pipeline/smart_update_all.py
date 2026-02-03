@@ -167,9 +167,12 @@ class SmartDataPipeline:
         print("✅ Standings updated")
     
     def merge_all_data(self):
-        """
-        Merge data from all sources into combined_players.json
-        Uses source priority from DataSourceManager
+        """Merge data from all sources into combined_players.json.
+
+        As of 2026, we no longer pull keeper/prospect data from the
+        Google Sheets "Player Data" tab in the live pipeline. Combined
+        players are built from bot-managed data (PAD, trades, auctions,
+        graduation, etc.) plus Yahoo/MLB sources.
         """
         print("\n🔀 MERGING DATA SOURCES")
         print("=" * 50)
@@ -180,16 +183,13 @@ class SmartDataPipeline:
         for field, source in sources.items():
             print(f"   {field}: {source.value}")
         
-        # Update hub players (from Google Sheets keeper database)
-        self.run_script(
-            "update_hub_players.py",
-            "Get keeper/prospect data from Google Sheets"
-        )
-        
-        # Merge all sources
+        # Merge all sources using the configured data source manager.
+        # Note: we intentionally DO NOT call update_hub_players.py here
+        # anymore; Google Sheets is treated as a historical data source
+        # only and is no longer part of the live pipeline.
         self.run_script(
             "merge_players.py",
-            "Combine Yahoo, Sheets, and MLB data"
+            "Combine Yahoo, bot data, and MLB data"
         )
         
         print("✅ Data merged")
