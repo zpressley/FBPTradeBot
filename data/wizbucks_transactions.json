@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "txn_id": "wb_2026-02-04_LFB_tim_tawa_refund",
+    "timestamp": "2026-02-04T13:59:16Z",
+    "team": "LFB",
+    "amount": 5,
+    "balance_before": 45,
+    "balance_after": 50,
+    "transaction_type": "manual_adjustment_refund",
+    "description": "Refund Tim Tawa prospect purchase",
+    "related_player": {
+      "upid": "4808",
+      "name": "Tim Tawa"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "manual_fix"
+    }
+  }
+]

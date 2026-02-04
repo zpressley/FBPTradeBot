@@ -1,5 +1,28 @@
 [
   {
+    "id": "2026-02-04T13:59:16Z-UPID_4808-manual_tim_tawa_refund",
+    "season": 2026,
+    "source": "manual_fix",
+    "admin": "commissioner",
+    "timestamp": "2026-02-04T13:59:16Z",
+    "upid": "4808",
+    "player_name": "Tim Tawa",
+    "team": "ARI",
+    "pos": "1B",
+    "age": null,
+    "level": "",
+    "team_rank": null,
+    "rank": 2086,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Refund",
+    "event": ""
+  },
+  {
     "id": "2025-2026-01-13T16:28:38Z-UPID_1886-Roster-2025_rosters",
     "season": 2025,
     "source": "2025_rosters",
