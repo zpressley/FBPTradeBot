@@ -43,18 +43,46 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 COMBINED_PATH = DATA_DIR / "combined_players.json"
 YAHOO_STATS_2025 = DATA_DIR / "stats" / "yahoo_players_2025_stats.csv"
+YAHOO_WITH_UPID_2026 = DATA_DIR / "historical" / "2026" / "yahoo_all_players_2026_with_upid.csv"
 
 
-def load_farm_yahoo_ids(players) -> Set[str]:
-    """Return yahoo_ids for Farm players only (as strings)."""
-    ids: Set[str] = set()
+def load_farm_by_upid(players) -> Dict[str, dict]:
+    """Return mapping upid -> player dict for Farm players only."""
+    by_upid: Dict[str, dict] = {}
     for p in players:
         if (p.get("player_type") or "").strip() != "Farm":
             continue
-        yahoo_id = str(p.get("yahoo_id") or "").strip()
-        if yahoo_id:
-            ids.add(yahoo_id)
-    return ids
+        upid = str(p.get("upid") or "").strip()
+        if not upid:
+            continue
+        by_upid[upid] = p
+    return by_upid
+
+
+def load_upid_to_yahoo_id() -> Dict[str, str]:
+    """Load mapping upid -> yahoo_player_id from the 2026 export CSV.
+
+    This lets us bridge from UPID (used in combined_players.json) to the
+    numeric yahoo player ids used in the 2025 stats CSV, without requiring
+    yahoo_id to already be present on Farm records.
+    """
+
+    mapping: Dict[str, str] = {}
+    if not YAHOO_WITH_UPID_2026.exists():
+        print(f"⚠️  yahoo_all_players_2026_with_upid.csv not found at {YAHOO_WITH_UPID_2026}")
+        return mapping
+
+    with YAHOO_WITH_UPID_2026.open(newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            upid = (row.get("upid") or "").strip()
+            yahoo_id = (row.get("yahoo_player_id") or "").strip()
+            if not upid or not yahoo_id:
+                continue
+            mapping[upid] = yahoo_id
+
+    print(f"✅ Loaded UPID→Yahoo mapping for {len(mapping)} players from 2026 export")
+    return mapping
 
 
 def load_yahoo_debut_flags(limit_to_ids: Set[str]) -> Dict[str, bool]:
@@ -117,24 +145,31 @@ def main() -> None:
 
     print(f"📄 Loaded {len(players)} players from combined_players.json")
 
-    farm_yahoo_ids = load_farm_yahoo_ids(players)
-    print(f"📊 Found {len(farm_yahoo_ids)} Farm players with yahoo_id")
+    farm_by_upid = load_farm_by_upid(players)
+    print(f"📊 Found {len(farm_by_upid)} Farm players with UPID")
 
-    yahoo_debut = load_yahoo_debut_flags(farm_yahoo_ids)
+    upid_to_yahoo = load_upid_to_yahoo_id()
+    yahoo_ids_for_farm: Set[str] = set()
+    for upid in farm_by_upid.keys():
+        yahoo_id = upid_to_yahoo.get(upid)
+        if yahoo_id:
+            yahoo_ids_for_farm.add(yahoo_id)
+
+    print(f"📊 Mapped {len(yahoo_ids_for_farm)} Farm players to Yahoo IDs via 2026 export")
+
+    yahoo_debut = load_yahoo_debut_flags(yahoo_ids_for_farm)
 
     updated = 0
-    for p in players:
-        if (p.get("player_type") or "").strip() != "Farm":
-            continue
-        yahoo_id = str(p.get("yahoo_id") or "").strip()
+    for upid, player in farm_by_upid.items():
+        yahoo_id = upid_to_yahoo.get(upid)
         if not yahoo_id:
             continue
         if not yahoo_debut.get(yahoo_id):
             continue
 
         # Only OR in the flag; do not unset if already true.
-        if not p.get("debuted"):
-            p["debuted"] = True
+        if not player.get("debuted"):
+            player["debuted"] = True
             updated += 1
 
     print(f"✅ Marked {updated} additional Farm players as debuted based on 2025 stats")
