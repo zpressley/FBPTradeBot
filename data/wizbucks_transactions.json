@@ -196,5 +196,126 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_WIZ",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "WIZ",
+    "amount": 25,
+    "balance_before": 100,
+    "balance_after": 125,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_WAR",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "WAR",
+    "amount": 5,
+    "balance_before": 140,
+    "balance_after": 145,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_RV",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "RV",
+    "amount": 25,
+    "balance_before": 120,
+    "balance_after": 145,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_SAD",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "SAD",
+    "amount": 25,
+    "balance_before": 100,
+    "balance_after": 125,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_LFB",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "LFB",
+    "amount": 25,
+    "balance_before": 120,
+    "balance_after": 145,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_HAM",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "HAM",
+    "amount": 10,
+    "balance_before": 120,
+    "balance_after": 130,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_CFL",
+    "timestamp": "2026-02-04T16:31:06Z",
+    "team": "CFL",
+    "amount": 25,
+    "balance_before": 140,
+    "balance_after": 165,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  }
+,
+  {
+    "txn_id": "wb_2026-02-04_PAD_ROLLOVER_TBB",
+    "timestamp": "2026-02-04T16:39:11Z",
+    "team": "TBB",
+    "amount": 25,
+    "balance_before": 100,
+    "balance_after": 125,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
   }
 ]

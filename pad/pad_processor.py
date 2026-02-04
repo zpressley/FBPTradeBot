@@ -482,18 +482,29 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
 
     # Apply WB spending as a single delta. PAD UI computed total_spend;
     # we still trust that value but enforce that managers cannot spend
-    # more than their current WizBucks balance. This keeps PAD behavior
-    # aligned with the league ledger and prevents negative balances.
+    # more than their current WizBucks balance **in live mode**. In
+    # test mode we allow overspend so commissioners/admins can freely
+    # exercise the full PAD flow without having to constantly reset the
+    # test WizBucks wallet.
     wb_spent = int(payload.total_spend)
     if wb_spent < 0:
         raise ValueError("PAD total_spend cannot be negative")
-    if wb_spent > wb_balance:
+
+    if not test_mode and wb_spent > wb_balance:
         raise ValueError(
             "PAD spend exceeds available WizBucks; "
             "check PAD allocation / rollover and try again.",
         )
-    wb_remaining = wb_balance - wb_spent
-    wizbucks[franchise_name] = wb_remaining
+
+    if test_mode:
+        # Do not mutate wizbucks_test.json; just report a synthetic
+        # remaining balance for the API/UI. This keeps test runs from
+        # "using up" the test wallet while still exercising the rest
+        # of the PAD pipeline.
+        wb_remaining = max(0, wb_balance - wb_spent)
+    else:
+        wb_remaining = wb_balance - wb_spent
+        wizbucks[franchise_name] = wb_remaining
 
     # Record submission metadata (slots + WB) for future draft-order rebuild.
     now = datetime.now(tz=ET).isoformat()
