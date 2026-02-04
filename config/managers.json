@@ -26,12 +26,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 100,
+              "base": 50,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 100
+              "total": 50
             },
             "KAP": {
               "base": 375,
@@ -61,7 +61,7 @@
       "kap_rollover_2026": 0,
       "wizbucks": {
         "2026": {
-          "_comment": "Season 13 (2026) WizBucks config, including Optional Rollover and Leftovers (PAD→KAP, KAP→APA).",
+          "_comment": "Season 13 (2026) WizBucks config, including Optional Rollover and Leftovers (PAD\u2192KAP, KAP\u2192APA).",
           "meta": {
             "season": 2026,
             "finalRank": 6,
@@ -78,12 +78,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 120,
+              "base": 110,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 120
+              "total": 110
             },
             "KAP": {
               "base": 375,
@@ -130,12 +130,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 120,
+              "base": 100,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 120
+              "total": 100
             },
             "KAP": {
               "base": 375,
@@ -182,12 +182,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 140,
-              "bonus": 20,
+              "base": 35,
+              "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 160
+              "total": 35
             },
             "KAP": {
               "base": 375,
@@ -234,12 +234,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 140,
-              "bonus": 10,
+              "base": 90,
+              "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 150
+              "total": 90
             },
             "KAP": {
               "base": 375,
@@ -286,12 +286,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 120,
+              "base": 135,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 120
+              "total": 135
             },
             "KAP": {
               "base": 375,
@@ -338,12 +338,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 100,
+              "base": 45,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 100
+              "total": 45
             },
             "KAP": {
               "base": 375,
@@ -390,12 +390,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 140,
+              "base": 70,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 140
+              "total": 70
             },
             "KAP": {
               "base": 375,
@@ -442,12 +442,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 120,
+              "base": 70,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 120
+              "total": 70
             },
             "KAP": {
               "base": 375,
@@ -494,12 +494,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 100,
+              "base": 10,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 100
+              "total": 10
             },
             "KAP": {
               "base": 375,
@@ -546,12 +546,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 100,
+              "base": 65,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 100
+              "total": 65
             },
             "KAP": {
               "base": 375,
@@ -598,12 +598,12 @@
           },
           "allotments": {
             "PAD": {
-              "base": 140,
+              "base": 5,
               "bonus": 0,
               "optional": 0,
               "leftoverIn": 0,
               "finesOrAwards": 0,
-              "total": 140
+              "total": 5
             },
             "KAP": {
               "base": 375,

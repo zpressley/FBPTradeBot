@@ -1,0 +1,277 @@
+import json
+import csv
+from pathlib import Path
+
+TRADE_BOT_ROOT = Path("/Users/zpressley/fbp-trade-bot")
+HUB_ROOT = Path("/Users/zpressley/fbp-hub")
+
+YAHOO_ALL_2025_JSON = TRADE_BOT_ROOT / "data/yahoo_all_players_2025.json"
+YAHOO_ALL_2026_JSON = TRADE_BOT_ROOT / "data/yahoo_all_players_2026.json"
+YAHOO_WITH_UPID_2026_CSV = TRADE_BOT_ROOT / "data/historical/2026/yahoo_all_players_2026_with_upid.csv"
+YAHOO_OWNED_2025_CSV = TRADE_BOT_ROOT / "data/historical/2025/yahoo_owned_players_2025.csv"
+COMBINED_PLAYERS_JSON = HUB_ROOT / "data/combined_players.json"
+OWNERSHIP_DIFF_CSV = TRADE_BOT_ROOT / "data/historical/2026/yahoo_ownership_diff_2025_2026.csv"
+
+
+def load_json_array(path: Path):
+    if not path.exists():
+        raise SystemExit(f"ERROR: {path} not found")
+    with path.open(encoding="utf-8") as f:
+        data = json.load(f)
+    if not isinstance(data, list):
+        raise SystemExit(f"ERROR: {path} did not contain a JSON array")
+    return data
+
+
+def load_yahoo_id_to_upid():
+    mapping = {}
+    if not YAHOO_WITH_UPID_2026_CSV.exists():
+        print(f"WARN: {YAHOO_WITH_UPID_2026_CSV} not found; UPID-based mapping will be partial")
+        return mapping
+
+    with YAHOO_WITH_UPID_2026_CSV.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            yahoo_id = (row.get("yahoo_player_id") or "").strip()
+            upid = (row.get("upid") or "").strip()
+            if not yahoo_id or not upid:
+                continue
+            mapping[yahoo_id] = upid
+    print(f"Loaded {len(mapping)} yahoo_id→upid mappings from with_upid CSV")
+    return mapping
+
+
+def build_yahoo_maps(players_2025, players_2026):
+    """Return (pos_2026_by_id, owner_2025_by_id, owner_2026_by_id,
+    name_2025_by_id, name_2026_by_id).
+
+    owner maps hold a tuple (ownership_type, owned_by).
+    """
+    pos_2026 = {}
+    owner_2025 = {}
+    owner_2026 = {}
+    name_2025 = {}
+    name_2026 = {}
+
+    for p in players_2026:
+        pid = str(p.get("player_id") or "").strip()
+        if not pid:
+            continue
+        pos_2026[pid] = {
+            "position": (p.get("position") or "").strip(),
+            "eligible_positions": p.get("eligible_positions"),
+            "team": (p.get("team") or "").strip(),
+        }
+        owner_2026[pid] = (
+            (p.get("ownership_type") or "").strip(),
+            (p.get("owned_by") or "").strip() or None,
+        )
+        name_2026[pid] = (p.get("name") or "").strip()
+
+    for p in players_2025:
+        pid = str(p.get("player_id") or "").strip()
+        if not pid:
+            continue
+        owner_2025[pid] = (
+            (p.get("ownership_type") or "").strip(),
+            (p.get("owned_by") or "").strip() or None,
+        )
+        name_2025[pid] = (p.get("name") or "").strip()
+
+    print(f"Positions available for {len(pos_2026)} Yahoo player_ids in 2026 JSON")
+    print(f"Ownership entries: 2025={len(owner_2025)}, 2026={len(owner_2026)}")
+    return pos_2026, owner_2025, owner_2026, name_2025, name_2026
+
+
+def update_combined_positions(pos_2026_by_id, yahoo_id_to_upid):
+    players = load_json_array(COMBINED_PLAYERS_JSON)
+
+    updated = 0
+    missing = 0
+
+    for p in players:
+        yahoo_id = str(p.get("yahoo_id") or "").strip()
+        if not yahoo_id:
+            continue
+
+        pos_info = pos_2026_by_id.get(yahoo_id)
+        if not pos_info:
+            # If we can, try to resolve via upid
+            upid = str(p.get("upid") or "").strip()
+            if upid:
+                # reverse lookup
+                for yid, u in yahoo_id_to_upid.items():
+                    if u == upid:
+                        pos_info = pos_2026_by_id.get(yid)
+                        if pos_info:
+                            break
+            if not pos_info:
+                missing += 1
+                continue
+
+        new_pos = pos_info.get("position") or ""
+        if not new_pos:
+            continue
+
+        old_pos = p.get("position") or ""
+        if old_pos != new_pos:
+            p["position"] = new_pos
+            # If mlb_primary_position is empty, seed it from the first part of position
+            primary = (p.get("mlb_primary_position") or "").strip()
+            if not primary:
+                primary = new_pos.split(",")[0].strip()
+                if primary:
+                    p["mlb_primary_position"] = primary
+            updated += 1
+
+    backup = COMBINED_PLAYERS_JSON.with_suffix(".positions_backup.json")
+    if not backup.exists():
+        backup.write_text(COMBINED_PLAYERS_JSON.read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"Wrote position backup to {backup}")
+
+    with COMBINED_PLAYERS_JSON.open("w", encoding="utf-8") as f:
+        json.dump(players, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+    print(f"Updated positions for {updated} combined_players rows")
+    print(f"Players with yahoo_id but no 2026 position entry: {missing}")
+
+
+def load_team_index_to_fbp():
+    """Map Yahoo team index (1-12) to FBP team + manager using 2025 CSV.
+
+    This lets us decorate owned_by keys like "458.l.15505.t.3" or
+    "469.l.8560.t.3" with human-readable team/manager names.
+    """
+    mapping = {}
+    if not YAHOO_OWNED_2025_CSV.exists():
+        print(f"WARN: {YAHOO_OWNED_2025_CSV} not found; manager names will be blank")
+        return mapping
+
+    with YAHOO_OWNED_2025_CSV.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                team_id = int(row.get("yahoo_team_id") or 0)
+            except ValueError:
+                continue
+            if not team_id:
+                continue
+            if team_id in mapping:
+                # Already recorded from another player row
+                continue
+            mapping[team_id] = {
+                "fbp_abbr": (row.get("fbp_abbr") or "").strip(),
+                "team_name": (row.get("team_name") or "").strip(),
+                "manager_name": (row.get("manager_name") or "").strip(),
+            }
+
+    print(f"Loaded FBP team metadata for {len(mapping)} Yahoo team slots from 2025 CSV")
+    return mapping
+
+
+def decode_team(owner_key, team_index_to_fbp):
+    """Given a Yahoo owned_by key, return (team_id, fbp_abbr, manager_name, team_name)."""
+    owner_key = (owner_key or "").strip()
+    if not owner_key:
+        return None, "", "", ""
+    # Expect something like "458.l.15505.t.3" or "469.l.8560.t.7"
+    try:
+        tail = owner_key.split(".t.")[-1]
+        team_id = int(tail)
+    except Exception:
+        return None, "", "", ""
+
+    meta = team_index_to_fbp.get(team_id) or {}
+    return team_id, meta.get("fbp_abbr", ""), meta.get("manager_name", ""), meta.get("team_name", "")
+
+
+def write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_to_fbp):
+    """Write out ownership mismatches between 2025 and 2026 all-players.
+
+    Only include rows where the actual owner changes (owned_by differs).
+    """
+    fieldnames = [
+        "player_id",
+        "player_name",
+        "ownership_type_2025",
+        "owned_by_2025",
+        "fbp_team_2025",
+        "manager_2025",
+        "team_name_2025",
+        "ownership_type_2026",
+        "owned_by_2026",
+        "fbp_team_2026",
+        "manager_2026",
+        "team_name_2026",
+    ]
+
+    diffs = []
+
+    all_ids = set(owner_2025.keys()) | set(owner_2026.keys())
+    for pid in sorted(all_ids, key=lambda x: int(x) if x.isdigit() else x):
+        t25, o25 = owner_2025.get(pid, ("", None))
+        t26, o26 = owner_2026.get(pid, ("", None))
+
+        # Decode team slots first so we can ignore league-id-only changes
+        team_id_25, fbp25, mgr25, team25 = decode_team(o25, team_index_to_fbp)
+        team_id_26, fbp26, mgr26, team26 = decode_team(o26, team_index_to_fbp)
+
+        # If both resolve to the same Yahoo team slot, treat as no change
+        if team_id_25 is not None and team_id_26 is not None and team_id_25 == team_id_26:
+            continue
+
+        # Also ignore rows where the raw owned_by key is unchanged
+        if (o25 or None) == (o26 or None):
+            continue
+
+        # Prefer 2026 name, fall back to 2025
+        name = name_2026.get(pid) or name_2025.get(pid) or ""
+
+        diffs.append(
+            {
+                "player_id": pid,
+                "player_name": name,
+                "ownership_type_2025": t25,
+                "owned_by_2025": o25 or "",
+                "fbp_team_2025": fbp25,
+                "manager_2025": mgr25,
+                "team_name_2025": team25,
+                "ownership_type_2026": t26,
+                "owned_by_2026": o26 or "",
+                "fbp_team_2026": fbp26,
+                "manager_2026": mgr26,
+                "team_name_2026": team26,
+            }
+        )
+
+    if not diffs:
+        print("No ownership differences detected between 2025 and 2026 JSON")
+        return
+
+    OWNERSHIP_DIFF_CSV.parent.mkdir(parents=True, exist_ok=True)
+    with OWNERSHIP_DIFF_CSV.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(diffs)
+
+    print(f"Wrote {len(diffs)} ownership diff rows to {OWNERSHIP_DIFF_CSV}")
+
+
+def main():
+    players_2025 = load_json_array(YAHOO_ALL_2025_JSON)
+    players_2026 = load_json_array(YAHOO_ALL_2026_JSON)
+
+    yahoo_id_to_upid = load_yahoo_id_to_upid()
+    pos_2026_by_id, owner_2025, owner_2026, name_2025, name_2026 = build_yahoo_maps(players_2025, players_2026)
+
+    print("=== Updating combined_players positions from 2026 Yahoo data ===")
+    update_combined_positions(pos_2026_by_id, yahoo_id_to_upid)
+
+    print("=== Checking ownership differences between 2025 and 2026 ===")
+    team_index_to_fbp = load_team_index_to_fbp()
+    write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_to_fbp)
+
+
+if __name__ == "__main__":
+    main()
