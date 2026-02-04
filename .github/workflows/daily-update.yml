@@ -4,9 +4,10 @@ permissions:
   contents: write
 
 on:
-  schedule:
-    # Run daily at 6am EST (11am UTC)
-    - cron: "0 11 * * *"
+  # Schedule temporarily disabled; keep manual trigger only.
+  # schedule:
+  #   # Run daily at 6am EST (11am UTC)
+  #   - cron: "0 11 * * *"
   
   # Allow manual trigger
   workflow_dispatch:

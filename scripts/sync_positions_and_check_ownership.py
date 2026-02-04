@@ -137,17 +137,38 @@ def update_combined_positions(pos_2026_by_id, yahoo_id_to_upid):
     print(f"Players with yahoo_id but no 2026 position entry: {missing}")
 
 
-def load_team_index_to_fbp():
-    """Map Yahoo team index (1-12) to FBP team + manager using 2025 CSV.
+def load_team_mappings():
+    """Return separate Yahoo team-slot→FBP mappings for 2025 and 2026.
 
-    This lets us decorate owned_by keys like "458.l.15505.t.3" or
-    "469.l.8560.t.3" with human-readable team/manager names.
+    2025 mapping comes directly from yahoo_owned_players_2025.csv
+    (team_id → abbr/manager/team_name for league 458).
+
+    2026 mapping uses the user's provided slot mapping for league 469,
+    but still reuses the same FBP abbreviations + manager names from the
+    2025 CSV so we don't duplicate that metadata.
     """
-    mapping = {}
     if not YAHOO_OWNED_2025_CSV.exists():
         print(f"WARN: {YAHOO_OWNED_2025_CSV} not found; manager names will be blank")
-        return mapping
+        return {}, {}
 
+    # First, build abbr → meta from 2025
+    abbr_meta = {}
+    with YAHOO_OWNED_2025_CSV.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            abbr = (row.get("fbp_abbr") or "").strip()
+            if not abbr:
+                continue
+            if abbr in abbr_meta:
+                continue
+            abbr_meta[abbr] = {
+                "fbp_abbr": abbr,
+                "team_name": (row.get("team_name") or "").strip(),
+                "manager_name": (row.get("manager_name") or "").strip(),
+            }
+
+    # 2025: yahoo_team_id → meta
+    mapping_2025 = {}
     with YAHOO_OWNED_2025_CSV.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -155,26 +176,44 @@ def load_team_index_to_fbp():
                 team_id = int(row.get("yahoo_team_id") or 0)
             except ValueError:
                 continue
-            if not team_id:
+            if not team_id or team_id in mapping_2025:
                 continue
-            if team_id in mapping:
-                # Already recorded from another player row
-                continue
-            mapping[team_id] = {
-                "fbp_abbr": (row.get("fbp_abbr") or "").strip(),
-                "team_name": (row.get("team_name") or "").strip(),
-                "manager_name": (row.get("manager_name") or "").strip(),
-            }
+            abbr = (row.get("fbp_abbr") or "").strip()
+            meta = abbr_meta.get(abbr)
+            if meta:
+                mapping_2025[team_id] = meta
 
-    print(f"Loaded FBP team metadata for {len(mapping)} Yahoo team slots from 2025 CSV")
-    return mapping
+    # 2026: explicit slot → abbr mapping from user
+    slot_to_abbr_2026 = {
+        1: "WIZ",
+        12: "WAR",
+        2: "DRO",
+        3: "B2J",
+        6: "JEP",
+        8: "LAW",
+        4: "CFL",
+        9: "SAD",
+        5: "HAM",
+        7: "LFB",
+        10: "RV",
+        11: "TBB",
+    }
+
+    mapping_2026 = {}
+    for team_id, abbr in slot_to_abbr_2026.items():
+        meta = abbr_meta.get(abbr, {"fbp_abbr": abbr, "team_name": "", "manager_name": ""})
+        mapping_2026[team_id] = meta
+
+    print(f"Loaded FBP team metadata for {len(mapping_2025)} Yahoo 2025 slots and {len(mapping_2026)} Yahoo 2026 slots")
+    return mapping_2025, mapping_2026
 
 
-def decode_team(owner_key, team_index_to_fbp):
+def decode_team(owner_key, map_2025, map_2026):
     """Given a Yahoo owned_by key, return (team_id, fbp_abbr, manager_name, team_name)."""
     owner_key = (owner_key or "").strip()
     if not owner_key:
         return None, "", "", ""
+
     # Expect something like "458.l.15505.t.3" or "469.l.8560.t.7"
     try:
         tail = owner_key.split(".t.")[-1]
@@ -182,11 +221,17 @@ def decode_team(owner_key, team_index_to_fbp):
     except Exception:
         return None, "", "", ""
 
-    meta = team_index_to_fbp.get(team_id) or {}
+    if owner_key.startswith("458."):
+        meta = map_2025.get(team_id) or {}
+    elif owner_key.startswith("469."):
+        meta = map_2026.get(team_id) or {}
+    else:
+        meta = {}
+
     return team_id, meta.get("fbp_abbr", ""), meta.get("manager_name", ""), meta.get("team_name", "")
 
 
-def write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_to_fbp):
+def write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_2025, team_index_2026):
     """Write out ownership mismatches between 2025 and 2026 all-players.
 
     Only include rows where the actual owner changes (owned_by differs).
@@ -213,12 +258,12 @@ def write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_ind
         t25, o25 = owner_2025.get(pid, ("", None))
         t26, o26 = owner_2026.get(pid, ("", None))
 
-        # Decode team slots first so we can ignore league-id-only changes
-        team_id_25, fbp25, mgr25, team25 = decode_team(o25, team_index_to_fbp)
-        team_id_26, fbp26, mgr26, team26 = decode_team(o26, team_index_to_fbp)
+        # Decode team slots and FBP teams
+        team_id_25, fbp25, mgr25, team25 = decode_team(o25, team_index_2025, team_index_2026)
+        team_id_26, fbp26, mgr26, team26 = decode_team(o26, team_index_2025, team_index_2026)
 
-        # If both resolve to the same Yahoo team slot, treat as no change
-        if team_id_25 is not None and team_id_26 is not None and team_id_25 == team_id_26:
+        # If both resolve to the same FBP team (even if slot changed), treat as no change
+        if fbp25 and fbp25 == fbp26:
             continue
 
         # Also ignore rows where the raw owned_by key is unchanged
@@ -269,8 +314,8 @@ def main():
     update_combined_positions(pos_2026_by_id, yahoo_id_to_upid)
 
     print("=== Checking ownership differences between 2025 and 2026 ===")
-    team_index_to_fbp = load_team_index_to_fbp()
-    write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_to_fbp)
+    team_index_2025, team_index_2026 = load_team_mappings()
+    write_ownership_diffs(owner_2025, owner_2026, name_2025, name_2026, team_index_2025, team_index_2026)
 
 
 if __name__ == "__main__":

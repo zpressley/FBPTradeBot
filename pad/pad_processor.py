@@ -413,6 +413,14 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
                 {"name": p.get("name"), "upid": p.get("upid"), "player_type": p.get("player_type")},
             )
             return
+        # Disallow DC for any Farm player already marked as debuted in
+        # combined_players.json. This flag is populated by the
+        # data_pipeline/add_debut_flags.py script.
+        if label == "DC" and bool(p.get("debuted")):
+            raise ValueError(
+                f"Cannot assign Development Contract (DC) to debuted player "
+                f"{p.get('name')} (UPID {p.get('upid')})",
+            )
         p["manager"] = franchise_name
         p["FBP_Team"] = team
         if label == "DC":
