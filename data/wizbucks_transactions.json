@@ -16,5 +16,185 @@
       "season": 2026,
       "source": "manual_fix"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_HAM",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "HAM",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_RV",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "RV",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_B2J",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "B2J",
+    "amount": 140,
+    "balance_before": 0,
+    "balance_after": 140,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_CFL",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "CFL",
+    "amount": 140,
+    "balance_before": 0,
+    "balance_after": 140,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_LAW",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "LAW",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_LFB",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "LFB",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_JEP",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "JEP",
+    "amount": 140,
+    "balance_before": 0,
+    "balance_after": 140,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_TBB",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "TBB",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_WIZ",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "WIZ",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_DRO",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "DRO",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_SAD",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "SAD",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-04_PAD_WAR",
+    "timestamp": "2026-02-04T14:08:03Z",
+    "team": "WAR",
+    "amount": 140,
+    "balance_before": 0,
+    "balance_after": 140,
+    "transaction_type": "PAD_allotment",
+    "description": "2026 PAD allotment - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]
