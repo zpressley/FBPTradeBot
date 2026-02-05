@@ -81,14 +81,19 @@ jobs:
       run: |
         python3 data_pipeline/update_top100_prospects_for_hub.py --hub-path fbp-hub
 
-    - name: Commit and push Top 100 to fbp-hub
+    - name: Copy managers.json to fbp-hub
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
+      run: |
+        cp config/managers.json fbp-hub/data/managers.json
+
+    - name: Commit and push data to fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       working-directory: fbp-hub
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/top100_prospects.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update top100_prospects from pipeline - $(date)" && git push)
+        git add data/top100_prospects.json data/managers.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update data from pipeline - $(date)" && git push)
 
     - name: Resolve weekly auction (Sundays only)
       if: "${{ github.event_name == 'schedule' && startsWith(github.event.schedule, '0 18') }}"

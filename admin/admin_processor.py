@@ -96,7 +96,8 @@ def apply_admin_wb_adjustment(
     wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
 
     # Ledger currently has no test-mode variant; we always write to the main
-    # wizbucks_transactions.json file.
+    # wizbucks_transactions.json file using the 2026+ schema shared with PAD
+    # (txn_id / timestamp / team / amount / balance_* / transaction_type).
     ledger_path = "data/wizbucks_transactions.json"
     ledger: list = _ensure_list(_load_json(ledger_path))
 
@@ -105,30 +106,27 @@ def apply_admin_wb_adjustment(
     balance_after = balance_before + int(payload.amount)
     wizbucks[franchise_name] = balance_after
 
-    # Determine next ledger ID
-    next_id = 1
-    if ledger:
-        try:
-            next_id = max(int(rec.get("id", 0) or 0) for rec in ledger) + 1
-        except Exception:
-            next_id = len(ledger) + 1
-
-    # Map amount to credit/debit columns used by the sheet-derived ledger
-    credit = payload.amount if payload.amount > 0 else 0
-    debit = -payload.amount if payload.amount < 0 else 0
-
-    # Use a simple MM/DD/YYYY string for the ledger date to match the sheet.
-    date_str = datetime.now().strftime("%m/%d/%Y")
+    # New-style ledger entry keyed by team abbreviation and amount delta.
+    # Positive amounts are credits; negative amounts are debits.
+    now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    txn_id = f"wb_{payload.season}_ADMIN_{payload.team}_{int(datetime.now().timestamp())}"
 
     ledger_entry = {
-        "id": next_id,
-        "action": "Admin Portal",
-        "note": payload.reason,
-        "date": date_str,
-        "credit": credit,
-        "debit": debit,
-        "manager": franchise_name,
-        "balance": balance_after,
+        "txn_id": txn_id,
+        "timestamp": now_iso,
+        "team": payload.team,
+        "amount": int(payload.amount),
+        "balance_before": balance_before,
+        "balance_after": balance_after,
+        "transaction_type": "admin_adjustment",
+        "description": payload.reason,
+        "related_player": None,
+        "metadata": {
+            "season": payload.season,
+            "installment": payload.installment,
+            "admin": payload.admin,
+            "source": "admin_portal",
+        },
     }
 
     ledger.append(ledger_entry)

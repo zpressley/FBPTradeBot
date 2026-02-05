@@ -560,10 +560,15 @@ async def announce_pad_submission_to_discord(result: PadResult, bot) -> None:
     # Default the test PAD channel to the known test channel ID so that
     # PAD_TEST_MODE can work out of the box without extra env wiring.
     # A non-zero PAD_TEST_CHANNEL_ID / PAD_LIVE_PAD_CHANNEL_ID in the
-    # environment will still override this default.
+    # environment will still override these defaults.
     default_test_id = "1197200421639438537"  # FBP test PAD channel
+    default_live_id = "1089979265619083444"  # FBP live PAD channel (hard-coded default)
+
     test_channel_id = int(os.getenv("PAD_TEST_CHANNEL_ID", default_test_id if test_mode else "0"))
-    live_channel_id = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))
+    # In live mode, prefer PAD_LIVE_PAD_CHANNEL_ID env var but fall back to the
+    # hard-coded live PAD channel so we always have a sane default.
+    live_channel_id = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", default_live_id if not test_mode else "0"))
+
     channel_id = test_mode and test_channel_id or live_channel_id
 
     print(
