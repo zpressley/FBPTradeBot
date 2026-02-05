@@ -61,16 +61,16 @@
       "kap_rollover_2026": 0,
       "wizbucks": {
         "2026": {
-          "_comment": "Season 13 (2026) WizBucks config, including Optional Rollover and Leftovers (PAD→KAP, KAP→APA).",
+          "_comment": "Season 13 (2026) WizBucks config, including Optional Rollover and Leftovers (PAD\u2192KAP, KAP\u2192APA).",
           "meta": {
             "season": 2026,
             "finalRank": 6,
             "finishBracket": "consolation"
           },
           "optionalRollover": {
-            "PAD": 0,
-            "KAP": 0,
-            "APA": 0
+            "PAD": 25,
+            "KAP": 25,
+            "APA": 25
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -121,8 +121,8 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 0,
-            "APA": 0
+            "KAP": 25,
+            "APA": 25
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -173,7 +173,7 @@
           },
           "optionalRollover": {
             "PAD": 10,
-            "KAP": 0,
+            "KAP": 25,
             "APA": 0
           },
           "leftovers": {
@@ -225,8 +225,8 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 0,
-            "APA": 0
+            "KAP": 25,
+            "APA": 25
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -276,9 +276,9 @@
             "finishBracket": "consolation"
           },
           "optionalRollover": {
-            "PAD": 0,
-            "KAP": 0,
-            "APA": 0
+            "PAD": 25,
+            "KAP": 25,
+            "APA": 25
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -329,7 +329,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 0,
+            "KAP": 25,
             "APA": 0
           },
           "leftovers": {
@@ -380,9 +380,9 @@
             "finishBracket": "elimination"
           },
           "optionalRollover": {
-            "PAD": 0,
-            "KAP": 0,
-            "APA": 0
+            "PAD": 25,
+            "KAP": 25,
+            "APA": 20
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -433,8 +433,8 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 0,
-            "APA": 0
+            "KAP": 25,
+            "APA": 20
           },
           "leftovers": {
             "PAD_to_KAP": 0,
@@ -485,7 +485,7 @@
           },
           "optionalRollover": {
             "PAD": 0,
-            "KAP": 0,
+            "KAP": 10,
             "APA": 0
           },
           "leftovers": {

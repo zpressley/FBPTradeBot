@@ -316,5 +316,50 @@
       "season": 2026,
       "source": "PAD_optional_rollover"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-05_PAD_ROLLOVER_LAW",
+    "timestamp": "2026-02-05T14:38:52.204465Z",
+    "team": "LAW",
+    "amount": 25,
+    "balance_before": 120,
+    "balance_after": 145,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-05_PAD_ROLLOVER_JEP",
+    "timestamp": "2026-02-05T14:38:52.204465Z",
+    "team": "JEP",
+    "amount": 25,
+    "balance_before": 140,
+    "balance_after": 165,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-05_PAD_ROLLOVER_B2J",
+    "timestamp": "2026-02-05T14:38:52.204465Z",
+    "team": "B2J",
+    "amount": 25,
+    "balance_before": 120,
+    "balance_after": 145,
+    "transaction_type": "PAD_optional_rollover",
+    "description": "Optional PAD rollover to KAP for 2026",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD_optional_rollover"
+    }
   }
 ]
