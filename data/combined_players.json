@@ -13569,9 +13569,9 @@
     "position": "RP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
-    "years_simple": "P",
+    "contract_type": "Keeper Contract",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "",
     "upid": "3730",
     "mlb_id": 682254,
@@ -13586,7 +13586,8 @@
     "fypd": false,
     "rank": 1800,
     "debut_date": "09/05/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Connor Prielipp",

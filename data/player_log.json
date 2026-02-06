@@ -25827,5 +25827,28 @@
     "years": "P",
     "update_type": "Drop",
     "event": "26 PAD"
+  },
+  {
+    "id": "2026-2026-02-06T12:45:03.912801-05:00-UPID_3730-Graduate-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-02-06T12:45:03.912801-05:00",
+    "upid": "3730",
+    "player_name": "Mason Montgomery",
+    "team": "TB",
+    "pos": "RP",
+    "age": 25,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 1800,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "Keeper Contract",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Graduate",
+    "event": ""
   }
 ]
