@@ -24101,8 +24101,8 @@
     "manager": "Andromedans",
     "player_type": "MLB",
     "contract_type": null,
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "",
     "upid": "2999",
     "mlb_id": 681347,
@@ -24114,7 +24114,8 @@
     "bats": "R",
     "throws": "R",
     "mlb_primary_position": "SP",
-    "fypd": false
+    "fypd": false,
+    "level": "MLB"
   },
   {
     "name": "Mike Ford",
