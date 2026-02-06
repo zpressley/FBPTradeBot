@@ -30,5 +30,13 @@
     "dc_slots": 5,
     "bc_slots": 2,
     "wb_total_spend": 125
+  },
+  "HAM": {
+    "season": 2026,
+    "team": "HAM",
+    "timestamp": "2026-02-06T14:55:00.603593-05:00",
+    "dc_slots": 2,
+    "bc_slots": 1,
+    "wb_total_spend": 155
   }
 }
