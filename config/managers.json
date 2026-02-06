@@ -261,58 +261,6 @@
         }
       }
     },
-    "LAW": {
-      "name": "Law-Abiding Citizens",
-      "discord_id": "892152416718422056",
-      "manager": "LAW",
-      "final_rank_2025": 7,
-      "kap_rollover_2026": 0,
-      "wizbucks": {
-        "2026": {
-          "_comment": "Season 13 (2026) WizBucks config.",
-          "meta": {
-            "season": 2026,
-            "finalRank": 7,
-            "finishBracket": "consolation"
-          },
-          "optionalRollover": {
-            "PAD": 25,
-            "KAP": 25,
-            "APA": 25
-          },
-          "leftovers": {
-            "PAD_to_KAP": 0,
-            "KAP_to_APA": 0
-          },
-          "allotments": {
-            "PAD": {
-              "base": 120,
-              "bonus": 0,
-              "optional": 0,
-              "leftoverIn": 0,
-              "finesOrAwards": 0,
-              "total": 120
-            },
-            "KAP": {
-              "base": 375,
-              "bonus": 0,
-              "optional": 0,
-              "leftoverIn": 0,
-              "finesOrAwards": 0,
-              "total": 375
-            },
-            "APA": {
-              "base": 100,
-              "bonus": 0,
-              "optional": 0,
-              "leftoverIn": 0,
-              "finesOrAwards": 0,
-              "total": 100
-            }
-          }
-        }
-      }
-    },
     "LFB": {
       "name": "La Flama Blanca",
       "discord_id": "890059214586773574",
@@ -604,6 +552,58 @@
               "leftoverIn": 0,
               "finesOrAwards": 0,
               "total": 140
+            },
+            "KAP": {
+              "base": 375,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 375
+            },
+            "APA": {
+              "base": 100,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 100
+            }
+          }
+        }
+      }
+    },
+    "DMN": {
+      "name": "The Damn Yankees",
+      "discord_id": "1085200118149562419",
+      "manager": "DMN",
+      "final_rank_2025": 7,
+      "kap_rollover_2026": 0,
+      "wizbucks": {
+        "2026": {
+          "_comment": "Season 13 (2026) WizBucks config.",
+          "meta": {
+            "season": 2026,
+            "finalRank": 7,
+            "finishBracket": "consolation"
+          },
+          "optionalRollover": {
+            "PAD": 25,
+            "KAP": 25,
+            "APA": 25
+          },
+          "leftovers": {
+            "PAD_to_KAP": 0,
+            "KAP_to_APA": 0
+          },
+          "allotments": {
+            "PAD": {
+              "base": 120,
+              "bonus": 0,
+              "optional": 0,
+              "leftoverIn": 0,
+              "finesOrAwards": 0,
+              "total": 120
             },
             "KAP": {
               "base": 375,

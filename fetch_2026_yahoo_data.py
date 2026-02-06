@@ -24,7 +24,7 @@ GAME_KEY = "469"  # Yahoo game key for MLB 2026
 
 YAHOO_TEAM_MAP = {
     "1": "WIZ", "2": "B2J", "3": "CFL", "4": "HAM",
-    "5": "JEP", "6": "LFB", "7": "LAW", "8": "SAD",
+    "5": "JEP", "6": "LFB", "7": "DMN", "8": "SAD",
     "9": "DRO", "10": "RV", "11": "TBB", "12": "WAR"
 }
 

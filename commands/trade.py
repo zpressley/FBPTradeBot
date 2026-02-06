@@ -248,7 +248,7 @@ def get_full_team_name(abbr):
         "RV": "Rick Vaughn", 
         "B2J": "Btwn2Jackies",
         "CFL": "Country Fried Lamb",
-        "LAW": "Law-Abiding Citizens",
+        "DMN": "The Damn Yankees",
         "LFB": "La Flama Blanca",
         "JEP": "Jepordizers!",
         "TBB": "The Bluke Blokes",

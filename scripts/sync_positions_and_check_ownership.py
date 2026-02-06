@@ -190,7 +190,7 @@ def load_team_mappings():
         2: "DRO",
         3: "B2J",
         6: "JEP",
-        8: "LAW",
+        8: "DMN",
         4: "CFL",
         9: "SAD",
         5: "HAM",

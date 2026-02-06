@@ -18,7 +18,7 @@ YAHOO_TEAM_MAP = {
     "4": "HAM",
     "5": "JEP",
     "6": "LFB",
-    "7": "LAW",
+    "7": "DMN",
     "8": "SAD",
     "9": "DRO",
     "10": "RV",

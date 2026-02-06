@@ -13,7 +13,7 @@ LEAGUE_ID = "15505"
 GAME_KEY = "mlb"
 YAHOO_TEAM_MAP = {
     "1": "WIZ", "2": "B2J", "3": "CFL", "4": "HAM",
-    "5": "JEP", "6": "LFB", "7": "LAW", "8": "SAD",
+    "5": "JEP", "6": "LFB", "7": "DMN", "8": "SAD",
     "9": "DRO", "10": "RV", "11": "TBB", "12": "WAR"
 }
 OUTPUT_FILE = "data/standings.json"

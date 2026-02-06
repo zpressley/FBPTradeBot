@@ -34,7 +34,7 @@ class BoardManager:
         """
         if not os.path.exists(self.boards_file):
             # Initialize empty boards for all teams
-            teams = ["WIZ", "B2J", "CFL", "HAM", "RV", "SAD", "JEP", "TBB", "DRO", "LAW", "LFB", "WAR"]
+            teams = ["WIZ", "B2J", "CFL", "HAM", "RV", "SAD", "JEP", "TBB", "DRO", "DMN", "LFB", "WAR"]
             boards = {team: [] for team in teams}
             self.save_boards(boards)
             print(f"✅ Initialized empty boards for {len(teams)} teams")

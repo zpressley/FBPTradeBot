@@ -12,7 +12,7 @@ TEAM_CHOICES = [
     app_commands.Choice(name="Rick Vaughn", value="RV"),
     app_commands.Choice(name="Btwn2Jackies", value="B2J"),
     app_commands.Choice(name="Country Fried Lamb", value="CFL"),
-    app_commands.Choice(name="Law-Abiding Citizens", value="LAW"),
+    app_commands.Choice(name="The Damn Yankees", value="DMN"),
     app_commands.Choice(name="La Flama Blanca", value="LFB"),
     app_commands.Choice(name="Jepordizers!", value="JEP"),
     app_commands.Choice(name="The Bluke Blokes", value="TBB"),
