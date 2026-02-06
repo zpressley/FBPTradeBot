@@ -2,30 +2,60 @@
   {
     "round": 1,
     "pick": 1,
-    "team": "WIZ",
+    "team": "WAR",
     "round_type": "fypd"
   },
   {
     "round": 1,
     "pick": 2,
+    "team": "WAR",
+    "round_type": "fypd"
+  },
+  {
+    "round": 1,
+    "pick": 3,
+    "team": "WIZ",
+    "round_type": "fypd"
+  },
+  {
+    "round": 1,
+    "pick": 4,
     "team": "WIZ",
     "round_type": "fypd"
   },
   {
     "round": 2,
     "pick": 1,
-    "team": "WIZ",
+    "team": "WAR",
     "round_type": "fypd"
   },
   {
     "round": 2,
     "pick": 2,
+    "team": "WAR",
+    "round_type": "fypd"
+  },
+  {
+    "round": 2,
+    "pick": 3,
+    "team": "WIZ",
+    "round_type": "fypd"
+  },
+  {
+    "round": 2,
+    "pick": 4,
     "team": "WIZ",
     "round_type": "fypd"
   },
   {
     "round": 3,
     "pick": 1,
+    "team": "WAR",
+    "round_type": "dc"
+  },
+  {
+    "round": 3,
+    "pick": 2,
     "team": "WIZ",
     "round_type": "dc"
   },
