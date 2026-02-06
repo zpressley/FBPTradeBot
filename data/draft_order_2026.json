@@ -122,6 +122,12 @@
   {
     "round": 3,
     "pick": 5,
+    "team": "DRO",
+    "round_type": "dc"
+  },
+  {
+    "round": 3,
+    "pick": 6,
     "team": "WIZ",
     "round_type": "dc"
   },

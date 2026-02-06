@@ -393,5 +393,20 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026_PAD_SPEND_DRO_1770409531",
+    "timestamp": "2026-02-06T15:25:31.982411-05:00",
+    "team": "DRO",
+    "amount": -75,
+    "balance_before": 100,
+    "balance_after": 25,
+    "transaction_type": "PAD_spend",
+    "description": "2026 PAD prospect contracts and draft slots",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]
