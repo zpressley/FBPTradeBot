@@ -14,12 +14,18 @@
   {
     "round": 1,
     "pick": 3,
-    "team": "WIZ",
+    "team": "DMN",
     "round_type": "fypd"
   },
   {
     "round": 1,
     "pick": 4,
+    "team": "WIZ",
+    "round_type": "fypd"
+  },
+  {
+    "round": 1,
+    "pick": 5,
     "team": "WIZ",
     "round_type": "fypd"
   },
@@ -38,12 +44,18 @@
   {
     "round": 2,
     "pick": 3,
-    "team": "WIZ",
+    "team": "DMN",
     "round_type": "fypd"
   },
   {
     "round": 2,
     "pick": 4,
+    "team": "WIZ",
+    "round_type": "fypd"
+  },
+  {
+    "round": 2,
+    "pick": 5,
     "team": "WIZ",
     "round_type": "fypd"
   },
@@ -56,30 +68,60 @@
   {
     "round": 3,
     "pick": 2,
+    "team": "DMN",
+    "round_type": "dc"
+  },
+  {
+    "round": 3,
+    "pick": 3,
     "team": "WIZ",
     "round_type": "dc"
   },
   {
     "round": 4,
     "pick": 1,
+    "team": "DMN",
+    "round_type": "dc"
+  },
+  {
+    "round": 4,
+    "pick": 2,
     "team": "WIZ",
     "round_type": "dc"
   },
   {
     "round": 5,
     "pick": 1,
+    "team": "DMN",
+    "round_type": "dc"
+  },
+  {
+    "round": 5,
+    "pick": 2,
     "team": "WIZ",
     "round_type": "dc"
   },
   {
     "round": 6,
     "pick": 1,
+    "team": "DMN",
+    "round_type": "dc"
+  },
+  {
+    "round": 6,
+    "pick": 2,
     "team": "WIZ",
     "round_type": "dc"
   },
   {
     "round": 7,
     "pick": 1,
+    "team": "DMN",
+    "round_type": "dc"
+  },
+  {
+    "round": 7,
+    "pick": 2,
     "team": "WIZ",
     "round_type": "dc"
   }
