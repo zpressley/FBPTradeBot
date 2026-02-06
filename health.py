@@ -29,8 +29,12 @@ from pad.pad_processor import (
 from admin.admin_processor import (
     AdminPlayerUpdatePayload,
     AdminWBAdjustmentPayload,
+    AdminDeletePlayerPayload,
+    AdminMergePlayersPayload,
     apply_admin_player_update,
     apply_admin_wb_adjustment,
+    apply_admin_delete_player,
+    apply_admin_merge_players,
 )
 
 # Load environment variables
@@ -695,6 +699,64 @@ async def api_admin_update_player(
         # Commit/push failures should not hide the fact that the data files
         # were already updated on disk.
         print("⚠️ Admin update git commit/push failed:", exc)
+
+    return result
+
+
+@app.post("/api/admin/delete-player")
+async def api_admin_delete_player(
+    payload: AdminDeletePlayerPayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Delete a player from combined_players and log the deletion."""
+    try:
+        result = apply_admin_delete_player(payload, test_mode=False)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print("❌ Admin delete player error:", e)
+        raise HTTPException(status_code=500, detail="Admin delete player error")
+
+    core_files = [
+        "data/combined_players.json",
+        "data/player_log.json",
+    ]
+    try:
+        _commit_and_push(
+            core_files,
+            f"Admin delete: {result['player'].get('name', payload.upid)}",
+        )
+    except Exception as exc:
+        print("⚠️ Admin delete git commit/push failed:", exc)
+
+    return result
+
+
+@app.post("/api/admin/merge-players")
+async def api_admin_merge_players(
+    payload: AdminMergePlayersPayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Merge two players: source fields fill target's missing values, source is deleted."""
+    try:
+        result = apply_admin_merge_players(payload, test_mode=False)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print("❌ Admin merge players error:", e)
+        raise HTTPException(status_code=500, detail="Admin merge players error")
+
+    core_files = [
+        "data/combined_players.json",
+        "data/player_log.json",
+    ]
+    try:
+        _commit_and_push(
+            core_files,
+            f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}",
+        )
+    except Exception as exc:
+        print("⚠️ Admin merge git commit/push failed:", exc)
 
     return result
 

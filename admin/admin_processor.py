@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from pydantic import BaseModel
 
@@ -42,17 +42,39 @@ class AdminPlayerUpdatePayload(BaseModel):
 class AdminWBAdjustmentPayload(BaseModel):
     """Manual WizBucks adjustment coming from the admin portal.
 
-    This is used by the WizBucks tab for PAD/KAP/APA/PTDA corrections and
-    one-off admin actions. It intentionally mirrors the fields from the
-    hub's admin form.
+    Used for one-off admin WizBucks adjustments. Installment is optional
+    since adjustments come from the main wallet.
     """
 
     season: int
     admin: str
     team: str  # FBP team abbreviation (e.g., "WIZ")
-    installment: str  # e.g. "pad", "kap", "apa", "ptda"
     amount: int  # positive for credit, negative for debit
     reason: str
+    installment: Optional[str] = "admin"  # defaults to "admin" for manual adjustments
+
+
+class AdminDeletePlayerPayload(BaseModel):
+    """Admin-initiated player deletion from the web admin portal.
+    
+    Used for removing duplicate records or retired players from the database.
+    """
+    
+    upid: str
+    admin: str  # admin username / ID
+    reason: str  # required reason for deletion
+
+
+class AdminMergePlayersPayload(BaseModel):
+    """Admin-initiated player merge from the web admin portal.
+    
+    Merges source player data into target player, then deletes source.
+    Fields from source are only used to fill in missing/empty target fields.
+    """
+    
+    source_upid: str  # player to be deleted after merge
+    target_upid: str  # player to keep and receive merged data
+    admin: str  # admin username / ID
 
 
 def _resolve_franchise_name(team_abbr: str, wizbucks: Dict[str, int]) -> str:
@@ -208,4 +230,166 @@ def apply_admin_player_update(
         "upid": target_upid,
         "player": player,
         "wizbucks_balance": new_wb_balance,
+    }
+
+
+def apply_admin_delete_player(
+    payload: AdminDeletePlayerPayload,
+    test_mode: bool,
+) -> Dict[str, Any]:
+    """Delete a player from combined_players.json.
+    
+    This permanently removes the player record. The deletion is logged
+    to player_log for audit purposes.
+    """
+    
+    combined_path = get_combined_players_path(test_mode)
+    player_log_path = get_player_log_path(test_mode)
+    
+    combined_players: list = _ensure_list(_load_json(combined_path))
+    player_log: list = _ensure_list(_load_json(player_log_path))
+    
+    # Locate player by UPID
+    target_upid = str(payload.upid).strip()
+    player = next(
+        (p for p in combined_players if str(p.get("upid") or "").strip() == target_upid),
+        None,
+    )
+    if not player:
+        raise ValueError(f"Player with UPID {payload.upid} not found in combined_players")
+    
+    # Store player info for log before deletion
+    player_name = player.get("name", "Unknown")
+    player_team = player.get("team", "")
+    player_manager = player.get("manager", "")
+    
+    # Remove player from list
+    combined_players = [p for p in combined_players if str(p.get("upid") or "").strip() != target_upid]
+    
+    # Log the deletion
+    now_iso = datetime.now().isoformat()
+    season = datetime.now().year
+    
+    log_entry = {
+        "id": f"{season}-{now_iso}-UPID_{target_upid}-Delete-Admin_Portal",
+        "season": season,
+        "source": "Admin Portal",
+        "admin": payload.admin,
+        "timestamp": now_iso,
+        "upid": target_upid,
+        "player_name": player_name,
+        "team": player_team,
+        "owner": player_manager,
+        "update_type": "Delete",
+        "event": f"DELETED: {payload.reason}",
+        "changes": {"deleted": {"from": "exists", "to": "deleted"}},
+    }
+    player_log.append(log_entry)
+    
+    # Persist files
+    _save_json(combined_path, combined_players)
+    _save_json(player_log_path, player_log)
+    
+    return {
+        "upid": target_upid,
+        "player": {"name": player_name, "team": player_team, "manager": player_manager},
+        "deleted": True,
+    }
+
+
+def apply_admin_merge_players(
+    payload: AdminMergePlayersPayload,
+    test_mode: bool,
+) -> Dict[str, Any]:
+    """Merge two player records, keeping the target and deleting the source.
+    
+    Fields from source are copied to target ONLY where target is missing/empty.
+    The source player is then deleted. Both operations are logged.
+    """
+    
+    combined_path = get_combined_players_path(test_mode)
+    player_log_path = get_player_log_path(test_mode)
+    
+    combined_players: list = _ensure_list(_load_json(combined_path))
+    player_log: list = _ensure_list(_load_json(player_log_path))
+    
+    # Locate both players
+    source_upid = str(payload.source_upid).strip()
+    target_upid = str(payload.target_upid).strip()
+    
+    source_player = next(
+        (p for p in combined_players if str(p.get("upid") or "").strip() == source_upid),
+        None,
+    )
+    target_player = next(
+        (p for p in combined_players if str(p.get("upid") or "").strip() == target_upid),
+        None,
+    )
+    
+    if not source_player:
+        raise ValueError(f"Source player with UPID {source_upid} not found")
+    if not target_player:
+        raise ValueError(f"Target player with UPID {target_upid} not found")
+    if source_upid == target_upid:
+        raise ValueError("Cannot merge a player with itself")
+    
+    # Track what gets merged
+    merged_fields = {}
+    
+    # Fields to consider for merging (fill missing target values from source)
+    mergeable_fields = [
+        "team", "position", "manager", "player_type", "contract_type", "status",
+        "years_simple", "yahoo_id", "mlb_id", "FBP_Team", "birth_date", "age",
+        "height", "weight", "bats", "throws", "mlb_primary_position", "fypd"
+    ]
+    
+    for field in mergeable_fields:
+        source_val = source_player.get(field)
+        target_val = target_player.get(field)
+        
+        # Check if target is missing/empty and source has a value
+        target_empty = target_val is None or target_val == "" or target_val == []
+        source_has = source_val is not None and source_val != "" and source_val != []
+        
+        if target_empty and source_has:
+            target_player[field] = source_val
+            merged_fields[field] = {"from": source_val}
+    
+    # Remove source from combined_players
+    combined_players = [p for p in combined_players if str(p.get("upid") or "").strip() != source_upid]
+    
+    # Log the merge
+    now_iso = datetime.now().isoformat()
+    season = datetime.now().year
+    
+    log_entry = {
+        "id": f"{season}-{now_iso}-UPID_{target_upid}-Merge-Admin_Portal",
+        "season": season,
+        "source": "Admin Portal",
+        "admin": payload.admin,
+        "timestamp": now_iso,
+        "upid": target_upid,
+        "player_name": target_player.get("name", "Unknown"),
+        "team": target_player.get("team", ""),
+        "owner": target_player.get("manager", ""),
+        "update_type": "Merge",
+        "event": f"MERGED: {source_player.get('name', 'Unknown')} (UPID {source_upid}) merged into this record",
+        "changes": merged_fields,
+        "merged_from": {
+            "upid": source_upid,
+            "name": source_player.get("name", "Unknown"),
+        },
+    }
+    player_log.append(log_entry)
+    
+    # Persist files
+    _save_json(combined_path, combined_players)
+    _save_json(player_log_path, player_log)
+    
+    return {
+        "source_upid": source_upid,
+        "target_upid": target_upid,
+        "player": target_player,
+        "merged_fields": merged_fields,
+        "source_deleted": True,
     }
