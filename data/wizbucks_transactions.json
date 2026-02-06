@@ -363,5 +363,20 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026_PAD_SPEND_CFL_1770406429",
+    "timestamp": "2026-02-06T14:33:49.611291-05:00",
+    "team": "CFL",
+    "amount": -125,
+    "balance_before": 145,
+    "balance_after": 20,
+    "transaction_type": "PAD_spend",
+    "description": "2026 PAD prospect contracts and draft slots",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]
