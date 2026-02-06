@@ -21,6 +21,7 @@ from draft.board_manager import BoardManager
 from pad.pad_processor import (
     PadSubmissionPayload,
     PadAlreadySubmittedError,
+    PadResult,
     apply_pad_submission,
     announce_pad_submission_to_discord,
     load_managers_config,
@@ -792,6 +793,60 @@ async def api_admin_wizbucks_balances(
                 continue
 
     return {"balances": balances}
+
+
+# ---- PAD Discord test helper ----
+
+
+@app.post("/api/admin/pad-test-discord")
+async def api_admin_pad_test_discord(
+    team: str = "WAR",
+    authorized: bool = Depends(verify_api_key),
+):
+    """Send a synthetic PAD Discord announcement for debugging.
+
+    This endpoint does NOT touch any JSON data files or git. It simply
+    constructs a fake PadResult and calls announce_pad_submission_to_discord
+    with PAD_TEST_MODE forced to false, so that live-channel routing and
+    permissions can be validated safely.
+    """
+
+    # Minimal synthetic payload; this is only for visual/permission testing.
+    now_iso = datetime.now(tz=ET).isoformat()
+    result = PadResult(
+        season=PAD_SEASON,
+        team=team,
+        timestamp=now_iso,
+        wb_spent=0,
+        wb_remaining=0,
+        dc_players=[{"name": "Test DC Prospect"}],
+        pc_players=[{"name": "Test PC Prospect"}],
+        bc_players=[{"name": "Test BC Prospect"}],
+        dc_slots=1,
+        bc_slots=1,
+        dropped_prospects=[{"name": "Test Dropped Prospect"}],
+    )
+
+    # Force PAD_TEST_MODE=false for the duration of this call so that the
+    # live PAD channel code path is exercised regardless of current env.
+    old_flag = os.getenv("PAD_TEST_MODE")
+    os.environ["PAD_TEST_MODE"] = "false"
+
+    try:
+        await announce_pad_submission_to_discord(result, bot)
+    finally:
+        if old_flag is None:
+            # Restore to unset state
+            os.environ.pop("PAD_TEST_MODE", None)
+        else:
+            os.environ["PAD_TEST_MODE"] = old_flag
+
+    return {
+        "ok": True,
+        "team": team,
+        "season": PAD_SEASON,
+        "timestamp": now_iso,
+    }
 
 
 # ---- Unified Draft API ----
