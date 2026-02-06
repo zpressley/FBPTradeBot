@@ -576,6 +576,12 @@ async def api_pad_submit(
         print("❌ PAD season mismatch", {"payload_season": payload.season, "PAD_SEASON": PAD_SEASON})
         raise HTTPException(status_code=400, detail="Season mismatch for PAD")
 
+    # Live-test escape hatch mirrors the behavior in pad_processor: allow
+    # a specific team to exercise the full PAD flow (including Discord)
+    # without mutating JSON files or committing to Git.
+    live_test_team = os.getenv("PAD_LIVE_TEST_TEAM")
+    is_live_test = (not PAD_TEST_MODE) and bool(live_test_team) and live_test_team.upper() == payload.team.upper()
+
     try:
         result = apply_pad_submission(payload, PAD_TEST_MODE)
     except PadAlreadySubmittedError as e:
@@ -615,18 +621,23 @@ async def api_pad_submit(
             core_files,
             f"PAD TEST: {result.team} submission ({result.season})",
         )
-    else:
+    elif not is_live_test:
         core_files = [
             "data/combined_players.json",
             "data/wizbucks.json",
             "data/player_log.json",
             "data/pad_submissions_2026.json",
             "data/draft_order_2026.json",
+            "data/wizbucks_transactions.json",
         ]
         _commit_and_push(
             core_files,
             f"PAD: {result.team} submission ({result.season})",
         )
+    else:
+        # Live-test team: do not commit any data changes; this path is
+        # for exercising the Discord announcement only.
+        pass
 
     # Fire-and-forget Discord announcement; channel selection happens
     # inside the announce helper based on PAD_TEST_MODE.

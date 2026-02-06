@@ -136,6 +136,7 @@ class PadResult:
     bc_players: List[Dict[str, Any]]
     dc_slots: int
     bc_slots: int
+    dropped_prospects: List[Dict[str, Any]]
 
 
 class PadAlreadySubmittedError(Exception):
@@ -302,10 +303,19 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     team = payload.team
     season = payload.season
 
+    # Live-test escape hatch: allow a specific team to exercise the full
+    # PAD pipeline (including Discord announcements) without mutating
+    # data files or enforcing one-and-done semantics. This is controlled
+    # via the PAD_LIVE_TEST_TEAM environment variable and only applies
+    # when PAD_TEST_MODE is false.
+    live_test_team = os.getenv("WAR")
+    is_live_test = (not test_mode) and bool(live_test_team) and live_test_team.upper() == team.upper()
+
     # In live mode we strictly enforce one submission per team. In test
     # mode we allow repeated submissions so commissioners can iterate on
     # PAD behavior without having to manually edit JSON on the server.
-    if team in submissions and not test_mode:
+    # The live-test team is treated like test mode for this rule.
+    if team in submissions and not test_mode and not is_live_test:
         raise PadAlreadySubmittedError(f"PAD already submitted for team {team}")
 
     # Load main data files
@@ -316,6 +326,15 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     combined_players: list = _ensure_list(_load_json(combined_path))
     wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
     player_log: list = _ensure_list(_load_json(player_log_path))
+
+    # Snapshot of this team's 2025 Farm prospects before PAD so we can
+    # determine which prospects were left uncontracted (drops vs TC-R).
+    original_prospects = [
+        p
+        for p in combined_players
+        if str(p.get("FBP_Team") or "").strip() == team
+        and (p.get("player_type") or "").strip() == "Farm"
+    ]
 
     # Build quick index for name lookup (case-insensitive) scoped by team.
     by_name: Dict[Tuple[str, str], dict] = {}
@@ -401,6 +420,9 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     pc_players: List[Dict[str, Any]] = []
     bc_players: List[Dict[str, Any]] = []
 
+    # Track which UPIDs received PAD contracts so we can infer drops / TC-R.
+    assigned_upids: set[str] = set()
+
     def _apply_contract(pref: PadPlayerRef, label: str) -> None:
         p = _find_player(pref)
         if not p:
@@ -433,6 +455,10 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
             p["contract_type"] = "Blue Chip Contract"
             p["years_simple"] = "BC"
         p["status"] = _ensure_prospect_status(str(p.get("status") or ""))
+
+        upid_val = str(p.get("upid") or "").strip()
+        if upid_val:
+            assigned_upids.add(upid_val)
 
         snapshot = {
             "upid": p.get("upid"),
@@ -480,6 +506,36 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     for pref in payload.bc_players:
         _apply_contract(pref, "BC")
 
+    # Infer dropped prospects from the original Farm snapshot.
+    # Any Farm prospect from this team that does not receive a PAD
+    # contract (DC/PC/BC) is dropped from the roster. Graduated
+    # players should already have been converted to MLB prior to PAD
+    # and therefore are not part of this set.
+    dropped_prospects: List[Dict[str, Any]] = []
+
+    for p in original_prospects:
+        upid_val = str(p.get("upid") or "").strip()
+        if upid_val and upid_val in assigned_upids:
+            # Prospect received a DC/PC/BC contract; keep as-is.
+            continue
+
+        # Drop from roster but keep in the prospect pool as an unowned Farm.
+        p["manager"] = ""
+        p["FBP_Team"] = ""
+        dropped_prospects.append({
+            "upid": p.get("upid"),
+            "name": p.get("name"),
+        })
+        _append_player_log_entry(
+            player_log,
+            p,
+            season=season,
+            source="2026_PAD",
+            update_type="Drop",
+            event="26 PAD",
+            admin="pad_submission",
+        )
+
     # Apply WB spending as a single delta. PAD UI computed total_spend;
     # we still trust that value but enforce that managers cannot spend
     # more than their current WizBucks balance **in live mode**. In
@@ -490,13 +546,13 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     if wb_spent < 0:
         raise ValueError("PAD total_spend cannot be negative")
 
-    if not test_mode and wb_spent > wb_balance:
+    if not test_mode and not is_live_test and wb_spent > wb_balance:
         raise ValueError(
             "PAD spend exceeds available WizBucks; "
             "check PAD allocation / rollover and try again.",
         )
 
-    if test_mode:
+    if test_mode or is_live_test:
         # Do not mutate wizbucks_test.json; just report a synthetic
         # remaining balance for the API/UI. This keeps test runs from
         # "using up" the test wallet while still exercising the rest
@@ -506,26 +562,53 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         wb_remaining = wb_balance - wb_spent
         wizbucks[franchise_name] = wb_remaining
 
-    # Record submission metadata (slots + WB) for future draft-order rebuild.
+    # Timestamp for submission + ledger.
     now = datetime.now(tz=ET).isoformat()
-    submissions = submissions or {}
-    submissions[team] = {
-        "season": season,
-        "team": team,
-        "timestamp": now,
-        "dc_slots": payload.dc_slots,
-        "bc_slots": payload.bc_slots,
-        "wb_total_spend": wb_spent,
-    }
 
-    _save_json(submissions_path, submissions)
-    _save_json(combined_path, combined_players)
-    _save_json(wizbucks_path, wizbucks)
-    _save_json(player_log_path, player_log)
+    # Append a WizBucks ledger entry for PAD spend in live mode so the
+    # website ledger stays in sync with the wizbucks wallet.
+    if not test_mode and not is_live_test and wb_spent:
+        ledger_path = "data/wizbucks_transactions.json"
+        ledger: list = _ensure_list(_load_json(ledger_path))
+        txn_id = f"wb_{season}_PAD_SPEND_{team}_{int(datetime.now(tz=ET).timestamp())}"
+        ledger_entry = {
+            "txn_id": txn_id,
+            "timestamp": now,
+            "team": team,
+            "amount": -wb_spent,
+            "balance_before": wb_balance,
+            "balance_after": wb_remaining,
+            "transaction_type": "PAD_spend",
+            "description": "2026 PAD prospect contracts and draft slots",
+            "related_player": None,
+            "metadata": {
+                "season": season,
+                "source": "PAD",
+            },
+        }
+        ledger.append(ledger_entry)
+        _save_json(ledger_path, ledger)
 
-    # Rebuild draft_order_2026 (or its _test variant) from all PAD
-    # submissions and 2025 final standings.
-    rebuild_draft_order_from_pad(submissions, test_mode)
+    # Record submission metadata (slots + WB) for future draft-order rebuild.
+    if not is_live_test:
+        submissions = submissions or {}
+        submissions[team] = {
+            "season": season,
+            "team": team,
+            "timestamp": now,
+            "dc_slots": payload.dc_slots,
+            "bc_slots": payload.bc_slots,
+            "wb_total_spend": wb_spent,
+        }
+
+        _save_json(submissions_path, submissions)
+        _save_json(combined_path, combined_players)
+        _save_json(wizbucks_path, wizbucks)
+        _save_json(player_log_path, player_log)
+
+        # Rebuild draft_order_2026 (or its _test variant) from all PAD
+        # submissions and 2025 final standings.
+        rebuild_draft_order_from_pad(submissions, test_mode)
 
     return PadResult(
         season=season,
@@ -538,6 +621,7 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         bc_players=bc_players,
         dc_slots=payload.dc_slots,
         bc_slots=payload.bc_slots,
+        dropped_prospects=dropped_prospects,
     )
 
 
@@ -619,6 +703,15 @@ async def announce_pad_submission_to_discord(result: PadResult, bot) -> None:
         lines = [f"- {p.get('name')}" for p in result.dc_players]
         embed.add_field(
             name="Development Contracts (DC)",
+            value="\n".join(lines),
+            inline=False,
+        )
+
+    # Dropped prospects
+    if getattr(result, "dropped_prospects", None):
+        lines = [f"- {p.get('name')}" for p in result.dropped_prospects]
+        embed.add_field(
+            name="Dropped Prospects",
             value="\n".join(lines),
             inline=False,
         )
