@@ -408,5 +408,20 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026_PAD_SPEND_RV_1770421620",
+    "timestamp": "2026-02-06T18:47:00.328057-05:00",
+    "team": "RV",
+    "amount": -175,
+    "balance_before": 175,
+    "balance_after": 0,
+    "transaction_type": "PAD_spend",
+    "description": "2026 PAD prospect contracts and draft slots",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]

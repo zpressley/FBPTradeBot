@@ -46,5 +46,13 @@
     "dc_slots": 1,
     "bc_slots": 0,
     "wb_total_spend": 75
+  },
+  "RV": {
+    "season": 2026,
+    "team": "RV",
+    "timestamp": "2026-02-06T18:47:00.328057-05:00",
+    "dc_slots": 1,
+    "bc_slots": 2,
+    "wb_total_spend": 175
   }
 }
