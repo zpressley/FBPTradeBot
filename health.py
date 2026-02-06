@@ -798,6 +798,151 @@ async def api_admin_wizbucks_balances(
 # ---- PAD Discord test helper ----
 
 
+@app.post("/api/admin/pad-retro-discord/{team}")
+async def api_admin_pad_retro_discord(
+    team: str,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Replay a real PAD submission to Discord for a given team.
+
+    This constructs a PadResult from existing data files (pad_submissions,
+    wizbucks, player_log) and sends it to the live PAD channel. It does NOT
+    mutate any JSON files or perform any git operations.
+    """
+
+    team_abbr = team.upper()
+
+    # Load PAD submissions for slots + metadata
+    try:
+        with open("data/pad_submissions_2026.json", "r", encoding="utf-8") as f:
+            submissions = json.load(f)
+        if not isinstance(submissions, dict):
+            submissions = {}
+    except FileNotFoundError:
+        submissions = {}
+
+    rec = submissions.get(team_abbr)
+    if not rec:
+        raise HTTPException(status_code=404, detail=f"No PAD submission found for team {team_abbr}")
+
+    season = int(rec.get("season", PAD_SEASON))
+    timestamp = rec.get("timestamp") or datetime.now(tz=ET).isoformat()
+    dc_slots = int(rec.get("dc_slots", 0))
+    bc_slots = int(rec.get("bc_slots", 0))
+    wb_spent = int(rec.get("wb_total_spend", 0))
+
+    # Derive WizBucks remaining from wizbucks.json + managers.json mapping.
+    wb_remaining = 0
+    try:
+        with open("data/wizbucks.json", "r", encoding="utf-8") as f:
+            wizbucks = json.load(f)
+        if not isinstance(wizbucks, dict):
+            wizbucks = {}
+    except FileNotFoundError:
+        wizbucks = {}
+
+    managers_cfg = load_managers_config() or {}
+    teams_meta = managers_cfg.get("teams") or {}
+    meta = teams_meta.get(team_abbr) or {}
+    franchise_name = meta.get("name")
+    if franchise_name and isinstance(wizbucks, dict):
+        try:
+            wb_remaining = int(wizbucks.get(franchise_name, 0))
+        except Exception:
+            wb_remaining = 0
+
+    # Use player_log.json to reconstruct which prospects were DC/PC/BC vs dropped.
+    dc_players = []
+    pc_players = []
+    bc_players = []
+    dropped = []
+
+    owner_name = franchise_name or team_abbr
+
+    try:
+        with open("data/player_log.json", "r", encoding="utf-8") as f:
+            pl_data = json.load(f)
+        if not isinstance(pl_data, list):
+            pl_data = []
+    except FileNotFoundError:
+        pl_data = []
+
+    for rec in pl_data:
+        try:
+            if rec.get("season") != season:
+                continue
+            if rec.get("event") != "26 PAD":
+                continue
+        except Exception:
+            continue
+
+        if (rec.get("owner") or "").strip() != owner_name:
+            continue
+
+        update_type = rec.get("update_type")
+        name = rec.get("player_name") or ""
+
+        if update_type in ("Purchase", "Blue Chip"):
+            contract = (rec.get("contract") or "").strip()
+            target = None
+            if contract == "Development Contract":
+                target = dc_players
+            elif contract == "Purchased Contract":
+                target = pc_players
+            elif contract == "Blue Chip Contract":
+                target = bc_players
+            if target is not None:
+                target.append({"name": name})
+        elif update_type == "Drop":
+            dropped.append({"name": name})
+
+    # Build PadResult and send via Discord helper.
+    result = PadResult(
+        season=season,
+        team=team_abbr,
+        timestamp=timestamp,
+        wb_spent=wb_spent,
+        wb_remaining=wb_remaining,
+        dc_players=dc_players,
+        pc_players=pc_players,
+        bc_players=bc_players,
+        dc_slots=dc_slots,
+        bc_slots=bc_slots,
+        dropped_prospects=dropped,
+    )
+
+    # Force PAD_TEST_MODE=false during the announcement so the live channel
+    # path is exercised regardless of env.
+    old_flag = os.getenv("PAD_TEST_MODE")
+    os.environ["PAD_TEST_MODE"] = "false"
+
+    try:
+        bot.loop.create_task(announce_pad_submission_to_discord(result, bot))
+        await asyncio.sleep(2)
+    finally:
+        if old_flag is None:
+            os.environ.pop("PAD_TEST_MODE", None)
+        else:
+            os.environ["PAD_TEST_MODE"] = old_flag
+
+    return {
+        "ok": True,
+        "team": team_abbr,
+        "season": season,
+        "timestamp": timestamp,
+        "dc_slots": dc_slots,
+        "bc_slots": bc_slots,
+        "wb_spent": wb_spent,
+        "wb_remaining": wb_remaining,
+        "counts": {
+            "dc_players": len(dc_players),
+            "pc_players": len(pc_players),
+            "bc_players": len(bc_players),
+            "dropped_prospects": len(dropped),
+        },
+    }
+
+
 @app.post("/api/admin/pad-test-discord")
 async def api_admin_pad_test_discord(
     team: str = "WAR",
