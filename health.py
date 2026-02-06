@@ -833,7 +833,11 @@ async def api_admin_pad_test_discord(
     os.environ["PAD_TEST_MODE"] = "false"
 
     try:
-        await announce_pad_submission_to_discord(result, bot)
+        # Schedule the Discord send on the bot's event loop just like the
+        # main PAD submit endpoint, so we don't await across threads.
+        bot.loop.create_task(announce_pad_submission_to_discord(result, bot))
+        # Give the task a brief window to run before returning.
+        await asyncio.sleep(2)
     finally:
         if old_flag is None:
             # Restore to unset state
