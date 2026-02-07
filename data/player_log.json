@@ -28449,5 +28449,28 @@
     "years": "P",
     "update_type": "Drop",
     "event": "26 PAD"
+  },
+  {
+    "id": "2026-2026-02-06T22:32:49.866828-05:00-UPID_4665-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-02-06T22:32:49.866828-05:00",
+    "upid": "4665",
+    "player_name": "Troy Melton",
+    "team": "DET",
+    "pos": "SP,RP",
+    "age": null,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 2106,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
