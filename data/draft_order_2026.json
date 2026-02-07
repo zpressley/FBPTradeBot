@@ -158,6 +158,12 @@
   {
     "round": 3,
     "pick": 7,
+    "team": "SAD",
+    "round_type": "dc"
+  },
+  {
+    "round": 3,
+    "pick": 8,
     "team": "WIZ",
     "round_type": "dc"
   },
@@ -182,6 +188,12 @@
   {
     "round": 4,
     "pick": 4,
+    "team": "SAD",
+    "round_type": "dc"
+  },
+  {
+    "round": 4,
+    "pick": 5,
     "team": "WIZ",
     "round_type": "dc"
   },
@@ -200,6 +212,12 @@
   {
     "round": 5,
     "pick": 3,
+    "team": "SAD",
+    "round_type": "dc"
+  },
+  {
+    "round": 5,
+    "pick": 4,
     "team": "WIZ",
     "round_type": "dc"
   },
@@ -218,6 +236,12 @@
   {
     "round": 6,
     "pick": 3,
+    "team": "SAD",
+    "round_type": "dc"
+  },
+  {
+    "round": 6,
+    "pick": 4,
     "team": "WIZ",
     "round_type": "dc"
   },
@@ -236,7 +260,19 @@
   {
     "round": 7,
     "pick": 3,
+    "team": "SAD",
+    "round_type": "dc"
+  },
+  {
+    "round": 7,
+    "pick": 4,
     "team": "WIZ",
+    "round_type": "dc"
+  },
+  {
+    "round": 8,
+    "pick": 1,
+    "team": "SAD",
     "round_type": "dc"
   }
 ]

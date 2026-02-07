@@ -54,5 +54,13 @@
     "dc_slots": 1,
     "bc_slots": 2,
     "wb_total_spend": 175
+  },
+  "SAD": {
+    "season": 2026,
+    "team": "SAD",
+    "timestamp": "2026-02-06T23:05:55.565889-05:00",
+    "dc_slots": 6,
+    "bc_slots": 0,
+    "wb_total_spend": 105
   }
 }

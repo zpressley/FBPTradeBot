@@ -474,5 +474,20 @@
       "admin": "zpressley",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026_PAD_SPEND_SAD_1770437155",
+    "timestamp": "2026-02-06T23:05:55.565889-05:00",
+    "team": "SAD",
+    "amount": -105,
+    "balance_before": 125,
+    "balance_after": 20,
+    "transaction_type": "PAD_spend",
+    "description": "2026 PAD prospect contracts and draft slots",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]
