@@ -504,5 +504,20 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026_PAD_SPEND_B2J_1770484992",
+    "timestamp": "2026-02-07T12:23:12.407578-05:00",
+    "team": "B2J",
+    "amount": -115,
+    "balance_before": 145,
+    "balance_after": 30,
+    "transaction_type": "PAD_spend",
+    "description": "2026 PAD prospect contracts and draft slots",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "PAD"
+    }
   }
 ]
