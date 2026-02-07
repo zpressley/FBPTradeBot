@@ -457,5 +457,22 @@
       "admin": "zpressley",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026_ADMIN_CFL_1770434473",
+    "timestamp": "2026-02-07T03:21:13.372808Z",
+    "team": "CFL",
+    "amount": 5,
+    "balance_before": 10,
+    "balance_after": 15,
+    "transaction_type": "admin_adjustment",
+    "description": "Admin Correction",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
   }
 ]
