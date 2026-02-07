@@ -423,5 +423,22 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026_ADMIN_CFL_1770422745",
+    "timestamp": "2026-02-07T00:05:45.518233Z",
+    "team": "CFL",
+    "amount": -5,
+    "balance_before": 20,
+    "balance_after": 15,
+    "transaction_type": "admin_adjustment",
+    "description": "PAD adjustment - purchase DC",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
   }
 ]
