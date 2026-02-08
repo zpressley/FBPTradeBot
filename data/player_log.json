@@ -30680,5 +30680,28 @@
     "years": "P",
     "update_type": "Drop",
     "event": "26 PAD"
+  },
+  {
+    "id": "2026-2026-02-08T17:28:30.774554-05:00-UPID_7153-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-08T17:28:30.774554-05:00",
+    "upid": "7153",
+    "player_name": "Jacob Lopez",
+    "team": "TB",
+    "pos": "SP",
+    "age": 27,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": ""
   }
 ]

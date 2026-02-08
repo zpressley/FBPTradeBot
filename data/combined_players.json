@@ -61045,8 +61045,8 @@
     "manager": "Country Fried Lamb",
     "player_type": "MLB",
     "contract_type": null,
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "",
     "upid": "7153",
     "mlb_id": 682052,
@@ -61058,7 +61058,8 @@
     "bats": "L",
     "throws": "L",
     "mlb_primary_position": "SP",
-    "fypd": false
+    "fypd": false,
+    "level": "MLB"
   },
   {
     "name": "Jose Corniell",
