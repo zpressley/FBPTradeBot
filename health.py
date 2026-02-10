@@ -36,6 +36,7 @@ from admin.admin_processor import (
     apply_admin_delete_player,
     apply_admin_merge_players,
 )
+from api_admin_bulk import router as admin_bulk_router
 
 # Load environment variables
 load_dotenv()
@@ -152,6 +153,9 @@ async def setup_hook():
 
 # ---- FastAPI Web Server ----
 app = FastAPI()
+
+# Include admin bulk operations router
+app.include_router(admin_bulk_router)
 
 
 # Health check
