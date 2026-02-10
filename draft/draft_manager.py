@@ -61,8 +61,13 @@ class DraftManager:
         with open(self.order_file, 'r') as f:
             data = json.load(f)
         
-        # Extract picks array (handles both formats)
-        picks = data.get("picks", data.get("rounds", []))
+        # Extract picks array (handles both formats):
+        # - New format: file is a bare list of pick dicts.
+        # - Legacy format: object with `picks` or `rounds` keys.
+        if isinstance(data, list):
+            picks = data
+        else:
+            picks = data.get("picks", data.get("rounds", []))
         
         if not picks:
             raise ValueError(f"No picks found in {self.order_file}")
@@ -86,14 +91,10 @@ class DraftManager:
                         f"Pick {i+1} missing required field: {field}"
                     )
         
-        # Check pick numbers are sequential
-        for i, pick in enumerate(picks):
-            expected_pick = i + 1
-            if pick["pick"] != expected_pick:
-                raise ValueError(
-                    f"Pick numbers not sequential: expected {expected_pick}, "
-                    f"got {pick['pick']} at index {i}"
-                )
+        # Note: older formats used a single global pick number sequence
+        # (1..N). Newer formats may reset `pick` each round (1..X per
+        # round). To stay flexible we no longer enforce global sequential
+        # numbering here; we just trust the order of the list.
         
         # Count picks by team
         team_counts = {}

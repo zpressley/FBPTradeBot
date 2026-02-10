@@ -246,16 +246,22 @@ def rebuild_draft_order_from_pad(submissions: Dict[str, Any], test_mode: bool) -
     rounds: List[Dict[str, Any]] = []
 
     # Rounds 1–2: BC
+    # A team can have at most one pick per round; multiple BC slots
+    # are distributed across rounds in order (slot #1 → round 1,
+    # slot #2 → round 2). Teams with 0 BC slots are skipped.
     for rnd in (1, 2):
-        for idx, team in enumerate(team_order, start=1):
+        for team in team_order:
             slots = bc_slots_by_team.get(team, 0)
-            # One pick per BC slot in this round.
-            for s in range(slots):
+            # Give a pick in round N only if the team has at least N BC slots.
+            if slots >= rnd:
+                pick_no = sum(1 for r in rounds if r["round"] == rnd) + 1
                 rounds.append({
+                    "draft": "prospect",
                     "round": rnd,
-                    "pick": len([r for r in rounds if r["round"] == rnd]) + 1,
+                    "pick": pick_no,
                     "team": team,
                     "round_type": "fypd",
+                    "result": None,
                 })
 
     # Rounds 3–17: DC (15 rounds)
@@ -267,10 +273,12 @@ def rebuild_draft_order_from_pad(submissions: Dict[str, Any], test_mode: bool) -
             # For example, 3 DC slots -> extra picks in rounds 3,4,5.
             if offset < slots:
                 rounds.append({
+                    "draft": "prospect",
                     "round": rnd,
                     "pick": len([r for r in rounds if r["round"] == rnd]) + 1,
                     "team": team,
                     "round_type": "dc",
+                    "result": None,
                 })
 
     if not rounds:
