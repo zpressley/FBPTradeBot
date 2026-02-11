@@ -755,18 +755,30 @@ class DraftCommands(commands.Cog):
             await interaction.response.send_message("❌ Admin only", ephemeral=True)
             return
         
-        if action_value == "start":
-            await self._handle_start(interaction, draft_type)
-        elif action_value == "pause":
-            await self._handle_pause(interaction)
-        elif action_value == "continue":
-            await self._handle_continue(interaction)
-        elif action_value == "status":
-            await self._handle_status(interaction)
-        elif action_value == "undo":
-            await self._handle_undo(interaction)
-        elif action_value == "order":
-            await self._handle_order(interaction)
+        try:
+            if action_value == "start":
+                await self._handle_start(interaction, draft_type)
+            elif action_value == "pause":
+                await self._handle_pause(interaction)
+            elif action_value == "continue":
+                await self._handle_continue(interaction)
+            elif action_value == "status":
+                await self._handle_status(interaction)
+            elif action_value == "undo":
+                await self._handle_undo(interaction)
+            elif action_value == "order":
+                await self._handle_order(interaction)
+        except Exception as e:
+            # Ensure we never silently time out the interaction. Log the
+            # full traceback to stdout (Render logs) and send a concise
+            # error back to the caller.
+            import traceback
+            traceback.print_exc()
+            error_msg = f"Unexpected error handling /draft {action_value}: {e}"
+            if not interaction.response.is_done():
+                await interaction.response.send_message(f"❌ {error_msg}", ephemeral=True)
+            else:
+                await interaction.followup.send(f"❌ {error_msg}", ephemeral=True)
     
     async def _handle_start(self, interaction, draft_type):
         if draft_type is None:
