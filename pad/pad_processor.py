@@ -453,15 +453,19 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
             )
         p["manager"] = franchise_name
         p["FBP_Team"] = team
+        # Contract type encodes DC/PC/BC; years_simple stays as generic
+        # prospect "P" so downstream logic never has to special-case
+        # PAD contract labels by years_simple.
         if label == "DC":
-            p["contract_type"] = "Development Contract"
-            p["years_simple"] = "DC"
+            p["contract_type"] = "Development Cont."
         elif label == "PC":
             p["contract_type"] = "Purchased Contract"
-            p["years_simple"] = "PC"
         elif label == "BC":
             p["contract_type"] = "Blue Chip Contract"
-            p["years_simple"] = "BC"
+        # For all PAD contracts, normalize years_simple to prospect "P".
+        # (Historically we used DC/PC/BC here, but nothing in the runtime
+        # system consumed those values and they complicated later cleanup.)
+        p["years_simple"] = "P"
         p["status"] = _ensure_prospect_status(str(p.get("status") or ""))
 
         upid_val = str(p.get("upid") or "").strip()
