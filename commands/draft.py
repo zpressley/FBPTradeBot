@@ -302,6 +302,11 @@ class DraftCommands(commands.Cog):
         
         self.timer_start_time = datetime.now()
         self.warning_sent = False
+        
+        # Persist timer start to state so website can sync countdown
+        self.draft_manager.state["timer_started_at"] = self.timer_start_time.isoformat()
+        self.draft_manager.save_state()
+        
         self.pick_timer_task = asyncio.create_task(self.pick_timer_countdown(channel))
     
     async def pick_timer_countdown(self, channel):
@@ -861,6 +866,10 @@ class DraftCommands(commands.Cog):
         if self.pick_timer_task:
             self.pick_timer_task.cancel()
             self.pick_timer_task = None
+        
+        # Clear timer so website shows paused state
+        self.draft_manager.state["timer_started_at"] = None
+        self.draft_manager.save_state()
         
         embed = discord.Embed(title="⏸️ Draft Paused", color=discord.Color.orange())
         

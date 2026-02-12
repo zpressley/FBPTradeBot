@@ -1,0 +1,178 @@
+"""
+Web Draft Pick Request API
+Add to health.py:
+    from api_draft_pick_request import router as draft_pick_router, set_bot_reference
+    app.include_router(draft_pick_router)
+
+Flow:
+1. Website sends POST /api/draft/prospect/pick-request {team, player_name}
+2. Bot validates via PickValidator
+3. If valid, bot sends Discord DM to the manager with Confirm/Cancel buttons
+4. Manager confirms in Discord → pick locks in via DraftManager.make_pick()
+5. Same outcome as typing name in draft channel
+
+The DM uses the same PickConfirmationView from commands/draft.py
+"""
+
+import os
+from fastapi import APIRouter, Header, HTTPException, Depends
+from pydantic import BaseModel
+from typing import Optional
+
+router = APIRouter(prefix="/api/draft", tags=["draft-pick-request"])
+
+API_KEY = os.getenv("BOT_API_KEY", "")
+
+
+def verify_key(x_api_key: Optional[str] = Header(None)):
+    if API_KEY and x_api_key != API_KEY:
+        raise HTTPException(status_code=401, detail="Invalid API key")
+    return True
+
+
+class PickRequestPayload(BaseModel):
+    team: str
+    player_name: str
+
+
+# We need a reference to the running Discord bot and draft cog.
+# health.py sets these after bot is ready.
+_bot_ref = None
+_draft_cog_ref = None
+
+
+def set_bot_reference(bot):
+    """Called from health.py after bot starts to give us access to Discord."""
+    global _bot_ref
+    _bot_ref = bot
+
+
+def get_draft_cog():
+    """Get the DraftCommands cog from the running bot."""
+    global _draft_cog_ref
+    if _bot_ref is None:
+        return None
+
+    if _draft_cog_ref is None:
+        _draft_cog_ref = _bot_ref.get_cog("DraftCommands")
+
+    return _draft_cog_ref
+
+
+@router.post("/prospect/pick-request")
+async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(verify_key)):
+    """Receive a draft pick request from the website and DM manager for confirmation."""
+    cog = get_draft_cog()
+
+    if cog is None or cog.draft_manager is None:
+        raise HTTPException(status_code=503, detail="Draft is not active or bot is not ready")
+
+    draft_manager = cog.draft_manager
+
+    # Check draft is active
+    if draft_manager.state.get("status") != "active":
+        raise HTTPException(status_code=400, detail="Draft is not currently active")
+
+    current_pick = draft_manager.get_current_pick()
+    if not current_pick:
+        raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
+
+    # Check it's the right team's turn
+    if current_pick["team"] != payload.team:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+        )
+
+    # Validate the pick
+    if cog.pick_validator:
+        valid, message, player_data = cog.pick_validator.validate_pick(
+            payload.team, payload.player_name
+        )
+        if not valid:
+            raise HTTPException(status_code=400, detail=message)
+    else:
+        player_data = {
+            "name": payload.player_name,
+            "position": "?",
+            "team": "?",
+            "rank": "?",
+        }
+
+    if not player_data:
+        player_data = {
+            "name": payload.player_name,
+            "position": "?",
+            "team": "?",
+            "rank": "?",
+        }
+
+    from commands.utils import MANAGER_DISCORD_IDS
+
+    user_id = MANAGER_DISCORD_IDS.get(payload.team)
+    if not user_id:
+        raise HTTPException(
+            status_code=400,
+            detail=f"No Discord user mapped for team {payload.team}",
+        )
+
+    try:
+        user = await _bot_ref.fetch_user(user_id)
+
+        from commands.draft import PickConfirmationView
+        import discord
+
+        embed = discord.Embed(
+            title="🌐 Web Pick Request",
+            description=(
+                f"**{player_data['name']}**\n\n"
+                f"Submitted from FBP Hub website.\n"
+                f"Confirm below to lock in your pick."
+            ),
+            color=discord.Color.blue(),
+        )
+
+        embed.add_field(
+            name="Pick Info",
+            value=(
+                f"Round {current_pick['round']}, Pick {current_pick['pick']}\n"
+                f"Type: {current_pick['round_type'].title()}"
+            ),
+            inline=True,
+        )
+
+        player_info_parts = []
+        if player_data.get("position") and player_data["position"] != "?":
+            player_info_parts.append(f"Position: {player_data['position']}")
+        if player_data.get("team") and player_data["team"] != "?":
+            player_info_parts.append(f"MLB Team: {player_data['team']}")
+
+        if player_info_parts:
+            embed.add_field(
+                name="Player Info",
+                value="\n".join(player_info_parts),
+                inline=True,
+            )
+
+        embed.set_footer(text="Source: FBP Hub Website")
+
+        view = PickConfirmationView(cog, payload.team, player_data, current_pick)
+
+        await user.send(embed=embed, view=view)
+
+        cog.pending_confirmations[user_id] = view
+
+        return {
+            "success": True,
+            "message": f"Confirmation sent to {payload.team}'s Discord DMs",
+            "player": player_data.get("name"),
+            "round": current_pick["round"],
+            "pick": current_pick["pick"],
+        }
+
+    except Exception as e:
+        print(f"❌ Error sending pick request DM: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to send Discord DM: {str(e)}",
+        )

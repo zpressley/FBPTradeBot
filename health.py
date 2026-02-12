@@ -37,6 +37,8 @@ from admin.admin_processor import (
     apply_admin_merge_players,
 )
 from api_admin_bulk import router as admin_bulk_router
+from api_draft_pool import router as draft_pool_router
+from api_draft_pick_request import router as draft_pick_router, set_bot_reference
 
 # Load environment variables
 load_dotenv()
@@ -114,6 +116,12 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f"✅ Bot is online as {bot.user}")
     print(f"   Connected to {len(bot.guilds)} guild(s)")
+
+    # Allow web pick request API to access the running bot instance
+    try:
+        set_bot_reference(bot)
+    except Exception as exc:
+        print(f"⚠️ Failed to set bot reference for draft pick API: {exc}")
     
     await bot.change_presence(
         activity=discord.Activity(
@@ -156,6 +164,9 @@ app = FastAPI()
 
 # Include admin bulk operations router
 app.include_router(admin_bulk_router)
+# Prospect draft pool and web pick request routers
+app.include_router(draft_pool_router)
+app.include_router(draft_pick_router)
 
 
 # Health check
