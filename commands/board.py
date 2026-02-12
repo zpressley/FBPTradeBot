@@ -12,6 +12,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from draft.board_manager import BoardManager
+from draft.prospect_database import ProspectDatabase
 
 
 class BoardCommands(commands.Cog):
@@ -30,6 +31,8 @@ class BoardCommands(commands.Cog):
         self.bot = bot
         # Use 2026 draft season for manager boards
         self.board_manager = BoardManager(season=2026)
+        # Prospect database for resolving names and enforcing eligibility
+        self.prospect_db = ProspectDatabase(season=2026, draft_type="prospect")
         
         print("✅ Board commands loaded")
     
@@ -37,6 +40,90 @@ class BoardCommands(commands.Cog):
         """Get team abbreviation for Discord user"""
         from commands.utils import DISCORD_ID_TO_TEAM
         return DISCORD_ID_TO_TEAM.get(user_id)
+
+    def _is_player_board_eligible(self, player: dict) -> tuple[bool, str]:
+        """Check that a prospect is eligible to appear on a draft board.
+
+        For boards we only want players who are truly available for the
+        prospect draft:
+          - Farm prospects only (player_type == "Farm")
+          - Unowned (no current manager/owner)
+          - No active prospect contract (BC/DC/PC or similar)
+        """
+        if player.get("player_type") != "Farm":
+            return False, "Player is not a Farm prospect."
+
+        contract_type = (player.get("contract_type") or "").strip()
+        if contract_type:
+            return False, "Player already has a prospect contract (BC/DC/PC)."
+
+        manager = (player.get("manager") or "").strip()
+        owner = (player.get("owner") or "").strip()
+        # Treat explicit 'None' as empty
+        if manager and manager.lower() != "none":
+            return False, f"Player is already on an FBP roster ({manager})."
+        if owner and owner.lower() != "none":
+            return False, "Player already has an FBP owner."
+
+        return True, "Eligible prospect"
+
+    def _resolve_eligible_player(self, query: str) -> tuple[bool, str, str]:
+        """Resolve a typed name to a canonical, eligible prospect.
+
+        Returns (success, message, canonical_name). On success, message is a
+        human-friendly note (used in Discord responses).
+        """
+        q = (query or "").strip()
+        if not q:
+            return False, "Player name is empty.", ""
+
+        # 1) Exact match first
+        exact = self.prospect_db.get_by_name(q)
+        if exact:
+            ok, reason = self._is_player_board_eligible(exact)
+            if not ok:
+                return False, f"{reason}", ""
+            return True, f"Added {exact['name']} to your board.", exact["name"]
+
+        # 2) Fuzzy match using the database search helper
+        from difflib import get_close_matches
+
+        all_names = list(self.prospect_db.players.keys())
+        matches = get_close_matches(q, all_names, n=5, cutoff=0.7)
+        if not matches:
+            return False, f"Player '{q}' not found in prospect database.", ""
+
+        # Filter to eligible matches only
+        eligible = []
+        for name in matches:
+            player = self.prospect_db.players.get(name)
+            if not player:
+                continue
+            ok, _ = self._is_player_board_eligible(player)
+            if ok:
+                eligible.append(player)
+
+        if not eligible:
+            # Closest match exists but is ineligible; surface that reason
+            primary_name = matches[0]
+            primary = self.prospect_db.players.get(primary_name)
+            if primary:
+                ok, reason = self._is_player_board_eligible(primary)
+                return False, f"Closest match is {primary_name}, but: {reason}", ""
+            return False, "No eligible prospects match that name.", ""
+
+        if len(eligible) == 1:
+            player = eligible[0]
+            return True, f"Interpreted '{q}' as {player['name']} and added to your board.", player["name"]
+
+        # Multiple eligible matches – ask manager to be more specific
+        options = ", ".join(p["name"] for p in eligible)
+        msg = (
+            "Multiple matching prospects found: "
+            + options
+            + ". Please re-run /add with the exact name."
+        )
+        return False, msg, ""
     
     @app_commands.command(name="board", description="View your draft board")
     async def board_cmd(self, interaction: discord.Interaction):
@@ -112,7 +199,13 @@ class BoardCommands(commands.Cog):
             await interaction.response.send_message("❌ Not mapped to a team", ephemeral=True)
             return
         
-        success, message = self.board_manager.add_to_board(team, player.strip())
+        # Resolve to an eligible, canonical prospect name (with fuzzy match)
+        ok, msg, canonical_name = self._resolve_eligible_player(player)
+        if not ok:
+            await interaction.response.send_message(f"❌ {msg}", ephemeral=True)
+            return
+
+        success, message = self.board_manager.add_to_board(team, canonical_name)
         
         if success:
             board = self.board_manager.get_board(team)
@@ -267,9 +360,14 @@ class BoardCommands(commands.Cog):
         failed = []
         
         for player_name in player_list:
-            success, message = self.board_manager.add_to_board(team, player_name)
+            ok, msg, canonical_name = self._resolve_eligible_player(player_name)
+            if not ok:
+                failed.append((player_name, msg))
+                continue
+
+            success, message = self.board_manager.add_to_board(team, canonical_name)
             if success:
-                added.append(player_name)
+                added.append(canonical_name)
             else:
                 failed.append((player_name, message))
         
