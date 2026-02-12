@@ -42,8 +42,9 @@ class PickConfirmationView(discord.ui.View):
             return
         
         try:
-            # Record pick (this advances the draft)
-            pick_record = self.draft_cog.draft_manager.make_pick(self.team, self.player['name'])
+            # Record pick (this advances the draft). Pass full player record
+            # so DraftManager can persist UPID/metadata into state and order.
+            pick_record = self.draft_cog.draft_manager.make_pick(self.team, self.player['name'], self.player)
             self.confirmed = True
             
             # Cancel timer
@@ -459,7 +460,7 @@ class DraftCommands(commands.Cog):
             player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
         
         # Record the pick (this advances draft)
-        pick_record = self.draft_manager.make_pick(team, autopicked_name)
+        pick_record = self.draft_manager.make_pick(team, autopicked_name, player_data)
         
         # Announce autopick
         pick_text = f"**⏰ Round {pick_record['round']}, Pick {pick_record['pick']} - AUTOPICK**\n"

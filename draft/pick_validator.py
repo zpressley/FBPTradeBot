@@ -83,12 +83,12 @@ class PickValidator:
                 "❌ Rounds 1–2 are FYPD-only. "
                 f"{player['name']} is not in the FYPD pool."
             ), player
-        
-        # 5. Enforce BC/DC slot availability
-        ok, reason = self._has_available_slot(team, round_num)
-        if not ok:
-            return False, f"❌ {reason}", player
-        
+
+        # Note: BC/DC slot availability is now enforced implicitly via the
+        # draft order itself. If a team has a pick in draft_order_*.json,
+        # they are allowed to exercise it. We no longer block picks based
+        # on derived slot counts here.
+
         # If we get here, pick is valid
         return True, f"✅ Valid pick: {player['name']}", player
     

@@ -5,6 +5,7 @@ Handles target lists, reordering, and autopick logic for each team
 
 import json
 import os
+import subprocess
 from typing import List, Optional, Dict
 
 
@@ -47,14 +48,23 @@ class BoardManager:
         return boards
     
     def save_boards(self, boards: Optional[Dict] = None) -> None:
-        """Persist boards to disk"""
+        """Persist boards to disk and best-effort commit to Git.
+
+        This mirrors the behavior used for draft results so that the
+        FBPTradeBot GitHub repo (data/manager_boards_*.json) remains the
+        single source of truth for personal boards.
+        """
         if boards is None:
             boards = self.boards
-        
+
         os.makedirs("data", exist_ok=True)
-        
+
         with open(self.boards_file, 'w') as f:
             json.dump(boards, f, indent=2)
+
+        # Best-effort commit/push so website + other consumers can pull
+        # manager_boards_*.json directly from Git.
+        self._commit_boards_file()
     
     def add_to_board(self, team: str, player_name: str) -> tuple[bool, str]:
         """
@@ -199,6 +209,56 @@ class BoardManager:
     def get_board(self, team: str) -> List[str]:
         """Get team's current board"""
         return self.boards.get(team, []).copy()
+
+    def _commit_boards_file(self) -> None:
+        """Best-effort helper to git commit and push the boards file.
+
+        Uses REPO_ROOT when available (Render), otherwise current working
+        directory. Failures are logged but never raised.
+        """
+        repo_root = os.getenv("REPO_ROOT", os.getcwd())
+        boards_rel = self.boards_file  # typically data/manager_boards_2026.json
+
+        try:
+            subprocess.run(
+                ["git", "add", boards_rel],
+                check=True,
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+
+            message = f"Update draft boards for season {self.season}"
+            subprocess.run(
+                ["git", "commit", "-m", message],
+                check=True,
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+
+            token = os.getenv("GITHUB_TOKEN")
+            if token:
+                repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
+                username = os.getenv("GITHUB_USER", "x-access-token")
+                remote_url = f"https://{username}:{token}@github.com/{repo}.git"
+                push_cmd = ["git", "push", remote_url, "HEAD:main"]
+            else:
+                push_cmd = ["git", "push"]
+
+            subprocess.run(
+                push_cmd,
+                check=True,
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+            print("✅ Draft boards git commit and push succeeded")
+
+        except subprocess.CalledProcessError as exc:
+            print(f"⚠️ Draft boards git commit/push failed with code {exc.returncode}")
+        except Exception as exc:
+            print(f"⚠️ Draft boards git commit/push error: {exc}")
     
     def get_board_size(self, team: str) -> int:
         """Get number of players on team's board"""

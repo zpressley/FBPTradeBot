@@ -5,6 +5,7 @@ Handles draft flow, pick tracking, and state persistence
 
 import json
 import os
+import subprocess
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
@@ -219,43 +220,56 @@ class DraftManager:
             self.state["team_slots"] = team_slots
             self.save_state()
 
-    def make_pick(self, team: str, player_name: str) -> Dict:
-        """
-        Record a pick and advance to next pick.
-        
+    def make_pick(self, team: str, player_name: str, player_data: Optional[Dict] = None) -> Dict:
+        """Record a pick and advance to next pick.
+
         Args:
             team: Team abbreviation (e.g. "WIZ")
             player_name: Full player name
-            
+            player_data: Optional full player record (from ProspectDatabase)
+
         Returns:
             Dict with pick details
-            
+
         Raises:
             ValueError: If not this team's turn or draft not active
         """
         current_pick = self.get_current_pick()
-        
+
         if current_pick is None:
             raise ValueError("Draft is complete, no more picks available")
-        
+
         if self.state["status"] not in ["active", "paused"]:
             raise ValueError(f"Cannot make pick, draft status: {self.state['status']}")
-        
+
         if current_pick["team"] != team:
             raise ValueError(
                 f"Not {team}'s turn. Current pick is {current_pick['team']}"
             )
-        
+
         # Record pick
-        pick_record = {
+        pick_record: Dict = {
             **current_pick,
             "player": player_name,
             "timestamp": datetime.now().isoformat(),
-            "pick_index": self.current_pick_index
+            "pick_index": self.current_pick_index,
         }
-        
+
+        # If we have a full player record, carry through UPID and basics so
+        # downstream consumers and draft_order_*.json can reference a stable ID.
+        if player_data:
+            upid = player_data.get("upid")
+            if upid:
+                pick_record["upid"] = str(upid)
+            position = player_data.get("position")
+            if position:
+                pick_record["position"] = position
+            mlb_team = player_data.get("team")
+            if mlb_team:
+                pick_record["mlb_team"] = mlb_team
+
         self.state["picks_made"].append(pick_record)
-        
+
         # Track BC/DC slot usage for prospect drafts
         if self.draft_type == "prospect":
             team_slots = self.state.setdefault("team_slots", {})
@@ -269,21 +283,28 @@ class DraftManager:
             else:
                 slot_info["dc_used"] = slot_info.get("dc_used", 0) + 1
 
+        # Mirror result into the draft_order_{season}.json file so that the
+        # static order also carries the final pick result and UPID.
+        try:
+            self._update_order_result(pick_record)
+        except Exception as exc:
+            print(f"⚠️ Failed to update draft order results: {exc}")
+
         # Advance to next pick
         self.current_pick_index += 1
         self.state["current_pick_index"] = self.current_pick_index
-        
+
         # Check if draft complete
         if self.current_pick_index >= len(self.draft_order):
             self.state["status"] = "completed"
             self.state["completed_at"] = datetime.now().isoformat()
-            print(f"🏁 Draft complete!")
-        
+            print("🏁 Draft complete!")
+
         # Save state
         self.save_state()
-        
+
         print(f"✅ Pick recorded: {team} - {player_name} (Pick {current_pick['pick']})")
-        
+
         return pick_record
     
     def undo_last_pick(self) -> Optional[Dict]:
@@ -302,16 +323,25 @@ class DraftManager:
         # Move back one position
         self.current_pick_index -= 1
         self.state["current_pick_index"] = self.current_pick_index
-        
+
         # If draft was complete, set back to active
         if self.state["status"] == "completed":
             self.state["status"] = "active"
             self.state["completed_at"] = None
-        
+
+        # Mirror undo into draft_order_{season}.json by clearing the
+        # corresponding result payload.
+        try:
+            idx = undone_pick.get("pick_index")
+            if isinstance(idx, int):
+                self._clear_order_result(idx)
+        except Exception as exc:
+            print(f"⚠️ Failed to clear draft order result on undo: {exc}")
+
         self.save_state()
-        
+
         print(f"↩️ Undone pick: {undone_pick['team']} - {undone_pick['player']}")
-        
+
         return undone_pick
     
     def start_draft(self) -> None:
@@ -388,6 +418,156 @@ class DraftManager:
         
         return False, None
     
+    def _update_order_result(self, pick_record: Dict) -> None:
+        """Persist the result of a pick into the draft order JSON.
+
+        Adds/updates a `result` field on the corresponding pick entry:
+          {
+            "player": str,
+            "timestamp": str,
+            "pick_index": int,
+            "upid": str | None
+          }
+        """
+        if not self.order_file:
+            return
+
+        try:
+            with open(self.order_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except FileNotFoundError:
+            return
+
+        # Support both bare-list and wrapped {picks:[...]} / {rounds:[...]} formats.
+        if isinstance(data, list):
+            picks = data
+            container = None
+        else:
+            picks = data.get("picks") or data.get("rounds") or []
+            container = data
+
+        idx = pick_record.get("pick_index")
+        if not isinstance(idx, int) or idx < 0 or idx >= len(picks):
+            return
+
+        result_payload = {
+            "player": pick_record.get("player"),
+            "timestamp": pick_record.get("timestamp"),
+            "pick_index": pick_record.get("pick_index"),
+            "upid": pick_record.get("upid"),
+        }
+
+        picks[idx]["result"] = result_payload
+
+        # Write back using the same shape we read.
+        if container is not None:
+            if "picks" in container:
+                container["picks"] = picks
+            elif "rounds" in container:
+                container["rounds"] = picks
+            out = container
+        else:
+            out = picks
+
+        with open(self.order_file, "w", encoding="utf-8") as f:
+            json.dump(out, f, indent=2)
+
+        # Best-effort git commit/push so downstream consumers (e.g., website)
+        # can read the updated order+results from the repo.
+        self._commit_draft_files(
+            [self.order_file],
+            f"Draft pick: {pick_record.get('team')} {pick_record.get('player')} (R{pick_record.get('round')} P{pick_record.get('pick')})",
+        )
+
+    def _clear_order_result(self, pick_index: int) -> None:
+        """Clear the `result` payload for a given pick index in the order file."""
+        if not self.order_file:
+            return
+
+        try:
+            with open(self.order_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except FileNotFoundError:
+            return
+
+        if isinstance(data, list):
+            picks = data
+            container = None
+        else:
+            picks = data.get("picks") or data.get("rounds") or []
+            container = data
+
+        if not (0 <= pick_index < len(picks)):
+            return
+
+        if "result" in picks[pick_index]:
+            picks[pick_index]["result"] = None
+        else:
+            picks[pick_index]["result"] = None
+
+        if container is not None:
+            if "picks" in container:
+                container["picks"] = picks
+            elif "rounds" in container:
+                container["rounds"] = picks
+            out = container
+        else:
+            out = picks
+
+        with open(self.order_file, "w", encoding="utf-8") as f:
+            json.dump(out, f, indent=2)
+
+        self._commit_draft_files([self.order_file], "Draft undo")
+
+    def _commit_draft_files(self, file_paths: List[str], message: str) -> None:
+        """Best-effort helper to git commit and push draft data files.
+
+        Uses REPO_ROOT when available (Render), otherwise current working
+        directory. Failures are logged but never raised.
+        """
+        repo_root = os.getenv("REPO_ROOT", os.getcwd())
+
+        try:
+            if file_paths:
+                subprocess.run(
+                    ["git", "add", *file_paths],
+                    check=True,
+                    cwd=repo_root,
+                    capture_output=True,
+                    text=True,
+                )
+
+            subprocess.run(
+                ["git", "commit", "-m", message],
+                check=True,
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+
+            token = os.getenv("GITHUB_TOKEN")
+            if token:
+                repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
+                username = os.getenv("GITHUB_USER", "x-access-token")
+                remote_url = f"https://{username}:{token}@github.com/{repo}.git"
+                push_cmd = ["git", "push", remote_url, "HEAD:main"]
+            else:
+                push_cmd = ["git", "push"]
+
+            subprocess.run(
+                push_cmd,
+                check=True,
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+            print("✅ Draft git commit and push succeeded")
+
+        except subprocess.CalledProcessError as exc:
+            print(f"⚠️ Draft git commit/push failed with code {exc.returncode}")
+        except Exception as exc:
+            print(f"⚠️ Draft git commit/push error: {exc}")
+
     def get_draft_progress(self) -> Dict:
         """
         Get overall draft progress statistics.

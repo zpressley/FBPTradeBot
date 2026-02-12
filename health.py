@@ -344,6 +344,7 @@ def build_draft_payload(draft_type: str) -> dict:
                 "position": rec.get("position", ""),
                 "mlb_team": rec.get("mlb_team", ""),
                 "picked_at": rec.get("timestamp"),
+                "upid": rec.get("upid", ""),
             }
         )
 
