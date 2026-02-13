@@ -30910,5 +30910,51 @@
     "years": "P",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-02-13T17:24:29.516673-UPID_6605-Merge-Admin_Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-02-13T17:24:29.516673",
+    "upid": "6605",
+    "player_name": "LuJames Groover",
+    "team": "AZ",
+    "owner": "Hammers",
+    "update_type": "Merge",
+    "event": "MERGED: LuJames Groover (UPID 4236) merged into this record",
+    "changes": {
+      "yahoo_id": {
+        "from": "62945"
+      },
+      "mlb_id": {
+        "from": 694410
+      },
+      "birth_date": {
+        "from": "2002-04-16"
+      },
+      "age": {
+        "from": 23
+      },
+      "height": {
+        "from": "6' 2\""
+      },
+      "weight": {
+        "from": 212
+      },
+      "bats": {
+        "from": "R"
+      },
+      "throws": {
+        "from": "R"
+      },
+      "mlb_primary_position": {
+        "from": "3B"
+      }
+    },
+    "merged_from": {
+      "upid": "4236",
+      "name": "LuJames Groover"
+    }
   }
 ]
