@@ -18,7 +18,12 @@
     "pick": 2,
     "team": "JEP",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Wandy Asigen",
+      "timestamp": "2026-02-13T19:14:01.986221",
+      "pick_index": 1,
+      "upid": "7999"
+    }
   },
   {
     "draft": "prospect",
