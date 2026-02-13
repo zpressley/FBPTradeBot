@@ -9,16 +9,47 @@ import subprocess
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
+from pad.pad_processor import (
+    _append_player_log_entry,
+    _load_json,
+    _save_json,
+    load_managers_config,
+)
+
+
+def _resolve_team_name(team_abbr: str) -> str:
+    """Resolve an FBP team abbreviation (WIZ) to franchise name (Whiz Kids)."""
+    try:
+        cfg = load_managers_config() or {}
+        teams = cfg.get("teams") or {}
+        meta = teams.get(team_abbr)
+        if isinstance(meta, dict):
+            name = (meta.get("name") or "").strip()
+            if name:
+                return name
+    except Exception:
+        pass
+    return team_abbr
+
 
 class DraftManager:
     """
     Manages draft state and flow for FBP drafts.
     Loads custom draft order, tracks picks, handles state persistence.
+
+    test_mode:
+      - Intended for draft-flow validation.
+      - Persists draft_state to GitHub, but does NOT mutate combined_players
+        or player_log, and does NOT write pick results into draft_order.
     """
-    
-    def __init__(self, draft_type: str = "prospect", season: int = 2026):
+
+    def __init__(self, draft_type: str = "prospect", season: int = 2026, test_mode: bool | None = None):
         self.draft_type = draft_type
         self.season = season
+
+        if test_mode is None:
+            test_mode = os.getenv("DRAFT_TEST_MODE", "false").lower() == "true"
+        self.test_mode = bool(test_mode)
         
         # File paths
         self.order_file = f"data/draft_order_{season}.json"
@@ -220,6 +251,237 @@ class DraftManager:
             self.state["team_slots"] = team_slots
             self.save_state()
 
+    def _apply_pick_to_rosters(self, pick_record: Dict, player_data: Optional[Dict]) -> List[str]:
+        """Apply pick side effects to combined_players + player_log.
+
+        Returns a list of file paths that were mutated.
+        """
+        mutated: List[str] = []
+
+        # Only prospect draft currently mutates combined_players roster ownership.
+        if self.draft_type != "prospect":
+            return mutated
+
+        combined_path = "data/combined_players.json"
+        player_log_path = "data/player_log.json"
+
+        combined_players = _load_json(combined_path) or []
+        if not isinstance(combined_players, list):
+            print(f"⚠️ combined_players is not a list: {combined_path}")
+            return mutated
+
+        upid = None
+        if player_data:
+            upid = str(player_data.get("upid") or "").strip() or None
+
+        # Best-effort locate record by UPID, fall back to name match.
+        player_rec = None
+        if upid:
+            player_rec = next(
+                (p for p in combined_players if str(p.get("upid") or "").strip() == upid),
+                None,
+            )
+        if player_rec is None:
+            target = (pick_record.get("player") or "").strip().lower()
+            if target:
+                player_rec = next(
+                    (p for p in combined_players if str(p.get("name") or "").strip().lower() == target),
+                    None,
+                )
+
+        if player_rec is None:
+            print(f"⚠️ Draft pick could not be applied to combined_players (missing record): {pick_record.get('player')}")
+            return mutated
+
+        franchise_name = _resolve_team_name(pick_record.get("team", ""))
+
+        # Draft contract type is derived by round.
+        round_num = int(pick_record.get("round") or 0)
+        if round_num <= 2:
+            contract_type = "Blue Chip Contract"
+        else:
+            contract_type = "Development Cont."
+
+        # Mutate combined_players ownership.
+        player_rec["manager"] = franchise_name
+        player_rec["contract_type"] = contract_type
+
+        _save_json(combined_path, combined_players)
+        mutated.append(combined_path)
+
+        # Append snapshot entry to player_log for audit + website timeline.
+        player_log = _load_json(player_log_path) or []
+        if not isinstance(player_log, list):
+            player_log = []
+
+        event = f"Draft pick: {pick_record.get('team')} selected {pick_record.get('player')} (R{pick_record.get('round')} P{pick_record.get('pick')})"
+        _append_player_log_entry(
+            player_log,
+            player_rec,
+            season=self.season,
+            source="draft",
+            update_type="draft_pick",
+            event=event,
+            admin=str(pick_record.get("team") or "draft"),
+        )
+        _save_json(player_log_path, player_log)
+        mutated.append(player_log_path)
+
+        return mutated
+
+    def _clear_pick_from_rosters(self, pick_record: Dict) -> List[str]:
+        """Best-effort rollback of roster side effects for an undone pick."""
+        mutated: List[str] = []
+        if self.draft_type != "prospect":
+            return mutated
+
+        combined_path = "data/combined_players.json"
+        player_log_path = "data/player_log.json"
+
+        combined_players = _load_json(combined_path) or []
+        if not isinstance(combined_players, list):
+            return mutated
+
+        upid = str(pick_record.get("upid") or "").strip()
+        player_rec = None
+        if upid:
+            player_rec = next(
+                (p for p in combined_players if str(p.get("upid") or "").strip() == upid),
+                None,
+            )
+        if player_rec is None:
+            target = (pick_record.get("player") or "").strip().lower()
+            if target:
+                player_rec = next(
+                    (p for p in combined_players if str(p.get("name") or "").strip().lower() == target),
+                    None,
+                )
+
+        if player_rec is not None:
+            # Revert to undrafted state (eligible prospects should have been unowned).
+            player_rec["manager"] = ""
+            player_rec["contract_type"] = ""
+            _save_json(combined_path, combined_players)
+            mutated.append(combined_path)
+
+        # Remove the most recent matching draft_pick log entry for this player.
+        player_log = _load_json(player_log_path) or []
+        if isinstance(player_log, list):
+            target_upid = upid
+            for i in range(len(player_log) - 1, -1, -1):
+                entry = player_log[i]
+                if entry.get("source") == "draft" and entry.get("update_type") == "draft_pick":
+                    if target_upid and str(entry.get("upid") or "").strip() == target_upid:
+                        player_log.pop(i)
+                        break
+                    if not target_upid and (entry.get("player_name") or "").strip().lower() == (pick_record.get("player") or "").strip().lower():
+                        player_log.pop(i)
+                        break
+            _save_json(player_log_path, player_log)
+            mutated.append(player_log_path)
+
+        return mutated
+
+    def reset_to_pick_one(self) -> List[str]:
+        """Reset the draft back to pick 1 without deleting files.
+
+        This always clears draft_state (picks + clock).
+
+        Live mode additionally clears:
+        - order-file `result` payloads
+        - roster side effects in combined_players + matching player_log draft entries
+
+        Test mode clears ONLY draft_state so you can re-run dry tests.
+
+        Returns a list of file paths that were mutated.
+        """
+        mutated: List[str] = []
+
+        # Ensure state exists.
+        state = self.state or {}
+        picks = list(state.get("picks_made") or [])
+
+        # Roll back roster effects for all picks (live mode only).
+        if (not self.test_mode) and self.draft_type == "prospect" and picks:
+            combined_path = "data/combined_players.json"
+            combined_players = _load_json(combined_path) or []
+            if isinstance(combined_players, list):
+                drafted_upids = {str(p.get("upid") or "").strip() for p in picks if str(p.get("upid") or "").strip()}
+                drafted_names = {str(p.get("player") or "").strip().lower() for p in picks if str(p.get("player") or "").strip()}
+
+                for rec in combined_players:
+                    upid = str(rec.get("upid") or "").strip()
+                    name = str(rec.get("name") or "").strip().lower()
+                    if (upid and upid in drafted_upids) or (name and name in drafted_names):
+                        rec["manager"] = ""
+                        rec["contract_type"] = ""
+
+                _save_json(combined_path, combined_players)
+                mutated.append(combined_path)
+
+            # Remove draft_pick log entries for this season.
+            player_log_path = "data/player_log.json"
+            player_log = _load_json(player_log_path) or []
+            if isinstance(player_log, list):
+                kept = [
+                    e
+                    for e in player_log
+                    if not (
+                        e.get("season") == self.season
+                        and e.get("source") == "draft"
+                        and e.get("update_type") == "draft_pick"
+                    )
+                ]
+                _save_json(player_log_path, kept)
+                mutated.append(player_log_path)
+
+        # Reset state fields.
+        state["status"] = "not_started"
+        state["current_pick_index"] = 0
+        state["picks_made"] = []
+        state["timer_started_at"] = None
+        state["paused_at"] = None
+        state["started_at"] = None
+        state["completed_at"] = None
+        state["team_slots"] = {}
+
+        self.current_pick_index = 0
+        self.state = state
+        self.save_state()
+        mutated.append(self.state_file)
+
+        # Clear order results (live mode only).
+        if not self.test_mode:
+            try:
+                with open(self.order_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except FileNotFoundError:
+                data = None
+
+            if data is not None:
+                if isinstance(data, list):
+                    picks_list = data
+                    container = None
+                else:
+                    picks_list = data.get("picks") or data.get("rounds") or []
+                    container = data
+
+                for p in picks_list:
+                    p["result"] = None
+
+                out = container if container is not None else picks_list
+                if container is not None:
+                    if "picks" in container:
+                        container["picks"] = picks_list
+                    elif "rounds" in container:
+                        container["rounds"] = picks_list
+
+                with open(self.order_file, "w", encoding="utf-8") as f:
+                    json.dump(out, f, indent=2)
+                mutated.append(self.order_file)
+
+        return mutated
+
     def make_pick(self, team: str, player_name: str, player_data: Optional[Dict] = None) -> Dict:
         """Record a pick and advance to next pick.
 
@@ -285,10 +547,12 @@ class DraftManager:
 
         # Mirror result into the draft_order_{season}.json file so that the
         # static order also carries the final pick result and UPID.
-        try:
-            self._update_order_result(pick_record)
-        except Exception as exc:
-            print(f"⚠️ Failed to update draft order results: {exc}")
+        # In test mode we avoid writing results into the order file.
+        if not self.test_mode:
+            try:
+                self._update_order_result(pick_record)
+            except Exception as exc:
+                print(f"⚠️ Failed to update draft order results: {exc}")
 
         # Advance to next pick
         self.current_pick_index += 1
@@ -302,6 +566,31 @@ class DraftManager:
 
         # Save state
         self.save_state()
+
+        # Apply roster side effects + log.
+        # In test mode, do not touch combined_players/player_log or draft_order results.
+        mutated_files = [self.state_file]
+        if not self.test_mode:
+            mutated_files.append(self.order_file)
+            try:
+                mutated_files += self._apply_pick_to_rosters(pick_record, player_data)
+            except Exception as exc:
+                print(f"⚠️ Failed to apply pick roster side effects: {exc}")
+
+        # Commit once per pick so GitHub becomes the persistence layer.
+        try:
+            msg = (
+                f"Draft pick: {pick_record.get('team')} {pick_record.get('player')} "
+                f"(R{pick_record.get('round')} P{pick_record.get('pick')})"
+            )
+            # De-dupe paths and only commit non-empty.
+            unique = []
+            for p in mutated_files:
+                if p and p not in unique:
+                    unique.append(p)
+            self._commit_draft_files(unique, msg)
+        except Exception as exc:
+            print(f"⚠️ Draft pick git commit/push failed: {exc}")
 
         print(f"✅ Pick recorded: {team} - {player_name} (Pick {current_pick['pick']})")
 
@@ -331,14 +620,33 @@ class DraftManager:
 
         # Mirror undo into draft_order_{season}.json by clearing the
         # corresponding result payload.
-        try:
-            idx = undone_pick.get("pick_index")
-            if isinstance(idx, int):
-                self._clear_order_result(idx)
-        except Exception as exc:
-            print(f"⚠️ Failed to clear draft order result on undo: {exc}")
+        if not self.test_mode:
+            try:
+                idx = undone_pick.get("pick_index")
+                if isinstance(idx, int):
+                    self._clear_order_result(idx)
+            except Exception as exc:
+                print(f"⚠️ Failed to clear draft order result on undo: {exc}")
 
         self.save_state()
+
+        # Roll back roster side effects and commit.
+        mutated_files = [self.state_file]
+        if not self.test_mode:
+            mutated_files.append(self.order_file)
+            try:
+                mutated_files += self._clear_pick_from_rosters(undone_pick)
+            except Exception as exc:
+                print(f"⚠️ Failed to roll back roster side effects for undo: {exc}")
+
+        try:
+            unique = []
+            for p in mutated_files:
+                if p and p not in unique:
+                    unique.append(p)
+            self._commit_draft_files(unique, "Draft undo")
+        except Exception as exc:
+            print(f"⚠️ Draft undo git commit/push failed: {exc}")
 
         print(f"↩️ Undone pick: {undone_pick['team']} - {undone_pick['player']}")
 
@@ -350,6 +658,9 @@ class DraftManager:
         Designed to be *idempotent* so that calling it again after a bot
         restart just re-attaches to an already-active draft instead of
         throwing an error.
+
+        We also commit the updated state file so GitHub remains the
+        persistence layer across Render deploys/restarts.
         """
         status = self.state.get("status")
 
@@ -373,6 +684,11 @@ class DraftManager:
             self.state["started_at"] = datetime.now().isoformat()
         self.save_state()
 
+        try:
+            self._commit_draft_files([self.state_file], f"Draft started: {self.draft_type} {self.season}")
+        except Exception as exc:
+            print(f"⚠️ Draft start git commit/push failed: {exc}")
+
         print("🏟️ Draft started!")
     
     def pause_draft(self) -> None:
@@ -383,6 +699,11 @@ class DraftManager:
         self.state["status"] = "paused"
         self.state["paused_at"] = datetime.now().isoformat()
         self.save_state()
+
+        try:
+            self._commit_draft_files([self.state_file], f"Draft paused: {self.draft_type} {self.season}")
+        except Exception as exc:
+            print(f"⚠️ Draft pause git commit/push failed: {exc}")
         
         print(f"⏸️ Draft paused")
     
@@ -394,6 +715,11 @@ class DraftManager:
         self.state["status"] = "active"
         self.state["paused_at"] = None
         self.save_state()
+
+        try:
+            self._commit_draft_files([self.state_file], f"Draft resumed: {self.draft_type} {self.season}")
+        except Exception as exc:
+            print(f"⚠️ Draft resume git commit/push failed: {exc}")
         
         print(f"▶️ Draft resumed")
     
@@ -428,6 +754,9 @@ class DraftManager:
             "pick_index": int,
             "upid": str | None
           }
+
+        Note: We intentionally do *not* git-commit here; we commit once per pick
+        from make_pick() so that state + order + roster files stay in sync.
         """
         if not self.order_file:
             return
@@ -472,12 +801,6 @@ class DraftManager:
         with open(self.order_file, "w", encoding="utf-8") as f:
             json.dump(out, f, indent=2)
 
-        # Best-effort git commit/push so downstream consumers (e.g., website)
-        # can read the updated order+results from the repo.
-        self._commit_draft_files(
-            [self.order_file],
-            f"Draft pick: {pick_record.get('team')} {pick_record.get('player')} (R{pick_record.get('round')} P{pick_record.get('pick')})",
-        )
 
     def _clear_order_result(self, pick_index: int) -> None:
         """Clear the `result` payload for a given pick index in the order file."""
@@ -517,7 +840,6 @@ class DraftManager:
         with open(self.order_file, "w", encoding="utf-8") as f:
             json.dump(out, f, indent=2)
 
-        self._commit_draft_files([self.order_file], "Draft undo")
 
     def _commit_draft_files(self, file_paths: List[str], message: str) -> None:
         """Best-effort helper to git commit and push draft data files.

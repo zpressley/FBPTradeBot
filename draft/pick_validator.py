@@ -11,7 +11,7 @@ New prospect-draft rules (2026):
 Protected/unprotected rounds and UC/FC-based rules are removed.
 """
 
-from typing import Dict, Tuple, Optional
+from typing import Dict, Tuple, Optional, List
 from difflib import get_close_matches
 
 
@@ -61,11 +61,21 @@ class PickValidator:
         # 1. Find player in database
         player = self._find_player(player_input)
         if player is None:
-            # Try fuzzy match
-            suggestion = self._suggest_player(player_input)
-            if suggestion:
-                return False, f"Player not found. Did you mean: {suggestion}?", None
-            return False, f"Player '{player_input}' not found in database", None
+            # Try fuzzy match (up to 4 suggestions)
+            suggestions = self._suggest_players(player_input)
+            if suggestions:
+                formatted = "\n".join(f"  {i+1}. {name}" for i, name in enumerate(suggestions))
+                msg = (
+                    "❌ Player not found.\n"
+                    "Did you mean:\n"
+                    f"{formatted}\n\n"
+                    "If that is who you meant, just reply with the right name."
+                )
+                return False, msg, None
+            return False, (
+                f"❌ Player '{player_input}' not found in database. "
+                "Reply with the full player name as it appears on the board."
+            ), None
         
         # 2. Check if already drafted
         is_drafted, drafted_by = self.draft.is_player_drafted(player["name"])
@@ -109,16 +119,34 @@ class PickValidator:
         
         return None
     
-    def _suggest_player(self, player_input: str) -> Optional[str]:
-        """
-        Suggest closest match using fuzzy matching.
-        
-        Returns:
-            Suggested player name or None
+    def _suggest_players(self, player_input: str, limit: int = 4) -> List[str]:
+        """Suggest close matches using fuzzy matching.
+
+        We prefer higher-confidence matches first, then expand to "slightly close"
+        matches if needed, up to `limit` total.
         """
         all_names = list(self.db.prospects.keys())
-        matches = get_close_matches(player_input, all_names, n=1, cutoff=0.7)
-        
+
+        # High-confidence matches
+        close = get_close_matches(player_input, all_names, n=limit, cutoff=0.80)
+        if len(close) >= limit:
+            return close[:limit]
+
+        # Slightly looser matches to fill remaining slots.
+        loose = get_close_matches(player_input, all_names, n=limit, cutoff=0.65)
+
+        # Preserve order / uniqueness.
+        out: List[str] = []
+        for name in close + loose:
+            if name not in out:
+                out.append(name)
+            if len(out) >= limit:
+                break
+        return out
+
+    def _suggest_player(self, player_input: str) -> Optional[str]:
+        """Back-compat helper: return the top suggestion (if any)."""
+        matches = self._suggest_players(player_input, limit=1)
         return matches[0] if matches else None
     
     def _is_prospect_eligible(self, player: Dict) -> Tuple[bool, str]:
@@ -240,12 +268,16 @@ class PickValidator:
             }
         
         if player is None:
-            suggestion = self._suggest_player(player_input)
+            suggestions = self._suggest_players(player_input)
+            suggestion = suggestions[0] if suggestions else None
             return {
                 "valid": False,
-                "message": f"Player not found",
+                "message": "Player not found",
+                # Back-compat: keep the singular suggestion field.
                 "suggestion": suggestion,
-                "player": None
+                # New: expose multiple candidates for richer UIs.
+                "suggestions": suggestions,
+                "player": None,
             }
         
         # Full validation

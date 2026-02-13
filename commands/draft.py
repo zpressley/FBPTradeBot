@@ -478,6 +478,15 @@ class DraftCommands(commands.Cog):
         # Persist timer start to state so website can sync countdown
         self.draft_manager.state["timer_started_at"] = self.timer_start_time.isoformat()
         self.draft_manager.save_state()
+
+        # Persist to GitHub so restarts don't lose the clock.
+        try:
+            self.draft_manager._commit_draft_files(
+                [self.draft_manager.state_file],
+                f"Draft clock started: {self.draft_manager.draft_type} {getattr(self.draft_manager, 'season', '')}",
+            )
+        except Exception:
+            pass
         
         self.pick_timer_task = asyncio.create_task(self.pick_timer_countdown(channel))
     
@@ -919,6 +928,7 @@ class DraftCommands(commands.Cog):
         app_commands.Choice(name="status", value="status"),
         app_commands.Choice(name="undo", value="undo"),
         app_commands.Choice(name="order", value="order"),
+        app_commands.Choice(name="reset", value="reset"),
     ])
     @app_commands.choices(draft_type=[
         app_commands.Choice(name="Prospect Draft", value="prospect"),
@@ -926,7 +936,7 @@ class DraftCommands(commands.Cog):
     ])
     async def draft_cmd(self, interaction: discord.Interaction, action: app_commands.Choice[str], draft_type: app_commands.Choice[str] = None):
         action_value = action.value
-        admin_actions = ["start", "pause", "continue", "undo"]
+        admin_actions = ["start", "pause", "continue", "undo", "reset"]
         
         if action_value in admin_actions and not self._is_admin(interaction):
             await interaction.response.send_message("❌ Admin only", ephemeral=True)
@@ -945,6 +955,8 @@ class DraftCommands(commands.Cog):
                 await self._handle_undo(interaction)
             elif action_value == "order":
                 await self._handle_order(interaction)
+            elif action_value == "reset":
+                await self._handle_reset(interaction, draft_type)
         except Exception as e:
             # Ensure we never silently time out the interaction. Log the
             # full traceback to stdout (Render logs) and send a concise
@@ -961,16 +973,41 @@ class DraftCommands(commands.Cog):
         if draft_type is None:
             await interaction.response.send_message("❌ Specify draft type", ephemeral=True)
             return
-        
+
         if self.draft_manager and self.draft_manager.state["status"] == "active":
             await interaction.response.send_message("❌ Draft already active", ephemeral=True)
             return
-        
-        await interaction.response.defer()
-        
+
+        # Interactions can expire if the bot is under load and does not
+        # acknowledge within Discord's window. In that case, fall back to
+        # sending messages directly in the channel.
+        use_followup = True
+        try:
+            if not interaction.response.is_done():
+                await interaction.response.defer()
+        except discord.errors.NotFound:
+            use_followup = False
+        except Exception:
+            # Any other unexpected defer failure: try to continue and
+            # communicate via channel.
+            use_followup = False
+
+        async def _send(msg: str | None = None, *, embed: discord.Embed | None = None, ephemeral: bool = False):
+            if use_followup:
+                try:
+                    await interaction.followup.send(content=msg, embed=embed, ephemeral=ephemeral)
+                    return
+                except Exception:
+                    pass
+            # Channel fallback (ephemeral not supported here)
+            try:
+                await interaction.channel.send(content=msg, embed=embed)
+            except Exception:
+                pass
+
         try:
             # Use 2026 season for both keeper and prospect drafts
-            self.draft_manager = DraftManager(draft_type=draft_type.value, season=2026)
+            self.draft_manager = DraftManager(draft_type=draft_type.value, season=2026, test_mode=self.TEST_MODE)
             
             # Initialize BoardManager for autopick
             from draft.board_manager import BoardManager
@@ -1017,16 +1054,16 @@ class DraftCommands(commands.Cog):
                     inline=True
                 )
             
-            await interaction.followup.send(embed=embed)
+            await _send(embed=embed)
             
             await self.create_draft_board_thread(interaction.channel)
             await self.start_pick_timer(interaction.channel)
             await self.post_on_clock_status(interaction.channel)
             
         except FileNotFoundError as e:
-            await interaction.followup.send(f"❌ {str(e)}", ephemeral=True)
+            await _send(f"❌ {str(e)}", ephemeral=True)
         except Exception as e:
-            await interaction.followup.send(f"❌ Error: {str(e)}", ephemeral=True)
+            await _send(f"❌ Error: {str(e)}", ephemeral=True)
     
     async def _handle_pause(self, interaction):
         if not self.draft_manager or self.draft_manager.state["status"] != "active":
@@ -1042,6 +1079,14 @@ class DraftCommands(commands.Cog):
         # Clear timer so website shows paused state
         self.draft_manager.state["timer_started_at"] = None
         self.draft_manager.save_state()
+
+        try:
+            self.draft_manager._commit_draft_files(
+                [self.draft_manager.state_file],
+                f"Draft paused (clock cleared): {self.draft_manager.draft_type} {getattr(self.draft_manager, 'season', '')}",
+            )
+        except Exception:
+            pass
         
         embed = discord.Embed(title="⏸️ Draft Paused", color=discord.Color.orange())
         
@@ -1135,7 +1180,76 @@ class DraftCommands(commands.Cog):
         embed.set_footer(text=f"Total: {progress['total_picks']} picks")
         
         await interaction.response.send_message(embed=embed, ephemeral=True)
-    
+
+    async def _handle_reset(self, interaction: discord.Interaction, draft_type_choice: app_commands.Choice[str] | None):
+        """Admin-only: reset the active draft back to pick 1.
+
+        This always clears:
+        - draft_state (picks + clock)
+
+        Live mode additionally clears:
+        - draft_order results
+        - combined_players ownership changes from draft picks
+        - player_log draft_pick entries for the season
+        """
+        # Determine which draft type we're resetting.
+        draft_type = None
+        if draft_type_choice is not None:
+            draft_type = draft_type_choice.value
+        elif self.draft_manager is not None:
+            draft_type = self.draft_manager.draft_type
+
+        if not draft_type:
+            await interaction.response.send_message("❌ Specify draft type", ephemeral=True)
+            return
+
+        # Cancel any timers/tasks and clear runtime references.
+        if self.pick_timer_task:
+            self.pick_timer_task.cancel()
+            self.pick_timer_task = None
+
+        self.timer_start_time = None
+        self.warning_sent = False
+        self.pending_confirmations = {}
+        self.status_message = None
+        self.draft_board_thread = None
+        self.draft_board_messages = {}
+
+        await interaction.response.defer(ephemeral=True)
+        try:
+            mgr = DraftManager(draft_type=draft_type, season=2026, test_mode=self.TEST_MODE)
+            mutated = mgr.reset_to_pick_one()
+
+            # Commit reset artifacts so GitHub stays the persistence layer.
+            try:
+                # De-dupe
+                unique = []
+                for p in mutated:
+                    if p and p not in unique:
+                        unique.append(p)
+                mgr._commit_draft_files(unique, f"Draft reset: {draft_type} 2026")
+            except Exception as exc:
+                print(f"⚠️ Draft reset git commit/push failed: {exc}")
+
+            # Reattach cog state to the reset manager.
+            self.draft_manager = mgr
+
+            # Rebuild validator/db for immediate pick validation.
+            from draft.prospect_database import ProspectDatabase
+            from draft.board_manager import BoardManager
+
+            self.board_manager = BoardManager(season=2026)
+            self.prospect_db = ProspectDatabase(season=2026, draft_type=draft_type)
+            self.pick_validator = PickValidator(self.prospect_db, self.draft_manager)
+
+            await interaction.followup.send(
+                f"✅ Draft reset to Pick 1. Cleared {len(mutated)} data artifact(s).",
+                ephemeral=True,
+            )
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            await interaction.followup.send(f"❌ Draft reset failed: {e}", ephemeral=True)
 
 
 async def setup(bot):
