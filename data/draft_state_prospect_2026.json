@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 13,
+  "current_pick_index": 14,
   "picks_made": [
     {
       "draft": "prospect",
@@ -192,6 +192,20 @@
       "upid": "7941",
       "position": "SP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "prospect",
+      "round": 2,
+      "pick": 4,
+      "team": "CFL",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Seth Hernandez",
+      "timestamp": "2026-02-13T22:09:08.461554",
+      "pick_index": 13,
+      "upid": "7942",
+      "position": "SP",
+      "mlb_team": "PIT"
     }
   ],
   "timer_started_at": "2026-02-13T22:05:07.323483",
@@ -226,7 +240,7 @@
     "CFL": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 1,
+      "bc_used": 2,
       "dc_used": 0
     },
     "DMN": {
@@ -272,5 +286,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T22:05:07.323548"
+  "last_updated": "2026-02-13T22:09:08.461617"
 }
