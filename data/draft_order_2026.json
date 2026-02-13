@@ -5,7 +5,12 @@
     "pick": 1,
     "team": "WAR",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Luis Hern\u00e1ndez",
+      "timestamp": "2026-02-13T19:00:02.821771",
+      "pick_index": 0,
+      "upid": "8339"
+    }
   },
   {
     "draft": "prospect",
