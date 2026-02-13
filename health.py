@@ -355,6 +355,22 @@ def build_draft_payload(draft_type: str) -> dict:
             }
         )
 
+    # Clock duration can vary per pick (forklift mode). Persisted by the bot as
+    # state.timer_duration_seconds.
+    pick_clock_seconds = state.get("timer_duration_seconds") or 240
+
+    # Forklift teams are stored separately so admins can toggle them without
+    # mutating draft_state.
+    forklift_teams = []
+    try:
+        forklift_path = f"data/forklift_mode_{draft_type}_{season}.json"
+        if os.path.exists(forklift_path):
+            with open(forklift_path, "r", encoding="utf-8") as f:
+                forklift_state = json.load(f) or {}
+            forklift_teams = list((forklift_state.get("forklift_teams") or []))
+    except Exception:
+        forklift_teams = []
+
     return {
         "draft_id": f"fbp_{draft_type}_draft_{season}",
         "draft_type": draft_type,
@@ -367,8 +383,9 @@ def build_draft_payload(draft_type: str) -> dict:
         "current_pick": current_pick["pick"] if current_pick else None,
         "current_team": current_pick["team"] if current_pick else None,
         "total_rounds": total_rounds,
-        "pick_clock_seconds": 240,  # keep in sync with Discord timer (4 minutes)
+        "pick_clock_seconds": int(pick_clock_seconds),
         "clock_started_at": state.get("timer_started_at"),
+        "forklift_teams": forklift_teams,
         "draft_order": draft_order_teams,
         "picks": picks,
     }

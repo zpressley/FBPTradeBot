@@ -19,6 +19,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from draft.draft_manager import DraftManager
 from draft.pick_validator import PickValidator
+from draft.forklift_manager import ForkliftManager
 
 # In TEST_MODE, these user IDs can submit picks for whatever team is on the clock.
 # (Useful for validating website/Discord pick flows without having to login as every manager.)
@@ -200,9 +201,10 @@ class DraftCommands(commands.Cog):
         self.bot = bot
         self.DRAFT_CHANNEL_ID = None
         self.ADMIN_ROLE_NAMES = ["Admin", "Commissioner"]
-        # 4-minute pick clock (240s) with 1-minute warning.
+        # Default pick clock (seconds). Forklift mode may override per-team.
         self.PICK_TIMER_DURATION = 240
         self.WARNING_TIME = 60
+        self.current_timer_duration = self.PICK_TIMER_DURATION
         
         self.TEST_MODE = True
         
@@ -210,6 +212,7 @@ class DraftCommands(commands.Cog):
         self.pick_validator = None
         self.board_manager = None
         self.prospect_db = None
+        self.forklift_manager: ForkliftManager | None = None
         self.pending_confirmations = {}
         self.status_message = None
         self.draft_board_thread = None
@@ -235,6 +238,36 @@ class DraftCommands(commands.Cog):
     def _get_user_for_team(self, team: str) -> int:
         from commands.utils import MANAGER_DISCORD_IDS
         return MANAGER_DISCORD_IDS.get(team)
+
+    def _ensure_forklift_manager(self, *, season: int = 2026, draft_type: str = "prospect") -> None:
+        """Ensure self.forklift_manager is initialized for current season/type."""
+        if self.forklift_manager is not None:
+            return
+
+        # Prefer draft_manager's configuration if available.
+        if self.draft_manager is not None:
+            season = getattr(self.draft_manager, "season", season)
+            draft_type = getattr(self.draft_manager, "draft_type", draft_type)
+
+        self.forklift_manager = ForkliftManager(season=season, draft_type=draft_type)
+
+    def _is_forklift_team(self, team: str) -> bool:
+        if not team:
+            return False
+
+        # Forklift mode is only intended for the prospect draft (board-driven).
+        if self.draft_manager is not None and getattr(self.draft_manager, "draft_type", None) != "prospect":
+            return False
+
+        if self.forklift_manager is None:
+            return False
+        return self.forklift_manager.is_forklift_enabled(team)
+
+    def _get_pick_timer_duration(self, team: str) -> int:
+        """Return per-team clock duration in seconds."""
+        if self._is_forklift_team(team):
+            return self.forklift_manager.get_timer_duration(team)  # type: ignore[union-attr]
+        return self.PICK_TIMER_DURATION
     
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -468,57 +501,88 @@ class DraftCommands(commands.Cog):
             await channel.send("🏁 **DRAFT COMPLETE!**")
     
     async def start_pick_timer(self, channel):
-        """Start pick timer for current pick (duration = PICK_TIMER_DURATION)."""
-        if self.pick_timer_task:
+        """Start pick timer for the current pick.
+
+        Duration is dynamic:
+        - normal teams: PICK_TIMER_DURATION (default 240s)
+        - forklift teams: 10s
+
+        We persist both the clock start time and the duration so the website can
+        compute the countdown accurately.
+        """
+        # Avoid cancelling the currently-running timer task if this method is
+        # called from inside the timer itself (e.g. forklift board empty → restart
+        # clock with normal duration).
+        current_task = asyncio.current_task()
+        if self.pick_timer_task and self.pick_timer_task != current_task:
             self.pick_timer_task.cancel()
-        
+
+        current_pick = self.draft_manager.get_current_pick() if self.draft_manager else None
+        if not current_pick:
+            return
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type if self.draft_manager else "prospect")
+
+        team = current_pick["team"]
+        duration = self._get_pick_timer_duration(team)
+        self.current_timer_duration = duration
+
         self.timer_start_time = datetime.now()
         self.warning_sent = False
-        
+
         # Persist timer start to state so website can sync countdown
         self.draft_manager.state["timer_started_at"] = self.timer_start_time.isoformat()
+        self.draft_manager.state["timer_duration_seconds"] = duration
         self.draft_manager.save_state()
 
         # Persist to GitHub so restarts don't lose the clock.
         try:
-            self.draft_manager._commit_draft_files(
+            self.draft_manager._commit_draft_files_async(
                 [self.draft_manager.state_file],
                 f"Draft clock started: {self.draft_manager.draft_type} {getattr(self.draft_manager, 'season', '')}",
             )
         except Exception:
             pass
-        
-        self.pick_timer_task = asyncio.create_task(self.pick_timer_countdown(channel))
+
+        self.pick_timer_task = asyncio.create_task(self.pick_timer_countdown(channel, duration))
     
-    async def pick_timer_countdown(self, channel):
-        """Timer countdown - warns at 2min, autopicks at 0"""
+    async def pick_timer_countdown(self, channel, duration_seconds: int):
+        """Timer countdown.
+
+        - For normal teams: warns near end of clock (WARNING_TIME remaining)
+        - For forklift teams (10s): we skip the warning to avoid noise
+        """
         try:
             elapsed = 0
-            while elapsed < self.PICK_TIMER_DURATION:
+            refresh_interval = 1 if duration_seconds <= 15 else 30
+
+            while elapsed < duration_seconds:
                 if self.draft_manager.state["status"] == "paused":
                     await asyncio.sleep(1)
                     continue
-                
+
                 await asyncio.sleep(1)
                 elapsed = (datetime.now() - self.timer_start_time).total_seconds()
-                
-                if elapsed >= (self.PICK_TIMER_DURATION - self.WARNING_TIME) and not self.warning_sent:
+
+                if (
+                    duration_seconds > self.WARNING_TIME
+                    and elapsed >= (duration_seconds - self.WARNING_TIME)
+                    and not self.warning_sent
+                ):
                     await self.send_time_warning(channel)
                     self.warning_sent = True
 
-                # Every 30s, refresh the on-the-clock status embed so the
-                # coarse time bucket (4/3/2/1 min, 30s, Autodraft) stays
+                # Refresh status embed periodically so the time bucket stays
                 # reasonably up to date.
-                if int(elapsed) % 30 == 0 and self.status_message:
+                if int(elapsed) % refresh_interval == 0 and self.status_message:
                     try:
                         embed = self.build_status_embed()
                         await self.status_message.edit(embed=embed)
                     except Exception:
-                        # If the message was deleted or edit fails, stop trying.
                         self.status_message = None
-            
+
             await self.execute_autopick(channel)
-            
+
         except asyncio.CancelledError:
             pass
     
@@ -559,119 +623,162 @@ class DraftCommands(commands.Cog):
     async def execute_autopick(self, channel):
         """Execute autopick when timer expires.
 
-        Rules:
-        - Always prefer a valid player from the manager's board.
+        Normal autopick rules:
+        - Prefer a valid player from the manager's board.
         - In rounds 1–2 (FYPD rounds), fallback must be the top *FYPD* player
           from the universal pool.
         - In later rounds, fallback is the top eligible prospect overall.
         - All autopicks MUST pass PickValidator (same rules as manual picks).
+
+        Forklift mode rules:
+        - 10-second clock
+        - Board-only autopick. If the board is empty/depleted/invalid, we
+          auto-disable forklift mode and restart the clock in normal mode.
         """
         current_pick = self.draft_manager.get_current_pick()
         if not current_pick:
             return
-        
-        team = current_pick['team']
-        round_num = current_pick['round']
-        
+
+        team = current_pick["team"]
+        round_num = current_pick["round"]
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
+        forklift_enabled = self._is_forklift_team(team)
+
         # Helper to test whether a candidate is valid under PickValidator.
         def _is_valid_autopick(name: str):
             if not self.pick_validator:
-                # Shouldn't happen in prospect draft, but be defensive.
                 return True, None
             valid, _msg, player = self.pick_validator.validate_pick(team, name)
             return valid, player
-        
+
         autopicked_name = None
         player_data = None
         source = "universal board"
-        
-        # 1) Try manager's personal board, in order.
-        if self.board_manager:
-            board = self.board_manager.get_board(team)
-            for candidate in board:
+
+        # Forklift mode: board-only.
+        if forklift_enabled:
+            board = self.board_manager.get_board(team) if self.board_manager else []
+
+            for candidate in board or []:
                 valid, player = _is_valid_autopick(candidate)
                 if valid:
                     autopicked_name = player["name"] if player else candidate
                     player_data = player
-                    source = f"{team}'s board"
+                    source = f"{team}'s board (forklift)"
                     break
-        
-        # 2) Fall back to universal pool from ProspectDatabase.
-        if not autopicked_name and self.prospect_db:
-            candidates = list(self.prospect_db.players.values())
-            
-            # In FYPD rounds, restrict to FYPD pool.
-            if self.pick_validator and round_num in self.pick_validator.FYPD_ROUNDS:
-                candidates = [p for p in candidates if p.get("fypd")]
-                # Round 1 uses dedicated FYPD_rank; later rounds use global rank.
-                if round_num == min(self.pick_validator.FYPD_ROUNDS):
-                    source_label = "FYPD rankings (top eligible)"
-                    rank_field = "fypd_rank"
+
+            if not autopicked_name:
+                # Nothing valid to pick from board. Disable forklift and restart clock.
+                try:
+                    ok, _msg = self.forklift_manager.disable_forklift(team, disabled_by="autopick")  # type: ignore[union-attr]
+                    if ok and self.draft_manager:
+                        try:
+                            self.draft_manager._commit_draft_files_async(
+                                [self.forklift_manager.state_file],
+                                f"Forklift disabled: {team} ({self.draft_manager.draft_type} {self.draft_manager.season})",
+                            )
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+
+                await channel.send(
+                    f"🚜 Forklift Mode could not auto-pick for **{team}** (empty/depleted/invalid board).\n"
+                    f"Forklift Mode disabled — please pick manually. Restarting clock with 4 minutes."
+                )
+
+                # Restart clock for the SAME pick, now in normal mode.
+                self.current_timer_duration = self.PICK_TIMER_DURATION
+                await self.start_pick_timer(channel)
+                await self.post_on_clock_status(channel)
+                return
+
+        else:
+            # 1) Try manager's personal board, in order.
+            if self.board_manager:
+                board = self.board_manager.get_board(team)
+                for candidate in board:
+                    valid, player = _is_valid_autopick(candidate)
+                    if valid:
+                        autopicked_name = player["name"] if player else candidate
+                        player_data = player
+                        source = f"{team}'s board"
+                        break
+
+            # 2) Fall back to universal pool from ProspectDatabase.
+            if not autopicked_name and self.prospect_db:
+                candidates = list(self.prospect_db.players.values())
+
+                # In FYPD rounds, restrict to FYPD pool.
+                if self.pick_validator and round_num in self.pick_validator.FYPD_ROUNDS:
+                    candidates = [p for p in candidates if p.get("fypd")]
+                    # Round 1 uses dedicated FYPD_rank; later rounds use global rank.
+                    if round_num == min(self.pick_validator.FYPD_ROUNDS):
+                        source_label = "FYPD rankings (top eligible)"
+                        rank_field = "fypd_rank"
+                    else:
+                        source_label = "universal board (top eligible)"
+                        rank_field = "rank"
                 else:
                     source_label = "universal board (top eligible)"
                     rank_field = "rank"
-            else:
-                source_label = "universal board (top eligible)"
-                rank_field = "rank"
-            
-            # Sort by the chosen rank field; unknown ranks go last.
-            def _rank_key(p):
-                r = p.get(rank_field)
-                return r if isinstance(r, int) else 9999
-            candidates.sort(key=_rank_key)
-            
-            for p in candidates:
-                name = p["name"]
-                valid, player = _is_valid_autopick(name)
-                if valid:
-                    autopicked_name = player["name"] if player else name
-                    player_data = player or p
-                    source = source_label
-                    break
-        
-        # 3) Last resort placeholder if absolutely nothing is valid.
-        if not autopicked_name:
-            autopicked_name = "[AUTOPICK - No eligible players available]"
-            player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
-            source = "ERROR: no eligible players"
-        
+
+                def _rank_key(p):
+                    r = p.get(rank_field)
+                    return r if isinstance(r, int) else 9999
+
+                candidates.sort(key=_rank_key)
+
+                for p in candidates:
+                    name = p["name"]
+                    valid, player = _is_valid_autopick(name)
+                    if valid:
+                        autopicked_name = player["name"] if player else name
+                        player_data = player or p
+                        source = source_label
+                        break
+
+            # 3) Last resort placeholder if absolutely nothing is valid.
+            if not autopicked_name:
+                autopicked_name = "[AUTOPICK - No eligible players available]"
+                player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
+                source = "ERROR: no eligible players"
+
         # Ensure we have a player_data dict for announcement.
         if not player_data:
             player_data = {"name": autopicked_name, "position": "?", "team": "?", "rank": "?"}
-        
-        # Record the pick (this advances draft)
+
         pick_record = self.draft_manager.make_pick(team, autopicked_name, player_data)
-        
-        # Announce autopick
-        pick_text = f"**⏰ Round {pick_record['round']}, Pick {pick_record['pick']} - AUTOPICK**\n"
+
+        prefix = "🚜 " if forklift_enabled else ""
+        pick_text = f"**{prefix}⏰ Round {pick_record['round']}, Pick {pick_record['pick']} - AUTOPICK**\n"
         pick_text += f"**{team}** time expired\n"
         pick_text += f"Autopicked: **{autopicked_name}**\n"
-        
-        # Add player info if available
+
         info_parts = []
-        if player_data.get('position') and player_data['position'] != '?':
-            info_parts.append(player_data['position'])
-        if player_data.get('team') and player_data['team'] != '?':
+        if player_data.get("position") and player_data["position"] != "?":
+            info_parts.append(player_data["position"])
+        if player_data.get("team") and player_data["team"] != "?":
             info_parts.append(f"[{player_data['team']}]")
-        
+
         if info_parts:
             pick_text += " • ".join(info_parts) + "\n"
-        
+
         pick_text += f"Source: {source}\n"
         pick_text += "─" * 35
-        
+
         await channel.send(pick_text)
-        
+
         current_pick = self.draft_manager.get_current_pick()
         if current_pick:
             if not self.TEST_MODE:
-                await self.notify_manager_on_clock(current_pick['team'])
+                await self.notify_manager_on_clock(current_pick["team"])
             if self.draft_board_thread:
                 await self.update_draft_board()
             await self.start_pick_timer(channel)
             await self.post_on_clock_status(channel)
         else:
-            # No more picks; finalize board if present and announce completion.
             if self.draft_board_thread:
                 await self.update_draft_board()
             await channel.send("🏁 **DRAFT COMPLETE!**")
@@ -726,30 +833,39 @@ class DraftCommands(commands.Cog):
         
         if self.timer_start_time and progress['status'] == 'active':
             elapsed = (datetime.now() - self.timer_start_time).total_seconds()
-            remaining = max(0, self.PICK_TIMER_DURATION - elapsed)
+            duration = self.current_timer_duration or self.PICK_TIMER_DURATION
+            remaining = max(0, duration - elapsed)
 
-            # Show coarse buckets instead of exact mm:ss, since the
-            # status embed only updates every ~30 seconds.
+            # Show coarse buckets instead of exact mm:ss. For forklift (10s)
+            # we show second-level granularity.
             if remaining <= 0:
                 time_label = "Autodraft"
-            elif remaining <= 30:
-                time_label = "30 Seconds Left"
-            elif remaining <= 60:
-                time_label = "1 Minute Left"
-            elif remaining <= 120:
-                time_label = "2 Minutes Left"
-            elif remaining <= 180:
-                time_label = "3 Minutes Left"
+            elif duration <= 15:
+                time_label = f"{int(remaining)} Seconds Left"
             else:
-                time_label = "4 Minutes Left"
+                if remaining <= 30:
+                    time_label = "30 Seconds Left"
+                elif remaining <= 60:
+                    time_label = "1 Minute Left"
+                elif remaining <= 120:
+                    time_label = "2 Minutes Left"
+                elif remaining <= 180:
+                    time_label = "3 Minutes Left"
+                else:
+                    time_label = "4 Minutes Left"
 
             embed.add_field(name="⏱️ Time", value=time_label, inline=True)
         
         if current_pick:
             team_display = f"**{current_pick['team']}**"
+            extra = ""
+            if self._is_forklift_team(current_pick["team"]):
+                team_display += " 🚜"
+                extra = "\nForklift Mode: 10s • auto-pick from board"
+
             embed.add_field(
                 name="⏰ ON THE CLOCK",
-                value=f"# {team_display}\nPick {current_pick['pick']}",
+                value=f"# {team_display}\nPick {current_pick['pick']}{extra}",
                 inline=False
             )
         
@@ -775,7 +891,8 @@ class DraftCommands(commands.Cog):
         now = datetime.now()
         footer = f"Updated: {now.strftime('%I:%M:%S %p')}"
         if self.timer_start_time and progress['status'] == 'active':
-            deadline = self.timer_start_time + timedelta(seconds=self.PICK_TIMER_DURATION)
+            duration = self.current_timer_duration or self.PICK_TIMER_DURATION
+            deadline = self.timer_start_time + timedelta(seconds=duration)
             footer += f" | Autodraft at {deadline.strftime('%I:%M:%S %p')}"
         embed.set_footer(text=footer)
         return embed
@@ -893,7 +1010,13 @@ class DraftCommands(commands.Cog):
                 inline=False
             )
             
-            embed.add_field(name="Time Limit", value="4 minutes", inline=True)
+            self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type if self.draft_manager else "prospect")
+            duration = self._get_pick_timer_duration(team)
+            time_label = f"{duration} seconds" if duration < 60 else f"{int(duration // 60)} minutes"
+            if self._is_forklift_team(team):
+                time_label += " (Forklift Mode)"
+
+            embed.add_field(name="Time Limit", value=time_label, inline=True)
             embed.add_field(
                 name="Round Type",
                 value=current_pick['round_type'].title(),
@@ -920,7 +1043,7 @@ class DraftCommands(commands.Cog):
             print(f"⚠️ Could not DM {team}: {e}")
     
     @app_commands.command(name="draft", description="Draft management")
-    @app_commands.describe(action="What to do", draft_type="Type of draft")
+    @app_commands.describe(action="What to do", draft_type="Type of draft", team="Team abbreviation (forklift actions)")
     @app_commands.choices(action=[
         app_commands.Choice(name="start", value="start"),
         app_commands.Choice(name="pause", value="pause"),
@@ -929,14 +1052,34 @@ class DraftCommands(commands.Cog):
         app_commands.Choice(name="undo", value="undo"),
         app_commands.Choice(name="order", value="order"),
         app_commands.Choice(name="reset", value="reset"),
+        app_commands.Choice(name="forklift_enable", value="forklift_enable"),
+        app_commands.Choice(name="forklift_disable", value="forklift_disable"),
+        app_commands.Choice(name="forklift_status", value="forklift_status"),
+        app_commands.Choice(name="forklift_list", value="forklift_list"),
     ])
     @app_commands.choices(draft_type=[
         app_commands.Choice(name="Prospect Draft", value="prospect"),
         app_commands.Choice(name="Keeper Draft", value="keeper"),
     ])
-    async def draft_cmd(self, interaction: discord.Interaction, action: app_commands.Choice[str], draft_type: app_commands.Choice[str] = None):
+    async def draft_cmd(
+        self,
+        interaction: discord.Interaction,
+        action: app_commands.Choice[str],
+        draft_type: app_commands.Choice[str] = None,
+        team: str | None = None,
+    ):
         action_value = action.value
-        admin_actions = ["start", "pause", "continue", "undo", "reset"]
+        admin_actions = [
+            "start",
+            "pause",
+            "continue",
+            "undo",
+            "reset",
+            "forklift_enable",
+            "forklift_disable",
+            "forklift_status",
+            "forklift_list",
+        ]
         
         if action_value in admin_actions and not self._is_admin(interaction):
             await interaction.response.send_message("❌ Admin only", ephemeral=True)
@@ -957,6 +1100,14 @@ class DraftCommands(commands.Cog):
                 await self._handle_order(interaction)
             elif action_value == "reset":
                 await self._handle_reset(interaction, draft_type)
+            elif action_value == "forklift_enable":
+                await self._handle_forklift_enable(interaction, team)
+            elif action_value == "forklift_disable":
+                await self._handle_forklift_disable(interaction, team)
+            elif action_value == "forklift_status":
+                await self._handle_forklift_status(interaction, team)
+            elif action_value == "forklift_list":
+                await self._handle_forklift_list(interaction)
         except Exception as e:
             # Ensure we never silently time out the interaction. Log the
             # full traceback to stdout (Render logs) and send a concise
@@ -1019,6 +1170,9 @@ class DraftCommands(commands.Cog):
             
             # Initialize PickValidator
             self.pick_validator = PickValidator(self.prospect_db, self.draft_manager)
+
+            # Initialize ForkliftManager (persists forklift teams across restarts)
+            self.forklift_manager = ForkliftManager(season=2026, draft_type=draft_type.value)
             
             if not self.DRAFT_CHANNEL_ID:
                 self.DRAFT_CHANNEL_ID = interaction.channel.id
@@ -1078,10 +1232,12 @@ class DraftCommands(commands.Cog):
         
         # Clear timer so website shows paused state
         self.draft_manager.state["timer_started_at"] = None
+        self.draft_manager.state["timer_duration_seconds"] = None
+        self.current_timer_duration = self.PICK_TIMER_DURATION
         self.draft_manager.save_state()
 
         try:
-            self.draft_manager._commit_draft_files(
+            self.draft_manager._commit_draft_files_async(
                 [self.draft_manager.state_file],
                 f"Draft paused (clock cleared): {self.draft_manager.draft_type} {getattr(self.draft_manager, 'season', '')}",
             )
@@ -1250,6 +1406,194 @@ class DraftCommands(commands.Cog):
             import traceback
             traceback.print_exc()
             await interaction.followup.send(f"❌ Draft reset failed: {e}", ephemeral=True)
+
+    async def _handle_forklift_enable(self, interaction: discord.Interaction, team: str | None):
+        if not team:
+            await interaction.response.send_message("❌ Provide a team (e.g. `team=SAD`)", ephemeral=True)
+            return
+
+        team = team.upper().strip()
+        from commands.utils import MANAGER_DISCORD_IDS
+        if team not in MANAGER_DISCORD_IDS:
+            await interaction.response.send_message(f"❌ Invalid team: {team}", ephemeral=True)
+            return
+
+        # Ensure we have draft components needed for board size + pick flow.
+        if self.board_manager is None:
+            from draft.board_manager import BoardManager
+            self.board_manager = BoardManager(season=2026)
+
+        if self.draft_manager is None:
+            # Create a lightweight manager just so we can git-commit/persist.
+            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
+
+        if self.draft_manager.draft_type != "prospect":
+            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            return
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
+
+        ok, msg = self.forklift_manager.enable_forklift(team, enabled_by=interaction.user.name)  # type: ignore[union-attr]
+        if not ok:
+            await interaction.response.send_message(f"⚠️ {msg}", ephemeral=True)
+            return
+
+        # Persist forklift mode state to GitHub.
+        try:
+            self.draft_manager._commit_draft_files_async(
+                [self.forklift_manager.state_file],
+                f"Forklift enabled: {team} ({self.draft_manager.draft_type} {self.draft_manager.season})",
+            )
+        except Exception:
+            pass
+
+        board = self.board_manager.get_board(team) if self.board_manager else []
+        board_warning = ""
+        if not board:
+            board_warning = "\n\n⚠️ WARNING: This team’s board is empty. Forklift will auto-disable if it can’t find a valid pick."
+
+        manager_id = MANAGER_DISCORD_IDS.get(team)
+        manager_mention = f"<@{manager_id}>" if manager_id else team
+
+        await interaction.response.send_message(
+            f"🚜 **FORKLIFT MODE ENABLED**\n\n"
+            f"**Team:** {team} ({manager_mention})\n"
+            f"**Enabled by:** {interaction.user.mention}\n\n"
+            f"**Settings:**\n"
+            f"└─ ⏱️ Timer: **10 seconds**\n"
+            f"└─ 🤖 Auto-pick: **Board-only**\n"
+            f"└─ 📋 Board size: **{len(board)} players**"
+            f"{board_warning}",
+            ephemeral=False,
+        )
+
+        # If this team is currently on the clock, restart the timer with the
+        # forklift duration immediately.
+        try:
+            current_pick = self.draft_manager.get_current_pick() if self.draft_manager else None
+            if current_pick and current_pick.get("team") == team and self.draft_manager.state.get("status") == "active":
+                await self.start_pick_timer(interaction.channel)
+                await self.post_on_clock_status(interaction.channel)
+        except Exception:
+            pass
+
+    async def _handle_forklift_disable(self, interaction: discord.Interaction, team: str | None):
+        if not team:
+            await interaction.response.send_message("❌ Provide a team (e.g. `team=SAD`)", ephemeral=True)
+            return
+
+        team = team.upper().strip()
+
+        if self.draft_manager is None:
+            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
+
+        if self.draft_manager.draft_type != "prospect":
+            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            return
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
+
+        ok, msg = self.forklift_manager.disable_forklift(team, disabled_by=interaction.user.name)  # type: ignore[union-attr]
+        if not ok:
+            await interaction.response.send_message(f"⚠️ {msg}", ephemeral=True)
+            return
+
+        try:
+            self.draft_manager._commit_draft_files_async(
+                [self.forklift_manager.state_file],
+                f"Forklift disabled: {team} ({self.draft_manager.draft_type} {self.draft_manager.season})",
+            )
+        except Exception:
+            pass
+
+        await interaction.response.send_message(f"✅ **Forklift Mode Disabled** for {team}", ephemeral=False)
+
+        # If this team is currently on the clock, restart the timer with the
+        # normal duration immediately.
+        try:
+            current_pick = self.draft_manager.get_current_pick() if self.draft_manager else None
+            if current_pick and current_pick.get("team") == team and self.draft_manager.state.get("status") == "active":
+                # Normal clock
+                self.current_timer_duration = self.PICK_TIMER_DURATION
+                await self.start_pick_timer(interaction.channel)
+                await self.post_on_clock_status(interaction.channel)
+        except Exception:
+            pass
+
+    async def _handle_forklift_status(self, interaction: discord.Interaction, team: str | None):
+        if not team:
+            await interaction.response.send_message("❌ Provide a team (e.g. `team=SAD`)", ephemeral=True)
+            return
+
+        team = team.upper().strip()
+
+        if self.board_manager is None:
+            from draft.board_manager import BoardManager
+            self.board_manager = BoardManager(season=2026)
+
+        if self.draft_manager is None:
+            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
+
+        if self.draft_manager.draft_type != "prospect":
+            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            return
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
+
+        enabled = self._is_forklift_team(team)
+        duration = self._get_pick_timer_duration(team)
+        board = self.board_manager.get_board(team) if self.board_manager else []
+
+        if enabled:
+            msg = (
+                f"🚜 **FORKLIFT MODE: ENABLED**\n\n"
+                f"Team: **{team}**\n"
+                f"Clock: **{duration}s**\n"
+                f"Board size: **{len(board)}**\n\n"
+                f"*Auto-picks from the team’s board when the 10s clock expires.*"
+            )
+        else:
+            msg = (
+                f"✅ **Forklift Mode: Disabled**\n\n"
+                f"Team: **{team}**\n"
+                f"Clock: **{duration}s (normal)**\n"
+                f"Board size: **{len(board)}**"
+            )
+
+        await interaction.response.send_message(msg, ephemeral=True)
+
+    async def _handle_forklift_list(self, interaction: discord.Interaction):
+        if self.board_manager is None:
+            from draft.board_manager import BoardManager
+            self.board_manager = BoardManager(season=2026)
+
+        if self.draft_manager is None:
+            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
+
+        if self.draft_manager.draft_type != "prospect":
+            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            return
+
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
+
+        teams = self.forklift_manager.get_forklift_teams() if self.forklift_manager else []
+        if not teams:
+            await interaction.response.send_message("📋 No teams are currently in Forklift Mode", ephemeral=True)
+            return
+
+        lines = ["🚜 **FORKLIFT MODE TEAMS**", ""]
+        for t in teams:
+            board = self.board_manager.get_board(t) if self.board_manager else []
+            lines.append(f"• **{t}** — {len(board)} players on board")
+
+        recent = self.forklift_manager.get_recent_changes(limit=5) if self.forklift_manager else []
+        if recent:
+            lines.append("\nRecent changes:")
+            for ch in recent:
+                who = ch.get("by") or "?"
+                lines.append(f"- {ch.get('action')} {ch.get('team', '')} by {who}")
+
+        await interaction.response.send_message("\n".join(lines), ephemeral=True)
 
 
 async def setup(bot):
