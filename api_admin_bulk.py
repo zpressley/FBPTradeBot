@@ -27,6 +27,29 @@ COMBINED_FILE = "data/combined_players.json"
 UPID_DB_FILE = "data/upid_database.json"
 PLAYER_LOG_FILE = "data/player_log.json"
 API_KEY = os.getenv("BOT_API_KEY", "")
+ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notifications
+
+# Bot reference for Discord notifications
+_bot_ref = None
+
+
+def set_bulk_bot_reference(bot):
+    """Called from health.py after bot starts to enable Discord notifications."""
+    global _bot_ref
+    _bot_ref = bot
+
+
+async def _send_admin_bulk_notification(message: str):
+    """Send a notification to the admin log Discord channel."""
+    global _bot_ref
+    if _bot_ref is None:
+        return
+    try:
+        channel = _bot_ref.get_channel(ADMIN_LOG_CHANNEL_ID)
+        if channel:
+            await channel.send(message)
+    except Exception as exc:
+        print(f"⚠️ Failed to send bulk admin notification: {exc}")
 
 # Repos (for git commit + push to website)
 WEBSITE_REPO = os.getenv("WEBSITE_REPO", "")       # e.g. "username/fbp-hub"
@@ -190,6 +213,14 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
     git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
+    # Discord notification
+    if _bot_ref and updated:
+        player_names = ', '.join([p['name'] for p in updated[:5]])
+        if len(updated) > 5:
+            player_names += f' (+{len(updated) - 5} more)'
+        discord_msg = f"🎓 **Bulk Graduate**\n\n👥 {len(updated)} players graduated\n📝 Players: {player_names}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
+        _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
+
     return {"count": len(updated), "players": updated}
 
 
@@ -232,6 +263,14 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
     commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
     git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+
+    # Discord notification
+    if _bot_ref and updated:
+        player_names = ', '.join(updated[:5])
+        if len(updated) > 5:
+            player_names += f' (+{len(updated) - 5} more)'
+        discord_msg = f"📝 **Bulk Contract Update**\n\n👥 {len(updated)} players updated\n📄 New Contract: {new_contract or '(none)'}\n📝 Players: {player_names}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
+        _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
 
     return {"count": len(updated), "players": updated}
 
@@ -283,6 +322,14 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
     commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
     git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+
+    # Discord notification
+    if _bot_ref and released:
+        player_names = ', '.join([p['name'] for p in released[:5]])
+        if len(released) > 5:
+            player_names += f' (+{len(released) - 5} more)'
+        discord_msg = f"🔓 **Bulk Release**\n\n👥 {len(released)} players released\n📝 Reason: {reason}\n📝 Players: {player_names}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
+        _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
 
     return {"count": len(released), "players": released}
 
@@ -369,6 +416,14 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
     commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
     git_commit_and_push([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+
+    # Discord notification
+    if _bot_ref:
+        player_name = player_data.get('name', 'Unknown')
+        team = player_data.get('team', 'N/A')
+        position = player_data.get('position', 'N/A')
+        discord_msg = f"➕ **New Player Added**\n\n👤 Player: **{player_name}**\n⚾ Team: {team}\n🎯 Position: {position}\n🆔 UPID: {next_upid}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
+        _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
 
     return {"upid": next_upid, "player": player_data}
 

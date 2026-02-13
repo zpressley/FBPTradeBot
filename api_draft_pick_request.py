@@ -61,7 +61,11 @@ def get_draft_cog():
 
 @router.post("/prospect/pick-request")
 async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(verify_key)):
-    """Receive a draft pick request from the website and DM manager for confirmation."""
+    """Receive a draft pick request from the website.
+
+    The confirmation UI is posted in the draft channel, but the buttons are
+    restricted to the manager who owns the pick.
+    """
     cog = get_draft_cog()
 
     if cog is None or cog.draft_manager is None:
@@ -119,52 +123,29 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
     try:
         user = await _bot_ref.fetch_user(user_id)
 
-        from commands.draft import PickConfirmationView
-        import discord
+        # Draft channel must be known so we can post the confirmation UI
+        # where everyone can see the pick being considered.
+        if not getattr(cog, "DRAFT_CHANNEL_ID", None):
+            raise HTTPException(status_code=503, detail="Draft channel not set")
 
-        embed = discord.Embed(
-            title="🌐 Web Pick Request",
-            description=(
-                f"**{player_data['name']}**\n\n"
-                f"Submitted from FBP Hub website.\n"
-                f"Confirm below to lock in your pick."
-            ),
-            color=discord.Color.blue(),
+        draft_channel = _bot_ref.get_channel(cog.DRAFT_CHANNEL_ID)
+        if draft_channel is None:
+            draft_channel = await _bot_ref.fetch_channel(cog.DRAFT_CHANNEL_ID)
+
+        # Post the pick confirmation in the draft channel (buttons are manager-only).
+        await cog.show_pick_confirmation(
+            draft_channel,
+            user,
+            payload.team,
+            payload.player_name,
+            current_pick,
+            is_dm=False,
+            delivery="channel",
         )
-
-        embed.add_field(
-            name="Pick Info",
-            value=(
-                f"Round {current_pick['round']}, Pick {current_pick['pick']}\n"
-                f"Type: {current_pick['round_type'].title()}"
-            ),
-            inline=True,
-        )
-
-        player_info_parts = []
-        if player_data.get("position") and player_data["position"] != "?":
-            player_info_parts.append(f"Position: {player_data['position']}")
-        if player_data.get("team") and player_data["team"] != "?":
-            player_info_parts.append(f"MLB Team: {player_data['team']}")
-
-        if player_info_parts:
-            embed.add_field(
-                name="Player Info",
-                value="\n".join(player_info_parts),
-                inline=True,
-            )
-
-        embed.set_footer(text="Source: FBP Hub Website")
-
-        view = PickConfirmationView(cog, payload.team, player_data, current_pick)
-
-        await user.send(embed=embed, view=view)
-
-        cog.pending_confirmations[user_id] = view
 
         return {
             "success": True,
-            "message": f"Confirmation sent to {payload.team}'s Discord DMs",
+            "message": f"Confirmation posted in draft channel for {payload.team}",
             "player": player_data.get("name"),
             "round": current_pick["round"],
             "pick": current_pick["pick"],

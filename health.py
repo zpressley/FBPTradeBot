@@ -36,7 +36,7 @@ from admin.admin_processor import (
     apply_admin_delete_player,
     apply_admin_merge_players,
 )
-from api_admin_bulk import router as admin_bulk_router
+from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference
 from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
 
@@ -123,6 +123,12 @@ async def on_ready():
         set_bot_reference(bot)
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for draft pick API: {exc}")
+    
+    # Allow bulk admin API to send Discord notifications
+    try:
+        set_bulk_bot_reference(bot)
+    except Exception as exc:
+        print(f"⚠️ Failed to set bot reference for bulk admin API: {exc}")
     
     await bot.change_presence(
         activity=discord.Activity(

@@ -30,47 +30,89 @@ TEST_USER_IDS = {
 
 
 class PickConfirmationView(discord.ui.View):
-    """Interactive confirmation buttons for draft picks"""
-    
-    def __init__(self, draft_cog, team: str, player_data: dict, pick_info: dict):
+    """Interactive confirmation buttons for draft picks.
+
+    NOTE: Discord "ephemeral" messages are only available for Interaction
+    responses (slash commands/buttons). For message-based picks, we emulate
+    a hidden confirmation by sending the confirmation UI to the manager via DM.
+    """
+
+    def __init__(
+        self,
+        draft_cog,
+        team: str,
+        player_data: dict,
+        pick_info: dict,
+        allowed_user_ids: set[int],
+    ):
         super().__init__(timeout=None)
         self.draft_cog = draft_cog
         self.team = team
         self.player = player_data
         self.pick_info = pick_info
+        self.allowed_user_ids = allowed_user_ids
         self.confirmed = False
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        """Ensure only the intended manager/tester can confirm/cancel."""
+        if interaction.user and interaction.user.id in self.allowed_user_ids:
+            return True
+
+        msg = "❌ Only the manager who submitted this pick can confirm/cancel it."
+        try:
+            if interaction.response.is_done():
+                await interaction.followup.send(msg, ephemeral=True)
+            else:
+                await interaction.response.send_message(msg, ephemeral=True)
+        except Exception:
+            pass
+        return False
     
     @discord.ui.button(label="✅ Confirm Pick", style=discord.ButtonStyle.success)
     async def confirm_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         current = self.draft_cog.draft_manager.get_current_pick()
-        if not current or current['team'] != self.team:
+        if not current or current["team"] != self.team:
             await interaction.response.send_message("❌ No longer your turn", ephemeral=True)
             return
-        
+
         try:
             # Record pick (this advances the draft). Pass full player record
             # so DraftManager can persist UPID/metadata into state and order.
-            pick_record = self.draft_cog.draft_manager.make_pick(self.team, self.player['name'], self.player)
+            pick_record = self.draft_cog.draft_manager.make_pick(
+                self.team,
+                self.player["name"],
+                self.player,
+            )
             self.confirmed = True
-            
+
             # Cancel timer
             if self.draft_cog.pick_timer_task:
                 self.draft_cog.pick_timer_task.cancel()
                 self.draft_cog.pick_timer_task = None
-            
-            # Announce pick
-            await self.draft_cog.announce_pick(interaction.channel, pick_record, self.player)
-            
+
+            # Announce pick in the *draft channel* even if the confirmation UI
+            # was shown in DMs.
+            announce_channel = interaction.channel
+            if self.draft_cog.DRAFT_CHANNEL_ID:
+                try:
+                    announce_channel = self.draft_cog.bot.get_channel(self.draft_cog.DRAFT_CHANNEL_ID)
+                    if announce_channel is None:
+                        announce_channel = await self.draft_cog.bot.fetch_channel(self.draft_cog.DRAFT_CHANNEL_ID)
+                except Exception:
+                    announce_channel = interaction.channel
+
+            await self.draft_cog.announce_pick(announce_channel, pick_record, self.player)
+
             # Update confirmation message
             await interaction.response.edit_message(content="✅ Pick confirmed!", embed=None, view=None)
-            
+
             # Update draft board thread (status card + timer are handled
             # inside announce_pick and the timer loop).
             if self.draft_cog.draft_board_thread:
                 await self.draft_cog.update_draft_board()
-            
+
             self.stop()
-            
+
         except Exception as e:
             await interaction.response.send_message(f"❌ Error: {str(e)}", ephemeral=True)
     
@@ -158,14 +200,22 @@ class DraftCommands(commands.Cog):
                 return
         
         # Check if it's their turn
-        if current_pick['team'] != user_team:
-            # Not their turn - if in DM, show helpful message
+        if current_pick["team"] != user_team:
+            # Message-based picks can't be truly ephemeral, so we DM the user
+            # with a "not your turn" notice.
+            msg = (
+                f"⏰ Not your turn yet!\n\n"
+                f"Current pick: **{current_pick['team']}** (Pick {current_pick['pick']})\n"
+                f"You pick next at: {self._find_next_pick_for_team(user_team)}"
+            )
             if is_dm:
-                await message.channel.send(
-                    f"⏰ Not your turn yet!\n\n"
-                    f"Current pick: **{current_pick['team']}** (Pick {current_pick['pick']})\n"
-                    f"You pick next at: {self._find_next_pick_for_team(user_team)}"
-                )
+                await message.channel.send(msg)
+            elif is_draft_channel:
+                try:
+                    dm = await message.author.create_dm()
+                    await dm.send(msg)
+                except Exception:
+                    pass
             return
         
         player_input = message.content.strip()
@@ -174,8 +224,20 @@ class DraftCommands(commands.Cog):
         if player_input.startswith('/') or player_input.startswith('!') or len(player_input) < 3:
             return
         
-        # Show confirmation (DM or channel)
-        await self.show_pick_confirmation(message.channel, message.author, user_team, player_input, current_pick, is_dm)
+        # Show confirmation.
+        # - If the user typed in the draft channel, send the confirmation UI
+        #   to their DMs (hidden).
+        # - If they typed in DM, keep it in DM.
+        delivery = "dm" if is_draft_channel and not is_dm else "channel"
+        await self.show_pick_confirmation(
+            message.channel,
+            message.author,
+            user_team,
+            player_input,
+            current_pick,
+            is_dm,
+            delivery=delivery,
+        )
     
     def _find_next_pick_for_team(self, team: str) -> str:
         """Find when team picks next"""
@@ -188,8 +250,30 @@ class DraftCommands(commands.Cog):
         
         return "No more picks"
     
-    async def show_pick_confirmation(self, channel, user, team, player_input, pick_info, is_dm=False):
-        """Show ephemeral confirmation card with validation and board suggestions"""
+    async def show_pick_confirmation(
+        self,
+        channel,
+        user,
+        team,
+        player_input,
+        pick_info,
+        is_dm=False,
+        delivery: str = "channel",
+    ):
+        """Show a confirmation card with validation and board suggestions.
+
+        delivery:
+          - "channel": post confirmation in the provided channel
+          - "dm": send confirmation to the user's DMs (hidden)
+        """
+
+        if delivery == "dm":
+            try:
+                channel = await user.create_dm()
+                is_dm = True
+            except Exception:
+                # If DM creation fails (privacy settings), fall back to channel.
+                is_dm = False
         
         # Validate pick if we have validator
         if self.pick_validator:
@@ -245,9 +329,23 @@ class DraftCommands(commands.Cog):
                 inline=True
             )
         
-        view = PickConfirmationView(self, team, player_data, pick_info)
-        
-        mention = user.mention if not self.TEST_MODE else f"**{team}**"
+        allowed_user_ids = {user.id}
+        if not is_dm and self.TEST_MODE:
+            # In test mode, allow designated testers (and the mapped manager)
+            # to confirm picks that were posted publicly in the draft channel
+            # (e.g. website flow).
+            allowed_user_ids = set(TEST_USER_IDS) | {user.id}
+
+        view = PickConfirmationView(
+            self,
+            team,
+            player_data,
+            pick_info,
+            allowed_user_ids=allowed_user_ids,
+        )
+
+        # In DMs, no need to ping/mention.
+        mention = None if is_dm else (user.mention if not self.TEST_MODE else f"**{team}**")
         
         # In DM, show board suggestions
         if is_dm and self.board_manager:
