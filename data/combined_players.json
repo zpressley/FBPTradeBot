@@ -4414,13 +4414,13 @@
     "debuted": true
   },
   {
-    "name": "Gino Groover",
+    "name": "LuJames Groover",
     "team": "AZ",
     "position": "3B",
     "manager": "Hammers",
     "player_type": "Farm",
     "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6605",
@@ -4429,7 +4429,8 @@
     "fypd": false,
     "rank": 1397,
     "debut_date": null,
-    "debuted": false
+    "debuted": false,
+    "level": "AA"
   },
   {
     "name": "Lucas Braun",
