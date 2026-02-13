@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 21,
+  "current_pick_index": 22,
   "picks_made": [
     {
       "draft": "prospect",
@@ -302,6 +302,20 @@
       "upid": "7946",
       "position": "SS",
       "mlb_team": "CWS"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 7,
+      "team": "TBB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Steele Hall",
+      "timestamp": "2026-02-13T22:41:20.659323",
+      "pick_index": 21,
+      "upid": "7951",
+      "position": "SS",
+      "mlb_team": "CIN"
     }
   ],
   "timer_started_at": "2026-02-13T22:37:20.227440",
@@ -355,7 +369,7 @@
       "bc_slots": 1,
       "dc_slots": 6,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "LFB": {
       "bc_slots": 1,
@@ -382,5 +396,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T22:37:20.227497"
+  "last_updated": "2026-02-13T22:41:20.659393"
 }
