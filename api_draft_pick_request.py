@@ -4,14 +4,10 @@ Add to health.py:
     from api_draft_pick_request import router as draft_pick_router, set_bot_reference
     app.include_router(draft_pick_router)
 
-Flow:
-1. Website sends POST /api/draft/prospect/pick-request {team, player_name}
-2. Bot validates via PickValidator
-3. If valid, bot sends Discord DM to the manager with Confirm/Cancel buttons
-4. Manager confirms in Discord → pick locks in via DraftManager.make_pick()
-5. Same outcome as typing name in draft channel
-
-The DM uses the same PickConfirmationView from commands/draft.py
+Endpoints:
+- POST /api/draft/prospect/pick-request: Shows confirmation in Discord (old flow)
+- POST /api/draft/prospect/pick-confirm: Directly confirms pick from website (new flow)
+- POST /api/draft/prospect/validate-pick: Validates pick and returns player data
 """
 
 import os
@@ -156,4 +152,168 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
         raise HTTPException(
             status_code=500,
             detail=f"Failed to send Discord DM: {str(e)}",
+        )
+
+
+@router.post("/prospect/validate-pick")
+async def validate_pick(payload: PickRequestPayload, authorized: bool = Depends(verify_key)):
+    """Validate a draft pick without making it.
+
+    Returns player data if valid, used by website to show confirmation modal.
+    """
+    cog = get_draft_cog()
+
+    if cog is None or cog.draft_manager is None:
+        raise HTTPException(status_code=503, detail="Draft is not active or bot is not ready")
+
+    draft_manager = cog.draft_manager
+
+    if draft_manager.state.get("status") != "active":
+        raise HTTPException(status_code=400, detail="Draft is not currently active")
+
+    current_pick = draft_manager.get_current_pick()
+    if not current_pick:
+        raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
+
+    if current_pick["team"] != payload.team:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+        )
+
+    # Validate the pick
+    if cog.pick_validator:
+        valid, message, player_data = cog.pick_validator.validate_pick(
+            payload.team, payload.player_name
+        )
+        if not valid:
+            raise HTTPException(status_code=400, detail=message)
+    else:
+        player_data = None
+
+    if not player_data:
+        player_data = {
+            "name": payload.player_name,
+            "position": "?",
+            "team": "?",
+            "rank": "?",
+        }
+
+    return {
+        "valid": True,
+        "player": player_data,
+        "pick_info": {
+            "round": current_pick["round"],
+            "pick": current_pick["pick"],
+            "round_type": current_pick.get("round_type", "DC"),
+            "team": current_pick["team"],
+        },
+    }
+
+
+@router.post("/prospect/pick-confirm")
+async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(verify_key)):
+    """Directly confirm a draft pick from the website.
+
+    This bypasses the Discord button confirmation - the website shows its own
+    confirmation modal and calls this endpoint when the user confirms.
+    """
+    cog = get_draft_cog()
+
+    if cog is None or cog.draft_manager is None:
+        raise HTTPException(status_code=503, detail="Draft is not active or bot is not ready")
+
+    draft_manager = cog.draft_manager
+
+    if draft_manager.state.get("status") != "active":
+        raise HTTPException(status_code=400, detail="Draft is not currently active")
+
+    current_pick = draft_manager.get_current_pick()
+    if not current_pick:
+        raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
+
+    if current_pick["team"] != payload.team:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+        )
+
+    # Validate the pick
+    if cog.pick_validator:
+        valid, message, player_data = cog.pick_validator.validate_pick(
+            payload.team, payload.player_name
+        )
+        if not valid:
+            raise HTTPException(status_code=400, detail=message)
+    else:
+        player_data = None
+
+    if not player_data:
+        player_data = {
+            "name": payload.player_name,
+            "position": "?",
+            "team": "?",
+            "rank": "?",
+        }
+
+    try:
+        # Record the pick (this advances the draft)
+        pick_record = draft_manager.make_pick(
+            payload.team,
+            player_data["name"],
+            player_data,
+        )
+
+        # Cancel the pick timer
+        if cog.pick_timer_task:
+            cog.pick_timer_task.cancel()
+            cog.pick_timer_task = None
+
+        # Announce the pick in Discord draft channel
+        if getattr(cog, "DRAFT_CHANNEL_ID", None):
+            draft_channel = _bot_ref.get_channel(cog.DRAFT_CHANNEL_ID)
+            if draft_channel is None:
+                draft_channel = await _bot_ref.fetch_channel(cog.DRAFT_CHANNEL_ID)
+
+            if draft_channel:
+                # Announce pick
+                await cog.announce_pick(draft_channel, pick_record, player_data)
+
+                # Update draft board thread if it exists
+                if cog.draft_board_thread:
+                    await cog.update_draft_board()
+
+                # Check if there's a next pick
+                next_pick = draft_manager.get_current_pick()
+                if next_pick:
+                    # Start timer for next pick
+                    await cog.start_pick_timer(draft_channel)
+                    await cog.post_on_clock_status(draft_channel)
+                    # Notify next manager
+                    if not cog.TEST_MODE:
+                        await cog.notify_manager_on_clock(next_pick["team"])
+                else:
+                    # Draft complete
+                    if cog.draft_board_thread:
+                        await cog.update_draft_board()
+                    await draft_channel.send("🏁 **DRAFT COMPLETE!**")
+
+        return {
+            "success": True,
+            "message": f"Pick confirmed: {player_data['name']}",
+            "pick_record": {
+                "round": pick_record["round"],
+                "pick": pick_record["pick"],
+                "team": pick_record["team"],
+                "player": pick_record["player"],
+            },
+        }
+
+    except Exception as e:
+        print(f"❌ Error confirming pick: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to confirm pick: {str(e)}",
         )
