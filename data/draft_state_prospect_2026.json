@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 17,
+  "current_pick_index": 18,
   "picks_made": [
     {
       "draft": "prospect",
@@ -248,6 +248,20 @@
       "upid": "7945",
       "position": "SS",
       "mlb_team": "MIA"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 3,
+      "team": "RV",
+      "round_type": "dc",
+      "result": null,
+      "player": "JoJo Parker",
+      "timestamp": "2026-02-13T22:25:15.102748",
+      "pick_index": 17,
+      "upid": "7948",
+      "position": "SS",
+      "mlb_team": "TOR"
     }
   ],
   "timer_started_at": "2026-02-13T22:21:14.592371",
@@ -271,7 +285,7 @@
       "bc_slots": 2,
       "dc_slots": 1,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "HAM": {
       "bc_slots": 1,
@@ -328,5 +342,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T22:21:14.592441"
+  "last_updated": "2026-02-13T22:25:15.102814"
 }
