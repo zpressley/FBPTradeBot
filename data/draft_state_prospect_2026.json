@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 4,
+  "current_pick_index": 5,
   "picks_made": [
     {
       "draft": "prospect",
@@ -67,6 +67,19 @@
       "pick_index": 3,
       "upid": "8160",
       "position": "OF"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 5,
+      "team": "CFL",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Gabe Craig",
+      "timestamp": "2026-02-13T21:46:07.369576",
+      "pick_index": 4,
+      "upid": "8165",
+      "position": "RHP"
     }
   ],
   "timer_started_at": "2026-02-13T21:45:51.713090",
@@ -101,7 +114,7 @@
     "CFL": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "DMN": {
@@ -147,5 +160,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T21:45:51.713149"
+  "last_updated": "2026-02-13T21:46:07.369640"
 }
