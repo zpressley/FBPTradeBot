@@ -70,16 +70,26 @@ async def get_prospect_pool(
             fypd_by_upid[upid] = entry
 
     # Drafted lookup
+    # IMPORTANT: Use UPID as the primary key so accents / punctuation /
+    # formatting differences in player names do not break "drafted" detection.
     picks_made = draft_state.get("picks_made", [])
-    drafted_names = {}
+
+    drafted_by_upid = {}
+    drafted_by_name = {}
     for pick in picks_made:
+        upid = str(pick.get("upid") or "").strip()
+        info = {
+            "team": pick.get("team", ""),
+            "round": pick.get("round", 0),
+            "pick": pick.get("pick", 0),
+        }
+        if upid:
+            drafted_by_upid[upid] = info
+
+        # Fallback for older state files that may not have UPID.
         name = (pick.get("player") or "").lower().strip()
         if name:
-            drafted_names[name] = {
-                "team": pick.get("team", ""),
-                "round": pick.get("round", 0),
-                "pick": pick.get("pick", 0),
-            }
+            drafted_by_name[name] = info
 
     pool = []
     for p in players:
@@ -90,7 +100,8 @@ async def get_prospect_pool(
         name_lower = name.lower().strip()
         upid = str(p.get("upid", ""))
 
-        draft_info = drafted_names.get(name_lower)
+        # Prefer UPID drafted detection; fall back to name-based detection.
+        draft_info = drafted_by_upid.get(upid) or drafted_by_name.get(name_lower)
         drafted_by = draft_info["team"] if draft_info else None
 
         owner = p.get("manager", "") or p.get("FBP_Team", "")

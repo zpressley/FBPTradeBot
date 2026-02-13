@@ -360,6 +360,8 @@ def build_draft_payload(draft_type: str) -> dict:
         "draft_type": draft_type,
         "season": season,
         "status": status,  # pre_draft | draft_day | active_draft | post_draft
+        # Raw DraftManager.state.status so the website can distinguish paused vs active.
+        "raw_status": state.get("status", "not_started"),
         "scheduled_date": draft_date.isoformat() if draft_date else None,
         "current_round": current_pick["round"] if current_pick else None,
         "current_pick": current_pick["pick"] if current_pick else None,
