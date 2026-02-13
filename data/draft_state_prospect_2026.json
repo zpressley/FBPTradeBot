@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 12,
+  "current_pick_index": 13,
   "picks_made": [
     {
       "draft": "prospect",
@@ -178,6 +178,20 @@
       "upid": "7940",
       "position": "SS",
       "mlb_team": "COL"
+    },
+    {
+      "draft": "prospect",
+      "round": 2,
+      "pick": 3,
+      "team": "RV",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Kade Anderson",
+      "timestamp": "2026-02-13T22:05:06.384926",
+      "pick_index": 12,
+      "upid": "7941",
+      "position": "SP",
+      "mlb_team": "SEA"
     }
   ],
   "timer_started_at": "2026-02-13T22:01:05.826469",
@@ -200,7 +214,7 @@
     "RV": {
       "bc_slots": 2,
       "dc_slots": 1,
-      "bc_used": 1,
+      "bc_used": 2,
       "dc_used": 0
     },
     "HAM": {
@@ -258,5 +272,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T22:01:05.826525"
+  "last_updated": "2026-02-13T22:05:06.384989"
 }
