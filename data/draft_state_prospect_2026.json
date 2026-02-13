@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 8,
+  "current_pick_index": 9,
   "picks_made": [
     {
       "draft": "prospect",
@@ -122,6 +122,20 @@
       "upid": "7950",
       "position": "C,1B,OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 9,
+      "team": "LFB",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Samil Serrano",
+      "timestamp": "2026-02-13T21:48:59.189757",
+      "pick_index": 8,
+      "upid": "8196",
+      "position": "LF",
+      "mlb_team": "WSH"
     }
   ],
   "timer_started_at": "2026-02-13T21:48:20.385373",
@@ -180,7 +194,7 @@
     "LFB": {
       "bc_slots": 1,
       "dc_slots": 2,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "WIZ": {
@@ -202,5 +216,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T21:48:20.385428"
+  "last_updated": "2026-02-13T21:48:59.189820"
 }
