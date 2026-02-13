@@ -211,6 +211,18 @@ async def validate_pick(payload: PickRequestPayload, authorized: bool = Depends(
     }
 
 
+async def _announce_pick_async(cog, draft_channel, pick_record, player_data):
+    """Helper to announce pick in Discord - runs on bot's event loop."""
+    try:
+        await cog.announce_pick(draft_channel, pick_record, player_data)
+        if cog.draft_board_thread:
+            await cog.update_draft_board()
+    except Exception as e:
+        print(f"❌ Error in Discord announcement: {e}")
+        import traceback
+        traceback.print_exc()
+
+
 @router.post("/prospect/pick-confirm")
 async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(verify_key)):
     """Directly confirm a draft pick from the website.
@@ -269,24 +281,15 @@ async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(v
             player_data,
         )
 
-        # Announce the pick in Discord draft channel
-        # Note: announce_pick() internally handles:
-        # - start_pick_timer()
-        # - post_on_clock_status()
-        # - notify_manager_on_clock()
-        # - draft complete message
-        # So we don't need to call those separately.
-        if getattr(cog, "DRAFT_CHANNEL_ID", None):
+        # Schedule Discord announcement on the bot's event loop
+        # This avoids "Timeout context manager should be used inside a task" errors
+        # because Discord.py operations need to run in the bot's event loop context.
+        if getattr(cog, "DRAFT_CHANNEL_ID", None) and _bot_ref:
             draft_channel = _bot_ref.get_channel(cog.DRAFT_CHANNEL_ID)
-            if draft_channel is None:
-                draft_channel = await _bot_ref.fetch_channel(cog.DRAFT_CHANNEL_ID)
-
             if draft_channel:
-                await cog.announce_pick(draft_channel, pick_record, player_data)
-
-                # Update draft board thread if it exists
-                if cog.draft_board_thread:
-                    await cog.update_draft_board()
+                _bot_ref.loop.create_task(
+                    _announce_pick_async(cog, draft_channel, pick_record, player_data)
+                )
 
         return {
             "success": True,
