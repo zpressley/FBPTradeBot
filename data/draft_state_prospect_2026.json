@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 10,
+  "current_pick_index": 11,
   "picks_made": [
     {
       "draft": "prospect",
@@ -150,6 +150,20 @@
       "upid": "7944",
       "position": "SS",
       "mlb_team": "WSH"
+    },
+    {
+      "draft": "prospect",
+      "round": 2,
+      "pick": 1,
+      "team": "WAR",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Jake Cook",
+      "timestamp": "2026-02-13T21:57:03.538180",
+      "pick_index": 10,
+      "upid": "8045",
+      "position": "OF",
+      "mlb_team": "TOR"
     }
   ],
   "timer_started_at": "2026-02-13T21:56:34.166411",
@@ -160,7 +174,7 @@
     "WAR": {
       "bc_slots": 2,
       "dc_slots": 1,
-      "bc_used": 1,
+      "bc_used": 2,
       "dc_used": 0
     },
     "JEP": {
@@ -230,5 +244,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T21:56:34.166477"
+  "last_updated": "2026-02-13T21:57:03.538248"
 }
