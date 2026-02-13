@@ -70,10 +70,46 @@ class PickConfirmationView(discord.ui.View):
     
     @discord.ui.button(label="✅ Confirm Pick", style=discord.ButtonStyle.success)
     async def confirm_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Guard against double-clicks / race conditions.
+        if self.confirmed:
+            try:
+                if interaction.response.is_done():
+                    await interaction.followup.send("ℹ️ This pick has already been processed.", ephemeral=True)
+                else:
+                    await interaction.response.send_message("ℹ️ This pick has already been processed.", ephemeral=True)
+            except Exception:
+                pass
+            return
+
         current = self.draft_cog.draft_manager.get_current_pick()
         if not current or current["team"] != self.team:
-            await interaction.response.send_message("❌ No longer your turn", ephemeral=True)
+            # Pick is no longer actionable; disable buttons to prevent spam.
+            for item in self.children:
+                item.disabled = True
+            try:
+                await interaction.response.edit_message(content="❌ No longer your turn", embed=None, view=None)
+            except Exception:
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send("❌ No longer your turn", ephemeral=True)
+                    else:
+                        await interaction.response.send_message("❌ No longer your turn", ephemeral=True)
+                except Exception:
+                    pass
+            self.stop()
             return
+
+        # Immediately disable buttons and acknowledge the click so we don't
+        # hit Discord's interaction timeout while we persist state + announce.
+        self.confirmed = True
+        for item in self.children:
+            item.disabled = True
+
+        try:
+            await interaction.response.edit_message(content="⏳ Confirming pick...", view=self)
+        except Exception:
+            # If we can't edit immediately, still continue.
+            pass
 
         try:
             # Record pick (this advances the draft). Pass full player record
@@ -83,7 +119,6 @@ class PickConfirmationView(discord.ui.View):
                 self.player["name"],
                 self.player,
             )
-            self.confirmed = True
 
             # Cancel timer
             if self.draft_cog.pick_timer_task:
@@ -103,8 +138,14 @@ class PickConfirmationView(discord.ui.View):
 
             await self.draft_cog.announce_pick(announce_channel, pick_record, self.player)
 
-            # Update confirmation message
-            await interaction.response.edit_message(content="✅ Pick confirmed!", embed=None, view=None)
+            # Update confirmation message (remove buttons)
+            try:
+                await interaction.edit_original_response(content="✅ Pick confirmed!", embed=None, view=None)
+            except Exception:
+                try:
+                    await interaction.message.edit(content="✅ Pick confirmed!", embed=None, view=None)
+                except Exception:
+                    pass
 
             # Update draft board thread (status card + timer are handled
             # inside announce_pick and the timer loop).
@@ -114,15 +155,41 @@ class PickConfirmationView(discord.ui.View):
             self.stop()
 
         except Exception as e:
-            await interaction.response.send_message(f"❌ Error: {str(e)}", ephemeral=True)
+            # On error, still remove buttons so the user can't keep clicking.
+            try:
+                await interaction.message.edit(content=f"❌ Error confirming pick: {str(e)}", embed=None, view=None)
+            except Exception:
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(f"❌ Error confirming pick: {str(e)}", ephemeral=True)
+                    else:
+                        await interaction.response.send_message(f"❌ Error confirming pick: {str(e)}", ephemeral=True)
+                except Exception:
+                    pass
+            self.stop()
     
     @discord.ui.button(label="❌ Cancel", style=discord.ButtonStyle.danger)
     async def cancel_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.edit_message(
-            content=f"❌ **{self.team}** cancelled pick for **{self.player['name']}**",
-            embed=None,
-            view=None
-        )
+        # Disable buttons immediately to avoid double-click spam.
+        for item in self.children:
+            item.disabled = True
+
+        try:
+            await interaction.response.edit_message(
+                content=f"❌ **{self.team}** cancelled pick for **{self.player['name']}**",
+                embed=None,
+                view=None,
+            )
+        except Exception:
+            try:
+                await interaction.message.edit(
+                    content=f"❌ **{self.team}** cancelled pick for **{self.player['name']}**",
+                    embed=None,
+                    view=None,
+                )
+            except Exception:
+                pass
+
         self.stop()
 
 
