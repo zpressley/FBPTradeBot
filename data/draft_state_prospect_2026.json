@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 16,
+  "current_pick_index": 17,
   "picks_made": [
     {
       "draft": "prospect",
@@ -234,6 +234,20 @@
       "upid": "7947",
       "position": "SP",
       "mlb_team": "STL"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 2,
+      "team": "JEP",
+      "round_type": "dc",
+      "result": null,
+      "player": "Aiva Arquette",
+      "timestamp": "2026-02-13T22:21:12.487875",
+      "pick_index": 16,
+      "upid": "7945",
+      "position": "SS",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-02-13T22:17:11.696239",
@@ -251,7 +265,7 @@
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "RV": {
       "bc_slots": 2,
@@ -314,5 +328,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T22:17:11.696306"
+  "last_updated": "2026-02-13T22:21:12.487950"
 }
