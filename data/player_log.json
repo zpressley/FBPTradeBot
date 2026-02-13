@@ -30956,5 +30956,33 @@
       "upid": "4236",
       "name": "LuJames Groover"
     }
+  },
+  {
+    "id": "2026-2026-02-13T18:24:58.717989-UPID_7358-Merge-Admin_Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-13T18:24:58.717989",
+    "upid": "7358",
+    "player_name": "Theo Gillen",
+    "team": "TB",
+    "owner": "The Damn Yankees",
+    "update_type": "Merge",
+    "event": "MERGED: Theodore Gillen (UPID 7669) merged into this record",
+    "changes": {
+      "manager": {
+        "from": "The Damn Yankees"
+      },
+      "contract_type": {
+        "from": "Blue Chip Contract"
+      },
+      "FBP_Team": {
+        "from": "DMN"
+      }
+    },
+    "merged_from": {
+      "upid": "7669",
+      "name": "Theodore Gillen"
+    }
   }
 ]
