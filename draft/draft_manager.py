@@ -6,6 +6,7 @@ Handles draft flow, pick tracking, and state persistence
 import json
 import os
 import subprocess
+import threading
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
@@ -33,6 +34,7 @@ def _resolve_team_name(team_abbr: str) -> str:
 
 
 class DraftManager:
+    _git_lock = threading.Lock()
     """
     Manages draft state and flow for FBP drafts.
     Loads custom draft order, tracks picks, handles state persistence.
@@ -588,7 +590,7 @@ class DraftManager:
             for p in mutated_files:
                 if p and p not in unique:
                     unique.append(p)
-            self._commit_draft_files(unique, msg)
+            self._commit_draft_files_async(unique, msg)
         except Exception as exc:
             print(f"⚠️ Draft pick git commit/push failed: {exc}")
 
@@ -644,7 +646,7 @@ class DraftManager:
             for p in mutated_files:
                 if p and p not in unique:
                     unique.append(p)
-            self._commit_draft_files(unique, "Draft undo")
+            self._commit_draft_files_async(unique, "Draft undo")
         except Exception as exc:
             print(f"⚠️ Draft undo git commit/push failed: {exc}")
 
@@ -685,7 +687,7 @@ class DraftManager:
         self.save_state()
 
         try:
-            self._commit_draft_files([self.state_file], f"Draft started: {self.draft_type} {self.season}")
+            self._commit_draft_files_async([self.state_file], f"Draft started: {self.draft_type} {self.season}")
         except Exception as exc:
             print(f"⚠️ Draft start git commit/push failed: {exc}")
 
@@ -701,7 +703,7 @@ class DraftManager:
         self.save_state()
 
         try:
-            self._commit_draft_files([self.state_file], f"Draft paused: {self.draft_type} {self.season}")
+            self._commit_draft_files_async([self.state_file], f"Draft paused: {self.draft_type} {self.season}")
         except Exception as exc:
             print(f"⚠️ Draft pause git commit/push failed: {exc}")
         
@@ -717,7 +719,7 @@ class DraftManager:
         self.save_state()
 
         try:
-            self._commit_draft_files([self.state_file], f"Draft resumed: {self.draft_type} {self.season}")
+            self._commit_draft_files_async([self.state_file], f"Draft resumed: {self.draft_type} {self.season}")
         except Exception as exc:
             print(f"⚠️ Draft resume git commit/push failed: {exc}")
         
@@ -889,6 +891,23 @@ class DraftManager:
             print(f"⚠️ Draft git commit/push failed with code {exc.returncode}")
         except Exception as exc:
             print(f"⚠️ Draft git commit/push error: {exc}")
+
+    def _commit_draft_files_async(self, file_paths: List[str], message: str) -> None:
+        """Run git commit/push in a background thread.
+
+        This prevents slow git operations (especially push) from blocking the
+        Discord bot event loop, which can make the website appear "late".
+        """
+
+        def _worker():
+            try:
+                with DraftManager._git_lock:
+                    self._commit_draft_files(file_paths, message)
+            except Exception as exc:
+                print(f"⚠️ Draft git async commit/push error: {exc}")
+
+        t = threading.Thread(target=_worker, daemon=True, name="draft-git")
+        t.start()
 
     def get_draft_progress(self) -> Dict:
         """
