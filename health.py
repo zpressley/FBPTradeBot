@@ -727,8 +727,9 @@ async def api_admin_update_player(
     try:
         _commit_and_push(core_files, commit_msg)
         # Send Discord notification
-        player_name = result['player'].get('name', payload.upid)
-        discord_msg = f"📝 **Admin Update**\n\n👤 Player: **{player_name}**\n💾 Source: Website Admin Portal"
+        player_name = result['player'].get('name', 'Unknown')
+        upid = result['player'].get('upid', payload.upid)
+        discord_msg = f"📝 **Admin Update**\n\n👤 Player: **{player_name}** (UPID {upid})\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         # Commit/push failures should not hide the fact that the data files
@@ -760,8 +761,9 @@ async def api_admin_delete_player(
     try:
         _commit_and_push(core_files, commit_msg)
         # Send Discord notification
-        player_name = result['player'].get('name', payload.upid)
-        discord_msg = f"🗑️ **Admin Delete**\n\n👤 Player: **{player_name}**\n💾 Source: Website Admin Portal"
+        player_name = result['player'].get('name', 'Unknown')
+        upid = result.get('upid', payload.upid)
+        discord_msg = f"🗑️ **Admin Delete**\n\n👤 Player: **{player_name}** (UPID {upid})\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin delete git commit/push failed:", exc)
@@ -791,10 +793,11 @@ async def api_admin_merge_players(
     try:
         _commit_and_push(core_files, commit_msg)
         # Send Discord notification
-        source = result.get('source_upid', 'unknown')
-        target = result.get('target_upid', 'unknown')
-        target_name = result.get('merged_player', {}).get('name', target)
-        discord_msg = f"🔀 **Admin Merge**\n\n👤 Merged into: **{target_name}**\n📤 Source UPID: {source}\n💾 Source: Website Admin Portal"
+        source_name = result.get('source_name', 'Unknown')
+        target_name = result.get('target_name', 'Unknown')
+        source_upid = result.get('source_upid', '?')
+        target_upid = result.get('target_upid', '?')
+        discord_msg = f"🔀 **Admin Merge**\n\n📥 Kept: **{target_name}** (UPID {target_upid})\n🗑️ Deleted: **{source_name}** (UPID {source_upid})\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin merge git commit/push failed:", exc)

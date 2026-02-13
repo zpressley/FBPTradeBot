@@ -389,6 +389,8 @@ def apply_admin_merge_players(
     return {
         "source_upid": source_upid,
         "target_upid": target_upid,
+        "source_name": source_player.get("name", "Unknown"),
+        "target_name": target_player.get("name", "Unknown"),
         "player": target_player,
         "merged_fields": merged_fields,
         "source_deleted": True,
