@@ -81,6 +81,7 @@ PAD_TEST_CHANNEL_ID = int(os.getenv("PAD_TEST_CHANNEL_ID", "0"))  # test PAD ann
 PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live PAD announcements
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
+ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notifications
 
 # Repo root used for git operations (Render default path, override via env)
 REPO_ROOT = os.getenv("REPO_ROOT", "/opt/render/project/src")
@@ -381,6 +382,16 @@ async def _send_auction_log_message(content: str) -> None:
             await channel.send(content)
     except Exception as exc:
         print(f"⚠️ Failed to send auction log message: {exc}")
+
+
+async def _send_admin_log_message(content: str) -> None:
+    """Post an admin change notification to the admin log channel."""
+    try:
+        channel = bot.get_channel(ADMIN_LOG_CHANNEL_ID)
+        if channel:
+            await channel.send(content)
+    except Exception as exc:
+        print(f"⚠️ Failed to send admin log message: {exc}")
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
@@ -706,11 +717,13 @@ async def api_admin_update_player(
         "data/wizbucks.json",
         "data/player_log.json",
     ]
+    commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
     try:
-        _commit_and_push(
-            core_files,
-            f"Admin update: {result['player'].get('name', payload.upid)}",
-        )
+        _commit_and_push(core_files, commit_msg)
+        # Send Discord notification
+        player_name = result['player'].get('name', payload.upid)
+        discord_msg = f"📝 **Admin Update**\n\n👤 Player: **{player_name}**\n💾 Source: Website Admin Portal"
+        bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         # Commit/push failures should not hide the fact that the data files
         # were already updated on disk.
@@ -737,11 +750,13 @@ async def api_admin_delete_player(
         "data/combined_players.json",
         "data/player_log.json",
     ]
+    commit_msg = f"Admin delete: {result['player'].get('name', payload.upid)}"
     try:
-        _commit_and_push(
-            core_files,
-            f"Admin delete: {result['player'].get('name', payload.upid)}",
-        )
+        _commit_and_push(core_files, commit_msg)
+        # Send Discord notification
+        player_name = result['player'].get('name', payload.upid)
+        discord_msg = f"🗑️ **Admin Delete**\n\n👤 Player: **{player_name}**\n💾 Source: Website Admin Portal"
+        bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin delete git commit/push failed:", exc)
 
@@ -766,11 +781,15 @@ async def api_admin_merge_players(
         "data/combined_players.json",
         "data/player_log.json",
     ]
+    commit_msg = f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}"
     try:
-        _commit_and_push(
-            core_files,
-            f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}",
-        )
+        _commit_and_push(core_files, commit_msg)
+        # Send Discord notification
+        source = result.get('source_upid', 'unknown')
+        target = result.get('target_upid', 'unknown')
+        target_name = result.get('merged_player', {}).get('name', target)
+        discord_msg = f"🔀 **Admin Merge**\n\n👤 Merged into: **{target_name}**\n📤 Source UPID: {source}\n💾 Source: Website Admin Portal"
+        bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin merge git commit/push failed:", exc)
 
@@ -795,11 +814,17 @@ async def api_admin_wizbucks_adjustment(
         "data/wizbucks.json",
         "data/wizbucks_transactions.json",
     ]
+    commit_msg = f"Admin WB: {result['team']} {result['amount']} ({result['installment']})"
     try:
-        _commit_and_push(
-            core_files,
-            f"Admin WB: {result['team']} {result['amount']} ({result['installment']})",
-        )
+        _commit_and_push(core_files, commit_msg)
+        # Send Discord notification
+        team = result['team']
+        amount = result['amount']
+        installment = result['installment']
+        new_balance = result.get('new_balance', 'N/A')
+        sign = '+' if amount >= 0 else ''
+        discord_msg = f"💰 **Admin WizBucks Adjustment**\n\n🏆 Team: **{team}**\n💸 Amount: **{sign}{amount}**\n📅 Installment: {installment}\n📊 New Balance: {new_balance}\n💾 Source: Website Admin Portal"
+        bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin WB git commit/push failed:", exc)
 

@@ -20,7 +20,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from draft.draft_manager import DraftManager
 from draft.pick_validator import PickValidator
 
-TEST_USER_ID = 664280448788201522
+# In TEST_MODE, these user IDs can submit picks for whatever team is on the clock.
+# (Useful for validating website/Discord pick flows without having to login as every manager.)
+TEST_USER_IDS = {
+    664280448788201522,  # WAR (existing test user)
+    161967242118955008,  # WIZ
+    875750135005597728,  # SAD
+}
 
 
 class PickConfirmationView(discord.ui.View):
@@ -105,7 +111,7 @@ class DraftCommands(commands.Cog):
         
         print("✅ Draft commands loaded")
         if self.TEST_MODE:
-            print(f"⚠️ TEST MODE - User {TEST_USER_ID} can pick for any team")
+            print(f"⚠️ TEST MODE - Users {sorted(TEST_USER_IDS)} can pick for any team")
     
     def _is_admin(self, interaction: discord.Interaction) -> bool:
         if interaction.user.guild_permissions.administrator:
@@ -143,8 +149,8 @@ class DraftCommands(commands.Cog):
         if not is_draft_channel and not is_dm:
             return
         
-        # TEST MODE: Allow test user to pick for current team
-        if self.TEST_MODE and message.author.id == TEST_USER_ID:
+        # TEST MODE: Allow test admins to pick for current team
+        if self.TEST_MODE and message.author.id in TEST_USER_IDS:
             user_team = current_pick['team']
         else:
             user_team = self._get_team_for_user(message.author.id)
