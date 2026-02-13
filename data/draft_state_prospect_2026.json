@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 2,
+  "current_pick_index": 3,
   "picks_made": [
     {
       "draft": "prospect",
@@ -41,6 +41,19 @@
       "upid": "8190",
       "position": "CF",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 3,
+      "team": "RV",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Paxton Kling",
+      "timestamp": "2026-02-13T21:44:55.783547",
+      "pick_index": 2,
+      "upid": "8101",
+      "position": "OF"
     }
   ],
   "timer_started_at": "2026-02-13T21:43:18.346656",
@@ -63,7 +76,7 @@
     "RV": {
       "bc_slots": 2,
       "dc_slots": 1,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "HAM": {
@@ -121,5 +134,5 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-13T21:43:18.346752"
+  "last_updated": "2026-02-13T21:44:55.783628"
 }
