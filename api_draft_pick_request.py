@@ -257,6 +257,11 @@ async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(v
         }
 
     try:
+        # Cancel the current pick timer before making the pick
+        if cog.pick_timer_task:
+            cog.pick_timer_task.cancel()
+            cog.pick_timer_task = None
+
         # Record the pick (this advances the draft)
         pick_record = draft_manager.make_pick(
             payload.team,
@@ -264,39 +269,24 @@ async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(v
             player_data,
         )
 
-        # Cancel the pick timer
-        if cog.pick_timer_task:
-            cog.pick_timer_task.cancel()
-            cog.pick_timer_task = None
-
         # Announce the pick in Discord draft channel
+        # Note: announce_pick() internally handles:
+        # - start_pick_timer()
+        # - post_on_clock_status()
+        # - notify_manager_on_clock()
+        # - draft complete message
+        # So we don't need to call those separately.
         if getattr(cog, "DRAFT_CHANNEL_ID", None):
             draft_channel = _bot_ref.get_channel(cog.DRAFT_CHANNEL_ID)
             if draft_channel is None:
                 draft_channel = await _bot_ref.fetch_channel(cog.DRAFT_CHANNEL_ID)
 
             if draft_channel:
-                # Announce pick
                 await cog.announce_pick(draft_channel, pick_record, player_data)
 
                 # Update draft board thread if it exists
                 if cog.draft_board_thread:
                     await cog.update_draft_board()
-
-                # Check if there's a next pick
-                next_pick = draft_manager.get_current_pick()
-                if next_pick:
-                    # Start timer for next pick
-                    await cog.start_pick_timer(draft_channel)
-                    await cog.post_on_clock_status(draft_channel)
-                    # Notify next manager
-                    if not cog.TEST_MODE:
-                        await cog.notify_manager_on_clock(next_pick["team"])
-                else:
-                    # Draft complete
-                    if cog.draft_board_thread:
-                        await cog.update_draft_board()
-                    await draft_channel.send("🏁 **DRAFT COMPLETE!**")
 
         return {
             "success": True,
