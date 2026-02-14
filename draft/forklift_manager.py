@@ -83,7 +83,7 @@ class ForkliftManager:
         self.save_state()
 
         return True, (
-            f":forklift: **FORKLIFT MODE ENABLED** for {team}\n"
+            f"<:forklift:1068270227344867358> **FORKLIFT MODE ENABLED** for {team}\n"
             f"└─ Timer: {self.config.forklift_timer_seconds}s (instead of {self.config.normal_timer_seconds}s)\n"
             f"└─ Auto-pick: enabled (from draft board)"
         )
@@ -95,7 +95,7 @@ class ForkliftManager:
 
         teams = self.state.setdefault("forklift_teams", [])
         if team not in teams:
-            return False, f"{team} is not in :forklift: Forklift Mode"
+            return False, f"{team} is not in <:forklift:1068270227344867358> Forklift Mode"
 
         teams.remove(team)
         self.state.setdefault("history", []).append(

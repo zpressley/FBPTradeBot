@@ -684,7 +684,7 @@ class DraftCommands(commands.Cog):
                     pass
 
                 await channel.send(
-                    f":forklift: Forklift Mode could not auto-pick for **{team}** (empty/depleted/invalid board).\n"
+                    f"<:forklift:1068270227344867358> Forklift Mode could not auto-pick for **{team}** (empty/depleted/invalid board).\n"
                     f"Forklift Mode disabled — please pick manually. Restarting clock with 4 minutes."
                 )
 
@@ -751,7 +751,7 @@ class DraftCommands(commands.Cog):
 
         pick_record = self.draft_manager.make_pick(team, autopicked_name, player_data)
 
-        prefix = ":forklift: " if forklift_enabled else ""
+        prefix = "<:forklift:1068270227344867358> " if forklift_enabled else ""
         pick_text = f"**{prefix}⏰ Round {pick_record['round']}, Pick {pick_record['pick']} - AUTOPICK**\n"
         pick_text += f"**{team}** time expired\n"
         pick_text += f"Autopicked: **{autopicked_name}**\n"
@@ -860,7 +860,7 @@ class DraftCommands(commands.Cog):
             team_display = f"**{current_pick['team']}**"
             extra = ""
             if self._is_forklift_team(current_pick["team"]):
-                team_display += " :forklift:"
+                team_display += " <:forklift:1068270227344867358>"
                 extra = "\nForklift Mode: 10s • auto-pick from board"
 
             embed.add_field(
@@ -1456,7 +1456,7 @@ class DraftCommands(commands.Cog):
         manager_mention = f"<@{manager_id}>" if manager_id else team
 
         await interaction.response.send_message(
-            f":forklift: **FORKLIFT MODE ENABLED**\n\n"
+            f"<:forklift:1068270227344867358> **FORKLIFT MODE ENABLED**\n\n"
             f"**Team:** {team} ({manager_mention})\n"
             f"**Enabled by:** {interaction.user.mention}\n\n"
             f"**Settings:**\n"
@@ -1546,7 +1546,7 @@ class DraftCommands(commands.Cog):
 
         if enabled:
             msg = (
-                f":forklift: **FORKLIFT MODE: ENABLED**\n\n"
+                f"<:forklift:1068270227344867358> **FORKLIFT MODE: ENABLED**\n\n"
                 f"Team: **{team}**\n"
                 f"Clock: **{duration}s**\n"
                 f"Board size: **{len(board)}**\n\n"
@@ -1581,7 +1581,7 @@ class DraftCommands(commands.Cog):
             await interaction.response.send_message("📋 No teams are currently in Forklift Mode", ephemeral=True)
             return
 
-        lines = [":forklift: **FORKLIFT MODE TEAMS**", ""]
+        lines = ["<:forklift:1068270227344867358> **FORKLIFT MODE TEAMS**", ""]
         for t in teams:
             board = self.board_manager.get_board(t) if self.board_manager else []
             lines.append(f"• **{t}** — {len(board)} players on board")
