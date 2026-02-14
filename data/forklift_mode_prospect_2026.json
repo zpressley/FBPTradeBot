@@ -1,4 +1,13 @@
 {
-  "forklift_teams": [],
-  "history": []
+  "forklift_teams": [
+    "SAD"
+  ],
+  "history": [
+    {
+      "team": "SAD",
+      "action": "enabled",
+      "by": "zpressley",
+      "timestamp": "2026-02-14T19:53:01.962054"
+    }
+  ]
 }
