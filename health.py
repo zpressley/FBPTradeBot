@@ -1,6 +1,6 @@
 import os
 import asyncio
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from zoneinfo import ZoneInfo
 import threading
 import sys
@@ -312,6 +312,36 @@ def compute_draft_status(draft_type: str, state: dict) -> str:
     return "pre_draft"
 
 
+def _normalize_clock_started_at_to_et(raw: str | None) -> str | None:
+    """Return a timezone-aware ISO timestamp in US/Eastern for the website.
+
+    Draft state currently persists timer_started_at as a naive ISO timestamp.
+    Browsers interpret naive ISO timestamps as *local time*, which causes the
+    draft clock to appear "in the future" for users outside the bot's timezone.
+
+    This function normalizes the API field only (no state mutation):
+    - If raw has no tzinfo, assume it is UTC.
+    - Convert to US/Eastern and return ISO with an explicit offset.
+    """
+    if not raw:
+        return None
+
+    try:
+        s = str(raw).strip()
+        # datetime.fromisoformat doesn't accept trailing 'Z'
+        if s.endswith("Z"):
+            s = s[:-1] + "+00:00"
+
+        dt = datetime.fromisoformat(s)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+
+        return dt.astimezone(ET).isoformat()
+    except Exception:
+        # Fall back to the raw value if parsing fails.
+        return str(raw)
+
+
 def build_draft_payload(draft_type: str) -> dict:
     """Build unified draft payload for keeper or prospect draft.
 
@@ -385,7 +415,7 @@ def build_draft_payload(draft_type: str) -> dict:
         "current_team": current_pick["team"] if current_pick else None,
         "total_rounds": total_rounds,
         "pick_clock_seconds": int(pick_clock_seconds),
-        "clock_started_at": state.get("timer_started_at"),
+        "clock_started_at": _normalize_clock_started_at_to_et(state.get("timer_started_at")),
         "forklift_teams": forklift_teams,
         "draft_order": draft_order_teams,
         "picks": picks,

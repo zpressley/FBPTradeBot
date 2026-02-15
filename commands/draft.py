@@ -988,6 +988,12 @@ class DraftCommands(commands.Cog):
         """DM manager when it's their turn with board suggestions"""
         if self.TEST_MODE:
             return
+
+        # Forklift teams are intentionally "hands off"; they likely don't want
+        # DM spam during rapid-fire auto-picking.
+        self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type if self.draft_manager else "prospect")
+        if self._is_forklift_team(team):
+            return
         
         user_id = self._get_user_for_team(team)
         if not user_id:
