@@ -10330,8 +10330,8 @@
     "position": "3B,SS",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "62354",
     "upid": "6543",
@@ -10347,7 +10347,8 @@
     "fypd": false,
     "rank": 45,
     "debut_date": "07/30/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Chase Dollander",
