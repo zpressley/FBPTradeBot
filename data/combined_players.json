@@ -600,8 +600,8 @@
     "position": "CF",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "11984",
     "upid": "3455",
@@ -617,7 +617,8 @@
     "fypd": false,
     "rank": 1968,
     "debut_date": "05/22/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Cade Cavalli",
