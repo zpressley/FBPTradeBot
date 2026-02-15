@@ -144711,8 +144711,8 @@
     "manager": null,
     "player_type": "Farm",
     "contract_type": null,
-    "status": "P",
-    "years_simple": "",
+    "status": "[9] P",
+    "years_simple": "P",
     "yahoo_id": "",
     "upid": "8339",
     "mlb_id": 836582,
@@ -144724,7 +144724,8 @@
     "bats": "R",
     "throws": "R",
     "mlb_primary_position": "P",
-    "fypd": true
+    "fypd": true,
+    "level": "MLB"
   },
   {
     "name": "Angel Nu\u00f1ez",
