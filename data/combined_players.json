@@ -2561,8 +2561,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "6842",
@@ -2572,7 +2572,8 @@
     "rank": 956,
     "debut_date": null,
     "debuted": false,
-    "mlb_primary_position": "SP"
+    "mlb_primary_position": "SP",
+    "level": "MLB"
   },
   {
     "name": "Alex Bregman",
