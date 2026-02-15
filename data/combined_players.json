@@ -536,8 +536,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Development Cont.",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "12462",
     "upid": "2919",
@@ -547,7 +547,8 @@
     "rank": 1772,
     "debut_date": null,
     "debuted": false,
-    "mlb_primary_position": "SP"
+    "mlb_primary_position": "SP",
+    "level": "MLB"
   },
   {
     "name": "Triston Casas",
