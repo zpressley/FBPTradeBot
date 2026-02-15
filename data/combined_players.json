@@ -78141,15 +78141,15 @@
     "team": "ATH",
     "position": "SP",
     "manager": null,
-    "player_type": "MLB",
+    "player_type": "Farm",
     "contract_type": null,
-    "status": "[7] P",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "65723",
     "upid": "7943",
     "mlb_id": 150374,
     "FBP_Team": "",
-    "age": 51,
+    "age": "21",
     "height_weight": "6' 1\" / 188 lbs",
     "bats": "R",
     "throws": "R",
@@ -78161,7 +78161,8 @@
     "mlb_primary_position": "P",
     "birth_date": "1974-03-24",
     "height": "6' 2\"",
-    "weight": 200
+    "weight": 200,
+    "level": "A-"
   },
   {
     "name": "Eli Willits",
