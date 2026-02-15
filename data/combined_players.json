@@ -7798,8 +7798,8 @@
     "position": "RP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "3889",
@@ -7809,7 +7809,8 @@
     "rank": 1306,
     "debut_date": null,
     "debuted": false,
-    "mlb_primary_position": "RP"
+    "mlb_primary_position": "RP",
+    "level": "MLB"
   },
   {
     "name": "Cade Horton",
