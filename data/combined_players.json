@@ -12213,8 +12213,8 @@
     "position": "C",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "60232",
     "upid": "3914",
@@ -12230,7 +12230,8 @@
     "fypd": false,
     "rank": 1234,
     "debut_date": "05/15/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "David Robertson",
