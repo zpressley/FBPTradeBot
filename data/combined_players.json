@@ -5200,8 +5200,8 @@
     "position": "SP,RP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "3561",
@@ -5217,7 +5217,8 @@
     "height": "6' 1\"",
     "weight": 205,
     "bats": "R",
-    "throws": "R"
+    "throws": "R",
+    "level": "MLB"
   },
   {
     "name": "James Triantos",
