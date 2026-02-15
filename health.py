@@ -82,6 +82,7 @@ PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notifications
+ADMIN_TASKS_CHANNEL_ID = 875594022033436683  # daily processing summary tasks
 
 # Repo root used for git operations (Render default path, override via env)
 REPO_ROOT = os.getenv("REPO_ROOT", "/opt/render/project/src")
@@ -417,6 +418,16 @@ async def _send_admin_log_message(content: str) -> None:
             await channel.send(content)
     except Exception as exc:
         print(f"⚠️ Failed to send admin log message: {exc}")
+
+
+async def _send_admin_tasks_message(content: str) -> None:
+    """Post a daily processing task summary to the admin tasks channel."""
+    try:
+        channel = bot.get_channel(ADMIN_TASKS_CHANNEL_ID)
+        if channel:
+            await channel.send(content)
+    except Exception as exc:
+        print(f"⚠️ Failed to send admin tasks message: {exc}")
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
@@ -924,6 +935,165 @@ async def api_admin_wizbucks_balances(
                 continue
 
     return {"balances": balances}
+
+
+# ---- Daily Processing Summary ----
+
+def _load_json_safe(path: str, default):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if data is not None else default
+    except FileNotFoundError:
+        return default
+    except Exception:
+        return default
+
+
+def _is_wb_item(item: str) -> bool:
+    if not isinstance(item, str):
+        return False
+    s = item.lower()
+    return "wb" in s
+
+
+def _parse_wb_amount(item: str) -> int:
+    import re
+    try:
+        m = re.search(r"(\d+)", item)
+        return int(m.group(1)) if m else 0
+    except Exception:
+        return 0
+
+
+def _extract_name(raw: str) -> str:
+    # Best-effort: strip leading position codes and trailing brackets
+    try:
+        name = raw
+        # Remove leading positions like "OF ", "SP ", etc.
+        if " " in name:
+            parts = name.split(" ", 1)
+            if len(parts[0]) <= 3 and parts[0].isalpha():
+                name = parts[1]
+        # Truncate at first bracket
+        if "[" in name:
+            name = name.split("[")[0].strip()
+        return name.strip()
+    except Exception:
+        return raw
+
+
+def _build_processing_summary_lines(effective_on: date) -> list[str]:
+    today_iso = effective_on.isoformat()
+    lines: list[str] = []
+    header = f"🗓️ Processing Tasks for {today_iso} (6:00 AM ET)"
+    lines.append(header)
+    lines.append("")
+
+    # Pending trades scheduled for today
+    trades = _load_json_safe("data/pending_trades.json", default=[])
+    todays = [t for t in trades if isinstance(t, dict) and t.get("effective_on") == today_iso and t.get("status") in ("approved_awaiting_processing", "scheduled")]
+
+    if todays:
+        lines.append("🔁 Trades to Apply:")
+        for t in todays:
+            teams = [str(x) for x in (t.get("teams") or [])]
+            assets = t.get("assets") or {}
+            trade_id = t.get("trade_id") or "(no id)"
+            lines.append(f"• Trade {trade_id}: {' ↔ '.join(teams) if teams else ''}")
+            # Player moves and WB transfers
+            # Assume assets lists what each team RECEIVES
+            # Player moves
+            for team, received in (assets.items() if isinstance(assets, dict) else []):
+                other = [tt for tt in teams if tt != team]
+                recv_players = [it for it in received if isinstance(it, str) and not _is_wb_item(it)]
+                for p in recv_players:
+                    pname = _extract_name(p)
+                    src = other[0] if len(other) == 1 else (other or ["?"])[0]
+                    lines.append(f"   - Move {pname}: {src} → {team}")
+            # WB ledger
+            for team, received in (assets.items() if isinstance(assets, dict) else []):
+                for it in received:
+                    if isinstance(it, str) and _is_wb_item(it):
+                        amt = _parse_wb_amount(it)
+                        if amt > 0:
+                            if len(teams) == 2:
+                                counter = [tt for tt in teams if tt != team][0]
+                                lines.append(f"   - WB: Credit {team} +${amt}, Debit {counter} -${amt}")
+                            else:
+                                lines.append(f"   - WB: Credit {team} +${amt} (counterparty debit)")
+        lines.append("")
+    else:
+        lines.append("🔁 Trades to Apply: none")
+        lines.append("")
+
+    # Draft picks moved via trades (optional 'picks' array on trade)
+    moved_picks = []
+    for t in todays:
+        for p in (t.get("picks") or []):
+            moved_picks.append(p)
+    if moved_picks:
+        lines.append("📋 Draft Pick Transfers:")
+        for p in moved_picks:
+            try:
+                draft = p.get("draft") or "keeper"
+                rnd = p.get("round")
+                pickn = p.get("pick")
+                src = p.get("from_team") or p.get("original_team") or "?"
+                dst = p.get("to_team") or "?"
+                lines.append(f"• {draft.title()} R{rnd} P{pickn}: {src} → {dst}")
+            except Exception:
+                continue
+        lines.append("")
+
+    # Keeper draft overlay reminder (no base-file mutation)
+    lines.append("🧩 Keeper Draft Overlay:")
+    lines.append("• Do NOT modify data/draft_order_2026.json (prospect base).")
+    lines.append("• Append keeper picks to data/keeper_draft_picks_2026.json and rebuild data/draft_order_2026_mock.json.")
+    lines.append("")
+
+    # Final admin checklist
+    lines.append("✅ Admin Checklist:")
+    lines.append("• Apply Yahoo roster moves for all player transfers above.")
+    lines.append("• Record WizBucks ledger entries (credit/debit as listed).")
+    lines.append("• Update draft picks if any transfers are listed.")
+    lines.append("• Rebuild keeper mock draft order file after any KAP outcomes.")
+
+    return lines
+
+
+@app.post("/api/admin/daily-processing-summary")
+async def api_admin_daily_processing_summary(
+    effective_on: str | None = None,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Build and post a daily processing task summary to the admin tasks channel.
+
+    - effective_on: YYYY-MM-DD in ET. Defaults to today (America/New_York).
+    """
+    try:
+        if effective_on:
+            target_date = datetime.fromisoformat(effective_on).date()
+        else:
+            target_date = datetime.now(tz=ET).date()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid effective_on date")
+
+    lines = _build_processing_summary_lines(target_date)
+    content = "\n".join(lines)
+
+    # Post to Discord (fire-and-forget)
+    try:
+        bot.loop.create_task(_send_admin_tasks_message(content))
+    except RuntimeError:
+        # If loop isn't running (tests), skip posting
+        pass
+
+    return {
+        "ok": True,
+        "effective_on": target_date.isoformat(),
+        "preview": content[:800]
+    }
 
 
 # ---- PAD Discord test helper ----

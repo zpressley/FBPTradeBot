@@ -206,7 +206,9 @@ class DraftCommands(commands.Cog):
         self.WARNING_TIME = 60
         self.current_timer_duration = self.PICK_TIMER_DURATION
         
-        self.TEST_MODE = True
+        # Draft test mode (defaults to OFF). When enabled, designated testers
+        # can submit picks for whichever team is on the clock.
+        self.TEST_MODE = os.getenv("DRAFT_TEST_MODE", "false").lower() == "true"
         
         self.draft_manager = None
         self.pick_validator = None

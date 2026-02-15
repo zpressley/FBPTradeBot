@@ -1,25 +1,4 @@
 {
-  "forklift_teams": [
-    "DMN"
-  ],
-  "history": [
-    {
-      "team": "SAD",
-      "action": "enabled",
-      "by": "zpressley",
-      "timestamp": "2026-02-14T19:53:01.962054"
-    },
-    {
-      "team": "SAD",
-      "action": "disabled",
-      "by": "zpressley",
-      "timestamp": "2026-02-14T20:17:13.633849"
-    },
-    {
-      "team": "DMN",
-      "action": "enabled",
-      "by": "zpressley",
-      "timestamp": "2026-02-14T20:18:28.427213"
-    }
-  ]
+  "forklift_teams": [],
+  "history": []
 }
