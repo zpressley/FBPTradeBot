@@ -1,87 +1,14 @@
 {
-  "status": "paused",
+  "status": "not_started",
   "draft_type": "prospect",
   "season": 2026,
   "current_pick_index": 0,
   "picks_made": [],
   "timer_started_at": null,
-  "paused_at": "2026-02-15T20:50:25.999350",
-  "started_at": "2026-02-15T20:47:17.034024",
+  "paused_at": null,
+  "started_at": null,
   "completed_at": null,
-  "team_slots": {
-    "WAR": {
-      "bc_slots": 2,
-      "dc_slots": 1,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "JEP": {
-      "bc_slots": 2,
-      "dc_slots": 3,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "RV": {
-      "bc_slots": 2,
-      "dc_slots": 1,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "HAM": {
-      "bc_slots": 1,
-      "dc_slots": 2,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "CFL": {
-      "bc_slots": 2,
-      "dc_slots": 5,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "DMN": {
-      "bc_slots": 1,
-      "dc_slots": 5,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "B2J": {
-      "bc_slots": 1,
-      "dc_slots": 0,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "TBB": {
-      "bc_slots": 1,
-      "dc_slots": 6,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "LFB": {
-      "bc_slots": 1,
-      "dc_slots": 2,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "WIZ": {
-      "bc_slots": 2,
-      "dc_slots": 5,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "DRO": {
-      "bc_slots": 0,
-      "dc_slots": 1,
-      "bc_used": 0,
-      "dc_used": 0
-    },
-    "SAD": {
-      "bc_slots": 0,
-      "dc_slots": 6,
-      "bc_used": 0,
-      "dc_used": 0
-    }
-  },
-  "last_updated": "2026-02-15T20:50:26.000046",
+  "team_slots": {},
+  "last_updated": "2026-02-15T20:50:35.739924",
   "timer_duration_seconds": null
 }
