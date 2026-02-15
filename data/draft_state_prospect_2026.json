@@ -4,7 +4,7 @@
   "season": 2026,
   "current_pick_index": 0,
   "picks_made": [],
-  "timer_started_at": null,
+  "timer_started_at": "2026-02-15T20:48:29.815666",
   "paused_at": "2026-02-15T20:48:08.072983",
   "started_at": "2026-02-15T20:47:17.034024",
   "completed_at": null,
@@ -82,6 +82,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-15T20:48:28.833143",
-  "timer_duration_seconds": null
+  "last_updated": "2026-02-15T20:48:29.815727",
+  "timer_duration_seconds": 240
 }
