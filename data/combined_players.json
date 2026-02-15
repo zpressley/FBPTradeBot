@@ -4728,8 +4728,8 @@
     "position": "2B",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "64361",
     "upid": "7699",
@@ -4745,7 +4745,8 @@
     "fypd": false,
     "rank": 1180,
     "debut_date": "06/13/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Logan Evans",
