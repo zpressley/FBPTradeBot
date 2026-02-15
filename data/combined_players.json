@@ -10678,8 +10678,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "64354",
     "upid": "7692",
@@ -10695,7 +10695,8 @@
     "fypd": false,
     "rank": 226,
     "debut_date": null,
-    "debuted": false
+    "debuted": false,
+    "level": "MLB"
   },
   {
     "name": "Nick Kurtz",
