@@ -10652,8 +10652,8 @@
     "position": "SP,RP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "64394",
     "upid": "7658",
@@ -10669,7 +10669,8 @@
     "fypd": false,
     "rank": 28,
     "debut_date": "08/29/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Dasan Hill",
