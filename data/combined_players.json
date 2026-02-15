@@ -5993,8 +5993,8 @@
     "position": "OF",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "12133",
     "upid": "3454",
@@ -6010,7 +6010,8 @@
     "fypd": false,
     "rank": 220,
     "debut_date": "04/08/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Emmanuel Rodriguez",
