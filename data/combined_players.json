@@ -6591,8 +6591,8 @@
     "position": "CF",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "60538",
     "upid": "3893",
@@ -6608,7 +6608,8 @@
     "height": "6' 3\"",
     "weight": 225,
     "bats": "R",
-    "throws": "R"
+    "throws": "R",
+    "level": "MLB"
   },
   {
     "name": "Drew Gilbert",
