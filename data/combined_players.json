@@ -3428,8 +3428,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "62487",
     "upid": "7304",
@@ -3445,7 +3445,8 @@
     "fypd": false,
     "rank": 400,
     "debut_date": "06/20/2025",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Tommy Edman",
