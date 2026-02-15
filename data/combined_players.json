@@ -8777,8 +8777,8 @@
     "position": "OF",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "11802",
     "upid": "3526",
@@ -8794,7 +8794,8 @@
     "fypd": false,
     "rank": 132,
     "debut_date": "09/25/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Jordan Wicks",
