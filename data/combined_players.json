@@ -5712,8 +5712,8 @@
     "position": "3B",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "62057",
     "upid": "6476",
@@ -5729,7 +5729,8 @@
     "height": "5' 10\"",
     "weight": 190,
     "bats": "R",
-    "throws": "R"
+    "throws": "R",
+    "level": "MLB"
   },
   {
     "name": "Dylan Crews",
