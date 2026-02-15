@@ -2371,8 +2371,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "63601",
     "upid": "6988",
@@ -2388,7 +2388,8 @@
     "fypd": false,
     "rank": 2222,
     "debut_date": "08/13/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Brody Hopkins",
