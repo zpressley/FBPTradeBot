@@ -13637,8 +13637,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "12549",
     "upid": "2979",
@@ -13654,7 +13654,8 @@
     "fypd": false,
     "rank": 1839,
     "debut_date": "07/31/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Nico Hoerner",
