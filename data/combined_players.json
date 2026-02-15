@@ -7571,8 +7571,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "11753",
     "upid": "3444",
@@ -7588,7 +7588,8 @@
     "fypd": false,
     "rank": 913,
     "debut_date": null,
-    "debuted": false
+    "debuted": false,
+    "level": "MLB"
   },
   {
     "name": "Jack Leiter",
