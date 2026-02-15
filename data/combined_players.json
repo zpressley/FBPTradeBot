@@ -872,8 +872,8 @@
     "position": "RP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "60438",
     "upid": "3997",
@@ -889,7 +889,8 @@
     "fypd": false,
     "rank": 903,
     "debut_date": "09/28/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Reid Detmers",
