@@ -1,11 +1,11 @@
 {
-  "status": "active",
+  "status": "paused",
   "draft_type": "prospect",
   "season": 2026,
   "current_pick_index": 0,
   "picks_made": [],
-  "timer_started_at": "2026-02-15T21:05:59.078865",
-  "paused_at": null,
+  "timer_started_at": null,
+  "paused_at": "2026-02-15T21:06:19.435684",
   "started_at": "2026-02-15T21:05:58.230097",
   "completed_at": null,
   "team_slots": {
@@ -82,6 +82,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-15T21:05:59.078926",
-  "timer_duration_seconds": 240
+  "last_updated": "2026-02-15T21:06:19.436300",
+  "timer_duration_seconds": null
 }
