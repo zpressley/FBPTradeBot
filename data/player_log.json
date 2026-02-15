@@ -31007,5 +31007,27 @@
     "years": "P",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-02-15T00:19:44.682080-UPID_8319-Merge-Admin_Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-15T00:19:44.682080",
+    "upid": "8319",
+    "player_name": "Elmer Rodr\u00edguez",
+    "team": "RHP",
+    "owner": null,
+    "update_type": "Merge",
+    "event": "MERGED: Elmer Rodriguez-Cruz (UPID 6091) merged into this record",
+    "changes": {
+      "years_simple": {
+        "from": "P"
+      }
+    },
+    "merged_from": {
+      "upid": "6091",
+      "name": "Elmer Rodriguez-Cruz"
+    }
   }
 ]
