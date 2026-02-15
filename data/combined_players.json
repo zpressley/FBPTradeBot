@@ -5152,8 +5152,8 @@
     "position": "2B,3B",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "11351",
     "upid": "3483",
@@ -5169,7 +5169,8 @@
     "fypd": false,
     "rank": 1990,
     "debut_date": "09/01/2023",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Ryan Pepiot",
