@@ -6643,8 +6643,8 @@
     "position": "3B",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "60170",
     "upid": "3902",
@@ -6660,7 +6660,8 @@
     "fypd": false,
     "rank": 1468,
     "debut_date": "08/16/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Joe Ryan",
