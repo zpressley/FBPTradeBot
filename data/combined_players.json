@@ -8288,8 +8288,8 @@
     "position": "SS",
     "manager": "",
     "player_type": "MLB",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "",
     "upid": "7359",
@@ -8300,12 +8300,13 @@
     "debut_date": null,
     "debuted": false,
     "birth_date": "1982-12-17",
-    "age": 43,
+    "age": "18",
     "height": "6' 2\"",
     "weight": 235,
     "bats": "R",
     "throws": "R",
-    "mlb_primary_position": "P"
+    "mlb_primary_position": "P",
+    "level": "MLB"
   },
   {
     "name": "Jos\u00e9 Ram\u00edrez",
