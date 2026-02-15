@@ -2650,8 +2650,8 @@
     "position": "SP",
     "manager": "",
     "player_type": "Farm",
-    "contract_type": "Purchased Contract",
-    "status": "[7] P",
+    "contract_type": "",
+    "status": "[9] P",
     "years_simple": "P",
     "yahoo_id": "60217",
     "upid": "4612",
@@ -2667,7 +2667,8 @@
     "fypd": false,
     "rank": 1096,
     "debut_date": "09/01/2024",
-    "debuted": true
+    "debuted": true,
+    "level": "MLB"
   },
   {
     "name": "Carson Williams",
