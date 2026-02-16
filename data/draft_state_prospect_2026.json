@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 27,
+  "current_pick_index": 28,
   "picks_made": [
     {
       "draft": "prospect",
@@ -381,6 +381,20 @@
       "upid": "3921",
       "position": "SP",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 2,
+      "team": "HAM",
+      "round_type": "dc",
+      "result": null,
+      "player": "Dakota Jordan",
+      "timestamp": "2026-02-16T01:58:48.487958",
+      "pick_index": 27,
+      "upid": "7647",
+      "position": "OF",
+      "mlb_team": "SF"
     }
   ],
   "timer_started_at": "2026-02-16T01:58:02.861027",
@@ -410,7 +424,7 @@
       "bc_slots": 1,
       "dc_slots": 2,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 2
     },
     "CFL": {
       "bc_slots": 2,
@@ -461,6 +475,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:58:02.866968",
+  "last_updated": "2026-02-16T01:58:48.488835",
   "timer_duration_seconds": 240
 }

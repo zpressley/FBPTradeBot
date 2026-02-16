@@ -356,7 +356,12 @@
     "pick": 2,
     "team": "HAM",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Dakota Jordan",
+      "timestamp": "2026-02-16T01:58:48.487958",
+      "pick_index": 27,
+      "upid": "7647"
+    }
   },
   {
     "draft": "prospect",

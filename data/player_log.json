@@ -33002,5 +33002,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: JEP selected JR Ritchie (R4 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T20:58:49.381425-05:00-UPID_7647-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-02-15T20:58:49.381425-05:00",
+    "upid": "7647",
+    "player_name": "Dakota Jordan",
+    "team": "SF",
+    "pos": "OF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 117,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: HAM selected Dakota Jordan (R4 P2)"
   }
 ]
