@@ -33462,5 +33462,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: DMN selected Gavin Fien (R7 P2)"
+  },
+  {
+    "id": "2026-2026-02-15T21:18:25.899490-05:00-UPID_7971-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-02-15T21:18:25.899490-05:00",
+    "upid": "7971",
+    "player_name": "Caden Bodine",
+    "team": "BAL",
+    "pos": "C",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 251,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Bluke Blokes",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: TBB selected Caden Bodine (R7 P3)"
   }
 ]

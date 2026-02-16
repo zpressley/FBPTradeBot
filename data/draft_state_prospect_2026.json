@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 47,
+  "current_pick_index": 48,
   "picks_made": [
     {
       "draft": "prospect",
@@ -661,6 +661,20 @@
       "upid": "7961",
       "position": "SS",
       "mlb_team": "TEX"
+    },
+    {
+      "draft": "prospect",
+      "round": 7,
+      "pick": 3,
+      "team": "TBB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Caden Bodine",
+      "timestamp": "2026-02-16T02:18:24.850699",
+      "pick_index": 47,
+      "upid": "7971",
+      "position": "C",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-02-16T02:17:51.740337",
@@ -714,7 +728,7 @@
       "bc_slots": 1,
       "dc_slots": 6,
       "bc_used": 1,
-      "dc_used": 4
+      "dc_used": 5
     },
     "LFB": {
       "bc_slots": 1,
@@ -741,6 +755,6 @@
       "dc_used": 4
     }
   },
-  "last_updated": "2026-02-16T02:17:51.740392",
+  "last_updated": "2026-02-16T02:18:24.856066",
   "timer_duration_seconds": 240
 }

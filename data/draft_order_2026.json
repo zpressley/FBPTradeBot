@@ -616,7 +616,12 @@
     "pick": 3,
     "team": "TBB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Caden Bodine",
+      "timestamp": "2026-02-16T02:18:24.850699",
+      "pick_index": 47,
+      "upid": "7971"
+    }
   },
   {
     "draft": "prospect",
