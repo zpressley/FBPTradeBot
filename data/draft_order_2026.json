@@ -200,7 +200,12 @@
     "pick": 1,
     "team": "WAR",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Edgar Montero",
+      "timestamp": "2026-02-16T01:45:02.896768",
+      "pick_index": 15,
+      "upid": "7807"
+    }
   },
   {
     "draft": "prospect",

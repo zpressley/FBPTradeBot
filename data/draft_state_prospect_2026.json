@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 15,
+  "current_pick_index": 16,
   "picks_made": [
     {
       "draft": "prospect",
@@ -213,6 +213,20 @@
       "upid": "7964",
       "position": "SS",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 1,
+      "team": "WAR",
+      "round_type": "dc",
+      "result": null,
+      "player": "Edgar Montero",
+      "timestamp": "2026-02-16T01:45:02.896768",
+      "pick_index": 15,
+      "upid": "7807",
+      "position": "SS",
+      "mlb_team": "ATH"
     }
   ],
   "timer_started_at": "2026-02-16T01:44:48.374672",
@@ -224,7 +238,7 @@
       "bc_slots": 2,
       "dc_slots": 1,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "JEP": {
       "bc_slots": 2,
@@ -293,6 +307,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:44:48.374717",
+  "last_updated": "2026-02-16T01:45:02.897973",
   "timer_duration_seconds": 240
 }

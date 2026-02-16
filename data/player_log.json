@@ -32726,5 +32726,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WIZ selected Xavier Neyens (R2 P5)"
+  },
+  {
+    "id": "2026-2026-02-15T20:45:03.772879-05:00-UPID_7807-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-02-15T20:45:03.772879-05:00",
+    "upid": "7807",
+    "player_name": "Edgar Montero",
+    "team": "ATH",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 472,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Weekend Warriors",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WAR selected Edgar Montero (R3 P1)"
   }
 ]
