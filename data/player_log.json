@@ -32933,5 +32933,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: SAD selected Joshua Baez (R3 P9)"
+  },
+  {
+    "id": "2026-2026-02-15T20:57:10.270380-05:00-UPID_8111-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-02-15T20:57:10.270380-05:00",
+    "upid": "8111",
+    "player_name": "Francisco Renteria",
+    "team": "PHI",
+    "pos": "LF",
+    "age": null,
+    "level": "",
+    "team_rank": null,
+    "rank": 227,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: LFB selected Francisco Renteria (R3 P10)"
   }
 ]

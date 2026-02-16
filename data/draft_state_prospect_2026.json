@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 24,
+  "current_pick_index": 25,
   "picks_made": [
     {
       "draft": "prospect",
@@ -339,6 +339,20 @@
       "upid": "2780",
       "position": "CF",
       "mlb_team": "STL"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 10,
+      "team": "LFB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Francisco Renteria",
+      "timestamp": "2026-02-16T01:57:09.360481",
+      "pick_index": 24,
+      "upid": "8111",
+      "position": "LF",
+      "mlb_team": "PHI"
     }
   ],
   "timer_started_at": "2026-02-16T01:57:02.572513",
@@ -398,7 +412,7 @@
       "bc_slots": 1,
       "dc_slots": 2,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "WIZ": {
       "bc_slots": 2,
@@ -419,6 +433,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:57:02.572562",
+  "last_updated": "2026-02-16T01:57:09.366831",
   "timer_duration_seconds": 240
 }

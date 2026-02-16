@@ -317,7 +317,12 @@
     "pick": 10,
     "team": "LFB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Francisco Renteria",
+      "timestamp": "2026-02-16T01:57:09.360481",
+      "pick_index": 24,
+      "upid": "8111"
+    }
   },
   {
     "draft": "prospect",
