@@ -187,7 +187,12 @@
     "pick": 5,
     "team": "WIZ",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Xavier Neyens",
+      "timestamp": "2026-02-16T01:44:41.733094",
+      "pick_index": 14,
+      "upid": "7964"
+    }
   },
   {
     "draft": "prospect",
