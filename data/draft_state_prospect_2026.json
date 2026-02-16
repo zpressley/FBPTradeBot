@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 36,
+  "current_pick_index": 37,
   "picks_made": [
     {
       "draft": "prospect",
@@ -507,6 +507,20 @@
       "upid": "8025",
       "position": "SP",
       "mlb_team": "WSH"
+    },
+    {
+      "draft": "prospect",
+      "round": 5,
+      "pick": 3,
+      "team": "DMN",
+      "round_type": "dc",
+      "result": null,
+      "player": "Ike Irish",
+      "timestamp": "2026-02-16T02:04:55.305578",
+      "pick_index": 36,
+      "upid": "7950",
+      "position": "C,1B,OF",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-02-16T02:04:44.160873",
@@ -548,7 +562,7 @@
       "bc_slots": 1,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "B2J": {
       "bc_slots": 1,
@@ -587,6 +601,6 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-02-16T02:04:44.160939",
+  "last_updated": "2026-02-16T02:04:55.306484",
   "timer_duration_seconds": 10
 }

@@ -33209,5 +33209,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: CFL selected Miguel Sime Jr. (R5 P2)"
+  },
+  {
+    "id": "2026-2026-02-15T21:04:56.075779-05:00-UPID_7950-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-02-15T21:04:56.075779-05:00",
+    "upid": "7950",
+    "player_name": "Ike Irish",
+    "team": "BAL",
+    "pos": "C,1B,OF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 102,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DMN selected Ike Irish (R5 P3)"
   }
 ]

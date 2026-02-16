@@ -473,7 +473,12 @@
     "pick": 3,
     "team": "DMN",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Ike Irish",
+      "timestamp": "2026-02-16T02:04:55.305578",
+      "pick_index": 36,
+      "upid": "7950"
+    }
   },
   {
     "draft": "prospect",
