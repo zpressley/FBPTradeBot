@@ -408,7 +408,12 @@
     "pick": 6,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Dax Kilby",
+      "timestamp": "2026-02-16T02:01:57.031735",
+      "pick_index": 31,
+      "upid": "8001"
+    }
   },
   {
     "draft": "prospect",

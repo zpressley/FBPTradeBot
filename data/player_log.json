@@ -33094,5 +33094,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Sam Antonacci (R4 P5)"
+  },
+  {
+    "id": "2026-2026-02-15T21:01:57.980210-05:00-UPID_8001-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-02-15T21:01:57.980210-05:00",
+    "upid": "8001",
+    "player_name": "Dax Kilby",
+    "team": "NYY",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 200,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: SAD selected Dax Kilby (R4 P6)"
   }
 ]
