@@ -174,7 +174,12 @@
     "pick": 4,
     "team": "CFL",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Steele Hall",
+      "timestamp": "2026-02-16T01:44:30.477805",
+      "pick_index": 13,
+      "upid": "7951"
+    }
   },
   {
     "draft": "prospect",

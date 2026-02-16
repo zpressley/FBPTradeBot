@@ -32680,5 +32680,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: RV selected Wandy Asigen (R2 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T20:44:31.278501-05:00-UPID_7951-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T20:44:31.278501-05:00",
+    "upid": "7951",
+    "player_name": "Steele Hall",
+    "team": "CIN",
+    "pos": "SS",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 79,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Steele Hall (R2 P4)"
   }
 ]
