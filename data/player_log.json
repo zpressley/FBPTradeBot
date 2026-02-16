@@ -32473,5 +32473,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: HAM selected Eli Willits (R1 P4)"
+  },
+  {
+    "id": "2026-2026-02-15T20:37:29.067571-05:00-UPID_7942-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T20:37:29.067571-05:00",
+    "upid": "7942",
+    "player_name": "Seth Hernandez",
+    "team": "PIT",
+    "pos": "SP",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 27,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Seth Hernandez (R1 P5)"
   }
 ]

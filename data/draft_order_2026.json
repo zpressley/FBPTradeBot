@@ -57,7 +57,12 @@
     "pick": 5,
     "team": "CFL",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Seth Hernandez",
+      "timestamp": "2026-02-16T01:37:28.353374",
+      "pick_index": 4,
+      "upid": "7942"
+    }
   },
   {
     "draft": "prospect",
