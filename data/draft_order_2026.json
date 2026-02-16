@@ -83,7 +83,12 @@
     "pick": 7,
     "team": "B2J",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Jamie Arnold",
+      "timestamp": "2026-02-16T01:40:35.083731",
+      "pick_index": 6,
+      "upid": "7943"
+    }
   },
   {
     "draft": "prospect",

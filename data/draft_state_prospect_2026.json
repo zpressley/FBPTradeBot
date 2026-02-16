@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 6,
+  "current_pick_index": 7,
   "picks_made": [
     {
       "draft": "prospect",
@@ -87,6 +87,20 @@
       "upid": "7958",
       "position": "SP",
       "mlb_team": "SD"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 7,
+      "team": "B2J",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Jamie Arnold",
+      "timestamp": "2026-02-16T01:40:35.083731",
+      "pick_index": 6,
+      "upid": "7943",
+      "position": "SP",
+      "mlb_team": "ATH"
     }
   ],
   "timer_started_at": "2026-02-16T01:38:23.038513",
@@ -133,7 +147,7 @@
     "B2J": {
       "bc_slots": 1,
       "dc_slots": 0,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "TBB": {
@@ -167,6 +181,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:38:23.038554",
+  "last_updated": "2026-02-16T01:40:35.084774",
   "timer_duration_seconds": 240
 }
