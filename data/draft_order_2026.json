@@ -590,7 +590,12 @@
     "pick": 1,
     "team": "CFL",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Slater de Brun",
+      "timestamp": "2026-02-16T02:17:25.061459",
+      "pick_index": 45,
+      "upid": "7963"
+    }
   },
   {
     "draft": "prospect",

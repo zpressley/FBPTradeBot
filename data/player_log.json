@@ -33416,5 +33416,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WIZ selected Kevin Defrank (R6 P5)"
+  },
+  {
+    "id": "2026-2026-02-15T21:17:25.781582-05:00-UPID_7963-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T21:17:25.781582-05:00",
+    "upid": "7963",
+    "player_name": "Slater de Brun",
+    "team": "BAL",
+    "pos": "OF",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 294,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Slater de Brun (R7 P1)"
   }
 ]
