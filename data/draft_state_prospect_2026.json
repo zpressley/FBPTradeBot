@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 49,
+  "current_pick_index": 50,
   "picks_made": [
     {
       "draft": "prospect",
@@ -689,6 +689,20 @@
       "upid": "7967",
       "position": "OF",
       "mlb_team": "CHC"
+    },
+    {
+      "draft": "prospect",
+      "round": 7,
+      "pick": 5,
+      "team": "WIZ",
+      "round_type": "dc",
+      "result": null,
+      "player": "Esteban Mejia",
+      "timestamp": "2026-02-16T02:22:09.321399",
+      "pick_index": 49,
+      "upid": "7553",
+      "position": "SP",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-02-16T02:19:48.947437",
@@ -754,7 +768,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 4
+      "dc_used": 5
     },
     "DRO": {
       "bc_slots": 0,
@@ -769,6 +783,6 @@
       "dc_used": 5
     }
   },
-  "last_updated": "2026-02-16T02:19:48.947485",
+  "last_updated": "2026-02-16T02:22:09.322730",
   "timer_duration_seconds": 240
 }

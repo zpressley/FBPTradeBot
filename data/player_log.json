@@ -33508,5 +33508,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: SAD selected Ethan Conrad (R7 P4)"
+  },
+  {
+    "id": "2026-2026-02-15T21:22:10.076598-05:00-UPID_7553-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T21:22:10.076598-05:00",
+    "upid": "7553",
+    "player_name": "Esteban Mejia",
+    "team": "BAL",
+    "pos": "SP",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Development Cont.",
+    "status": "P",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Esteban Mejia (R7 P5)"
   }
 ]

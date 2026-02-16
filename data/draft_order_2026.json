@@ -642,7 +642,12 @@
     "pick": 5,
     "team": "WIZ",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Esteban Mejia",
+      "timestamp": "2026-02-16T02:22:09.321399",
+      "pick_index": 49,
+      "upid": "7553"
+    }
   },
   {
     "draft": "prospect",
