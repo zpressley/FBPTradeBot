@@ -213,7 +213,12 @@
     "pick": 2,
     "team": "JEP",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Juan Brito",
+      "timestamp": "2026-02-16T01:46:14.251144",
+      "pick_index": 16,
+      "upid": "4151"
+    }
   },
   {
     "draft": "prospect",

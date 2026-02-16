@@ -32749,5 +32749,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WAR selected Edgar Montero (R3 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T20:46:15.076998-05:00-UPID_4151-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-02-15T20:46:15.076998-05:00",
+    "upid": "4151",
+    "player_name": "Juan Brito",
+    "team": "CLE",
+    "pos": "1B,2B",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 643,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: JEP selected Juan Brito (R3 P2)"
   }
 ]

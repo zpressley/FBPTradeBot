@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 16,
+  "current_pick_index": 17,
   "picks_made": [
     {
       "draft": "prospect",
@@ -227,6 +227,20 @@
       "upid": "7807",
       "position": "SS",
       "mlb_team": "ATH"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 2,
+      "team": "JEP",
+      "round_type": "dc",
+      "result": null,
+      "player": "Juan Brito",
+      "timestamp": "2026-02-16T01:46:14.251144",
+      "pick_index": 16,
+      "upid": "4151",
+      "position": "1B,2B",
+      "mlb_team": "CLE"
     }
   ],
   "timer_started_at": "2026-02-16T01:45:10.678821",
@@ -244,7 +258,7 @@
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "RV": {
       "bc_slots": 2,
@@ -307,6 +321,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:45:10.678869",
+  "last_updated": "2026-02-16T01:46:14.251942",
   "timer_duration_seconds": 240
 }
