@@ -564,7 +564,12 @@
     "pick": 4,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Felnin Celesten",
+      "timestamp": "2026-02-16T02:16:48.013394",
+      "pick_index": 43,
+      "upid": "4675"
+    }
   },
   {
     "draft": "prospect",

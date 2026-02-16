@@ -33370,5 +33370,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Tekoah Roby (R6 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T21:16:48.970005-05:00-UPID_4675-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-02-15T21:16:48.970005-05:00",
+    "upid": "4675",
+    "player_name": "Felnin Celesten",
+    "team": "SEA",
+    "pos": "SS",
+    "age": 20,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 196,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Development Cont.",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: SAD selected Felnin Celesten (R6 P4)"
   }
 ]
