@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 50,
+  "current_pick_index": 51,
   "picks_made": [
     {
       "draft": "prospect",
@@ -703,6 +703,20 @@
       "upid": "7553",
       "position": "SP",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 8,
+      "pick": 1,
+      "team": "TBB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Randy Santana",
+      "timestamp": "2026-02-16T02:22:23.325392",
+      "pick_index": 50,
+      "upid": "8190",
+      "position": "CF",
+      "mlb_team": "DET"
     }
   ],
   "timer_started_at": "2026-02-16T02:19:48.947437",
@@ -756,7 +770,7 @@
       "bc_slots": 1,
       "dc_slots": 6,
       "bc_used": 1,
-      "dc_used": 5
+      "dc_used": 6
     },
     "LFB": {
       "bc_slots": 1,
@@ -783,6 +797,6 @@
       "dc_used": 5
     }
   },
-  "last_updated": "2026-02-16T02:22:09.322730",
+  "last_updated": "2026-02-16T02:22:23.327959",
   "timer_duration_seconds": 240
 }
