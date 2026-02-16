@@ -33163,5 +33163,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WIZ selected Kevin Alvarez (R4 P8)"
+  },
+  {
+    "id": "2026-2026-02-15T21:03:58.578507-05:00-UPID_6805-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-02-15T21:03:58.578507-05:00",
+    "upid": "6805",
+    "player_name": "George Klassen",
+    "team": "LAA",
+    "pos": "SP",
+    "age": 24,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 187,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Development Cont.",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: JEP selected George Klassen (R5 P1)"
   }
 ]

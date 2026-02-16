@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 34,
+  "current_pick_index": 35,
   "picks_made": [
     {
       "draft": "prospect",
@@ -479,6 +479,20 @@
       "upid": "7755",
       "position": "OF",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "prospect",
+      "round": 5,
+      "pick": 1,
+      "team": "JEP",
+      "round_type": "dc",
+      "result": null,
+      "player": "George Klassen",
+      "timestamp": "2026-02-16T02:03:57.722199",
+      "pick_index": 34,
+      "upid": "6805",
+      "position": "SP",
+      "mlb_team": "LAA"
     }
   ],
   "timer_started_at": "2026-02-16T02:03:34.560411",
@@ -496,7 +510,7 @@
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 2,
-      "dc_used": 2
+      "dc_used": 3
     },
     "RV": {
       "bc_slots": 2,
@@ -559,6 +573,6 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-02-16T02:03:34.560462",
+  "last_updated": "2026-02-16T02:03:57.723220",
   "timer_duration_seconds": 240
 }
