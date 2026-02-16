@@ -33439,5 +33439,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: CFL selected Slater de Brun (R7 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T21:17:50.275425-05:00-UPID_7961-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-02-15T21:17:50.275425-05:00",
+    "upid": "7961",
+    "player_name": "Gavin Fien",
+    "team": "TEX",
+    "pos": "SS",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 104,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DMN selected Gavin Fien (R7 P2)"
   }
 ]

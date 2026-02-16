@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 46,
+  "current_pick_index": 47,
   "picks_made": [
     {
       "draft": "prospect",
@@ -647,6 +647,20 @@
       "upid": "7963",
       "position": "OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 7,
+      "pick": 2,
+      "team": "DMN",
+      "round_type": "dc",
+      "result": null,
+      "player": "Gavin Fien",
+      "timestamp": "2026-02-16T02:17:49.423943",
+      "pick_index": 46,
+      "upid": "7961",
+      "position": "SS",
+      "mlb_team": "TEX"
     }
   ],
   "timer_started_at": "2026-02-16T02:17:38.226766",
@@ -688,7 +702,7 @@
       "bc_slots": 1,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 4
+      "dc_used": 5
     },
     "B2J": {
       "bc_slots": 1,
@@ -727,6 +741,6 @@
       "dc_used": 4
     }
   },
-  "last_updated": "2026-02-16T02:17:38.226815",
+  "last_updated": "2026-02-16T02:17:49.424899",
   "timer_duration_seconds": 10
 }
