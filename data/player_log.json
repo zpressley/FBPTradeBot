@@ -33255,5 +33255,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected C.J. Culpepper (R5 P4)"
+  },
+  {
+    "id": "2026-2026-02-15T21:09:42.878218-05:00-UPID_6583-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-02-15T21:09:42.878218-05:00",
+    "upid": "6583",
+    "player_name": "Cooper Pratt",
+    "team": "MIL",
+    "pos": "SS",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 56,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: SAD selected Cooper Pratt (R5 P5)"
   }
 ]

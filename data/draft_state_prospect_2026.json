@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 38,
+  "current_pick_index": 39,
   "picks_made": [
     {
       "draft": "prospect",
@@ -535,6 +535,20 @@
       "upid": "6293",
       "position": "SP",
       "mlb_team": "MIN"
+    },
+    {
+      "draft": "prospect",
+      "round": 5,
+      "pick": 5,
+      "team": "SAD",
+      "round_type": "dc",
+      "result": null,
+      "player": "Cooper Pratt",
+      "timestamp": "2026-02-16T02:09:42.121497",
+      "pick_index": 38,
+      "upid": "6583",
+      "position": "SS",
+      "mlb_team": "MIL"
     }
   ],
   "timer_started_at": "2026-02-16T02:06:07.223473",
@@ -612,9 +626,9 @@
       "bc_slots": 0,
       "dc_slots": 6,
       "bc_used": 0,
-      "dc_used": 2
+      "dc_used": 3
     }
   },
-  "last_updated": "2026-02-16T02:06:07.223522",
+  "last_updated": "2026-02-16T02:09:42.122485",
   "timer_duration_seconds": 240
 }

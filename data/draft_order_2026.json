@@ -499,7 +499,12 @@
     "pick": 5,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Cooper Pratt",
+      "timestamp": "2026-02-16T02:09:42.121497",
+      "pick_index": 38,
+      "upid": "6583"
+    }
   },
   {
     "draft": "prospect",
