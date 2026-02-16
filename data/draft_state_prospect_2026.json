@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 26,
+  "current_pick_index": 27,
   "picks_made": [
     {
       "draft": "prospect",
@@ -367,6 +367,20 @@
       "upid": "7918",
       "position": "SP",
       "mlb_team": "KC"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 1,
+      "team": "JEP",
+      "round_type": "dc",
+      "result": null,
+      "player": "JR Ritchie",
+      "timestamp": "2026-02-16T01:58:01.022907",
+      "pick_index": 26,
+      "upid": "3921",
+      "position": "SP",
+      "mlb_team": "ATL"
     }
   ],
   "timer_started_at": "2026-02-16T01:57:49.007870",
@@ -384,7 +398,7 @@
       "bc_slots": 2,
       "dc_slots": 3,
       "bc_used": 2,
-      "dc_used": 1
+      "dc_used": 2
     },
     "RV": {
       "bc_slots": 2,
@@ -447,6 +461,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:57:49.007927",
+  "last_updated": "2026-02-16T01:58:01.023814",
   "timer_duration_seconds": 240
 }
