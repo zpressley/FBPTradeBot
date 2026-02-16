@@ -512,7 +512,12 @@
     "pick": 6,
     "team": "WIZ",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Nate George",
+      "timestamp": "2026-02-16T02:11:35.380578",
+      "pick_index": 39,
+      "upid": "7894"
+    }
   },
   {
     "draft": "prospect",

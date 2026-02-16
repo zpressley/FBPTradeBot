@@ -33278,5 +33278,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: SAD selected Cooper Pratt (R5 P5)"
+  },
+  {
+    "id": "2026-2026-02-15T21:11:36.369556-05:00-UPID_7894-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T21:11:36.369556-05:00",
+    "upid": "7894",
+    "player_name": "Nate George",
+    "team": "BAL",
+    "pos": "OF",
+    "age": null,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Development Cont.",
+    "status": "P",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Nate George (R5 P6)"
   }
 ]

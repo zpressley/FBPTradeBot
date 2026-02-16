@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 39,
+  "current_pick_index": 40,
   "picks_made": [
     {
       "draft": "prospect",
@@ -549,6 +549,20 @@
       "upid": "6583",
       "position": "SS",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "prospect",
+      "round": 5,
+      "pick": 6,
+      "team": "WIZ",
+      "round_type": "dc",
+      "result": null,
+      "player": "Nate George",
+      "timestamp": "2026-02-16T02:11:35.380578",
+      "pick_index": 39,
+      "upid": "7894",
+      "position": "OF",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-02-16T02:09:49.060952",
@@ -614,7 +628,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 2
+      "dc_used": 3
     },
     "DRO": {
       "bc_slots": 0,
@@ -629,6 +643,6 @@
       "dc_used": 3
     }
   },
-  "last_updated": "2026-02-16T02:09:49.060984",
+  "last_updated": "2026-02-16T02:11:35.382159",
   "timer_duration_seconds": 240
 }
