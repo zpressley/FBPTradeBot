@@ -265,7 +265,12 @@
     "pick": 6,
     "team": "DMN",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Elmer Rodr\u00edguez",
+      "timestamp": "2026-02-16T01:50:14.471027",
+      "pick_index": 20,
+      "upid": "8319"
+    }
   },
   {
     "draft": "prospect",

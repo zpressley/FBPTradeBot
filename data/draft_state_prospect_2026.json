@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 20,
+  "current_pick_index": 21,
   "picks_made": [
     {
       "draft": "prospect",
@@ -283,6 +283,20 @@
       "upid": "7658",
       "position": "SP,RP",
       "mlb_team": "BOS"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 6,
+      "team": "DMN",
+      "round_type": "dc",
+      "result": null,
+      "player": "Elmer Rodr\u00edguez",
+      "timestamp": "2026-02-16T01:50:14.471027",
+      "pick_index": 20,
+      "upid": "8319",
+      "position": "NYY",
+      "mlb_team": "RHP"
     }
   ],
   "timer_started_at": "2026-02-16T01:50:03.196261",
@@ -324,7 +338,7 @@
       "bc_slots": 1,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 0
+      "dc_used": 1
     },
     "B2J": {
       "bc_slots": 1,
@@ -363,6 +377,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:50:03.196323",
+  "last_updated": "2026-02-16T01:50:14.473353",
   "timer_duration_seconds": 10
 }
