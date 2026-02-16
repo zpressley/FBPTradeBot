@@ -32588,5 +32588,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: LFB selected JoJo Parker (R1 P9)"
+  },
+  {
+    "id": "2026-2026-02-15T20:41:39.468444-05:00-UPID_7949-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T20:41:39.468444-05:00",
+    "upid": "7949",
+    "player_name": "Kyson Witherspoon",
+    "team": "BOS",
+    "pos": "SP",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 89,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Kyson Witherspoon (R1 P10)"
   }
 ]

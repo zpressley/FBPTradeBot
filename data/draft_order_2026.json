@@ -122,7 +122,12 @@
     "pick": 10,
     "team": "WIZ",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Kyson Witherspoon",
+      "timestamp": "2026-02-16T01:41:38.516733",
+      "pick_index": 9,
+      "upid": "7949"
+    }
   },
   {
     "draft": "prospect",

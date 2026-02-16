@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 9,
+  "current_pick_index": 10,
   "picks_made": [
     {
       "draft": "prospect",
@@ -129,6 +129,20 @@
       "upid": "7948",
       "position": "SS",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 10,
+      "team": "WIZ",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Kyson Witherspoon",
+      "timestamp": "2026-02-16T01:41:38.516733",
+      "pick_index": 9,
+      "upid": "7949",
+      "position": "SP",
+      "mlb_team": "BOS"
     }
   ],
   "timer_started_at": "2026-02-16T01:41:33.085471",
@@ -193,7 +207,7 @@
     "WIZ": {
       "bc_slots": 2,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "DRO": {
@@ -209,6 +223,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:41:33.085519",
+  "last_updated": "2026-02-16T01:41:38.517654",
   "timer_duration_seconds": 240
 }
