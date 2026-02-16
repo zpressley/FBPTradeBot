@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 17,
+  "current_pick_index": 18,
   "picks_made": [
     {
       "draft": "prospect",
@@ -241,6 +241,20 @@
       "upid": "4151",
       "position": "1B,2B",
       "mlb_team": "CLE"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 3,
+      "team": "RV",
+      "round_type": "dc",
+      "result": null,
+      "player": "Ethan Salas",
+      "timestamp": "2026-02-16T01:48:11.210696",
+      "pick_index": 17,
+      "upid": "3720",
+      "position": "C",
+      "mlb_team": "SD"
     }
   ],
   "timer_started_at": "2026-02-16T01:46:26.568826",
@@ -264,7 +278,7 @@
       "bc_slots": 2,
       "dc_slots": 1,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "HAM": {
       "bc_slots": 1,
@@ -321,6 +335,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:46:26.568882",
+  "last_updated": "2026-02-16T01:48:11.211617",
   "timer_duration_seconds": 240
 }

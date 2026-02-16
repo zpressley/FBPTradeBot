@@ -226,7 +226,12 @@
     "pick": 3,
     "team": "RV",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Ethan Salas",
+      "timestamp": "2026-02-16T01:48:11.210696",
+      "pick_index": 17,
+      "upid": "3720"
+    }
   },
   {
     "draft": "prospect",

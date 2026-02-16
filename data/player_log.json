@@ -32772,5 +32772,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: JEP selected Juan Brito (R3 P2)"
+  },
+  {
+    "id": "2026-2026-02-15T20:48:11.983239-05:00-UPID_3720-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-02-15T20:48:11.983239-05:00",
+    "upid": "3720",
+    "player_name": "Ethan Salas",
+    "team": "SD",
+    "pos": "C",
+    "age": 19,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 77,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Development Cont.",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: RV selected Ethan Salas (R3 P3)"
   }
 ]
