@@ -32496,5 +32496,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: CFL selected Seth Hernandez (R1 P5)"
+  },
+  {
+    "id": "2026-2026-02-15T20:38:20.269965-05:00-UPID_7958-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-02-15T20:38:20.269965-05:00",
+    "upid": "7958",
+    "player_name": "Kruz Schoolcraft",
+    "team": "SD",
+    "pos": "SP",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 95,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DMN selected Kruz Schoolcraft (R1 P6)"
   }
 ]

@@ -70,7 +70,12 @@
     "pick": 6,
     "team": "DMN",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Kruz Schoolcraft",
+      "timestamp": "2026-02-16T01:38:19.431118",
+      "pick_index": 5,
+      "upid": "7958"
+    }
   },
   {
     "draft": "prospect",

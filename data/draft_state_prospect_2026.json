@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 5,
+  "current_pick_index": 6,
   "picks_made": [
     {
       "draft": "prospect",
@@ -73,6 +73,20 @@
       "upid": "7942",
       "position": "SP",
       "mlb_team": "PIT"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 6,
+      "team": "DMN",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Kruz Schoolcraft",
+      "timestamp": "2026-02-16T01:38:19.431118",
+      "pick_index": 5,
+      "upid": "7958",
+      "position": "SP",
+      "mlb_team": "SD"
     }
   ],
   "timer_started_at": "2026-02-16T01:38:08.267550",
@@ -113,7 +127,7 @@
     "DMN": {
       "bc_slots": 1,
       "dc_slots": 5,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "B2J": {
@@ -153,6 +167,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:38:08.267607",
+  "last_updated": "2026-02-16T01:38:19.431766",
   "timer_duration_seconds": 10
 }
