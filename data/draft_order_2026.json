@@ -382,7 +382,12 @@
     "pick": 4,
     "team": "DMN",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Billy Carlson",
+      "timestamp": "2026-02-16T01:59:57.462870",
+      "pick_index": 29,
+      "upid": "7946"
+    }
   },
   {
     "draft": "prospect",

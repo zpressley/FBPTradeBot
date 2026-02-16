@@ -33048,5 +33048,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: CFL selected Cam Cannarella (R4 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T20:59:58.268417-05:00-UPID_7946-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-02-15T20:59:58.268417-05:00",
+    "upid": "7946",
+    "player_name": "Billy Carlson",
+    "team": "CWS",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 71,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DMN selected Billy Carlson (R4 P4)"
   }
 ]

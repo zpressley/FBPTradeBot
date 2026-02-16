@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 29,
+  "current_pick_index": 30,
   "picks_made": [
     {
       "draft": "prospect",
@@ -409,6 +409,20 @@
       "upid": "7975",
       "position": "OF",
       "mlb_team": "MIA"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 4,
+      "team": "DMN",
+      "round_type": "dc",
+      "result": null,
+      "player": "Billy Carlson",
+      "timestamp": "2026-02-16T01:59:57.462870",
+      "pick_index": 29,
+      "upid": "7946",
+      "position": "SS",
+      "mlb_team": "CWS"
     }
   ],
   "timer_started_at": "2026-02-16T01:59:46.162480",
@@ -450,7 +464,7 @@
       "bc_slots": 1,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 2
     },
     "B2J": {
       "bc_slots": 1,
@@ -489,6 +503,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:59:46.162530",
+  "last_updated": "2026-02-16T01:59:57.463646",
   "timer_duration_seconds": 10
 }
