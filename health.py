@@ -9,6 +9,7 @@ import json
 import discord
 from discord.ext import commands
 from fastapi import FastAPI, Depends, HTTPException, Header
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import uvicorn
 from dotenv import load_dotenv
@@ -73,6 +74,19 @@ configure_git()
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
 SEASON_DATES_PATH = "config/season_dates.json"
+
+# Draft endpoints are polled frequently by the website. Mark responses as
+# explicitly uncacheable so any intermediate proxies/CDNs don't serve stale
+# draft state.
+_NO_STORE_HEADERS = {
+    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+    "Pragma": "no-cache",
+    "Expires": "0",
+}
+
+
+def _json_no_store(payload: dict) -> JSONResponse:
+    return JSONResponse(content=payload, headers=_NO_STORE_HEADERS)
 
 # PAD (Prospect Allocation Day) config
 PAD_SEASON = PROSPECT_DRAFT_SEASON
@@ -383,6 +397,9 @@ def build_draft_payload(draft_type: str) -> dict:
                 "mlb_team": rec.get("mlb_team", ""),
                 "picked_at": rec.get("timestamp"),
                 "upid": rec.get("upid", ""),
+                # 0-based overall index into draft_order (stable even if
+                # per-round pick numbers reset each round).
+                "pick_index": rec.get("pick_index"),
             }
         )
 
@@ -402,14 +419,29 @@ def build_draft_payload(draft_type: str) -> dict:
     except Exception:
         forklift_teams = []
 
+    current_pick_index = state.get("current_pick_index")
+    try:
+        current_pick_index_int = int(current_pick_index) if current_pick_index is not None else None
+    except Exception:
+        current_pick_index_int = None
+
+    current_pick_overall = (current_pick_index_int + 1) if (current_pick and current_pick_index_int is not None) else None
+
     return {
         "draft_id": f"fbp_{draft_type}_draft_{season}",
         "draft_type": draft_type,
         "season": season,
+        "test_mode": bool(getattr(mgr, "test_mode", False)),
         "status": status,  # pre_draft | draft_day | active_draft | post_draft
         # Raw DraftManager.state.status so the website can distinguish paused vs active.
         "raw_status": state.get("status", "not_started"),
         "scheduled_date": draft_date.isoformat() if draft_date else None,
+        "last_updated": state.get("last_updated"),
+        # 0-based index of the current pick in the canonical draft_order list.
+        "current_pick_index": current_pick_index_int,
+        # 1-based overall pick number for display (stable even when per-round
+        # pick numbers reset each round).
+        "current_pick_overall": current_pick_overall,
         "current_round": current_pick["round"] if current_pick else None,
         "current_pick": current_pick["pick"] if current_pick else None,
         "current_team": current_pick["team"] if current_pick else None,
@@ -1346,7 +1378,7 @@ async def get_active_draft(
         raise HTTPException(status_code=400, detail="draft_type must be 'keeper' or 'prospect'")
 
     payload = build_draft_payload(draft_type)
-    return payload
+    return _json_no_store(payload)
 
 
 @app.get("/api/draft/config")
@@ -1364,15 +1396,17 @@ async def get_draft_config(
     keeper_date = get_draft_date("keeper")
     prospect_date = get_draft_date("prospect")
 
-    return {
-        "season": season,
-        "keeper": {
-            "scheduled_date": keeper_date.isoformat() if keeper_date else None,
-        },
-        "prospect": {
-            "scheduled_date": prospect_date.isoformat() if prospect_date else None,
-        },
-    }
+    return _json_no_store(
+        {
+            "season": season,
+            "keeper": {
+                "scheduled_date": keeper_date.isoformat() if keeper_date else None,
+            },
+            "prospect": {
+                "scheduled_date": prospect_date.isoformat() if prospect_date else None,
+            },
+        }
+    )
 
 
 # ---- Draft Board APIs ----
@@ -1385,11 +1419,13 @@ async def get_draft_board(
     """Return the current personal draft board for a team."""
     manager = BoardManager(season=PROSPECT_DRAFT_SEASON)
     board = manager.get_board(team)
-    return {
-        "team": team,
-        "board": board,
-        "max_size": manager.MAX_BOARD_SIZE,
-    }
+    return _json_no_store(
+        {
+            "team": team,
+            "board": board,
+            "max_size": manager.MAX_BOARD_SIZE,
+        }
+    )
 
 
 @app.post("/api/draft/boards/{team}")

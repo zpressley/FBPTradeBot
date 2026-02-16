@@ -257,11 +257,17 @@ class DraftManager:
         """Apply pick side effects to combined_players + player_log.
 
         Returns a list of file paths that were mutated.
+
+        Notes:
+        - Prospect draft picks should behave like PAD assignments: set both
+          `manager` (franchise name) and `FBP_Team` (team abbr) so roster pages
+          (which key off FBP_Team) stay in sync.
+        - Keeper draft picks should set MLB player ownership (FBP_Team/manager).
         """
         mutated: List[str] = []
 
-        # Only prospect draft currently mutates combined_players roster ownership.
-        if self.draft_type != "prospect":
+        # Only keeper + prospect drafts have roster side effects.
+        if self.draft_type not in ("prospect", "keeper"):
             return mutated
 
         combined_path = "data/combined_players.json"
@@ -272,9 +278,12 @@ class DraftManager:
             print(f"⚠️ combined_players is not a list: {combined_path}")
             return mutated
 
+        # Prefer UPID from player_data, fall back to pick_record.
         upid = None
         if player_data:
             upid = str(player_data.get("upid") or "").strip() or None
+        if not upid:
+            upid = str(pick_record.get("upid") or "").strip() or None
 
         # Best-effort locate record by UPID, fall back to name match.
         player_rec = None
@@ -295,18 +304,25 @@ class DraftManager:
             print(f"⚠️ Draft pick could not be applied to combined_players (missing record): {pick_record.get('player')}")
             return mutated
 
-        franchise_name = _resolve_team_name(pick_record.get("team", ""))
+        team_abbr = (pick_record.get("team") or "").strip()
+        franchise_name = _resolve_team_name(team_abbr)
 
-        # Draft contract type is derived by round.
-        round_num = int(pick_record.get("round") or 0)
-        if round_num <= 2:
-            contract_type = "Blue Chip Contract"
-        else:
-            contract_type = "Development Cont."
-
-        # Mutate combined_players ownership.
+        # Apply ownership and contract effects.
         player_rec["manager"] = franchise_name
-        player_rec["contract_type"] = contract_type
+        player_rec["FBP_Team"] = team_abbr
+
+        if self.draft_type == "prospect":
+            # Draft contract type is derived by round.
+            round_num = int(pick_record.get("round") or 0)
+            if round_num <= 2:
+                contract_type = "Blue Chip Contract"
+            else:
+                contract_type = "Development Cont."
+            player_rec["contract_type"] = contract_type
+        else:
+            # Keeper draft: do not assign prospect contract types.
+            # (We leave contract_type as None/blank for MLB players.)
+            player_rec["contract_type"] = player_rec.get("contract_type")
 
         _save_json(combined_path, combined_players)
         mutated.append(combined_path)
@@ -316,7 +332,10 @@ class DraftManager:
         if not isinstance(player_log, list):
             player_log = []
 
-        event = f"Draft pick: {pick_record.get('team')} selected {pick_record.get('player')} (R{pick_record.get('round')} P{pick_record.get('pick')})"
+        event = (
+            f"Draft pick ({self.draft_type}): {team_abbr} selected {pick_record.get('player')} "
+            f"(R{pick_record.get('round')} P{pick_record.get('pick')})"
+        )
         _append_player_log_entry(
             player_log,
             player_rec,
@@ -324,7 +343,7 @@ class DraftManager:
             source="draft",
             update_type="draft_pick",
             event=event,
-            admin=str(pick_record.get("team") or "draft"),
+            admin=str(team_abbr or "draft"),
         )
         _save_json(player_log_path, player_log)
         mutated.append(player_log_path)
@@ -334,7 +353,7 @@ class DraftManager:
     def _clear_pick_from_rosters(self, pick_record: Dict) -> List[str]:
         """Best-effort rollback of roster side effects for an undone pick."""
         mutated: List[str] = []
-        if self.draft_type != "prospect":
+        if self.draft_type not in ("prospect", "keeper"):
             return mutated
 
         combined_path = "data/combined_players.json"
@@ -360,9 +379,19 @@ class DraftManager:
                 )
 
         if player_rec is not None:
-            # Revert to undrafted state (eligible prospects should have been unowned).
-            player_rec["manager"] = ""
-            player_rec["contract_type"] = ""
+            # Revert to undrafted/unowned state.
+            if self.draft_type == "prospect":
+                # Eligible prospects should have been unowned.
+                player_rec["manager"] = ""
+                player_rec["FBP_Team"] = ""
+                player_rec["contract_type"] = ""
+            else:
+                # Keeper draft targets unowned MLB players.
+                player_rec["manager"] = None
+                player_rec["FBP_Team"] = ""
+                # Preserve contract_type (typically None for MLB).
+                player_rec["contract_type"] = player_rec.get("contract_type")
+
             _save_json(combined_path, combined_players)
             mutated.append(combined_path)
 
@@ -404,7 +433,7 @@ class DraftManager:
         picks = list(state.get("picks_made") or [])
 
         # Roll back roster effects for all picks (live mode only).
-        if (not self.test_mode) and self.draft_type == "prospect" and picks:
+        if (not self.test_mode) and self.draft_type in ("prospect", "keeper") and picks:
             combined_path = "data/combined_players.json"
             combined_players = _load_json(combined_path) or []
             if isinstance(combined_players, list):
@@ -415,8 +444,15 @@ class DraftManager:
                     upid = str(rec.get("upid") or "").strip()
                     name = str(rec.get("name") or "").strip().lower()
                     if (upid and upid in drafted_upids) or (name and name in drafted_names):
-                        rec["manager"] = ""
-                        rec["contract_type"] = ""
+                        if self.draft_type == "prospect":
+                            rec["manager"] = ""
+                            rec["FBP_Team"] = ""
+                            rec["contract_type"] = ""
+                        else:
+                            rec["manager"] = None
+                            rec["FBP_Team"] = ""
+                            # Preserve contract_type (typically None for MLB)
+                            rec["contract_type"] = rec.get("contract_type")
 
                 _save_json(combined_path, combined_players)
                 mutated.append(combined_path)
