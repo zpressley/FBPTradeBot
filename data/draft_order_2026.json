@@ -239,7 +239,12 @@
     "pick": 4,
     "team": "HAM",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Kayson Cunningham",
+      "timestamp": "2026-02-16T01:49:10.012535",
+      "pick_index": 18,
+      "upid": "7953"
+    }
   },
   {
     "draft": "prospect",

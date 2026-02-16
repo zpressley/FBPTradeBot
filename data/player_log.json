@@ -32795,5 +32795,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: RV selected Ethan Salas (R3 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T20:49:11.081859-05:00-UPID_7953-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-02-15T20:49:11.081859-05:00",
+    "upid": "7953",
+    "player_name": "Kayson Cunningham",
+    "team": "AZ",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 105,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: HAM selected Kayson Cunningham (R3 P4)"
   }
 ]
