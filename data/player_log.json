@@ -32404,5 +32404,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WAR selected Kade Anderson (R1 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T20:35:09.670581-05:00-UPID_7947-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-02-15T20:35:09.670581-05:00",
+    "upid": "7947",
+    "player_name": "Liam Doyle",
+    "team": "STL",
+    "pos": "SP",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 36,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: JEP selected Liam Doyle (R1 P2)"
   }
 ]

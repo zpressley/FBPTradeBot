@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 1,
+  "current_pick_index": 2,
   "picks_made": [
     {
       "draft": "prospect",
@@ -17,6 +17,20 @@
       "upid": "7941",
       "position": "SP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 2,
+      "team": "JEP",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Liam Doyle",
+      "timestamp": "2026-02-16T01:35:08.780343",
+      "pick_index": 1,
+      "upid": "7947",
+      "position": "SP",
+      "mlb_team": "STL"
     }
   ],
   "timer_started_at": "2026-02-16T01:34:43.225747",
@@ -33,7 +47,7 @@
     "JEP": {
       "bc_slots": 2,
       "dc_slots": 3,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "RV": {
@@ -97,6 +111,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:34:43.225793",
+  "last_updated": "2026-02-16T01:35:08.781005",
   "timer_duration_seconds": 240
 }

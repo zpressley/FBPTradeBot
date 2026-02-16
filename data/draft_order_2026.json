@@ -18,7 +18,12 @@
     "pick": 2,
     "team": "JEP",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Liam Doyle",
+      "timestamp": "2026-02-16T01:35:08.780343",
+      "pick_index": 1,
+      "upid": "7947"
+    }
   },
   {
     "draft": "prospect",
