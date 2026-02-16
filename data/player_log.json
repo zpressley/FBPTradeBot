@@ -33117,5 +33117,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: SAD selected Dax Kilby (R4 P6)"
+  },
+  {
+    "id": "2026-2026-02-15T21:02:45.177907-05:00-UPID_7968-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-02-15T21:02:45.177907-05:00",
+    "upid": "7968",
+    "player_name": "Andrew Fischer",
+    "team": "MIL",
+    "pos": "3B",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 142,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: LFB selected Andrew Fischer (R4 P7)"
   }
 ]

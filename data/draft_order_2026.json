@@ -421,7 +421,12 @@
     "pick": 7,
     "team": "LFB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Andrew Fischer",
+      "timestamp": "2026-02-16T02:02:44.186631",
+      "pick_index": 32,
+      "upid": "7968"
+    }
   },
   {
     "draft": "prospect",

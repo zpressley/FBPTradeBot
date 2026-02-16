@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 32,
+  "current_pick_index": 33,
   "picks_made": [
     {
       "draft": "prospect",
@@ -451,6 +451,20 @@
       "upid": "8001",
       "position": "SS",
       "mlb_team": "NYY"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 7,
+      "team": "LFB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Andrew Fischer",
+      "timestamp": "2026-02-16T02:02:44.186631",
+      "pick_index": 32,
+      "upid": "7968",
+      "position": "3B",
+      "mlb_team": "MIL"
     }
   ],
   "timer_started_at": "2026-02-16T02:01:59.769926",
@@ -510,7 +524,7 @@
       "bc_slots": 1,
       "dc_slots": 2,
       "bc_used": 1,
-      "dc_used": 1
+      "dc_used": 2
     },
     "WIZ": {
       "bc_slots": 2,
@@ -531,6 +545,6 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-02-16T02:01:59.769996",
+  "last_updated": "2026-02-16T02:02:44.187917",
   "timer_duration_seconds": 240
 }
