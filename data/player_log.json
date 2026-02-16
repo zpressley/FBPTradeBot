@@ -33232,5 +33232,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: DMN selected Ike Irish (R5 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T21:06:05.771831-05:00-UPID_6293-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-02-15T21:06:05.771831-05:00",
+    "upid": "6293",
+    "player_name": "C.J. Culpepper",
+    "team": "MIN",
+    "pos": "SP",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 526,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Bluke Blokes",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: TBB selected C.J. Culpepper (R5 P4)"
   }
 ]

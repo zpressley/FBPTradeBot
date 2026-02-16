@@ -486,7 +486,12 @@
     "pick": 4,
     "team": "TBB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "C.J. Culpepper",
+      "timestamp": "2026-02-16T02:06:04.825838",
+      "pick_index": 37,
+      "upid": "6293"
+    }
   },
   {
     "draft": "prospect",

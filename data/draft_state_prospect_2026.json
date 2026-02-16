@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 37,
+  "current_pick_index": 38,
   "picks_made": [
     {
       "draft": "prospect",
@@ -521,6 +521,20 @@
       "upid": "7950",
       "position": "C,1B,OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 5,
+      "pick": 4,
+      "team": "TBB",
+      "round_type": "dc",
+      "result": null,
+      "player": "C.J. Culpepper",
+      "timestamp": "2026-02-16T02:06:04.825838",
+      "pick_index": 37,
+      "upid": "6293",
+      "position": "SP",
+      "mlb_team": "MIN"
     }
   ],
   "timer_started_at": "2026-02-16T02:04:57.373634",
@@ -574,7 +588,7 @@
       "bc_slots": 1,
       "dc_slots": 6,
       "bc_used": 1,
-      "dc_used": 2
+      "dc_used": 3
     },
     "LFB": {
       "bc_slots": 1,
@@ -601,6 +615,6 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-02-16T02:04:57.373692",
+  "last_updated": "2026-02-16T02:06:04.827149",
   "timer_duration_seconds": 240
 }
