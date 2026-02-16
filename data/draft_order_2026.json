@@ -551,7 +551,12 @@
     "pick": 3,
     "team": "TBB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Tekoah Roby",
+      "timestamp": "2026-02-16T02:12:52.025274",
+      "pick_index": 42,
+      "upid": "3857"
+    }
   },
   {
     "draft": "prospect",

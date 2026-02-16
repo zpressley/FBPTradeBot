@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 42,
+  "current_pick_index": 43,
   "picks_made": [
     {
       "draft": "prospect",
@@ -591,6 +591,20 @@
       "upid": "7954",
       "position": "SS",
       "mlb_team": "MIN"
+    },
+    {
+      "draft": "prospect",
+      "round": 6,
+      "pick": 3,
+      "team": "TBB",
+      "round_type": "dc",
+      "result": null,
+      "player": "Tekoah Roby",
+      "timestamp": "2026-02-16T02:12:52.025274",
+      "pick_index": 42,
+      "upid": "3857",
+      "position": "SP",
+      "mlb_team": "STL"
     }
   ],
   "timer_started_at": "2026-02-16T02:12:22.966149",
@@ -644,7 +658,7 @@
       "bc_slots": 1,
       "dc_slots": 6,
       "bc_used": 1,
-      "dc_used": 3
+      "dc_used": 4
     },
     "LFB": {
       "bc_slots": 1,
@@ -671,6 +685,6 @@
       "dc_used": 3
     }
   },
-  "last_updated": "2026-02-16T02:12:22.966194",
+  "last_updated": "2026-02-16T02:12:52.026273",
   "timer_duration_seconds": 240
 }
