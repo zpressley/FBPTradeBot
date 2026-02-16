@@ -252,7 +252,12 @@
     "pick": 5,
     "team": "CFL",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Payton Tolle",
+      "timestamp": "2026-02-16T01:49:58.241289",
+      "pick_index": 19,
+      "upid": "7658"
+    }
   },
   {
     "draft": "prospect",

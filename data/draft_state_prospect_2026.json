@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 19,
+  "current_pick_index": 20,
   "picks_made": [
     {
       "draft": "prospect",
@@ -269,6 +269,20 @@
       "upid": "7953",
       "position": "SS",
       "mlb_team": "AZ"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 5,
+      "team": "CFL",
+      "round_type": "dc",
+      "result": null,
+      "player": "Payton Tolle",
+      "timestamp": "2026-02-16T01:49:58.241289",
+      "pick_index": 19,
+      "upid": "7658",
+      "position": "SP,RP",
+      "mlb_team": "BOS"
     }
   ],
   "timer_started_at": "2026-02-16T01:49:32.094318",
@@ -304,7 +318,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "DMN": {
       "bc_slots": 1,
@@ -349,6 +363,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:49:32.094365",
+  "last_updated": "2026-02-16T01:49:58.242124",
   "timer_duration_seconds": 240
 }
