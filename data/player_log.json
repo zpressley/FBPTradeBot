@@ -33485,5 +33485,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Caden Bodine (R7 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T21:19:23.370525-05:00-UPID_7967-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-02-15T21:19:23.370525-05:00",
+    "upid": "7967",
+    "player_name": "Ethan Conrad",
+    "team": "CHC",
+    "pos": "OF",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 316,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: SAD selected Ethan Conrad (R7 P4)"
   }
 ]

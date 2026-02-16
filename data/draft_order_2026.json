@@ -629,7 +629,12 @@
     "pick": 4,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Ethan Conrad",
+      "timestamp": "2026-02-16T02:19:22.494629",
+      "pick_index": 48,
+      "upid": "7967"
+    }
   },
   {
     "draft": "prospect",

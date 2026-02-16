@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 48,
+  "current_pick_index": 49,
   "picks_made": [
     {
       "draft": "prospect",
@@ -675,6 +675,20 @@
       "upid": "7971",
       "position": "C",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 7,
+      "pick": 4,
+      "team": "SAD",
+      "round_type": "dc",
+      "result": null,
+      "player": "Ethan Conrad",
+      "timestamp": "2026-02-16T02:19:22.494629",
+      "pick_index": 48,
+      "upid": "7967",
+      "position": "OF",
+      "mlb_team": "CHC"
     }
   ],
   "timer_started_at": "2026-02-16T02:18:29.713343",
@@ -752,9 +766,9 @@
       "bc_slots": 0,
       "dc_slots": 6,
       "bc_used": 0,
-      "dc_used": 4
+      "dc_used": 5
     }
   },
-  "last_updated": "2026-02-16T02:18:29.713398",
+  "last_updated": "2026-02-16T02:19:22.495978",
   "timer_duration_seconds": 240
 }
