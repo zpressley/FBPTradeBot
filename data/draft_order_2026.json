@@ -161,7 +161,12 @@
     "pick": 3,
     "team": "RV",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Wandy Asigen",
+      "timestamp": "2026-02-16T01:44:04.386284",
+      "pick_index": 12,
+      "upid": "7999"
+    }
   },
   {
     "draft": "prospect",

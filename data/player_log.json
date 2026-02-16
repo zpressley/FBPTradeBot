@@ -32657,5 +32657,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: JEP selected Tyler Bremner (R2 P2)"
+  },
+  {
+    "id": "2026-2026-02-15T20:44:05.173730-05:00-UPID_7999-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-02-15T20:44:05.173730-05:00",
+    "upid": "7999",
+    "player_name": "Wandy Asigen",
+    "team": "NYM",
+    "pos": "SS",
+    "age": null,
+    "level": "",
+    "team_rank": null,
+    "rank": 212,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: RV selected Wandy Asigen (R2 P3)"
   }
 ]
