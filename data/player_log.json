@@ -32450,5 +32450,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: RV selected Ethan Holliday (R1 P3)"
+  },
+  {
+    "id": "2026-2026-02-15T20:36:18.670634-05:00-UPID_7944-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-02-15T20:36:18.670634-05:00",
+    "upid": "7944",
+    "player_name": "Eli Willits",
+    "team": "WSH",
+    "pos": "SS",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 15,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: HAM selected Eli Willits (R1 P4)"
   }
 ]

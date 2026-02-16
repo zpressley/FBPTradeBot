@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 3,
+  "current_pick_index": 4,
   "picks_made": [
     {
       "draft": "prospect",
@@ -45,6 +45,20 @@
       "upid": "7940",
       "position": "SS",
       "mlb_team": "COL"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 4,
+      "team": "HAM",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Eli Willits",
+      "timestamp": "2026-02-16T01:36:17.883724",
+      "pick_index": 3,
+      "upid": "7944",
+      "position": "SS",
+      "mlb_team": "WSH"
     }
   ],
   "timer_started_at": "2026-02-16T01:35:43.222458",
@@ -73,7 +87,7 @@
     "HAM": {
       "bc_slots": 1,
       "dc_slots": 2,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "CFL": {
@@ -125,6 +139,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:35:43.222508",
+  "last_updated": "2026-02-16T01:36:17.884464",
   "timer_duration_seconds": 240
 }

@@ -44,7 +44,12 @@
     "pick": 4,
     "team": "HAM",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Eli Willits",
+      "timestamp": "2026-02-16T01:36:17.883724",
+      "pick_index": 3,
+      "upid": "7944"
+    }
   },
   {
     "draft": "prospect",
