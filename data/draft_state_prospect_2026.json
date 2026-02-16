@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 41,
+  "current_pick_index": 42,
   "picks_made": [
     {
       "draft": "prospect",
@@ -577,6 +577,20 @@
       "upid": "7965",
       "position": "3B",
       "mlb_team": "KC"
+    },
+    {
+      "draft": "prospect",
+      "round": 6,
+      "pick": 2,
+      "team": "DMN",
+      "round_type": "dc",
+      "result": null,
+      "player": "Marek Houston",
+      "timestamp": "2026-02-16T02:12:20.556704",
+      "pick_index": 41,
+      "upid": "7954",
+      "position": "SS",
+      "mlb_team": "MIN"
     }
   ],
   "timer_started_at": "2026-02-16T02:12:09.229833",
@@ -618,7 +632,7 @@
       "bc_slots": 1,
       "dc_slots": 5,
       "bc_used": 1,
-      "dc_used": 3
+      "dc_used": 4
     },
     "B2J": {
       "bc_slots": 1,
@@ -657,6 +671,6 @@
       "dc_used": 3
     }
   },
-  "last_updated": "2026-02-16T02:12:09.229895",
+  "last_updated": "2026-02-16T02:12:20.557772",
   "timer_duration_seconds": 10
 }

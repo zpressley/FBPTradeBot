@@ -538,7 +538,12 @@
     "pick": 2,
     "team": "DMN",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Marek Houston",
+      "timestamp": "2026-02-16T02:12:20.556704",
+      "pick_index": 41,
+      "upid": "7954"
+    }
   },
   {
     "draft": "prospect",

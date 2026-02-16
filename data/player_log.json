@@ -33324,5 +33324,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: CFL selected Josh Hammond (R6 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T21:12:21.483892-05:00-UPID_7954-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-02-15T21:12:21.483892-05:00",
+    "upid": "7954",
+    "player_name": "Marek Houston",
+    "team": "MIN",
+    "pos": "SS",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 124,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DMN selected Marek Houston (R6 P2)"
   }
 ]
