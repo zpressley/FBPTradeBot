@@ -31,7 +31,12 @@
     "pick": 3,
     "team": "RV",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Ethan Holliday",
+      "timestamp": "2026-02-16T01:35:29.239067",
+      "pick_index": 2,
+      "upid": "7940"
+    }
   },
   {
     "draft": "prospect",
