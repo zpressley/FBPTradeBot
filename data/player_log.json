@@ -33071,5 +33071,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: DMN selected Billy Carlson (R4 P4)"
+  },
+  {
+    "id": "2026-2026-02-15T21:00:44.381792-05:00-UPID_7889-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-02-15T21:00:44.381792-05:00",
+    "upid": "7889",
+    "player_name": "Sam Antonacci",
+    "team": "CWS",
+    "pos": "A+",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Bluke Blokes",
+    "contract": "Development Cont.",
+    "status": "P",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick: TBB selected Sam Antonacci (R4 P5)"
   }
 ]
