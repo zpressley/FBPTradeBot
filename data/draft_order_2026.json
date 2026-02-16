@@ -434,7 +434,12 @@
     "pick": 8,
     "team": "WIZ",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Kevin Alvarez",
+      "timestamp": "2026-02-16T02:03:23.472499",
+      "pick_index": 33,
+      "upid": "7755"
+    }
   },
   {
     "draft": "prospect",

@@ -33140,5 +33140,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: LFB selected Andrew Fischer (R4 P7)"
+  },
+  {
+    "id": "2026-2026-02-15T21:03:24.271181-05:00-UPID_7755-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T21:03:24.271181-05:00",
+    "upid": "7755",
+    "player_name": "Kevin Alvarez",
+    "team": "HOU",
+    "pos": "OF",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 257,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Kevin Alvarez (R4 P8)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 33,
+  "current_pick_index": 34,
   "picks_made": [
     {
       "draft": "prospect",
@@ -465,6 +465,20 @@
       "upid": "7968",
       "position": "3B",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 8,
+      "team": "WIZ",
+      "round_type": "dc",
+      "result": null,
+      "player": "Kevin Alvarez",
+      "timestamp": "2026-02-16T02:03:23.472499",
+      "pick_index": 33,
+      "upid": "7755",
+      "position": "OF",
+      "mlb_team": "HOU"
     }
   ],
   "timer_started_at": "2026-02-16T02:02:46.668947",
@@ -530,7 +544,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 1
+      "dc_used": 2
     },
     "DRO": {
       "bc_slots": 0,
@@ -545,6 +559,6 @@
       "dc_used": 2
     }
   },
-  "last_updated": "2026-02-16T02:02:46.668988",
+  "last_updated": "2026-02-16T02:03:23.484365",
   "timer_duration_seconds": 240
 }
