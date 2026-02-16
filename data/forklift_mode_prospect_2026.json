@@ -1,4 +1,13 @@
 {
-  "forklift_teams": [],
-  "history": []
+  "forklift_teams": [
+    "DMN"
+  ],
+  "history": [
+    {
+      "team": "DMN",
+      "action": "enabled",
+      "by": "zpressley",
+      "timestamp": "2026-02-16T01:38:07.851816"
+    }
+  ]
 }
