@@ -33186,5 +33186,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: JEP selected George Klassen (R5 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T21:04:42.682523-05:00-UPID_8025-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T21:04:42.682523-05:00",
+    "upid": "8025",
+    "player_name": "Miguel Sime Jr.",
+    "team": "WSH",
+    "pos": "SP",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 470,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Miguel Sime Jr. (R5 P2)"
   }
 ]

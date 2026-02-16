@@ -460,7 +460,12 @@
     "pick": 2,
     "team": "CFL",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Miguel Sime Jr.",
+      "timestamp": "2026-02-16T02:04:41.895990",
+      "pick_index": 35,
+      "upid": "8025"
+    }
   },
   {
     "draft": "prospect",
