@@ -33301,5 +33301,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick: WIZ selected Nate George (R5 P6)"
+  },
+  {
+    "id": "2026-2026-02-15T21:11:54.081134-05:00-UPID_7965-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T21:11:54.081134-05:00",
+    "upid": "7965",
+    "player_name": "Josh Hammond",
+    "team": "KC",
+    "pos": "3B",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 308,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Josh Hammond (R6 P1)"
   }
 ]

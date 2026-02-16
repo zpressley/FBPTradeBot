@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 40,
+  "current_pick_index": 41,
   "picks_made": [
     {
       "draft": "prospect",
@@ -563,6 +563,20 @@
       "upid": "7894",
       "position": "OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "prospect",
+      "round": 6,
+      "pick": 1,
+      "team": "CFL",
+      "round_type": "dc",
+      "result": null,
+      "player": "Josh Hammond",
+      "timestamp": "2026-02-16T02:11:53.169197",
+      "pick_index": 40,
+      "upid": "7965",
+      "position": "3B",
+      "mlb_team": "KC"
     }
   ],
   "timer_started_at": "2026-02-16T02:11:37.578288",
@@ -598,7 +612,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 3
+      "dc_used": 4
     },
     "DMN": {
       "bc_slots": 1,
@@ -643,6 +657,6 @@
       "dc_used": 3
     }
   },
-  "last_updated": "2026-02-16T02:11:37.578338",
+  "last_updated": "2026-02-16T02:11:53.172483",
   "timer_duration_seconds": 240
 }
