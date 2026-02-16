@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 28,
+  "current_pick_index": 29,
   "picks_made": [
     {
       "draft": "prospect",
@@ -395,6 +395,20 @@
       "upid": "7647",
       "position": "OF",
       "mlb_team": "SF"
+    },
+    {
+      "draft": "prospect",
+      "round": 4,
+      "pick": 3,
+      "team": "CFL",
+      "round_type": "dc",
+      "result": null,
+      "player": "Cam Cannarella",
+      "timestamp": "2026-02-16T01:59:35.197691",
+      "pick_index": 28,
+      "upid": "7975",
+      "position": "OF",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-02-16T01:59:14.990413",
@@ -430,7 +444,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 1
+      "dc_used": 2
     },
     "DMN": {
       "bc_slots": 1,
@@ -475,6 +489,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:59:14.990474",
+  "last_updated": "2026-02-16T01:59:35.198850",
   "timer_duration_seconds": 240
 }

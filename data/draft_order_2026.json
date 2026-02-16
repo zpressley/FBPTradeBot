@@ -369,7 +369,12 @@
     "pick": 3,
     "team": "CFL",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Cam Cannarella",
+      "timestamp": "2026-02-16T01:59:35.197691",
+      "pick_index": 28,
+      "upid": "7975"
+    }
   },
   {
     "draft": "prospect",

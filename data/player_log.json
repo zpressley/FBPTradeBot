@@ -33025,5 +33025,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: HAM selected Dakota Jordan (R4 P2)"
+  },
+  {
+    "id": "2026-2026-02-15T20:59:36.173102-05:00-UPID_7975-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-02-15T20:59:36.173102-05:00",
+    "upid": "7975",
+    "player_name": "Cam Cannarella",
+    "team": "MIA",
+    "pos": "OF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 166,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: CFL selected Cam Cannarella (R4 P3)"
   }
 ]
