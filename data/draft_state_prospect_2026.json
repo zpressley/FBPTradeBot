@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 23,
+  "current_pick_index": 24,
   "picks_made": [
     {
       "draft": "prospect",
@@ -325,6 +325,20 @@
       "upid": "6016",
       "position": "1B,3B",
       "mlb_team": "NYM"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 9,
+      "team": "SAD",
+      "round_type": "dc",
+      "result": null,
+      "player": "Joshua Baez",
+      "timestamp": "2026-02-16T01:56:54.612153",
+      "pick_index": 23,
+      "upid": "2780",
+      "position": "CF",
+      "mlb_team": "STL"
     }
   ],
   "timer_started_at": "2026-02-16T01:53:45.253893",
@@ -402,9 +416,9 @@
       "bc_slots": 0,
       "dc_slots": 6,
       "bc_used": 0,
-      "dc_used": 0
+      "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:53:45.253942",
+  "last_updated": "2026-02-16T01:56:54.618104",
   "timer_duration_seconds": 240
 }

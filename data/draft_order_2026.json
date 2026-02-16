@@ -304,7 +304,12 @@
     "pick": 9,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Joshua Baez",
+      "timestamp": "2026-02-16T01:56:54.612153",
+      "pick_index": 23,
+      "upid": "2780"
+    }
   },
   {
     "draft": "prospect",
