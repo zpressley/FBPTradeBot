@@ -32565,5 +32565,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Aiva Arquette (R1 P8)"
+  },
+  {
+    "id": "2026-2026-02-15T20:41:27.371350-05:00-UPID_7948-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-02-15T20:41:27.371350-05:00",
+    "upid": "7948",
+    "player_name": "JoJo Parker",
+    "team": "TOR",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": 43,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: LFB selected JoJo Parker (R1 P9)"
   }
 ]

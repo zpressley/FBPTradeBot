@@ -109,7 +109,12 @@
     "pick": 9,
     "team": "LFB",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "JoJo Parker",
+      "timestamp": "2026-02-16T01:41:26.519254",
+      "pick_index": 8,
+      "upid": "7948"
+    }
   },
   {
     "draft": "prospect",
