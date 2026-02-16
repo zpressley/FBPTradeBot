@@ -148,7 +148,12 @@
     "pick": 2,
     "team": "JEP",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Tyler Bremner",
+      "timestamp": "2026-02-16T01:43:04.681492",
+      "pick_index": 11,
+      "upid": "7957"
+    }
   },
   {
     "draft": "prospect",

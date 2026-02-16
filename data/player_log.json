@@ -32634,5 +32634,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WAR selected Luis Hern\u00e1ndez (R2 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T20:43:05.479556-05:00-UPID_7957-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-02-15T20:43:05.479556-05:00",
+    "upid": "7957",
+    "player_name": "Tyler Bremner",
+    "team": "LAA",
+    "pos": "SP",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 91,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: JEP selected Tyler Bremner (R2 P2)"
   }
 ]
