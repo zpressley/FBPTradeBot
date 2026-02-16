@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 10,
+  "current_pick_index": 11,
   "picks_made": [
     {
       "draft": "prospect",
@@ -143,6 +143,20 @@
       "upid": "7949",
       "position": "SP",
       "mlb_team": "BOS"
+    },
+    {
+      "draft": "prospect",
+      "round": 2,
+      "pick": 1,
+      "team": "WAR",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Luis Hern\u00e1ndez",
+      "timestamp": "2026-02-16T01:42:12.624282",
+      "pick_index": 10,
+      "upid": "8339",
+      "position": "SS",
+      "mlb_team": "SF"
     }
   ],
   "timer_started_at": "2026-02-16T01:41:48.706215",
@@ -153,7 +167,7 @@
     "WAR": {
       "bc_slots": 2,
       "dc_slots": 1,
-      "bc_used": 1,
+      "bc_used": 2,
       "dc_used": 0
     },
     "JEP": {
@@ -223,6 +237,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:41:48.706254",
+  "last_updated": "2026-02-16T01:42:12.624945",
   "timer_duration_seconds": 240
 }

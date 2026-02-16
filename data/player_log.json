@@ -32611,5 +32611,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: WIZ selected Kyson Witherspoon (R1 P10)"
+  },
+  {
+    "id": "2026-2026-02-15T20:42:13.371477-05:00-UPID_8339-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-02-15T20:42:13.371477-05:00",
+    "upid": "8339",
+    "player_name": "Luis Hern\u00e1ndez",
+    "team": "SF",
+    "pos": "SS",
+    "age": "17",
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Weekend Warriors",
+    "contract": "Blue Chip Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WAR selected Luis Hern\u00e1ndez (R2 P1)"
   }
 ]
