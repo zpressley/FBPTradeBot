@@ -32956,5 +32956,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: LFB selected Francisco Renteria (R3 P10)"
+  },
+  {
+    "id": "2026-2026-02-15T20:57:42.173460-05:00-UPID_7918-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T20:57:42.173460-05:00",
+    "upid": "7918",
+    "player_name": "Kendry Chourio",
+    "team": "KC",
+    "pos": "SP",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": 213,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Kendry Chourio (R3 P11)"
   }
 ]

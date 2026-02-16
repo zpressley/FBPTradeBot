@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 25,
+  "current_pick_index": 26,
   "picks_made": [
     {
       "draft": "prospect",
@@ -353,6 +353,20 @@
       "upid": "8111",
       "position": "LF",
       "mlb_team": "PHI"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 11,
+      "team": "WIZ",
+      "round_type": "dc",
+      "result": null,
+      "player": "Kendry Chourio",
+      "timestamp": "2026-02-16T01:57:41.219503",
+      "pick_index": 25,
+      "upid": "7918",
+      "position": "SP",
+      "mlb_team": "KC"
     }
   ],
   "timer_started_at": "2026-02-16T01:57:18.548622",
@@ -418,7 +432,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 0
+      "dc_used": 1
     },
     "DRO": {
       "bc_slots": 0,
@@ -433,6 +447,6 @@
       "dc_used": 1
     }
   },
-  "last_updated": "2026-02-16T01:57:18.548689",
+  "last_updated": "2026-02-16T01:57:41.222516",
   "timer_duration_seconds": 240
 }
