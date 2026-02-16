@@ -278,7 +278,12 @@
     "pick": 7,
     "team": "TBB",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Hao-Yu Lee",
+      "timestamp": "2026-02-16T01:51:00.368313",
+      "pick_index": 21,
+      "upid": "3596"
+    }
   },
   {
     "draft": "prospect",
