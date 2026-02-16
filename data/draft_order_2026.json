@@ -577,7 +577,12 @@
     "pick": 5,
     "team": "WIZ",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Kevin Defrank",
+      "timestamp": "2026-02-16T02:17:00.386938",
+      "pick_index": 44,
+      "upid": "7796"
+    }
   },
   {
     "draft": "prospect",

@@ -33393,5 +33393,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: SAD selected Felnin Celesten (R6 P4)"
+  },
+  {
+    "id": "2026-2026-02-15T21:17:01.381805-05:00-UPID_7796-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-02-15T21:17:01.381805-05:00",
+    "upid": "7796",
+    "player_name": "Kevin Defrank",
+    "team": "MIA",
+    "pos": "SP",
+    "age": 17,
+    "level": "",
+    "team_rank": null,
+    "rank": 351,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: WIZ selected Kevin Defrank (R6 P5)"
   }
 ]

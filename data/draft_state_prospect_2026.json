@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 44,
+  "current_pick_index": 45,
   "picks_made": [
     {
       "draft": "prospect",
@@ -619,6 +619,20 @@
       "upid": "4675",
       "position": "SS",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "prospect",
+      "round": 6,
+      "pick": 5,
+      "team": "WIZ",
+      "round_type": "dc",
+      "result": null,
+      "player": "Kevin Defrank",
+      "timestamp": "2026-02-16T02:17:00.386938",
+      "pick_index": 44,
+      "upid": "7796",
+      "position": "SP",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-02-16T02:12:54.068077",
@@ -684,7 +698,7 @@
       "bc_slots": 2,
       "dc_slots": 5,
       "bc_used": 2,
-      "dc_used": 3
+      "dc_used": 4
     },
     "DRO": {
       "bc_slots": 0,
@@ -699,6 +713,6 @@
       "dc_used": 4
     }
   },
-  "last_updated": "2026-02-16T02:16:48.014820",
+  "last_updated": "2026-02-16T02:17:00.393356",
   "timer_duration_seconds": 240
 }
