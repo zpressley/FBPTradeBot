@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 22,
+  "current_pick_index": 23,
   "picks_made": [
     {
       "draft": "prospect",
@@ -311,6 +311,20 @@
       "upid": "3596",
       "position": "2B,3B",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "prospect",
+      "round": 3,
+      "pick": 8,
+      "team": "DRO",
+      "round_type": "dc",
+      "result": null,
+      "player": "Jacob Reimer",
+      "timestamp": "2026-02-16T01:53:33.838082",
+      "pick_index": 22,
+      "upid": "6016",
+      "position": "1B,3B",
+      "mlb_team": "NYM"
     }
   ],
   "timer_started_at": "2026-02-16T01:51:05.146618",
@@ -382,7 +396,7 @@
       "bc_slots": 0,
       "dc_slots": 1,
       "bc_used": 0,
-      "dc_used": 0
+      "dc_used": 1
     },
     "SAD": {
       "bc_slots": 0,
@@ -391,6 +405,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:51:05.146667",
+  "last_updated": "2026-02-16T01:53:33.838904",
   "timer_duration_seconds": 240
 }

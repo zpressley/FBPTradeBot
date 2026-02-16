@@ -32887,5 +32887,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Hao-Yu Lee (R3 P7)"
+  },
+  {
+    "id": "2026-2026-02-15T20:53:34.567732-05:00-UPID_6016-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-02-15T20:53:34.567732-05:00",
+    "upid": "6016",
+    "player_name": "Jacob Reimer",
+    "team": "NYM",
+    "pos": "1B,3B",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 113,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Andromedans",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: DRO selected Jacob Reimer (R3 P8)"
   }
 ]

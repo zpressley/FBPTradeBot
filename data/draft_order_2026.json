@@ -291,7 +291,12 @@
     "pick": 8,
     "team": "DRO",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Jacob Reimer",
+      "timestamp": "2026-02-16T01:53:33.838082",
+      "pick_index": 22,
+      "upid": "6016"
+    }
   },
   {
     "draft": "prospect",
