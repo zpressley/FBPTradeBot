@@ -5,7 +5,12 @@
     "pick": 1,
     "team": "WAR",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Kade Anderson",
+      "timestamp": "2026-02-16T01:34:39.077579",
+      "pick_index": 0,
+      "upid": "7941"
+    }
   },
   {
     "draft": "prospect",
