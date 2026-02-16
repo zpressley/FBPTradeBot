@@ -1,8 +1,8 @@
 {
-  "status": "active",
+  "status": "completed",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 51,
+  "current_pick_index": 52,
   "picks_made": [
     {
       "draft": "prospect",
@@ -717,12 +717,26 @@
       "upid": "8190",
       "position": "CF",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "prospect",
+      "round": 8,
+      "pick": 2,
+      "team": "SAD",
+      "round_type": "dc",
+      "result": null,
+      "player": "Charles Davalan",
+      "timestamp": "2026-02-16T02:25:11.698258",
+      "pick_index": 51,
+      "upid": "7993",
+      "position": "OF",
+      "mlb_team": "LAD"
     }
   ],
   "timer_started_at": "2026-02-16T02:22:37.268895",
   "paused_at": null,
   "started_at": "2026-02-16T01:34:27.275150",
-  "completed_at": null,
+  "completed_at": "2026-02-16T02:25:11.699749",
   "team_slots": {
     "WAR": {
       "bc_slots": 2,
@@ -794,9 +808,9 @@
       "bc_slots": 0,
       "dc_slots": 6,
       "bc_used": 0,
-      "dc_used": 5
+      "dc_used": 6
     }
   },
-  "last_updated": "2026-02-16T02:22:37.268992",
+  "last_updated": "2026-02-16T02:25:11.699811",
   "timer_duration_seconds": 240
 }

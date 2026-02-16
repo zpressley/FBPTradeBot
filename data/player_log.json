@@ -33554,5 +33554,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick: TBB selected Randy Santana (R8 P1)"
+  },
+  {
+    "id": "2026-2026-02-15T21:25:12.874163-05:00-UPID_7993-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-02-15T21:25:12.874163-05:00",
+    "upid": "7993",
+    "player_name": "Charles Davalan",
+    "team": "LAD",
+    "pos": "OF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 396,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Development Cont.",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick: SAD selected Charles Davalan (R8 P2)"
   }
 ]

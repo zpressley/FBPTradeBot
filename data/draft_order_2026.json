@@ -668,6 +668,11 @@
     "pick": 2,
     "team": "SAD",
     "round_type": "dc",
-    "result": null
+    "result": {
+      "player": "Charles Davalan",
+      "timestamp": "2026-02-16T02:25:11.698258",
+      "pick_index": 51,
+      "upid": "7993"
+    }
   }
 ]
