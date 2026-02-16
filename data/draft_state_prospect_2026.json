@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "prospect",
   "season": 2026,
-  "current_pick_index": 7,
+  "current_pick_index": 8,
   "picks_made": [
     {
       "draft": "prospect",
@@ -101,6 +101,20 @@
       "upid": "7943",
       "position": "SP",
       "mlb_team": "ATH"
+    },
+    {
+      "draft": "prospect",
+      "round": 1,
+      "pick": 8,
+      "team": "TBB",
+      "round_type": "fypd",
+      "result": null,
+      "player": "Aiva Arquette",
+      "timestamp": "2026-02-16T01:41:11.471254",
+      "pick_index": 7,
+      "upid": "7945",
+      "position": "SS",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-02-16T01:40:44.591199",
@@ -153,7 +167,7 @@
     "TBB": {
       "bc_slots": 1,
       "dc_slots": 6,
-      "bc_used": 0,
+      "bc_used": 1,
       "dc_used": 0
     },
     "LFB": {
@@ -181,6 +195,6 @@
       "dc_used": 0
     }
   },
-  "last_updated": "2026-02-16T01:40:44.591247",
+  "last_updated": "2026-02-16T01:41:11.471967",
   "timer_duration_seconds": 240
 }

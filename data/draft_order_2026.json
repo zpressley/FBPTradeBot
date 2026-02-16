@@ -96,7 +96,12 @@
     "pick": 8,
     "team": "TBB",
     "round_type": "fypd",
-    "result": null
+    "result": {
+      "player": "Aiva Arquette",
+      "timestamp": "2026-02-16T01:41:11.471254",
+      "pick_index": 7,
+      "upid": "7945"
+    }
   },
   {
     "draft": "prospect",
