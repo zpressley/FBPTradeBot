@@ -37,6 +37,10 @@ from admin.admin_processor import (
     apply_admin_delete_player,
     apply_admin_merge_players,
 )
+from self_service.contract_purchase_processor import (
+    ContractPurchasePayload,
+    apply_contract_purchase,
+)
 from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference
 from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
@@ -96,6 +100,7 @@ PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notifications
+TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444  # channel for manager transactions
 ADMIN_TASKS_CHANNEL_ID = 875594022033436683  # daily processing summary tasks
 
 # Repo root used for git operations (Render default path, override via env)
@@ -482,6 +487,16 @@ async def _send_admin_log_message(content: str) -> None:
         print(f"⚠️ Failed to send admin log message: {exc}")
 
 
+async def _send_transaction_log_message(content: str) -> None:
+    """Post a manager transaction notification to the transactions channel."""
+    try:
+        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
+        if channel:
+            await channel.send(content)
+    except Exception as exc:
+        print(f"⚠️ Failed to send transaction log message: {exc}")
+
+
 async def _send_admin_tasks_message(content: str) -> None:
     """Post a daily processing task summary to the admin tasks channel."""
     try:
@@ -787,6 +802,76 @@ async def api_pad_submit(
     }
 
 
+# ---- Manager Self-Service APIs ----
+
+
+@app.post("/api/manager/contract-purchase")
+async def api_manager_contract_purchase(
+    payload: ContractPurchasePayload,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Manager self-service contract purchase (DC→PC/BC, PC→BC).
+
+    This is the endpoint used by the dashboard "BUY CONTRACTS" modal.
+
+    Side-effects:
+      * Updates player contract_type (only)
+      * Deducts WizBucks
+      * Appends wizbucks_transactions ledger entry
+      * Appends player_log snapshot
+    """
+
+    try:
+        result = apply_contract_purchase(payload, test_mode=False)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:  # pragma: no cover - defensive
+        print("❌ Contract purchase error:", e)
+        raise HTTPException(status_code=500, detail="Contract purchase error")
+
+    core_files = [
+        "data/combined_players.json",
+        "data/wizbucks.json",
+        "data/player_log.json",
+        "data/wizbucks_transactions.json",
+    ]
+
+    player_name = (result.get("player") or {}).get("name") or payload.upid
+    upgrade_cost = result.get("cost")
+    commit_msg = f"Contract purchase: {player_name} ({payload.team})"
+
+    # Commit/push is best-effort; it should not prevent the transaction
+    # from being logged to Discord.
+    try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Contract purchase git commit/push failed:", exc)
+
+    # Discord notification to the transactions channel in the requested format.
+    try:
+        player_rec = result.get("player") or {}
+        player_team = player_rec.get("team") or ""
+        player_pos = player_rec.get("position") or ""
+        manager_name = player_rec.get("manager") or payload.team
+        timestamp = datetime.now(tz=ET).strftime("%Y-%m-%d %I:%M %p ET")
+
+        discord_msg = (
+            f"**Contract Purchase: {player_rec.get('contract_type') or payload.new_contract_type}**\n"
+            f"Player: {player_name} ({player_team} - {player_pos})\n"
+            f"Manager: {manager_name}\n"
+            f"{timestamp}"
+        )
+        bot.loop.create_task(_send_transaction_log_message(discord_msg))
+    except Exception as exc:
+        print("⚠️ Failed to send contract purchase Discord message:", exc)
+
+    return {
+        "player": result.get("player"),
+        "wizbucks_balance": result.get("wizbucks_balance"),
+        "cost": result.get("cost"),
+    }
+
+
 # ---- Admin APIs ----
 
 
@@ -818,11 +903,53 @@ async def api_admin_update_player(
     commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
     try:
         _commit_and_push(core_files, commit_msg)
-        # Send Discord notification
+
+        # Send Discord notification with a mini "diff" so admins can audit changes.
         player_name = result['player'].get('name', 'Unknown')
         upid = result['player'].get('upid', payload.upid)
-        discord_msg = f"📝 **Admin Update**\n\n👤 Player: **{player_name}** (UPID {upid})\n💾 Source: Website Admin Portal"
+
+        def _fmt(v):
+            if v is None or v == "":
+                return "∅"
+            s = str(v)
+            return s if len(s) <= 60 else (s[:57] + "...")
+
+        change_lines = []
+        changes = result.get("changes") or {}
+        # stable ordering so messages are predictable
+        for field in sorted(changes.keys()):
+            ch = changes.get(field) or {}
+            before = _fmt(ch.get("from"))
+            after = _fmt(ch.get("to"))
+            if before == after:
+                continue
+            change_lines.append(f"- `{field}`: {before} → {after}")
+
+        # WizBucks delta (if included as part of this update)
+        wb_before = result.get("wizbucks_balance_before")
+        wb_after = result.get("wizbucks_balance")
+        if wb_before is not None and wb_after is not None and wb_before != wb_after:
+            change_lines.append(f"- `wizbucks`: {wb_before} → {wb_after}")
+
+        # Keep messages readable / under Discord limits.
+        max_lines = 12
+        more = 0
+        if len(change_lines) > max_lines:
+            more = len(change_lines) - max_lines
+            change_lines = change_lines[:max_lines]
+
+        changes_block = "\n".join(change_lines) if change_lines else "- (no changes detected)"
+        if more:
+            changes_block += f"\n- (+{more} more)"
+
+        discord_msg = (
+            f"📝 **Admin Update**\n\n"
+            f"👤 Player: **{player_name}** (UPID {upid})\n"
+            f"🔎 Changes:\n{changes_block}\n"
+            f"💾 Source: Website Admin Portal"
+        )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
+
     except Exception as exc:
         # Commit/push failures should not hide the fact that the data files
         # were already updated on disk.
@@ -855,7 +982,11 @@ async def api_admin_delete_player(
         # Send Discord notification
         player_name = result['player'].get('name', 'Unknown')
         upid = result.get('upid', payload.upid)
-        discord_msg = f"🗑️ **Admin Delete**\n\n👤 Player: **{player_name}** (UPID {upid})\n💾 Source: Website Admin Portal"
+        discord_msg = (
+            f"🗑️ **Admin Delete**\n\n"
+            f"👤 Player: **{player_name}** (UPID {upid})\n"
+            f"💾 Source: Website Admin Portal"
+        )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
     except Exception as exc:
         print("⚠️ Admin delete git commit/push failed:", exc)

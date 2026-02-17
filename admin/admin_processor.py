@@ -198,16 +198,21 @@ def apply_admin_player_update(
     if not player:
         raise ValueError(f"Player with UPID {payload.upid} not found in combined_players")
 
-    # Apply field changes
+    # Apply field changes and track diffs for auditing.
+    changes_applied: Dict[str, Dict[str, Any]] = {}
     for field, value in payload.changes.items():
+        before = player.get(field)
+        if before != value:
+            changes_applied[str(field)] = {"from": before, "to": value}
         player[field] = value
 
     # Optional WizBucks adjustment as part of the same transaction
     new_wb_balance: Optional[int] = None
+    wb_balance_before: Optional[int] = None
     if payload.wizbucks_delta is not None and payload.wizbucks_team:
         franchise_name = _resolve_franchise_name(payload.wizbucks_team, wizbucks)
-        current_balance = int(wizbucks.get(franchise_name, 0))
-        new_wb_balance = current_balance + int(payload.wizbucks_delta)
+        wb_balance_before = int(wizbucks.get(franchise_name, 0))
+        new_wb_balance = wb_balance_before + int(payload.wizbucks_delta)
         wizbucks[franchise_name] = new_wb_balance
 
     # Append player_log snapshot entry
@@ -230,6 +235,8 @@ def apply_admin_player_update(
         "upid": target_upid,
         "player": player,
         "wizbucks_balance": new_wb_balance,
+        "wizbucks_balance_before": wb_balance_before,
+        "changes": changes_applied,
     }
 
 
