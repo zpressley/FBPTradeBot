@@ -34773,5 +34773,28 @@
     "years": "P",
     "update_type": "Draft",
     "event": "26 Prospect Draft"
+  },
+  {
+    "id": "2026-2026-02-17T14:17:08.429176-05:00-UPID_7658-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "CFL",
+    "timestamp": "2026-02-17T14:17:08.429176-05:00",
+    "upid": "7658",
+    "player_name": "Payton Tolle",
+    "team": "BOS",
+    "pos": "SP,RP",
+    "age": 23,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 28,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
