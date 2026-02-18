@@ -541,5 +541,46 @@
     "manager_approved_at": "2026-02-18T18:16:15.863312Z",
     "admin_decision_by": "WAR",
     "processed_at": "2026-02-18T18:17:22.505858Z"
+  },
+  "WEB-TRADE-20260218-190605": {
+    "trade_id": "WEB-TRADE-20260218-190605",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-18T19:06:05.277542Z",
+    "expires_at": "2026-03-04T19:06:05.277542Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6643",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Jordan Leasure [CWS] [TC 1]"
+      ],
+      "WIZ": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
