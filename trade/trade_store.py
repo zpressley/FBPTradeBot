@@ -135,7 +135,22 @@ def _format_player_display(player: dict) -> str:
     pos = player.get("position") or "?"
     name = player.get("name") or "Unknown"
     mlb = player.get("team") or "FA"
-    contract = player.get("years_simple") or player.get("contract_type") or "?"
+
+    player_type = str(player.get("player_type") or "").strip().lower()
+
+    # Prospects: display contract abbreviations instead of years_simple "P".
+    if player_type == "farm":
+        raw_ct = str(player.get("contract_type") or "Development Cont.").strip().lower()
+        if "blue" in raw_ct and "chip" in raw_ct:
+            contract = "BC"
+        elif "purchased" in raw_ct:
+            contract = "PC"
+        else:
+            # Default for Farm players without explicit contract_type.
+            contract = "DC"
+    else:
+        contract = player.get("years_simple") or player.get("contract_type") or "?"
+
     return f"{pos} {name} [{mlb}] [{contract}]"
 
 

@@ -535,66 +535,91 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
     Notes:
       * We capture stdout/stderr so Render logs show *why* a push failed.
       * We redact the raw token from any error output before printing.
+      * If push is rejected due to a non-fast-forward, we best-effort fetch + rebase and retry.
     """
     import subprocess
 
     repo_root = REPO_ROOT
 
+    def _redact(s: str) -> str:
+        token = os.getenv("GITHUB_TOKEN") or ""
+        return s.replace(token, "***") if token and s else s
+
+    def _run(cmd: list[str]) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            cmd,
+            check=True,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+        )
+
+    token = os.getenv("GITHUB_TOKEN")
+    remote_url = None
+    if token:
+        repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
+        username = os.getenv("GITHUB_USER", "x-access-token")
+        remote_url = f"https://{username}:{token}@github.com/{repo}.git"
+
+    push_cmd = ["git", "push", remote_url, "HEAD:main"] if remote_url else ["git", "push"]
+    fetch_remote = remote_url if remote_url else "origin"
+
     try:
         # Stage files (if any)
         if file_paths:
-            subprocess.run(
-                ["git", "add", *file_paths],
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
+            _run(["git", "add", *file_paths])
 
         # Commit (this may fail with code 1 if there are no changes)
-        subprocess.run(
-            ["git", "commit", "-m", message],
-            check=True,
-            cwd=repo_root,
-            capture_output=True,
-            text=True,
-        )
-
-        # Prepare push command
-        token = os.getenv("GITHUB_TOKEN")
-        if token:
-            # Default to the actual bot repo name; allow override via GITHUB_REPO.
-            repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
-            username = os.getenv("GITHUB_USER", "x-access-token")
-            remote_url = f"https://{username}:{token}@github.com/{repo}.git"
-            push_cmd = ["git", "push", remote_url, "HEAD:main"]
-        else:
-            push_cmd = ["git", "push"]
+        _run(["git", "commit", "-m", message])
 
         # Push current HEAD
-        subprocess.run(
-            push_cmd,
-            check=True,
-            cwd=repo_root,
-            capture_output=True,
-            text=True,
-        )
+        _run(push_cmd)
         print("✅ Git commit and push succeeded")
 
     except subprocess.CalledProcessError as exc:
-        # Provide detailed context without leaking the raw token.
-        token = os.getenv("GITHUB_TOKEN") or ""
         stdout = exc.stdout or ""
         stderr = exc.stderr or ""
-        combined = (stdout + "\n" + stderr).strip()
-        if token:
-            combined = combined.replace(token, "***")
+        combined = _redact((stdout + "\n" + stderr).strip())
+
+        # If rejected because remote advanced, retry once with fetch+rebase.
+        retryable = any(
+            s in combined.lower()
+            for s in [
+                "fetch first",
+                "non-fast-forward",
+                "updates were rejected",
+                "rejected",
+            ]
+        )
+
+        if retryable:
+            try:
+                print("⚠️ Push rejected; attempting fetch+rebase and retry...")
+                _run(["git", "fetch", fetch_remote, "main"])
+                _run(["git", "rebase", "FETCH_HEAD"])
+                _run(push_cmd)
+                print("✅ Git push succeeded after rebase")
+                return
+            except subprocess.CalledProcessError as exc2:
+                # Try to clean up rebase state to keep the container usable.
+                try:
+                    subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                except Exception:
+                    pass
+
+                stdout2 = exc2.stdout or ""
+                stderr2 = exc2.stderr or ""
+                combined2 = _redact((stdout2 + "\n" + stderr2).strip())
+                print(f"⚠️ Git commit/push failed with code {exc2.returncode} (after retry).")
+                if combined2:
+                    print(combined2)
+                return
+
         print(f"⚠️ Git commit/push failed with code {exc.returncode}.")
         if combined:
             print(combined)
 
     except Exception as exc:
-        # Fallback for non-subprocess exceptions.
         print(f"⚠️ Git commit/push failed with unexpected error: {exc}")
 
 

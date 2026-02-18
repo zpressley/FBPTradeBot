@@ -8,12 +8,23 @@ from discord.ui import View, Button, Modal, TextInput
 
 from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM, get_trade_dates, mention_manager
 
-# Channel IDs
-PENDING_CHANNEL_ID = 1356234086833848492  # For trade discussion threads
-TRADE_CHANNEL_ID = 1197200421639438537    # For final approved trades
 
-# Admin review channel (set this in Render/host env; fallback is your main admin channel)
-TRADE_ADMIN_REVIEW_CHANNEL_ID = int(os.getenv("TRADE_ADMIN_REVIEW_CHANNEL_ID", "875594022033436683"))
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except Exception:
+        return default
+
+
+# Channel IDs (overrideable via env for different servers / staging)
+PENDING_CHANNEL_ID = _env_int("TRADE_PENDING_CHANNEL_ID", 1356234086833848492)  # trade discussion threads
+TRADE_CHANNEL_ID = _env_int("TRADE_CHANNEL_ID", 1197200421639438537)  # final approved trades
+
+# Admin review channel
+TRADE_ADMIN_REVIEW_CHANNEL_ID = _env_int("TRADE_ADMIN_REVIEW_CHANNEL_ID", 875594022033436683)
 
 # ========== TRADE VALIDATION ==========
 
@@ -42,7 +53,20 @@ async def create_trade_thread(guild, trade_data):
     """
     channel = guild.get_channel(PENDING_CHANNEL_ID)
     if not channel:
-        print("❌ Could not find #pending-trades channel.")
+        try:
+            channel = await guild.fetch_channel(PENDING_CHANNEL_ID)
+        except Exception as exc:
+            print(
+                "❌ Could not resolve pending-trades channel",
+                {"guild": getattr(guild, "name", None), "channel_id": PENDING_CHANNEL_ID, "error": str(exc)},
+            )
+            return
+
+    if not channel:
+        print(
+            "❌ Pending-trades channel not found",
+            {"guild": getattr(guild, "name", None), "channel_id": PENDING_CHANNEL_ID},
+        )
         return
 
     teams = trade_data["teams"]
@@ -209,7 +233,17 @@ async def send_to_admin_review(guild, trade_data):
     """Send a manager-approved trade to the admin review channel."""
     admin_channel = guild.get_channel(TRADE_ADMIN_REVIEW_CHANNEL_ID)
     if not admin_channel:
-        print("❌ Could not find admin review channel.")
+        try:
+            admin_channel = await guild.fetch_channel(TRADE_ADMIN_REVIEW_CHANNEL_ID)
+        except Exception as exc:
+            print(
+                "❌ Could not resolve admin review channel",
+                {"guild": getattr(guild, "name", None), "channel_id": TRADE_ADMIN_REVIEW_CHANNEL_ID, "error": str(exc)},
+            )
+            return
+
+    if not admin_channel:
+        print("❌ Admin review channel not found.", {"channel_id": TRADE_ADMIN_REVIEW_CHANNEL_ID})
         return
 
     trade_id = trade_data.get("trade_id")
@@ -240,7 +274,17 @@ async def post_approved_trade(guild, trade_data):
     """Post the approved trade to the main trade channel"""
     trade_channel = guild.get_channel(TRADE_CHANNEL_ID)
     if not trade_channel:
-        print("❌ Could not find trade channel.")
+        try:
+            trade_channel = await guild.fetch_channel(TRADE_CHANNEL_ID)
+        except Exception as exc:
+            print(
+                "❌ Could not resolve trade channel",
+                {"guild": getattr(guild, "name", None), "channel_id": TRADE_CHANNEL_ID, "error": str(exc)},
+            )
+            return
+
+    if not trade_channel:
+        print("❌ Trade channel not found.", {"channel_id": TRADE_CHANNEL_ID})
         return
 
     sub_date, proc_date = get_trade_dates()

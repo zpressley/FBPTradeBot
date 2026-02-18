@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import asyncio
 import os
 from datetime import datetime
-from typing import Optional
+from typing import Optional, TypeVar
 
 from fastapi import APIRouter, Depends, Header, HTTPException
 
@@ -19,8 +20,60 @@ router = APIRouter(prefix="/api/trade", tags=["trade"])
 
 API_KEY = os.getenv("BOT_API_KEY", "")
 
+# Prefer an explicit guild selection in multi-guild deployments.
+# This should be your primary FBP server ID.
+DEFAULT_DISCORD_GUILD_ID = 875592505926758480
+
 _bot_ref = None
 _commit_fn = None
+
+T = TypeVar("T")
+
+
+def _schedule_on_bot_loop(coro, label: str) -> None:
+    """Fire-and-forget a Discord coroutine on the bot's event loop.
+
+    health.py runs FastAPI in a separate thread, so Discord operations must run
+    on the bot loop (main thread).
+    """
+    if _bot_ref is None:
+        return
+
+    loop = getattr(_bot_ref, "loop", None)
+    if not loop or not loop.is_running():
+        return
+
+    fut = asyncio.run_coroutine_threadsafe(coro, loop)
+
+    def _done(f):
+        try:
+            f.result()
+        except Exception as exc:
+            print(f"⚠️ Discord task failed ({label}): {exc}")
+
+    fut.add_done_callback(_done)
+
+
+async def _await_on_bot_loop(coro, label: str, timeout_s: float = 20.0) -> T:
+    """Await a Discord coroutine on the bot's event loop and return its result."""
+    if _bot_ref is None:
+        raise HTTPException(status_code=503, detail="Bot not ready")
+
+    loop = getattr(_bot_ref, "loop", None)
+    if not loop or not loop.is_running():
+        raise HTTPException(status_code=503, detail="Bot loop not ready")
+
+    try:
+        if asyncio.get_running_loop() == loop:
+            return await coro
+    except RuntimeError:
+        pass
+
+    fut = asyncio.run_coroutine_threadsafe(coro, loop)
+    try:
+        return await asyncio.wait_for(asyncio.wrap_future(fut), timeout=timeout_s)
+    except asyncio.TimeoutError:
+        raise HTTPException(status_code=504, detail=f"Discord operation timed out: {label}")
 
 
 def set_trade_bot_reference(bot):
@@ -35,6 +88,34 @@ def set_trade_commit_fn(fn):
         trade_store.set_commit_fn(fn)
     except Exception:
         pass
+
+
+def _select_guild():
+    """Pick the correct guild for trade threads.
+
+    We avoid relying on bot.guilds[0], which is unstable if the bot is in
+    multiple servers.
+    """
+    if _bot_ref is None:
+        return None
+
+    raw = os.getenv("DISCORD_GUILD_ID") or os.getenv("FBP_GUILD_ID")
+    guild_id = None
+    if raw:
+        try:
+            guild_id = int(raw)
+        except Exception:
+            guild_id = None
+
+    if guild_id is None:
+        guild_id = DEFAULT_DISCORD_GUILD_ID
+
+    guild = _bot_ref.get_guild(int(guild_id))
+    if guild:
+        return guild
+
+    # Fallback: last resort, use the first connected guild.
+    return _bot_ref.guilds[0] if _bot_ref.guilds else None
 
 
 def verify_key(x_api_key: Optional[str] = Header(None)) -> bool:
@@ -58,19 +139,20 @@ async def _post_thread_note(trade: dict, content: str) -> None:
     if not thread_id:
         return
 
-    try:
-        guild_id = trade_store._load_json("config/season_dates.json", {}).get("guild_id")
-        # guild_id is not persisted in season_dates; rely on bot cache instead.
-        thread = None
-        for g in _bot_ref.guilds:
-            t = g.get_thread(int(thread_id))
-            if t:
-                thread = t
-                break
-        if thread:
-            await thread.send(content)
-    except Exception as exc:
-        print(f"⚠️ Failed posting trade note to thread: {exc}")
+    async def _send() -> None:
+        try:
+            chan = _bot_ref.get_channel(int(thread_id))
+            if not chan:
+                try:
+                    chan = await _bot_ref.fetch_channel(int(thread_id))
+                except Exception:
+                    chan = None
+            if chan:
+                await chan.send(content)
+        except Exception as exc:
+            print(f"⚠️ Failed posting trade note to thread: {exc}")
+
+    _schedule_on_bot_loop(_send(), "post_thread_note")
 
 
 
@@ -91,23 +173,28 @@ async def submit_trade(
     try:
         from commands.trade_logic import create_trade_thread
 
-        # Use the guild the bot is connected to
-        if not _bot_ref.guilds:
-            raise HTTPException(status_code=500, detail="Bot is not connected to any guild")
+        async def _create_thread():
+            guild = _select_guild()
+            if not guild:
+                raise HTTPException(status_code=500, detail="Could not resolve Discord guild for trade threads")
 
-        guild = _bot_ref.guilds[0]
-        thread = await create_trade_thread(
-            guild,
-            {
-                "trade_id": trade["trade_id"],
-                "teams": trade["teams"],
-                "players": trade.get("receives") or {},
-                "initiator_team": trade.get("initiator_team"),
-                "source": "🌐 Website",
-            },
-        )
+            return await create_trade_thread(
+                guild,
+                {
+                    "trade_id": trade["trade_id"],
+                    "teams": trade["teams"],
+                    "players": trade.get("receives") or {},
+                    "initiator_team": trade.get("initiator_team"),
+                    "source": "🌐 Website",
+                },
+            )
+
+        thread = await _await_on_bot_loop(_create_thread(), "create_trade_thread")
         if not thread:
-            raise HTTPException(status_code=500, detail="Failed to create Discord thread")
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to create Discord thread (pending-trades channel missing or bot lacks permissions)",
+            )
 
         trade = trade_store.attach_discord_thread(trade["trade_id"], str(thread.id), thread.jump_url)
     except HTTPException:
@@ -164,13 +251,16 @@ async def accept_trade(
     await _post_thread_note(trade, f"✅ **{manager_team}** accepted via website")
 
     if all_accepted:
-        # Ping admin review in Discord
+        # Ping admin review in Discord (must run on bot loop)
         try:
             from commands.trade_logic import send_to_admin_review
 
-            if _bot_ref and _bot_ref.is_ready() and _bot_ref.guilds:
+            async def _send_admin_review() -> None:
+                guild = _select_guild()
+                if not guild:
+                    return
                 await send_to_admin_review(
-                    _bot_ref.guilds[0],
+                    guild,
                     {
                         "trade_id": trade.get("trade_id"),
                         "teams": trade.get("teams") or [],
@@ -179,8 +269,10 @@ async def accept_trade(
                         "source": "🌐 Website",
                     },
                 )
+
+            _schedule_on_bot_loop(_send_admin_review(), "send_to_admin_review")
         except Exception as exc:
-            print(f"⚠️ Failed to send trade to admin review: {exc}")
+            print(f"⚠️ Failed to schedule trade admin review: {exc}")
 
     return {"success": True, "status": trade.get("status"), "all_accepted": all_accepted}
 
