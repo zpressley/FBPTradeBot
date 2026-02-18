@@ -20,9 +20,12 @@ def _env_int(name: str, default: int) -> int:
 
 
 # Channel IDs (overrideable via env for different servers / staging)
-# Provided by league admins (Feb 2026): pending-trades parent channel id
-PENDING_CHANNEL_ID = _env_int("TRADE_PENDING_CHANNEL_ID", 875594022033436683)  # trade discussion threads
-TRADE_CHANNEL_ID = _env_int("TRADE_CHANNEL_ID", 1197200421639438537)  # final approved trades
+# Trade approval threads are created as private threads under this parent channel.
+# League setting (Feb 2026): use the transactions channel as the parent.
+PENDING_CHANNEL_ID = _env_int("TRADE_PENDING_CHANNEL_ID", 1089979265619083444)  # trade discussion threads
+
+# League setting (Feb 2026): post final approved trade messages to the transactions channel.
+TRADE_CHANNEL_ID = _env_int("TRADE_CHANNEL_ID", 1089979265619083444)  # final approved trades
 
 # Admin review channel
 TRADE_ADMIN_REVIEW_CHANNEL_ID = _env_int("TRADE_ADMIN_REVIEW_CHANNEL_ID", 875594022033436683)

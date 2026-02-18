@@ -15,7 +15,8 @@ from datetime import datetime
 from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional
-import uuid
+
+from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_kap_balance
 
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
 
@@ -24,12 +25,6 @@ API_KEY = os.getenv("BOT_API_KEY", "")
 # Transaction channel for buy-in announcements
 TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444
 
-# Buy-in costs per round
-BUY_IN_COSTS = {
-    1: 55,
-    2: 35,
-    3: 10
-}
 
 def verify_key(x_api_key: Optional[str] = Header(None)):
     if API_KEY and x_api_key != API_KEY:
@@ -84,30 +79,6 @@ def validate_admin(admin_user: str, managers_data: dict) -> bool:
         return False
     return team_data.get("role") == "admin"
 
-
-def get_kap_balance(team: str, managers_data: dict) -> int:
-    """Get team's current KAP balance."""
-    team_data = managers_data.get("teams", {}).get(team)
-    if not team_data:
-        return 0
-    return team_data.get("wizbucks", {}).get("2026", {}).get("allotments", {}).get("KAP", {}).get("total", 0)
-
-
-def update_kap_balance(team: str, amount: int, managers_data: dict) -> dict:
-    """Update team's KAP balance by the specified amount."""
-    if team not in managers_data.get("teams", {}):
-        raise HTTPException(status_code=404, detail=f"Team {team} not found")
-    
-    team_data = managers_data["teams"][team]
-    wizbucks_2026 = team_data.get("wizbucks", {}).get("2026", {})
-    kap_allotments = wizbucks_2026.get("allotments", {}).get("KAP", {})
-    
-    current_total = kap_allotments.get("total", 0)
-    new_total = current_total + amount
-    
-    kap_allotments["total"] = new_total
-    
-    return managers_data
 
 
 
@@ -179,70 +150,31 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     draft_order = load_json_file("data/draft_order_2026.json")
     managers_data = load_json_file("config/managers.json")
     
-    # Check KAP balance
-    current_balance = get_kap_balance(payload.team, managers_data)
-    if current_balance < payload.cost:
-        raise HTTPException(
-            status_code=400, 
-            detail=f"Insufficient KAP balance. Need ${payload.cost}, have ${current_balance}"
-        )
-    
-    # Find the pick in draft order
-    pick = None
-    pick_index = None
-    for i, p in enumerate(draft_order):
-        if (p.get("draft") == "keeper" and 
-            p.get("round") == payload.round and 
-            p.get("current_owner") == payload.team):
-            pick = p
-            pick_index = i
-            break
-    
-    if not pick:
-        raise HTTPException(
-            status_code=404, 
-            detail=f"No Round {payload.round} pick found for team {payload.team}"
-        )
-    
-    # Check if already purchased
-    if pick.get("buyin_purchased"):
-        raise HTTPException(
-            status_code=400, 
-            detail=f"Round {payload.round} buy-in already purchased"
-        )
-    
-    # Update pick
-    pick["buyin_purchased"] = True
-    pick["buyin_purchased_at"] = datetime.utcnow().isoformat()
-    pick["buyin_purchased_by"] = payload.purchased_by
-    draft_order[pick_index] = pick
-    
-    # Deduct from KAP balance
-    managers_data = update_kap_balance(payload.team, -payload.cost, managers_data)
-    
     # Load or create wizbucks transactions
     try:
         transactions = load_json_file("data/wizbucks_transactions.json")
-    except:
+    except Exception:
         transactions = []
-    
-    # Add transaction entry
-    transaction = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
-        "type": "buyin_purchase",
-        "team": payload.team,
-        "amount": -payload.cost,
-        "balance_after": current_balance - payload.cost,
-        "description": f"Round {payload.round} keeper draft buy-in purchase",
-        "metadata": {
-            "round": payload.round,
-            "draft_type": "keeper",
-            "purchased_by": payload.purchased_by
-        }
-    }
-    transactions.append(transaction)
-    
+
+    if not isinstance(transactions, list):
+        transactions = []
+
+    # Apply purchase (mutates draft_order, managers_data, transactions)
+    try:
+        result = apply_keeper_buyin_purchase(
+            team=payload.team,
+            round=payload.round,
+            pick=None,
+            draft_order=draft_order,
+            managers_data=managers_data,
+            ledger=transactions,
+            purchased_by=payload.purchased_by,
+            source="buyin_api",
+            trade_id=None,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+
     # Save all files
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
@@ -250,15 +182,15 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
-    
+
     # Post to Discord
-    await post_to_discord(payload.team, payload.round, payload.cost, "purchased")
-    
+    await post_to_discord(payload.team, payload.round, result.cost, "purchased")
+
     return {
         "success": True,
-        "message": f"Round {payload.round} buy-in purchased for ${payload.cost}",
-        "transaction": transaction,
-        "new_balance": current_balance - payload.cost
+        "message": f"Round {payload.round} buy-in purchased for ${result.cost}",
+        "transaction": result.ledger_entry,
+        "new_balance": result.kap_balance_after,
     }
 
 
@@ -280,70 +212,30 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     if not validate_admin(payload.admin_user, managers_data):
         raise HTTPException(status_code=403, detail="Admin access required")
     
-    # Find the pick in draft order
-    pick = None
-    pick_index = None
-    for i, p in enumerate(draft_order):
-        if (p.get("draft") == "keeper" and 
-            p.get("round") == payload.round and 
-            p.get("current_owner") == payload.team):
-            pick = p
-            pick_index = i
-            break
-    
-    if not pick:
-        raise HTTPException(
-            status_code=404, 
-            detail=f"No Round {payload.round} pick found for team {payload.team}"
-        )
-    
-    # Check if actually purchased
-    if not pick.get("buyin_purchased"):
-        raise HTTPException(
-            status_code=400, 
-            detail=f"Round {payload.round} buy-in has not been purchased"
-        )
-    
-    # Get refund amount
-    refund_amount = BUY_IN_COSTS.get(payload.round, 0)
-    if not refund_amount:
-        raise HTTPException(status_code=400, detail=f"Invalid round {payload.round}")
-    
-    # Update pick
-    pick["buyin_purchased"] = False
-    pick["buyin_purchased_at"] = None
-    pick["buyin_purchased_by"] = None
-    draft_order[pick_index] = pick
-    
-    # Get current balance before refund
-    current_balance = get_kap_balance(payload.team, managers_data)
-    
-    # Restore KAP balance
-    managers_data = update_kap_balance(payload.team, refund_amount, managers_data)
-    
     # Load transactions
     try:
         transactions = load_json_file("data/wizbucks_transactions.json")
-    except:
+    except Exception:
         transactions = []
-    
-    # Add refund transaction
-    transaction = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
-        "type": "buyin_refund",
-        "team": payload.team,
-        "amount": refund_amount,
-        "balance_after": current_balance + refund_amount,
-        "description": f"Round {payload.round} keeper draft buy-in refund (admin action)",
-        "metadata": {
-            "round": payload.round,
-            "draft_type": "keeper",
-            "refunded_by": payload.admin_user
-        }
-    }
-    transactions.append(transaction)
-    
+
+    if not isinstance(transactions, list):
+        transactions = []
+
+    # Apply refund (mutates draft_order, managers_data, transactions)
+    try:
+        result = apply_keeper_buyin_refund(
+            team=payload.team,
+            round=payload.round,
+            pick=None,
+            draft_order=draft_order,
+            managers_data=managers_data,
+            ledger=transactions,
+            refunded_by=payload.admin_user,
+            source="buyin_api",
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+
     # Save all files
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
@@ -351,13 +243,13 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
-    
+
     # Post to Discord
-    await post_to_discord(payload.team, payload.round, refund_amount, "refunded")
-    
+    await post_to_discord(payload.team, payload.round, result.amount, "refunded")
+
     return {
         "success": True,
-        "message": f"Round {payload.round} buy-in refunded for ${refund_amount}",
-        "transaction": transaction,
-        "new_balance": current_balance + refund_amount
+        "message": f"Round {payload.round} buy-in refunded for ${result.amount}",
+        "transaction": result.ledger_entry,
+        "new_balance": result.kap_balance_after,
     }

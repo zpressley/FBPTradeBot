@@ -20,7 +20,16 @@ class TradeTransferWizbucks(BaseModel):
     to_team: str
 
 
-TradeTransfer = Union[TradeTransferPlayer, TradeTransferWizbucks]
+class TradeTransferDraftPick(BaseModel):
+    type: Literal["draft_pick"] = "draft_pick"
+    draft: Literal["keeper"] = "keeper"
+    round: int
+    pick: int
+    from_team: str
+    to_team: str
+
+
+TradeTransfer = Union[TradeTransferPlayer, TradeTransferWizbucks, TradeTransferDraftPick]
 
 
 class TradeSubmitPayload(BaseModel):
