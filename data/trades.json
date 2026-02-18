@@ -688,7 +688,7 @@
       "LFB"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-02-18T22:27:55.288869Z",
     "expires_at": "2026-03-04T22:27:55.288869Z",
     "transfers": [
@@ -736,7 +736,8 @@
       }
     ],
     "acceptances": [
-      "WIZ"
+      "WIZ",
+      "LFB"
     ],
     "receives": {
       "WIZ": [
@@ -752,9 +753,10 @@
       ]
     },
     "discord": {
-      "thread_id": null,
-      "thread_url": null,
+      "thread_id": "1473808278361211126",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473808278361211126",
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-02-18T22:28:23.193804Z"
   }
 }
