@@ -2,6 +2,14 @@ from __future__ import annotations
 
 import json
 import os
+import contextlib
+import threading
+
+try:
+    import fcntl  # type: ignore
+except Exception:  # pragma: no cover
+    fcntl = None
+
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional, Tuple
@@ -19,6 +27,7 @@ from trade.trade_models import (
 
 
 TRADES_PATH = "data/trades.json"
+TRADES_LOCK_PATH = "data/trades.lock"
 COMBINED_PLAYERS_PATH = "data/combined_players.json"
 PLAYER_LOG_PATH = "data/player_log.json"
 WIZBUCKS_PATH = "data/wizbucks.json"
@@ -33,6 +42,40 @@ def set_commit_fn(fn) -> None:
     """Provide a best-effort commit/push function from the runtime (health.py)."""
     global _commit_fn
     _commit_fn = fn
+
+
+_trades_thread_lock = threading.Lock()
+
+
+@contextlib.contextmanager
+def _trades_lock():
+    """Serialize mutations of data/trades.json across threads/processes.
+
+    This prevents two admins approving the same trade at the same time (which
+    can otherwise cause duplicate posts + double-apply of WizBucks/player moves).
+    """
+
+    with _trades_thread_lock:
+        if fcntl is None:
+            yield
+            return
+
+        os.makedirs(os.path.dirname(TRADES_LOCK_PATH), exist_ok=True)
+        with open(TRADES_LOCK_PATH, "a+", encoding="utf-8") as f:
+            try:
+                fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+            except Exception:
+                # If advisory locking isn't available, at least keep in-process lock.
+                yield
+                return
+
+            try:
+                yield
+            finally:
+                try:
+                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                except Exception:
+                    pass
 
 
 def _maybe_commit(message: str, file_paths: Optional[list[str]] = None) -> None:
@@ -974,90 +1017,108 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
 
 def admin_approve(trade_id: str, admin_team: str) -> dict:
     admin_team = admin_team.strip().upper()
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
 
-    if str(rec.get("status") or "") != "admin_review":
-        raise HTTPException(status_code=400, detail="Trade not in admin_review")
+    commit_message: Optional[str] = None
+    commit_paths: Optional[list[str]] = None
+    raise_exc: Optional[HTTPException] = None
 
-    # Gate check: ensure assets are still available right before final approval
-    problems = _conflict_problems_for_trade(rec)
-    if problems:
-        rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
-        trades[trade_id] = rec
-        _save_trades(trades)
-        _maybe_commit(f"Trade auto-withdraw (conflict): {trade_id}")
-        raise HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    rec["status"] = "approved"
-    rec["admin_decision_by"] = admin_team
-    rec["processed_at"] = _iso(_utc_now())
+        if str(rec.get("status") or "") != "admin_review":
+            raise HTTPException(status_code=400, detail="Trade not in admin_review")
 
-    # Best-effort: apply ownership / WB changes into JSON files
-    try:
-        _apply_approved_trade_to_data_files(rec, admin_team)
-    except Exception as exc:
-        rec.setdefault("data_applied_summary", {})
-        rec["data_applied_summary"]["warnings"] = (rec["data_applied_summary"].get("warnings") or []) + [
-            f"Exception while applying data updates: {exc}"
-        ]
+        # Gate check: ensure assets are still available right before final approval
+        problems = _conflict_problems_for_trade(rec)
+        if problems:
+            rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
+            trades[trade_id] = rec
+            _save_trades(trades)
+            commit_message = f"Trade auto-withdraw (conflict): {trade_id}"
+            commit_paths = [TRADES_PATH]
+            raise_exc = HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
+        else:
+            rec["status"] = "approved"
+            rec["admin_decision_by"] = admin_team
+            rec["processed_at"] = _iso(_utc_now())
 
-    trades[trade_id] = rec
-    _save_trades(trades)
+            # Best-effort: apply ownership / WB changes into JSON files
+            try:
+                _apply_approved_trade_to_data_files(rec, admin_team)
+            except Exception as exc:
+                rec.setdefault("data_applied_summary", {})
+                rec["data_applied_summary"]["warnings"] = (rec["data_applied_summary"].get("warnings") or []) + [
+                    f"Exception while applying data updates: {exc}"
+                ]
 
-    files_to_commit = ["data/trades.json"]
+            trades[trade_id] = rec
+            _save_trades(trades)
 
-    summary = rec.get("data_applied_summary") if isinstance(rec.get("data_applied_summary"), dict) else {}
-    moved_players = int(summary.get("player_moves") or 0)
-    moved_player_log = int(summary.get("player_log_entries") or 0)
-    moved_picks = int(summary.get("pick_moves") or 0)
-    moved_wb = int(summary.get("wb_transfers") or 0)
-    buyins_purchased = int(summary.get("buyins_purchased") or 0)
+            files_to_commit = [TRADES_PATH]
 
-    if moved_players > 0:
-        files_to_commit.append(COMBINED_PLAYERS_PATH)
+            summary = rec.get("data_applied_summary") if isinstance(rec.get("data_applied_summary"), dict) else {}
+            moved_players = int(summary.get("player_moves") or 0)
+            moved_player_log = int(summary.get("player_log_entries") or 0)
+            moved_picks = int(summary.get("pick_moves") or 0)
+            moved_wb = int(summary.get("wb_transfers") or 0)
+            buyins_purchased = int(summary.get("buyins_purchased") or 0)
 
-    if moved_player_log > 0:
-        files_to_commit.append(PLAYER_LOG_PATH)
+            if moved_players > 0:
+                files_to_commit.append(COMBINED_PLAYERS_PATH)
 
-    if moved_picks > 0:
-        files_to_commit.append(DRAFT_ORDER_2026_PATH)
+            if moved_player_log > 0:
+                files_to_commit.append(PLAYER_LOG_PATH)
 
-    if moved_wb > 0:
-        files_to_commit.extend([WIZBUCKS_PATH, WIZBUCKS_TRANSACTIONS_PATH])
+            if moved_picks > 0:
+                files_to_commit.append(DRAFT_ORDER_2026_PATH)
 
-    if buyins_purchased > 0:
-        # Auto-buyin touches: draft_order_2026.json + managers.json + wizbucks_transactions.json
-        if DRAFT_ORDER_2026_PATH not in files_to_commit:
-            files_to_commit.append(DRAFT_ORDER_2026_PATH)
-        files_to_commit.extend([MANAGERS_CONFIG_PATH, WIZBUCKS_TRANSACTIONS_PATH])
+            if moved_wb > 0:
+                files_to_commit.extend([WIZBUCKS_PATH, WIZBUCKS_TRANSACTIONS_PATH])
 
-    # de-dupe while preserving order
-    seen = set()
-    files_to_commit = [p for p in files_to_commit if not (p in seen or seen.add(p))]
+            if buyins_purchased > 0:
+                # Auto-buyin touches: draft_order_2026.json + managers.json + wizbucks_transactions.json
+                if DRAFT_ORDER_2026_PATH not in files_to_commit:
+                    files_to_commit.append(DRAFT_ORDER_2026_PATH)
+                files_to_commit.extend([MANAGERS_CONFIG_PATH, WIZBUCKS_TRANSACTIONS_PATH])
 
-    _maybe_commit(f"Trade admin approve: {trade_id} by {admin_team}", file_paths=files_to_commit)
+            # de-dupe while preserving order
+            seen = set()
+            files_to_commit = [p for p in files_to_commit if not (p in seen or seen.add(p))]
+
+            commit_message = f"Trade admin approve: {trade_id} by {admin_team}"
+            commit_paths = files_to_commit
+
+    if commit_message:
+        _maybe_commit(commit_message, file_paths=commit_paths)
+
+    if raise_exc is not None:
+        raise raise_exc
+
     return rec
 
 
 def admin_reject(trade_id: str, admin_team: str, reason: str) -> dict:
     admin_team = admin_team.strip().upper()
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
 
-    if str(rec.get("status") or "") != "admin_review":
-        raise HTTPException(status_code=400, detail="Trade not in admin_review")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    rec["status"] = "admin_rejected"
-    rec["admin_decision_by"] = admin_team
-    rec["rejection_reason"] = reason
-    rec["processed_at"] = _iso(_utc_now())
+        if str(rec.get("status") or "") != "admin_review":
+            raise HTTPException(status_code=400, detail="Trade not in admin_review")
 
-    trades[trade_id] = rec
-    _save_trades(trades)
+        rec["status"] = "admin_rejected"
+        rec["admin_decision_by"] = admin_team
+        rec["rejection_reason"] = reason
+        rec["processed_at"] = _iso(_utc_now())
+
+        trades[trade_id] = rec
+        _save_trades(trades)
+
     _maybe_commit(f"Trade admin reject: {trade_id} by {admin_team}")
     return rec

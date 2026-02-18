@@ -2,6 +2,7 @@
 
 import os
 import json
+import asyncio
 
 import discord
 from discord.ui import View, Button, Modal, TextInput
@@ -386,6 +387,8 @@ class AdminReviewView(View):
         super().__init__(timeout=None)
         self.trade_data = trade_data
         self.admin_ids = _load_admin_discord_ids()
+        self._decision_lock = asyncio.Lock()
+        self._decision_made = False
 
     def _is_admin(self, user_id: int) -> bool:
         if self.admin_ids:
@@ -399,51 +402,64 @@ class AdminReviewView(View):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
             return
 
-        trade_id = self.trade_data.get("trade_id")
-        admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+        async with self._decision_lock:
+            if self._decision_made:
+                await interaction.response.send_message("⚠️ This trade has already been processed.", ephemeral=True)
+                return
 
-        # For website-backed trades, approve in the store first (this applies data + can auto-withdraw on conflict)
-        if trade_id:
-            try:
-                from fastapi import HTTPException
-                from trade import trade_store
+            trade_id = self.trade_data.get("trade_id")
+            admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
 
-                trade_store.admin_approve(trade_id, admin_team)
-            except HTTPException as exc:
-                if exc.status_code == 409:
-                    # Disable buttons after decision
-                    for item in self.children:
-                        item.disabled = True
+            # For website-backed trades, approve in the store first (this applies data + can auto-withdraw on conflict)
+            if trade_id:
+                try:
+                    from fastapi import HTTPException
+                    from trade import trade_store
 
-                    await interaction.response.edit_message(
-                        content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
-                        view=self,
-                    )
-                    try:
-                        trade = trade_store.get_trade(trade_id)
-                        details = trade.get("withdraw_details") or []
-                        if details:
-                            detail_lines = "\n".join(f"• {d}" for d in details[:6])
-                            await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
-                    except Exception:
-                        pass
+                    trade_store.admin_approve(trade_id, admin_team)
+                except HTTPException as exc:
+                    if exc.status_code == 409:
+                        # Disable buttons after decision
+                        for item in self.children:
+                            item.disabled = True
+
+                        self._decision_made = True
+                        await interaction.response.edit_message(
+                            content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
+                            view=self,
+                        )
+                        try:
+                            trade = trade_store.get_trade(trade_id)
+                            details = trade.get("withdraw_details") or []
+                            if details:
+                                detail_lines = "\n".join(f"• {d}" for d in details[:6])
+                                await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
+                        except Exception:
+                            pass
+                        return
+
+                    if exc.status_code == 400:
+                        # Likely already approved/processed by another admin.
+                        self._decision_made = True
+                        await interaction.response.send_message("⚠️ Trade has already been processed.", ephemeral=True)
+                        return
+
+                    await interaction.response.send_message(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+                    return
+                except Exception as exc:
+                    print(f"⚠️ Failed to sync admin approval to store: {exc}")
+                    await interaction.response.send_message("❌ Approval failed (store sync error).", ephemeral=True)
                     return
 
-                await interaction.response.send_message(f"❌ Approval failed: {exc.detail}", ephemeral=True)
-                return
-            except Exception as exc:
-                print(f"⚠️ Failed to sync admin approval to store: {exc}")
-                await interaction.response.send_message("❌ Approval failed (store sync error).", ephemeral=True)
-                return
+            # Post to #trades
+            await post_approved_trade(interaction.guild, self.trade_data)
 
-        # Post to #trades
-        await post_approved_trade(interaction.guild, self.trade_data)
+            # Disable buttons after decision
+            for item in self.children:
+                item.disabled = True
 
-        # Disable buttons after decision
-        for item in self.children:
-            item.disabled = True
-
-        await interaction.response.edit_message(content="✅ Approved and posted.", view=self)
+            self._decision_made = True
+            await interaction.response.edit_message(content="✅ Approved and posted.", view=self)
 
     @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger)
     async def reject(self, interaction: discord.Interaction, button: Button):
@@ -451,8 +467,13 @@ class AdminReviewView(View):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
             return
 
-        modal = AdminRejectionModal(interaction.user, self.trade_data)
-        await interaction.response.send_modal(modal)
+        async with self._decision_lock:
+            if self._decision_made:
+                await interaction.response.send_message("⚠️ This trade has already been processed.", ephemeral=True)
+                return
+
+            modal = AdminRejectionModal(interaction.user, self.trade_data)
+            await interaction.response.send_modal(modal)
 
 
 class RejectionReasonModal(Modal):
