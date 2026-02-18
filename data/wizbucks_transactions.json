@@ -549,5 +549,405 @@
       "season": 2026,
       "source": "PAD"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_B2J_1771443302_37",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "B2J",
+    "amount": 375,
+    "balance_before": 30,
+    "balance_after": 405,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_CFL_1771443302_38",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "CFL",
+    "amount": 375,
+    "balance_before": 10,
+    "balance_after": 385,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_DMN_1771443302_39",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "DMN",
+    "amount": 375,
+    "balance_before": 15,
+    "balance_after": 390,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_DRO_1771443302_40",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "DRO",
+    "amount": 375,
+    "balance_before": 25,
+    "balance_after": 400,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_HAM_1771443302_41",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "HAM",
+    "amount": 375,
+    "balance_before": 15,
+    "balance_after": 390,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_JEP_1771443302_42",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "JEP",
+    "amount": 375,
+    "balance_before": 30,
+    "balance_after": 405,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_LFB_1771443302_43",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "LFB",
+    "amount": 375,
+    "balance_before": 0,
+    "balance_after": 375,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_RV_1771443302_44",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "RV",
+    "amount": 375,
+    "balance_before": 0,
+    "balance_after": 375,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_SAD_1771443302_45",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "SAD",
+    "amount": 375,
+    "balance_before": 20,
+    "balance_after": 395,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_TBB_1771443302_46",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "TBB",
+    "amount": 375,
+    "balance_before": 30,
+    "balance_after": 405,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_WAR_1771443302_47",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "WAR",
+    "amount": 375,
+    "balance_before": 0,
+    "balance_after": 375,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_allotment_WIZ_1771443302_48",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "WIZ",
+    "amount": 375,
+    "balance_before": 5,
+    "balance_after": 380,
+    "transaction_type": "KAP_allotment",
+    "description": "2026 KAP allotment (+$375)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "allotment"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_B2J_1771443302_49",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "B2J",
+    "amount": 25,
+    "balance_before": 405,
+    "balance_after": 430,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_CFL_1771443302_50",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "CFL",
+    "amount": 25,
+    "balance_before": 385,
+    "balance_after": 410,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_DMN_1771443302_51",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "DMN",
+    "amount": 25,
+    "balance_before": 390,
+    "balance_after": 415,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_DRO_1771443302_52",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "DRO",
+    "amount": 10,
+    "balance_before": 400,
+    "balance_after": 410,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$10)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_HAM_1771443302_53",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "HAM",
+    "amount": 25,
+    "balance_before": 390,
+    "balance_after": 415,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_JEP_1771443302_54",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "JEP",
+    "amount": 25,
+    "balance_before": 405,
+    "balance_after": 430,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_LFB_1771443302_55",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "LFB",
+    "amount": 25,
+    "balance_before": 375,
+    "balance_after": 400,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_RV_1771443302_56",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "RV",
+    "amount": 25,
+    "balance_before": 375,
+    "balance_after": 400,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_SAD_1771443302_57",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "SAD",
+    "amount": 25,
+    "balance_before": 395,
+    "balance_after": 420,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_TBB_1771443302_58",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "TBB",
+    "amount": 25,
+    "balance_before": 405,
+    "balance_after": 430,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_rollover_WIZ_1771443302_59",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "WIZ",
+    "amount": 25,
+    "balance_before": 380,
+    "balance_after": 405,
+    "transaction_type": "KAP_rollover",
+    "description": "2026 KAP optional rollover (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "rollover"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_finish_reward_WIZ_1771443302_60",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "WIZ",
+    "amount": 50,
+    "balance_before": 405,
+    "balance_after": 455,
+    "transaction_type": "KAP_finish_reward",
+    "description": "2026 Consolation finish reward (+$50)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "finish_reward"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-18_KAP_finish_reward_LFB_1771443302_61",
+    "timestamp": "2026-02-18T19:35:02.515292Z",
+    "team": "LFB",
+    "amount": 25,
+    "balance_before": 400,
+    "balance_after": 425,
+    "transaction_type": "KAP_finish_reward",
+    "description": "2026 Consolation finish reward (+$25)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "source": "kap_allocation",
+      "kind": "finish_reward"
+    }
   }
 ]

@@ -5,7 +5,7 @@
       "name": "Whiz Kids",
       "discord_id": "161967242118955008",
       "manager": "WIZ",
-      "role": "admin",      
+      "role": "admin",
       "final_rank_2025": 1,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -18,7 +18,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 25
           },
           "leftovers": {
@@ -71,7 +71,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 25
           },
           "leftovers": {
@@ -111,7 +111,7 @@
       "name": "Country Fried Lamb",
       "discord_id": "689887002887454815",
       "manager": "CFL",
-      "role": "",  
+      "role": "",
       "final_rank_2025": 8,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -124,7 +124,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 25
           },
           "leftovers": {
@@ -164,7 +164,7 @@
       "name": "Hammers",
       "discord_id": "347571660230230017",
       "manager": "HAM",
-      "role": "",  
+      "role": "",
       "final_rank_2025": 9,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -177,7 +177,7 @@
           },
           "optionalRollover": {
             "PAD": 10,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 0
           },
           "leftovers": {
@@ -217,7 +217,7 @@
       "name": "Rick Vaughn",
       "discord_id": "689911142432112657",
       "manager": "RV",
-      "role": "",  
+      "role": "",
       "final_rank_2025": 10,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -230,7 +230,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 25
           },
           "leftovers": {
@@ -283,7 +283,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 0
           },
           "leftovers": {
@@ -323,7 +323,7 @@
       "name": "Jepordizers!",
       "discord_id": "814294382529347594",
       "manager": "JEP",
-      "role": "",      
+      "role": "",
       "final_rank_2025": 11,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -336,7 +336,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 20
           },
           "leftovers": {
@@ -376,7 +376,7 @@
       "name": "The Bluke Blokes",
       "discord_id": "161932197308137473",
       "manager": "TBB",
-      "role": "admin",      
+      "role": "admin",
       "final_rank_2025": 5,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -389,7 +389,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 20
           },
           "leftovers": {
@@ -429,7 +429,7 @@
       "name": "Andromedans",
       "discord_id": "541092942455242754",
       "manager": "DRO",
-      "role": "",  
+      "role": "",
       "final_rank_2025": 4,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -442,7 +442,7 @@
           },
           "optionalRollover": {
             "PAD": 0,
-            "KAP": 10,
+            "KAP": 0,
             "APA": 0
           },
           "leftovers": {
@@ -482,7 +482,7 @@
       "name": "not much of a donkey",
       "discord_id": "875750135005597728",
       "manager": "SAD",
-      "role": "admin",      
+      "role": "admin",
       "final_rank_2025": 3,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -495,7 +495,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 15
           },
           "leftovers": {
@@ -535,7 +535,7 @@
       "name": "Weekend Warriors",
       "discord_id": "664280448788201522",
       "manager": "WAR",
-      "role": "admin",      
+      "role": "admin",
       "final_rank_2025": 12,
       "kap_rollover_2026": 0,
       "wizbucks": {
@@ -600,7 +600,7 @@
           },
           "optionalRollover": {
             "PAD": 25,
-            "KAP": 25,
+            "KAP": 0,
             "APA": 25
           },
           "leftovers": {
