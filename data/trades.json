@@ -46,5 +46,53 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "WEB-TRADE-20260218-171757": {
+    "trade_id": "WEB-TRADE-20260218-171757",
+    "teams": [
+      "SAD",
+      "WIZ"
+    ],
+    "initiator_team": "SAD",
+    "status": "pending",
+    "created_at": "2026-02-18T17:17:57.384124Z",
+    "expires_at": "2026-03-04T17:17:57.384124Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1919",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "1920",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "1959",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "SAD"
+    ],
+    "receives": {
+      "SAD": [
+        "Util Shohei Ohtani (Batter) [LAD] [VC 1]",
+        "SP Shohei Ohtani (Pitcher) [LAD] [VC 1]"
+      ],
+      "WIZ": [
+        "OF Kyle Schwarber [PHI] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
