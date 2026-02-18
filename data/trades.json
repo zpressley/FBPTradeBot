@@ -590,7 +590,7 @@
       "SAD"
     ],
     "initiator_team": "WAR",
-    "status": "pending",
+    "status": "rejected",
     "created_at": "2026-02-18T19:12:07.891540Z",
     "expires_at": "2026-03-04T19:12:07.891540Z",
     "transfers": [
@@ -622,6 +622,9 @@
       "thread_id": "1473759012498440252",
       "thread_url": "https://discord.com/channels/875592505926758480/1473759012498440252",
       "admin_review_message_id": null
-    }
+    },
+    "rejection_reason": "test",
+    "rejected_by": "WAR",
+    "processed_at": "2026-02-18T19:12:28.858816Z"
   }
 }
