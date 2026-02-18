@@ -595,8 +595,24 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         if retryable:
             try:
                 print("⚠️ Push rejected; attempting fetch+rebase and retry...")
+                # Stash any unstaged changes before rebasing
+                try:
+                    _run(["git", "stash", "--include-untracked"])
+                    stashed = True
+                except subprocess.CalledProcessError:
+                    stashed = False
+                
                 _run(["git", "fetch", fetch_remote, "main"])
                 _run(["git", "rebase", "FETCH_HEAD"])
+                
+                # Pop stash if we stashed
+                if stashed:
+                    try:
+                        _run(["git", "stash", "pop"])
+                    except subprocess.CalledProcessError:
+                        # Stash pop conflicts - just keep the stash
+                        print("⚠️ Stash pop had conflicts, keeping stashed changes")
+                
                 _run(push_cmd)
                 print("✅ Git push succeeded after rebase")
                 return
@@ -604,6 +620,8 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
                 # Try to clean up rebase state to keep the container usable.
                 try:
                     subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                    # Try to restore stash if we made one
+                    subprocess.run(["git", "stash", "pop"], cwd=repo_root, capture_output=True, text=True)
                 except Exception:
                     pass
 
