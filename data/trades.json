@@ -504,7 +504,7 @@
       "WIZ"
     ],
     "initiator_team": "WAR",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-18T18:14:43.310377Z",
     "expires_at": "2026-03-04T18:14:43.310377Z",
     "transfers": [
@@ -538,6 +538,8 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1473744596994490389",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-18T18:16:15.863312Z"
+    "manager_approved_at": "2026-02-18T18:16:15.863312Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-18T18:17:22.505858Z"
   }
 }
