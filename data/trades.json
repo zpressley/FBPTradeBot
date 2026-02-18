@@ -626,5 +626,46 @@
     "rejection_reason": "test",
     "rejected_by": "WAR",
     "processed_at": "2026-02-18T19:12:28.858816Z"
+  },
+  "WEB-TRADE-20260218-191255": {
+    "trade_id": "WEB-TRADE-20260218-191255",
+    "teams": [
+      "WAR",
+      "SAD"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-18T19:12:55.286595Z",
+    "expires_at": "2026-03-04T19:12:55.286595Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "4155",
+        "from_team": "SAD",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Jeremiah Estrada [SD] [TC 1]"
+      ],
+      "SAD": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
