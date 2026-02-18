@@ -141,5 +141,46 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "WEB-TRADE-20260218-172925": {
+    "trade_id": "WEB-TRADE-20260218-172925",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-18T17:29:25.577234Z",
+    "expires_at": "2026-03-04T17:29:25.577234Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ],
+      "WIZ": [
+        "SP Michael Wacha [KC] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
