@@ -634,7 +634,7 @@
       "SAD"
     ],
     "initiator_team": "WAR",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-18T19:12:55.286595Z",
     "expires_at": "2026-03-04T19:12:55.286595Z",
     "transfers": [
@@ -668,6 +668,17 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1473759211006595123",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-18T19:13:35.149529Z"
+    "manager_approved_at": "2026-02-18T19:13:35.149529Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-18T19:13:45.609762Z",
+    "data_applied_at": "2026-02-18T19:13:45.779419Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
