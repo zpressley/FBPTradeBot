@@ -150,7 +150,7 @@
       "WIZ"
     ],
     "initiator_team": "WAR",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-02-18T17:29:25.577234Z",
     "expires_at": "2026-03-04T17:29:25.577234Z",
     "transfers": [
@@ -182,7 +182,8 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-02-18T17:45:19.045915Z"
   },
   "WEB-TRADE-20260218-172933": {
     "trade_id": "WEB-TRADE-20260218-172933",
