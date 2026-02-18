@@ -5,6 +5,8 @@ from zoneinfo import ZoneInfo
 import threading
 import sys
 import json
+from collections import deque
+import time
 
 import discord
 from discord.ext import commands
@@ -76,6 +78,164 @@ def configure_git() -> None:
 
 # Configure git once on process start (safe no-op locally)
 configure_git()
+
+# ---- Commit Queue for Batching ----
+# This prevents concurrent git operations from colliding
+_commit_queue = deque()
+_commit_queue_lock = threading.Lock()
+_commit_worker_thread = None
+_commit_worker_running = False
+
+def _start_commit_worker():
+    """Start background thread that processes commit queue."""
+    global _commit_worker_thread, _commit_worker_running
+    if _commit_worker_thread is not None and _commit_worker_thread.is_alive():
+        return
+    
+    _commit_worker_running = True
+    _commit_worker_thread = threading.Thread(target=_commit_worker_loop, daemon=True)
+    _commit_worker_thread.start()
+    print("✅ Commit queue worker started")
+
+def _commit_worker_loop():
+    """Background worker that batches and commits changes every few seconds."""
+    batch_interval = 3.0  # seconds
+    
+    while _commit_worker_running:
+        time.sleep(batch_interval)
+        
+        # Collect pending commits
+        pending = []
+        with _commit_queue_lock:
+            while _commit_queue:
+                pending.append(_commit_queue.popleft())
+        
+        if not pending:
+            continue
+        
+        # Batch all files and messages
+        all_files = set()
+        messages = []
+        for files, msg in pending:
+            all_files.update(files)
+            messages.append(msg)
+        
+        # Create batched commit message
+        if len(messages) == 1:
+            commit_msg = messages[0]
+        else:
+            commit_msg = f"Batch commit: {len(messages)} operations\n\n" + "\n".join(f"- {m}" for m in messages[:10])
+            if len(messages) > 10:
+                commit_msg += f"\n... and {len(messages) - 10} more"
+        
+        # Execute the commit
+        try:
+            _execute_git_commit(list(all_files), commit_msg)
+        except Exception as exc:
+            print(f"⚠️ Batch commit failed: {exc}")
+
+def _execute_git_commit(file_paths: list[str], message: str) -> None:
+    """Execute a single git commit + push operation (called by worker thread)."""
+    import subprocess
+
+    repo_root = REPO_ROOT
+
+    def _redact(s: str) -> str:
+        token = os.getenv("GITHUB_TOKEN") or ""
+        return s.replace(token, "***") if token and s else s
+
+    def _run(cmd: list[str]) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            cmd,
+            check=True,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+        )
+
+    token = os.getenv("GITHUB_TOKEN")
+    remote_url = None
+    if token:
+        repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
+        username = os.getenv("GITHUB_USER", "x-access-token")
+        remote_url = f"https://{username}:{token}@github.com/{repo}.git"
+
+    push_cmd = ["git", "push", remote_url, "HEAD:main"] if remote_url else ["git", "push"]
+    fetch_remote = remote_url if remote_url else "origin"
+
+    try:
+        # Stage files
+        if file_paths:
+            _run(["git", "add", *file_paths])
+
+        # Commit
+        _run(["git", "commit", "-m", message])
+
+        # Push
+        _run(push_cmd)
+        print("✅ Git batch commit and push succeeded")
+
+    except subprocess.CalledProcessError as exc:
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        combined = _redact((stdout + "\n" + stderr).strip())
+
+        # If rejected because remote advanced, retry with fetch+rebase
+        retryable = any(
+            s in combined.lower()
+            for s in [
+                "fetch first",
+                "non-fast-forward",
+                "updates were rejected",
+                "rejected",
+            ]
+        )
+
+        if retryable:
+            try:
+                print("⚠️ Push rejected; fetching and rebasing...")
+                # Stash any unstaged changes before rebasing
+                try:
+                    _run(["git", "stash", "--include-untracked"])
+                    stashed = True
+                except subprocess.CalledProcessError:
+                    stashed = False
+                
+                _run(["git", "fetch", fetch_remote, "main"])
+                _run(["git", "rebase", "FETCH_HEAD"])
+                
+                # Pop stash if we stashed
+                if stashed:
+                    try:
+                        _run(["git", "stash", "pop"])
+                    except subprocess.CalledProcessError:
+                        print("⚠️ Stash pop had conflicts, keeping stashed changes")
+                
+                _run(push_cmd)
+                print("✅ Git push succeeded after rebase")
+                return
+            except subprocess.CalledProcessError as exc2:
+                # Clean up rebase state
+                try:
+                    subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                    subprocess.run(["git", "stash", "pop"], cwd=repo_root, capture_output=True, text=True)
+                except Exception:
+                    pass
+
+                stdout2 = exc2.stdout or ""
+                stderr2 = exc2.stderr or ""
+                combined2 = _redact((stdout2 + "\n" + stderr2).strip())
+                print(f"⚠️ Git commit/push failed with code {exc2.returncode} (after retry).")
+                if combined2:
+                    print(combined2)
+                return
+
+        print(f"⚠️ Git commit/push failed with code {exc.returncode}.")
+        if combined:
+            print(combined)
+
+    except Exception as exc:
+        print(f"⚠️ Git commit/push failed with unexpected error: {exc}")
 
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
@@ -527,118 +687,13 @@ async def _send_admin_tasks_message(content: str) -> None:
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
-    """Best-effort helper to commit and push data updates.
-
-    Uses GITHUB_TOKEN if available to push directly to the GitHub repo,
-    otherwise falls back to `git push` with the existing remote config.
-
-    Notes:
-      * We capture stdout/stderr so Render logs show *why* a push failed.
-      * We redact the raw token from any error output before printing.
-      * If push is rejected due to a non-fast-forward, we best-effort fetch + rebase and retry.
+    """Queue a commit operation for batching.
+    
+    Instead of committing immediately, add to queue processed by background worker.
+    This prevents concurrent git operations from colliding.
     """
-    import subprocess
-
-    repo_root = REPO_ROOT
-
-    def _redact(s: str) -> str:
-        token = os.getenv("GITHUB_TOKEN") or ""
-        return s.replace(token, "***") if token and s else s
-
-    def _run(cmd: list[str]) -> subprocess.CompletedProcess:
-        return subprocess.run(
-            cmd,
-            check=True,
-            cwd=repo_root,
-            capture_output=True,
-            text=True,
-        )
-
-    token = os.getenv("GITHUB_TOKEN")
-    remote_url = None
-    if token:
-        repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
-        username = os.getenv("GITHUB_USER", "x-access-token")
-        remote_url = f"https://{username}:{token}@github.com/{repo}.git"
-
-    push_cmd = ["git", "push", remote_url, "HEAD:main"] if remote_url else ["git", "push"]
-    fetch_remote = remote_url if remote_url else "origin"
-
-    try:
-        # Stage files (if any)
-        if file_paths:
-            _run(["git", "add", *file_paths])
-
-        # Commit (this may fail with code 1 if there are no changes)
-        _run(["git", "commit", "-m", message])
-
-        # Push current HEAD
-        _run(push_cmd)
-        print("✅ Git commit and push succeeded")
-
-    except subprocess.CalledProcessError as exc:
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
-        combined = _redact((stdout + "\n" + stderr).strip())
-
-        # If rejected because remote advanced, retry once with fetch+rebase.
-        retryable = any(
-            s in combined.lower()
-            for s in [
-                "fetch first",
-                "non-fast-forward",
-                "updates were rejected",
-                "rejected",
-            ]
-        )
-
-        if retryable:
-            try:
-                print("⚠️ Push rejected; attempting fetch+rebase and retry...")
-                # Stash any unstaged changes before rebasing
-                try:
-                    _run(["git", "stash", "--include-untracked"])
-                    stashed = True
-                except subprocess.CalledProcessError:
-                    stashed = False
-                
-                _run(["git", "fetch", fetch_remote, "main"])
-                _run(["git", "rebase", "FETCH_HEAD"])
-                
-                # Pop stash if we stashed
-                if stashed:
-                    try:
-                        _run(["git", "stash", "pop"])
-                    except subprocess.CalledProcessError:
-                        # Stash pop conflicts - just keep the stash
-                        print("⚠️ Stash pop had conflicts, keeping stashed changes")
-                
-                _run(push_cmd)
-                print("✅ Git push succeeded after rebase")
-                return
-            except subprocess.CalledProcessError as exc2:
-                # Try to clean up rebase state to keep the container usable.
-                try:
-                    subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
-                    # Try to restore stash if we made one
-                    subprocess.run(["git", "stash", "pop"], cwd=repo_root, capture_output=True, text=True)
-                except Exception:
-                    pass
-
-                stdout2 = exc2.stdout or ""
-                stderr2 = exc2.stderr or ""
-                combined2 = _redact((stdout2 + "\n" + stderr2).strip())
-                print(f"⚠️ Git commit/push failed with code {exc2.returncode} (after retry).")
-                if combined2:
-                    print(combined2)
-                return
-
-        print(f"⚠️ Git commit/push failed with code {exc.returncode}.")
-        if combined:
-            print(combined)
-
-    except Exception as exc:
-        print(f"⚠️ Git commit/push failed with unexpected error: {exc}")
+    with _commit_queue_lock:
+        _commit_queue.append((file_paths, message))
 
 
 @app.get("/api/auction/current")
@@ -1698,6 +1753,9 @@ if __name__ == "__main__":
     print(f"   Yahoo Token: {'✅ Set' if yahoo_token else '⚠️ Not set'}")
     print("=" * 60)
     print()
+    
+    # Start commit queue worker
+    _start_commit_worker()
     
     # Start FastAPI server in background thread (daemon)
     server_thread = threading.Thread(target=run_server, daemon=True, name="FastAPI-Server")
