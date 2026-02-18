@@ -166,7 +166,7 @@
 
 1. A Blue-Chip Contract is the most premium form of Prospect Contract, which comes at a higher price and the potential for long-term benefit.  
 2. A BC qualifies as a Purchased Contract, enabling all the benefits a PC is eligible for.  
-3. BC’s can only be given to Prospects on PAD ($20 WB)  
+3. BC’s can be given to Prospects during PAD or in-season.  
 4. BC Prospects who maintain a Top 100 status on MLB Pipeline’s Prospect Rankings on November 1st of every year retain their BC Status at the following season’s PAD without needing a repurchase or reassignment (FREE).  
    1. If a BC Prospect exceeds MLB Rookie Limits, thus removing them from qualifying for their previously held Top 100 status, but not FBP Limits and the manager chooses not to graduate as a result \- they will qualify for retaining their Blue-Chip Contract the next pre-season.  
 5. Blue-Chip Prospects who graduate are awarded eligibility for a unique Keeper Contract (TC-BC)  
@@ -175,14 +175,9 @@
 ## **Section 05: FBP Prospect Limits**
 
 1. Teams may choose to hold a prospect’s graduation to a Keeper Contract until they surpass FBP Prospect Limits \- defined below:  
-   Prospect Limits - 
-Age 25 & under (turn 26 you aren't a prospect anymore)
-
-Batter:
-350 PA -or- 90 GP
-
-Pitcher:
-100 IP -or- 30 Pitching Appearances
+   1. 350 PA  
+   2. 100 IP \- or \- 30 Pitching Appearances  
+   3. 26 Years of age  
 2. Prospects are able to remain prospects in season until the prospect graduation deadline (MLB All-Star Break).  At this point if they exceed FBP Prospect Limits, they will cease to be eligible for prospect status and must be rostered on the 26-man Yahoo Roster.  (NA or IL are acceptable slots if applicable)  
    1. Contracted Prospects that do not graduate in-season at the deadline may remain a prospect through the remainder of the year.
 
@@ -208,8 +203,7 @@ Pitcher:
 4. Teams will receive a list of all their prospects from the previous season and will need to allocate their PAD funds to assign new contracts for the season as well as designate slots for draft picks  
    1. Previous Year BC’s will remain BC’s if they meet the qualification  
    2. Additional BC Slots will need to be paid for in order to draft in the first two RDs of the FBP Prospect Draft (FYPD Pool Only)  
-   3. Additional DC Slots will need to be paid for in order to draft in the remaining RDs of the FBP Prospect Draft  
-5. Teams may roll-over unused funds from the PAD (up to $30 WB max) into their KAP
+   3. Additional DC Slots will need to be paid for in order to draft in the remaining RDs of the FBP Prospect Draft
 
 ## **Section 03: FBP Prospect Draft**
 
@@ -227,12 +221,21 @@ Pitcher:
 6. After the Prospect Draft & before KAP, teams may use any rollover WB from PAD to elevate newly drafted DC’s to a PC or BC tier for an equal total investment as PAD rates.  
    1. Ex: Team A drafts Leo de Vries in RD 3 with a DC Slot, they had $25 WB set to roll-over from PAD to KAP, they choose to BC de Vries for an additional $15 WB (20-5).  $10 WB are now set to roll over.
 
-## **Section 04: Keeper Assignment Period (KAP)**
+## **Section 04: Post-Draft PAD Finalization**
 
-1. After the FBP Prospect Draft, the pre-season Keeper Assignment Period will begin and teams will be given the designated KAP allotment of WBs ($375).  
+1. After the FBP Prospect Draft, teams will be permitted to use any unused WBs to Purchase or Bluechip any of their newly drafted prospects.  
+   1. This is the last chance of the season to Bluechip a prospect  
+   2. Any drafted prospects who have already accrued MLB service time who are not Purchased or Bluechipped will be forfeited and returned back to the auction pool of unowned prospects.  
+   3. Teams hold a $5 downpayment on these players and are therefore only required to pay the remainder value to Purchase ($5) or Bluechip ($15).  
+      1. Forfeited prospects will not result in reimbursement.  
+2. After finalizing PAD contracts, teams may roll-over unused funds from the PAD (up to $30 WB max) into their KAP
+
+## **Section 05: Keeper Assignment Period (KAP)**
+
+3. After PAD Finalization, the pre-season Keeper Assignment Period will begin and teams will be given the designated KAP allotment of WBs ($375).  
    1. Additional Roll-Over WBs from both the PAD & previous Season will be added to the standard allotment  
    2. Any awarded or penalized WBs for applicable teams will be distributed by the commissioner’s office.  
-2. It will be a manager’s responsibility to use their available WBs to contract out Keeper Players they would like to protect from the FBP Keeper Draft during this period  
+4. It will be a manager’s responsibility to use their available WBs to contract out Keeper Players they would like to protect from the FBP Keeper Draft during this period  
    1. Teams may also spend their KAP WBs to Buy-In to the first 3 RDs of the Keeper Draft  
       1. RD 1 Buy-In ($55)  
       2. RD 2 Buy-In ($35)  
@@ -245,10 +248,10 @@ Pitcher:
       5. $326-$350 RD 8-10  
       6. \</= $325 no tax  
    3. Teams may not spend more than $435 WB in Taxable Spend during KAP.  
-3. Teams are first required to trim their pre-season rosters to 26 eligible Keeper Salaries before the KAP trading window begins.  
+5. Teams are first required to trim their pre-season rosters to 26 eligible Keeper Salaries before the KAP trading window begins.  
    1. Trim will include Rookie & IL Contracts  
    2. Roster Size may exceed 26 through acquisition once the trade window has opened  
-4. Once Roster’s have been trimmed, Teams will be able to trade all of the following assets during the KAP up until 3 days before the Keeper Deadline  
+6. Once Roster’s have been trimmed, Teams will be able to trade all of the following assets during the KAP up until 3 days before the Keeper Deadline  
    1. Keeper Contracts  
       1. Keeper Contract Players traded during the KAP are not automatically Contracted  
       2. Teams may spend Tax-Free WBs to reduce a player’s tier and then trade them to another team during the window.  
@@ -257,15 +260,15 @@ Pitcher:
    3. FBP Keeper Draft Picks  
       1. To successfully trade Picks in RDs 1-3, both managers must be bought into the RD they are trading/receiving.  These WBs are still taxed.  
          1. Teams will not pay for multiple picks they have in these RDs.  They pay one time for entry no matter how many picks they have acquired.  
-      2. Teams are permitted to trade picks in RDs that are taxable.  
+      2. Teams are permitted to trade picks in RDs that are taxable through RD 15  
          1. If a team does not have a pick in a taxable RD, they are not permitted to spend within said Tax Bracket.  Does not have to be the team’s original pick to qualify.  
    4. WizBucks  
       1. No Limitations to WB trading, however the limitations to spending & rolling over WBs during KAP are reminded below:  
          1. $435 WB max in Taxable Spend  
          2. $100 WB roll-over max from KAP to APA  
-5. After the Trading Window closes, teams will have 3 days to finalize their KAP spend for contracting players, buying into RDs, reducing years, and rolling over WB to their APA.
+7. After the Trading Window closes, teams will have 3 days to finalize their KAP spend for contracting players, buying into RDs, reducing years, and rolling over WB to their APA.
 
-## **Section 05: FBP Keeper Draft**
+## **Section 06: FBP Keeper Draft**
 
 1. Once the KAP is complete, the FBP Keeper Draft will commence.  All Keeper eligible players who were not tendered a contract enter the draft pool.  
    1. Players without a contract but their Prospect eligibility remains intact are not eligible to be drafted.  
@@ -289,7 +292,7 @@ Pitcher:
 6. Managers will receive official draft sheets listing available players, with rankings and stats, along with the order of the draft prior to Draft Day  
 7. Results of the Draft will be processed and assembled onto Yahoo Rosters by the League Admin Team within 24 hrs of Draft completion
 
-## **Section 06: Auction Portal Allotment**
+## **Section 07: Auction Portal Allotment**
 
 1. Upon Completion of the FBP Keeper Draft, Teams will receive their final installment of pre-season WBs designated for the APA ($100 WB).  
    1. Managers will not receive WB funding again for the season until the In-Season Trade Deadline Allotment (TDA)  
@@ -347,6 +350,7 @@ Pitcher:
 ## **Section 03: Roster Regulations**
 
 1. Yahoo Rosters hold up to 26 active spots (Does not include IL & NA)  
+   1. At least 1 active Catcher must be on the Yahoo Roster at all time  
 2. FBP enforced positional limitations on the active 26 will exist outside of Yahoo rostering limitations:  
    1. 8 SP eligible players maximum; this rises to 9 if you have 1 or more SP/RP eligible players  
    2. 14 Pitcher maximum  

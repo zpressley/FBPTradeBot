@@ -44,6 +44,8 @@ from self_service.contract_purchase_processor import (
 from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference
 from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
+from api_buyin import router as buyin_router, set_buyin_bot_reference
+from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 
 # Load environment variables
 load_dotenv()
@@ -150,6 +152,19 @@ async def on_ready():
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for bulk admin API: {exc}")
     
+    # Allow buy-in API to send Discord notifications
+    try:
+        set_buyin_bot_reference(bot)
+    except Exception as exc:
+        print(f"⚠️ Failed to set bot reference for buy-in API: {exc}")
+
+    # Allow trade API to send Discord messages and commit/push trade persistence
+    try:
+        set_trade_bot_reference(bot)
+        set_trade_commit_fn(_commit_and_push)
+    except Exception as exc:
+        print(f"⚠️ Failed to set bot reference for trade API: {exc}")
+    
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -194,6 +209,10 @@ app.include_router(admin_bulk_router)
 # Prospect draft pool and web pick request routers
 app.include_router(draft_pool_router)
 app.include_router(draft_pick_router)
+# Buy-in purchase/refund router
+app.include_router(buyin_router)
+# Trade portal router
+app.include_router(trade_router)
 
 
 # Health check

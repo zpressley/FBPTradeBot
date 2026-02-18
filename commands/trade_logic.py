@@ -1,13 +1,19 @@
 # commands/trade_logic.py - Simplified version with fixed rejection modal
 
+import os
+import json
+
 import discord
 from discord.ui import View, Button, Modal, TextInput
-from commands.utils import MANAGER_DISCORD_IDS, get_trade_dates, mention_manager
-import json
+
+from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM, get_trade_dates, mention_manager
 
 # Channel IDs
 PENDING_CHANNEL_ID = 1356234086833848492  # For trade discussion threads
 TRADE_CHANNEL_ID = 1197200421639438537    # For final approved trades
+
+# Admin review channel (set this in Render/host env; fallback is your main admin channel)
+TRADE_ADMIN_REVIEW_CHANNEL_ID = int(os.getenv("TRADE_ADMIN_REVIEW_CHANNEL_ID", "875594022033436683"))
 
 # ========== TRADE VALIDATION ==========
 
@@ -29,7 +35,11 @@ def validate_trade(trade_data):
 # ========== CREATE TRADE THREAD ==========
 
 async def create_trade_thread(guild, trade_data):
-    """Create private thread for trade discussion"""
+    """Create private thread for trade discussion.
+
+    If `trade_data` contains `trade_id`, it is assumed to be a website-submitted
+    trade and will be synced to data/trades.json as approvals happen.
+    """
     channel = guild.get_channel(PENDING_CHANNEL_ID)
     if not channel:
         print("❌ Could not find #pending-trades channel.")
@@ -64,7 +74,14 @@ async def create_trade_thread(guild, trade_data):
         return thread
 
     # If valid, show for approval
-    msg = format_trade_review(trade_data) + "\n\n🔘 Please review and approve this trade below."
+    source = trade_data.get("source") or ("🌐 Website" if trade_data.get("trade_id") else "💬 Discord")
+    trade_id = trade_data.get("trade_id")
+    header = f"{source}"
+    if trade_id:
+        header += f" | Trade ID: `{trade_id}`"
+
+    msg = header + "\n\n" + format_trade_review(trade_data) + "\n\n🔘 Please review and approve this trade below."
+
     view = TradeApprovalView(trade_data)
     await thread.send(content=msg, view=view)
     return thread
@@ -86,6 +103,13 @@ class TradeApprovalView(View):
         self.trade_data = trade_data
         self.approvals = set()
         self.rejected = False
+
+        # If the initiator team is known, treat them as auto-approved (submission implies consent).
+        initiator_team = str(trade_data.get("initiator_team") or "").strip().upper()
+        if initiator_team:
+            initiator_id = MANAGER_DISCORD_IDS.get(initiator_team)
+            if initiator_id:
+                self.approvals.add(int(initiator_id))
 
     @discord.ui.button(label="✅ Approve", style=discord.ButtonStyle.success)
     async def approve(self, interaction: discord.Interaction, button: Button):
@@ -109,10 +133,29 @@ class TradeApprovalView(View):
         self.approvals.add(user_id)
         await interaction.response.send_message("✅ Your approval has been recorded.", ephemeral=True)
 
+        # Sync website trade (if applicable)
+        trade_id = self.trade_data.get("trade_id")
+        accepting_team = DISCORD_ID_TO_TEAM.get(user_id)
+        if trade_id and accepting_team:
+            try:
+                from trade import trade_store
+
+                trade_store.accept_trade(trade_id, accepting_team)
+            except Exception as exc:
+                print(f"⚠️ Failed to sync trade acceptance to store: {exc}")
+
         # Check if all parties have approved
         if all(uid in self.approvals for uid in involved_ids if uid is not None):
-            await interaction.channel.send("✅ All managers have approved! Posting trade...")
-            await post_approved_trade(interaction.guild, self.trade_data)
+            # Disable buttons to prevent further interaction noise
+            for item in self.children:
+                item.disabled = True
+            try:
+                await interaction.message.edit(view=self)
+            except Exception:
+                pass
+
+            await interaction.channel.send("✅ All managers have approved! Sending to admin review...")
+            await send_to_admin_review(interaction.guild, self.trade_data)
 
     @discord.ui.button(label="❌ Reject", style=discord.ButtonStyle.danger)
     async def reject(self, interaction: discord.Interaction, button: Button):
@@ -139,6 +182,60 @@ class TradeApprovalView(View):
 
 # ========== POST APPROVED TRADE ==========
 
+def _load_admin_discord_ids() -> set[int]:
+    """Load admin discord IDs from config/managers.json (role == 'admin')."""
+    try:
+        with open("config/managers.json", "r", encoding="utf-8") as f:
+            cfg = json.load(f) or {}
+        teams = cfg.get("teams") or {}
+        ids: set[int] = set()
+        for meta in teams.values():
+            if not isinstance(meta, dict):
+                continue
+            if str(meta.get("role") or "").strip().lower() != "admin":
+                continue
+            raw = meta.get("discord_id")
+            if raw:
+                try:
+                    ids.add(int(raw))
+                except Exception:
+                    pass
+        return ids
+    except Exception:
+        return set()
+
+
+async def send_to_admin_review(guild, trade_data):
+    """Send a manager-approved trade to the admin review channel."""
+    admin_channel = guild.get_channel(TRADE_ADMIN_REVIEW_CHANNEL_ID)
+    if not admin_channel:
+        print("❌ Could not find admin review channel.")
+        return
+
+    trade_id = trade_data.get("trade_id")
+    source = trade_data.get("source") or ("🌐 Website" if trade_id else "💬 Discord")
+
+    msg = f"🛡️ **Admin Review Required** ({source})\n"
+    if trade_id:
+        msg += f"Trade ID: `{trade_id}`\n"
+    msg += "\n" + format_trade_review(trade_data)
+
+    # Try to include a direct link to the thread when available (web trades store this on submit)
+    try:
+        if trade_id:
+            from trade import trade_store
+
+            trade = trade_store.get_trade(trade_id)
+            thread_url = (trade.get("discord") or {}).get("thread_url")
+            if thread_url:
+                msg += f"\n\nThread: {thread_url}"
+    except Exception:
+        pass
+
+    view = AdminReviewView(trade_data)
+    await admin_channel.send(content=msg, view=view)
+
+
 async def post_approved_trade(guild, trade_data):
     """Post the approved trade to the main trade channel"""
     trade_channel = guild.get_channel(TRADE_CHANNEL_ID)
@@ -155,6 +252,83 @@ async def post_approved_trade(guild, trade_data):
     await trade_channel.send(msg)
 
 # ========== REJECTION MODAL (FIXED) ==========
+
+class AdminRejectionModal(Modal):
+    def __init__(self, rejector: discord.User, trade_data):
+        super().__init__(title="Admin Trade Rejection")
+        self.rejector = rejector
+        self.trade_data = trade_data
+
+        self.reason = TextInput(
+            label="Reason for rejection",
+            style=discord.TextStyle.paragraph,
+            placeholder="Explain why this trade is being rejected...",
+            required=True,
+            max_length=300,
+        )
+        self.add_item(self.reason)
+
+    async def on_submit(self, interaction: discord.Interaction):
+        trade_id = self.trade_data.get("trade_id")
+        admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+
+        if trade_id:
+            try:
+                from trade import trade_store
+
+                trade_store.admin_reject(trade_id, admin_team, self.reason.value)
+            except Exception as exc:
+                print(f"⚠️ Failed to sync admin rejection to store: {exc}")
+
+        await interaction.response.send_message("❌ Trade rejected.", ephemeral=True)
+
+
+class AdminReviewView(View):
+    def __init__(self, trade_data):
+        super().__init__(timeout=None)
+        self.trade_data = trade_data
+        self.admin_ids = _load_admin_discord_ids()
+
+    def _is_admin(self, user_id: int) -> bool:
+        if self.admin_ids:
+            return user_id in self.admin_ids
+        # fallback: allow any known manager if config fails
+        return True
+
+    @discord.ui.button(label="✅ Approve Trade", style=discord.ButtonStyle.success)
+    async def approve(self, interaction: discord.Interaction, button: Button):
+        if not self._is_admin(interaction.user.id):
+            await interaction.response.send_message("Not authorized.", ephemeral=True)
+            return
+
+        # Post to #trades
+        await post_approved_trade(interaction.guild, self.trade_data)
+
+        trade_id = self.trade_data.get("trade_id")
+        admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+        if trade_id:
+            try:
+                from trade import trade_store
+
+                trade_store.admin_approve(trade_id, admin_team)
+            except Exception as exc:
+                print(f"⚠️ Failed to sync admin approval to store: {exc}")
+
+        # Disable buttons after decision
+        for item in self.children:
+            item.disabled = True
+
+        await interaction.response.edit_message(content="✅ Approved and posted.", view=self)
+
+    @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger)
+    async def reject(self, interaction: discord.Interaction, button: Button):
+        if not self._is_admin(interaction.user.id):
+            await interaction.response.send_message("Not authorized.", ephemeral=True)
+            return
+
+        modal = AdminRejectionModal(interaction.user, self.trade_data)
+        await interaction.response.send_modal(modal)
+
 
 class RejectionReasonModal(Modal):
     def __init__(self, rejector: discord.User, trade_data, channel, view):
@@ -193,6 +367,17 @@ class RejectionReasonModal(Modal):
 {format_trade_review(self.trade_data)}
 """
             await self.channel.send(msg)
+
+            # Sync website trade (if applicable)
+            trade_id = self.trade_data.get("trade_id")
+            rejecting_team = DISCORD_ID_TO_TEAM.get(self.rejector.id)
+            if trade_id and rejecting_team:
+                try:
+                    from trade import trade_store
+
+                    trade_store.reject_trade(trade_id, rejecting_team, self.reason.value)
+                except Exception as exc:
+                    print(f"⚠️ Failed to sync trade rejection to store: {exc}")
             
         except Exception as e:
             print(f"Error in rejection modal: {e}")
