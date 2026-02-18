@@ -245,7 +245,22 @@ async def accept_trade(
     _: bool = Depends(verify_key),
     manager_team: str = Depends(require_manager_team),
 ):
-    trade, all_accepted = trade_store.accept_trade(payload.trade_id, manager_team)
+    try:
+        trade, all_accepted = trade_store.accept_trade(payload.trade_id, manager_team)
+    except HTTPException as exc:
+        if exc.status_code == 409:
+            # Trade was auto-withdrawn due to a conflicting trade; best-effort notify the thread.
+            try:
+                trade = trade_store.get_trade(payload.trade_id)
+                details = trade.get("withdraw_details") or []
+                detail_lines = "\n".join(f"• {d}" for d in details[:6])
+                msg = "⚠️ **Trade auto-withdrawn**: conflicting trade (assets no longer owned)."
+                if detail_lines:
+                    msg += "\n" + detail_lines
+                await _post_thread_note(trade, msg)
+            except Exception:
+                pass
+        raise
 
     # Post a note to the Discord thread
     await _post_thread_note(trade, f"✅ **{manager_team}** accepted via website")

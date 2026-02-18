@@ -20,6 +20,7 @@ from trade.trade_models import (
 
 TRADES_PATH = "data/trades.json"
 COMBINED_PLAYERS_PATH = "data/combined_players.json"
+PLAYER_LOG_PATH = "data/player_log.json"
 WIZBUCKS_PATH = "data/wizbucks.json"
 WIZBUCKS_TRANSACTIONS_PATH = "data/wizbucks_transactions.json"
 DRAFT_ORDER_2026_PATH = "data/draft_order_2026.json"
@@ -122,6 +123,24 @@ def _load_players_by_upid() -> Dict[str, dict]:
 
 def _load_managers_config() -> dict:
     return _load_json(MANAGERS_CONFIG_PATH, {}) or {}
+
+
+def _load_player_log() -> list[dict]:
+    log = _load_json(PLAYER_LOG_PATH, [])
+    return log if isinstance(log, list) else []
+
+
+def _save_player_log(log: list[dict]) -> None:
+    _save_json(PLAYER_LOG_PATH, log)
+
+
+def _season_year_for_logs(now: Optional[datetime] = None) -> int:
+    now = now or _utc_now()
+    season_dates = _load_json("config/season_dates.json", {}) or {}
+    try:
+        return int(season_dates.get("season_year") or now.year)
+    except Exception:
+        return now.year
 
 
 def _load_draft_order_2026() -> list:
@@ -508,6 +527,78 @@ def list_history(team: str) -> List[dict]:
     return out[:50]
 
 
+def _conflict_problems_for_trade(rec: dict) -> list[str]:
+    problems: list[str] = []
+
+    transfers = rec.get("transfers") or []
+    if not isinstance(transfers, list) or not transfers:
+        return problems
+
+    players_by_upid = _load_players_by_upid()
+
+    # Validate player ownership still matches from_team
+    for t in transfers:
+        if not isinstance(t, dict) or t.get("type") != "player":
+            continue
+
+        upid = str(t.get("upid") or "").strip()
+        from_team = str(t.get("from_team") or "").strip().upper()
+        if not upid or not from_team:
+            continue
+
+        p = players_by_upid.get(upid)
+        if not p:
+            problems.append(f"Player UPID {upid} no longer exists in combined players")
+            continue
+
+        owner = str(p.get("FBP_Team") or "").strip().upper()
+        if owner != from_team:
+            problems.append(
+                f"Player {p.get('name','')} ({upid}) is no longer owned by {from_team} (current owner: {owner or 'UNOWNED'})"
+            )
+
+    # Validate keeper pick ownership still matches from_team
+    has_pick = any(isinstance(t, dict) and t.get("type") == "draft_pick" for t in transfers)
+    if has_pick:
+        draft_order = _load_draft_order_2026()
+        keeper_index = _index_keeper_picks(draft_order)
+
+        for t in transfers:
+            if not isinstance(t, dict) or t.get("type") != "draft_pick":
+                continue
+
+            if str(t.get("draft") or "keeper").strip().lower() != "keeper":
+                continue
+
+            try:
+                r = int(t.get("round") or 0)
+                k = int(t.get("pick") or 0)
+            except Exception:
+                continue
+
+            from_team = str(t.get("from_team") or "").strip().upper()
+            indexed = keeper_index.get((r, k))
+            if not indexed:
+                problems.append(f"Keeper pick R{r} P{k} no longer exists in draft order")
+                continue
+
+            entry = indexed[1]
+            owner = str(entry.get("current_owner") or "").strip().upper()
+            if owner != from_team:
+                problems.append(f"Keeper pick R{r} P{k} is no longer owned by {from_team} (current owner: {owner})")
+
+    return problems
+
+
+def _auto_withdraw_conflicting_trade(trade_id: str, rec: dict, details: list[str]) -> dict:
+    rec["status"] = "withdrawn"
+    rec["processed_at"] = _iso(_utc_now())
+    rec["withdraw_reason"] = "conflicting trade"
+    rec["withdraw_details"] = details
+    rec["withdrawn_by"] = "system"
+    return rec
+
+
 def accept_trade(trade_id: str, team: str) -> Tuple[dict, bool]:
     team = team.strip().upper()
     trades = _load_trades()
@@ -522,6 +613,15 @@ def accept_trade(trade_id: str, team: str) -> Tuple[dict, bool]:
     status = str(rec.get("status") or "")
     if status not in ("pending", "partial_accept"):
         raise HTTPException(status_code=400, detail=f"Trade is not accept-able in status {status}")
+
+    # Gate check: ensure assets are still available
+    problems = _conflict_problems_for_trade(rec)
+    if problems:
+        rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
+        trades[trade_id] = rec
+        _save_trades(trades)
+        _maybe_commit(f"Trade auto-withdraw (conflict): {trade_id}")
+        raise HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
 
     acceptances: list = rec.get("acceptances") or []
     acceptances = [str(t).upper() for t in acceptances]
@@ -640,6 +740,9 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
 
     txns = _load_wizbucks_transactions()
 
+    player_log = _load_player_log()
+    season_year = _season_year_for_logs()
+
     now = _utc_now()
     trade_id = str(rec.get("trade_id") or "")
 
@@ -650,6 +753,7 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
 
     # Apply player ownership changes
     moved_players = 0
+    player_log_entries = 0
     moved_picks = 0
     buyins_purchased = 0
     for t in transfers:
@@ -676,6 +780,36 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
         # manager field uses franchise display name (matches wizbucks.json keys)
         p["manager"] = _resolve_franchise_name(to_team, wizbucks)
         moved_players += 1
+
+        # Append player_log snapshot entry
+        try:
+            entry = {
+                "id": f"{season_year}-{_iso(now)}-UPID_{upid}-Trade-{trade_id or 'NA'}",
+                "season": season_year,
+                "source": "trade_portal",
+                "admin": admin_team,
+                "timestamp": _iso(now),
+                "upid": upid,
+                "player_name": p.get("name") or "",
+                "team": p.get("team") or "",
+                "pos": p.get("position") or "",
+                "age": p.get("age"),
+                "level": str(p.get("level") or ""),
+                "team_rank": p.get("team_rank"),
+                "rank": p.get("rank"),
+                "eta": str(p.get("eta") or ""),
+                "player_type": p.get("player_type") or "",
+                "owner": p.get("manager") or "",
+                "contract": p.get("contract_type") or "",
+                "status": p.get("status") or "",
+                "years": p.get("years_simple") or "",
+                "update_type": "Trade",
+                "event": f"{trade_id}: {from_team}->{to_team}",
+            }
+            player_log.append(entry)
+            player_log_entries += 1
+        except Exception as exc:
+            warnings.append(f"Failed to append player_log for UPID {upid}: {exc}")
 
     # Apply keeper draft pick transfers (ownership + traded flag)
     if has_pick_transfers and isinstance(keeper_index, dict):
@@ -809,6 +943,9 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     if moved_players:
         _save_json(COMBINED_PLAYERS_PATH, players)
 
+    if player_log_entries > 0:
+        _save_player_log(player_log)
+
     if moved_wb:
         _save_json(WIZBUCKS_PATH, wizbucks)
 
@@ -825,6 +962,7 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     rec["data_applied_by"] = admin_team
     rec["data_applied_summary"] = {
         "player_moves": moved_players,
+        "player_log_entries": player_log_entries,
         "pick_moves": moved_picks,
         "wb_transfers": moved_wb,
         "buyins_purchased": buyins_purchased,
@@ -843,6 +981,15 @@ def admin_approve(trade_id: str, admin_team: str) -> dict:
 
     if str(rec.get("status") or "") != "admin_review":
         raise HTTPException(status_code=400, detail="Trade not in admin_review")
+
+    # Gate check: ensure assets are still available right before final approval
+    problems = _conflict_problems_for_trade(rec)
+    if problems:
+        rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
+        trades[trade_id] = rec
+        _save_trades(trades)
+        _maybe_commit(f"Trade auto-withdraw (conflict): {trade_id}")
+        raise HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
 
     rec["status"] = "approved"
     rec["admin_decision_by"] = admin_team
@@ -864,12 +1011,16 @@ def admin_approve(trade_id: str, admin_team: str) -> dict:
 
     summary = rec.get("data_applied_summary") if isinstance(rec.get("data_applied_summary"), dict) else {}
     moved_players = int(summary.get("player_moves") or 0)
+    moved_player_log = int(summary.get("player_log_entries") or 0)
     moved_picks = int(summary.get("pick_moves") or 0)
     moved_wb = int(summary.get("wb_transfers") or 0)
     buyins_purchased = int(summary.get("buyins_purchased") or 0)
 
     if moved_players > 0:
         files_to_commit.append(COMBINED_PLAYERS_PATH)
+
+    if moved_player_log > 0:
+        files_to_commit.append(PLAYER_LOG_PATH)
 
     if moved_picks > 0:
         files_to_commit.append(DRAFT_ORDER_2026_PATH)

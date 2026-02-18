@@ -158,19 +158,69 @@ class TradeApprovalView(View):
             await interaction.response.send_message("You've already approved this trade.", ephemeral=True)
             return
 
-        self.approvals.add(user_id)
-        await interaction.response.send_message("✅ Your approval has been recorded.", ephemeral=True)
-
-        # Sync website trade (if applicable)
+        # Sync website trade (if applicable) BEFORE recording approval in-thread.
         trade_id = self.trade_data.get("trade_id")
         accepting_team = DISCORD_ID_TO_TEAM.get(user_id)
         if trade_id and accepting_team:
             try:
+                from fastapi import HTTPException
                 from trade import trade_store
 
-                trade_store.accept_trade(trade_id, accepting_team)
+                trade, all_accepted = trade_store.accept_trade(trade_id, accepting_team)
+
+                # Now record approval locally (Discord view state)
+                self.approvals.add(user_id)
+                await interaction.response.send_message("✅ Your approval has been recorded.", ephemeral=True)
+
+                if all_accepted:
+                    # Disable buttons to prevent further interaction noise
+                    for item in self.children:
+                        item.disabled = True
+                    try:
+                        await interaction.message.edit(view=self)
+                    except Exception:
+                        pass
+
+                    await interaction.channel.send("✅ All managers have approved! Sending to admin review...")
+                    await send_to_admin_review(interaction.guild, self.trade_data)
+
+                return
+            except HTTPException as exc:
+                if exc.status_code == 409:
+                    # Store has auto-withdrawn the trade due to conflicting assets.
+                    self.rejected = True
+                    for item in self.children:
+                        item.disabled = True
+                    try:
+                        await interaction.message.edit(view=self)
+                    except Exception:
+                        pass
+
+                    await interaction.response.send_message(
+                        "❌ This trade was automatically withdrawn due to a conflicting trade (assets are no longer owned).",
+                        ephemeral=True,
+                    )
+                    try:
+                        await interaction.channel.send(
+                            "⚠️ Trade auto-withdrawn due to conflicting trade (assets no longer owned)."
+                        )
+                    except Exception:
+                        pass
+                    return
+
+                await interaction.response.send_message(f"❌ Failed to sync acceptance: {exc.detail}", ephemeral=True)
+                return
             except Exception as exc:
                 print(f"⚠️ Failed to sync trade acceptance to store: {exc}")
+                await interaction.response.send_message(
+                    "❌ Could not record your acceptance (trade store sync failed).",
+                    ephemeral=True,
+                )
+                return
+
+        # Discord-only trades: record approval locally
+        self.approvals.add(user_id)
+        await interaction.response.send_message("✅ Your approval has been recorded.", ephemeral=True)
 
         # Check if all parties have approved
         if all(uid in self.approvals for uid in involved_ids if uid is not None):
@@ -349,18 +399,45 @@ class AdminReviewView(View):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
             return
 
-        # Post to #trades
-        await post_approved_trade(interaction.guild, self.trade_data)
-
         trade_id = self.trade_data.get("trade_id")
         admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+
+        # For website-backed trades, approve in the store first (this applies data + can auto-withdraw on conflict)
         if trade_id:
             try:
+                from fastapi import HTTPException
                 from trade import trade_store
 
                 trade_store.admin_approve(trade_id, admin_team)
+            except HTTPException as exc:
+                if exc.status_code == 409:
+                    # Disable buttons after decision
+                    for item in self.children:
+                        item.disabled = True
+
+                    await interaction.response.edit_message(
+                        content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
+                        view=self,
+                    )
+                    try:
+                        trade = trade_store.get_trade(trade_id)
+                        details = trade.get("withdraw_details") or []
+                        if details:
+                            detail_lines = "\n".join(f"• {d}" for d in details[:6])
+                            await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
+                    except Exception:
+                        pass
+                    return
+
+                await interaction.response.send_message(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+                return
             except Exception as exc:
                 print(f"⚠️ Failed to sync admin approval to store: {exc}")
+                await interaction.response.send_message("❌ Approval failed (store sync error).", ephemeral=True)
+                return
+
+        # Post to #trades
+        await post_approved_trade(interaction.guild, self.trade_data)
 
         # Disable buttons after decision
         for item in self.children:
