@@ -1,1 +1,50 @@
-{}
+{
+  "WEB-TRADE-20260218-134238": {
+    "trade_id": "WEB-TRADE-20260218-134238",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-18T13:42:38.575966Z",
+    "expires_at": "2026-03-04T13:42:38.575966Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "3818",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ],
+      "WIZ": [
+        "SP Michael Wacha [KC] [TC 1]",
+        "CF Heliot Ramos [SF] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  }
+}
