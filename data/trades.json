@@ -680,5 +680,81 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "WEB-TRADE-20260218-222755": {
+    "trade_id": "WEB-TRADE-20260218-222755",
+    "teams": [
+      "WIZ",
+      "LFB"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-02-18T22:27:55.288869Z",
+    "expires_at": "2026-03-04T22:27:55.288869Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1876",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1920",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1919",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1903",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "2654",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "7612",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "8111",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "SP Brandon Woodruff [MIL] [TC 2]",
+        "SP Jes\u00fas Luzardo [PHI] [TC 1]",
+        "SS,CF Konnor Griffin [PIT] [BC]",
+        "LF Francisco Renteria [PHI] [DC]"
+      ],
+      "LFB": [
+        "SP Jacob deGrom [TEX] [VC 1]",
+        "SP Shohei Ohtani (Pitcher) [LAD] [VC 1]",
+        "Util Shohei Ohtani (Batter) [LAD] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
