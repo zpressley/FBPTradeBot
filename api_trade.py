@@ -7,6 +7,7 @@ from typing import Optional, TypeVar
 
 from fastapi import APIRouter, Depends, Header, HTTPException
 
+from team_utils import normalize_team_abbr
 from trade.trade_models import (
     TradeAcceptPayload,
     TradeRejectPayload,
@@ -14,6 +15,21 @@ from trade.trade_models import (
     TradeWithdrawPayload,
 )
 from trade import trade_store
+
+
+def _log(event: str, data: dict) -> None:
+    """Minimal structured logs for Render.
+
+    Keep these high-signal: only call from state-mutating endpoints.
+    """
+
+    try:
+        print(event, data)
+    except Exception:
+        try:
+            print(event)
+        except Exception:
+            pass
 
 
 router = APIRouter(prefix="/api/trade", tags=["trade"])
@@ -127,7 +143,10 @@ def verify_key(x_api_key: Optional[str] = Header(None)) -> bool:
 def require_manager_team(x_manager_team: Optional[str] = Header(None)) -> str:
     if not x_manager_team:
         raise HTTPException(status_code=401, detail="Missing X-Manager-Team")
-    return str(x_manager_team).strip().upper()
+    team = normalize_team_abbr(str(x_manager_team).strip())
+    if not team:
+        raise HTTPException(status_code=401, detail="Missing X-Manager-Team")
+    return team
 
 
 async def _post_thread_note(trade: dict, content: str) -> None:
@@ -166,6 +185,16 @@ async def submit_trade(
     if _bot_ref is None or not _bot_ref.is_ready():
         raise HTTPException(status_code=503, detail="Bot not ready")
 
+    _log(
+        "📥 TRADE_SUBMIT",
+        {
+            "manager_team": manager_team,
+            "teams": payload.teams,
+            "transfer_count": len(payload.transfers or []),
+            "transfer_types": sorted({getattr(t, "type", "?") for t in (payload.transfers or [])}),
+        },
+    )
+
     # Create trade record (validates window + rosters + WB)
     trade = trade_store.create_trade(payload, actor_team=manager_team)
 
@@ -197,16 +226,41 @@ async def submit_trade(
             )
 
         trade = trade_store.attach_discord_thread(trade["trade_id"], str(thread.id), thread.jump_url)
-    except HTTPException:
+        _log(
+            "✅ TRADE_SUBMIT_OK",
+            {
+                "trade_id": trade.get("trade_id"),
+                "teams": trade.get("teams"),
+                "thread_id": str(thread.id),
+            },
+        )
+    except HTTPException as exc:
+        _log(
+            "❌ TRADE_SUBMIT_FAILED",
+            {
+                "manager_team": manager_team,
+                "status_code": exc.status_code,
+                "detail": exc.detail,
+            },
+        )
         raise
     except Exception as exc:
+        import traceback
+
+        _log(
+            "❌ TRADE_SUBMIT_FAILED",
+            {
+                "manager_team": manager_team,
+                "error": str(exc),
+            },
+        )
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Failed to create trade thread: {exc}")
 
     return {
         "success": True,
         "trade": trade,
     }
-
 
 @router.get("/queue")
 async def get_queue(
@@ -245,10 +299,25 @@ async def accept_trade(
     _: bool = Depends(verify_key),
     manager_team: str = Depends(require_manager_team),
 ):
+    _log(
+        "📥 TRADE_ACCEPT",
+        {
+            "trade_id": payload.trade_id,
+            "team": manager_team,
+        },
+    )
+
     try:
         trade, all_accepted = trade_store.accept_trade(payload.trade_id, manager_team)
     except HTTPException as exc:
         if exc.status_code == 409:
+            _log(
+                "⚠️ TRADE_ACCEPT_CONFLICT",
+                {
+                    "trade_id": payload.trade_id,
+                    "team": manager_team,
+                },
+            )
             # Trade was auto-withdrawn due to a conflicting trade; best-effort notify the thread.
             try:
                 trade = trade_store.get_trade(payload.trade_id)
@@ -260,8 +329,18 @@ async def accept_trade(
                 await _post_thread_note(trade, msg)
             except Exception:
                 pass
-        raise
+            raise
 
+        _log(
+            "❌ TRADE_ACCEPT_FAILED",
+            {
+                "trade_id": payload.trade_id,
+                "team": manager_team,
+                "status_code": exc.status_code,
+                "detail": exc.detail,
+            },
+        )
+        raise
     # Post a note to the Discord thread
     await _post_thread_note(trade, f"✅ **{manager_team}** accepted via website")
 
@@ -288,6 +367,16 @@ async def accept_trade(
             _schedule_on_bot_loop(_send_admin_review(), "send_to_admin_review")
         except Exception as exc:
             print(f"⚠️ Failed to schedule trade admin review: {exc}")
+
+    _log(
+        "✅ TRADE_ACCEPT_OK",
+        {
+            "trade_id": payload.trade_id,
+            "team": manager_team,
+            "all_accepted": bool(all_accepted),
+            "status": trade.get("status"),
+        },
+    )
 
     return {"success": True, "status": trade.get("status"), "all_accepted": all_accepted}
 

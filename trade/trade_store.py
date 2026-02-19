@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from fastapi import HTTPException
 
 from buyin.buyin_service import apply_keeper_buyin_purchase
+from team_utils import normalize_team_abbr
 from trade.trade_models import (
     TradeSubmitPayload,
     TradeTransfer,
@@ -36,6 +37,7 @@ DRAFT_ORDER_2026_PATH = "data/draft_order_2026.json"
 MANAGERS_CONFIG_PATH = "config/managers.json"
 
 _commit_fn = None
+_warned_commit_fn_missing = False
 
 
 def set_commit_fn(fn) -> None:
@@ -79,7 +81,19 @@ def _trades_lock():
 
 
 def _maybe_commit(message: str, file_paths: Optional[list[str]] = None) -> None:
+    global _warned_commit_fn_missing
     if _commit_fn is None:
+        # High-signal: if commit wiring is missing, trades will apply locally
+        # but never push to GitHub. Only log once per process.
+        if not _warned_commit_fn_missing:
+            _warned_commit_fn_missing = True
+            try:
+                print(
+                    "⚠️ TRADE_COMMIT_FN_NOT_SET",
+                    {"message_head": (message or "").splitlines()[0] if message else ""},
+                )
+            except Exception:
+                pass
         return
     try:
         paths = file_paths or ["data/trades.json"]
@@ -339,6 +353,14 @@ def _validate_rosters_and_wizbucks(payload: TradeSubmitPayload) -> None:
 
         key = (int(t.round), int(t.pick))
         if key not in keeper_index:
+            if not keeper_index:
+                raise HTTPException(
+                    status_code=400,
+                    detail=(
+                        "Keeper draft picks are missing from draft_order_2026.json on the server. "
+                        "This usually means the file was overwritten by a prospect draft rebuild (PAD) and needs to be re-synced."
+                    ),
+                )
             raise HTTPException(status_code=400, detail=f"Keeper pick R{t.round} P{t.pick} not found")
 
         entry = keeper_index[key][1]
@@ -434,58 +456,83 @@ def _active_trade_count_for_initiator(trades: Dict[str, dict], initiator_team: s
 
 
 def create_trade(payload: TradeSubmitPayload, actor_team: str) -> dict:
-    actor_team = actor_team.strip().upper()
-    payload = TradeSubmitPayload.model_validate(payload.model_dump())
+    # Canonicalize all team tokens to abbreviations.
+    managers_cfg = _load_managers_config()
+    actor_team = normalize_team_abbr(actor_team, managers_data=managers_cfg)
+
+    payload_dict = payload.model_dump()
+    payload_dict["teams"] = [
+        normalize_team_abbr(t, managers_data=managers_cfg) for t in (payload_dict.get("teams") or [])
+    ]
+
+    transfers = payload_dict.get("transfers") or []
+    if isinstance(transfers, list):
+        for tr in transfers:
+            if not isinstance(tr, dict):
+                continue
+            if "from_team" in tr:
+                tr["from_team"] = normalize_team_abbr(tr.get("from_team", ""), managers_data=managers_cfg)
+            if "to_team" in tr:
+                tr["to_team"] = normalize_team_abbr(tr.get("to_team", ""), managers_data=managers_cfg)
+        payload_dict["transfers"] = transfers
+
+    payload = TradeSubmitPayload.model_validate(payload_dict)
 
     _validate_payload(payload, actor_team)
     _validate_rosters_and_wizbucks(payload)
 
-    trades = _load_trades()
     now = _utc_now()
 
-    initiator_team = actor_team
-    if _active_trade_count_for_initiator(trades, initiator_team, now) >= 12:
-        raise HTTPException(status_code=400, detail="Queue limit reached (12 max active trades)")
+    with _trades_lock():
+        trades = _load_trades()
 
-    trade_id = f"WEB-TRADE-{now.strftime('%Y%m%d-%H%M%S')}"
-    expires_at = now + timedelta(days=14)
+        initiator_team = actor_team
+        if _active_trade_count_for_initiator(trades, initiator_team, now) >= 12:
+            raise HTTPException(status_code=400, detail="Queue limit reached (12 max active trades)")
 
-    receives = _build_receives(payload)
+        # Include ms to avoid collisions when two submissions land in the same second.
+        trade_id = f"WEB-TRADE-{now.strftime('%Y%m%d-%H%M%S')}-{int(now.microsecond/1000):03d}"
+        expires_at = now + timedelta(days=14)
 
-    record = {
-        "trade_id": trade_id,
-        "teams": [t.strip().upper() for t in payload.teams],
-        "initiator_team": initiator_team,
-        "status": "pending",
-        "created_at": _iso(now),
-        "expires_at": _iso(expires_at),
-        "transfers": [t.model_dump() for t in payload.transfers],
-        "acceptances": [initiator_team],
-        "receives": receives,
-        "discord": {
-            "thread_id": None,
-            "thread_url": None,
-            "admin_review_message_id": None,
-        },
-    }
+        receives = _build_receives(payload)
 
-    trades[trade_id] = record
-    _save_trades(trades)
+        record = {
+            "trade_id": trade_id,
+            "teams": [t.strip().upper() for t in payload.teams],
+            "initiator_team": initiator_team,
+            "status": "pending",
+            "created_at": _iso(now),
+            "expires_at": _iso(expires_at),
+            "transfers": [t.model_dump() for t in payload.transfers],
+            "acceptances": [initiator_team],
+            "receives": receives,
+            "discord": {
+                "thread_id": None,
+                "thread_url": None,
+                "admin_review_message_id": None,
+            },
+        }
+
+        trades[trade_id] = record
+        _save_trades(trades)
+
     _maybe_commit(f"Trade submitted: {trade_id} by {initiator_team}")
     return record
 
 
 def attach_discord_thread(trade_id: str, thread_id: str, thread_url: str) -> dict:
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    rec.setdefault("discord", {})
-    rec["discord"]["thread_id"] = str(thread_id)
-    rec["discord"]["thread_url"] = str(thread_url)
-    trades[trade_id] = rec
-    _save_trades(trades)
+        rec.setdefault("discord", {})
+        rec["discord"]["thread_id"] = str(thread_id)
+        rec["discord"]["thread_url"] = str(thread_url)
+        trades[trade_id] = rec
+        _save_trades(trades)
+
     _maybe_commit(f"Trade thread attached: {trade_id}")
     return rec
 
@@ -577,6 +624,7 @@ def _conflict_problems_for_trade(rec: dict) -> list[str]:
     if not isinstance(transfers, list) or not transfers:
         return problems
 
+    managers_cfg = _load_managers_config()
     players_by_upid = _load_players_by_upid()
 
     # Validate player ownership still matches from_team
@@ -585,7 +633,7 @@ def _conflict_problems_for_trade(rec: dict) -> list[str]:
             continue
 
         upid = str(t.get("upid") or "").strip()
-        from_team = str(t.get("from_team") or "").strip().upper()
+        from_team = normalize_team_abbr(str(t.get("from_team") or "").strip(), managers_data=managers_cfg)
         if not upid or not from_team:
             continue
 
@@ -619,7 +667,7 @@ def _conflict_problems_for_trade(rec: dict) -> list[str]:
             except Exception:
                 continue
 
-            from_team = str(t.get("from_team") or "").strip().upper()
+            from_team = normalize_team_abbr(str(t.get("from_team") or "").strip(), managers_data=managers_cfg)
             indexed = keeper_index.get((r, k))
             if not indexed:
                 problems.append(f"Keeper pick R{r} P{k} no longer exists in draft order")
@@ -643,94 +691,128 @@ def _auto_withdraw_conflicting_trade(trade_id: str, rec: dict, details: list[str
 
 
 def accept_trade(trade_id: str, team: str) -> Tuple[dict, bool]:
-    team = team.strip().upper()
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
+    managers_cfg = _load_managers_config()
+    team = normalize_team_abbr(team, managers_data=managers_cfg)
 
-    teams = [str(t).upper() for t in rec.get("teams") or []]
-    if team not in teams:
-        raise HTTPException(status_code=403, detail="Not part of this trade")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    status = str(rec.get("status") or "")
-    if status not in ("pending", "partial_accept"):
-        raise HTTPException(status_code=400, detail=f"Trade is not accept-able in status {status}")
+        teams = [
+            normalize_team_abbr(str(t).strip(), managers_data=managers_cfg) for t in (rec.get("teams") or [])
+        ]
+        if team not in teams:
+            raise HTTPException(status_code=403, detail="Not part of this trade")
 
-    # Gate check: ensure assets are still available
-    problems = _conflict_problems_for_trade(rec)
-    if problems:
-        rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
-        trades[trade_id] = rec
-        _save_trades(trades)
-        _maybe_commit(f"Trade auto-withdraw (conflict): {trade_id}")
+        status = str(rec.get("status") or "")
+        if status not in ("pending", "partial_accept"):
+            raise HTTPException(status_code=400, detail=f"Trade is not accept-able in status {status}")
+
+        # Gate check: ensure assets are still available
+        problems = _conflict_problems_for_trade(rec)
+        if problems:
+            try:
+                print(
+                    "⚠️ TRADE_AUTO_WITHDRAW_CONFLICT",
+                    {
+                        "stage": "accept",
+                        "trade_id": trade_id,
+                        "team": team,
+                        "problem_count": len(problems),
+                        "problems": problems[:5],
+                    },
+                )
+            except Exception:
+                pass
+
+            rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
+            trades[trade_id] = rec
+            _save_trades(trades)
+            commit_msg = f"Trade auto-withdraw (conflict): {trade_id}"
+            do_raise = True
+        else:
+            acceptances: list = rec.get("acceptances") or []
+            acceptances = [
+                normalize_team_abbr(str(t).strip(), managers_data=managers_cfg) for t in acceptances
+            ]
+            if team not in acceptances:
+                acceptances.append(team)
+
+            rec["acceptances"] = acceptances
+
+            all_accepted = all(t in acceptances for t in teams)
+            if all_accepted:
+                rec["status"] = "admin_review"
+                rec["manager_approved_at"] = _iso(_utc_now())
+            else:
+                rec["status"] = "partial_accept"
+
+            trades[trade_id] = rec
+            _save_trades(trades)
+            commit_msg = f"Trade accept: {trade_id} by {team}"
+            do_raise = False
+
+    _maybe_commit(commit_msg)
+
+    if do_raise:
         raise HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
 
-    acceptances: list = rec.get("acceptances") or []
-    acceptances = [str(t).upper() for t in acceptances]
-    if team not in acceptances:
-        acceptances.append(team)
-
-    rec["acceptances"] = acceptances
-
-    all_accepted = all(t in acceptances for t in teams)
-    if all_accepted:
-        rec["status"] = "admin_review"
-        rec["manager_approved_at"] = _iso(_utc_now())
-    else:
-        rec["status"] = "partial_accept"
-
-    trades[trade_id] = rec
-    _save_trades(trades)
-    _maybe_commit(f"Trade accept: {trade_id} by {team}")
     return rec, all_accepted
 
 
 def reject_trade(trade_id: str, team: str, reason: str) -> dict:
     team = team.strip().upper()
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
 
-    teams = [str(t).upper() for t in rec.get("teams") or []]
-    if team not in teams:
-        raise HTTPException(status_code=403, detail="Not part of this trade")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    status = str(rec.get("status") or "")
-    if status in ("approved", "withdrawn", "rejected", "admin_rejected"):
-        raise HTTPException(status_code=400, detail=f"Trade already finalized with status {status}")
+        teams = [str(t).upper() for t in rec.get("teams") or []]
+        if team not in teams:
+            raise HTTPException(status_code=403, detail="Not part of this trade")
 
-    rec["status"] = "rejected"
-    rec["rejection_reason"] = reason
-    rec["rejected_by"] = team
-    rec["processed_at"] = _iso(_utc_now())
+        status = str(rec.get("status") or "")
+        if status in ("approved", "withdrawn", "rejected", "admin_rejected"):
+            raise HTTPException(status_code=400, detail=f"Trade already finalized with status {status}")
 
-    trades[trade_id] = rec
-    _save_trades(trades)
+        rec["status"] = "rejected"
+        rec["rejection_reason"] = reason
+        rec["rejected_by"] = team
+        rec["processed_at"] = _iso(_utc_now())
+
+        trades[trade_id] = rec
+        _save_trades(trades)
+
     _maybe_commit(f"Trade reject: {trade_id} by {team}")
     return rec
 
 
 def withdraw_trade(trade_id: str, team: str) -> dict:
     team = team.strip().upper()
-    trades = _load_trades()
-    rec = trades.get(trade_id)
-    if not rec:
-        raise HTTPException(status_code=404, detail="Trade not found")
 
-    if str(rec.get("initiator_team") or "").upper() != team:
-        raise HTTPException(status_code=403, detail="Only the initiating team can withdraw")
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
 
-    status = str(rec.get("status") or "")
-    if status not in ("pending", "partial_accept"):
-        raise HTTPException(status_code=400, detail=f"Trade is not withdrawable in status {status}")
+        if str(rec.get("initiator_team") or "").upper() != team:
+            raise HTTPException(status_code=403, detail="Only the initiating team can withdraw")
 
-    rec["status"] = "withdrawn"
-    rec["processed_at"] = _iso(_utc_now())
+        status = str(rec.get("status") or "")
+        if status not in ("pending", "partial_accept"):
+            raise HTTPException(status_code=400, detail=f"Trade is not withdrawable in status {status}")
 
-    trades[trade_id] = rec
-    _save_trades(trades)
+        rec["status"] = "withdrawn"
+        rec["processed_at"] = _iso(_utc_now())
+
+        trades[trade_id] = rec
+        _save_trades(trades)
+
     _maybe_commit(f"Trade withdraw: {trade_id} by {team}")
     return rec
 
@@ -755,6 +837,19 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     changes.
     """
     warnings: list[str] = []
+
+    try:
+        print(
+            "🧩 APPLY_TRADE_DATA_FILES start",
+            {
+                "trade_id": rec.get("trade_id"),
+                "admin": admin_team,
+                "status": rec.get("status"),
+                "already_applied": bool(rec.get("data_applied_at")),
+            },
+        )
+    except Exception:
+        pass
 
     # Idempotency guard
     if rec.get("data_applied_at"):
@@ -789,10 +884,11 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     now = _utc_now()
     trade_id = str(rec.get("trade_id") or "")
 
+    managers_data = _load_managers_config()
+
     has_pick_transfers = any(isinstance(t, dict) and t.get("type") == "draft_pick" for t in transfers)
     draft_order = _load_draft_order_2026() if has_pick_transfers else []
     keeper_index = _index_keeper_picks(draft_order) if has_pick_transfers else {}
-    managers_data = _load_managers_config() if has_pick_transfers else {}
 
     # Apply player ownership changes
     moved_players = 0
@@ -804,8 +900,8 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
             continue
 
         upid = str(t.get("upid") or "").strip()
-        from_team = str(t.get("from_team") or "").strip().upper()
-        to_team = str(t.get("to_team") or "").strip().upper()
+        from_team = normalize_team_abbr(str(t.get("from_team") or "").strip(), managers_data=managers_data)
+        to_team = normalize_team_abbr(str(t.get("to_team") or "").strip(), managers_data=managers_data)
         if not upid or not from_team or not to_team:
             continue
 
@@ -871,8 +967,8 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                 warnings.append(f"Unsupported draft_pick draft type for R{r} P{k}")
                 continue
 
-            from_team = str(t.get("from_team") or "").strip().upper()
-            to_team = str(t.get("to_team") or "").strip().upper()
+            from_team = normalize_team_abbr(str(t.get("from_team") or "").strip(), managers_data=managers_data)
+            to_team = normalize_team_abbr(str(t.get("to_team") or "").strip(), managers_data=managers_data)
             if r <= 0 or k <= 0 or not from_team or not to_team:
                 continue
 
@@ -911,6 +1007,8 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                     continue
 
             pick_entry["current_owner"] = to_team
+            # Keep legacy field in sync; DraftManager and some UIs key off `team`.
+            pick_entry["team"] = to_team
             pick_entry["traded"] = True
             draft_order[pick_index] = pick_entry
             keeper_index[key] = (pick_index, pick_entry)
@@ -927,8 +1025,8 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
         except Exception:
             amt = 0
 
-        from_team = str(t.get("from_team") or "").strip().upper()
-        to_team = str(t.get("to_team") or "").strip().upper()
+        from_team = normalize_team_abbr(str(t.get("from_team") or "").strip(), managers_data=managers_data)
+        to_team = normalize_team_abbr(str(t.get("to_team") or "").strip(), managers_data=managers_data)
         if amt <= 0 or not from_team or not to_team:
             continue
 
@@ -1012,6 +1110,24 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
         "warnings": warnings,
     }
 
+    try:
+        print(
+            "🧩 APPLY_TRADE_DATA_FILES done",
+            {
+                "trade_id": trade_id,
+                "player_moves": moved_players,
+                "player_log_entries": player_log_entries,
+                "pick_moves": moved_picks,
+                "wb_transfers": moved_wb,
+                "buyins_purchased": buyins_purchased,
+                "warning_count": len(warnings),
+            },
+        )
+        if warnings:
+            print("⚠️ APPLY_TRADE_DATA_FILES warnings", warnings[:10])
+    except Exception:
+        pass
+
     return warnings
 
 
@@ -1034,6 +1150,20 @@ def admin_approve(trade_id: str, admin_team: str) -> dict:
         # Gate check: ensure assets are still available right before final approval
         problems = _conflict_problems_for_trade(rec)
         if problems:
+            try:
+                print(
+                    "⚠️ TRADE_AUTO_WITHDRAW_CONFLICT",
+                    {
+                        "stage": "admin_approve",
+                        "trade_id": trade_id,
+                        "admin": admin_team,
+                        "problem_count": len(problems),
+                        "problems": problems[:5],
+                    },
+                )
+            except Exception:
+                pass
+
             rec = _auto_withdraw_conflicting_trade(trade_id, rec, problems)
             trades[trade_id] = rec
             _save_trades(trades)
@@ -1056,6 +1186,24 @@ def admin_approve(trade_id: str, admin_team: str) -> dict:
 
             trades[trade_id] = rec
             _save_trades(trades)
+
+            # High-signal success log (approval attempts are rare).
+            try:
+                summary = rec.get("data_applied_summary") if isinstance(rec.get("data_applied_summary"), dict) else {}
+                print(
+                    "✅ TRADE_ADMIN_APPROVE_OK",
+                    {
+                        "trade_id": trade_id,
+                        "admin": admin_team,
+                        "player_moves": int(summary.get("player_moves") or 0),
+                        "pick_moves": int(summary.get("pick_moves") or 0),
+                        "wb_transfers": int(summary.get("wb_transfers") or 0),
+                        "buyins_purchased": int(summary.get("buyins_purchased") or 0),
+                        "warning_count": len(summary.get("warnings") or []),
+                    },
+                )
+            except Exception:
+                pass
 
             files_to_commit = [TRADES_PATH]
 

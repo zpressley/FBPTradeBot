@@ -210,6 +210,11 @@ def _append_player_log_entry(
 def rebuild_draft_order_from_pad(submissions: Dict[str, Any], test_mode: bool) -> None:
     """Rebuild data/draft_order_2026*.json from final_rank_2025 + PAD slots.
 
+    IMPORTANT: this file is also used by the keeper draft / pick trading UI.
+    When we rebuild the *prospect* portion from PAD, we must preserve any
+    existing keeper-draft entries (and their buy-in flags / ownership / traded
+    history) that appear in the same file.
+
     This is an intentionally simple implementation to get us live: BC/DC
     slots determine the number of picks per team in BC rounds (1–2) and DC
     rounds (3+), but we do not yet attempt to map slots to precise pick
@@ -286,7 +291,45 @@ def rebuild_draft_order_from_pad(submissions: Dict[str, Any], test_mode: bool) -
         return
 
     draft_order_path = get_draft_order_path(test_mode)
-    _save_json(draft_order_path, rounds)
+
+    # Preserve existing keeper section (and its comments) if present.
+    preserved_tail: list[dict] = []
+    try:
+        existing = _load_json(draft_order_path)
+        if isinstance(existing, list) and existing:
+            start_idx = None
+            for i, entry in enumerate(existing):
+                if not isinstance(entry, dict):
+                    continue
+                if entry.get("draft") == "keeper":
+                    start_idx = i
+                    break
+                c = entry.get("_comment")
+                if isinstance(c, str) and "KEEPER DRAFT" in c.upper():
+                    start_idx = i
+                    break
+            if start_idx is not None:
+                preserved_tail = [e for e in existing[start_idx:] if isinstance(e, dict)]
+    except Exception:
+        preserved_tail = []
+
+    merged = rounds + (preserved_tail or [])
+
+    # High-signal log (PAD submissions are rare).
+    try:
+        print(
+            "✅ PAD_DRAFT_ORDER_REBUILT",
+            {
+                "test_mode": bool(test_mode),
+                "prospect_picks": len(rounds),
+                "preserved_keeper_items": len(preserved_tail),
+                "out_total": len(merged),
+            },
+        )
+    except Exception:
+        pass
+
+    _save_json(draft_order_path, merged)
 
 
 # ---------------------------------------------------------------------------

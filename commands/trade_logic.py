@@ -447,7 +447,9 @@ class AdminReviewView(View):
                     await interaction.response.send_message(f"❌ Approval failed: {exc.detail}", ephemeral=True)
                     return
                 except Exception as exc:
+                    import traceback
                     print(f"⚠️ Failed to sync admin approval to store: {exc}")
+                    traceback.print_exc()
                     await interaction.response.send_message("❌ Approval failed (store sync error).", ephemeral=True)
                     return
 

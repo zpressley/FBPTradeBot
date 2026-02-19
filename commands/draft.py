@@ -821,9 +821,10 @@ class DraftCommands(commands.Cog):
         )
         
         if current_pick:
+            round_type = (current_pick.get('round_type') or 'standard')
             embed.add_field(
                 name="Current Round",
-                value=f"Round {current_pick['round']} ({current_pick['round_type'].title()})",
+                value=f"Round {current_pick['round']} ({str(round_type).title()})",
                 inline=True
             )
         
@@ -947,7 +948,8 @@ class DraftCommands(commands.Cog):
         else:
             status = "⏸️ NOT STARTED"
         
-        content_parts.append(f"**ROUND {current_round}** ({current_round_picks[0]['round_type'].upper()}) {status}")
+        rt = (current_round_picks[0].get('round_type') or 'standard')
+        content_parts.append(f"**ROUND {current_round}** ({str(rt).upper()}) {status}")
         content_parts.append("─" * 50)
         
         # List all picks in this round
@@ -1027,7 +1029,7 @@ class DraftCommands(commands.Cog):
             embed.add_field(name="Time Limit", value=time_label, inline=True)
             embed.add_field(
                 name="Round Type",
-                value=current_pick['round_type'].title(),
+                value=str((current_pick.get('round_type') or 'standard')).title(),
                 inline=True
             )
             

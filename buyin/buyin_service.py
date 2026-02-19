@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Optional
 
+from team_utils import normalize_team_abbr
+
 
 BUY_IN_COSTS: dict[int, int] = {
     1: 55,
@@ -40,6 +42,7 @@ def _now_iso(now: Optional[datetime] = None) -> str:
 
 
 def get_kap_balance(team: str, managers_data: dict, season: int = 2026) -> int:
+    team = normalize_team_abbr(team, managers_data=managers_data)
     team_data = (managers_data.get("teams") or {}).get(team)
     if not isinstance(team_data, dict):
         return 0
@@ -55,6 +58,8 @@ def get_kap_balance(team: str, managers_data: dict, season: int = 2026) -> int:
 
 
 def update_kap_balance(team: str, delta: int, managers_data: dict, season: int = 2026) -> None:
+    team = normalize_team_abbr(team, managers_data=managers_data)
+
     teams = managers_data.get("teams")
     if not isinstance(teams, dict) or team not in teams or not isinstance(teams.get(team), dict):
         raise ValueError(f"Team {team} not found in managers.json")
@@ -94,6 +99,8 @@ def apply_keeper_buyin_purchase(
     season: int = 2026,
     now: Optional[datetime] = None,
 ) -> BuyinApplyResult:
+    team = normalize_team_abbr(team, managers_data=managers_data)
+
     if round not in BUY_IN_COSTS:
         raise ValueError(f"Invalid round {round}. Only rounds 1-3 require buy-ins.")
 
@@ -200,6 +207,8 @@ def apply_keeper_buyin_refund(
     season: int = 2026,
     now: Optional[datetime] = None,
 ) -> BuyinRefundResult:
+    team = normalize_team_abbr(team, managers_data=managers_data)
+
     if round not in BUY_IN_COSTS:
         raise ValueError(f"Invalid round {round}. Only rounds 1-3 require buy-ins.")
 

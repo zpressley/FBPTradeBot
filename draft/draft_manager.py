@@ -106,19 +106,69 @@ class DraftManager:
         if not picks:
             raise ValueError(f"No picks found in {self.order_file}")
         
-        print(f"✅ Loaded draft order: {len(picks)} total picks")
-        
+        # Filter by draft type and remove comment objects
+        filtered_picks = [
+            p for p in picks
+            if isinstance(p, dict) and "_comment" not in p and p.get("draft") == self.draft_type
+        ]
+
+        # Normalize fields for safety:
+        # - Keeper picks may not include round_type; default to "standard".
+        # - Prospect picks may have missing round_type; infer from round.
+        # - Some keeper picks may track ownership in current_owner; ensure the
+        #   live draft engine uses current_owner for the team on the clock.
+        for p in filtered_picks:
+            if self.draft_type == "keeper":
+                if not p.get("round_type"):
+                    p["round_type"] = "standard"
+
+                current_owner = str(p.get("current_owner") or "").strip().upper()
+                if current_owner:
+                    team = str(p.get("team") or "").strip().upper()
+                    if team and team != current_owner:
+                        print(
+                            "⚠️ Keeper pick team/current_owner mismatch; using current_owner for draft team",
+                            {
+                                "round": p.get("round"),
+                                "pick": p.get("pick"),
+                                "team": team,
+                                "current_owner": current_owner,
+                                "original_owner": p.get("original_owner"),
+                            },
+                        )
+                    p["team"] = current_owner
+
+            elif self.draft_type == "prospect":
+                if not p.get("round_type"):
+                    try:
+                        r = int(p.get("round") or 0)
+                    except Exception:
+                        r = 0
+                    p["round_type"] = "fypd" if r in (1, 2) else "prospect"
+
+        print(f"✅ Loaded draft order: {len(filtered_picks)} picks for {self.draft_type} draft (filtered from {len(picks)} total)")
+
         # Validate order
-        self._validate_draft_order(picks)
-        
-        return picks
+        self._validate_draft_order(filtered_picks)
+
+        return filtered_picks
     
     def _validate_draft_order(self, picks: List[Dict]) -> None:
         """Validate draft order structure and completeness"""
         
-        # Check required fields
-        required_fields = ["round", "pick", "team", "round_type"]
+        # Required fields depend on draft type
+        # Prospect drafts need round_type (fypd, bc, dc)
+        # Keeper drafts don't have round_type
+        if self.draft_type == "prospect":
+            required_fields = ["round", "pick", "team", "round_type"]
+        else:
+            required_fields = ["round", "pick", "team"]
+        
         for i, pick in enumerate(picks):
+            # Skip comment objects (already filtered, but being safe)
+            if "_comment" in pick:
+                continue
+                
             for field in required_fields:
                 if field not in pick:
                     raise ValueError(
@@ -133,6 +183,10 @@ class DraftManager:
         # Count picks by team
         team_counts = {}
         for pick in picks:
+            # Skip comment objects
+            if "_comment" in pick:
+                continue
+                
             team = pick["team"]
             team_counts[team] = team_counts.get(team, 0) + 1
         
@@ -239,6 +293,10 @@ class DraftManager:
         # previous run or an external PAD-driven import).
         if not team_slots:
             for pick in self.draft_order:
+                # Skip comment objects
+                if "_comment" in pick:
+                    continue
+                    
                 team = pick["team"]
                 round_num = pick["round"]
                 entry = team_slots.setdefault(
@@ -958,6 +1016,10 @@ class DraftManager:
         # Count by round
         rounds = {}
         for pick in self.draft_order:
+            # Skip comment objects
+            if "_comment" in pick:
+                continue
+                
             round_num = pick["round"]
             if round_num not in rounds:
                 rounds[round_num] = {"total": 0, "made": 0}

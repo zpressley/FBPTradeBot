@@ -17,6 +17,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_kap_balance
+from team_utils import normalize_team_abbr
 
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
 
@@ -74,8 +75,9 @@ def save_json_file(filepath: str, data):
 
 def validate_admin(admin_user: str, managers_data: dict) -> bool:
     """Check if user has admin role."""
-    team_data = managers_data.get("teams", {}).get(admin_user)
-    if not team_data:
+    admin_team = normalize_team_abbr(admin_user, managers_data=managers_data)
+    team_data = (managers_data.get("teams") or {}).get(admin_team)
+    if not isinstance(team_data, dict):
         return False
     return team_data.get("role") == "admin"
 
@@ -129,6 +131,18 @@ async def post_to_discord(team: str, round: int, cost: int, action: str = "purch
 
 @router.post("/purchase")
 async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depends(verify_key)):
+    try:
+        print(
+            "📥 BUYIN_PURCHASE",
+            {
+                "team": payload.team,
+                "round": payload.round,
+                "cost": payload.cost,
+                "purchased_by": payload.purchased_by,
+            },
+        )
+    except Exception:
+        pass
     """Purchase a keeper draft buy-in.
     
     Updates:
@@ -149,6 +163,8 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
     managers_data = load_json_file("config/managers.json")
+
+    team = normalize_team_abbr(payload.team, managers_data=managers_data)
     
     # Load or create wizbucks transactions
     try:
@@ -162,7 +178,7 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     # Apply purchase (mutates draft_order, managers_data, transactions)
     try:
         result = apply_keeper_buyin_purchase(
-            team=payload.team,
+            team=team,
             round=payload.round,
             pick=None,
             draft_order=draft_order,
@@ -173,6 +189,17 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
             trade_id=None,
         )
     except ValueError as exc:
+        try:
+            print(
+                "❌ BUYIN_PURCHASE_FAILED",
+                {
+                    "team": payload.team,
+                    "round": payload.round,
+                    "error": str(exc),
+                },
+            )
+        except Exception:
+            pass
         raise HTTPException(status_code=400, detail=str(exc))
 
     # Save all files
@@ -184,7 +211,20 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
 
     # Post to Discord
-    await post_to_discord(payload.team, payload.round, result.cost, "purchased")
+    await post_to_discord(team, payload.round, result.cost, "purchased")
+
+    try:
+        print(
+            "✅ BUYIN_PURCHASE_OK",
+            {
+                "team": team,
+                "round": payload.round,
+                "cost": result.cost,
+                "new_balance": result.kap_balance_after,
+            },
+        )
+    except Exception:
+        pass
 
     return {
         "success": True,
@@ -196,6 +236,17 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
 
 @router.post("/refund")
 async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(verify_key)):
+    try:
+        print(
+            "📥 BUYIN_REFUND",
+            {
+                "team": payload.team,
+                "round": payload.round,
+                "admin_user": payload.admin_user,
+            },
+        )
+    except Exception:
+        pass
     """Refund a keeper draft buy-in (admin only).
     
     Reverses the purchase:
@@ -207,9 +258,12 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
     managers_data = load_json_file("config/managers.json")
-    
+
+    team = normalize_team_abbr(payload.team, managers_data=managers_data)
+    admin_team = normalize_team_abbr(payload.admin_user, managers_data=managers_data)
+
     # Validate admin permission
-    if not validate_admin(payload.admin_user, managers_data):
+    if not validate_admin(admin_team, managers_data):
         raise HTTPException(status_code=403, detail="Admin access required")
     
     # Load transactions
@@ -224,16 +278,27 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     # Apply refund (mutates draft_order, managers_data, transactions)
     try:
         result = apply_keeper_buyin_refund(
-            team=payload.team,
+            team=team,
             round=payload.round,
             pick=None,
             draft_order=draft_order,
             managers_data=managers_data,
             ledger=transactions,
-            refunded_by=payload.admin_user,
+            refunded_by=admin_team,
             source="buyin_api",
         )
     except ValueError as exc:
+        try:
+            print(
+                "❌ BUYIN_REFUND_FAILED",
+                {
+                    "team": payload.team,
+                    "round": payload.round,
+                    "error": str(exc),
+                },
+            )
+        except Exception:
+            pass
         raise HTTPException(status_code=400, detail=str(exc))
 
     # Save all files
@@ -245,7 +310,20 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
 
     # Post to Discord
-    await post_to_discord(payload.team, payload.round, result.amount, "refunded")
+    await post_to_discord(team, payload.round, result.amount, "refunded")
+
+    try:
+        print(
+            "✅ BUYIN_REFUND_OK",
+            {
+                "team": team,
+                "round": payload.round,
+                "amount": result.amount,
+                "new_balance": result.kap_balance_after,
+            },
+        )
+    except Exception:
+        pass
 
     return {
         "success": True,

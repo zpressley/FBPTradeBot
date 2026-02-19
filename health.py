@@ -140,14 +140,27 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
 
     repo_root = REPO_ROOT
 
+    def _ts() -> str:
+        return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
     def _redact(s: str) -> str:
         token = os.getenv("GITHUB_TOKEN") or ""
         return s.replace(token, "***") if token and s else s
 
-    def _run(cmd: list[str]) -> subprocess.CompletedProcess:
+    def _log(msg: str, data: dict | None = None) -> None:
+        try:
+            if data is None:
+                print(f"[{_ts()}] {msg}")
+            else:
+                print(f"[{_ts()}] {msg} {json.dumps(data, default=str)}")
+        except Exception:
+            print(f"[{_ts()}] {msg}")
+
+    def _run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess:
+        _log("GIT_CMD", {"cmd": cmd})
         return subprocess.run(
             cmd,
-            check=True,
+            check=check,
             cwd=repo_root,
             capture_output=True,
             text=True,
@@ -163,79 +176,138 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
     push_cmd = ["git", "push", remote_url, "HEAD:main"] if remote_url else ["git", "push"]
     fetch_remote = remote_url if remote_url else "origin"
 
+    # De-dupe but preserve order
+    seen = set()
+    file_paths = [p for p in (file_paths or []) if p and not (p in seen or seen.add(p))]
+
+    # Only stage files that exist (avoid git add pathspec errors)
+    existing_paths = [p for p in file_paths if os.path.exists(os.path.join(repo_root, p))]
+    missing_paths = [p for p in file_paths if p not in existing_paths]
+
+    _log(
+        "GIT_COMMIT_START",
+        {
+            "repo_root": repo_root,
+            "message_head": (message or "").splitlines()[0] if message else "",
+            "file_count": len(file_paths),
+            "existing_files": existing_paths,
+            "missing_files": missing_paths,
+        },
+    )
+
+    # Best-effort: ensure we are on main (avoid detached HEAD from prior failures)
     try:
-        # Stage files
-        if file_paths:
-            _run(["git", "add", *file_paths])
+        _run(["git", "checkout", "main"], check=False)
+    except Exception:
+        pass
 
-        # Commit
-        _run(["git", "commit", "-m", message])
+    def _stage_and_commit() -> bool:
+        """Return True if a commit was created."""
+        if existing_paths:
+            _run(["git", "add", *existing_paths])
 
-        # Push
-        _run(push_cmd)
-        print("✅ Git batch commit and push succeeded")
+        staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
+        staged_files = [ln.strip() for ln in (staged.stdout or "").splitlines() if ln.strip()]
+        if not staged_files:
+            _log("GIT_NOOP", {"reason": "nothing staged to commit"})
+            return False
+
+        try:
+            _run(["git", "commit", "-m", message])
+        except subprocess.CalledProcessError as exc:
+            combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
+            if "nothing to commit" in combined.lower():
+                _log("GIT_NOOP", {"reason": "nothing to commit after staging"})
+                return False
+            _log("GIT_COMMIT_FAILED", {"code": exc.returncode, "output": combined[-1500:]})
+            raise
+
+        return True
+
+    def _push_with_retry(saved_files: dict[str, bytes] | None = None) -> None:
+        try:
+            _run(push_cmd)
+            _log("GIT_PUSH_OK")
+            return
+        except subprocess.CalledProcessError as exc:
+            combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
+            retryable = any(
+                s in combined.lower()
+                for s in [
+                    "fetch first",
+                    "non-fast-forward",
+                    "updates were rejected",
+                    "rejected",
+                ]
+            )
+
+            if not retryable:
+                _log("GIT_PUSH_FAILED", {"code": exc.returncode, "output": combined[-2000:]})
+                raise
+
+            _log("GIT_PUSH_RETRY", {"reason": "non-fast-forward", "output": combined[-1200:]})
+
+            # Conflict-resistant retry:
+            # - Fetch remote main
+            # - Hard reset local main to FETCH_HEAD
+            # - Re-apply ONLY the file contents we intended to commit
+            # - Commit + push
+            if saved_files is None:
+                saved_files = {}
+                for p in existing_paths:
+                    try:
+                        full = os.path.join(repo_root, p)
+                        with open(full, "rb") as f:
+                            saved_files[p] = f.read()
+                    except Exception:
+                        continue
+
+            # Best-effort cleanup of any interrupted operations
+            subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
+            subprocess.run(["git", "merge", "--abort"], cwd=repo_root, capture_output=True, text=True)
+            subprocess.run(["git", "cherry-pick", "--abort"], cwd=repo_root, capture_output=True, text=True)
+            subprocess.run(["git", "checkout", "main"], cwd=repo_root, capture_output=True, text=True)
+
+            _run(["git", "fetch", fetch_remote, "main"])
+            _run(["git", "reset", "--hard", "FETCH_HEAD"])
+
+            # Restore saved file contents
+            for rel, blob in (saved_files or {}).items():
+                try:
+                    full = os.path.join(repo_root, rel)
+                    os.makedirs(os.path.dirname(full), exist_ok=True)
+                    with open(full, "wb") as f:
+                        f.write(blob)
+                except Exception as wexc:
+                    _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
+
+            # Re-stage + commit + push
+            if existing_paths:
+                _run(["git", "add", *existing_paths])
+
+            staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
+            if not (staged.stdout or "").strip():
+                _log("GIT_NOOP", {"reason": "retry produced no staged changes"})
+                return
+
+            _run(["git", "commit", "-m", message])
+            _run(push_cmd)
+            _log("GIT_PUSH_OK", {"after": "hard-reset-reapply"})
+
+    try:
+        did_commit = _stage_and_commit()
+        if not did_commit:
+            return
+
+        _push_with_retry()
+        _log("GIT_BATCH_COMMIT_PUSH_OK")
 
     except subprocess.CalledProcessError as exc:
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
-        combined = _redact((stdout + "\n" + stderr).strip())
-
-        # If rejected because remote advanced, retry with fetch+rebase
-        retryable = any(
-            s in combined.lower()
-            for s in [
-                "fetch first",
-                "non-fast-forward",
-                "updates were rejected",
-                "rejected",
-            ]
-        )
-
-        if retryable:
-            try:
-                print("⚠️ Push rejected; fetching and rebasing...")
-                # Stash any unstaged changes before rebasing
-                try:
-                    _run(["git", "stash", "--include-untracked"])
-                    stashed = True
-                except subprocess.CalledProcessError:
-                    stashed = False
-                
-                _run(["git", "fetch", fetch_remote, "main"])
-                _run(["git", "rebase", "FETCH_HEAD"])
-                
-                # Pop stash if we stashed
-                if stashed:
-                    try:
-                        _run(["git", "stash", "pop"])
-                    except subprocess.CalledProcessError:
-                        print("⚠️ Stash pop had conflicts, keeping stashed changes")
-                
-                _run(push_cmd)
-                print("✅ Git push succeeded after rebase")
-                return
-            except subprocess.CalledProcessError as exc2:
-                # Clean up rebase state
-                try:
-                    subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
-                    subprocess.run(["git", "stash", "pop"], cwd=repo_root, capture_output=True, text=True)
-                except Exception:
-                    pass
-
-                stdout2 = exc2.stdout or ""
-                stderr2 = exc2.stderr or ""
-                combined2 = _redact((stdout2 + "\n" + stderr2).strip())
-                print(f"⚠️ Git commit/push failed with code {exc2.returncode} (after retry).")
-                if combined2:
-                    print(combined2)
-                return
-
-        print(f"⚠️ Git commit/push failed with code {exc.returncode}.")
-        if combined:
-            print(combined)
+        combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
+        _log("GIT_OP_FAILED", {"code": exc.returncode, "output": combined[-2000:]})
 
     except Exception as exc:
-        print(f"⚠️ Git commit/push failed with unexpected error: {exc}")
+        _log("GIT_OP_FAILED", {"error": str(exc)})
 
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
@@ -688,12 +760,26 @@ async def _send_admin_tasks_message(content: str) -> None:
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
     """Queue a commit operation for batching.
-    
+
     Instead of committing immediately, add to queue processed by background worker.
     This prevents concurrent git operations from colliding.
     """
     with _commit_queue_lock:
         _commit_queue.append((file_paths, message))
+
+    # Render visibility: log enqueued operations so we can correlate later git failures.
+    try:
+        head = (message or "").splitlines()[0] if message else ""
+        print(
+            "🧾 Commit queued",
+            {
+                "message": head,
+                "file_count": len(file_paths or []),
+                "files": list(file_paths or [])[:10],
+            },
+        )
+    except Exception:
+        pass
 
 
 @app.get("/api/auction/current")
@@ -1554,6 +1640,64 @@ async def api_admin_pad_retro_discord(
     }
 
 
+# ---- KAP Submission API ----
+
+from kap.kap_processor import (
+    process_kap_submission,
+    announce_kap_submission_to_discord,
+    KAPSubmission,
+    KAPResult,
+)
+
+@app.post("/api/kap/submit")
+async def api_kap_submit(
+    submission: KAPSubmission,
+    authorized: bool = Depends(verify_api_key),
+):
+    """
+    Submit KAP (Keeper Assignment Period) selections.
+    
+    This endpoint:
+    1. Updates player contracts in combined_players.json
+    2. Creates player_log entries for each keeper
+    3. Updates draft_order_2026.json with taxed picks
+    4. Deducts WizBucks from wallet
+    5. Logs transaction to wizbucks_transactions.json
+    6. Posts to Discord transactions channel
+    """
+    print(f"📝 Processing KAP submission for {submission.team}...")
+    
+    try:
+        # Process submission
+        result = process_kap_submission(submission, test_mode=False)
+        
+        # Announce to Discord
+        if bot:
+            bot.loop.create_task(announce_kap_submission_to_discord(result, bot))
+            await asyncio.sleep(2)
+        
+        return {
+            "ok": True,
+            "team": result.team,
+            "season": result.season,
+            "timestamp": result.timestamp,
+            "keepers_selected": result.keepers_selected,
+            "keeper_salary_cost": result.keeper_salary_cost,
+            "rat_cost": result.rat_cost,
+            "buyin_cost": result.buyin_cost,
+            "total_taxable_spend": result.total_taxable_spend,
+            "wb_spent": result.wb_spent,
+            "wb_remaining": result.wb_remaining,
+            "draft_picks_taxed": result.draft_picks_taxed
+        }
+        
+    except Exception as exc:
+        import traceback
+        print(f"❌ KAP submission failed: {exc}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.post("/api/admin/pad-test-discord")
 async def api_admin_pad_test_discord(
     team: str = "WAR",
@@ -1625,8 +1769,17 @@ async def get_active_draft(
     if draft_type not in ("keeper", "prospect"):
         raise HTTPException(status_code=400, detail="draft_type must be 'keeper' or 'prospect'")
 
-    payload = build_draft_payload(draft_type)
-    return _json_no_store(payload)
+    try:
+        payload = build_draft_payload(draft_type)
+        return _json_no_store(payload)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        import traceback
+
+        print("❌ /api/draft/active failed", {"draft_type": draft_type, "error": str(exc)})
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail="Failed to build draft payload")
 
 
 @app.get("/api/draft/config")

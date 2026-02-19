@@ -136,7 +136,7 @@
     "team": "WAR",
     "round_type": "fypd",
     "result": {
-      "player": "Luis Hernández",
+      "player": "Luis Hern\u00e1ndez",
       "timestamp": "2026-02-16T01:42:12.624282",
       "pick_index": 10,
       "upid": "8339"
@@ -266,7 +266,7 @@
     "team": "DMN",
     "round_type": "dc",
     "result": {
-      "player": "Elmer Rodríguez",
+      "player": "Elmer Rodr\u00edguez",
       "timestamp": "2026-02-16T01:50:14.471027",
       "pick_index": 20,
       "upid": "8319"
@@ -698,7 +698,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -714,7 +715,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -730,7 +732,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -746,7 +749,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -762,7 +766,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -778,7 +783,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -794,7 +800,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -810,7 +817,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -826,7 +834,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -842,7 +851,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -858,7 +868,8 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
@@ -874,12 +885,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 13,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -890,12 +902,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 14,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -906,12 +919,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 15,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -922,12 +936,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 16,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -938,12 +953,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 17,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -954,12 +970,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 18,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -970,12 +987,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 19,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -986,12 +1004,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 20,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1002,12 +1021,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 21,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1018,12 +1038,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 22,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1034,12 +1055,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 23,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -1050,12 +1072,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 2,
-    "pick": 24,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -1066,12 +1089,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 25,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -1082,12 +1106,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 26,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -1098,12 +1123,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 27,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -1114,12 +1140,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 28,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -1130,12 +1157,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 29,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -1146,12 +1174,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 30,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -1162,12 +1191,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 31,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -1178,12 +1208,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 32,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1194,12 +1225,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 33,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1210,12 +1242,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 34,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1226,12 +1259,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 35,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -1242,12 +1276,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 3,
-    "pick": 36,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -1258,12 +1293,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "result": null,
-    "taxed_out": false
+    "taxed_out": false,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 37,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -1274,12 +1310,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 38,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -1290,12 +1327,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 39,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -1306,12 +1344,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 40,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -1322,12 +1361,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 41,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -1338,12 +1378,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 42,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -1354,12 +1395,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 43,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -1370,12 +1412,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 44,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1386,12 +1429,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 45,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1402,12 +1446,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 46,
+    "pick": 10,
     "team": "WIZ",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1418,12 +1463,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 47,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -1434,12 +1480,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 4,
-    "pick": 48,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -1450,12 +1497,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 49,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -1466,12 +1514,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 50,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -1482,12 +1531,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 51,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -1498,12 +1548,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 52,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -1514,12 +1565,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 53,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -1530,12 +1582,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 54,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -1546,12 +1599,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 55,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -1562,12 +1616,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 56,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1578,12 +1633,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 57,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1594,12 +1650,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 58,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1610,12 +1667,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 59,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -1626,12 +1684,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 5,
-    "pick": 60,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -1642,12 +1701,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 61,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -1658,12 +1718,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 62,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -1674,12 +1735,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 63,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -1690,12 +1752,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 64,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -1706,12 +1769,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 65,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -1722,12 +1786,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 66,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -1738,12 +1803,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 67,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -1754,12 +1820,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 68,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1770,12 +1837,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 69,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1786,12 +1854,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 70,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1802,12 +1871,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 71,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -1818,12 +1888,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 6,
-    "pick": 72,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -1834,12 +1905,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 73,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -1850,12 +1922,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 74,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -1866,12 +1939,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 75,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -1882,12 +1956,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 76,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -1898,12 +1973,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 77,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -1914,12 +1990,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 78,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -1930,12 +2007,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 79,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -1946,12 +2024,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 80,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -1962,12 +2041,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 81,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -1978,12 +2058,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 82,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -1994,12 +2075,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 83,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2010,12 +2092,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 7,
-    "pick": 84,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2026,12 +2109,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 85,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -2042,12 +2126,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 86,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -2058,12 +2143,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 87,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -2074,12 +2160,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 88,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -2090,12 +2177,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 89,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -2106,12 +2194,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 90,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -2122,12 +2211,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 91,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -2138,12 +2228,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 92,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -2154,12 +2245,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 93,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -2170,12 +2262,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 94,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -2186,12 +2279,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 95,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2202,12 +2296,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 8,
-    "pick": 96,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2218,12 +2313,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 97,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -2234,12 +2330,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 98,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -2250,12 +2347,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 99,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -2266,12 +2364,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 100,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -2282,12 +2381,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 101,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -2298,12 +2398,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 102,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -2314,12 +2415,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 103,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -2330,12 +2432,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 104,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -2346,12 +2449,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 105,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -2362,12 +2466,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 106,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -2378,12 +2483,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 107,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2394,12 +2500,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 9,
-    "pick": 108,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2410,12 +2517,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 109,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -2426,12 +2534,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 110,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -2442,12 +2551,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 111,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -2458,12 +2568,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 112,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -2474,12 +2585,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 113,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -2490,12 +2602,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 114,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -2506,12 +2619,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 115,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -2522,12 +2636,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 116,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -2538,12 +2653,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 117,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -2554,12 +2670,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 118,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -2570,12 +2687,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 119,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2586,12 +2704,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 10,
-    "pick": 120,
+    "pick": 12,
     "team": "DRO",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2602,12 +2721,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 121,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -2618,12 +2738,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 122,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -2634,12 +2755,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 123,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -2650,12 +2772,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 124,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -2666,12 +2789,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 125,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -2682,12 +2806,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 126,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -2698,12 +2823,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 127,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -2714,12 +2840,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 128,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -2730,12 +2857,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 129,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -2746,12 +2874,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 130,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -2762,12 +2891,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 131,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2778,12 +2908,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 11,
-    "pick": 132,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2794,12 +2925,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 133,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -2810,12 +2942,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 134,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -2826,12 +2959,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 135,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -2842,12 +2976,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 136,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -2858,12 +2993,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 137,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -2874,12 +3010,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 138,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -2890,12 +3027,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 139,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -2906,12 +3044,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 140,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -2922,12 +3061,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 141,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -2938,12 +3078,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 142,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -2954,12 +3095,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 143,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -2970,12 +3112,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 12,
-    "pick": 144,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -2986,12 +3129,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 145,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3002,12 +3146,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 146,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3018,12 +3163,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 147,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3034,12 +3180,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 148,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -3050,12 +3197,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 149,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -3066,12 +3214,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 150,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -3082,12 +3231,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 151,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -3098,12 +3248,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 152,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -3114,12 +3265,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 153,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -3130,12 +3282,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 154,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -3146,12 +3299,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 155,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -3162,12 +3316,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 13,
-    "pick": 156,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -3178,12 +3333,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 157,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3194,12 +3350,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 158,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3210,12 +3367,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 159,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3226,12 +3384,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 160,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -3242,12 +3401,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 161,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -3258,12 +3418,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 162,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -3274,12 +3435,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 163,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -3290,12 +3452,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 164,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -3306,12 +3469,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 165,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -3322,12 +3486,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 166,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -3338,12 +3503,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 167,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -3354,12 +3520,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 14,
-    "pick": 168,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -3370,12 +3537,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 169,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3386,12 +3554,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 170,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3402,12 +3571,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 171,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3418,12 +3588,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 172,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -3434,12 +3605,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 173,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -3450,12 +3622,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 174,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -3466,12 +3639,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 175,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -3482,12 +3656,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 176,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -3498,12 +3673,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 177,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -3514,12 +3690,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 178,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -3530,12 +3707,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 179,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -3546,12 +3724,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 15,
-    "pick": 180,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -3562,12 +3741,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 181,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3578,12 +3758,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 182,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3594,12 +3775,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 183,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3610,12 +3792,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 184,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -3626,12 +3809,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 185,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -3642,12 +3826,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 186,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -3658,12 +3843,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 187,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -3674,12 +3860,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 188,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -3690,12 +3877,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 189,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -3706,12 +3894,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 190,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -3722,12 +3911,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 191,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -3738,12 +3928,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 16,
-    "pick": 192,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -3754,12 +3945,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 193,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3770,12 +3962,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 194,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3786,12 +3979,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 195,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3802,12 +3996,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 196,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -3818,12 +4013,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 197,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -3834,12 +4030,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 198,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -3850,12 +4047,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 199,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -3866,12 +4064,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 200,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -3882,12 +4081,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 201,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -3898,12 +4098,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 202,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -3914,12 +4115,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 203,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -3930,12 +4132,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 17,
-    "pick": 204,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -3946,12 +4149,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 205,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -3962,12 +4166,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 206,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -3978,12 +4183,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 207,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -3994,12 +4200,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 208,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4010,12 +4217,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 209,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4026,12 +4234,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 210,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -4042,12 +4251,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 211,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -4058,12 +4268,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 212,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -4074,12 +4285,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 213,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -4090,12 +4302,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 214,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -4106,12 +4319,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 215,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -4122,12 +4336,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 18,
-    "pick": 216,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -4138,12 +4353,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 217,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -4154,12 +4370,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 218,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -4170,12 +4387,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 219,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -4186,12 +4404,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 220,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4202,12 +4421,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 221,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4218,12 +4438,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 222,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -4234,12 +4455,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 223,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -4250,12 +4472,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 224,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -4266,12 +4489,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 225,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -4282,12 +4506,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 226,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -4298,12 +4523,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 227,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -4314,12 +4540,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 19,
-    "pick": 228,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -4330,12 +4557,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 229,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -4346,12 +4574,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 230,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -4362,12 +4591,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 231,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -4378,12 +4608,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 232,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4394,12 +4625,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 233,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4410,12 +4642,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 234,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -4426,12 +4659,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 235,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -4442,12 +4676,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 236,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -4458,12 +4693,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 237,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -4474,12 +4710,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 238,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -4490,12 +4727,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 239,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -4506,12 +4744,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 20,
-    "pick": 240,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -4522,12 +4761,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 241,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -4538,12 +4778,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 242,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -4554,12 +4795,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 243,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -4570,12 +4812,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 244,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4586,12 +4829,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 245,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4602,12 +4846,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 246,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -4618,12 +4863,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 247,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -4634,12 +4880,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 248,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -4650,12 +4897,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 249,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -4666,12 +4914,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 250,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -4682,12 +4931,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 251,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -4698,12 +4948,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 21,
-    "pick": 252,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -4714,12 +4965,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 253,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -4730,12 +4982,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 254,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -4746,12 +4999,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 255,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -4762,12 +5016,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 256,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4778,12 +5033,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 257,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4794,12 +5050,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 258,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -4810,12 +5067,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 259,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -4826,12 +5084,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 260,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -4842,12 +5101,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 261,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -4858,12 +5118,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 262,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -4874,12 +5135,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 263,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -4890,12 +5152,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 22,
-    "pick": 264,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -4906,12 +5169,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 265,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -4922,12 +5186,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 266,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -4938,12 +5203,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 267,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -4954,12 +5220,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 268,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -4970,12 +5237,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 269,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -4986,12 +5254,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 270,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5002,12 +5271,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 271,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5018,12 +5288,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 272,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5034,12 +5305,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 273,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -5050,12 +5322,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 274,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -5066,12 +5339,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 275,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -5082,12 +5356,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 23,
-    "pick": 276,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -5098,12 +5373,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 277,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -5114,12 +5390,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 278,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -5130,12 +5407,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 279,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -5146,12 +5424,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 280,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -5162,12 +5441,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 281,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -5178,12 +5458,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 282,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5194,12 +5475,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 283,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5210,12 +5492,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 284,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5226,12 +5509,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 285,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -5242,12 +5526,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 286,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -5258,12 +5543,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 287,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -5274,12 +5560,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 24,
-    "pick": 288,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -5290,12 +5577,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 289,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -5306,12 +5594,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 290,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -5322,12 +5611,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 291,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -5338,12 +5628,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 292,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -5354,12 +5645,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 293,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -5370,12 +5662,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 294,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5386,12 +5679,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 295,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5402,12 +5696,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 296,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5418,12 +5713,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 297,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -5434,12 +5730,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 298,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -5450,12 +5747,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 299,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -5466,12 +5764,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 25,
-    "pick": 300,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -5482,12 +5781,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 301,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -5498,12 +5798,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 302,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -5514,12 +5815,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 303,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -5530,12 +5832,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 304,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -5546,12 +5849,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 305,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -5562,12 +5866,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 306,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5578,12 +5883,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 307,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5594,12 +5900,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 308,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5610,12 +5917,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 309,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -5626,12 +5934,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 310,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -5642,12 +5951,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 311,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -5658,12 +5968,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 26,
-    "pick": 312,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -5674,12 +5985,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 313,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -5690,12 +6002,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 314,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -5706,12 +6019,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 315,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -5722,12 +6036,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 316,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -5738,12 +6053,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 317,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -5754,12 +6070,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 318,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5770,12 +6087,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 319,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5786,12 +6104,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 320,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5802,12 +6121,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 321,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -5818,12 +6138,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 322,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -5834,12 +6155,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 323,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -5850,12 +6172,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 27,
-    "pick": 324,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -5866,12 +6189,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 325,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -5882,12 +6206,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 326,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -5898,12 +6223,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 327,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -5914,12 +6240,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 328,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -5930,12 +6257,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 329,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -5946,12 +6274,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 330,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -5962,12 +6291,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 331,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -5978,12 +6308,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 332,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -5994,12 +6325,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 333,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -6010,12 +6342,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 334,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -6026,12 +6359,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 335,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -6042,12 +6376,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 28,
-    "pick": 336,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -6058,12 +6393,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 337,
+    "pick": 1,
     "team": "TBB",
     "original_owner": "TBB",
     "current_owner": "TBB",
@@ -6074,12 +6410,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 338,
+    "pick": 2,
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
@@ -6090,12 +6427,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 339,
+    "pick": 3,
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
@@ -6106,12 +6444,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 340,
+    "pick": 4,
     "team": "RV",
     "original_owner": "RV",
     "current_owner": "RV",
@@ -6122,12 +6461,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 341,
+    "pick": 5,
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
@@ -6138,12 +6478,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 342,
+    "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
     "current_owner": "CFL",
@@ -6154,12 +6495,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 343,
+    "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
@@ -6170,12 +6512,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 344,
+    "pick": 8,
     "team": "WAR",
     "original_owner": "WAR",
     "current_owner": "WAR",
@@ -6186,12 +6529,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 345,
+    "pick": 9,
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
@@ -6202,12 +6546,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 346,
+    "pick": 10,
     "team": "DRO",
     "original_owner": "DRO",
     "current_owner": "DRO",
@@ -6218,12 +6563,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 347,
+    "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
     "current_owner": "LFB",
@@ -6234,12 +6580,13 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   },
   {
     "draft": "keeper",
     "round": 29,
-    "pick": 348,
+    "pick": 12,
     "team": "WIZ",
     "original_owner": "WIZ",
     "current_owner": "WIZ",
@@ -6250,6 +6597,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null
+    "result": null,
+    "round_type": "standard"
   }
 ]

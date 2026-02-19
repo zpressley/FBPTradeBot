@@ -15,6 +15,8 @@ from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional
 
+from team_utils import normalize_team_abbr
+
 router = APIRouter(prefix="/api/draft", tags=["draft-pick-request"])
 
 API_KEY = os.getenv("BOT_API_KEY", "")
@@ -77,17 +79,19 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
     if not current_pick:
         raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
 
+    team = normalize_team_abbr(payload.team)
+
     # Check it's the right team's turn
-    if current_pick["team"] != payload.team:
+    if current_pick["team"] != team:
         raise HTTPException(
             status_code=400,
-            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+            detail=f"Not {team}'s turn. {current_pick['team']} is on the clock.",
         )
 
     # Validate the pick
     if cog.pick_validator:
         valid, message, player_data = cog.pick_validator.validate_pick(
-            payload.team, payload.player_name
+            team, payload.player_name
         )
         if not valid:
             raise HTTPException(status_code=400, detail=message)
@@ -109,11 +113,11 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
 
     from commands.utils import MANAGER_DISCORD_IDS
 
-    user_id = MANAGER_DISCORD_IDS.get(payload.team)
+    user_id = MANAGER_DISCORD_IDS.get(team)
     if not user_id:
         raise HTTPException(
             status_code=400,
-            detail=f"No Discord user mapped for team {payload.team}",
+            detail=f"No Discord user mapped for team {team}",
         )
 
     try:
@@ -132,7 +136,7 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
         await cog.show_pick_confirmation(
             draft_channel,
             user,
-            payload.team,
+            team,
             payload.player_name,
             current_pick,
             is_dm=False,
@@ -141,7 +145,7 @@ async def request_pick(payload: PickRequestPayload, authorized: bool = Depends(v
 
         return {
             "success": True,
-            "message": f"Confirmation posted in draft channel for {payload.team}",
+            "message": f"Confirmation posted in draft channel for {team}",
             "player": player_data.get("name"),
             "round": current_pick["round"],
             "pick": current_pick["pick"],
@@ -175,16 +179,18 @@ async def validate_pick(payload: PickRequestPayload, authorized: bool = Depends(
     if not current_pick:
         raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
 
-    if current_pick["team"] != payload.team:
+    team = normalize_team_abbr(payload.team)
+
+    if current_pick["team"] != team:
         raise HTTPException(
             status_code=400,
-            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+            detail=f"Not {team}'s turn. {current_pick['team']} is on the clock.",
         )
 
     # Validate the pick
     if cog.pick_validator:
         valid, message, player_data = cog.pick_validator.validate_pick(
-            payload.team, payload.player_name
+            team, payload.player_name
         )
         if not valid:
             raise HTTPException(status_code=400, detail=message)
@@ -244,16 +250,18 @@ async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(v
     if not current_pick:
         raise HTTPException(status_code=400, detail="No current pick (draft may be complete)")
 
-    if current_pick["team"] != payload.team:
+    team = normalize_team_abbr(payload.team)
+
+    if current_pick["team"] != team:
         raise HTTPException(
             status_code=400,
-            detail=f"Not {payload.team}'s turn. {current_pick['team']} is on the clock.",
+            detail=f"Not {team}'s turn. {current_pick['team']} is on the clock.",
         )
 
     # Validate the pick
     if cog.pick_validator:
         valid, message, player_data = cog.pick_validator.validate_pick(
-            payload.team, payload.player_name
+            team, payload.player_name
         )
         if not valid:
             raise HTTPException(status_code=400, detail=message)
@@ -276,7 +284,7 @@ async def confirm_pick(payload: PickRequestPayload, authorized: bool = Depends(v
 
         # Record the pick (this advances the draft)
         pick_record = draft_manager.make_pick(
-            payload.team,
+            team,
             player_data["name"],
             player_data,
         )
