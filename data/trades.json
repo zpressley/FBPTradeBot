@@ -917,7 +917,7 @@
       "DMN"
     ],
     "initiator_team": "WAR",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-19T20:02:17.788079Z",
     "expires_at": "2026-03-05T20:02:17.788079Z",
     "transfers": [
@@ -958,6 +958,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1474134019091206147",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-19T20:02:42.287318Z"
+    "manager_approved_at": "2026-02-19T20:02:42.287318Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-19T21:40:49.044090Z",
+    "data_applied_at": "2026-02-19T21:40:49.339629Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
