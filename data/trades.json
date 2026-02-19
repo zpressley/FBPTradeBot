@@ -853,5 +853,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "WEB-TRADE-20260219-130729": {
+    "trade_id": "WEB-TRADE-20260219-130729",
+    "teams": [
+      "HAM",
+      "CFL"
+    ],
+    "initiator_team": "HAM",
+    "status": "pending",
+    "created_at": "2026-02-19T13:07:29.507544Z",
+    "expires_at": "2026-03-05T13:07:29.507544Z",
+    "transfers": [
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "CFL",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "7282",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "HAM"
+    ],
+    "receives": {
+      "HAM": [
+        "$15 WB via CFL"
+      ],
+      "CFL": [
+        "SP Shota Imanaga [CHC] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
