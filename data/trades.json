@@ -909,5 +909,53 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "WEB-TRADE-20260219-200217": {
+    "trade_id": "WEB-TRADE-20260219-200217",
+    "teams": [
+      "WAR",
+      "DMN"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-19T20:02:17.788079Z",
+    "expires_at": "2026-03-05T20:02:17.788079Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3884",
+        "from_team": "DMN",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7950",
+        "from_team": "DMN",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WAR",
+        "to_team": "DMN"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "2B,SS Jackson Holliday [BAL] [TC R]",
+        "C,1B,OF Ike Irish [BAL] [DC]"
+      ],
+      "DMN": [
+        "$15 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
