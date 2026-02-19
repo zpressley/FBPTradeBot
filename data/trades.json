@@ -778,7 +778,7 @@
       "TBB"
     ],
     "initiator_team": "DRO",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-19T12:56:54.823814Z",
     "expires_at": "2026-03-05T12:56:54.823814Z",
     "transfers": [
@@ -840,6 +840,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1474026968285708308",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-19T13:00:33.612672Z"
+    "manager_approved_at": "2026-02-19T13:00:33.612672Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-19T13:02:01.310471Z",
+    "data_applied_at": "2026-02-19T13:02:01.517298Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 6,
+      "player_log_entries": 6,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
