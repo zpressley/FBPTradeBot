@@ -368,6 +368,12 @@ class AdminRejectionModal(Modal):
         self.add_item(self.reason)
 
     async def on_submit(self, interaction: discord.Interaction):
+        # ACK immediately to avoid Discord's modal-submit timeout.
+        try:
+            await interaction.response.defer(ephemeral=True)
+        except Exception:
+            pass
+
         trade_id = self.trade_data.get("trade_id")
         admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
 
@@ -379,7 +385,10 @@ class AdminRejectionModal(Modal):
             except Exception as exc:
                 print(f"⚠️ Failed to sync admin rejection to store: {exc}")
 
-        await interaction.response.send_message("❌ Trade rejected.", ephemeral=True)
+        try:
+            await interaction.followup.send("❌ Trade rejected.", ephemeral=True)
+        except Exception:
+            pass
 
 
 class AdminReviewView(View):
@@ -410,6 +419,23 @@ class AdminReviewView(View):
             trade_id = self.trade_data.get("trade_id")
             admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
 
+            # High-signal log: admin approvals are rare and debugging timeouts is hard.
+            try:
+                print(
+                    "🧾 DISCORD_ADMIN_APPROVE_CLICK",
+                    {"trade_id": trade_id, "admin": admin_team, "user_id": interaction.user.id},
+                )
+            except Exception:
+                pass
+
+            # ACK the interaction immediately to avoid Discord's 3s timeout.
+            # We'll edit the admin-review message directly via interaction.message.
+            try:
+                await interaction.response.defer(ephemeral=True)
+            except Exception:
+                # If defer fails (e.g. already timed out), we still try best-effort message edits.
+                pass
+
             # For website-backed trades, approve in the store first (this applies data + can auto-withdraw on conflict)
             if trade_id:
                 try:
@@ -424,10 +450,14 @@ class AdminReviewView(View):
                             item.disabled = True
 
                         self._decision_made = True
-                        await interaction.response.edit_message(
-                            content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
-                            view=self,
-                        )
+                        try:
+                            await interaction.message.edit(
+                                content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
+                                view=self,
+                            )
+                        except Exception:
+                            pass
+
                         try:
                             trade = trade_store.get_trade(trade_id)
                             details = trade.get("withdraw_details") or []
@@ -436,21 +466,40 @@ class AdminReviewView(View):
                                 await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
                         except Exception:
                             pass
+
+                        try:
+                            await interaction.followup.send(
+                                "❌ Trade auto-withdrawn due to conflicting trade.",
+                                ephemeral=True,
+                            )
+                        except Exception:
+                            pass
+
                         return
 
                     if exc.status_code == 400:
                         # Likely already approved/processed by another admin.
                         self._decision_made = True
-                        await interaction.response.send_message("⚠️ Trade has already been processed.", ephemeral=True)
+                        try:
+                            await interaction.followup.send("⚠️ Trade has already been processed.", ephemeral=True)
+                        except Exception:
+                            pass
                         return
 
-                    await interaction.response.send_message(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+                    try:
+                        await interaction.followup.send(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+                    except Exception:
+                        pass
                     return
                 except Exception as exc:
                     import traceback
+
                     print(f"⚠️ Failed to sync admin approval to store: {exc}")
                     traceback.print_exc()
-                    await interaction.response.send_message("❌ Approval failed (store sync error).", ephemeral=True)
+                    try:
+                        await interaction.followup.send("❌ Approval failed (store sync error).", ephemeral=True)
+                    except Exception:
+                        pass
                     return
 
             # Post to #trades
@@ -461,7 +510,15 @@ class AdminReviewView(View):
                 item.disabled = True
 
             self._decision_made = True
-            await interaction.response.edit_message(content="✅ Approved and posted.", view=self)
+            try:
+                await interaction.message.edit(content="✅ Approved and posted.", view=self)
+            except Exception:
+                pass
+
+            try:
+                await interaction.followup.send("✅ Approved and posted.", ephemeral=True)
+            except Exception:
+                pass
 
     @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger)
     async def reject(self, interaction: discord.Interaction, button: Button):

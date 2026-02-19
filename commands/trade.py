@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ui import View, Button
 from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM
-from commands.trade_logic import create_trade_thread
+from commands.trade_logic import create_trade_thread, post_approved_trade
 import re
 import json
 from difflib import get_close_matches
@@ -27,6 +27,195 @@ def load_wizbucks():
 class Trade(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    def _load_admin_ids(self) -> set[int]:
+        """Load admin discord IDs from config/managers.json (role == 'admin').
+
+        This is used for admin-only fallback commands so we can process old
+        admin_review trades even if the original approval buttons are dead.
+        """
+        try:
+            with open("config/managers.json", "r", encoding="utf-8") as f:
+                cfg = json.load(f) or {}
+            teams = cfg.get("teams") or {}
+            ids: set[int] = set()
+            for meta in teams.values():
+                if not isinstance(meta, dict):
+                    continue
+                if str(meta.get("role") or "").strip().lower() != "admin":
+                    continue
+                raw = meta.get("discord_id")
+                if raw:
+                    try:
+                        ids.add(int(raw))
+                    except Exception:
+                        pass
+            return ids
+        except Exception:
+            return set()
+
+    def _is_admin(self, interaction: discord.Interaction) -> bool:
+        admin_ids = self._load_admin_ids()
+        if admin_ids:
+            return interaction.user is not None and interaction.user.id in admin_ids
+        # Fallback: if config is missing/misconfigured, allow Discord server admins.
+        try:
+            return bool(interaction.user and interaction.user.guild_permissions.administrator)
+        except Exception:
+            return False
+
+    async def _post_thread_note(self, trade: dict, content: str) -> None:
+        """Best-effort post a note to the trade's Discord approval thread."""
+        try:
+            discord_meta = trade.get("discord") or {}
+            thread_id = discord_meta.get("thread_id")
+            if not thread_id:
+                return
+
+            chan = self.bot.get_channel(int(thread_id))
+            if not chan:
+                try:
+                    chan = await self.bot.fetch_channel(int(thread_id))
+                except Exception:
+                    chan = None
+            if chan:
+                await chan.send(content)
+        except Exception:
+            pass
+
+    @discord.app_commands.command(
+        name="tradeadmin_approve",
+        description="[ADMIN] Approve a website trade by Trade ID (fallback for dead buttons)",
+    )
+    @discord.app_commands.describe(trade_id="Trade ID (e.g. WEB-TRADE-YYYYMMDD-HHMMSS)")
+    async def tradeadmin_approve(self, interaction: discord.Interaction, trade_id: str):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("Not authorized.", ephemeral=True)
+            return
+
+        await interaction.response.defer(ephemeral=True)
+
+        try:
+            from fastapi import HTTPException
+            from trade import trade_store
+
+            trade_id = str(trade_id or "").strip()
+            if not trade_id:
+                await interaction.followup.send("❌ Missing trade_id", ephemeral=True)
+                return
+
+            trade = trade_store.get_trade(trade_id)
+            status = str(trade.get("status") or "")
+            if status != "admin_review":
+                await interaction.followup.send(
+                    f"⚠️ Trade `{trade_id}` is not in `admin_review` (current status: `{status}`)",
+                    ephemeral=True,
+                )
+                return
+
+            admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+
+            print(
+                "🧾 TRADE_ADMIN_FALLBACK_APPROVE",
+                {"trade_id": trade_id, "admin": admin_team, "user_id": interaction.user.id},
+            )
+
+            trade = trade_store.admin_approve(trade_id, admin_team)
+
+            if not interaction.guild:
+                await interaction.followup.send(
+                    f"✅ Approved `{trade_id}` in the store, but I can't post to #trades from DMs (no guild context).",
+                    ephemeral=True,
+                )
+                return
+
+            # Post to trades channel
+            await post_approved_trade(
+                interaction.guild,
+                {
+                    "trade_id": trade.get("trade_id"),
+                    "teams": trade.get("teams") or [],
+                    "players": trade.get("receives") or {},
+                    "initiator_team": trade.get("initiator_team"),
+                    "source": "🛠️ Admin Fallback",
+                },
+            )
+
+            await self._post_thread_note(
+                trade,
+                f"✅ **Admin approved** via fallback command by <@{interaction.user.id}> (Trade ID: `{trade_id}`)",
+            )
+
+            await interaction.followup.send(f"✅ Approved `{trade_id}` and posted to #trades.", ephemeral=True)
+            return
+
+        except HTTPException as exc:
+            await interaction.followup.send(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+            return
+        except Exception as exc:
+            await interaction.followup.send(f"❌ Approval failed: {exc}", ephemeral=True)
+            return
+
+    @discord.app_commands.command(
+        name="tradeadmin_reject",
+        description="[ADMIN] Reject a website trade by Trade ID (fallback for dead buttons)",
+    )
+    @discord.app_commands.describe(
+        trade_id="Trade ID (e.g. WEB-TRADE-YYYYMMDD-HHMMSS)",
+        reason="Reason for rejection",
+    )
+    async def tradeadmin_reject(self, interaction: discord.Interaction, trade_id: str, reason: str):
+        if not self._is_admin(interaction):
+            await interaction.response.send_message("Not authorized.", ephemeral=True)
+            return
+
+        await interaction.response.defer(ephemeral=True)
+
+        try:
+            from fastapi import HTTPException
+            from trade import trade_store
+
+            trade_id = str(trade_id or "").strip()
+            reason = str(reason or "").strip()
+            if not trade_id:
+                await interaction.followup.send("❌ Missing trade_id", ephemeral=True)
+                return
+            if not reason:
+                await interaction.followup.send("❌ Missing reason", ephemeral=True)
+                return
+
+            trade = trade_store.get_trade(trade_id)
+            status = str(trade.get("status") or "")
+            if status != "admin_review":
+                await interaction.followup.send(
+                    f"⚠️ Trade `{trade_id}` is not in `admin_review` (current status: `{status}`)",
+                    ephemeral=True,
+                )
+                return
+
+            admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+
+            print(
+                "🧾 TRADE_ADMIN_FALLBACK_REJECT",
+                {"trade_id": trade_id, "admin": admin_team, "user_id": interaction.user.id},
+            )
+
+            trade = trade_store.admin_reject(trade_id, admin_team, reason)
+
+            await self._post_thread_note(
+                trade,
+                f"❌ **Admin rejected** via fallback command by <@{interaction.user.id}>: {reason} (Trade ID: `{trade_id}`)",
+            )
+
+            await interaction.followup.send(f"❌ Rejected `{trade_id}`.", ephemeral=True)
+            return
+
+        except HTTPException as exc:
+            await interaction.followup.send(f"❌ Rejection failed: {exc.detail}", ephemeral=True)
+            return
+        except Exception as exc:
+            await interaction.followup.send(f"❌ Rejection failed: {exc}", ephemeral=True)
+            return
 
     @discord.app_commands.command(name="trade", description="Submit a trade proposal")
     @discord.app_commands.describe(
