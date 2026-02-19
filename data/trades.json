@@ -770,5 +770,74 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "WEB-TRADE-20260219-125654": {
+    "trade_id": "WEB-TRADE-20260219-125654",
+    "teams": [
+      "DRO",
+      "TBB"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-02-19T12:56:54.823814Z",
+    "expires_at": "2026-03-05T12:56:54.823814Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1927",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3613",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "6810",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3596",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7048",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1916",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "2B,3B Hao-Yu Lee [DET] [DC]",
+        "1B,OF C.J. Kayfus [CLE] [PC]"
+      ],
+      "TBB": [
+        "3B Austin Riley [ATL] [FC 1]",
+        "SP,RP Joey Cantillo [CLE] [TC R]",
+        "RP Justin Sterner [FA] [TC R]",
+        "RP Raisel Iglesias [ATL] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
