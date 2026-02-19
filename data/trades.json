@@ -861,7 +861,7 @@
       "CFL"
     ],
     "initiator_team": "HAM",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-19T13:07:29.507544Z",
     "expires_at": "2026-03-05T13:07:29.507544Z",
     "transfers": [
@@ -895,6 +895,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1474029629835575343",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-19T13:07:43.305773Z"
+    "manager_approved_at": "2026-02-19T13:07:43.305773Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-19T13:12:50.611513Z",
+    "data_applied_at": "2026-02-19T13:12:50.905257Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

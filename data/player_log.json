@@ -35359,5 +35359,28 @@
     "years": "TC 2",
     "update_type": "Trade",
     "event": "WEB-TRADE-20260219-125654: DRO->TBB"
+  },
+  {
+    "id": "2026-2026-02-19T13:12:50.905257Z-UPID_7282-Trade-WEB-TRADE-20260219-130729",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WIZ",
+    "timestamp": "2026-02-19T13:12:50.905257Z",
+    "upid": "7282",
+    "player_name": "Shota Imanaga",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "Trade",
+    "event": "WEB-TRADE-20260219-130729: HAM->CFL"
   }
 ]

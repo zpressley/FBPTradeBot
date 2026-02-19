@@ -949,5 +949,37 @@
       "source": "kap_allocation",
       "kind": "finish_reward"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-19_trade_WEB-TRADE-20260219-130729_CFL_debit_15",
+    "timestamp": "2026-02-19T13:12:50.905257Z",
+    "team": "CFL",
+    "amount": -15,
+    "balance_before": 410,
+    "balance_after": 395,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade WEB-TRADE-20260219-130729: WizBucks sent to HAM",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "WEB-TRADE-20260219-130729",
+      "counterparty": "HAM",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-19_trade_WEB-TRADE-20260219-130729_HAM_credit_15",
+    "timestamp": "2026-02-19T13:12:50.905257Z",
+    "team": "HAM",
+    "amount": 15,
+    "balance_before": 415,
+    "balance_after": 430,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade WEB-TRADE-20260219-130729: WizBucks received from CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "WEB-TRADE-20260219-130729",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
   }
 ]
