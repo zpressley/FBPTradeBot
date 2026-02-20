@@ -87,7 +87,7 @@ class Trade(commands.Cog):
         name="tradeadmin_approve",
         description="[ADMIN] Approve a website trade by Trade ID (fallback for dead buttons)",
     )
-    @discord.app_commands.describe(trade_id="Trade ID (e.g. WEB-TRADE-YYYYMMDD-HHMMSS)")
+    @discord.app_commands.describe(trade_id="Trade ID (e.g. TRADE-DDMMYY_MMHH-001)")
     async def tradeadmin_approve(self, interaction: discord.Interaction, trade_id: str):
         if not self._is_admin(interaction):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
@@ -161,7 +161,7 @@ class Trade(commands.Cog):
         description="[ADMIN] Reject a website trade by Trade ID (fallback for dead buttons)",
     )
     @discord.app_commands.describe(
-        trade_id="Trade ID (e.g. WEB-TRADE-YYYYMMDD-HHMMSS)",
+        trade_id="Trade ID (e.g. TRADE-DDMMYY_MMHH-001)",
         reason="Reason for rejection",
     )
     async def tradeadmin_reject(self, interaction: discord.Interaction, trade_id: str, reason: str):

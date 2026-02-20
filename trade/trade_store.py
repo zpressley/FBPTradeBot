@@ -14,6 +14,11 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
+try:
+    from zoneinfo import ZoneInfo  # py3.9+
+except Exception:  # pragma: no cover
+    ZoneInfo = None  # type: ignore
+
 from fastapi import HTTPException
 
 from buyin.buyin_service import apply_keeper_buyin_purchase
@@ -29,6 +34,7 @@ from trade.trade_models import (
 
 TRADES_PATH = "data/trades.json"
 TRADES_LOCK_PATH = "data/trades.lock"
+TRADE_ID_STATE_PATH = "data/trade_id_state.json"
 COMBINED_PLAYERS_PATH = "data/combined_players.json"
 PLAYER_LOG_PATH = "data/player_log.json"
 WIZBUCKS_PATH = "data/wizbucks.json"
@@ -124,6 +130,85 @@ def _save_json(path: str, data) -> None:
 
 def _utc_now() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def _trade_id_season_year(now: Optional[datetime] = None) -> int:
+    """Season year for trade ID sequencing (resets when season_year changes)."""
+    now = now or _utc_now()
+    season_dates = _load_json("config/season_dates.json", {}) or {}
+    try:
+        return int(season_dates.get("season_year") or now.year)
+    except Exception:
+        return now.year
+
+
+def _trade_id_local_time(now_utc: datetime) -> datetime:
+    """Convert UTC time to league-local time for readable trade IDs.
+
+    Prefers America/New_York; falls back to a fixed UTC-5 offset if zoneinfo
+    isn't available.
+
+    User request: use Eastern / GMT-5 style timestamps.
+    """
+    if ZoneInfo is not None:
+        try:
+            return now_utc.astimezone(ZoneInfo("America/New_York"))
+        except Exception:
+            pass
+
+    # Fallback: fixed offset (no DST handling)
+    return now_utc.astimezone(timezone(timedelta(hours=-5)))
+
+
+def _next_trade_id(now: datetime, trades: Dict[str, dict]) -> str:
+    """Generate a simple sequential trade id like: TRADE-DDMMYY_HHMM-001.
+
+    - DDMMYY and HHMM are based on Eastern time.
+    - Sequence is a persisted counter in data/trade_id_state.json.
+    """
+
+    state = _load_json(TRADE_ID_STATE_PATH, {}) or {}
+    if not isinstance(state, dict):
+        state = {}
+
+    season_year = _trade_id_season_year(now)
+    last_year = state.get("season_year")
+
+    try:
+        seq = int(state.get("seq") or 0)
+    except Exception:
+        seq = 0
+
+    if int(last_year or 0) != int(season_year):
+        seq = 0
+
+    seq += 1
+
+    local = _trade_id_local_time(now)
+    date_part = local.strftime("%d%m%y")
+    # Include hour+minute (HHMM) ordering.
+    time_part = local.strftime("%H%M")
+
+    def build(seq_num: int) -> str:
+        return f"TRADE-{date_part}_{time_part}-{str(seq_num).zfill(3)}"
+
+    trade_id = build(seq)
+
+    # Extra safety: avoid collisions if trades.json already contains this id.
+    while trade_id in trades:
+        seq += 1
+        trade_id = build(seq)
+
+    # Persist state
+    state = {
+        "season_year": season_year,
+        "seq": seq,
+        "last_trade_id": trade_id,
+        "last_created_at": _iso(now),
+    }
+    _save_json(TRADE_ID_STATE_PATH, state)
+
+    return trade_id
 
 
 def _iso(dt: datetime) -> str:
@@ -490,8 +575,7 @@ def create_trade(payload: TradeSubmitPayload, actor_team: str) -> dict:
         if _active_trade_count_for_initiator(trades, initiator_team, now) >= 12:
             raise HTTPException(status_code=400, detail="Queue limit reached (12 max active trades)")
 
-        # Include ms to avoid collisions when two submissions land in the same second.
-        trade_id = f"WEB-TRADE-{now.strftime('%Y%m%d-%H%M%S')}-{int(now.microsecond/1000):03d}"
+        trade_id = _next_trade_id(now, trades)
         expires_at = now + timedelta(days=14)
 
         receives = _build_receives(payload)
@@ -516,7 +600,10 @@ def create_trade(payload: TradeSubmitPayload, actor_team: str) -> dict:
         trades[trade_id] = record
         _save_trades(trades)
 
-    _maybe_commit(f"Trade submitted: {trade_id} by {initiator_team}")
+    _maybe_commit(
+        f"Trade submitted: {trade_id} by {initiator_team}",
+        file_paths=[TRADES_PATH, TRADE_ID_STATE_PATH],
+    )
     return record
 
 

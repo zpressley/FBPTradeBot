@@ -1033,5 +1033,37 @@
       "source": "trade_portal_auto_buyin",
       "trade_id": "WEB-TRADE-20260220-003855-160"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-20_trade_WEB-TRADE-20260219-200217_WAR_debit_15",
+    "timestamp": "2026-02-20T03:57:36.529763Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 375,
+    "balance_after": 360,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade WEB-TRADE-20260219-200217: WizBucks sent to DMN",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "WEB-TRADE-20260219-200217",
+      "counterparty": "DMN",
+      "source": "trade_portal_manual_finalize"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-20_trade_WEB-TRADE-20260219-200217_DMN_credit_15",
+    "timestamp": "2026-02-20T03:57:36.529763Z",
+    "team": "DMN",
+    "amount": 15,
+    "balance_before": 415,
+    "balance_after": 430,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade WEB-TRADE-20260219-200217: WizBucks received from WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "WEB-TRADE-20260219-200217",
+      "counterparty": "WAR",
+      "source": "trade_portal_manual_finalize"
+    }
   }
 ]
