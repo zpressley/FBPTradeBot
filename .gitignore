@@ -4,3 +4,9 @@ __pycache__/
 google_creds.json
 archive/
 scripts/archive/
+
+# Local-only safety snapshots created during one-off data repairs
+/data/manual_backups/
+
+# Trade store lockfile (should never be committed)
+/data/trades.lock

@@ -960,56 +960,148 @@
     },
     "manager_approved_at": "2026-02-19T20:02:42.287318Z"
   },
-  "WEB-TRADE-20260220-003855-160": {
-    "trade_id": "WEB-TRADE-20260220-003855-160",
+  "WEB-TRADE-20260219-135722": {
+    "acceptances": [
+      "CFL",
+      "DMN"
+    ],
+    "created_at": "2026-02-19T13:57:22Z",
+    "discord": {
+      "admin_review_message_id": null,
+      "thread_id": null,
+      "thread_url": null
+    },
+    "expires_at": "2026-02-26T13:57:22Z",
+    "initiator_team": "CFL",
+    "manager_approved_at": "2026-02-19T13:57:22Z",
+    "manual_fix": {
+      "backup_dir": "data/manual_backups/20260219_214745Z",
+      "note": "Record reconstructed locally because original trade_id was missing from data/trades.json"
+    },
+    "receives": {
+      "CFL": [
+        "OF Cris Rodriguez [DET] [DC]"
+      ],
+      "DMN": [
+        "SP Jacob Lopez [TB] [TC 1]"
+      ]
+    },
+    "status": "approved",
     "teams": [
       "CFL",
-      "B2J"
+      "DMN"
     ],
-    "initiator_team": "CFL",
-    "status": "admin_review",
-    "created_at": "2026-02-20T00:38:55.160548Z",
-    "expires_at": "2026-03-06T00:38:55.160548Z",
+    "trade_id": "WEB-TRADE-20260219-135722",
+    "transfers": [
+      {
+        "from_team": "DMN",
+        "to_team": "CFL",
+        "type": "player",
+        "upid": "6500"
+      },
+      {
+        "from_team": "CFL",
+        "to_team": "DMN",
+        "type": "player",
+        "upid": "7153"
+      }
+    ],
+    "admin_decision_by": "ADMIN",
+    "processed_at": "2026-02-19T21:47:45.972762Z",
+    "data_applied_at": "2026-02-19T21:47:46.008206Z",
+    "data_applied_by": "ADMIN",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL": {
+    "trade_id": "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL",
+    "teams": [
+      "WIZ",
+      "CFL"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-02-19T21:00:00Z",
+    "expires_at": "2026-02-26T21:00:00Z",
     "transfers": [
       {
         "type": "player",
-        "upid": "6566",
-        "from_team": "B2J",
-        "to_team": "CFL"
-      },
-      {
-        "type": "player",
-        "upid": "7943",
-        "from_team": "B2J",
+        "upid": "2767",
+        "from_team": "WIZ",
         "to_team": "CFL"
       },
       {
         "type": "draft_pick",
         "draft": "keeper",
-        "round": 1,
+        "round": 6,
         "pick": 6,
         "from_team": "CFL",
-        "to_team": "B2J"
+        "to_team": "WIZ"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 12,
+        "pick": 12,
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 20,
+        "from_team": "CFL",
+        "to_team": "WIZ"
       }
     ],
     "acceptances": [
-      "CFL",
-      "B2J"
+      "WIZ",
+      "CFL"
     ],
+    "manager_approved_at": "2026-02-19T21:00:00Z",
     "receives": {
-      "CFL": [
-        "CF Max Clark [DET] [BC]",
-        "SP Jamie Arnold [ATH] [BC]"
+      "WIZ": [
+        "Keeper Pick R6 P66 via CFL",
+        "$20 WB via CFL"
       ],
-      "B2J": [
-        "Keeper Pick R1 P6 via CFL"
+      "CFL": [
+        "1B Josh Naylor [AZ] [VC 1]",
+        "Keeper Pick R12 P144 via WIZ"
       ]
     },
     "discord": {
-      "thread_id": "1474203633330684066",
-      "thread_url": "https://discord.com/channels/875592505926758480/1474203633330684066",
+      "thread_id": null,
+      "thread_url": null,
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-20T00:40:44.460887Z"
+    "manual_fix": {
+      "note": "Reconstructed because trade existed on Render but not in repo trades.json; applied via trade_store.admin_approve for consistent side-effects",
+      "backup_dir": "data/manual_backups/20260220_014458Z",
+      "ui_pick_numbers": {
+        "r6_overall": 66,
+        "r12_overall": 144,
+        "mapped_to": {
+          "r6_pick": 6,
+          "r12_pick": 12
+        }
+      }
+    },
+    "admin_decision_by": "ADMIN",
+    "processed_at": "2026-02-20T01:44:58.521887Z",
+    "data_applied_at": "2026-02-20T01:44:58.545757Z",
+    "data_applied_by": "ADMIN",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 2,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

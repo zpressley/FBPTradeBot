@@ -983,34 +983,34 @@
     }
   },
   {
-    "txn_id": "wb_2026-02-19_trade_WEB-TRADE-20260219-200217_WAR_debit_15",
-    "timestamp": "2026-02-19T21:40:49.339629Z",
-    "team": "WAR",
-    "amount": -15,
-    "balance_before": 375,
-    "balance_after": 360,
+    "txn_id": "wb_2026-02-20_trade_WEB-TRADE-20260219-RENDERLOST-WIZ-CFL_CFL_debit_20",
+    "timestamp": "2026-02-20T01:44:58.545757Z",
+    "team": "CFL",
+    "amount": -20,
+    "balance_before": 395,
+    "balance_after": 375,
     "transaction_type": "trade_wizbucks_debit",
-    "description": "Trade WEB-TRADE-20260219-200217: WizBucks sent to DMN",
+    "description": "Trade WEB-TRADE-20260219-RENDERLOST-WIZ-CFL: WizBucks sent to WIZ",
     "related_player": null,
     "metadata": {
-      "trade_id": "WEB-TRADE-20260219-200217",
-      "counterparty": "DMN",
+      "trade_id": "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL",
+      "counterparty": "WIZ",
       "source": "trade_portal"
     }
   },
   {
-    "txn_id": "wb_2026-02-19_trade_WEB-TRADE-20260219-200217_DMN_credit_15",
-    "timestamp": "2026-02-19T21:40:49.339629Z",
-    "team": "DMN",
-    "amount": 15,
-    "balance_before": 415,
-    "balance_after": 430,
+    "txn_id": "wb_2026-02-20_trade_WEB-TRADE-20260219-RENDERLOST-WIZ-CFL_WIZ_credit_20",
+    "timestamp": "2026-02-20T01:44:58.545757Z",
+    "team": "WIZ",
+    "amount": 20,
+    "balance_before": 420,
+    "balance_after": 440,
     "transaction_type": "trade_wizbucks_credit",
-    "description": "Trade WEB-TRADE-20260219-200217: WizBucks received from WAR",
+    "description": "Trade WEB-TRADE-20260219-RENDERLOST-WIZ-CFL: WizBucks received from CFL",
     "related_player": null,
     "metadata": {
-      "trade_id": "WEB-TRADE-20260219-200217",
-      "counterparty": "WAR",
+      "trade_id": "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL",
+      "counterparty": "CFL",
       "source": "trade_portal"
     }
   }
