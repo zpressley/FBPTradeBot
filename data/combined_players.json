@@ -46085,8 +46085,8 @@
     "manager": "not much of a donkey",
     "player_type": "MLB",
     "contract_type": null,
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "60211",
     "upid": "5006",
     "mlb_id": 702070,
@@ -46098,7 +46098,8 @@
     "bats": "L",
     "throws": "L",
     "mlb_primary_position": "P",
-    "fypd": false
+    "fypd": false,
+    "level": "MLB"
   },
   {
     "name": "Nick Sogard",
