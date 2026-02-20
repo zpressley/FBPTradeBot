@@ -35543,5 +35543,28 @@
     "years": "P",
     "update_type": "Trade",
     "event": "WEB-TRADE-20260220-003855-160: B2J->CFL"
+  },
+  {
+    "id": "2026-2026-02-19T21:21:54.483937-05:00-UPID_7153-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-19T21:21:54.483937-05:00",
+    "upid": "7153",
+    "player_name": "Jacob Lopez",
+    "team": "TB",
+    "pos": "SP",
+    "age": 27,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
