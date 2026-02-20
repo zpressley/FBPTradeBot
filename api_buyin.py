@@ -47,6 +47,7 @@ class BuyinPurchasePayload(BaseModel):
     round: int
     cost: int
     purchased_by: str
+    pick: Optional[int] = None  # Specify which pick when team has multiple in same round
 
 
 class BuyinRefundPayload(BaseModel):
@@ -180,7 +181,7 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
         result = apply_keeper_buyin_purchase(
             team=team,
             round=payload.round,
-            pick=None,
+            pick=payload.pick,  # Pass pick parameter (None if not specified)
             draft_order=draft_order,
             managers_data=managers_data,
             ledger=transactions,
