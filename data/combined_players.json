@@ -9257,15 +9257,15 @@
     "name": "Matt Shaw",
     "team": "CHC",
     "position": "3B",
-    "manager": "",
+    "manager": "not much of a donkey",
     "player_type": "MLB",
-    "contract_type": "",
-    "status": "",
-    "years_simple": "",
+    "contract_type": "Keeper Contract",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "62984",
     "upid": "6592",
     "mlb_id": 807713,
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "birth_date": "2001-11-06",
     "age": 24,
     "height": "5' 10\"",
@@ -9273,7 +9273,8 @@
     "bats": "R",
     "throws": "R",
     "mlb_primary_position": "3B",
-    "fypd": false
+    "fypd": false,
+    "level": "MLB"
   },
   {
     "name": "Jefferson Rojas",
@@ -46085,8 +46086,8 @@
     "manager": "not much of a donkey",
     "player_type": "MLB",
     "contract_type": null,
-    "status": "[6] TCR",
-    "years_simple": "TC R",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
     "yahoo_id": "60211",
     "upid": "5006",
     "mlb_id": 702070,
@@ -46098,8 +46099,7 @@
     "bats": "L",
     "throws": "L",
     "mlb_primary_position": "P",
-    "fypd": false,
-    "level": "MLB"
+    "fypd": false
   },
   {
     "name": "Nick Sogard",
