@@ -1111,7 +1111,7 @@
       "B2J"
     ],
     "initiator_team": "CFL",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-20T00:38:55.160548Z",
     "expires_at": "2026-03-06T00:38:55.160548Z",
     "transfers": [
@@ -1154,6 +1154,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1474203633330684066",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-20T00:40:44.460887Z"
+    "manager_approved_at": "2026-02-20T00:40:44.460887Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-20T02:21:42.083336Z",
+    "data_applied_at": "2026-02-20T02:21:42.295971Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 1,
+      "wb_transfers": 0,
+      "buyins_purchased": 1,
+      "warnings": []
+    }
   }
 }
