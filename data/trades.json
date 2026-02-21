@@ -1266,7 +1266,7 @@
       "HAM"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-02-21T13:04:27.054509Z",
     "expires_at": "2026-03-07T13:04:27.054509Z",
     "transfers": [
@@ -1300,7 +1300,8 @@
       }
     ],
     "acceptances": [
-      "WIZ"
+      "WIZ",
+      "HAM"
     ],
     "receives": {
       "WIZ": [
@@ -1316,6 +1317,7 @@
       "thread_id": "1474753640810938493",
       "thread_url": "https://discord.com/channels/875592505926758480/1474753640810938493",
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-02-21T13:04:53.249140Z"
   }
 }
