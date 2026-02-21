@@ -35635,5 +35635,28 @@
     "years": "TC 1",
     "update_type": "Trade",
     "event": "WEB-TRADE-20260220-142637-737: LFB->CFL"
+  },
+  {
+    "id": "2026-2026-02-21T08:59:39.009400-05:00-UPID_5464-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-21T08:59:39.009400-05:00",
+    "upid": "5464",
+    "player_name": "Isaac Collins",
+    "team": "MIL",
+    "pos": "OF",
+    "age": 28,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 401,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
