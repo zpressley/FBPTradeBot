@@ -16,7 +16,7 @@ from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional
 
-from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_kap_balance
+from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_wallet_balance
 from team_utils import normalize_team_abbr
 
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
@@ -163,6 +163,7 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
+    wizbucks_data = load_json_file("data/wizbucks.json")  # CRITICAL: Wallet source of truth
     managers_data = load_json_file("config/managers.json")
 
     team = normalize_team_abbr(payload.team, managers_data=managers_data)
@@ -176,13 +177,14 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     if not isinstance(transactions, list):
         transactions = []
 
-    # Apply purchase (mutates draft_order, managers_data, transactions)
+    # Apply purchase (mutates draft_order, wizbucks_data, transactions)
     try:
         result = apply_keeper_buyin_purchase(
             team=team,
             round=payload.round,
             pick=payload.pick,  # Pass pick parameter (None if not specified)
             draft_order=draft_order,
+            wizbucks_data=wizbucks_data,  # CRITICAL: Pass wallet data, not managers_data
             managers_data=managers_data,
             ledger=transactions,
             purchased_by=payload.purchased_by,
@@ -203,10 +205,10 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
             pass
         raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save all files
+    # Save all files (CRITICAL: Save wallet!)
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
-        save_json_file("config/managers.json", managers_data)
+        save_json_file("data/wizbucks.json", wizbucks_data)  # CRITICAL: Save wallet
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
@@ -221,7 +223,7 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
                 "team": team,
                 "round": payload.round,
                 "cost": result.cost,
-                "new_balance": result.kap_balance_after,
+                "new_balance": result.wallet_balance_after,
             },
         )
     except Exception:
@@ -231,7 +233,7 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
         "success": True,
         "message": f"Round {payload.round} buy-in purchased for ${result.cost}",
         "transaction": result.ledger_entry,
-        "new_balance": result.kap_balance_after,
+        "new_balance": result.wallet_balance_after,
     }
 
 
@@ -258,6 +260,7 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
+    wizbucks_data = load_json_file("data/wizbucks.json")  # CRITICAL: Wallet source of truth
     managers_data = load_json_file("config/managers.json")
 
     team = normalize_team_abbr(payload.team, managers_data=managers_data)
@@ -276,13 +279,14 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     if not isinstance(transactions, list):
         transactions = []
 
-    # Apply refund (mutates draft_order, managers_data, transactions)
+    # Apply refund (mutates draft_order, wizbucks_data, transactions)
     try:
         result = apply_keeper_buyin_refund(
             team=team,
             round=payload.round,
             pick=None,
             draft_order=draft_order,
+            wizbucks_data=wizbucks_data,  # CRITICAL: Pass wallet data, not managers_data
             managers_data=managers_data,
             ledger=transactions,
             refunded_by=admin_team,
@@ -302,10 +306,10 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
             pass
         raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save all files
+    # Save all files (CRITICAL: Save wallet!)
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
-        save_json_file("config/managers.json", managers_data)
+        save_json_file("data/wizbucks.json", wizbucks_data)  # CRITICAL: Save wallet
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
@@ -320,7 +324,7 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
                 "team": team,
                 "round": payload.round,
                 "amount": result.amount,
-                "new_balance": result.kap_balance_after,
+                "new_balance": result.wallet_balance_after,
             },
         )
     except Exception:
@@ -330,5 +334,5 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
         "success": True,
         "message": f"Round {payload.round} buy-in refunded for ${result.amount}",
         "transaction": result.ledger_entry,
-        "new_balance": result.kap_balance_after,
+        "new_balance": result.wallet_balance_after,
     }

@@ -20,8 +20,8 @@ class BuyinApplyResult:
     round: int
     pick: int
     cost: int
-    wallet_balance_before: int
-    wallet_balance_after: int
+    kap_balance_before: int
+    kap_balance_after: int
     ledger_entry: dict[str, Any]
 
 
@@ -31,8 +31,8 @@ class BuyinRefundResult:
     round: int
     pick: int
     amount: int
-    wallet_balance_before: int
-    wallet_balance_after: int
+    kap_balance_before: int
+    kap_balance_after: int
     ledger_entry: dict[str, Any]
 
 
@@ -41,63 +41,48 @@ def _now_iso(now: Optional[datetime] = None) -> str:
     return now.isoformat().replace("+00:00", "Z")
 
 
-def get_team_full_name(team_abbr: str, managers_data: dict) -> str:
-    """Get team full name from abbreviation for wallet lookup.
-    
-    CRITICAL: wizbucks.json uses FULL NAMES not abbreviations!
-    Example: "B2J" -> "Btwn2Jackies"
-    """
-    team_abbr = normalize_team_abbr(team_abbr, managers_data=managers_data)
-    team_data = (managers_data.get("teams") or {}).get(team_abbr)
+def get_kap_balance(team: str, managers_data: dict, season: int = 2026) -> int:
+    team = normalize_team_abbr(team, managers_data=managers_data)
+    team_data = (managers_data.get("teams") or {}).get(team)
     if not isinstance(team_data, dict):
-        raise ValueError(f"Team {team_abbr} not found in managers.json")
-    
-    full_name = team_data.get("full_name") or team_data.get("name")
-    if not full_name:
-        raise ValueError(f"Team {team_abbr} missing full_name in managers.json")
-    
-    return full_name
+        return 0
 
-
-def get_wallet_balance(team: str, wizbucks_data: dict, managers_data: dict) -> int:
-    """Get team's WizBucks wallet balance from wizbucks.json.
-    
-    CRITICAL: This is the SOURCE OF TRUTH for wallet balances.
-    NOT managers.json, NOT any other file.
-    """
-    full_name = get_team_full_name(team, managers_data)
-    
-    balance = wizbucks_data.get(full_name)
-    if balance is None:
-        raise ValueError(f"Team {full_name} not found in wizbucks.json")
-    
+    wiz = team_data.get("wizbucks") or {}
+    season_data = (wiz.get(str(season)) or {}) if isinstance(wiz, dict) else {}
+    allotments = (season_data.get("allotments") or {}) if isinstance(season_data, dict) else {}
+    kap = (allotments.get("KAP") or {}) if isinstance(allotments, dict) else {}
     try:
-        return int(balance)
-    except (TypeError, ValueError):
-        raise ValueError(f"Invalid balance for {full_name}: {balance}")
+        return int(kap.get("total") or 0)
+    except Exception:
+        return 0
 
 
-def update_wallet_balance(team: str, delta: int, wizbucks_data: dict, managers_data: dict) -> None:
-    """Update team's WizBucks wallet balance in wizbucks.json.
-    
-    CRITICAL: This MUTATES wizbucks_data dict in place.
-    Caller MUST save wizbucks.json after calling this.
-    """
-    full_name = get_team_full_name(team, managers_data)
-    
-    if full_name not in wizbucks_data:
-        raise ValueError(f"Team {full_name} not found in wizbucks.json")
-    
-    try:
-        current_balance = int(wizbucks_data[full_name])
-    except (TypeError, ValueError):
-        raise ValueError(f"Invalid current balance for {full_name}: {wizbucks_data[full_name]}")
-    
-    new_balance = current_balance + int(delta)
-    if new_balance < 0:
-        raise ValueError(f"Balance cannot go negative for {full_name}: {current_balance} + {delta} = {new_balance}")
-    
-    wizbucks_data[full_name] = new_balance
+def update_kap_balance(team: str, delta: int, managers_data: dict, season: int = 2026) -> None:
+    team = normalize_team_abbr(team, managers_data=managers_data)
+
+    teams = managers_data.get("teams")
+    if not isinstance(teams, dict) or team not in teams or not isinstance(teams.get(team), dict):
+        raise ValueError(f"Team {team} not found in managers.json")
+
+    team_data = teams[team]
+    wiz = team_data.get("wizbucks")
+    if not isinstance(wiz, dict):
+        raise ValueError(f"Team {team} missing wizbucks config")
+
+    season_data = wiz.get(str(season))
+    if not isinstance(season_data, dict):
+        raise ValueError(f"Team {team} missing wizbucks.{season} config")
+
+    allotments = season_data.get("allotments")
+    if not isinstance(allotments, dict):
+        raise ValueError(f"Team {team} missing wizbucks.{season}.allotments")
+
+    kap = allotments.get("KAP")
+    if not isinstance(kap, dict):
+        raise ValueError(f"Team {team} missing wizbucks.{season}.allotments.KAP")
+
+    current_total = int(kap.get("total") or 0)
+    kap["total"] = current_total + int(delta)
 
 
 def apply_keeper_buyin_purchase(
@@ -106,7 +91,6 @@ def apply_keeper_buyin_purchase(
     round: int,
     pick: Optional[int],
     draft_order: list[dict],
-    wizbucks_data: dict,
     managers_data: dict,
     ledger: list[dict],
     purchased_by: str,
@@ -115,15 +99,6 @@ def apply_keeper_buyin_purchase(
     season: int = 2026,
     now: Optional[datetime] = None,
 ) -> BuyinApplyResult:
-    """Purchase a keeper draft buy-in using WizBucks wallet.
-    
-    CRITICAL: Deducts from wizbucks.json wallet, NOT managers.json!
-    
-    Updates:
-    - draft_order: Mark pick as purchased
-    - ledger: Log transaction
-    - wizbucks_data: Deduct from wallet (CALLER MUST SAVE wizbucks.json!)
-    """
     team = normalize_team_abbr(team, managers_data=managers_data)
 
     if round not in BUY_IN_COSTS:
@@ -168,10 +143,9 @@ def apply_keeper_buyin_purchase(
 
     cost = file_cost
 
-    # Get wallet balance (SOURCE OF TRUTH)
-    balance_before = get_wallet_balance(team, wizbucks_data, managers_data)
+    balance_before = get_kap_balance(team, managers_data, season=season)
     if balance_before < cost:
-        raise ValueError(f"Insufficient WizBucks balance. Need ${cost}, have ${balance_before}")
+        raise ValueError(f"Insufficient KAP balance. Need ${cost}, have ${balance_before}")
 
     # Apply pick flag updates
     now_iso = _now_iso(now)
@@ -180,9 +154,9 @@ def apply_keeper_buyin_purchase(
     pick_entry["buyin_purchased_by"] = purchased_by
     draft_order[pick_index] = pick_entry
 
-    # Deduct from WizBucks wallet
-    update_wallet_balance(team, -cost, wizbucks_data, managers_data)
-    balance_after = get_wallet_balance(team, wizbucks_data, managers_data)
+    # Apply KAP deduction
+    update_kap_balance(team, -cost, managers_data, season=season)
+    balance_after = get_kap_balance(team, managers_data, season=season)
 
     # Ledger entry (new-style schema used across the repo)
     trade_part = f"_{trade_id}" if trade_id else ""
@@ -214,8 +188,8 @@ def apply_keeper_buyin_purchase(
         round=int(round),
         pick=int(pick_entry.get("pick") or (pick or 0)),
         cost=cost,
-        wallet_balance_before=balance_before,
-        wallet_balance_after=balance_after,
+        kap_balance_before=balance_before,
+        kap_balance_after=balance_after,
         ledger_entry=ledger_entry,
     )
 
@@ -226,7 +200,6 @@ def apply_keeper_buyin_refund(
     round: int,
     pick: Optional[int],
     draft_order: list[dict],
-    wizbucks_data: dict,
     managers_data: dict,
     ledger: list[dict],
     refunded_by: str,
@@ -234,15 +207,6 @@ def apply_keeper_buyin_refund(
     season: int = 2026,
     now: Optional[datetime] = None,
 ) -> BuyinRefundResult:
-    """Refund a keeper draft buy-in to WizBucks wallet.
-    
-    CRITICAL: Refunds to wizbucks.json wallet, NOT managers.json!
-    
-    Reverses:
-    - draft_order: Mark pick as not purchased
-    - ledger: Log refund transaction
-    - wizbucks_data: Restore to wallet (CALLER MUST SAVE wizbucks.json!)
-    """
     team = normalize_team_abbr(team, managers_data=managers_data)
 
     if round not in BUY_IN_COSTS:
@@ -287,10 +251,9 @@ def apply_keeper_buyin_refund(
     pick_entry["buyin_purchased_by"] = None
     draft_order[pick_index] = pick_entry
 
-    # Get balance and refund to wallet
-    balance_before = get_wallet_balance(team, wizbucks_data, managers_data)
-    update_wallet_balance(team, refund_amount, wizbucks_data, managers_data)
-    balance_after = get_wallet_balance(team, wizbucks_data, managers_data)
+    balance_before = get_kap_balance(team, managers_data, season=season)
+    update_kap_balance(team, refund_amount, managers_data, season=season)
+    balance_after = get_kap_balance(team, managers_data, season=season)
 
     ledger_entry = {
         "txn_id": f"wb_{season}_BUYIN_REFUND_{team}_R{round}_P{int(pick_entry.get('pick') or 0)}_{int((now or datetime.now(timezone.utc)).timestamp())}",
@@ -319,7 +282,7 @@ def apply_keeper_buyin_refund(
         round=int(round),
         pick=int(pick_entry.get("pick") or (pick or 0)),
         amount=refund_amount,
-        wallet_balance_before=balance_before,
-        wallet_balance_after=balance_after,
+        kap_balance_before=balance_before,
+        kap_balance_after=balance_after,
         ledger_entry=ledger_entry,
     )
