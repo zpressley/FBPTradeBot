@@ -1079,6 +1079,7 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                         round=r,
                         pick=k,
                         draft_order=draft_order,
+                        wizbucks_data=wizbucks,
                         managers_data=managers_data,
                         ledger=txns,
                         purchased_by=admin_team,
@@ -1174,14 +1175,11 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     if player_log_entries > 0:
         _save_player_log(player_log)
 
-    if moved_wb:
+    if moved_wb or buyins_purchased > 0:
         _save_json(WIZBUCKS_PATH, wizbucks)
 
     if moved_picks > 0 or buyins_purchased > 0:
         _save_json(DRAFT_ORDER_2026_PATH, draft_order)
-
-    if buyins_purchased > 0:
-        _save_json(MANAGERS_CONFIG_PATH, managers_data)
 
     if moved_wb > 0 or buyins_purchased > 0:
         _save_wizbucks_transactions(txns)

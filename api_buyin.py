@@ -148,8 +148,8 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     
     Updates:
     - draft_order_2026.json: Mark pick as purchased
+    - wizbucks.json: Deduct from WizBucks wallet (single-wallet principle)
     - wizbucks_transactions.json: Log transaction
-    - managers.json: Deduct from KAP balance
     """
     
     # Validate round
@@ -254,8 +254,8 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     
     Reverses the purchase:
     - draft_order_2026.json: Mark pick as not purchased
+    - wizbucks.json: Refund to WizBucks wallet (single-wallet principle)
     - wizbucks_transactions.json: Log refund transaction
-    - managers.json: Restore KAP balance
     """
     
     # Load data files
