@@ -1327,7 +1327,7 @@
       "LFB"
     ],
     "initiator_team": "CFL",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-02-22T18:26:15.935802Z",
     "expires_at": "2026-03-08T18:26:15.935802Z",
     "transfers": [
@@ -1345,7 +1345,8 @@
       }
     ],
     "acceptances": [
-      "CFL"
+      "CFL",
+      "LFB"
     ],
     "receives": {
       "CFL": [
@@ -1359,6 +1360,7 @@
       "thread_id": "1475197016727490744",
       "thread_url": "https://discord.com/channels/875592505926758480/1475197016727490744",
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-02-22T18:26:36.038469Z"
   }
 }
