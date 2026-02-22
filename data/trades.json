@@ -1266,7 +1266,7 @@
       "HAM"
     ],
     "initiator_team": "WIZ",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-21T13:04:27.054509Z",
     "expires_at": "2026-03-07T13:04:27.054509Z",
     "transfers": [
@@ -1318,6 +1318,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1474753640810938493",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-21T13:04:53.249140Z"
+    "manager_approved_at": "2026-02-21T13:04:53.249140Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-22T12:18:54.359997Z",
+    "data_applied_at": "2026-02-22T12:18:54.966853Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 2,
+      "wb_transfers": 1,
+      "buyins_purchased": 1,
+      "warnings": []
+    }
   }
 }

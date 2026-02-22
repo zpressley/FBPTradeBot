@@ -45855,9 +45855,9 @@
     "position": "SP",
     "manager": "not much of a donkey",
     "player_type": "MLB",
-    "contract_type": "Keeper Contract",
-    "status": "[6] TCR",
-    "years_simple": "TC R",
+    "contract_type": null,
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
     "yahoo_id": "60211",
     "upid": "5006",
     "mlb_id": 702070,
@@ -45870,8 +45870,7 @@
     "throws": "L",
     "mlb_primary_position": "P",
     "fypd": false,
-    "rank": 250,
-    "level": "MLB"
+    "rank": 250
   },
   {
     "name": "Nick Sogard",
@@ -47421,8 +47420,8 @@
     "manager": "Hammers",
     "player_type": "MLB",
     "contract_type": null,
-    "status": "[5] TC1",
-    "years_simple": "TC 1",
+    "status": "[6] TCR",
+    "years_simple": "TC R",
     "yahoo_id": "",
     "upid": "5464",
     "mlb_id": 686555,
@@ -47435,7 +47434,8 @@
     "weight": 188,
     "bats": "S",
     "throws": "R",
-    "rank": 401
+    "rank": 401,
+    "level": "MLB"
   },
   {
     "name": "Ian Moller",
@@ -77011,7 +77011,7 @@
     "name": "Kayson Cunningham",
     "team": "AZ",
     "position": "SS",
-    "manager": "Hammers",
+    "manager": "Whiz Kids",
     "player_type": "Farm",
     "contract_type": "Development Cont.",
     "status": "[7] P",
@@ -77019,7 +77019,7 @@
     "yahoo_id": "65735",
     "upid": "7953",
     "mlb_id": null,
-    "FBP_Team": "HAM",
+    "FBP_Team": "WIZ",
     "age": 19,
     "height_weight": "5' 10\" / 182 lbs",
     "bats": "L",

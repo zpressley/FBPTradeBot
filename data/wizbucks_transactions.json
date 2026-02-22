@@ -1065,5 +1065,57 @@
       "counterparty": "WAR",
       "source": "trade_portal_manual_finalize"
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_WIZ_R2_P12_TRADE-210226_0804-003_1771762734",
+    "timestamp": "2026-02-22T12:18:54.966853Z",
+    "team": "WIZ",
+    "amount": -35,
+    "balance_before": 375,
+    "balance_after": 340,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 2 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 2,
+      "pick": 12,
+      "purchased_by": "WAR",
+      "source": "trade_portal_auto_buyin",
+      "trade_id": "TRADE-210226_0804-003"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-22_trade_TRADE-210226_0804-003_HAM_debit_10",
+    "timestamp": "2026-02-22T12:18:54.966853Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 430,
+    "balance_after": 420,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-210226_0804-003: WizBucks sent to WIZ",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-210226_0804-003",
+      "counterparty": "WIZ",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-22_trade_TRADE-210226_0804-003_WIZ_credit_10",
+    "timestamp": "2026-02-22T12:18:54.966853Z",
+    "team": "WIZ",
+    "amount": 10,
+    "balance_before": 440,
+    "balance_after": 450,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-210226_0804-003: WizBucks received from HAM",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-210226_0804-003",
+      "counterparty": "HAM",
+      "source": "trade_portal"
+    }
   }
 ]
