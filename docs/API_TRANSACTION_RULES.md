@@ -285,6 +285,161 @@ discord_msg = f"""➕ **New Player Added**
 
 ---
 
+## Rule 8: NEVER Use Backup Files Without Explicit Permission
+
+**CRITICAL: Using backup/archived data files can cause catastrophic data loss**
+
+### The Problem
+
+**Feb 20, 2026 incident:** A script to add ADP rankings loaded a backup copy of `combined_players.json` from Feb 2, added rankings, and committed it. This overwrote 2+ weeks of changes:
+- 13+ player updates lost (Feb 15-17)
+- Multiple player log entries wiped out
+- Admin changes disappeared
+- No way to recover without manual git cherry-picking
+
+**Root cause:** The backup file was from BEFORE recent changes, so committing it **rewound the database** to an earlier state.
+
+---
+
+### The Rule
+
+**NEVER load data from:**
+- ❌ Backup files (`.backup`, `_backup`, `_old`, etc.)
+- ❌ Archived files (`/archive/`, `/historical/`, `/backups/`)
+- ❌ Timestamped copies (`file_20260202.json`)
+- ❌ Any file that is not the CURRENT production file
+
+**ALWAYS load data from:**
+- ✅ Current production files in `data/` directory
+- ✅ `data/combined_players.json` (not `combined_players_backup.json`)
+- ✅ Files tracked in git's main branch
+
+---
+
+### Before Using ANY Data File
+
+**Ask these questions:**
+1. Is this the CURRENT production file?
+2. When was this file last modified?
+3. Is this file tracked in the main git branch?
+4. Does this filename contain "backup", "old", "archive", or a date?
+
+**If ANY answer is wrong → DO NOT USE THE FILE**
+
+---
+
+### When Backups ARE Allowed
+
+**Backups may ONLY be used when:**
+1. **Explicit written permission** from admin/owner
+2. **Data recovery scenario** with documented plan
+3. **Testing/development** in isolated environment (not production)
+4. **Creating new backups** (saving current state for safety)
+
+**Example of CORRECT backup usage:**
+```python
+# ✅ Creating a backup for safety
+import shutil
+shutil.copy('data/combined_players.json', 'data/combined_players.backup.json')
+print("✅ Backup created for safety")
+
+# ✅ Loading from CURRENT file
+players = load_json('data/combined_players.json')  # Current production file
+```
+
+**Example of INCORRECT backup usage:**
+```python
+# ❌ NEVER DO THIS!
+players = load_json('data/combined_players.backup.json')  # OLD DATA!
+modify_players(players)
+save_json('data/combined_players.json', players)  # OVERWRITES CURRENT WITH OLD!
+```
+
+---
+
+### Scripts That Modify Data Files
+
+**ALL scripts that modify data files MUST:**
+
+1. **Start with current production files**
+```python
+# ✅ CORRECT
+players = load_json('data/combined_players.json')
+
+# ❌ WRONG
+players = load_json('data/backup/combined_players_20260202.json')
+```
+
+2. **Verify file freshness**
+```python
+import os
+from datetime import datetime, timedelta
+
+file_path = 'data/combined_players.json'
+modified_time = datetime.fromtimestamp(os.path.getmtime(file_path))
+age = datetime.now() - modified_time
+
+if age > timedelta(days=7):
+    print(f"⚠️ WARNING: File is {age.days} days old!")
+    print("⚠️ This may not be the current production file.")
+    # Decide whether to proceed or abort
+```
+
+3. **Log which file is being used**
+```python
+print(f"📂 Loading data from: {file_path}")
+print(f"📅 File last modified: {modified_time}")
+players = load_json(file_path)
+print(f"📊 Loaded {len(players)} players")
+```
+
+4. **Check git status before committing**
+```python
+import subprocess
+
+# Check if file has uncommitted changes
+result = subprocess.run(
+    ['git', 'status', '--porcelain', 'data/combined_players.json'],
+    capture_output=True,
+    text=True
+)
+
+if result.stdout.strip():
+    print("⚠️ File has uncommitted changes - review before proceeding")
+```
+
+---
+
+### Preventing Future Incidents
+
+**Code review checklist for data-modifying scripts:**
+- [ ] Does the script load from current production files?
+- [ ] Does the script check file modification dates?
+- [ ] Does the script log which files it's using?
+- [ ] Does the script verify it's not loading a backup?
+- [ ] Are all file paths explicitly the production paths?
+- [ ] Is there any string matching "backup", "old", "archive" in paths?
+
+**If ANY item fails → Script must be revised before deployment**
+
+---
+
+### Emergency Data Recovery
+
+**If you discover data was lost due to backup file usage:**
+
+1. **STOP immediately** - Do not make any more commits
+2. **Identify the bad commit** - Find the commit that used backup data
+3. **Document the scope** - Which data was overwritten?
+4. **Recovery options:**
+   - Git revert the bad commit
+   - Cherry-pick individual good commits
+   - Manual recovery from git history
+5. **Get explicit approval** before any recovery action
+6. **Test in separate branch** before applying to main
+
+---
+
 ## Related Documents
 
 - `CRITICAL_RULES.md` - Wallet and balance handling rules
