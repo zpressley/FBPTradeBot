@@ -35681,5 +35681,28 @@
     "years": "TC 1",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-02-22T18:29:21.042380Z-UPID_7948-Trade-TRADE-220226_1326-004",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WIZ",
+    "timestamp": "2026-02-22T18:29:21.042380Z",
+    "upid": "7948",
+    "player_name": "JoJo Parker",
+    "team": "TOR",
+    "pos": "SS",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Trade",
+    "event": "TRADE-220226_1326-004: LFB->CFL"
   }
 ]

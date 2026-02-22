@@ -1117,5 +1117,37 @@
       "counterparty": "HAM",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-22_trade_TRADE-220226_1326-004_CFL_debit_20",
+    "timestamp": "2026-02-22T18:29:21.042380Z",
+    "team": "CFL",
+    "amount": -20,
+    "balance_before": 375,
+    "balance_after": 355,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-220226_1326-004: WizBucks sent to LFB",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-220226_1326-004",
+      "counterparty": "LFB",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-22_trade_TRADE-220226_1326-004_LFB_credit_20",
+    "timestamp": "2026-02-22T18:29:21.042380Z",
+    "team": "LFB",
+    "amount": 20,
+    "balance_before": 400,
+    "balance_after": 420,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-220226_1326-004: WizBucks received from CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-220226_1326-004",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
   }
 ]
