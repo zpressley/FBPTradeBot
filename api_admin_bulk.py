@@ -104,15 +104,28 @@ def log_player_action(upid, player_name, update_type, event, admin, owner="", ch
 
 
 def git_commit_and_push(files, message):
-    """Commit changed files and push. Runs in bot repo."""
+    """Commit changed files and push. Runs in bot repo.
+    
+    CRITICAL: Raises exception on failure - caller MUST handle rollback!
+    """
     try:
         for f in files:
-            subprocess.run(["git", "add", f], check=True)
-        subprocess.run(["git", "commit", "-m", message], check=True)
-        subprocess.run(["git", "push"], check=True)
+            result = subprocess.run(["git", "add", f], check=True, capture_output=True, text=True)
+        
+        result = subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True, text=True)
+        print(f"✅ Git commit: {message}")
+        
+        result = subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
         print(f"✅ Git push: {message}")
+        
+    except subprocess.CalledProcessError as e:
+        error_msg = f"Git operation failed: {e.stderr if e.stderr else str(e)}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg) from e
     except Exception as e:
-        print(f"⚠️ Git push failed: {e}")
+        error_msg = f"Unexpected git error: {str(e)}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg) from e
 
 
 def sync_to_website(files, message):
@@ -339,6 +352,14 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
 # ---------------------------------------------------------------------------
 @router.post("/add-player")
 async def add_player(request: Request, _=Depends(verify_api_key)):
+    """
+    Add a new player to the database.
+    
+    CRITICAL: This endpoint uses TRANSACTIONAL semantics:
+    - If ANY step fails (save, commit, push), ALL changes are rolled back
+    - Raises HTTPException with clear error message on failure
+    - Only returns success if EVERYTHING completes including git push
+    """
     body = await request.json()
     admin = body.get("admin", "unknown")
     player_data = body.get("player_data", {})
@@ -346,86 +367,161 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
     if not player_data.get("name"):
         raise HTTPException(status_code=400, detail="Player name is required")
 
-    # --- Generate UPID ---
-    upid_db = load_json(UPID_DB_FILE)
-    if not upid_db or "by_upid" not in upid_db:
-        upid_db = {"by_upid": {}, "name_index": {}}
+    # Load original data for rollback
+    original_players = load_json(COMBINED_FILE)
+    original_upid_db = load_json(UPID_DB_FILE)
+    original_player_log = load_json(PLAYER_LOG_FILE)
+    
+    next_upid = None
+    
+    try:
+        print(f"🔄 Starting add-player transaction for {player_data.get('name')} by {admin}")
+        
+        # --- Generate UPID ---
+        upid_db = load_json(UPID_DB_FILE)
+        if not upid_db or "by_upid" not in upid_db:
+            upid_db = {"by_upid": {}, "name_index": {}}
 
-    existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
-    next_upid = (max(existing_upids) + 1) if existing_upids else 1
-    player_data["upid"] = str(next_upid)
+        existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
+        next_upid = (max(existing_upids) + 1) if existing_upids else 1
+        player_data["upid"] = str(next_upid)
+        
+        print(f"  📝 Assigned UPID: {next_upid}")
 
-    # --- Add to combined_players.json ---
-    players = load_json(COMBINED_FILE)
-    if not isinstance(players, list):
-        players = []
+        # --- Add to combined_players.json ---
+        players = load_json(COMBINED_FILE)
+        if not isinstance(players, list):
+            players = []
 
-    players.append({
-        "upid": str(next_upid),
-        "name": player_data.get("name", ""),
-        "team": player_data.get("team", ""),
-        "position": player_data.get("position", ""),
-        "age": player_data.get("age"),
-        "manager": player_data.get("manager", ""),
-        "player_type": player_data.get("player_type", "Farm"),
-        "contract_type": player_data.get("contract_type", ""),
-        "years_simple": player_data.get("years_simple", ""),
-        "yahoo_id": player_data.get("yahoo_id", ""),
-        "mlb_id": player_data.get("mlb_id", ""),
-        "birth_date": player_data.get("birth_date"),
-        "debut_date": player_data.get("debut_date"),
-        "bats": player_data.get("bats", ""),
-        "throws": player_data.get("throws", ""),
-        "fypd": player_data.get("fypd", False),
-        "level": player_data.get("level", ""),
-    })
-    save_json(COMBINED_FILE, players)
+        new_player = {
+            "upid": str(next_upid),
+            "name": player_data.get("name", ""),
+            "team": player_data.get("team", ""),
+            "position": player_data.get("position", ""),
+            "age": player_data.get("age"),
+            "manager": player_data.get("manager", ""),
+            "player_type": player_data.get("player_type", "Farm"),
+            "contract_type": player_data.get("contract_type", ""),
+            "years_simple": player_data.get("years_simple", ""),
+            "yahoo_id": player_data.get("yahoo_id", ""),
+            "mlb_id": player_data.get("mlb_id", ""),
+            "birth_date": player_data.get("birth_date"),
+            "debut_date": player_data.get("debut_date"),
+            "bats": player_data.get("bats", ""),
+            "throws": player_data.get("throws", ""),
+            "fypd": player_data.get("fypd", False),
+            "level": player_data.get("level", ""),
+        }
+        players.append(new_player)
+        save_json(COMBINED_FILE, players)
+        print(f"  💾 Saved to combined_players.json")
 
-    # --- Add to upid_database.json ---
-    alt_names = player_data.get("alt_names", [])
-    upid_db["by_upid"][str(next_upid)] = {
-        "upid": str(next_upid),
-        "name": player_data.get("name", ""),
-        "team": player_data.get("team", ""),
-        "pos": player_data.get("position", ""),
-        "alt_names": alt_names,
-        "approved_dupes": "FALSE",
-    }
+        # --- Add to upid_database.json ---
+        alt_names = player_data.get("alt_names", [])
+        upid_db["by_upid"][str(next_upid)] = {
+            "upid": str(next_upid),
+            "name": player_data.get("name", ""),
+            "team": player_data.get("team", ""),
+            "pos": player_data.get("position", ""),
+            "alt_names": alt_names,
+            "approved_dupes": "FALSE",
+        }
 
-    # Update name index
-    all_names = [player_data.get("name", "")] + alt_names
-    for name in all_names:
-        key = name.lower().strip()
-        if key:
-            upid_db["name_index"].setdefault(key, []).append(str(next_upid))
+        # Update name index
+        all_names = [player_data.get("name", "")] + alt_names
+        for name in all_names:
+            key = name.lower().strip()
+            if key:
+                upid_db["name_index"].setdefault(key, []).append(str(next_upid))
 
-    save_json(UPID_DB_FILE, upid_db)
+        save_json(UPID_DB_FILE, upid_db)
+        print(f"  💾 Saved to upid_database.json")
 
-    # --- Log ---
-    log_player_action(
-        upid=next_upid,
-        player_name=player_data.get("name", "Unknown"),
-        update_type="Admin",
-        event=f"Player added to database by {admin}",
-        admin=admin,
-        owner=player_data.get("manager", ""),
-        changes={"action": "new_player", "all_fields": player_data},
-    )
+        # --- Log ---
+        log_player_action(
+            upid=next_upid,
+            player_name=player_data.get("name", "Unknown"),
+            update_type="Admin",
+            event=f"Player added to database by {admin}",
+            admin=admin,
+            owner=player_data.get("manager", ""),
+            changes={"action": "new_player", "all_fields": player_data},
+        )
+        print(f"  💾 Saved to player_log.json")
 
-    # --- Commit + sync ---
-    commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
-    git_commit_and_push([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
-    sync_to_website([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+        # --- Commit + push (CRITICAL: This must succeed!) ---
+        commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
+        
+        try:
+            git_commit_and_push([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+            print(f"  ✅ Git committed and pushed")
+        except Exception as git_error:
+            error_msg = f"Git commit/push failed: {str(git_error)}"
+            print(f"  ❌ {error_msg}")
+            print(f"  🔄 Rolling back all changes...")
+            
+            # ROLLBACK: Restore original data
+            save_json(COMBINED_FILE, original_players)
+            save_json(UPID_DB_FILE, original_upid_db)
+            save_json(PLAYER_LOG_FILE, original_player_log)
+            
+            print(f"  ✅ Rollback complete")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Transaction failed and rolled back. {error_msg}. Player was NOT added. Please try again or contact admin."
+            )
+        
+        # --- Sync to website ---
+        try:
+            sync_to_website([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+            print(f"  ✅ Synced to website")
+        except Exception as sync_error:
+            # Website sync failure is non-fatal - data is committed to bot repo
+            print(f"  ⚠️ Website sync failed: {sync_error} (Player IS added to bot repo)")
 
-    # Discord notification
-    if _bot_ref:
-        player_name = player_data.get('name', 'Unknown')
-        team = player_data.get('team', 'N/A')
-        position = player_data.get('position', 'N/A')
-        discord_msg = f"➕ **New Player Added**\n\n👤 Player: **{player_name}**\n⚾ Team: {team}\n🎯 Position: {position}\n🆔 UPID: {next_upid}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
-        _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
-
-    return {"upid": next_upid, "player": player_data}
+        # --- Discord notification ---
+        if _bot_ref:
+            try:
+                player_name = player_data.get('name', 'Unknown')
+                team = player_data.get('team', 'N/A')
+                position = player_data.get('position', 'N/A')
+                discord_msg = f"➕ **New Player Added**\n\n👤 Player: **{player_name}**\n⚾ Team: {team}\n🎯 Position: {position}\n🆔 UPID: {next_upid}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal\n✅ Status: COMMITTED TO GIT"
+                _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
+                print(f"  📢 Discord notification sent")
+            except Exception as discord_error:
+                print(f"  ⚠️ Discord notification failed: {discord_error}")
+        
+        print(f"✅ Transaction complete: Player {player_data.get('name')} added successfully with UPID {next_upid}")
+        
+        return {
+            "success": True,
+            "upid": next_upid,
+            "player": new_player,
+            "message": f"Player {player_data.get('name')} successfully added with UPID {next_upid} and committed to git"
+        }
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions (these are already formatted)
+        raise
+    except Exception as e:
+        # Unexpected error - rollback and raise
+        error_msg = f"Unexpected error during add-player: {str(e)}"
+        print(f"❌ {error_msg}")
+        print(f"🔄 Rolling back all changes...")
+        
+        # ROLLBACK: Restore original data
+        try:
+            save_json(COMBINED_FILE, original_players)
+            save_json(UPID_DB_FILE, original_upid_db)
+            save_json(PLAYER_LOG_FILE, original_player_log)
+            print(f"✅ Rollback complete")
+        except Exception as rollback_error:
+            print(f"❌ CRITICAL: Rollback failed: {rollback_error}")
+        
+        raise HTTPException(
+            status_code=500,
+            detail=f"Transaction failed and rolled back. {error_msg}. Player was NOT added. Please try again or contact admin."
+        )
 
 
 # ---------------------------------------------------------------------------
