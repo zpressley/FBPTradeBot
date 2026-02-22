@@ -35681,5 +35681,28 @@
     "years": "P",
     "update_type": "Trade",
     "event": "TRADE-210226_0804-003: HAM->WIZ"
+  },
+  {
+    "id": "2026-2026-02-22T08:20:45.065288-05:00-UPID_2362-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-02-22T08:20:45.065288-05:00",
+    "upid": "2362",
+    "player_name": "Daylen Lile",
+    "team": "WSH",
+    "pos": "OF",
+    "age": 23,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 241,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
