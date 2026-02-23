@@ -2,6 +2,120 @@
 
 **CRITICAL: All API endpoints that modify data and commit to git MUST follow these rules**
 
+## Rule 0: All Website Actions MUST Commit to Git
+
+**THE FUNDAMENTAL RULE: If a button on the website doesn't result in a git commit, it does NOTHING useful.**
+
+### Why This Rule Exists
+
+**The website (fbp-hub) is READ-ONLY.** It displays data from the bot repo (fbp-trade-bot) via GitHub Actions that sync files.
+
+**If an API endpoint doesn't commit to git:**
+1. Changes are only saved locally on the Render server
+2. Next git pull overwrites the local changes → data lost
+3. Website never sees the changes (because they're not in git)
+4. User clicks button → sees success message → nothing actually happened
+
+### The Workflow That MUST Happen
+
+```
+User clicks button on website
+        ↓
+Website calls API endpoint in fbp-trade-bot
+        ↓
+API modifies data files locally
+        ↓
+API commits and pushes to GitHub (fbp-trade-bot repo)
+        ↓
+GitHub Action triggers in fbp-trade-bot
+        ↓
+GitHub Action syncs changed files to fbp-hub repo
+        ↓
+Website shows updated data on next page load
+```
+
+**IF THE GIT COMMIT IS MISSING:**
+```
+User clicks button on website
+        ↓
+Website calls API endpoint in fbp-trade-bot
+        ↓
+API modifies data files locally
+        ↓
+❌ NO GIT COMMIT
+        ↓
+User sees success message
+        ↓
+Website still shows old data (git has no changes)
+        ↓
+Next deployment pulls from git → local changes overwritten
+        ↓
+Change is completely lost
+```
+
+### Endpoints That MUST Commit to Git
+
+**ANY endpoint called by a website button:**
+- ✅ Player management (add, edit, delete)
+- ✅ Trade submissions and approvals
+- ✅ Buy-in purchases and refunds
+- ✅ Draft picks
+- ✅ Roster changes
+- ✅ Contract updates
+- ✅ WizBucks transactions
+- ✅ KAP/PAD submissions
+
+**The ONLY exceptions:**
+- 🔍 Read-only endpoints (GET requests for displaying data)
+- 📊 Status checks and health endpoints
+
+### How to Implement
+
+**Every data-modifying endpoint MUST include:**
+
+```python
+@router.post("/api/something")
+async def modify_data(request: Request):
+    # 1. Validate request
+    # 2. Load data
+    # 3. Make changes
+    # 4. Save to files
+    
+    # 5. CRITICAL: Commit and push to git
+    try:
+        git_commit_and_push(
+            ["data/file1.json", "data/file2.json"],
+            "Descriptive commit message"
+        )
+        print("✅ Changes committed to git")
+    except Exception as e:
+        # Rollback changes if git fails
+        print(f"❌ Git failed, rolling back: {e}")
+        restore_original_data()
+        raise HTTPException(
+            status_code=500,
+            detail="Changes NOT saved - git commit failed. Please try again."
+        )
+    
+    # 6. Return success ONLY if git succeeded
+    return {"success": True, "message": "Changes saved"}
+```
+
+### Testing Checklist
+
+**Before deploying ANY new endpoint:**
+
+- [ ] Does the endpoint modify data files?
+- [ ] If yes, does it call `git_commit_and_push()`?
+- [ ] Does it handle git failures with rollback?
+- [ ] Does it return error to user if git fails?
+- [ ] Have you tested what happens if git push fails?
+- [ ] Does the website show updated data after the action?
+
+**If any answer is NO → The endpoint is BROKEN and will lose data**
+
+---
+
 ## Rule 1: Transactional Semantics
 
 **ALL data-modifying API endpoints MUST use transaction-like semantics:**

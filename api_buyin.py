@@ -12,6 +12,7 @@ Endpoints:
 import os
 import json
 import asyncio
+import subprocess
 from datetime import datetime
 from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
@@ -97,6 +98,31 @@ def save_json_file(filepath: str, data):
             json.dump(data, f, indent=2)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save {filepath}: {str(e)}")
+
+
+def git_commit_and_push(files: list, message: str):
+    """Commit and push files to git.
+    
+    CRITICAL: Raises exception on failure!
+    """
+    try:
+        for f in files:
+            subprocess.run(["git", "add", f], check=True, capture_output=True, text=True)
+        
+        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True, text=True)
+        print(f"✅ Git commit: {message}")
+        
+        subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
+        print(f"✅ Git push: {message}")
+        
+    except subprocess.CalledProcessError as e:
+        error_msg = f"Git operation failed: {e.stderr if e.stderr else str(e)}"
+        print(f"❌ {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)
+    except Exception as e:
+        error_msg = f"Unexpected git error: {str(e)}"
+        print(f"❌ {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)
 
 
 def validate_admin(admin_user: str, managers_data: dict) -> bool:
@@ -237,6 +263,18 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
+    
+    # Commit and push to git
+    try:
+        commit_msg = f"Keeper draft buy-in: {team} Round {payload.round} (${result.cost})"
+        git_commit_and_push(
+            ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
+            commit_msg
+        )
+    except Exception as e:
+        # Git failure is critical - changes are saved locally but not pushed
+        print(f"❌ Git commit/push failed: {str(e)}")
+        raise
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:
@@ -341,6 +379,18 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
         save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
+    
+    # Commit and push to git
+    try:
+        commit_msg = f"Keeper draft buy-in refund: {team} Round {payload.round} (${result.amount})"
+        git_commit_and_push(
+            ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
+            commit_msg
+        )
+    except Exception as e:
+        # Git failure is critical - changes are saved locally but not pushed
+        print(f"❌ Git commit/push failed: {str(e)}")
+        raise
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:

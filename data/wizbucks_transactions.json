@@ -1149,5 +1149,65 @@
       "counterparty": "CFL",
       "source": "trade_portal"
     }
-  }
+  },
+  {
+    "txn_id": "wb_2026-02-23_ham_buyin_R1_P3",
+    "timestamp": "2026-02-23T09:40:00.295971Z",
+    "team": "HAM",
+    "amount": -55,
+    "balance_before": 420,
+    "balance_after": 365,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 1 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 1,
+      "pick": 3,
+      "purchased_by": "HAM",
+      "source": "draft_picks_buy-in",
+      "trade_id": ""
+    }
+    },
+    {
+    "txn_id": "wb_2026-02-23_ham_buyin_R2_P3",
+    "timestamp": "2026-02-23T09:40:00.295971Z",
+    "team": "HAM",
+    "amount": -35,
+    "balance_before": 365,
+    "balance_after": 330,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 2 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 2,
+      "pick": 3,
+      "purchased_by": "HAM",
+      "source": "draft_picks_buy-in",
+      "trade_id": ""
+    }
+    },
+    {
+    "txn_id": "wb_2026-02-23_ham_buyin_R3_P3",
+    "timestamp": "2026-02-23T09:40:00.295971Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 330,
+    "balance_after": 320,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 3,
+      "purchased_by": "HAM",
+      "source": "draft_picks_buy-in",
+      "trade_id": ""
+    }
+    }
 ]
