@@ -8,7 +8,8 @@
       "manager": "WIZ",
       "role": "admin",
       "final_rank_2025": 1,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 1
     },
     "B2J": {
       "name": "Btwn2Jackies",
@@ -17,7 +18,8 @@
       "manager": "B2J",
       "role": "",
       "final_rank_2025": 6,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 6
     },
     "CFL": {
       "name": "Country Fried Lamb",
@@ -26,7 +28,8 @@
       "manager": "CFL",
       "role": "",
       "final_rank_2025": 8,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 8
     },
     "HAM": {
       "name": "Hammers",
@@ -35,7 +38,8 @@
       "manager": "HAM",
       "role": "",
       "final_rank_2025": 9,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 9
     },
     "RV": {
       "name": "Rick Vaughn",
@@ -44,7 +48,8 @@
       "manager": "RV",
       "role": "",
       "final_rank_2025": 10,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 10
     },
     "LFB": {
       "name": "La Flama Blanca",
@@ -53,7 +58,8 @@
       "manager": "LFB",
       "role": "",
       "final_rank_2025": 2,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 2
     },
     "JEP": {
       "name": "Jepordizers!",
@@ -62,7 +68,8 @@
       "manager": "JEP",
       "role": "",
       "final_rank_2025": 11,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 11
     },
     "TBB": {
       "name": "The Bluke Blokes",
@@ -71,7 +78,8 @@
       "manager": "TBB",
       "role": "admin",
       "final_rank_2025": 5,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 5
     },
     "DRO": {
       "name": "Andromedans",
@@ -80,7 +88,8 @@
       "manager": "DRO",
       "role": "",
       "final_rank_2025": 4,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 4
     },
     "SAD": {
       "name": "not much of a donkey",
@@ -89,7 +98,8 @@
       "manager": "SAD",
       "role": "admin",
       "final_rank_2025": 3,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 3
     },
     "WAR": {
       "name": "Weekend Warriors",
@@ -98,7 +108,8 @@
       "manager": "WAR",
       "role": "admin",
       "final_rank_2025": 12,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 12
     },
     "DMN": {
       "name": "The Damn Yankees",
@@ -106,7 +117,8 @@
       "discord_id": "1085200118149562419",
       "manager": "DMN",
       "final_rank_2025": 7,
-      "kap_rollover_2026": 0
+      "kap_rollover_2026": 0,
+      "standing": 7
     }
   },
   "commissioner": "161967242118955008"

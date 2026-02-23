@@ -95,6 +95,7 @@ class AuctionManager:
         # Config lives one level up from data/ by convention
         root_dir = self.data_dir.parent
         self.season_dates_file = root_dir / "config" / "season_dates.json"
+        self.managers_file = root_dir / "config" / "managers.json"
 
     # ------------------------------------------------------------------
     # Public API
@@ -188,14 +189,14 @@ class AuctionManager:
 
             # Only one OB per prospect per week
             if any(
-                b["prospect_id"] == prospect["id"] and b["type"] == "OB" for b in bids
+                b["prospect_id"] == prospect["upid"] and b["type"] == "OB" for b in bids
             ):
                 return {"success": False, "error": "This prospect already has an originating bid."}
 
         # Enforce CB rules
         if bid_type_enum is BidType.CB:
             # OB manager cannot CB their own prospect
-            ob_team = self._get_ob_team_for_prospect(bids, prospect["id"])
+            ob_team = self._get_ob_team_for_prospect(bids, prospect["upid"])
             if not ob_team:
                 return {"success": False, "error": "Challenge bids require an existing originating bid."}
 
@@ -203,7 +204,7 @@ class AuctionManager:
                 return {"success": False, "error": "Originating manager cannot place challenge bids on their own OB."}
 
             # Minimum raise of +$5
-            current_high = self._get_current_high_bid_amount(bids, prospect["id"])
+            current_high = self._get_current_high_bid_amount(bids, prospect["upid"])
             if amount < current_high + 5:
                 return {
                     "success": False,
@@ -214,7 +215,7 @@ class AuctionManager:
             et_date_str = now.date().isoformat()
             if any(
                 b["team"] == normalized_team
-                and b["prospect_id"] == prospect["id"]
+                and b["prospect_id"] == prospect["upid"]
                 and b["type"] == "CB"
                 and b.get("date") == et_date_str
                 for b in bids
@@ -241,7 +242,7 @@ class AuctionManager:
         utc_now = datetime.now(tz=timezone.utc)
         bid = Bid(
             team=normalized_team,
-            prospect_id=str(prospect["id"]),
+            prospect_id=str(prospect["upid"]),
             amount=int(amount),
             bid_type=bid_type_enum,
             timestamp=utc_now.isoformat(),
@@ -557,8 +558,8 @@ class AuctionManager:
 
         Returns a list of team abbreviations ordered from worst
         standings position to best (i.e., highest rank number first).
-        If standings data is unavailable, falls back to an alphabetical
-        list of manager abbreviations present in combined_players.json.
+        Tries standings.json first, then managers.json 'standing' field,
+        then falls back to alphabetical list from combined_players.json.
         """
 
         standings = self._load_json(self.standings_file) or {}
@@ -575,7 +576,19 @@ class AuctionManager:
         if order:
             return order
 
-        # Fallback: derive from players file
+        # Fallback 1: managers.json 'standing' field
+        mgr_data = self._load_json(self.managers_file) or {}
+        teams = mgr_data.get("teams") or {}
+        with_standing = [
+            (abbr, info.get("standing", info.get("final_rank_2025", 0)))
+            for abbr, info in teams.items()
+        ]
+        if with_standing:
+            # Higher standing number = worse record = earlier in priority
+            with_standing.sort(key=lambda x: x[1], reverse=True)
+            return [abbr for abbr, _ in with_standing]
+
+        # Fallback 2: derive from players file
         players = self._load_json(self.players_file) or []
         managers = sorted({p.get("manager") for p in players if p.get("manager")})
         return managers
@@ -755,11 +768,11 @@ class AuctionManager:
         return any(p.get("manager") == team for p in players)
 
     def _find_prospect(self, players: List[Dict[str, Any]], prospect_id: str) -> Optional[Dict[str, Any]]:
-        # First try by exact id string
+        # Primary: match by UPID (canonical identifier)
         for p in players:
-            if str(p.get("id")) == str(prospect_id) and p.get("player_type") == "Farm":
+            if str(p.get("upid", "")) == str(prospect_id) and p.get("player_type") == "Farm":
                 return p
-        # Fallback: try by name match for now
+        # Fallback: try by name match
         for p in players:
             if (
                 p.get("name") == prospect_id

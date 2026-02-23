@@ -800,6 +800,19 @@ except Exception:
     pass
 
 
+def _resolve_prospect_name(prospect_id: str) -> str:
+    """Resolve a UPID to a player name for readable Discord messages."""
+    try:
+        with open("data/combined_players.json", "r", encoding="utf-8") as f:
+            players = json.load(f)
+        for p in players:
+            if str(p.get("upid", "")) == str(prospect_id):
+                return p.get("name", prospect_id)
+    except Exception:
+        pass
+    return str(prospect_id)
+
+
 @app.get("/api/auction/current")
 async def get_current_auction(authorized: bool = Depends(verify_api_key)):
     """Return the current auction state for API consumers."""
@@ -829,12 +842,13 @@ async def api_place_bid(
 
         bid = result.get("bid", {})
         is_ob = bid.get("bid_type", payload.bid_type) == "OB"
+        prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
         header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
         content = (
             f"{header}\n\n"
             f"🏷️ Team: {bid.get('team', payload.team)}\n"
             f"💰 Bid: ${bid.get('amount', payload.amount)}\n"
-            f"🧢 Player: {bid.get('prospect_id', payload.prospect_id)}\n\n"
+            f"🧢 Player: {prospect_name}\n\n"
             f"Source: Website Portal"
         )
         bot.loop.create_task(_send_auction_log_message(content))
@@ -865,11 +879,12 @@ async def api_record_match(
     
         match = result.get("match", {})
         decision = match.get("decision", payload.decision)
+        prospect_name = _resolve_prospect_name(match.get("prospect_id", payload.prospect_id))
         emoji = "✅" if decision == "match" else "🚫"
         content = (
             f"{emoji} **OB Decision**\n"
             f"Team: `{match.get('team', payload.team)}`\n"
-            f"Prospect: `{match.get('prospect_id', payload.prospect_id)}`\n"
+            f"Prospect: {prospect_name}\n"
             f"Decision: `{decision}` (via Website Portal)"
         )
         bot.loop.create_task(_send_auction_log_message(content))

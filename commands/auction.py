@@ -8,6 +8,20 @@ from commands.utils import DISCORD_ID_TO_TEAM
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 
 
+def _resolve_prospect_name(prospect_id: str) -> str:
+    """Resolve a UPID to a player name for readable Discord messages."""
+    import json
+    try:
+        with open("data/combined_players.json", "r", encoding="utf-8") as f:
+            players = json.load(f)
+        for p in players:
+            if str(p.get("upid", "")) == str(prospect_id):
+                return p.get("name", prospect_id)
+    except Exception:
+        pass
+    return str(prospect_id)
+
+
 class Auction(commands.Cog):
     """Discord interface for the Prospect Auction Portal.
 
@@ -86,7 +100,7 @@ class Auction(commands.Cog):
 
     @app_commands.command(name="bid", description="Place an Originating Bid (OB) or Challenge Bid (CB)")
     @app_commands.describe(
-        prospect_id="Prospect identifier (JSON id or exact name)",
+        prospect_id="Prospect UPID or exact name",
         amount="Bid amount in WB",
         bid_type="OB for originating bid, CB for challenge bid",
     )
@@ -135,13 +149,14 @@ class Auction(commands.Cog):
             return
 
         bid_data = result["bid"]
+        prospect_name = _resolve_prospect_name(bid_data['prospect_id'])
         await interaction.followup.send(
             (
-                f"✅ Bid placed!\\n"
-                f"Team: `{bid_data['team']}`\\n"
-                f"Prospect: `{bid_data['prospect_id']}`\\n"
-                f"Amount: ${bid_data['amount']} WB\\n"
-                f"Type: {bid_data['bid_type']}\\n"
+                f"✅ Bid placed!\n"
+                f"Team: `{bid_data['team']}`\n"
+                f"Prospect: {prospect_name}\n"
+                f"Amount: ${bid_data['amount']} WB\n"
+                f"Type: {bid_data['bid_type']}\n"
             ),
             ephemeral=True,
         )
@@ -155,7 +170,7 @@ class Auction(commands.Cog):
                 f"{header}\n\n"
                 f"🏷️ Team: {bid_data['team']}\n"
                 f"💰 Bid: ${bid_data['amount']}\n"
-                f"🧢 Player: {bid_data['prospect_id']}\n\n"
+                f"🧢 Player: {prospect_name}\n\n"
                 f"Source: Discord /bid"
             )
             try:
@@ -301,7 +316,7 @@ class Auction(commands.Cog):
                 continue
 
             cbs = [b for b in pbids if b["type"] == "CB"]
-            lines.append(f"🧢 Player: {prospect_id}")
+            lines.append(f"🧢 Player: {_resolve_prospect_name(prospect_id)}")
             lines.append(f"📌 Originating Team: {ob['team']}")
 
             if cbs:
