@@ -109,6 +109,22 @@ def git_commit_and_push(files, message):
     CRITICAL: Raises exception on failure - caller MUST handle rollback!
     """
     try:
+        # Configure git if in Render environment (one-time setup)
+        github_token = os.getenv("GITHUB_TOKEN")
+        if github_token:
+            # Check if remote needs authentication setup
+            result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True)
+            current_url = result.stdout.strip()
+            
+            # If URL doesn't have token, update it
+            if "@github.com" not in current_url and github_token:
+                # Extract repo path from URL
+                if "github.com" in current_url:
+                    repo_path = current_url.split("github.com/")[-1].replace(".git", "")
+                    auth_url = f"https://{github_token}@github.com/{repo_path}.git"
+                    subprocess.run(["git", "remote", "set-url", "origin", auth_url], check=True, capture_output=True, text=True)
+                    print("✅ Git remote configured with authentication")
+        
         for f in files:
             result = subprocess.run(["git", "add", f], check=True, capture_output=True, text=True)
         
