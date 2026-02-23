@@ -35727,5 +35727,40 @@
     "years": "P",
     "update_type": "Trade",
     "event": "TRADE-230226_1049-005: CFL->DRO"
+  },
+  {
+    "log_id": "player_1771870730_8436",
+    "timestamp": "2026-02-23T18:18:50.990508+00:00",
+    "season": 2026,
+    "source": "admin_portal",
+    "admin": "zpressley",
+    "upid": "8436",
+    "player_name": "Tatsuya Imai",
+    "owner": "",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley",
+    "changes": {
+      "action": "new_player",
+      "all_fields": {
+        "name": "Tatsuya Imai",
+        "team": "HOU",
+        "position": "SP",
+        "age": 27,
+        "level": "MLB",
+        "player_type": "MLB",
+        "manager": "",
+        "contract_type": "",
+        "years_simple": "TC R",
+        "mlb_id": "837227",
+        "yahoo_id": null,
+        "birth_date": "1998-05-09",
+        "debut_date": null,
+        "bats": "R",
+        "throws": "R",
+        "fypd": false,
+        "alt_names": [],
+        "upid": "8436"
+      }
+    }
   }
 ]
