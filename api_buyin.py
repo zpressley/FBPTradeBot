@@ -24,9 +24,6 @@ router = APIRouter(prefix="/api/buyin", tags=["buyin"])
 
 API_KEY = os.getenv("BOT_API_KEY", "")
 
-# TEST MODE: Set to True to disable git commits and Discord notifications
-TEST_MODE = True
-
 # Transaction channel for buy-in announcements
 TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444
 
@@ -95,12 +92,6 @@ def load_json_file(filepath: str):
 
 def save_json_file(filepath: str, data):
     """Save data to a JSON file."""
-    if TEST_MODE:
-        # In test mode, save to test copies instead of real files
-        test_filepath = filepath.replace('.json', '_TEST.json')
-        print(f"🧪 TEST_MODE: Saving to {test_filepath} instead of {filepath}")
-        filepath = test_filepath
-    
     try:
         with open(filepath, 'w') as f:
             json.dump(data, f, indent=2)
@@ -122,10 +113,6 @@ def validate_admin(admin_user: str, managers_data: dict) -> bool:
 
 async def post_to_discord(team: str, round: int, cost: int, action: str = "purchased"):
     """Post buy-in transaction to Discord channel."""
-    if TEST_MODE:
-        print(f"🧪 TEST_MODE: Skipping Discord notification for {team} Round {round} {action}")
-        return
-    
     if not _bot_ref:
         print("⚠️ Bot reference not set, skipping Discord notification")
         return
@@ -170,11 +157,6 @@ async def post_to_discord(team: str, round: int, cost: int, action: str = "purch
 
 @router.post("/purchase")
 async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depends(verify_key)):
-    if TEST_MODE:
-        print("🧪" * 20)
-        print("🧪 TEST_MODE ACTIVE - No real files will be modified, no Discord notifications")
-        print("🧪" * 20)
-    
     try:
         print(
             "📥 BUYIN_PURCHASE",
@@ -285,11 +267,6 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
 
 @router.post("/refund")
 async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(verify_key)):
-    if TEST_MODE:
-        print("🧪" * 20)
-        print("🧪 TEST_MODE ACTIVE - No real files will be modified, no Discord notifications")
-        print("🧪" * 20)
-    
     try:
         print(
             "📥 BUYIN_REFUND",
