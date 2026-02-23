@@ -11,6 +11,7 @@ Endpoints:
 
 import os
 import json
+import asyncio
 from datetime import datetime
 from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
@@ -22,6 +23,9 @@ from team_utils import normalize_team_abbr
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
 
 API_KEY = os.getenv("BOT_API_KEY", "")
+
+# TEST MODE: Set to True to disable git commits and Discord notifications
+TEST_MODE = True
 
 # Transaction channel for buy-in announcements
 TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444
@@ -40,6 +44,30 @@ def set_buyin_bot_reference(bot):
     """Called from health.py after bot starts to give us access to Discord."""
     global _bot_ref
     _bot_ref = bot
+
+
+def _schedule_on_bot_loop(coro, label: str) -> None:
+    """Run Discord IO on the bot's event loop.
+
+    health.py runs FastAPI in a separate thread, so Discord operations must run
+    on the bot loop (main thread).
+    """
+    if _bot_ref is None:
+        return
+
+    loop = getattr(_bot_ref, "loop", None)
+    if not loop or not loop.is_running():
+        return
+
+    fut = asyncio.run_coroutine_threadsafe(coro, loop)
+
+    def _done(f):
+        try:
+            f.result()
+        except Exception as exc:
+            print(f"⚠️ Discord task failed ({label}): {exc}")
+
+    fut.add_done_callback(_done)
 
 
 class BuyinPurchasePayload(BaseModel):
@@ -67,6 +95,12 @@ def load_json_file(filepath: str):
 
 def save_json_file(filepath: str, data):
     """Save data to a JSON file."""
+    if TEST_MODE:
+        # In test mode, save to test copies instead of real files
+        test_filepath = filepath.replace('.json', '_TEST.json')
+        print(f"🧪 TEST_MODE: Saving to {test_filepath} instead of {filepath}")
+        filepath = test_filepath
+    
     try:
         with open(filepath, 'w') as f:
             json.dump(data, f, indent=2)
@@ -88,6 +122,10 @@ def validate_admin(admin_user: str, managers_data: dict) -> bool:
 
 async def post_to_discord(team: str, round: int, cost: int, action: str = "purchased"):
     """Post buy-in transaction to Discord channel."""
+    if TEST_MODE:
+        print(f"🧪 TEST_MODE: Skipping Discord notification for {team} Round {round} {action}")
+        return
+    
     if not _bot_ref:
         print("⚠️ Bot reference not set, skipping Discord notification")
         return
@@ -132,6 +170,11 @@ async def post_to_discord(team: str, round: int, cost: int, action: str = "purch
 
 @router.post("/purchase")
 async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depends(verify_key)):
+    if TEST_MODE:
+        print("🧪" * 20)
+        print("🧪 TEST_MODE ACTIVE - No real files will be modified, no Discord notifications")
+        print("🧪" * 20)
+    
     try:
         print(
             "📥 BUYIN_PURCHASE",
@@ -213,8 +256,11 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
 
-    # Post to Discord
-    await post_to_discord(team, payload.round, result.cost, "purchased")
+    # Post to Discord (do not block the API response; run on bot loop)
+    try:
+        _schedule_on_bot_loop(post_to_discord(team, payload.round, result.cost, "purchased"), "buyin_post_to_discord")
+    except Exception as exc:
+        print(f"⚠️ Failed to schedule buy-in Discord notification: {exc}")
 
     try:
         print(
@@ -239,6 +285,11 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
 
 @router.post("/refund")
 async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(verify_key)):
+    if TEST_MODE:
+        print("🧪" * 20)
+        print("🧪 TEST_MODE ACTIVE - No real files will be modified, no Discord notifications")
+        print("🧪" * 20)
+    
     try:
         print(
             "📥 BUYIN_REFUND",
@@ -314,8 +365,11 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
 
-    # Post to Discord
-    await post_to_discord(team, payload.round, result.amount, "refunded")
+    # Post to Discord (do not block the API response; run on bot loop)
+    try:
+        _schedule_on_bot_loop(post_to_discord(team, payload.round, result.amount, "refunded"), "buyin_refund_post_to_discord")
+    except Exception as exc:
+        print(f"⚠️ Failed to schedule buy-in refund Discord notification: {exc}")
 
     try:
         print(

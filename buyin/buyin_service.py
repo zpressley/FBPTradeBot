@@ -129,7 +129,8 @@ def apply_keeper_buyin_purchase(
     if round not in BUY_IN_COSTS:
         raise ValueError(f"Invalid round {round}. Only rounds 1-3 require buy-ins.")
 
-    # Find matching keeper pick
+    # Find matching keeper pick.
+    # IMPORTANT: buy-ins are tied to the pick's ORIGINAL OWNER (who pays), not the current owner.
     matches: list[tuple[int, dict]] = []
     for i, p in enumerate(draft_order):
         if not isinstance(p, dict):
@@ -140,18 +141,28 @@ def apply_keeper_buyin_purchase(
             continue
         if pick is not None and int(p.get("pick") or 0) != int(pick):
             continue
-        if str(p.get("current_owner") or "").strip().upper() != team.strip().upper():
+        if str(p.get("original_owner") or "").strip().upper() != team.strip().upper():
             continue
         matches.append((i, p))
 
     if not matches:
         suffix = f" pick {pick}" if pick is not None else ""
-        raise ValueError(f"No Round {round}{suffix} keeper pick found for team {team}")
+        raise ValueError(f"No Round {round}{suffix} keeper buy-in pick found for original owner {team}")
 
     if len(matches) > 1:
-        raise ValueError(f"Multiple Round {round} keeper picks found for team {team}; specify pick")
+        raise ValueError(f"Multiple Round {round} keeper buy-in picks found for original owner {team}; specify pick")
 
     pick_index, pick_entry = matches[0]
+
+    # For the public buy-in API (manager-initiated), only allow purchasing while the
+    # original owner still owns the pick. Auto-buyin paths (trade approval) are allowed
+    # to charge the original owner even after the pick has moved.
+    current_owner = str(pick_entry.get("current_owner") or "").strip().upper()
+    if str(source or "").strip().lower() == "buyin_api" and current_owner != team.strip().upper():
+        raise ValueError(
+            f"Round {round} buy-in must be purchased by the original owner while they still own the pick. "
+            f"Current owner is {current_owner or 'UNOWNED'}."
+        )
 
     if not pick_entry.get("buyin_required"):
         raise ValueError(f"Round {round} buy-in is not required for {team}")
@@ -258,16 +269,17 @@ def apply_keeper_buyin_refund(
             continue
         if pick is not None and int(p.get("pick") or 0) != int(pick):
             continue
-        if str(p.get("current_owner") or "").strip().upper() != team.strip().upper():
+        # Refunds are tied to the ORIGINAL OWNER wallet.
+        if str(p.get("original_owner") or "").strip().upper() != team.strip().upper():
             continue
         matches.append((i, p))
 
     if not matches:
         suffix = f" pick {pick}" if pick is not None else ""
-        raise ValueError(f"No Round {round}{suffix} keeper pick found for team {team}")
+        raise ValueError(f"No Round {round}{suffix} keeper buy-in pick found for original owner {team}")
 
     if len(matches) > 1:
-        raise ValueError(f"Multiple Round {round} keeper picks found for team {team}; specify pick")
+        raise ValueError(f"Multiple Round {round} keeper buy-in picks found for original owner {team}; specify pick")
 
     pick_index, pick_entry = matches[0]
 

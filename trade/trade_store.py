@@ -1071,11 +1071,13 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                 warnings.append(f"Keeper pick R{r} P{k} owned by {current_owner}, expected {from_team}")
                 continue
 
-            # Auto-buyin for rounds 1-3 (charge sending team) at admin approval time.
+            # Auto-buyin for rounds 1-3 at admin approval time.
+            # IMPORTANT: The buy-in is charged to the pick's ORIGINAL OWNER, not the current owner.
             if r in (1, 2, 3) and pick_entry.get("buyin_required") and not pick_entry.get("buyin_purchased"):
+                payer = normalize_team_abbr(str(pick_entry.get("original_owner") or "").strip(), managers_data=managers_data)
                 try:
                     apply_keeper_buyin_purchase(
-                        team=from_team,
+                        team=payer,
                         round=r,
                         pick=k,
                         draft_order=draft_order,
@@ -1091,7 +1093,7 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                     # Refresh after in-memory mutation
                     pick_entry = draft_order[pick_index]
                 except Exception as exc:
-                    warnings.append(f"Auto-buyin failed for {from_team} R{r} P{k}: {exc}")
+                    warnings.append(f"Auto-buyin failed for {payer or 'UNKNOWN'} R{r} P{k}: {exc}")
                     continue
 
             pick_entry["current_owner"] = to_team
