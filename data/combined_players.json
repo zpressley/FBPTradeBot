@@ -28389,7 +28389,7 @@
     "name": "Will Vest",
     "team": "DET",
     "position": "RP",
-    "manager": "not much of a donkey",
+    "manager": "Weekend Warriors",
     "player_type": "MLB",
     "contract_type": null,
     "status": "[5] TC1",
@@ -28397,7 +28397,7 @@
     "yahoo_id": "12110",
     "upid": "3379",
     "mlb_id": 676684,
-    "FBP_Team": "SAD",
+    "FBP_Team": "WAR",
     "birth_date": "1995-06-06",
     "age": 30,
     "height": "6' 0\"",
@@ -28406,7 +28406,8 @@
     "throws": "R",
     "mlb_primary_position": "P",
     "fypd": false,
-    "rank": 273
+    "rank": 273,
+    "level": "MLB"
   },
   {
     "name": "Willie Calhoun",
