@@ -1,0 +1,65 @@
+{
+  "WIZ": {
+    "primary": "#383F51",
+    "secondary": "#3A5624",
+    "accent1": "#EB9486",
+    "accent2": "#F9F8F8",
+    "accent3": "#8C1C13"
+  },
+  "RV": {
+    "primary": "#D50032",
+    "secondary": "#0033A0",
+    "accent1": "#FFFFFF",
+    "accent2": "#0033A0",
+    "accent3": "#D50032"
+  },
+  "B2J": {
+    "primary": "#721121",
+    "secondary": "#F1E9DA",
+    "accent1": "#0D0630",
+    "accent2": "#B287A3",
+    "accent3": "#575A4B"
+  },
+  "JEP": {
+    "primary": "#7143A8",
+    "secondary": "#DDD06A",
+    "accent1": "#8AF3FF",
+    "accent2": "#8C92AC",
+    "accent3": "#382154"
+  },
+  "HAM": {
+    "primary": "#606C38",
+    "secondary": "#DDA15E",
+    "accent1": "#FEFAE0",
+    "accent2": "#283618",
+    "accent3": "#BC6C25"
+  },
+  "DMN": {
+    "primary": "#F9FBFF",
+    "secondary": "#CA192B",
+    "accent1": "#000000",
+    "accent2": "#204899",
+    "accent3": "#B1B0A9"
+  },
+  "CFL": {
+    "primary": "#011C61",
+    "secondary": "#C4B24B",
+    "accent1": "#007025",
+    "accent2": "#FFFFFF",
+    "accent3": "#EDEBB4"
+  },
+  "TBB": {
+    "primary": "#815E5B",
+    "secondary": "#FCD7AD",
+    "accent1": "#58A4B0",
+    "accent2": "#120309",
+    "accent3": "#390040"
+  },
+  "SAD": {
+    "primary": "#7D99C9",
+    "secondary": "#B9A9C4",
+    "accent1": "#FF94D9",
+    "accent2": "#F8EED9",
+    "accent3": "#000000"
+  }
+}

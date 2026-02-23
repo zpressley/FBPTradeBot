@@ -48,6 +48,7 @@ from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
 from api_buyin import router as buyin_router, set_buyin_bot_reference
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
+from api_settings import router as settings_router, set_settings_commit_fn
 
 # Load environment variables
 load_dotenv()
@@ -396,6 +397,12 @@ async def on_ready():
         set_trade_commit_fn(_commit_and_push)
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for trade API: {exc}")
+
+    # Allow settings API to commit/push team_colors.json updates
+    try:
+        set_settings_commit_fn(_commit_and_push)
+    except Exception as exc:
+        print(f"⚠️ Failed to set commit fn for settings API: {exc}")
     
     await bot.change_presence(
         activity=discord.Activity(
@@ -445,6 +452,8 @@ app.include_router(draft_pick_router)
 app.include_router(buyin_router)
 # Trade portal router
 app.include_router(trade_router)
+# Settings router (team colors)
+app.include_router(settings_router)
 
 
 # Health check
@@ -780,6 +789,13 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         )
     except Exception:
         pass
+
+
+# Ensure settings API can enqueue commits even before bot on_ready.
+try:
+    set_settings_commit_fn(_commit_and_push)
+except Exception:
+    pass
 
 
 @app.get("/api/auction/current")
