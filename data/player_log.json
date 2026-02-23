@@ -35704,5 +35704,28 @@
     "years": "P",
     "update_type": "Trade",
     "event": "TRADE-220226_1326-004: LFB->CFL"
+  },
+  {
+    "id": "2026-2026-02-23T15:50:32.679966Z-UPID_7658-Trade-TRADE-230226_1049-005",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WAR",
+    "timestamp": "2026-02-23T15:50:32.679966Z",
+    "upid": "7658",
+    "player_name": "Payton Tolle",
+    "team": "BOS",
+    "pos": "SP,RP",
+    "age": 23,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 417,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Andromedans",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Trade",
+    "event": "TRADE-230226_1049-005: CFL->DRO"
   }
 ]

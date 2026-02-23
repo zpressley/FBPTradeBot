@@ -1169,8 +1169,8 @@
       "source": "draft_picks_buy-in",
       "trade_id": ""
     }
-    },
-    {
+  },
+  {
     "txn_id": "wb_2026-02-23_ham_buyin_R2_P3",
     "timestamp": "2026-02-23T09:40:00.295971Z",
     "team": "HAM",
@@ -1189,8 +1189,8 @@
       "source": "draft_picks_buy-in",
       "trade_id": ""
     }
-    },
-    {
+  },
+  {
     "txn_id": "wb_2026-02-23_ham_buyin_R3_P3",
     "timestamp": "2026-02-23T09:40:00.295971Z",
     "team": "HAM",
@@ -1209,5 +1209,57 @@
       "source": "draft_picks_buy-in",
       "trade_id": ""
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_DRO_R3_P10_TRADE-230226_1049-005_1771861832",
+    "timestamp": "2026-02-23T15:50:32.679966Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 395,
+    "balance_after": 385,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 10,
+      "purchased_by": "WAR",
+      "source": "trade_portal_auto_buyin",
+      "trade_id": "TRADE-230226_1049-005"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-23_trade_TRADE-230226_1049-005_CFL_debit_15",
+    "timestamp": "2026-02-23T15:50:32.679966Z",
+    "team": "CFL",
+    "amount": -15,
+    "balance_before": 300,
+    "balance_after": 285,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-230226_1049-005: WizBucks sent to DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-230226_1049-005",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-23_trade_TRADE-230226_1049-005_DRO_credit_15",
+    "timestamp": "2026-02-23T15:50:32.679966Z",
+    "team": "DRO",
+    "amount": 15,
+    "balance_before": 385,
+    "balance_after": 400,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-230226_1049-005: WizBucks received from CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-230226_1049-005",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
+  }
 ]
