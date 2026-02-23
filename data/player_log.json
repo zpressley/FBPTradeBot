@@ -35797,5 +35797,40 @@
         "upid": "8437"
       }
     }
+  },
+  {
+    "log_id": "player_1771872641_8438",
+    "timestamp": "2026-02-23T18:50:41.037136+00:00",
+    "season": 2026,
+    "source": "admin_portal",
+    "admin": "zpressley",
+    "upid": "8438",
+    "player_name": "Sung-Mun Song",
+    "owner": "",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley",
+    "changes": {
+      "action": "new_player",
+      "all_fields": {
+        "name": "Sung-Mun Song",
+        "team": "SD",
+        "position": "2B, 3B",
+        "age": 29,
+        "level": "MLB",
+        "player_type": "Farm",
+        "manager": "",
+        "contract_type": "",
+        "years_simple": "",
+        "mlb_id": "823550",
+        "yahoo_id": null,
+        "birth_date": "1996-08-29",
+        "debut_date": null,
+        "bats": "L",
+        "throws": "R",
+        "fypd": false,
+        "alt_names": [],
+        "upid": "8438"
+      }
+    }
   }
 ]
