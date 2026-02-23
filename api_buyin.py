@@ -112,7 +112,11 @@ def git_commit_and_push(files: list, message: str):
         subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True, text=True)
         print(f"✅ Git commit: {message}")
         
-        subprocess.run(["git", "push"], check=True, capture_output=True, text=True)
+        # Get current branch name
+        result = subprocess.run(["git", "branch", "--show-current"], check=True, capture_output=True, text=True)
+        current_branch = result.stdout.strip() or "main"
+        
+        subprocess.run(["git", "push", "origin", current_branch], check=True, capture_output=True, text=True)
         print(f"✅ Git push: {message}")
         
     except subprocess.CalledProcessError as e:

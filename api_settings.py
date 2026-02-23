@@ -108,18 +108,45 @@ async def set_team_colors(
         "accent3": _validate_hex_optional(payload.accent3, "accent3"),
     }
 
-    data = _load_json(TEAM_COLORS_PATH, {}) or {}
-    if not isinstance(data, dict):
-        data = {}
-
+    # Load original data for rollback
+    original_data = _load_json(TEAM_COLORS_PATH, {}) or {}
+    if not isinstance(original_data, dict):
+        original_data = {}
+    
+    # Make a copy and update it
+    data = dict(original_data)
     data[manager_team] = colors
+    
+    # Save changes
     _save_json(TEAM_COLORS_PATH, data)
+    print(f"💾 Saved team colors for {manager_team}")
 
-    # Best-effort persistence back to GitHub so fbp-hub can sync it.
+    # CRITICAL: Commit to git (not optional!)
     try:
-        if _commit_fn is not None:
-            _commit_fn([TEAM_COLORS_PATH], f"Team colors: {manager_team}")
+        if _commit_fn is None:
+            # Rollback and fail
+            _save_json(TEAM_COLORS_PATH, original_data)
+            print("❌ Git commit system not initialized, rolled back")
+            raise HTTPException(
+                status_code=500,
+                detail="Git commit system not initialized. Team colors NOT saved. Please contact admin."
+            )
+        
+        _commit_fn([TEAM_COLORS_PATH], f"Team colors: {manager_team}")
+        print(f"✅ Team colors committed to git for {manager_team}")
+        
+    except HTTPException:
+        raise  # Re-raise formatted errors
     except Exception as exc:
-        print("⚠️ Team colors git commit/push failed:", exc)
+        # Rollback on failure
+        print(f"❌ Git commit failed: {exc}")
+        print("🔄 Rolling back team colors...")
+        _save_json(TEAM_COLORS_PATH, original_data)
+        print("✅ Rollback complete")
+        
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to save team colors: {exc}. Changes NOT saved. Please try again."
+        )
 
     return {"success": True, "team": manager_team, "colors": colors}

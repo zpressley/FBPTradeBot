@@ -87,25 +87,24 @@ def _trades_lock():
 
 
 def _maybe_commit(message: str, file_paths: Optional[list[str]] = None) -> None:
-    global _warned_commit_fn_missing
+    """Commit and push trade files to git.
+    
+    CRITICAL: Raises exception on failure - caller MUST handle rollback!
+    This is no longer "maybe" - it's REQUIRED for data integrity.
+    """
     if _commit_fn is None:
-        # High-signal: if commit wiring is missing, trades will apply locally
-        # but never push to GitHub. Only log once per process.
-        if not _warned_commit_fn_missing:
-            _warned_commit_fn_missing = True
-            try:
-                print(
-                    "⚠️ TRADE_COMMIT_FN_NOT_SET",
-                    {"message_head": (message or "").splitlines()[0] if message else ""},
-                )
-            except Exception:
-                pass
-        return
+        error_msg = "Git commit system not initialized. Trade changes NOT committed to git."
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg)
+    
     try:
         paths = file_paths or ["data/trades.json"]
         _commit_fn(paths, message)
+        print(f"✅ Trade committed to git: {message}")
     except Exception as exc:
-        print(f"⚠️ Trade commit/push skipped: {exc}")
+        error_msg = f"Trade git commit/push failed: {exc}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg) from exc
 
 
 @dataclass(frozen=True)
@@ -600,10 +599,17 @@ def create_trade(payload: TradeSubmitPayload, actor_team: str) -> dict:
         trades[trade_id] = record
         _save_trades(trades)
 
-    _maybe_commit(
-        f"Trade submitted: {trade_id} by {initiator_team}",
-        file_paths=[TRADES_PATH, TRADE_ID_STATE_PATH],
-    )
+    try:
+        _maybe_commit(
+            f"Trade submitted: {trade_id} by {initiator_team}",
+            file_paths=[TRADES_PATH, TRADE_ID_STATE_PATH],
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Trade created locally but git commit failed: {e}. Trade may not be visible until server restarts. Please contact admin."
+        )
+    
     return record
 
 
@@ -620,7 +626,12 @@ def attach_discord_thread(trade_id: str, thread_id: str, thread_url: str) -> dic
         trades[trade_id] = rec
         _save_trades(trades)
 
-    _maybe_commit(f"Trade thread attached: {trade_id}")
+    try:
+        _maybe_commit(f"Trade thread attached: {trade_id}")
+    except Exception as e:
+        # Thread attachment git failure is non-fatal - Discord thread still works
+        print(f"⚠️ Trade thread attachment commit failed: {e}")
+    
     return rec
 
 
@@ -841,7 +852,13 @@ def accept_trade(trade_id: str, team: str) -> Tuple[dict, bool]:
             commit_msg = f"Trade accept: {trade_id} by {team}"
             do_raise = False
 
-    _maybe_commit(commit_msg)
+    try:
+        _maybe_commit(commit_msg)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Trade acceptance saved locally but git commit failed: {e}. Please contact admin."
+        )
 
     if do_raise:
         raise HTTPException(status_code=409, detail="Trade withdrawn due to conflicting trade")
@@ -874,7 +891,14 @@ def reject_trade(trade_id: str, team: str, reason: str) -> dict:
         trades[trade_id] = rec
         _save_trades(trades)
 
-    _maybe_commit(f"Trade reject: {trade_id} by {team}")
+    try:
+        _maybe_commit(f"Trade reject: {trade_id} by {team}")
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Trade rejection saved locally but git commit failed: {e}. Please contact admin."
+        )
+    
     return rec
 
 
@@ -900,7 +924,14 @@ def withdraw_trade(trade_id: str, team: str) -> dict:
         trades[trade_id] = rec
         _save_trades(trades)
 
-    _maybe_commit(f"Trade withdraw: {trade_id} by {team}")
+    try:
+        _maybe_commit(f"Trade withdraw: {trade_id} by {team}")
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Trade withdrawal saved locally but git commit failed: {e}. Please contact admin."
+        )
+    
     return rec
 
 
@@ -1327,7 +1358,15 @@ def admin_approve(trade_id: str, admin_team: str) -> dict:
             commit_paths = files_to_commit
 
     if commit_message:
-        _maybe_commit(commit_message, file_paths=commit_paths)
+        try:
+            _maybe_commit(commit_message, file_paths=commit_paths)
+        except Exception as e:
+            # CRITICAL: Trade was applied to data files but not committed
+            # This is a serious issue - admin should be notified
+            raise HTTPException(
+                status_code=500,
+                detail=f"CRITICAL: Trade applied to data files but git commit failed: {e}. Trade data is in inconsistent state. Contact admin immediately."
+            )
 
     if raise_exc is not None:
         raise raise_exc
@@ -1355,5 +1394,12 @@ def admin_reject(trade_id: str, admin_team: str, reason: str) -> dict:
         trades[trade_id] = rec
         _save_trades(trades)
 
-    _maybe_commit(f"Trade admin reject: {trade_id} by {admin_team}")
+    try:
+        _maybe_commit(f"Trade admin reject: {trade_id} by {admin_team}")
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Trade rejection saved locally but git commit failed: {e}. Please contact admin."
+        )
+    
     return rec
