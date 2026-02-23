@@ -1261,5 +1261,25 @@
       "counterparty": "CFL",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_B2J_R1_P2_1771866165",
+    "timestamp": "2026-02-23T17:02:45.124941Z",
+    "team": "B2J",
+    "amount": -55,
+    "balance_before": 455,
+    "balance_after": 400,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 1 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 1,
+      "pick": 2,
+      "purchased_by": "B2J",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
