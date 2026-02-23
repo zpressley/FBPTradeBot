@@ -1301,5 +1301,25 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_CFL_R3_P6_1771872884",
+    "timestamp": "2026-02-23T18:54:44.823505Z",
+    "team": "CFL",
+    "amount": -10,
+    "balance_before": 250,
+    "balance_after": 240,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 6,
+      "purchased_by": "CFL",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
