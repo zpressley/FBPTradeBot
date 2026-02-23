@@ -145230,9 +145230,9 @@
     "position": "2B, 3B",
     "age": 29,
     "manager": "",
-    "player_type": "Farm",
+    "player_type": "MLB",
     "contract_type": "",
-    "years_simple": "",
+    "years_simple": "TC R",
     "yahoo_id": null,
     "mlb_id": "823550",
     "birth_date": "1996-08-29",
@@ -145240,6 +145240,7 @@
     "bats": "L",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "status": "[6] TCR"
   }
 ]
