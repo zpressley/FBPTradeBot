@@ -43,10 +43,10 @@ from self_service.contract_purchase_processor import (
     ContractPurchasePayload,
     apply_contract_purchase,
 )
-from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference
+from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference, set_bulk_commit_fn
 from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
-from api_buyin import router as buyin_router, set_buyin_bot_reference
+from api_buyin import router as buyin_router, set_buyin_bot_reference, set_buyin_commit_fn
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 from api_settings import router as settings_router, set_settings_commit_fn
 
@@ -379,15 +379,17 @@ async def on_ready():
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for draft pick API: {exc}")
     
-    # Allow bulk admin API to send Discord notifications
+    # Allow bulk admin API to send Discord notifications and commit/push
     try:
         set_bulk_bot_reference(bot)
+        set_bulk_commit_fn(_commit_and_push)
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for bulk admin API: {exc}")
     
-    # Allow buy-in API to send Discord notifications
+    # Allow buy-in API to send Discord notifications and commit/push
     try:
         set_buyin_bot_reference(bot)
+        set_buyin_commit_fn(_commit_and_push)
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for buy-in API: {exc}")
 

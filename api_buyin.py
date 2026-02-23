@@ -12,11 +12,10 @@ Endpoints:
 import os
 import json
 import asyncio
-import subprocess
 from datetime import datetime
 from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
-from typing import Optional
+from typing import Callable, Optional
 
 from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_wallet_balance
 from team_utils import normalize_team_abbr
@@ -36,12 +35,19 @@ def verify_key(x_api_key: Optional[str] = Header(None)):
 
 
 _bot_ref = None
+_commit_fn: Optional[Callable[[list[str], str], None]] = None
 
 
 def set_buyin_bot_reference(bot):
     """Called from health.py after bot starts to give us access to Discord."""
     global _bot_ref
     _bot_ref = bot
+
+
+def set_buyin_commit_fn(fn: Callable[[list[str], str], None]) -> None:
+    """Inject the centralised commit-and-push function from health.py."""
+    global _commit_fn
+    _commit_fn = fn
 
 
 def _schedule_on_bot_loop(coro, label: str) -> None:
@@ -100,49 +106,15 @@ def save_json_file(filepath: str, data):
         raise HTTPException(status_code=500, detail=f"Failed to save {filepath}: {str(e)}")
 
 
-def git_commit_and_push(files: list, message: str):
-    """Commit and push files to git.
-    
-    CRITICAL: Raises exception on failure!
+def _enqueue_commit(files: list[str], message: str) -> None:
+    """Queue a git commit via the centralised commit worker from health.py.
+
+    Falls back to a warning if no commit function has been injected yet.
     """
-    try:
-        # Configure git if in Render environment (one-time setup)
-        github_token = os.getenv("GITHUB_TOKEN")
-        if github_token:
-            # Check if remote needs authentication setup
-            result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True)
-            current_url = result.stdout.strip()
-            
-            # If URL doesn't have token, update it
-            if "@github.com" not in current_url and github_token:
-                # Extract repo path from URL
-                if "github.com" in current_url:
-                    repo_path = current_url.split("github.com/")[-1].replace(".git", "")
-                    auth_url = f"https://{github_token}@github.com/{repo_path}.git"
-                    subprocess.run(["git", "remote", "set-url", "origin", auth_url], check=True, capture_output=True, text=True)
-                    print("✅ Git remote configured with authentication")
-        
-        for f in files:
-            subprocess.run(["git", "add", f], check=True, capture_output=True, text=True)
-        
-        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True, text=True)
-        print(f"✅ Git commit: {message}")
-        
-        # Get current branch name
-        result = subprocess.run(["git", "branch", "--show-current"], check=True, capture_output=True, text=True)
-        current_branch = result.stdout.strip() or "main"
-        
-        subprocess.run(["git", "push", "origin", current_branch], check=True, capture_output=True, text=True)
-        print(f"✅ Git push: {message}")
-        
-    except subprocess.CalledProcessError as e:
-        error_msg = f"Git operation failed: {e.stderr if e.stderr else str(e)}"
-        print(f"❌ {error_msg}")
-        raise HTTPException(status_code=500, detail=error_msg)
-    except Exception as e:
-        error_msg = f"Unexpected git error: {str(e)}"
-        print(f"❌ {error_msg}")
-        raise HTTPException(status_code=500, detail=error_msg)
+    if _commit_fn is not None:
+        _commit_fn(files, message)
+    else:
+        print(f"⚠️ No commit function configured – skipping git commit: {message}")
 
 
 def validate_admin(admin_user: str, managers_data: dict) -> bool:
@@ -284,17 +256,15 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
     
-    # Commit and push to git
+    # Queue git commit (best-effort; data is already saved to disk)
     try:
         commit_msg = f"Keeper draft buy-in: {team} Round {payload.round} (${result.cost})"
-        git_commit_and_push(
+        _enqueue_commit(
             ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
-            commit_msg
+            commit_msg,
         )
     except Exception as e:
-        # Git failure is critical - changes are saved locally but not pushed
-        print(f"❌ Git commit/push failed: {str(e)}")
-        raise
+        print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:
@@ -400,17 +370,15 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
     
-    # Commit and push to git
+    # Queue git commit (best-effort; data is already saved to disk)
     try:
         commit_msg = f"Keeper draft buy-in refund: {team} Round {payload.round} (${result.amount})"
-        git_commit_and_push(
+        _enqueue_commit(
             ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
-            commit_msg
+            commit_msg,
         )
     except Exception as e:
-        # Git failure is critical - changes are saved locally but not pushed
-        print(f"❌ Git commit/push failed: {str(e)}")
-        raise
+        print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:

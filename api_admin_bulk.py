@@ -13,10 +13,9 @@ Handles:
 import json
 import os
 import requests
-import subprocess
 from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Request, Depends, Header
-from typing import Optional
+from typing import Callable, Optional
 
 router = APIRouter(prefix="/api/admin", tags=["admin-bulk"])
 
@@ -31,12 +30,19 @@ ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notificat
 
 # Bot reference for Discord notifications
 _bot_ref = None
+_commit_fn: Optional[Callable[[list[str], str], None]] = None
 
 
 def set_bulk_bot_reference(bot):
     """Called from health.py after bot starts to enable Discord notifications."""
     global _bot_ref
     _bot_ref = bot
+
+
+def set_bulk_commit_fn(fn: Callable[[list[str], str], None]) -> None:
+    """Inject the centralised commit-and-push function from health.py."""
+    global _commit_fn
+    _commit_fn = fn
 
 
 async def _send_admin_bulk_notification(message: str):
@@ -103,49 +109,15 @@ def log_player_action(upid, player_name, update_type, event, admin, owner="", ch
     return entry
 
 
-def git_commit_and_push(files, message):
-    """Commit changed files and push. Runs in bot repo.
-    
-    CRITICAL: Raises exception on failure - caller MUST handle rollback!
+def _enqueue_commit(files: list[str], message: str) -> None:
+    """Queue a git commit via the centralised commit worker from health.py.
+
+    Falls back to a warning if no commit function has been injected yet.
     """
-    try:
-        # Configure git if in Render environment (one-time setup)
-        github_token = os.getenv("GITHUB_TOKEN")
-        if github_token:
-            # Check if remote needs authentication setup
-            result = subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True)
-            current_url = result.stdout.strip()
-            
-            # If URL doesn't have token, update it
-            if "@github.com" not in current_url and github_token:
-                # Extract repo path from URL
-                if "github.com" in current_url:
-                    repo_path = current_url.split("github.com/")[-1].replace(".git", "")
-                    auth_url = f"https://{github_token}@github.com/{repo_path}.git"
-                    subprocess.run(["git", "remote", "set-url", "origin", auth_url], check=True, capture_output=True, text=True)
-                    print("✅ Git remote configured with authentication")
-        
-        for f in files:
-            result = subprocess.run(["git", "add", f], check=True, capture_output=True, text=True)
-        
-        result = subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True, text=True)
-        print(f"✅ Git commit: {message}")
-        
-        # Get current branch name
-        result = subprocess.run(["git", "branch", "--show-current"], check=True, capture_output=True, text=True)
-        current_branch = result.stdout.strip() or "main"
-        
-        result = subprocess.run(["git", "push", "origin", current_branch], check=True, capture_output=True, text=True)
-        print(f"✅ Git push: {message}")
-        
-    except subprocess.CalledProcessError as e:
-        error_msg = f"Git operation failed: {e.stderr if e.stderr else str(e)}"
-        print(f"❌ {error_msg}")
-        raise RuntimeError(error_msg) from e
-    except Exception as e:
-        error_msg = f"Unexpected git error: {str(e)}"
-        print(f"❌ {error_msg}")
-        raise RuntimeError(error_msg) from e
+    if _commit_fn is not None:
+        _commit_fn(files, message)
+    else:
+        print(f"⚠️ No commit function configured – skipping git commit: {message}")
 
 
 def sync_to_website(files, message):
@@ -243,7 +215,7 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
 
     # Commit + sync
     commit_msg = f"Admin bulk graduate: {len(updated)} players"
-    git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -294,7 +266,7 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
     save_json(COMBINED_FILE, players)
 
     commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
-    git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -353,7 +325,7 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
     save_json(COMBINED_FILE, players)
 
     commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
-    git_commit_and_push([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -374,11 +346,12 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
 async def add_player(request: Request, _=Depends(verify_api_key)):
     """
     Add a new player to the database.
-    
-    CRITICAL: This endpoint uses TRANSACTIONAL semantics:
-    - If ANY step fails (save, commit, push), ALL changes are rolled back
-    - Raises HTTPException with clear error message on failure
-    - Only returns success if EVERYTHING completes including git push
+
+    Creates:
+    - A new UPID + upid_database.json entry
+    - A new player in combined_players.json
+    - A player_log.json entry
+    - Queues a git commit/push via the centralised worker
     """
     body = await request.json()
     admin = body.get("admin", "unknown")
@@ -387,16 +360,9 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
     if not player_data.get("name"):
         raise HTTPException(status_code=400, detail="Player name is required")
 
-    # Load original data for rollback
-    original_players = load_json(COMBINED_FILE)
-    original_upid_db = load_json(UPID_DB_FILE)
-    original_player_log = load_json(PLAYER_LOG_FILE)
-    
-    next_upid = None
-    
     try:
-        print(f"🔄 Starting add-player transaction for {player_data.get('name')} by {admin}")
-        
+        print(f"🔄 Starting add-player for {player_data.get('name')} by {admin}")
+
         # --- Generate UPID ---
         upid_db = load_json(UPID_DB_FILE)
         if not upid_db or "by_upid" not in upid_db:
@@ -405,7 +371,7 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
         existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
         next_upid = (max(existing_upids) + 1) if existing_upids else 1
         player_data["upid"] = str(next_upid)
-        
+
         print(f"  📝 Assigned UPID: {next_upid}")
 
         # --- Add to combined_players.json ---
@@ -469,35 +435,16 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
         )
         print(f"  💾 Saved to player_log.json")
 
-        # --- Commit + push (CRITICAL: This must succeed!) ---
+        # --- Queue git commit (best-effort; data is already persisted to disk) ---
         commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
-        
-        try:
-            git_commit_and_push([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
-            print(f"  ✅ Git committed and pushed")
-        except Exception as git_error:
-            error_msg = f"Git commit/push failed: {str(git_error)}"
-            print(f"  ❌ {error_msg}")
-            print(f"  🔄 Rolling back all changes...")
-            
-            # ROLLBACK: Restore original data
-            save_json(COMBINED_FILE, original_players)
-            save_json(UPID_DB_FILE, original_upid_db)
-            save_json(PLAYER_LOG_FILE, original_player_log)
-            
-            print(f"  ✅ Rollback complete")
-            raise HTTPException(
-                status_code=500,
-                detail=f"Transaction failed and rolled back. {error_msg}. Player was NOT added. Please try again or contact admin."
-            )
-        
+        _enqueue_commit([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+
         # --- Sync to website ---
         try:
             sync_to_website([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
             print(f"  ✅ Synced to website")
         except Exception as sync_error:
-            # Website sync failure is non-fatal - data is committed to bot repo
-            print(f"  ⚠️ Website sync failed: {sync_error} (Player IS added to bot repo)")
+            print(f"  ⚠️ Website sync failed: {sync_error} (Player IS saved locally)")
 
         # --- Discord notification ---
         if _bot_ref:
@@ -505,42 +452,29 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
                 player_name = player_data.get('name', 'Unknown')
                 team = player_data.get('team', 'N/A')
                 position = player_data.get('position', 'N/A')
-                discord_msg = f"➕ **New Player Added**\n\n👤 Player: **{player_name}**\n⚾ Team: {team}\n🎯 Position: {position}\n🆔 UPID: {next_upid}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal\n✅ Status: COMMITTED TO GIT"
+                discord_msg = f"➕ **New Player Added**\n\n👤 Player: **{player_name}**\n⚾ Team: {team}\n🎯 Position: {position}\n🆔 UPID: {next_upid}\n👤 Admin: {admin}\n💾 Source: Website Admin Portal"
                 _bot_ref.loop.create_task(_send_admin_bulk_notification(discord_msg))
-                print(f"  📢 Discord notification sent")
+                print(f"  📢 Discord notification scheduled")
             except Exception as discord_error:
                 print(f"  ⚠️ Discord notification failed: {discord_error}")
-        
-        print(f"✅ Transaction complete: Player {player_data.get('name')} added successfully with UPID {next_upid}")
-        
+
+        print(f"✅ Add-player complete: {player_data.get('name')} with UPID {next_upid}")
+
         return {
             "success": True,
             "upid": next_upid,
             "player": new_player,
-            "message": f"Player {player_data.get('name')} successfully added with UPID {next_upid} and committed to git"
+            "message": f"Player {player_data.get('name')} successfully added with UPID {next_upid}"
         }
-        
+
     except HTTPException:
-        # Re-raise HTTP exceptions (these are already formatted)
         raise
     except Exception as e:
-        # Unexpected error - rollback and raise
         error_msg = f"Unexpected error during add-player: {str(e)}"
         print(f"❌ {error_msg}")
-        print(f"🔄 Rolling back all changes...")
-        
-        # ROLLBACK: Restore original data
-        try:
-            save_json(COMBINED_FILE, original_players)
-            save_json(UPID_DB_FILE, original_upid_db)
-            save_json(PLAYER_LOG_FILE, original_player_log)
-            print(f"✅ Rollback complete")
-        except Exception as rollback_error:
-            print(f"❌ CRITICAL: Rollback failed: {rollback_error}")
-        
         raise HTTPException(
             status_code=500,
-            detail=f"Transaction failed and rolled back. {error_msg}. Player was NOT added. Please try again or contact admin."
+            detail=f"Add player failed: {error_msg}. Please try again or contact admin."
         )
 
 
