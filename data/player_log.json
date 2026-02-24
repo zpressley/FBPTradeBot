@@ -35773,5 +35773,110 @@
     "years": "TC 1",
     "update_type": "Admin",
     "event": "remove test owner"
+  }, 
+   {
+    "log_id": "player_1771872585_8436",
+    "timestamp": "2026-02-23T18:49:45.729155+00:00",
+    "season": 2026,
+    "source": "admin_portal",
+    "admin": "zpressley",
+    "upid": "8436",
+    "player_name": "Munetaka Murakami",
+    "owner": "",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley",
+    "changes": {
+      "action": "new_player",
+      "all_fields": {
+        "name": "Munetaka Murakami",
+        "team": "CHW",
+        "position": "3B",
+        "age": 26,
+        "level": "MLB",
+        "player_type": "MLB",
+        "manager": "",
+        "contract_type": "",
+        "years_simple": "TC R",
+        "mlb_id": "808959",
+        "yahoo_id": null,
+        "birth_date": "2000-02-02",
+        "debut_date": null,
+        "bats": "L",
+        "throws": "R",
+        "fypd": false,
+        "alt_names": [],
+        "upid": "8436"
+      }
+    }
+  },
+  {
+    "log_id": "player_1771872617_8437",
+    "timestamp": "2026-02-23T18:50:17.525344+00:00",
+    "season": 2026,
+    "source": "admin_portal",
+    "admin": "zpressley",
+    "upid": "8437",
+    "player_name": "Kazuma Okamoto",
+    "owner": "",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley",
+    "changes": {
+      "action": "new_player",
+      "all_fields": {
+        "name": "Kazuma Okamoto",
+        "team": "TOR",
+        "position": "1B, 3B",
+        "age": 29,
+        "level": "MLB",
+        "player_type": "MLB",
+        "manager": "",
+        "contract_type": "",
+        "years_simple": "TC R",
+        "mlb_id": "672960",
+        "yahoo_id": null,
+        "birth_date": "1996-06-30",
+        "debut_date": null,
+        "bats": "R",
+        "throws": "R",
+        "fypd": false,
+        "alt_names": [],
+        "upid": "8437"
+      }
+    }
+  },
+  {
+    "log_id": "player_1771872641_8438",
+    "timestamp": "2026-02-23T18:50:41.037136+00:00",
+    "season": 2026,
+    "source": "admin_portal",
+    "admin": "zpressley",
+    "upid": "8438",
+    "player_name": "Sung-Mun Song",
+    "owner": "",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley",
+    "changes": {
+      "action": "new_player",
+      "all_fields": {
+        "name": "Sung-Mun Song",
+        "team": "SD",
+        "position": "2B, 3B",
+        "age": 29,
+        "level": "MLB",
+        "player_type": "Farm",
+        "manager": "",
+        "contract_type": "",
+        "years_simple": "",
+        "mlb_id": "823550",
+        "yahoo_id": null,
+        "birth_date": "1996-08-29",
+        "debut_date": null,
+        "bats": "L",
+        "throws": "R",
+        "fypd": false,
+        "alt_names": [],
+        "upid": "8438"
+      }
+    }
   }
 ]
