@@ -399,17 +399,24 @@ class AuctionManager:
                 "amount": amount,
             }
 
-        # Apply WizBucks debits
-        for team, spent in by_team_totals.items():
-            current = int(wizbucks.get(team, 0))
-            wizbucks[team] = current - spent
+        # Apply WizBucks debits via wb_ledger
+        from wb_ledger import append_transaction as _wb_append
 
-        # Persist updated data files
+        for team, spent in by_team_totals.items():
+            _wb_append(
+                team=team,
+                amount=-spent,
+                transaction_type="auction_winner",
+                description=f"Prospect auction week of {state.get('week_start', '?')}",
+                metadata={
+                    "week_start": state.get("week_start"),
+                    "source": "auction_resolve",
+                },
+            )
+
+        # Persist updated player data (wb_ledger already saved wallet + ledger)
         with self.players_file.open("w", encoding="utf-8") as f_players:
             json.dump(players, f_players, indent=2, sort_keys=True)
-
-        with self.wizbucks_file.open("w", encoding="utf-8") as f_wb:
-            json.dump(wizbucks, f_wb, indent=2, sort_keys=True)
 
         state["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
         state["phase"] = AuctionPhase.PROCESSING.value

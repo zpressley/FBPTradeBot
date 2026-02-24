@@ -17,7 +17,7 @@ from fastapi import APIRouter, Header, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Callable, Optional
 
-from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund, get_wallet_balance
+from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund
 from team_utils import normalize_team_abbr
 
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
@@ -206,30 +206,18 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
-    wizbucks_data = load_json_file("data/wizbucks.json")  # CRITICAL: Wallet source of truth
     managers_data = load_json_file("config/managers.json")
 
     team = normalize_team_abbr(payload.team, managers_data=managers_data)
-    
-    # Load or create wizbucks transactions
-    try:
-        transactions = load_json_file("data/wizbucks_transactions.json")
-    except Exception:
-        transactions = []
 
-    if not isinstance(transactions, list):
-        transactions = []
-
-    # Apply purchase (mutates draft_order, wizbucks_data, transactions)
+    # Apply purchase (wb_ledger handles wallet + ledger files)
     try:
         result = apply_keeper_buyin_purchase(
             team=team,
             round=payload.round,
-            pick=payload.pick,  # Pass pick parameter (None if not specified)
+            pick=payload.pick,
             draft_order=draft_order,
-            wizbucks_data=wizbucks_data,  # CRITICAL: Pass wallet data, not managers_data
             managers_data=managers_data,
-            ledger=transactions,
             purchased_by=payload.purchased_by,
             source="buyin_api",
             trade_id=None,
@@ -248,15 +236,13 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
             pass
         raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save all files (CRITICAL: Save wallet!)
+    # Save draft order (wb_ledger already saved wallet + ledger)
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
-        save_json_file("data/wizbucks.json", wizbucks_data)  # CRITICAL: Save wallet
-        save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
     
-    # Queue git commit (best-effort; data is already saved to disk)
+    # Queue git commit
     try:
         commit_msg = f"Keeper draft buy-in: {team} Round {payload.round} (${result.cost})"
         _enqueue_commit(
@@ -316,35 +302,22 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     
     # Load data files
     draft_order = load_json_file("data/draft_order_2026.json")
-    wizbucks_data = load_json_file("data/wizbucks.json")  # CRITICAL: Wallet source of truth
     managers_data = load_json_file("config/managers.json")
 
     team = normalize_team_abbr(payload.team, managers_data=managers_data)
     admin_team = normalize_team_abbr(payload.admin_user, managers_data=managers_data)
 
-    # Validate admin permission
     if not validate_admin(admin_team, managers_data):
         raise HTTPException(status_code=403, detail="Admin access required")
-    
-    # Load transactions
-    try:
-        transactions = load_json_file("data/wizbucks_transactions.json")
-    except Exception:
-        transactions = []
 
-    if not isinstance(transactions, list):
-        transactions = []
-
-    # Apply refund (mutates draft_order, wizbucks_data, transactions)
+    # Apply refund (wb_ledger handles wallet + ledger files)
     try:
         result = apply_keeper_buyin_refund(
             team=team,
             round=payload.round,
             pick=None,
             draft_order=draft_order,
-            wizbucks_data=wizbucks_data,  # CRITICAL: Pass wallet data, not managers_data
             managers_data=managers_data,
-            ledger=transactions,
             refunded_by=admin_team,
             source="buyin_api",
         )
@@ -362,15 +335,13 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
             pass
         raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save all files (CRITICAL: Save wallet!)
+    # Save draft order (wb_ledger already saved wallet + ledger)
     try:
         save_json_file("data/draft_order_2026.json", draft_order)
-        save_json_file("data/wizbucks.json", wizbucks_data)  # CRITICAL: Save wallet
-        save_json_file("data/wizbucks_transactions.json", transactions)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
     
-    # Queue git commit (best-effort; data is already saved to disk)
+    # Queue git commit
     try:
         commit_msg = f"Keeper draft buy-in refund: {team} Round {payload.round} (${result.amount})"
         _enqueue_commit(

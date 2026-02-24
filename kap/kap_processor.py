@@ -287,32 +287,53 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                 pick['taxed_out'] = True
     
     # Deduct WizBucks
-    current_balance = wizbucks.get(team_name, 0)
-    new_balance = current_balance - total_spend
-    wizbucks[team_name] = new_balance
-    
-    # Log transaction
-    transactions.append({
-        'id': f'kap_{team}_{now}',
-        'timestamp': now,
-        'team': team,
-        'team_name': team_name,
-        'amount': -total_spend,
-        'balance_before': current_balance,
-        'balance_after': new_balance,
-        'transaction_type': 'KAP_submission',
-        'description': f'{season} KAP: {len(submission.keepers)} keepers selected',
-        'metadata': {
-            'season': season,
-            'keeper_count': len(submission.keepers),
-            'keeper_salary': keeper_salary_cost,
-            'rat_cost': rat_cost,
-            'buyin_cost': buyin_cost,
-            'taxable_spend': total_taxable_spend,
-            'taxed_rounds': taxed_rounds,
-            'submitted_by': submission.submitted_by
-        }
-    })
+    if not test_mode and total_spend > 0:
+        from wb_ledger import append_transaction
+
+        entry = append_transaction(
+            team=team,
+            amount=-total_spend,
+            transaction_type="KAP_submission",
+            description=f"{season} KAP: {len(submission.keepers)} keepers selected",
+            metadata={
+                "season": season,
+                "keeper_count": len(submission.keepers),
+                "keeper_salary": keeper_salary_cost,
+                "rat_cost": rat_cost,
+                "buyin_cost": buyin_cost,
+                "taxable_spend": total_taxable_spend,
+                "taxed_rounds": taxed_rounds,
+                "submitted_by": submission.submitted_by,
+            },
+        )
+        current_balance = entry["balance_before"]
+        new_balance = entry["balance_after"]
+    else:
+        current_balance = wizbucks.get(team_name, 0)
+        new_balance = current_balance - total_spend
+        wizbucks[team_name] = new_balance
+
+        transactions.append({
+            'id': f'kap_{team}_{now}',
+            'timestamp': now,
+            'team': team,
+            'team_name': team_name,
+            'amount': -total_spend,
+            'balance_before': current_balance,
+            'balance_after': new_balance,
+            'transaction_type': 'KAP_submission',
+            'description': f'{season} KAP: {len(submission.keepers)} keepers selected',
+            'metadata': {
+                'season': season,
+                'keeper_count': len(submission.keepers),
+                'keeper_salary': keeper_salary_cost,
+                'rat_cost': rat_cost,
+                'buyin_cost': buyin_cost,
+                'taxable_spend': total_taxable_spend,
+                'taxed_rounds': taxed_rounds,
+                'submitted_by': submission.submitted_by,
+            },
+        })
     
     # Save submission metadata
     submissions[team] = {

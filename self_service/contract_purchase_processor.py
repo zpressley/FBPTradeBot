@@ -169,39 +169,59 @@ def apply_contract_purchase(payload: ContractPurchasePayload, test_mode: bool) -
         # Apply contract update (contract_type only).
         player["contract_type"] = to_state.canonical
 
-        # Deduct WB.
-        balance_after = balance_before - cost
-        wizbucks[franchise_name] = balance_after
-
-        # Ledger entry.
-        now = datetime.now(tz=ET).isoformat()
-        ledger_path = "data/wizbucks_transactions.json"
-        ledger: list = _ensure_list(_load_json(ledger_path))
-
         upgrade = f"{from_state.code} → {to_state.code}"
-        txn_id = f"wb_{payload.season}_CONTRACT_PURCHASE_{team}_{target_upid}_{int(datetime.now(tz=ET).timestamp())}"
-        ledger_entry = {
-            "txn_id": txn_id,
-            "timestamp": now,
-            "team": team,
-            "amount": -cost,
-            "balance_before": balance_before,
-            "balance_after": balance_after,
-            "transaction_type": "contract_purchase",
-            "description": f"{payload.log_source}: {player.get('name', '')} {upgrade}",
-            "related_player": {
-                "upid": target_upid,
-                "name": player.get("name") or "",
-            },
-            "metadata": {
-                "season": payload.season,
-                "source": payload.log_source,
-                "upgrade": upgrade,
-                "from_contract": from_state.canonical,
-                "to_contract": to_state.canonical,
-            },
-        }
-        ledger.append(ledger_entry)
+
+        # Deduct WB via wb_ledger in live mode.
+        if not test_mode:
+            from wb_ledger import append_transaction
+
+            ledger_entry = append_transaction(
+                team=team,
+                amount=-cost,
+                transaction_type="contract_purchase",
+                description=f"{payload.log_source}: {player.get('name', '')} {upgrade}",
+                related_player={
+                    "upid": target_upid,
+                    "name": player.get("name") or "",
+                },
+                metadata={
+                    "season": payload.season,
+                    "source": payload.log_source,
+                    "upgrade": upgrade,
+                    "from_contract": from_state.canonical,
+                    "to_contract": to_state.canonical,
+                },
+            )
+            balance_after = ledger_entry["balance_after"]
+        else:
+            balance_after = balance_before - cost
+            wizbucks[franchise_name] = balance_after
+
+            now = datetime.now(tz=ET).isoformat()
+            ledger_path = "data/wizbucks_transactions.json"
+            ledger: list = _ensure_list(_load_json(ledger_path))
+            txn_id = f"wb_{payload.season}_CONTRACT_PURCHASE_{team}_{target_upid}_{int(datetime.now(tz=ET).timestamp())}"
+            ledger_entry = {
+                "txn_id": txn_id,
+                "timestamp": now,
+                "team": team,
+                "amount": -cost,
+                "balance_before": balance_before,
+                "balance_after": balance_after,
+                "transaction_type": "contract_purchase",
+                "description": f"{payload.log_source}: {player.get('name', '')} {upgrade}",
+                "related_player": {"upid": target_upid, "name": player.get("name") or ""},
+                "metadata": {
+                    "season": payload.season,
+                    "source": payload.log_source,
+                    "upgrade": upgrade,
+                    "from_contract": from_state.canonical,
+                    "to_contract": to_state.canonical,
+                },
+            }
+            ledger.append(ledger_entry)
+            _save_json(wizbucks_path, wizbucks)
+            _save_json(ledger_path, ledger)
 
         # Player log snapshot.
         event = f"{payload.season} {upgrade}"
@@ -216,9 +236,7 @@ def apply_contract_purchase(payload: ContractPurchasePayload, test_mode: bool) -
         )
 
         _save_json(combined_path, combined_players)
-        _save_json(wizbucks_path, wizbucks)
         _save_json(player_log_path, player_log)
-        _save_json(ledger_path, ledger)
 
     return {
         "upid": target_upid,

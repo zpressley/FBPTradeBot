@@ -1139,7 +1139,9 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
             keeper_index[key] = (pick_index, pick_entry)
             moved_picks += 1
 
-    # Apply WizBucks transfers + ledger
+    # Apply WizBucks transfers via wb_ledger
+    from wb_ledger import append_transaction as _wb_append, get_balance as _wb_balance
+
     moved_wb = 0
     for t in transfers:
         if not isinstance(t, dict) or t.get("type") != "wizbucks":
@@ -1155,71 +1157,44 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
         if amt <= 0 or not from_team or not to_team:
             continue
 
-        from_franchise = _resolve_franchise_name(from_team, wizbucks)
-        to_franchise = _resolve_franchise_name(to_team, wizbucks)
-
-        if from_franchise not in wizbucks or to_franchise not in wizbucks:
-            warnings.append(f"Could not resolve WizBucks wallets for {from_team}->{to_team}")
+        balance_from = _wb_balance(from_team)
+        if balance_from < amt:
+            warnings.append(f"Insufficient WizBucks for {from_team}: have {balance_from}, need {amt}")
             continue
-
-        before_from = int(wizbucks.get(from_franchise, 0))
-        before_to = int(wizbucks.get(to_franchise, 0))
-        if before_from < amt:
-            warnings.append(f"Insufficient WizBucks for {from_team}: have {before_from}, need {amt}")
-            continue
-
-        wizbucks[from_franchise] = before_from - amt
-        wizbucks[to_franchise] = before_to + amt
 
         ts = _iso(now)
         base = f"wb_{now.strftime('%Y-%m-%d')}_trade_{trade_id}" if trade_id else f"wb_{now.strftime('%Y-%m-%d')}_trade"
 
-        txns.append(
-            {
-                "txn_id": f"{base}_{from_team}_debit_{amt}",
-                "timestamp": ts,
-                "team": from_team,
-                "amount": -amt,
-                "balance_before": before_from,
-                "balance_after": before_from - amt,
-                "transaction_type": "trade_wizbucks_debit",
-                "description": f"Trade {trade_id}: WizBucks sent to {to_team}",
-                "related_player": None,
-                "metadata": {"trade_id": trade_id, "counterparty": to_team, "source": "trade_portal"},
-            }
+        _wb_append(
+            team=from_team,
+            amount=-amt,
+            transaction_type="trade_wizbucks_debit",
+            description=f"Trade {trade_id}: WizBucks sent to {to_team}",
+            metadata={"trade_id": trade_id, "counterparty": to_team, "source": "trade_portal"},
+            txn_id=f"{base}_{from_team}_debit_{amt}",
+            timestamp=ts,
         )
-        txns.append(
-            {
-                "txn_id": f"{base}_{to_team}_credit_{amt}",
-                "timestamp": ts,
-                "team": to_team,
-                "amount": amt,
-                "balance_before": before_to,
-                "balance_after": before_to + amt,
-                "transaction_type": "trade_wizbucks_credit",
-                "description": f"Trade {trade_id}: WizBucks received from {from_team}",
-                "related_player": None,
-                "metadata": {"trade_id": trade_id, "counterparty": from_team, "source": "trade_portal"},
-            }
+        _wb_append(
+            team=to_team,
+            amount=amt,
+            transaction_type="trade_wizbucks_credit",
+            description=f"Trade {trade_id}: WizBucks received from {from_team}",
+            metadata={"trade_id": trade_id, "counterparty": from_team, "source": "trade_portal"},
+            txn_id=f"{base}_{to_team}_credit_{amt}",
+            timestamp=ts,
         )
 
         moved_wb += 1
 
-    # Persist data file mutations
+    # Persist data file mutations (wb_ledger already saved wallet + ledger)
     if moved_players:
         _save_json(COMBINED_PLAYERS_PATH, players)
 
     if player_log_entries > 0:
         _save_player_log(player_log)
 
-    if moved_wb or buyins_purchased > 0:
-        _save_json(WIZBUCKS_PATH, wizbucks)
-
     if moved_picks > 0 or buyins_purchased > 0:
         _save_json(DRAFT_ORDER_2026_PATH, draft_order)
-
-    if moved_wb > 0 or buyins_purchased > 0:
-        _save_wizbucks_transactions(txns)
 
     DATA_LOCK.release()
 

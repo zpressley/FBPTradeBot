@@ -1,14 +1,15 @@
-"""WizBucks Ledger — single source of truth for all WB mutations.
+"""WizBucks Ledger — single gate for all WB mutations.
 
 Every code path that changes a team's WizBucks balance MUST go through
 ``append_transaction()``.  That function:
 
-  1. Appends a new entry to ``data/wizbucks_transactions.json`` (the ledger).
-  2. Recomputes **all** team wallet balances from the full ledger.
-  3. Writes the derived balances to ``data/wizbucks.json`` (the wallet).
+  1. Reads the current balance from ``data/wizbucks.json`` (the wallet).
+  2. Computes ``balance_after = balance_before + amount``.
+  3. Appends a new entry to ``data/wizbucks_transactions.json`` (the ledger).
+  4. Writes the updated balance back to the wallet.
 
-Because the wallet is always rebuilt from the ledger, the two files can
-never drift out of sync.
+Because every mutation goes through this single gate, the wallet and
+ledger stay in sync going forward.
 
 The wallet file format is unchanged (full franchise names as keys, integer
 values), so every existing reader — the frontend, bot commands,

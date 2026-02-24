@@ -618,35 +618,26 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         # of the PAD pipeline.
         wb_remaining = max(0, wb_balance - wb_spent)
     else:
-        wb_remaining = wb_balance - wb_spent
-        wizbucks[franchise_name] = wb_remaining
+        # Live mode: route through wb_ledger so wallet + ledger stay in sync.
+        if wb_spent:
+            from wb_ledger import append_transaction
+
+            entry = append_transaction(
+                team=team,
+                amount=-wb_spent,
+                transaction_type="PAD_spend",
+                description="2026 PAD prospect contracts and draft slots",
+                metadata={
+                    "season": season,
+                    "source": "PAD",
+                },
+            )
+            wb_remaining = entry["balance_after"]
+        else:
+            wb_remaining = wb_balance
 
     # Timestamp for submission + ledger.
     now = datetime.now(tz=ET).isoformat()
-
-    # Append a WizBucks ledger entry for PAD spend in live mode so the
-    # website ledger stays in sync with the wizbucks wallet.
-    if not test_mode and not is_live_test and wb_spent:
-        ledger_path = "data/wizbucks_transactions.json"
-        ledger: list = _ensure_list(_load_json(ledger_path))
-        txn_id = f"wb_{season}_PAD_SPEND_{team}_{int(datetime.now(tz=ET).timestamp())}"
-        ledger_entry = {
-            "txn_id": txn_id,
-            "timestamp": now,
-            "team": team,
-            "amount": -wb_spent,
-            "balance_before": wb_balance,
-            "balance_after": wb_remaining,
-            "transaction_type": "PAD_spend",
-            "description": "2026 PAD prospect contracts and draft slots",
-            "related_player": None,
-            "metadata": {
-                "season": season,
-                "source": "PAD",
-            },
-        }
-        ledger.append(ledger_entry)
-        _save_json(ledger_path, ledger)
 
     # Record submission metadata (slots + WB) for future draft-order rebuild.
     if not is_live_test:

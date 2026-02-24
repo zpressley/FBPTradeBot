@@ -109,54 +109,67 @@ def apply_admin_wb_adjustment(
 ) -> Dict[str, Any]:
     """Apply a manual WizBucks adjustment and append to the WB ledger.
 
-    This mutates wizbucks.json and wizbucks_transactions.json so that the
-    website and Sheets-driven ledger stay in sync. The adjustment is made at
-    the franchise-name level ("Hammers", "Whiz Kids", etc.) and is keyed off
-    the FBP team abbreviation provided by the admin portal.
+    In live mode the mutation is routed through ``wb_ledger.append_transaction``
+    so that the wallet and ledger are always kept in sync.  Test mode falls back
+    to the old manual code path because it targets a separate wallet file.
     """
 
     with DATA_LOCK:
-        wizbucks_path = get_wizbucks_path(test_mode)
-        wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
+        if not test_mode:
+            from wb_ledger import append_transaction
 
-        # Ledger currently has no test-mode variant; we always write to the main
-        # wizbucks_transactions.json file using the 2026+ schema shared with PAD
-        # (txn_id / timestamp / team / amount / balance_* / transaction_type).
-        ledger_path = "data/wizbucks_transactions.json"
-        ledger: list = _ensure_list(_load_json(ledger_path))
+            entry = append_transaction(
+                team=payload.team,
+                amount=int(payload.amount),
+                transaction_type="admin_adjustment",
+                description=payload.reason,
+                metadata={
+                    "season": payload.season,
+                    "installment": payload.installment,
+                    "admin": payload.admin,
+                    "source": "admin_portal",
+                },
+            )
+            balance_before = entry["balance_before"]
+            balance_after = entry["balance_after"]
+        else:
+            # Test mode: write to test wallet; ledger shared.
+            wizbucks_path = get_wizbucks_path(test_mode)
+            wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
+            ledger_path = "data/wizbucks_transactions.json"
+            ledger: list = _ensure_list(_load_json(ledger_path))
 
-        franchise_name = _resolve_franchise_name(payload.team, wizbucks)
-        balance_before = int(wizbucks.get(franchise_name, 0))
-        balance_after = balance_before + int(payload.amount)
-        wizbucks[franchise_name] = balance_after
+            franchise_name = _resolve_franchise_name(payload.team, wizbucks)
+            balance_before = int(wizbucks.get(franchise_name, 0))
+            balance_after = balance_before + int(payload.amount)
+            wizbucks[franchise_name] = balance_after
 
-        # New-style ledger entry keyed by team abbreviation and amount delta.
-        # Positive amounts are credits; negative amounts are debits.
-        now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-        txn_id = f"wb_{payload.season}_ADMIN_{payload.team}_{int(datetime.now().timestamp())}"
+            now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+            txn_id = f"wb_{payload.season}_ADMIN_{payload.team}_{int(datetime.now().timestamp())}"
+            ledger.append({
+                "txn_id": txn_id,
+                "timestamp": now_iso,
+                "team": payload.team,
+                "amount": int(payload.amount),
+                "balance_before": balance_before,
+                "balance_after": balance_after,
+                "transaction_type": "admin_adjustment",
+                "description": payload.reason,
+                "related_player": None,
+                "metadata": {
+                    "season": payload.season,
+                    "installment": payload.installment,
+                    "admin": payload.admin,
+                    "source": "admin_portal",
+                },
+            })
+            _save_json(wizbucks_path, wizbucks)
+            _save_json(ledger_path, ledger)
 
-        ledger_entry = {
-            "txn_id": txn_id,
-            "timestamp": now_iso,
-            "team": payload.team,
-            "amount": int(payload.amount),
-            "balance_before": balance_before,
-            "balance_after": balance_after,
-            "transaction_type": "admin_adjustment",
-            "description": payload.reason,
-            "related_player": None,
-            "metadata": {
-                "season": payload.season,
-                "installment": payload.installment,
-                "admin": payload.admin,
-                "source": "admin_portal",
-            },
-        }
-
-        ledger.append(ledger_entry)
-
-        _save_json(wizbucks_path, wizbucks)
-        _save_json(ledger_path, ledger)
+        # Resolve franchise name for response.
+        mgr = load_managers_config() or {}
+        team_meta = (mgr.get("teams") or {}).get(payload.team, {})
+        franchise_name = team_meta.get("name", payload.team) if isinstance(team_meta, dict) else payload.team
 
     return {
         "team": payload.team,
