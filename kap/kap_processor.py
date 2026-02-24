@@ -9,6 +9,7 @@ from datetime import datetime
 from typing import Dict, List, Optional
 from pydantic import BaseModel
 
+from data_lock import DATA_LOCK
 
 # Keeper salary constants
 KEEPER_SALARIES = {
@@ -211,7 +212,9 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
     transactions_path = 'data/wizbucks_transactions.json'
     submissions_path = f'data/kap_submissions{"_test" if test_mode else ""}.json'
     
-    # Load data
+    # Load data — hold DATA_LOCK for the full load-modify-save cycle
+    _data_lock_acquired = DATA_LOCK.acquire()
+
     combined_players = _load_json(combined_path) or []
     player_log = _load_json(player_log_path) or []
     draft_order = _load_json(draft_order_path) or []
@@ -331,7 +334,12 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
         _save_json(wizbucks_path, wizbucks)
         _save_json(transactions_path, transactions)
         _save_json(submissions_path, submissions)
-        
+
+    # Release the data lock now that all file mutations are complete.
+    if _data_lock_acquired:
+        DATA_LOCK.release()
+
+    if not test_mode:
         # Commit and push to GitHub
         _commit_and_push_kap_files(
             team=team,

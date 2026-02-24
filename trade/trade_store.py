@@ -22,6 +22,7 @@ except Exception:  # pragma: no cover
 from fastapi import HTTPException
 
 from buyin.buyin_service import apply_keeper_buyin_purchase
+from data_lock import DATA_LOCK
 from team_utils import normalize_team_abbr
 from trade.trade_models import (
     TradeSubmitPayload,
@@ -977,10 +978,13 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
     if not isinstance(transfers, list) or not transfers:
         return warnings
 
-    # Load data files
+    # Load data files — hold DATA_LOCK for the full load-modify-save cycle
+    DATA_LOCK.acquire()
+
     players: list = _load_json(COMBINED_PLAYERS_PATH, []) or []
     if not isinstance(players, list):
         warnings.append("combined_players.json is not a list")
+        DATA_LOCK.release()
         return warnings
 
     players_by_upid: dict[str, dict] = {}
@@ -1216,6 +1220,8 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
 
     if moved_wb > 0 or buyins_purchased > 0:
         _save_wizbucks_transactions(txns)
+
+    DATA_LOCK.release()
 
     rec["data_applied_at"] = _iso(now)
     rec["data_applied_by"] = admin_team

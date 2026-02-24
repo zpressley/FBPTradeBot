@@ -49,6 +49,7 @@ from api_draft_pick_request import router as draft_pick_router, set_bot_referenc
 from api_buyin import router as buyin_router, set_buyin_bot_reference, set_buyin_commit_fn
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 from api_settings import router as settings_router, set_settings_commit_fn
+from data_lock import DATA_LOCK
 
 # Load environment variables
 load_dotenv()
@@ -253,6 +254,10 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
             # - Hard reset local main to FETCH_HEAD
             # - Re-apply ONLY the file contents we intended to commit
             # - Commit + push
+            #
+            # IMPORTANT: Hold DATA_LOCK during the reset+restore+commit so
+            # that no API endpoint reads stale (post-reset, pre-restore)
+            # data from disk.
             if saved_files is None:
                 saved_files = {}
                 for p in existing_paths:
@@ -263,35 +268,38 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
                     except Exception:
                         continue
 
-            # Best-effort cleanup of any interrupted operations
-            subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
-            subprocess.run(["git", "merge", "--abort"], cwd=repo_root, capture_output=True, text=True)
-            subprocess.run(["git", "cherry-pick", "--abort"], cwd=repo_root, capture_output=True, text=True)
-            subprocess.run(["git", "checkout", "main"], cwd=repo_root, capture_output=True, text=True)
+            with DATA_LOCK:
+                # Best-effort cleanup of any interrupted operations
+                subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                subprocess.run(["git", "merge", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                subprocess.run(["git", "cherry-pick", "--abort"], cwd=repo_root, capture_output=True, text=True)
+                subprocess.run(["git", "checkout", "main"], cwd=repo_root, capture_output=True, text=True)
 
-            _run(["git", "fetch", fetch_remote, "main"])
-            _run(["git", "reset", "--hard", "FETCH_HEAD"])
+                _run(["git", "fetch", fetch_remote, "main"])
+                _run(["git", "reset", "--hard", "FETCH_HEAD"])
 
-            # Restore saved file contents
-            for rel, blob in (saved_files or {}).items():
-                try:
-                    full = os.path.join(repo_root, rel)
-                    os.makedirs(os.path.dirname(full), exist_ok=True)
-                    with open(full, "wb") as f:
-                        f.write(blob)
-                except Exception as wexc:
-                    _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
+                # Restore saved file contents
+                for rel, blob in (saved_files or {}).items():
+                    try:
+                        full = os.path.join(repo_root, rel)
+                        os.makedirs(os.path.dirname(full), exist_ok=True)
+                        with open(full, "wb") as f:
+                            f.write(blob)
+                    except Exception as wexc:
+                        _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
 
-            # Re-stage + commit + push
-            if existing_paths:
-                _run(["git", "add", *existing_paths])
+                # Re-stage + commit while still holding the lock
+                if existing_paths:
+                    _run(["git", "add", *existing_paths])
 
-            staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
-            if not (staged.stdout or "").strip():
-                _log("GIT_NOOP", {"reason": "retry produced no staged changes"})
-                return
+                staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
+                if not (staged.stdout or "").strip():
+                    _log("GIT_NOOP", {"reason": "retry produced no staged changes"})
+                    return
 
-            _run(["git", "commit", "-m", message])
+                _run(["git", "commit", "-m", message])
+
+            # Push outside the lock (network I/O can be slow)
             _run(push_cmd)
             _log("GIT_PUSH_OK", {"after": "hard-reset-reapply"})
 
@@ -1850,14 +1858,19 @@ async def get_draft_board(
     team: str,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Return the current personal draft board for a team."""
+    """Return the current personal draft board for a team.
+
+    Board entries are Caesar-shifted UPIDs.  The response includes ``k``
+    (the shift value) so the frontend can decode them.
+    """
     manager = BoardManager(season=PROSPECT_DRAFT_SEASON)
-    board = manager.get_board(team)
+    board = manager.get_board(team)  # encoded values
     return _json_no_store(
         {
             "team": team,
             "board": board,
             "max_size": manager.MAX_BOARD_SIZE,
+            "k": manager.shift,
         }
     )
 
@@ -1868,7 +1881,7 @@ async def update_draft_board(
     payload: BoardUpdateRequest,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Replace a team's personal draft board with the provided list."""
+    """Replace a team's personal draft board with the provided encoded list."""
     if payload.team != team:
         raise HTTPException(status_code=400, detail="Team in path and body must match")
 
@@ -1880,6 +1893,7 @@ async def update_draft_board(
             detail=f"Board too large (max {manager.MAX_BOARD_SIZE})",
         )
 
+    # payload.board contains encoded UPID strings from the frontend
     existing = manager.get_board(team)
     if existing:
         if set(existing) != set(payload.board):
@@ -1897,6 +1911,7 @@ async def update_draft_board(
         "team": team,
         "board": manager.get_board(team),
         "max_size": manager.MAX_BOARD_SIZE,
+        "k": manager.shift,
     }
 
 

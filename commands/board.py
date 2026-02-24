@@ -67,23 +67,23 @@ class BoardCommands(commands.Cog):
 
         return True, "Eligible prospect"
 
-    def _resolve_eligible_player(self, query: str) -> tuple[bool, str, str]:
+    def _resolve_eligible_player(self, query: str) -> tuple[bool, str, str, str]:
         """Resolve a typed name to a canonical, eligible prospect.
 
-        Returns (success, message, canonical_name). On success, message is a
-        human-friendly note (used in Discord responses).
+        Returns (success, message, canonical_name, upid). On success,
+        message is a human-friendly note (used in Discord responses).
         """
         q = (query or "").strip()
         if not q:
-            return False, "Player name is empty.", ""
+            return False, "Player name is empty.", "", ""
 
         # 1) Exact match first
         exact = self.prospect_db.get_by_name(q)
         if exact:
             ok, reason = self._is_player_board_eligible(exact)
             if not ok:
-                return False, f"{reason}", ""
-            return True, f"Added {exact['name']} to your board.", exact["name"]
+                return False, f"{reason}", "", ""
+            return True, f"Added {exact['name']} to your board.", exact["name"], exact.get("upid", "")
 
         # 2) Fuzzy match using the database search helper
         from difflib import get_close_matches
@@ -91,7 +91,7 @@ class BoardCommands(commands.Cog):
         all_names = list(self.prospect_db.players.keys())
         matches = get_close_matches(q, all_names, n=5, cutoff=0.7)
         if not matches:
-            return False, f"Player '{q}' not found in prospect database.", ""
+            return False, f"Player '{q}' not found in prospect database.", "", ""
 
         # Filter to eligible matches only
         eligible = []
@@ -109,12 +109,12 @@ class BoardCommands(commands.Cog):
             primary = self.prospect_db.players.get(primary_name)
             if primary:
                 ok, reason = self._is_player_board_eligible(primary)
-                return False, f"Closest match is {primary_name}, but: {reason}", ""
-            return False, "No eligible prospects match that name.", ""
+                return False, f"Closest match is {primary_name}, but: {reason}", "", ""
+            return False, "No eligible prospects match that name.", "", ""
 
         if len(eligible) == 1:
             player = eligible[0]
-            return True, f"Interpreted '{q}' as {player['name']} and added to your board.", player["name"]
+            return True, f"Interpreted '{q}' as {player['name']} and added to your board.", player["name"], player.get("upid", "")
 
         # Multiple eligible matches – ask manager to be more specific
         options = ", ".join(p["name"] for p in eligible)
@@ -123,7 +123,7 @@ class BoardCommands(commands.Cog):
             + options
             + ". Please re-run /add with the exact name."
         )
-        return False, msg, ""
+        return False, msg, "", ""
     
     @app_commands.command(name="board", description="View your draft board")
     async def board_cmd(self, interaction: discord.Interaction):
@@ -137,9 +137,9 @@ class BoardCommands(commands.Cog):
             )
             return
         
-        board = self.board_manager.get_board(team)
+        resolved = self.board_manager.resolve_board(team)
         
-        if not board:
+        if not resolved:
             embed = discord.Embed(
                 title=f"📋 {team} Draft Board",
                 description="Your board is empty. Add players with `/add [player name]`",
@@ -158,19 +158,19 @@ class BoardCommands(commands.Cog):
         # Build board display
         embed = discord.Embed(
             title=f"📋 {team} Draft Board",
-            description=f"Your target list ({len(board)} players)",
+            description=f"Your target list ({len(resolved)} players)",
             color=discord.Color.green()
         )
         
         # Show players in groups of 25 (Discord field limit)
-        for i in range(0, len(board), 25):
-            chunk = board[i:i+25]
+        for i in range(0, len(resolved), 25):
+            chunk = resolved[i:i+25]
             chunk_text = "\n".join(
-                f"{i+j+1}. {player}"
-                for j, player in enumerate(chunk)
+                f"{i+j+1}. {entry['name']}"
+                for j, entry in enumerate(chunk)
             )
             
-            field_name = "Top Targets" if i == 0 else f"Targets {i+1}-{min(i+25, len(board))}"
+            field_name = "Top Targets" if i == 0 else f"Targets {i+1}-{min(i+25, len(resolved))}"
             embed.add_field(
                 name=field_name,
                 value=chunk_text,
@@ -180,8 +180,8 @@ class BoardCommands(commands.Cog):
         # Add board stats
         embed.add_field(
             name="Board Status",
-            value=f"{len(board)}/{self.board_manager.MAX_BOARD_SIZE} players\n"
-                  f"{self.board_manager.MAX_BOARD_SIZE - len(board)} slots remaining",
+            value=f"{len(resolved)}/{self.board_manager.MAX_BOARD_SIZE} players\n"
+                  f"{self.board_manager.MAX_BOARD_SIZE - len(resolved)} slots remaining",
             inline=False
         )
         
@@ -199,16 +199,20 @@ class BoardCommands(commands.Cog):
             await interaction.response.send_message("❌ Not mapped to a team", ephemeral=True)
             return
         
-        # Resolve to an eligible, canonical prospect name (with fuzzy match)
-        ok, msg, canonical_name = self._resolve_eligible_player(player)
+        # Resolve to an eligible, canonical prospect name + UPID
+        ok, msg, canonical_name, upid = self._resolve_eligible_player(player)
         if not ok:
             await interaction.response.send_message(f"❌ {msg}", ephemeral=True)
             return
 
-        success, message = self.board_manager.add_to_board(team, canonical_name)
+        if not upid:
+            await interaction.response.send_message("❌ Player has no UPID — cannot add to board.", ephemeral=True)
+            return
+
+        success, message = self.board_manager.add_to_board(team, upid, display_name=canonical_name)
         
         if success:
-            board = self.board_manager.get_board(team)
+            resolved = self.board_manager.resolve_board(team)
             
             embed = discord.Embed(
                 title="✅ Player Added",
@@ -217,14 +221,14 @@ class BoardCommands(commands.Cog):
             )
             
             # Show last 5 on board
-            recent = board[-5:]
+            recent = resolved[-5:]
             board_text = "\n".join(
-                f"{len(board) - len(recent) + i + 1}. {p}"
-                for i, p in enumerate(recent)
+                f"{len(resolved) - len(recent) + i + 1}. {entry['name']}"
+                for i, entry in enumerate(recent)
             )
             
             embed.add_field(
-                name=f"Your Board ({len(board)}/{self.board_manager.MAX_BOARD_SIZE})",
+                name=f"Your Board ({len(resolved)}/{self.board_manager.MAX_BOARD_SIZE})",
                 value=board_text,
                 inline=False
             )
@@ -243,10 +247,24 @@ class BoardCommands(commands.Cog):
             await interaction.response.send_message("❌ Not mapped to a team", ephemeral=True)
             return
         
-        success, message = self.board_manager.remove_from_board(team, player.strip())
+        # Resolve typed name -> UPID so board_manager can find the encoded entry
+        query = player.strip()
+        prospect = self.prospect_db.get_by_name(query)
+        if not prospect:
+            # Try fuzzy match
+            from difflib import get_close_matches
+            matches = get_close_matches(query, list(self.prospect_db.players.keys()), n=1, cutoff=0.6)
+            if matches:
+                prospect = self.prospect_db.players.get(matches[0])
+
+        if not prospect or not prospect.get("upid"):
+            await interaction.response.send_message(f"❌ '{query}' not found in prospect database.", ephemeral=True)
+            return
+
+        success, message = self.board_manager.remove_from_board(team, prospect["upid"])
         
         if success:
-            board = self.board_manager.get_board(team)
+            board_size = self.board_manager.get_board_size(team)
             
             embed = discord.Embed(
                 title="✅ Player Removed",
@@ -256,7 +274,7 @@ class BoardCommands(commands.Cog):
             
             embed.add_field(
                 name="Board Status",
-                value=f"{len(board)}/{self.board_manager.MAX_BOARD_SIZE} players remaining",
+                value=f"{board_size}/{self.board_manager.MAX_BOARD_SIZE} players remaining",
                 inline=False
             )
             
@@ -282,10 +300,23 @@ class BoardCommands(commands.Cog):
             await interaction.response.send_message("❌ Not mapped to a team", ephemeral=True)
             return
         
-        success, message = self.board_manager.move_player(team, player.strip(), position)
+        # Resolve typed name -> UPID
+        query = player.strip()
+        prospect = self.prospect_db.get_by_name(query)
+        if not prospect:
+            from difflib import get_close_matches
+            matches = get_close_matches(query, list(self.prospect_db.players.keys()), n=1, cutoff=0.6)
+            if matches:
+                prospect = self.prospect_db.players.get(matches[0])
+
+        if not prospect or not prospect.get("upid"):
+            await interaction.response.send_message(f"❌ '{query}' not found in prospect database.", ephemeral=True)
+            return
+
+        success, message = self.board_manager.move_player(team, prospect["upid"], position)
         
         if success:
-            board = self.board_manager.get_board(team)
+            resolved = self.board_manager.resolve_board(team)
             
             embed = discord.Embed(
                 title="✅ Player Moved",
@@ -295,12 +326,12 @@ class BoardCommands(commands.Cog):
             
             # Show area around new position
             start_idx = max(0, position - 3)
-            end_idx = min(len(board), position + 2)
-            chunk = board[start_idx:end_idx]
+            end_idx = min(len(resolved), position + 2)
+            chunk = resolved[start_idx:end_idx]
             
             board_text = "\n".join(
-                f"{'➤ ' if start_idx + i + 1 == position else '   '}{start_idx + i + 1}. {p}"
-                for i, p in enumerate(chunk)
+                f"{'➤ ' if start_idx + i + 1 == position else '   '}{start_idx + i + 1}. {entry['name']}"
+                for i, entry in enumerate(chunk)
             )
             
             embed.add_field(
@@ -360,12 +391,16 @@ class BoardCommands(commands.Cog):
         failed = []
         
         for player_name in player_list:
-            ok, msg, canonical_name = self._resolve_eligible_player(player_name)
+            ok, msg, canonical_name, upid = self._resolve_eligible_player(player_name)
             if not ok:
                 failed.append((player_name, msg))
                 continue
 
-            success, message = self.board_manager.add_to_board(team, canonical_name)
+            if not upid:
+                failed.append((player_name, "No UPID found"))
+                continue
+
+            success, message = self.board_manager.add_to_board(team, upid, display_name=canonical_name)
             if success:
                 added.append(canonical_name)
             else:

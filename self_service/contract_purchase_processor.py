@@ -6,6 +6,7 @@ from typing import Any, Dict, Optional
 
 from pydantic import BaseModel
 
+from data_lock import DATA_LOCK
 from pad.pad_processor import (
     ET,
     _append_player_log_entry,
@@ -108,115 +109,116 @@ def apply_contract_purchase(payload: ContractPurchasePayload, test_mode: bool) -
       * data/player_log.json (append snapshot)
     """
 
-    combined_path = get_combined_players_path(test_mode)
-    wizbucks_path = get_wizbucks_path(test_mode)
-    player_log_path = get_player_log_path(test_mode)
+    with DATA_LOCK:
+        combined_path = get_combined_players_path(test_mode)
+        wizbucks_path = get_wizbucks_path(test_mode)
+        player_log_path = get_player_log_path(test_mode)
 
-    combined_players: list = _ensure_list(_load_json(combined_path))
-    wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
-    player_log: list = _ensure_list(_load_json(player_log_path))
+        combined_players: list = _ensure_list(_load_json(combined_path))
+        wizbucks: Dict[str, int] = _load_json(wizbucks_path) or {}
+        player_log: list = _ensure_list(_load_json(player_log_path))
 
-    target_upid = str(payload.upid).strip()
-    team = str(payload.team).strip().upper()
-    if not team:
-        raise ValueError("Missing team")
+        target_upid = str(payload.upid).strip()
+        team = str(payload.team).strip().upper()
+        if not team:
+            raise ValueError("Missing team")
 
-    player = next(
-        (p for p in combined_players if str(p.get("upid") or "").strip() == target_upid),
-        None,
-    )
-    if not player:
-        raise ValueError(f"Player with UPID {payload.upid} not found in combined_players")
+        player = next(
+            (p for p in combined_players if str(p.get("upid") or "").strip() == target_upid),
+            None,
+        )
+        if not player:
+            raise ValueError(f"Player with UPID {payload.upid} not found in combined_players")
 
-    if str(player.get("player_type") or "").strip() != "Farm":
-        raise ValueError("Contract purchases are only allowed for Farm players")
+        if str(player.get("player_type") or "").strip() != "Farm":
+            raise ValueError("Contract purchases are only allowed for Farm players")
 
-    franchise_name = _resolve_franchise_name(team, wizbucks)
-    if franchise_name not in wizbucks:
-        # Avoid accidentally creating a new key and drifting the real wallet.
-        raise ValueError(
-            f"Could not resolve WizBucks wallet for team {team}. "
-            "Check wizbucks.json keys and config/managers.json team name mapping.",
+        franchise_name = _resolve_franchise_name(team, wizbucks)
+        if franchise_name not in wizbucks:
+            # Avoid accidentally creating a new key and drifting the real wallet.
+            raise ValueError(
+                f"Could not resolve WizBucks wallet for team {team}. "
+                "Check wizbucks.json keys and config/managers.json team name mapping.",
+            )
+
+        if not _ownership_matches(team, franchise_name, player):
+            raise ValueError("You can only purchase contracts for players on your roster")
+
+        from_state = _normalize_contract(player.get("contract_type"))
+        to_state = _normalize_contract(payload.new_contract_type)
+
+        if not from_state:
+            raise ValueError("Player does not have an eligible current contract (must be DC or PC)")
+        if from_state.code == "BC":
+            raise ValueError("Player is already on a Blue Chip Contract")
+
+        if not to_state or to_state.code not in ("PC", "BC"):
+            raise ValueError("New contract type must be Purchased Contract (PC) or Blue Chip Contract (BC)")
+
+        if from_state.code == to_state.code:
+            raise ValueError("Player is already on that contract type")
+
+        cost = _upgrade_cost(from_state.code, to_state.code)
+        if cost is None:
+            raise ValueError(f"Invalid upgrade: {from_state.code} -> {to_state.code}")
+
+        balance_before = int(wizbucks.get(franchise_name, 0))
+        if balance_before < cost:
+            raise ValueError("Insufficient WizBucks")
+
+        # Apply contract update (contract_type only).
+        player["contract_type"] = to_state.canonical
+
+        # Deduct WB.
+        balance_after = balance_before - cost
+        wizbucks[franchise_name] = balance_after
+
+        # Ledger entry.
+        now = datetime.now(tz=ET).isoformat()
+        ledger_path = "data/wizbucks_transactions.json"
+        ledger: list = _ensure_list(_load_json(ledger_path))
+
+        upgrade = f"{from_state.code} → {to_state.code}"
+        txn_id = f"wb_{payload.season}_CONTRACT_PURCHASE_{team}_{target_upid}_{int(datetime.now(tz=ET).timestamp())}"
+        ledger_entry = {
+            "txn_id": txn_id,
+            "timestamp": now,
+            "team": team,
+            "amount": -cost,
+            "balance_before": balance_before,
+            "balance_after": balance_after,
+            "transaction_type": "contract_purchase",
+            "description": f"{payload.log_source}: {player.get('name', '')} {upgrade}",
+            "related_player": {
+                "upid": target_upid,
+                "name": player.get("name") or "",
+            },
+            "metadata": {
+                "season": payload.season,
+                "source": payload.log_source,
+                "upgrade": upgrade,
+                "from_contract": from_state.canonical,
+                "to_contract": to_state.canonical,
+            },
+        }
+        ledger.append(ledger_entry)
+
+        # Player log snapshot.
+        event = f"{payload.season} {upgrade}"
+        _append_player_log_entry(
+            player_log,
+            player,
+            season=payload.season,
+            source=payload.log_source,
+            update_type="Purchase",
+            event=event,
+            admin=team,
         )
 
-    if not _ownership_matches(team, franchise_name, player):
-        raise ValueError("You can only purchase contracts for players on your roster")
-
-    from_state = _normalize_contract(player.get("contract_type"))
-    to_state = _normalize_contract(payload.new_contract_type)
-
-    if not from_state:
-        raise ValueError("Player does not have an eligible current contract (must be DC or PC)")
-    if from_state.code == "BC":
-        raise ValueError("Player is already on a Blue Chip Contract")
-
-    if not to_state or to_state.code not in ("PC", "BC"):
-        raise ValueError("New contract type must be Purchased Contract (PC) or Blue Chip Contract (BC)")
-
-    if from_state.code == to_state.code:
-        raise ValueError("Player is already on that contract type")
-
-    cost = _upgrade_cost(from_state.code, to_state.code)
-    if cost is None:
-        raise ValueError(f"Invalid upgrade: {from_state.code} -> {to_state.code}")
-
-    balance_before = int(wizbucks.get(franchise_name, 0))
-    if balance_before < cost:
-        raise ValueError("Insufficient WizBucks")
-
-    # Apply contract update (contract_type only).
-    player["contract_type"] = to_state.canonical
-
-    # Deduct WB.
-    balance_after = balance_before - cost
-    wizbucks[franchise_name] = balance_after
-
-    # Ledger entry.
-    now = datetime.now(tz=ET).isoformat()
-    ledger_path = "data/wizbucks_transactions.json"
-    ledger: list = _ensure_list(_load_json(ledger_path))
-
-    upgrade = f"{from_state.code} → {to_state.code}"
-    txn_id = f"wb_{payload.season}_CONTRACT_PURCHASE_{team}_{target_upid}_{int(datetime.now(tz=ET).timestamp())}"
-    ledger_entry = {
-        "txn_id": txn_id,
-        "timestamp": now,
-        "team": team,
-        "amount": -cost,
-        "balance_before": balance_before,
-        "balance_after": balance_after,
-        "transaction_type": "contract_purchase",
-        "description": f"{payload.log_source}: {player.get('name', '')} {upgrade}",
-        "related_player": {
-            "upid": target_upid,
-            "name": player.get("name") or "",
-        },
-        "metadata": {
-            "season": payload.season,
-            "source": payload.log_source,
-            "upgrade": upgrade,
-            "from_contract": from_state.canonical,
-            "to_contract": to_state.canonical,
-        },
-    }
-    ledger.append(ledger_entry)
-
-    # Player log snapshot.
-    event = f"{payload.season} {upgrade}"
-    _append_player_log_entry(
-        player_log,
-        player,
-        season=payload.season,
-        source=payload.log_source,
-        update_type="Purchase",
-        event=event,
-        admin=team,
-    )
-
-    _save_json(combined_path, combined_players)
-    _save_json(wizbucks_path, wizbucks)
-    _save_json(player_log_path, player_log)
-    _save_json(ledger_path, ledger)
+        _save_json(combined_path, combined_players)
+        _save_json(wizbucks_path, wizbucks)
+        _save_json(player_log_path, player_log)
+        _save_json(ledger_path, ledger)
 
     return {
         "upid": target_upid,

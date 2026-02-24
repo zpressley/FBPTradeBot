@@ -17,6 +17,8 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Request, Depends, Header
 from typing import Callable, Optional
 
+from data_lock import DATA_LOCK
+
 router = APIRouter(prefix="/api/admin", tags=["admin-bulk"])
 
 # ---------------------------------------------------------------------------
@@ -85,24 +87,48 @@ def save_json(path, data):
         json.dump(data, f, indent=2)
 
 
-def log_player_action(upid, player_name, update_type, event, admin, owner="", changes=None):
-    """Append an entry to player_log.json"""
+def log_player_action(player_rec, update_type, event, admin, changes=None):
+    """Append a standard-schema entry to player_log.json.
+
+    Uses the same field layout as ``_append_player_log_entry`` in
+    pad_processor so that all log entries are consistent regardless of
+    which endpoint produced them.
+    """
     logs = load_json(PLAYER_LOG_FILE)
     if not isinstance(logs, list):
         logs = []
 
+    from zoneinfo import ZoneInfo
+    _ET = ZoneInfo("US/Eastern")
+    ts = datetime.now(tz=_ET).isoformat()
+    season = datetime.now().year
+    upid = str(player_rec.get("upid") or "").strip()
+    source = "Admin Portal"
+    id_parts = [str(season), ts, f"UPID_{upid or 'NA'}", update_type, source]
+    entry_id = "-".join(id_parts)
+
     entry = {
-        "log_id": f"player_{int(datetime.now(timezone.utc).timestamp())}_{upid}",
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "season": datetime.now().year,
-        "source": "admin_portal",
+        "id": entry_id,
+        "season": season,
+        "source": source,
         "admin": admin,
-        "upid": str(upid),
-        "player_name": player_name,
-        "owner": owner,
+        "timestamp": ts,
+        "upid": upid,
+        "player_name": player_rec.get("name") or "",
+        "team": player_rec.get("team") or "",
+        "pos": player_rec.get("position") or "",
+        "age": player_rec.get("age"),
+        "level": str(player_rec.get("level") or ""),
+        "team_rank": player_rec.get("team_rank"),
+        "rank": player_rec.get("rank"),
+        "eta": str(player_rec.get("eta") or ""),
+        "player_type": player_rec.get("player_type") or "",
+        "owner": player_rec.get("manager") or player_rec.get("owner") or "",
+        "contract": player_rec.get("contract_type") or player_rec.get("contract") or "",
+        "status": player_rec.get("status") or "",
+        "years": player_rec.get("years_simple") or player_rec.get("years") or "",
         "update_type": update_type,
         "event": event,
-        "changes": changes or {},
     }
     logs.append(entry)
     save_json(PLAYER_LOG_FILE, logs)
@@ -179,39 +205,33 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
     if not upids:
         raise HTTPException(status_code=400, detail="No UPIDs provided")
 
-    players = load_json(COMBINED_FILE)
-    updated = []
+    with DATA_LOCK:
+        players = load_json(COMBINED_FILE)
+        updated = []
 
-    for p in players:
-        p_upid = str(p.get("upid"))
-        if p_upid in [str(u) for u in upids]:
-            # Use per-player tier if provided, else default
-            contract_tier = upid_tier_map.get(p_upid, default_tier)
+        for p in players:
+            p_upid = str(p.get("upid"))
+            if p_upid in [str(u) for u in upids]:
+                # Use per-player tier if provided, else default
+                contract_tier = upid_tier_map.get(p_upid, default_tier)
 
-            old_type = p.get("player_type", "")
-            old_contract = p.get("years_simple", "")
-            old_contract_type = p.get("contract_type", "")
+                old_type = p.get("player_type", "")
+                old_contract = p.get("years_simple", "")
+                old_contract_type = p.get("contract_type", "")
 
-            p["player_type"] = "MLB"
-            p["years_simple"] = contract_tier
-            p["contract_type"] = "Keeper Contract"
+                p["player_type"] = "MLB"
+                p["years_simple"] = contract_tier
+                p["contract_type"] = "Keeper Contract"
 
-            log_player_action(
-                upid=p.get("upid"),
-                player_name=p.get("name", "Unknown"),
-                update_type="Graduate",
-                event=f"Graduated to {contract_tier} by {admin}",
-                admin=admin,
-                owner=p.get("manager", ""),
-                changes={
-                    "player_type": {"from": old_type, "to": "MLB"},
-                    "years_simple": {"from": old_contract, "to": contract_tier},
-                    "contract_type": {"from": old_contract_type, "to": "Keeper Contract"},
-                },
-            )
-            updated.append({"name": p.get("name", "Unknown"), "tier": contract_tier})
+                log_player_action(
+                    player_rec=p,
+                    update_type="Graduate",
+                    event=f"Graduated to {contract_tier} by {admin}",
+                    admin=admin,
+                )
+                updated.append({"name": p.get("name", "Unknown"), "tier": contract_tier})
 
-    save_json(COMBINED_FILE, players)
+        save_json(COMBINED_FILE, players)
 
     # Commit + sync
     commit_msg = f"Admin bulk graduate: {len(updated)} players"
@@ -242,28 +262,26 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
     if not upids:
         raise HTTPException(status_code=400, detail="No UPIDs provided")
 
-    players = load_json(COMBINED_FILE)
-    updated = []
+    with DATA_LOCK:
+        players = load_json(COMBINED_FILE)
+        updated = []
 
-    for p in players:
-        if str(p.get("upid")) in [str(u) for u in upids]:
-            old_contract = p.get("years_simple", "")
+        for p in players:
+            if str(p.get("upid")) in [str(u) for u in upids]:
+                old_contract = p.get("years_simple", "")
 
-            if old_contract != new_contract:
-                p["years_simple"] = new_contract
+                if old_contract != new_contract:
+                    p["years_simple"] = new_contract
 
-                log_player_action(
-                    upid=p.get("upid"),
-                    player_name=p.get("name", "Unknown"),
-                    update_type="Admin",
-                    event=f"Bulk contract update: {old_contract or '(none)'} → {new_contract or '(none)'} by {admin}",
-                    admin=admin,
-                    owner=p.get("manager", ""),
-                    changes={"years_simple": {"from": old_contract, "to": new_contract}},
-                )
-                updated.append(p.get("name", "Unknown"))
+                    log_player_action(
+                        player_rec=p,
+                        update_type="Admin",
+                        event=f"Bulk contract update: {old_contract or '(none)'} → {new_contract or '(none)'} by {admin}",
+                        admin=admin,
+                    )
+                    updated.append(p.get("name", "Unknown"))
 
-    save_json(COMBINED_FILE, players)
+        save_json(COMBINED_FILE, players)
 
     commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
     _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
@@ -293,36 +311,30 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
     if not upids:
         raise HTTPException(status_code=400, detail="No UPIDs provided")
 
-    players = load_json(COMBINED_FILE)
-    released = []
+    with DATA_LOCK:
+        players = load_json(COMBINED_FILE)
+        released = []
 
-    for p in players:
-        if str(p.get("upid")) in [str(u) for u in upids]:
-            old_owner = p.get("manager", "")
-            old_contract = p.get("years_simple", "")
-            old_type = p.get("contract_type", "")
+        for p in players:
+            if str(p.get("upid")) in [str(u) for u in upids]:
+                old_owner = p.get("manager", "")
+                old_contract = p.get("years_simple", "")
+                old_type = p.get("contract_type", "")
 
-            p["manager"] = ""
-            p["FBP_Team"] = "" if "FBP_Team" in p else p.get("FBP_Team")
-            p["contract_type"] = ""
-            p["years_simple"] = ""
+                p["manager"] = ""
+                p["FBP_Team"] = "" if "FBP_Team" in p else p.get("FBP_Team")
+                p["contract_type"] = ""
+                p["years_simple"] = ""
 
-            log_player_action(
-                upid=p.get("upid"),
-                player_name=p.get("name", "Unknown"),
-                update_type="Drop",
-                event=f"Bulk released by {admin}: {reason}",
-                admin=admin,
-                owner=old_owner,
-                changes={
-                    "manager": {"from": old_owner, "to": ""},
-                    "contract_type": {"from": old_type, "to": ""},
-                    "years_simple": {"from": old_contract, "to": ""},
-                },
-            )
-            released.append({"name": p.get("name", "Unknown"), "former_owner": old_owner})
+                log_player_action(
+                    player_rec=p,
+                    update_type="Drop",
+                    event=f"Bulk released by {admin}: {reason}",
+                    admin=admin,
+                )
+                released.append({"name": p.get("name", "Unknown"), "former_owner": old_owner})
 
-    save_json(COMBINED_FILE, players)
+        save_json(COMBINED_FILE, players)
 
     commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
     _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
@@ -363,77 +375,75 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
     try:
         print(f"🔄 Starting add-player for {player_data.get('name')} by {admin}")
 
-        # --- Generate UPID ---
-        upid_db = load_json(UPID_DB_FILE)
-        if not upid_db or "by_upid" not in upid_db:
-            upid_db = {"by_upid": {}, "name_index": {}}
+        with DATA_LOCK:
+            # --- Generate UPID ---
+            upid_db = load_json(UPID_DB_FILE)
+            if not upid_db or "by_upid" not in upid_db:
+                upid_db = {"by_upid": {}, "name_index": {}}
 
-        existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
-        next_upid = (max(existing_upids) + 1) if existing_upids else 1
-        player_data["upid"] = str(next_upid)
+            existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
+            next_upid = (max(existing_upids) + 1) if existing_upids else 1
+            player_data["upid"] = str(next_upid)
 
-        print(f"  📝 Assigned UPID: {next_upid}")
+            print(f"  📝 Assigned UPID: {next_upid}")
 
-        # --- Add to combined_players.json ---
-        players = load_json(COMBINED_FILE)
-        if not isinstance(players, list):
-            players = []
+            # --- Add to combined_players.json ---
+            players = load_json(COMBINED_FILE)
+            if not isinstance(players, list):
+                players = []
 
-        new_player = {
-            "upid": str(next_upid),
-            "name": player_data.get("name", ""),
-            "team": player_data.get("team", ""),
-            "position": player_data.get("position", ""),
-            "age": player_data.get("age"),
-            "manager": player_data.get("manager", ""),
-            "player_type": player_data.get("player_type", "Farm"),
-            "contract_type": player_data.get("contract_type", ""),
-            "years_simple": player_data.get("years_simple", ""),
-            "yahoo_id": player_data.get("yahoo_id", ""),
-            "mlb_id": player_data.get("mlb_id", ""),
-            "birth_date": player_data.get("birth_date"),
-            "debut_date": player_data.get("debut_date"),
-            "bats": player_data.get("bats", ""),
-            "throws": player_data.get("throws", ""),
-            "fypd": player_data.get("fypd", False),
-            "level": player_data.get("level", ""),
-        }
-        players.append(new_player)
-        save_json(COMBINED_FILE, players)
-        print(f"  💾 Saved to combined_players.json")
+            new_player = {
+                "upid": str(next_upid),
+                "name": player_data.get("name", ""),
+                "team": player_data.get("team", ""),
+                "position": player_data.get("position", ""),
+                "age": player_data.get("age"),
+                "manager": player_data.get("manager", ""),
+                "player_type": player_data.get("player_type", "Farm"),
+                "contract_type": player_data.get("contract_type", ""),
+                "years_simple": player_data.get("years_simple", ""),
+                "yahoo_id": player_data.get("yahoo_id", ""),
+                "mlb_id": player_data.get("mlb_id", ""),
+                "birth_date": player_data.get("birth_date"),
+                "debut_date": player_data.get("debut_date"),
+                "bats": player_data.get("bats", ""),
+                "throws": player_data.get("throws", ""),
+                "fypd": player_data.get("fypd", False),
+                "level": player_data.get("level", ""),
+            }
+            players.append(new_player)
+            save_json(COMBINED_FILE, players)
+            print(f"  💾 Saved to combined_players.json")
 
-        # --- Add to upid_database.json ---
-        alt_names = player_data.get("alt_names", [])
-        upid_db["by_upid"][str(next_upid)] = {
-            "upid": str(next_upid),
-            "name": player_data.get("name", ""),
-            "team": player_data.get("team", ""),
-            "pos": player_data.get("position", ""),
-            "alt_names": alt_names,
-            "approved_dupes": "FALSE",
-        }
+            # --- Add to upid_database.json ---
+            alt_names = player_data.get("alt_names", [])
+            upid_db["by_upid"][str(next_upid)] = {
+                "upid": str(next_upid),
+                "name": player_data.get("name", ""),
+                "team": player_data.get("team", ""),
+                "pos": player_data.get("position", ""),
+                "alt_names": alt_names,
+                "approved_dupes": "FALSE",
+            }
 
-        # Update name index
-        all_names = [player_data.get("name", "")] + alt_names
-        for name in all_names:
-            key = name.lower().strip()
-            if key:
-                upid_db["name_index"].setdefault(key, []).append(str(next_upid))
+            # Update name index
+            all_names = [player_data.get("name", "")] + alt_names
+            for name in all_names:
+                key = name.lower().strip()
+                if key:
+                    upid_db["name_index"].setdefault(key, []).append(str(next_upid))
 
-        save_json(UPID_DB_FILE, upid_db)
-        print(f"  💾 Saved to upid_database.json")
+            save_json(UPID_DB_FILE, upid_db)
+            print(f"  💾 Saved to upid_database.json")
 
-        # --- Log ---
-        log_player_action(
-            upid=next_upid,
-            player_name=player_data.get("name", "Unknown"),
-            update_type="Admin",
-            event=f"Player added to database by {admin}",
-            admin=admin,
-            owner=player_data.get("manager", ""),
-            changes={"action": "new_player", "all_fields": player_data},
-        )
-        print(f"  💾 Saved to player_log.json")
+            # --- Log ---
+            log_player_action(
+                player_rec=new_player,
+                update_type="Admin",
+                event=f"Player added to database by {admin}",
+                admin=admin,
+            )
+            print(f"  💾 Saved to player_log.json")
 
         # --- Queue git commit (best-effort; data is already persisted to disk) ---
         commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"

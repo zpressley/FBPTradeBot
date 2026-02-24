@@ -387,9 +387,9 @@ class DraftCommands(commands.Cog):
                 
                 # If in DM, can be more helpful
                 if is_dm and self.board_manager:
-                    board = self.board_manager.get_board(team)
-                    drafted = [p['player'] for p in self.draft_manager.state["picks_made"]]
-                    available = [p for p in board if p not in drafted]
+                    resolved = self.board_manager.resolve_board(team)
+                    drafted = set(p['player'].lower() for p in self.draft_manager.state["picks_made"])
+                    available = [e['name'] for e in resolved if e['name'].lower() not in drafted]
                     
                     if available[:3]:
                         error_msg += f"\n\n**Your board (available):**\n"
@@ -451,9 +451,9 @@ class DraftCommands(commands.Cog):
         
         # In DM, show board suggestions
         if is_dm and self.board_manager:
-            board = self.board_manager.get_board(team)
-            drafted = [p['player'] for p in self.draft_manager.state["picks_made"]]
-            available = [p for p in board if p not in drafted]
+            resolved = self.board_manager.resolve_board(team)
+            drafted = set(p['player'].lower() for p in self.draft_manager.state["picks_made"])
+            available = [e['name'] for e in resolved if e['name'].lower() not in drafted]
             
             if available[:3]:
                 suggestions = "\n\n**💡 Your board (top 3 available):**\n"
@@ -660,12 +660,13 @@ class DraftCommands(commands.Cog):
 
         # Forklift mode: board-only.
         if forklift_enabled:
-            board = self.board_manager.get_board(team) if self.board_manager else []
+            resolved_board = self.board_manager.resolve_board(team) if self.board_manager else []
 
-            for candidate in board or []:
-                valid, player = _is_valid_autopick(candidate)
+            for entry in resolved_board or []:
+                candidate_name = entry["name"]
+                valid, player = _is_valid_autopick(candidate_name)
                 if valid:
-                    autopicked_name = player["name"] if player else candidate
+                    autopicked_name = player["name"] if player else candidate_name
                     player_data = player
                     source = f"{team}'s board (forklift)"
                     break
@@ -699,11 +700,12 @@ class DraftCommands(commands.Cog):
         else:
             # 1) Try manager's personal board, in order.
             if self.board_manager:
-                board = self.board_manager.get_board(team)
-                for candidate in board:
-                    valid, player = _is_valid_autopick(candidate)
+                resolved_board = self.board_manager.resolve_board(team)
+                for entry in resolved_board:
+                    candidate_name = entry["name"]
+                    valid, player = _is_valid_autopick(candidate_name)
                     if valid:
-                        autopicked_name = player["name"] if player else candidate
+                        autopicked_name = player["name"] if player else candidate_name
                         player_data = player
                         source = f"{team}'s board"
                         break
@@ -1035,9 +1037,9 @@ class DraftCommands(commands.Cog):
             
             # Add board suggestions if available
             if self.board_manager:
-                board = self.board_manager.get_board(team)
-                drafted = [p['player'] for p in self.draft_manager.state["picks_made"]]
-                available = [p for p in board if p not in drafted]
+                resolved = self.board_manager.resolve_board(team)
+                drafted = set(p['player'].lower() for p in self.draft_manager.state["picks_made"])
+                available = [e['name'] for e in resolved if e['name'].lower() not in drafted]
                 
                 if available[:5]:
                     board_text = "\n".join(f"{i+1}. {p}" for i, p in enumerate(available[:5]))

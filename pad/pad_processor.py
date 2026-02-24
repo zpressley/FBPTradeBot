@@ -369,7 +369,11 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
     if team in submissions and not test_mode and not is_live_test:
         raise PadAlreadySubmittedError(f"PAD already submitted for team {team}")
 
-    # Load main data files
+    # Load main data files — hold DATA_LOCK for the full load-modify-save cycle
+    # to prevent concurrent endpoints from reading stale data.
+    from data_lock import DATA_LOCK
+    _data_lock_acquired = DATA_LOCK.acquire()
+
     combined_path = get_combined_players_path(test_mode)
     wizbucks_path = get_wizbucks_path(test_mode)
     player_log_path = get_player_log_path(test_mode)
@@ -664,6 +668,10 @@ def apply_pad_submission(payload: PadSubmissionPayload, test_mode: bool) -> PadR
         # Rebuild draft_order_2026 (or its _test variant) from all PAD
         # submissions and 2025 final standings.
         rebuild_draft_order_from_pad(submissions, test_mode)
+
+    # Release the data lock now that all file mutations are complete.
+    if _data_lock_acquired:
+        DATA_LOCK.release()
 
     return PadResult(
         season=season,
