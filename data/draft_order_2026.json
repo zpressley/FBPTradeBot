@@ -1204,9 +1204,9 @@
     "traded": false,
     "buyin_required": true,
     "buyin_cost": 10,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
+    "buyin_purchased": true,
+    "buyin_purchased_at": "2026-02-25T18:13:47.236991Z",
+    "buyin_purchased_by": "jepordizers",
     "result": null,
     "taxed_out": false,
     "round_type": "standard"

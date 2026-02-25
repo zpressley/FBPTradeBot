@@ -1321,5 +1321,25 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_JEP_R3_P7_1772043227",
+    "timestamp": "2026-02-25T18:13:47.236991Z",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 340,
+    "balance_after": 330,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 7,
+      "purchased_by": "jepordizers",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
