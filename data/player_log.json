@@ -35750,5 +35750,28 @@
     "years": "P",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-02-25T19:04:00.064711Z-UPID_4291-Trade-TRADE-250226_1356-006",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WIZ",
+    "timestamp": "2026-02-25T19:04:00.064711Z",
+    "upid": "4291",
+    "player_name": "Jeremy Pe\u00f1a",
+    "team": "HOU",
+    "pos": "SS",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 96,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Trade",
+    "event": "TRADE-250226_1356-006: LFB->WAR"
   }
 ]

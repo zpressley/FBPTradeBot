@@ -1446,7 +1446,7 @@
       "LFB"
     ],
     "initiator_team": "WAR",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-25T18:56:39.862744Z",
     "expires_at": "2026-03-11T18:56:39.862744Z",
     "transfers": [
@@ -1491,6 +1491,18 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1476291828700676282",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-25T18:57:02.265136Z"
+    "manager_approved_at": "2026-02-25T18:57:02.265136Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-25T19:03:59.770628Z",
+    "data_applied_at": "2026-02-25T19:04:00.064711Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 2,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
