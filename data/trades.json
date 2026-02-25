@@ -1439,26 +1439,28 @@
       "warnings": []
     }
   },
-  "TRADE-240226_1633-006": {
-    "trade_id": "TRADE-240226_1633-006",
+  "TRADE-250226_1356-006": {
+    "trade_id": "TRADE-250226_1356-006",
     "teams": [
       "WAR",
       "LFB"
     ],
     "initiator_team": "WAR",
     "status": "pending",
-    "created_at": "2026-02-24T21:33:39.065061Z",
-    "expires_at": "2026-03-10T21:33:39.065061Z",
+    "created_at": "2026-02-25T18:56:39.862744Z",
+    "expires_at": "2026-03-11T18:56:39.862744Z",
     "transfers": [
       {
         "type": "player",
-        "upid": "4445",
+        "upid": "4291",
         "from_team": "LFB",
         "to_team": "WAR"
       },
       {
-        "type": "player",
-        "upid": "4291",
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 12,
+        "pick": 11,
         "from_team": "LFB",
         "to_team": "WAR"
       },
@@ -1469,14 +1471,6 @@
         "pick": 8,
         "from_team": "WAR",
         "to_team": "LFB"
-      },
-      {
-        "type": "draft_pick",
-        "draft": "keeper",
-        "round": 8,
-        "pick": 8,
-        "from_team": "WAR",
-        "to_team": "LFB"
       }
     ],
     "acceptances": [
@@ -1484,17 +1478,16 @@
     ],
     "receives": {
       "WAR": [
-        "1B Spencer Torkelson [DET] [TC 1]",
-        "SS Jeremy Pe\u00f1a [HOU] [TC 1]"
+        "SS Jeremy Pe\u00f1a [HOU] [TC 1]",
+        "Keeper Pick R12 P11 via LFB"
       ],
       "LFB": [
-        "Keeper Pick R4 P8 via WAR",
-        "Keeper Pick R8 P8 via WAR"
+        "Keeper Pick R4 P8 via WAR"
       ]
     },
     "discord": {
-      "thread_id": "1475968948389548227",
-      "thread_url": "https://discord.com/channels/875592505926758480/1475968948389548227",
+      "thread_id": "1476291828700676282",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476291828700676282",
       "admin_review_message_id": null
     }
   }
