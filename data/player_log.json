@@ -35750,5 +35750,28 @@
     "years": "TC 1",
     "update_type": "Admin",
     "event": "Remove test owner"
+  },
+  {
+    "id": "2026-2026-02-25T14:32:01.494453-05:00-UPID_3379-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-02-25T14:32:01.494453-05:00",
+    "upid": "3379",
+    "player_name": "Will Vest",
+    "team": "DET",
+    "pos": "RP",
+    "age": 30,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 273,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
