@@ -951,38 +951,6 @@
     }
   },
   {
-    "txn_id": "LostWIZwizbucks",
-    "timestamp": "2026-02-18T04:46:00.545757Z",
-    "team": "WIZ",
-    "amount": 15,
-    "balance_before": 405,
-    "balance_after": 420,
-    "transaction_type": "trade_wizbucks_credit",
-    "description": "Lost Trade",
-    "related_player": null,
-    "metadata": {
-      "trade_id": "Lost_trade",
-      "counterparty": "DRO",
-      "source": "trade_portal"
-    }
-  },
-  {
-    "txn_id": "LostWIZwizbucks",
-    "timestamp": "2026-02-18T04:46:00.545757Z",
-    "team": "DRO",
-    "amount": -15,
-    "balance_before": 410,
-    "balance_after": 395,
-    "transaction_type": "trade_wizbucks_debit",
-    "description": "Lost Trade",
-    "related_player": null,
-    "metadata": {
-      "trade_id": "Lost_trade",
-      "counterparty": "WIZ",
-      "source": "trade_portal"
-    }
-  },
-  {
     "txn_id": "wb_2026-02-19_trade_WEB-TRADE-20260219-130729_CFL_debit_15",
     "timestamp": "2026-02-19T13:12:50.905257Z",
     "team": "CFL",
@@ -1103,8 +1071,8 @@
     "timestamp": "2026-02-22T12:18:54.966853Z",
     "team": "WIZ",
     "amount": -35,
-    "balance_before": 440,
-    "balance_after": 405,
+    "balance_before": 450,
+    "balance_after": 415,
     "transaction_type": "buyin_purchase",
     "description": "Round 2 keeper draft buy-in purchase",
     "related_player": null,
@@ -1139,8 +1107,8 @@
     "timestamp": "2026-02-22T12:18:54.966853Z",
     "team": "WIZ",
     "amount": 10,
-    "balance_before": 405,
-    "balance_after": 415,
+    "balance_before": 440,
+    "balance_after": 450,
     "transaction_type": "trade_wizbucks_credit",
     "description": "Trade TRADE-210226_0804-003: WizBucks received from HAM",
     "related_player": null,
@@ -1315,41 +1283,21 @@
     }
   },
   {
-    "txn_id": "wb_2026_BUYIN_CFL_R2_P6_1771872877",
-    "timestamp": "2026-02-23T18:54:37.904667Z",
-    "team": "CFL",
-    "amount": -35,
-    "balance_before": 285,
-    "balance_after": 250,
+    "txn_id": "wb_2026_BUYIN_JEP_R1_P7_1772043189",
+    "timestamp": "2026-02-25T18:13:09.488532Z",
+    "team": "JEP",
+    "amount": -55,
+    "balance_before": 430,
+    "balance_after": 375,
     "transaction_type": "buyin_purchase",
-    "description": "Round 2 keeper draft buy-in purchase",
+    "description": "Round 1 keeper draft buy-in purchase",
     "related_player": null,
     "metadata": {
       "season": 2026,
       "draft": "keeper",
-      "round": 2,
-      "pick": 6,
-      "purchased_by": "CFL",
-      "source": "buyin_api",
-      "trade_id": null
-    }
-  },
-  {
-    "txn_id": "wb_2026_BUYIN_CFL_R3_P6_1771872884",
-    "timestamp": "2026-02-23T18:54:44.823505Z",
-    "team": "CFL",
-    "amount": -10,
-    "balance_before": 250,
-    "balance_after": 240,
-    "transaction_type": "buyin_purchase",
-    "description": "Round 3 keeper draft buy-in purchase",
-    "related_player": null,
-    "metadata": {
-      "season": 2026,
-      "draft": "keeper",
-      "round": 3,
-      "pick": 6,
-      "purchased_by": "CFL",
+      "round": 1,
+      "pick": 7,
+      "purchased_by": "jepordizers",
       "source": "buyin_api",
       "trade_id": null
     }
