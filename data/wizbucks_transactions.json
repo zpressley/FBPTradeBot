@@ -1425,5 +1425,45 @@
       "counterparty": "CFL",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_TBB_R3_P1_TRADE-250226_1502-007_1772131492",
+    "timestamp": "2026-02-26T18:44:52.069041Z",
+    "team": "TBB",
+    "amount": -10,
+    "balance_before": 480,
+    "balance_after": 470,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 1,
+      "purchased_by": "WAR",
+      "source": "trade_portal_auto_buyin",
+      "trade_id": "TRADE-250226_1502-007"
+    }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_WIZ_R3_P12_TRADE-250226_1502-007_1772131492",
+    "timestamp": "2026-02-26T18:44:52.069041Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 415,
+    "balance_after": 405,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 12,
+      "purchased_by": "WAR",
+      "source": "trade_portal_auto_buyin",
+      "trade_id": "TRADE-250226_1502-007"
+    }
   }
 ]

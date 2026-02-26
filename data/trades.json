@@ -1512,7 +1512,7 @@
       "TBB"
     ],
     "initiator_team": "WIZ",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-02-25T20:02:50.087898Z",
     "expires_at": "2026-03-11T20:02:50.087898Z",
     "transfers": [
@@ -1568,7 +1568,19 @@
       "thread_url": "https://discord.com/channels/875592505926758480/1476308481362628773",
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-02-25T20:03:05.085648Z"
+    "manager_approved_at": "2026-02-25T20:03:05.085648Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-26T18:44:52.036769Z",
+    "data_applied_at": "2026-02-26T18:44:52.069041Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 0,
+      "player_log_entries": 0,
+      "pick_moves": 4,
+      "wb_transfers": 0,
+      "buyins_purchased": 2,
+      "warnings": []
+    }
   },
   "TRADE-250226_2338-008": {
     "trade_id": "TRADE-250226_2338-008",
