@@ -1119,7 +1119,7 @@ def _apply_approved_trade_to_data_files(rec: dict, admin_team: str) -> list[str]
                         wizbucks_data=wizbucks,
                         managers_data=managers_data,
                         ledger=txns,
-                        purchased_by=admin_team,
+                        purchased_by=payer,
                         source="trade_portal_auto_buyin",
                         trade_id=trade_id or None,
                         now=now,
