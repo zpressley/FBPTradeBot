@@ -1570,17 +1570,29 @@
     },
     "manager_approved_at": "2026-02-25T20:03:05.085648Z"
   },
-  "TRADE-250226_2311-008": {
-    "trade_id": "TRADE-250226_2311-008",
+  "TRADE-250226_2338-008": {
+    "trade_id": "TRADE-250226_2338-008",
     "teams": [
       "DRO",
       "WAR"
     ],
     "initiator_team": "DRO",
     "status": "pending",
-    "created_at": "2026-02-26T04:11:04.400983Z",
-    "expires_at": "2026-03-12T04:11:04.400983Z",
+    "created_at": "2026-02-26T04:38:54.026442Z",
+    "expires_at": "2026-03-12T04:38:54.026442Z",
     "transfers": [
+      {
+        "type": "player",
+        "upid": "6910",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6677",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
       {
         "type": "player",
         "upid": "7709",
@@ -1589,15 +1601,7 @@
       },
       {
         "type": "player",
-        "upid": "3563",
-        "from_team": "DRO",
-        "to_team": "WAR"
-      },
-      {
-        "type": "draft_pick",
-        "draft": "keeper",
-        "round": 11,
-        "pick": 10,
+        "upid": "3183",
         "from_team": "DRO",
         "to_team": "WAR"
       },
@@ -1606,20 +1610,6 @@
         "amount": 10,
         "from_team": "DRO",
         "to_team": "WAR"
-      },
-      {
-        "type": "player",
-        "upid": "6910",
-        "from_team": "WAR",
-        "to_team": "DRO"
-      },
-      {
-        "type": "draft_pick",
-        "draft": "keeper",
-        "round": 13,
-        "pick": 8,
-        "from_team": "WAR",
-        "to_team": "DRO"
       }
     ],
     "acceptances": [
@@ -1628,18 +1618,17 @@
     "receives": {
       "DRO": [
         "SP Jonah Tong [NYM] [PC]",
-        "Keeper Pick R13 P8 via WAR"
+        "RP Andrew Walters [CLE] [PC]"
       ],
       "WAR": [
         "SP Jurrangelo Cijntje [SEA] [PC]",
-        "3B Connor Norby [MIA] [TC R]",
-        "Keeper Pick R11 P10 via DRO",
+        "SP Ryan Weathers [MIA] [TC 1]",
         "$10 WB via DRO"
       ]
     },
     "discord": {
-      "thread_id": "1476431350905966672",
-      "thread_url": "https://discord.com/channels/875592505926758480/1476431350905966672",
+      "thread_id": "1476438353762320455",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476438353762320455",
       "admin_review_message_id": null
     }
   }
