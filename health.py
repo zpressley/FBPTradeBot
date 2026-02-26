@@ -1922,16 +1922,34 @@ async def update_draft_board(
 
 # ---- Orchestrate Both ----
 async def start_bot():
-    """Start Discord bot with error handling"""
-    try:
-        print(f"🤖 Starting Discord bot...")
-        await bot.start(TOKEN)
-    except KeyboardInterrupt:
-        print("⏸️ Received interrupt signal")
-        await bot.close()
-    except Exception as e:
-        print(f"❌ Bot error: {e}")
-        raise
+    """Start Discord bot with retry on rate limit."""
+    max_retries = 5
+    base_delay = 30  # seconds
+
+    for attempt in range(1, max_retries + 1):
+        try:
+            if attempt > 1:
+                print(f"🤖 Starting Discord bot (attempt {attempt}/{max_retries})...")
+            else:
+                print(f"🤖 Starting Discord bot...")
+            await bot.start(TOKEN)
+            return  # clean shutdown
+        except KeyboardInterrupt:
+            print("⏸️ Received interrupt signal")
+            await bot.close()
+            return
+        except Exception as e:
+            error_str = str(e)
+            is_rate_limit = "429" in error_str or "rate" in error_str.lower()
+
+            if is_rate_limit and attempt < max_retries:
+                delay = base_delay * attempt
+                print(f"⚠️ Rate limited by Discord (attempt {attempt}/{max_retries}). Retrying in {delay}s...")
+                await asyncio.sleep(delay)
+                continue
+
+            print(f"❌ Bot error: {e}")
+            raise
 
 def run_server():
     """Run FastAPI server (blocking)"""
