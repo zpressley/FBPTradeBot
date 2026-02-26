@@ -447,8 +447,13 @@ async def setup_hook():
         print(f"   ⚠️ Failed to load auction commands: {exc}")
     
     print("🔄 Syncing slash commands...")
-    await bot.tree.sync()
-    print("✅ Slash commands synced")
+    try:
+        await asyncio.wait_for(bot.tree.sync(), timeout=10)
+        print("✅ Slash commands synced")
+    except asyncio.TimeoutError:
+        print("⚠️ Slash command sync timed out (10s) — using previously synced commands")
+    except Exception as exc:
+        print(f"⚠️ Slash command sync failed: {exc} — using previously synced commands")
 
 # ---- FastAPI Web Server ----
 app = FastAPI()
