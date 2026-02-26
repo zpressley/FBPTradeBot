@@ -1570,68 +1570,61 @@
     },
     "manager_approved_at": "2026-02-25T20:03:05.085648Z"
   },
-  "TRADE-250226_2338-008": {
-    "trade_id": "TRADE-250226_2338-008",
+  "TRADE-260226_0933-008": {
+    "trade_id": "TRADE-260226_0933-008",
     "teams": [
-      "DRO",
+      "CFL",
       "WAR"
     ],
-    "initiator_team": "DRO",
-    "status": "admin_review",
-    "created_at": "2026-02-26T04:38:54.026442Z",
-    "expires_at": "2026-03-12T04:38:54.026442Z",
+    "initiator_team": "CFL",
+    "status": "pending",
+    "created_at": "2026-02-26T14:33:30.356803Z",
+    "expires_at": "2026-03-12T14:33:30.356803Z",
     "transfers": [
       {
-        "type": "player",
-        "upid": "6910",
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 3,
+        "pick": 8,
         "from_team": "WAR",
-        "to_team": "DRO"
+        "to_team": "CFL"
       },
       {
         "type": "player",
-        "upid": "6677",
-        "from_team": "WAR",
-        "to_team": "DRO"
-      },
-      {
-        "type": "player",
-        "upid": "7709",
-        "from_team": "DRO",
+        "upid": "6725",
+        "from_team": "CFL",
         "to_team": "WAR"
       },
       {
         "type": "player",
-        "upid": "3183",
-        "from_team": "DRO",
+        "upid": "7948",
+        "from_team": "CFL",
         "to_team": "WAR"
       },
       {
         "type": "wizbucks",
-        "amount": 10,
-        "from_team": "DRO",
+        "amount": 15,
+        "from_team": "CFL",
         "to_team": "WAR"
       }
     ],
     "acceptances": [
-      "DRO",
-      "WAR"
+      "CFL"
     ],
     "receives": {
-      "DRO": [
-        "SP Jonah Tong [NYM] [PC]",
-        "RP Andrew Walters [CLE] [PC]"
+      "CFL": [
+        "Keeper Pick R3 P8 via WAR"
       ],
       "WAR": [
-        "SP Jurrangelo Cijntje [SEA] [PC]",
-        "SP Ryan Weathers [MIA] [TC 1]",
-        "$10 WB via DRO"
+        "SP Jaxon Wiggins [CHC] [DC]",
+        "SS JoJo Parker [TOR] [BC]",
+        "$15 WB via CFL"
       ]
     },
     "discord": {
-      "thread_id": "1476438353762320455",
-      "thread_url": "https://discord.com/channels/875592505926758480/1476438353762320455",
+      "thread_id": "1476587991353917531",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476587991353917531",
       "admin_review_message_id": null
-    },
-    "manager_approved_at": "2026-02-26T04:40:43.124582Z"
+    }
   }
 }
