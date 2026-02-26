@@ -1341,5 +1341,89 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026-02-26_trade_TRADE-250226_2338-008_DRO_debit_10",
+    "timestamp": "2026-02-26T18:20:07.471976Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 400,
+    "balance_after": 390,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-250226_2338-008: WizBucks sent to WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-250226_2338-008",
+      "counterparty": "WAR",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-26_trade_TRADE-250226_2338-008_WAR_credit_10",
+    "timestamp": "2026-02-26T18:20:07.471976Z",
+    "team": "WAR",
+    "amount": 10,
+    "balance_before": 360,
+    "balance_after": 370,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-250226_2338-008: WizBucks received from DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-250226_2338-008",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_WAR_R3_P8_TRADE-260226_0933-008_1772130069",
+    "timestamp": "2026-02-26T18:21:09.755936Z",
+    "team": "WAR",
+    "amount": -10,
+    "balance_before": 370,
+    "balance_after": 360,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 8,
+      "purchased_by": "WAR",
+      "source": "trade_portal_auto_buyin",
+      "trade_id": "TRADE-260226_0933-008"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-26_trade_TRADE-260226_0933-008_CFL_debit_15",
+    "timestamp": "2026-02-26T18:21:09.755936Z",
+    "team": "CFL",
+    "amount": -15,
+    "balance_before": 285,
+    "balance_after": 270,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-260226_0933-008: WizBucks sent to WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-260226_0933-008",
+      "counterparty": "WAR",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-26_trade_TRADE-260226_0933-008_WAR_credit_15",
+    "timestamp": "2026-02-26T18:21:09.755936Z",
+    "team": "WAR",
+    "amount": 15,
+    "balance_before": 360,
+    "balance_after": 375,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-260226_0933-008: WizBucks received from CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-260226_0933-008",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
   }
 ]

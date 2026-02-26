@@ -1,28 +1,29 @@
 {
-  "phase": "off_week",
-  "week_start": null,
-  "last_updated": null,
   "bids": [],
+  "last_updated": "2026-02-26T18:13:26.948638+00:00",
   "matches": [],
+  "phase": "cb_window",
   "priority_order": [
-    "WAR",
-    "JEP",
-    "RV",
-    "HAM",
-    "CFL",
-    "DMN",
+    "JES\u00da",
+    "PINS",
+    "TROU",
+    "CASC",
+    "GANG",
+    "BATI",
+    "HURL",
     "B2J",
-    "TBB",
     "DRO",
-    "SAD",
-    "LFB",
-    "WIZ"
+    "PLAY",
+    "WIZ",
+    "RV",
+    "WAR",
+    "ANGE"
   ],
-  "_priority_note": "Rebuilt each Monday from managers.json 'standing' field. Sorted worst->best (rank 12 first = leftmost = highest tiebreak priority). OBs always win tiebreaks. Among CBs: leftmost column wins. Do not edit manually.",
   "schedule_meta": {
-    "season_start": "2026-03-16",
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
-    "playoffs_start": "2026-09-07"
-  }
+    "playoffs_start": "2026-09-07",
+    "season_start": "2026-03-16"
+  },
+  "week_start": "2026-02-23"
 }
