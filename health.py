@@ -1948,8 +1948,8 @@ async def start_bot():
             is_rate_limit = "429" in error_str or "rate" in error_str.lower()
 
             if is_rate_limit:
-                delay = min(60 * attempt, 300)  # 60s, 120s, 180s, 240s, 300s cap
-                print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {delay}s...")
+                delay = min(120 * attempt, 600)  # 2min, 4min, 6min, 8min, 10min cap
+                print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {delay // 60}min...")
                 await asyncio.sleep(delay)
                 continue
 
