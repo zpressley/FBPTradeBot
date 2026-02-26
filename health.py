@@ -1946,6 +1946,11 @@ async def update_draft_board(
 
 
 # ---- Orchestrate Both ----
+
+# Set DISCORD_DISABLED=1 to run API-only (no Discord connection attempts).
+# Useful when Cloudflare has rate-limited the IP.
+DISCORD_DISABLED = os.getenv("DISCORD_DISABLED", "").strip().lower() in ("1", "true", "yes")
+
 async def start_bot():
     """Start Discord bot with retry on rate limit.
 
@@ -1953,6 +1958,13 @@ async def start_bot():
     backoff (caps at 5 min) so Render doesn't restart the process and
     compound the Cloudflare ban.
     """
+    if DISCORD_DISABLED:
+        print("⚠️ DISCORD_DISABLED=1 — skipping Discord connection. API-only mode.")
+        # Keep the coroutine alive so the process doesn't exit
+        while True:
+            await asyncio.sleep(3600)
+        return
+
     attempt = 0
 
     while True:
