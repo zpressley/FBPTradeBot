@@ -141,11 +141,6 @@ class Trade(commands.Cog):
                 },
             )
 
-            await self._post_thread_note(
-                trade,
-                f"✅ **Admin approved** via fallback command by <@{interaction.user.id}> (Trade ID: `{trade_id}`)",
-            )
-
             await interaction.followup.send(f"✅ Approved `{trade_id}` and posted to #trades.", ephemeral=True)
             return
 
