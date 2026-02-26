@@ -809,7 +809,9 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         pass
 
 
-# Ensure settings API can enqueue commits even before bot on_ready.
+# Set commit functions at module level so API write operations work even
+# when the Discord bot hasn't connected (e.g. Cloudflare rate-limit).
+# Bot references stay in on_ready() since they need the connected bot.
 try:
     set_settings_commit_fn(_commit_and_push)
 except Exception:
@@ -817,6 +819,21 @@ except Exception:
 
 try:
     set_notes_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
+try:
+    set_trade_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
+try:
+    set_bulk_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
+try:
+    set_buyin_commit_fn(_commit_and_push)
 except Exception:
     pass
 

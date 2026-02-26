@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Optional, TypeVar
 
 from fastapi import APIRouter, Depends, Header, HTTPException
+from pydantic import BaseModel
 
 from team_utils import normalize_team_abbr
 from trade.trade_models import (
@@ -182,9 +183,6 @@ async def submit_trade(
     _: bool = Depends(verify_key),
     manager_team: str = Depends(require_manager_team),
 ):
-    if _bot_ref is None or not _bot_ref.is_ready():
-        raise HTTPException(status_code=503, detail="Bot not ready")
-
     _log(
         "📥 TRADE_SUBMIT",
         {
@@ -198,64 +196,42 @@ async def submit_trade(
     # Create trade record (validates window + rosters + WB)
     trade = trade_store.create_trade(payload, actor_team=manager_team)
 
-    # Create Discord thread for manager approvals
+    # Best-effort: create Discord thread (non-blocking if bot is down)
     try:
-        from commands.trade_logic import create_trade_thread
+        if _bot_ref is not None and _bot_ref.is_ready():
+            from commands.trade_logic import create_trade_thread
 
-        async def _create_thread():
-            guild = _select_guild()
-            if not guild:
-                raise HTTPException(status_code=500, detail="Could not resolve Discord guild for trade threads")
+            async def _create_thread():
+                guild = _select_guild()
+                if not guild:
+                    return None
+                return await create_trade_thread(
+                    guild,
+                    {
+                        "trade_id": trade["trade_id"],
+                        "teams": trade["teams"],
+                        "players": trade.get("receives") or {},
+                        "initiator_team": trade.get("initiator_team"),
+                        "source": "🌐 Website",
+                    },
+                )
 
-            return await create_trade_thread(
-                guild,
-                {
-                    "trade_id": trade["trade_id"],
-                    "teams": trade["teams"],
-                    "players": trade.get("receives") or {},
-                    "initiator_team": trade.get("initiator_team"),
-                    "source": "🌐 Website",
-                },
-            )
-
-        thread = await _await_on_bot_loop(_create_thread(), "create_trade_thread")
-        if not thread:
-            raise HTTPException(
-                status_code=500,
-                detail="Failed to create Discord thread (pending-trades channel missing or bot lacks permissions)",
-            )
-
-        trade = trade_store.attach_discord_thread(trade["trade_id"], str(thread.id), thread.jump_url)
-        _log(
-            "✅ TRADE_SUBMIT_OK",
-            {
-                "trade_id": trade.get("trade_id"),
-                "teams": trade.get("teams"),
-                "thread_id": str(thread.id),
-            },
-        )
-    except HTTPException as exc:
-        _log(
-            "❌ TRADE_SUBMIT_FAILED",
-            {
-                "manager_team": manager_team,
-                "status_code": exc.status_code,
-                "detail": exc.detail,
-            },
-        )
-        raise
+            thread = await _await_on_bot_loop(_create_thread(), "create_trade_thread")
+            if thread:
+                trade = trade_store.attach_discord_thread(trade["trade_id"], str(thread.id), thread.jump_url)
+                _log(
+                    "✅ TRADE_SUBMIT_OK",
+                    {
+                        "trade_id": trade.get("trade_id"),
+                        "teams": trade.get("teams"),
+                        "thread_id": str(thread.id),
+                    },
+                )
+        else:
+            _log("⚠️ TRADE_SUBMIT_NO_DISCORD", {"trade_id": trade.get("trade_id"), "reason": "Bot not connected"})
     except Exception as exc:
-        import traceback
-
-        _log(
-            "❌ TRADE_SUBMIT_FAILED",
-            {
-                "manager_team": manager_team,
-                "error": str(exc),
-            },
-        )
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Failed to create trade thread: {exc}")
+        # Discord thread failure is non-fatal — trade is already created
+        _log("⚠️ TRADE_SUBMIT_THREAD_FAILED", {"trade_id": trade.get("trade_id"), "error": str(exc)})
 
     return {
         "success": True,
@@ -409,3 +385,87 @@ async def get_history(
     manager_team: str = Depends(require_manager_team),
 ):
     return {"trades": trade_store.list_history(manager_team)}
+
+
+# ---- Admin trade endpoints (website admin portal) ----
+
+class TradeAdminApprovePayload(BaseModel):
+    trade_id: str
+
+
+class TradeAdminRejectPayload(BaseModel):
+    trade_id: str
+    reason: str
+
+
+@router.post("/admin/approve")
+async def admin_approve_trade(
+    payload: TradeAdminApprovePayload,
+    _: bool = Depends(verify_key),
+    manager_team: str = Depends(require_manager_team),
+):
+    _log(
+        "📥 TRADE_ADMIN_APPROVE",
+        {"trade_id": payload.trade_id, "admin": manager_team},
+    )
+
+    try:
+        trade = trade_store.admin_approve(payload.trade_id, manager_team)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+    # Best-effort: post to #trades channel if bot is connected
+    try:
+        if _bot_ref is not None and _bot_ref.is_ready():
+            from commands.trade_logic import post_approved_trade
+
+            async def _post():
+                guild = _select_guild()
+                if guild:
+                    await post_approved_trade(
+                        guild,
+                        {
+                            "trade_id": trade.get("trade_id"),
+                            "teams": trade.get("teams") or [],
+                            "players": trade.get("receives") or {},
+                            "initiator_team": trade.get("initiator_team"),
+                            "source": "🌐 Admin Portal",
+                        },
+                    )
+
+            _schedule_on_bot_loop(_post(), "admin_approve_post_trade")
+    except Exception:
+        pass
+
+    _log(
+        "✅ TRADE_ADMIN_APPROVE_OK",
+        {"trade_id": payload.trade_id, "admin": manager_team, "status": trade.get("status")},
+    )
+    return {"success": True, "trade": trade}
+
+
+@router.post("/admin/reject")
+async def admin_reject_trade(
+    payload: TradeAdminRejectPayload,
+    _: bool = Depends(verify_key),
+    manager_team: str = Depends(require_manager_team),
+):
+    _log(
+        "📥 TRADE_ADMIN_REJECT",
+        {"trade_id": payload.trade_id, "admin": manager_team, "reason": payload.reason},
+    )
+
+    try:
+        trade = trade_store.admin_reject(payload.trade_id, manager_team, payload.reason)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+    _log(
+        "✅ TRADE_ADMIN_REJECT_OK",
+        {"trade_id": payload.trade_id, "admin": manager_team},
+    )
+    return {"success": True, "trade": trade}
