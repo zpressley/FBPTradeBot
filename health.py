@@ -49,6 +49,7 @@ from api_draft_pick_request import router as draft_pick_router, set_bot_referenc
 from api_buyin import router as buyin_router, set_buyin_bot_reference, set_buyin_commit_fn
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 from api_settings import router as settings_router, set_settings_commit_fn
+from api_notes import router as notes_router, set_notes_commit_fn
 from data_lock import DATA_LOCK
 
 # Load environment variables
@@ -469,6 +470,8 @@ app.include_router(buyin_router)
 app.include_router(trade_router)
 # Settings router (team colors)
 app.include_router(settings_router)
+# Manager notes router
+app.include_router(notes_router)
 
 
 # Health check
@@ -809,6 +812,11 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
 # Ensure settings API can enqueue commits even before bot on_ready.
 try:
     set_settings_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
+try:
+    set_notes_commit_fn(_commit_and_push)
 except Exception:
     pass
 
