@@ -1922,14 +1922,19 @@ async def update_draft_board(
 
 # ---- Orchestrate Both ----
 async def start_bot():
-    """Start Discord bot with retry on rate limit."""
-    max_retries = 5
-    base_delay = 30  # seconds
+    """Start Discord bot with retry on rate limit.
 
-    for attempt in range(1, max_retries + 1):
+    NEVER crashes on rate-limit — retries indefinitely with increasing
+    backoff (caps at 5 min) so Render doesn't restart the process and
+    compound the Cloudflare ban.
+    """
+    attempt = 0
+
+    while True:
+        attempt += 1
         try:
             if attempt > 1:
-                print(f"🤖 Starting Discord bot (attempt {attempt}/{max_retries})...")
+                print(f"🤖 Starting Discord bot (attempt {attempt})...")
             else:
                 print(f"🤖 Starting Discord bot...")
             await bot.start(TOKEN)
@@ -1942,12 +1947,13 @@ async def start_bot():
             error_str = str(e)
             is_rate_limit = "429" in error_str or "rate" in error_str.lower()
 
-            if is_rate_limit and attempt < max_retries:
-                delay = base_delay * attempt
-                print(f"⚠️ Rate limited by Discord (attempt {attempt}/{max_retries}). Retrying in {delay}s...")
+            if is_rate_limit:
+                delay = min(60 * attempt, 300)  # 60s, 120s, 180s, 240s, 300s cap
+                print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {delay}s...")
                 await asyncio.sleep(delay)
                 continue
 
+            # Non-rate-limit errors are fatal
             print(f"❌ Bot error: {e}")
             raise
 
