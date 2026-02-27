@@ -1728,5 +1728,53 @@
       "buyins_purchased": 1,
       "warnings": []
     }
+  },
+  "TRADE-270226_0022-009": {
+    "trade_id": "TRADE-270226_0022-009",
+    "teams": [
+      "LFB",
+      "B2J"
+    ],
+    "initiator_team": "LFB",
+    "status": "pending",
+    "created_at": "2026-02-27T05:22:00.645294Z",
+    "expires_at": "2026-03-13T05:22:00.645294Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4016",
+        "from_team": "LFB",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "3399",
+        "from_team": "B2J",
+        "to_team": "LFB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "B2J",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "LFB"
+    ],
+    "receives": {
+      "LFB": [
+        "1B Yandy D\u00edaz [TB] [TC 1]",
+        "$10 WB via B2J"
+      ],
+      "B2J": [
+        "SP Joe Ryan [MIN] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
