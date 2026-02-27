@@ -9,6 +9,7 @@ from collections import deque
 import time
 import traceback
 import re
+import shutil
 
 import discord
 from discord.ext import commands
@@ -59,10 +60,15 @@ load_dotenv()
 
 
 def configure_git() -> None:
-    """Configure git identity and remote for Render deployments.
+    """Configure git identity and remote for deployments.
 
-    This is a no-op locally if env vars are not set.
+    Safe to run everywhere. If git is not installed (or not on PATH), logs and
+    continues.
     """
+    if shutil.which("git") is None:
+        print("⚠️ git not found on PATH — commit/push disabled until git is installed")
+        return
+
     try:
         import subprocess
 
@@ -76,7 +82,7 @@ def configure_git() -> None:
         if token:
             print("✅ Git token detected; git push will use token URL when available")
         else:
-            print("⚠️ GITHUB_TOKEN not set - git push will use default remote auth (may fail)")
+            print("⚠️ GITHUB_TOKEN not set — git push will likely fail (set GITHUB_TOKEN in Railway/Render)")
     except Exception as exc:
         print(f"❌ Git configuration error: {exc}")
 
@@ -143,7 +149,12 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
     """Execute a single git commit + push operation (called by worker thread)."""
     import subprocess
 
+    if shutil.which("git") is None:
+        raise RuntimeError("git not found on PATH")
+
     repo_root = REPO_ROOT
+    if not repo_root or not os.path.isdir(repo_root):
+        raise RuntimeError(f"REPO_ROOT does not exist: {repo_root}")
 
     def _ts() -> str:
         return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -349,8 +360,38 @@ ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notificat
 TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444  # channel for manager transactions
 ADMIN_TASKS_CHANNEL_ID = 875594022033436683  # daily processing summary tasks
 
-# Repo root used for git operations (Render default path, override via env)
-REPO_ROOT = os.getenv("REPO_ROOT", "/opt/render/project/src")
+def _resolve_repo_root() -> str:
+    """Resolve the repo root for git operations.
+
+    Render historically used /opt/render/project/src. Railway/Nixpacks typically
+    runs from the app directory (often /app). We prefer an explicit REPO_ROOT if
+    provided; otherwise choose a reasonable existing directory.
+    """
+    env_root = os.getenv("REPO_ROOT")
+    if env_root and os.path.isdir(env_root):
+        return env_root
+
+    candidates = [
+        os.getcwd(),
+        os.path.dirname(os.path.abspath(__file__)),
+        "/app",
+        "/opt/render/project/src",
+    ]
+
+    # Prefer a directory that actually has a .git folder.
+    for c in candidates:
+        if c and os.path.isdir(c) and os.path.isdir(os.path.join(c, ".git")):
+            return c
+
+    for c in candidates:
+        if c and os.path.isdir(c):
+            return c
+
+    return os.getcwd()
+
+
+# Repo root used for git operations (override via env)
+REPO_ROOT = _resolve_repo_root()
 
 # ---- Discord Bot Setup ----
 TOKEN = os.getenv("DISCORD_TOKEN")

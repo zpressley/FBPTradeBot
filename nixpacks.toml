@@ -1,5 +1,8 @@
 [phases.setup]
+# Ensure git is present at runtime for commit/push.
+# Some Railway images are happier installing via apt, so include both.
 nixPkgs = ["git"]
+aptPkgs = ["git"]
 
 [phases.install]
 cmds = ["pip install -r requirements.txt"]
