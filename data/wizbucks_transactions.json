@@ -1465,5 +1465,37 @@
       "source": "trade_portal_auto_buyin",
       "trade_id": "TRADE-250226_1502-007"
     }
+  },
+  {
+    "txn_id": "wb_2026-02-27_trade_TRADE-270226_0022-009_B2J_debit_10",
+    "timestamp": "2026-02-27T20:18:49.243164Z",
+    "team": "B2J",
+    "amount": -10,
+    "balance_before": 400,
+    "balance_after": 390,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-270226_0022-009: WizBucks sent to LFB",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-270226_0022-009",
+      "counterparty": "LFB",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-02-27_trade_TRADE-270226_0022-009_LFB_credit_10",
+    "timestamp": "2026-02-27T20:18:49.243164Z",
+    "team": "LFB",
+    "amount": 10,
+    "balance_before": 420,
+    "balance_after": 430,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-270226_0022-009: WizBucks received from B2J",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-270226_0022-009",
+      "counterparty": "B2J",
+      "source": "trade_portal"
+    }
   }
 ]
