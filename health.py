@@ -248,7 +248,7 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
         _run(["git", "remote", "remove", "origin"], check=False)
         _run(["git", "remote", "add", "origin", init_remote])
         _run(["git", "fetch", "origin", "main"])
-        _run(["git", "checkout", "-B", "main", "FETCH_HEAD"])
+        _run(["git", "checkout", "-f", "-B", "main", "FETCH_HEAD"])
 
         # Restore pending file changes
         for rel, blob in saved_files.items():
