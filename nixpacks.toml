@@ -1,8 +1,10 @@
 [phases.setup]
 # Ensure git is present at runtime for commit/push.
 # Some Railway images are happier installing via apt, so include both.
-nixPkgs = ["git"]
-aptPkgs = ["git"]
+# IMPORTANT: include "..." so we *extend* provider packages rather than override them.
+# See: https://nixpacks.com/docs/guides/configuring-builds
+nixPkgs = ["...", "git"]
+aptPkgs = ["...", "git"]
 
 [phases.install]
 cmds = ["pip install -r requirements.txt"]

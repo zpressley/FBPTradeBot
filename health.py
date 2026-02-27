@@ -172,8 +172,12 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
         except Exception:
             print(f"[{_ts()}] {msg}")
 
+    def _safe_cmd(cmd: list[str]) -> list[str]:
+        # Avoid leaking GITHUB_TOKEN in logs (it can be embedded in remote URLs)
+        return [_redact(str(part)) for part in (cmd or [])]
+
     def _run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess:
-        _log("GIT_CMD", {"cmd": cmd})
+        _log("GIT_CMD", {"cmd": _safe_cmd(cmd)})
         return subprocess.run(
             cmd,
             check=check,
@@ -210,6 +214,51 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
             "missing_files": missing_paths,
         },
     )
+
+    # If the build system provided source without a .git directory (common on some
+    # platforms), bootstrap a git repo so commit/push can work.
+    if not os.path.isdir(os.path.join(repo_root, ".git")):
+        if not token:
+            raise RuntimeError(
+                "No .git directory found and GITHUB_TOKEN is not set — cannot bootstrap git repo"
+            )
+
+        init_remote = remote_url or f"https://github.com/{os.getenv('GITHUB_REPO', 'zpressley/FBPTradeBot')}.git"
+
+        # Preserve pending file changes across init/reset
+        saved_files: dict[str, bytes] = {}
+        for p in existing_paths:
+            try:
+                full = os.path.join(repo_root, p)
+                with open(full, "rb") as f:
+                    saved_files[p] = f.read()
+            except Exception:
+                continue
+
+        _log(
+            "GIT_BOOTSTRAP",
+            {
+                "repo_root": repo_root,
+                "has_git_dir": False,
+                "remote": _redact(init_remote),
+            },
+        )
+
+        _run(["git", "init"])
+        _run(["git", "remote", "remove", "origin"], check=False)
+        _run(["git", "remote", "add", "origin", init_remote])
+        _run(["git", "fetch", "origin", "main"])
+        _run(["git", "checkout", "-B", "main", "FETCH_HEAD"])
+
+        # Restore pending file changes
+        for rel, blob in saved_files.items():
+            try:
+                full = os.path.join(repo_root, rel)
+                os.makedirs(os.path.dirname(full), exist_ok=True)
+                with open(full, "wb") as f:
+                    f.write(blob)
+            except Exception:
+                pass
 
     # Best-effort: ensure we are on main (avoid detached HEAD from prior failures)
     try:
