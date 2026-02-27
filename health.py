@@ -7,6 +7,7 @@ import sys
 import json
 from collections import deque
 import time
+import traceback
 
 import discord
 from discord.ext import commands
@@ -1951,12 +1952,14 @@ async def update_draft_board(
 # Useful when Cloudflare has rate-limited the IP.
 DISCORD_DISABLED = os.getenv("DISCORD_DISABLED", "").strip().lower() in ("1", "true", "yes")
 
+# Discord reconnect delay (seconds). Default is 61 minutes.
+# Can be overridden on Render via DISCORD_RETRY_SECONDS.
+DISCORD_RETRY_SECONDS = int(os.getenv("DISCORD_RETRY_SECONDS", "3660"))
+
 async def start_bot():
     """Start Discord bot with retry on rate limit.
 
-    NEVER crashes on rate-limit — retries indefinitely with increasing
-    backoff (caps at 5 min) so Render doesn't restart the process and
-    compound the Cloudflare ban.
+    Never crashes on rate-limit — retries indefinitely so the API stays up.
     """
     if DISCORD_DISABLED:
         print("⚠️ DISCORD_DISABLED=1 — skipping Discord connection. API-only mode.")
@@ -1973,25 +1976,51 @@ async def start_bot():
             if attempt > 1:
                 print(f"🤖 Starting Discord bot (attempt {attempt})...")
             else:
-                print(f"🤖 Starting Discord bot...")
+                print("🤖 Starting Discord bot...")
+
             await bot.start(TOKEN)
             return  # clean shutdown
+
         except KeyboardInterrupt:
             print("⏸️ Received interrupt signal")
             await bot.close()
             return
+
         except Exception as e:
-            error_str = str(e)
-            is_rate_limit = "429" in error_str or "rate" in error_str.lower()
+            # Print as much as possible so Render logs show the real cause (429 vs other)
+            status = getattr(e, "status", None)
+            code = getattr(e, "code", None)
+            text = getattr(e, "text", None)
+
+            print(f"❌ Discord start error (attempt {attempt}): {type(e).__name__}: {e}")
+            if status is not None or code is not None:
+                print(f"   details: status={status} code={code}")
+            if text:
+                # discord.py HTTPException often stores the response body here
+                print(f"   response: {text}")
+            print(traceback.format_exc())
+
+            is_rate_limit = (
+                status == 429
+                or ("429" in str(e))
+                or ("rate" in str(e).lower())
+            )
 
             if is_rate_limit:
-                delay = min(120 * attempt, 600)  # 2min, 4min, 6min, 8min, 10min cap
-                print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {delay // 60}min...")
+                # Best-effort: close the underlying aiohttp session to avoid
+                # "Unclosed client session" warnings when retrying.
+                try:
+                    await bot.http.close()
+                except Exception as close_exc:
+                    print(f"⚠️ Failed to close Discord HTTP session: {close_exc}")
+
+                delay = max(60, DISCORD_RETRY_SECONDS)
+                mins = delay // 60
+                print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {mins}min...")
                 await asyncio.sleep(delay)
                 continue
 
             # Non-rate-limit errors are fatal
-            print(f"❌ Bot error: {e}")
             raise
 
 def run_server():
