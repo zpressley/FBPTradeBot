@@ -8,6 +8,7 @@ import json
 from collections import deque
 import time
 import traceback
+import re
 
 import discord
 from discord.ext import commands
@@ -1991,13 +1992,44 @@ async def start_bot():
             status = getattr(e, "status", None)
             code = getattr(e, "code", None)
             text = getattr(e, "text", None)
+            response = getattr(e, "response", None)
+            headers = getattr(response, "headers", None)
 
             print(f"❌ Discord start error (attempt {attempt}): {type(e).__name__}: {e}")
             if status is not None or code is not None:
                 print(f"   details: status={status} code={code}")
+
+            # If this is a true Discord API rate limit response, these headers are the
+            # canonical way to determine what kind of limit you're hitting.
+            if headers is not None:
+                header_keys = (
+                    "X-RateLimit-Limit",
+                    "X-RateLimit-Remaining",
+                    "X-RateLimit-Reset",
+                    "X-RateLimit-Reset-After",
+                    "X-RateLimit-Scope",
+                    "Retry-After",
+                    "CF-RAY",
+                )
+                header_dump = {k: headers.get(k) for k in header_keys if headers.get(k) is not None}
+                if header_dump:
+                    print(f"   headers: {header_dump}")
+
+            ray_id = None
             if text:
                 # discord.py HTTPException often stores the response body here
-                print(f"   response: {text}")
+                m = re.search(r"Ray ID:\s*([0-9a-fA-F]+)", text)
+                if m:
+                    ray_id = m.group(1)
+
+                # Avoid double-printing giant HTML blobs unless needed
+                if "Error 1015" in text or "cloudflare" in text.lower():
+                    print("   note: Cloudflare 1015-style response detected (likely IP-based throttling)")
+                    if ray_id:
+                        print(f"   cloudflare_ray_id: {ray_id}")
+                else:
+                    print(f"   response: {text}")
+
             print(traceback.format_exc())
 
             is_rate_limit = (
