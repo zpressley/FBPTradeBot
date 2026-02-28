@@ -13,7 +13,7 @@ import shutil
 
 import discord
 from discord.ext import commands
-from fastapi import FastAPI, Depends, HTTPException, Header
+from fastapi import FastAPI, Depends, HTTPException, Header, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import uvicorn
@@ -1953,7 +1953,7 @@ async def api_admin_pad_test_discord(
 
 @app.post("/api/kap/resend")
 async def api_kap_resend(
-    team: str,
+    team: str = Query(..., description="Team abbreviation (e.g., WAR)"),
     authorized: bool = Depends(verify_api_key),
 ):
     """
