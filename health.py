@@ -1981,36 +1981,57 @@ async def api_kap_resend(
         
         sub = submissions[team]
         
+        # Load wizbucks.json to get current balance
+        with open('data/wizbucks.json', 'r') as f:
+            wizbucks = json.load(f)
+        
+        # Load managers config to get team name and KAP budget
+        with open('config/managers.json', 'r') as f:
+            managers = json.load(f)
+        
+        team_config = managers.get('teams', {}).get(team, {})
+        team_name = team_config.get('name', team)
+        kap_budget = team_config.get('wizbucks', {}).get('2026', {}).get('allotments', {}).get('KAP', {}).get('total', 0)
+        
+        # Calculate costs from keepers
+        from kap.kap_processor import calculate_keeper_cost, KeeperPlayer
+        
+        keeper_salary_cost = 0
+        for k in sub.get('keepers', []):
+            keeper = KeeperPlayer(**k)
+            keeper_salary_cost += calculate_keeper_cost(keeper)
+        
+        # Buy-ins: check draft_order_2026.json for purchased buy-ins
+        buyin_cost = 0
+        try:
+            with open('data/draft_order_2026.json', 'r') as f:
+                draft_order = json.load(f)
+            
+            for pick in draft_order:
+                if (pick.get('current_owner') == team and 
+                    pick.get('buyin_required') and 
+                    pick.get('buyin_purchased')):
+                    buyin_cost += pick.get('buyin_cost', 0)
+        except:
+            pass
+        
+        total_spend = keeper_salary_cost + buyin_cost
+        current_balance = wizbucks.get(team_name, 0)
+        
         # Reconstruct KAPResult
         result = KAPResult(
             season=sub['season'],
             team=sub['team'],
             timestamp=sub['timestamp'],
             keepers_selected=sub['keeper_count'],
-            keeper_salary_cost=sub['taxable_spend'] - sub.get('metadata', {}).get('buyin_cost', 0),
-            rat_cost=0,  # RAT is not in taxable spend
-            buyin_cost=sub.get('metadata', {}).get('buyin_cost', 0),
-            total_taxable_spend=sub['taxable_spend'],
-            wb_spent=sub.get('metadata', {}).get('wb_spent', 0),
-            wb_remaining=sub.get('metadata', {}).get('wb_remaining', 0),
+            keeper_salary_cost=keeper_salary_cost,
+            rat_cost=0,
+            buyin_cost=buyin_cost,
+            total_taxable_spend=total_spend,
+            wb_spent=total_spend,
+            wb_remaining=current_balance,
             draft_picks_taxed=sub['tax_bracket'].get('rounds', []),
         )
-        
-        # Load wizbucks_transactions to get accurate WB amounts
-        with open('data/wizbucks_transactions.json', 'r') as f:
-            transactions = json.load(f)
-        
-        # Find the KAP transaction for this team
-        for txn in reversed(transactions):
-            if (txn.get('transaction_type') == 'KAP_submission' and 
-                txn.get('team') == team):
-                result.wb_spent = abs(txn.get('amount', 0))
-                result.wb_remaining = txn.get('balance_after', 0)
-                meta = txn.get('metadata', {})
-                result.keeper_salary_cost = meta.get('keeper_salary', 0)
-                result.rat_cost = meta.get('rat_cost', 0)
-                result.buyin_cost = meta.get('buyin_cost', 0)
-                break
         
         # Send Discord announcement
         if bot:
