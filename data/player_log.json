@@ -36003,5 +36003,28 @@
     "years": "P",
     "update_type": "Trade",
     "event": "TRADE-280226_0007-010: WAR->LFB"
+  },
+  {
+    "id": "2026-2026-02-28T07:25:16.054937-05:00-UPID_5006-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-02-28T07:25:16.054937-05:00",
+    "upid": "5006",
+    "player_name": "Noah Cameron",
+    "team": "KC",
+    "pos": "SP",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 250,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "not much of a donkey",
+    "contract": "Keeper Contract",
+    "status": "[6] TCR",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
