@@ -15092,8 +15092,8 @@
     "manager": "Hammers",
     "player_type": "MLB",
     "contract_type": "",
-    "status": "",
-    "years_simple": "",
+    "status": "[5] TC1",
+    "years_simple": "TC 1",
     "yahoo_id": "9750",
     "upid": "1954",
     "mlb_id": 593871,
@@ -15106,7 +15106,8 @@
     "throws": "R",
     "mlb_primary_position": "2B",
     "fypd": false,
-    "rank": 201
+    "rank": 201,
+    "level": "MLB"
   },
   {
     "name": "Jos\u00e9 Abreu",
