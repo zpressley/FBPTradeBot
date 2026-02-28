@@ -1951,6 +1951,91 @@ async def api_admin_pad_test_discord(
     }
 
 
+@app.post("/api/kap/resend")
+async def api_kap_resend(
+    team: str,
+    authorized: bool = Depends(verify_api_key),
+):
+    """
+    Resend KAP Discord announcement for a team that has already submitted.
+    
+    This endpoint:
+    1. Loads the team's submission from kap_submissions.json
+    2. Reconstructs the KAPResult from stored data
+    3. Sends a new Discord announcement with updated formatting
+    
+    Does NOT modify any data files or trigger git commits.
+    Use this to correct Discord messages after formatting fixes.
+    """
+    print(f"📤 Resending KAP Discord announcement for {team}...")
+    
+    try:
+        import json
+        
+        # Load submission data
+        with open('data/kap_submissions.json', 'r') as f:
+            submissions = json.load(f)
+        
+        if team not in submissions:
+            raise HTTPException(status_code=404, detail=f"No KAP submission found for {team}")
+        
+        sub = submissions[team]
+        
+        # Reconstruct KAPResult
+        result = KAPResult(
+            season=sub['season'],
+            team=sub['team'],
+            timestamp=sub['timestamp'],
+            keepers_selected=sub['keeper_count'],
+            keeper_salary_cost=sub['taxable_spend'] - sub.get('metadata', {}).get('buyin_cost', 0),
+            rat_cost=0,  # RAT is not in taxable spend
+            buyin_cost=sub.get('metadata', {}).get('buyin_cost', 0),
+            total_taxable_spend=sub['taxable_spend'],
+            wb_spent=sub.get('metadata', {}).get('wb_spent', 0),
+            wb_remaining=sub.get('metadata', {}).get('wb_remaining', 0),
+            draft_picks_taxed=sub['tax_bracket'].get('rounds', []),
+        )
+        
+        # Load wizbucks_transactions to get accurate WB amounts
+        with open('data/wizbucks_transactions.json', 'r') as f:
+            transactions = json.load(f)
+        
+        # Find the KAP transaction for this team
+        for txn in reversed(transactions):
+            if (txn.get('transaction_type') == 'KAP_submission' and 
+                txn.get('team') == team):
+                result.wb_spent = abs(txn.get('amount', 0))
+                result.wb_remaining = txn.get('balance_after', 0)
+                meta = txn.get('metadata', {})
+                result.keeper_salary_cost = meta.get('keeper_salary', 0)
+                result.rat_cost = meta.get('rat_cost', 0)
+                result.buyin_cost = meta.get('buyin_cost', 0)
+                break
+        
+        # Send Discord announcement
+        if bot:
+            bot.loop.create_task(announce_kap_submission_to_discord(result, bot))
+            await asyncio.sleep(2)
+        else:
+            raise HTTPException(status_code=503, detail="Discord bot not available")
+        
+        return {
+            "ok": True,
+            "team": result.team,
+            "season": result.season,
+            "message": "KAP Discord announcement resent",
+        }
+        
+    except FileNotFoundError as exc:
+        print(f"❌ KAP resend failed - file not found: {exc}")
+        raise HTTPException(status_code=500, detail=f"Data file not found: {exc}")
+    except Exception as exc:
+        import traceback
+        print(f"❌ KAP resend failed: {exc}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 # ---- Unified Draft API ----
 
 @app.get("/api/draft/active")
