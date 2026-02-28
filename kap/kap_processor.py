@@ -47,6 +47,32 @@ CONTRACT_ADVANCEMENT = {
     'FC-2+': 'FC-2+'       # Terminal tier
 }
 
+# Mapping between years_simple values and CONTRACT_ADVANCEMENT keys
+_YEARS_SIMPLE_TO_KEY = {
+    'TC R': 'TC-R',
+    'TC BC-1': 'TC-BC-1',
+    'TC BC-2': 'TC-BC-2',
+    'TC 1': 'TC-1',
+    'TC 2': 'TC-2',
+    'VC 1': 'VC-1',
+    'VC 2': 'VC-2',
+    'FC 1': 'FC-1',
+    'FC 2': 'FC-2+',
+}
+
+# Reverse: advancement key → (years_simple, status)
+_KEY_TO_FIELDS = {
+    'TC-R':    ('TC R',    '[6] TCR'),
+    'TC-BC-1': ('TC BC-1', '[6] TCBC1'),
+    'TC-BC-2': ('TC BC-2', '[5] TCBC2'),
+    'TC-1':    ('TC 1',    '[5] TC1'),
+    'TC-2':    ('TC 2',    '[4] TC2'),
+    'VC-1':    ('VC 1',    '[3] VC1'),
+    'VC-2':    ('VC 2',    '[2] VC2'),
+    'FC-1':    ('FC 1',    '[1] FC1'),
+    'FC-2+':   ('FC 2',    '[0] FC2'),
+}
+
 
 class KeeperPlayer(BaseModel):
     """Keeper player with contract info"""
@@ -259,12 +285,16 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
             if not keeper:
                 continue
             
-            old_contract = player.get('contract', '')
-            new_contract = CONTRACT_ADVANCEMENT.get(old_contract, old_contract)
+            # years_simple holds the contract tier (e.g. "TC R", "TC 1")
+            old_years_simple = (player.get('years_simple') or '').strip()
+            contract_key = _YEARS_SIMPLE_TO_KEY.get(old_years_simple, '')
+            new_key = CONTRACT_ADVANCEMENT.get(contract_key, contract_key)
             
-            # Update contract
-            player['contract'] = new_contract
-            player['contract_year'] = season
+            # Write back to both years_simple and status
+            if new_key and new_key in _KEY_TO_FIELDS:
+                new_ys, new_status = _KEY_TO_FIELDS[new_key]
+                player['years_simple'] = new_ys
+                player['status'] = new_status
             
             # Log to player_log
             player_log.append({
@@ -278,8 +308,8 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                 'action': 'keeper_selection',
                 'details': {
                     'season': season,
-                    'old_contract': old_contract,
-                    'new_contract': new_contract,
+                    'old_contract': contract_key,
+                    'new_contract': new_key,
                     'salary': calculate_keeper_cost(keeper),
                     'has_il_tag': keeper.has_il_tag,
                     'has_rat': keeper.has_rat
@@ -287,6 +317,8 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
             })
         elif is_team_player:
             # Release non-kept players — clear ownership so they go to the draft
+            old_years_simple = (player.get('years_simple') or '').strip()
+            contract_key = _YEARS_SIMPLE_TO_KEY.get(old_years_simple, old_years_simple)
             player_log.append({
                 'timestamp': now,
                 'team': team,
@@ -298,7 +330,7 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                 'action': 'kap_release',
                 'details': {
                     'season': season,
-                    'old_contract': player.get('contract', ''),
+                    'old_contract': contract_key,
                 }
             })
             player['manager'] = None
@@ -395,8 +427,17 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
         'submitted_by': submission.submitted_by
     }
     
-    # Save all data
+    # Save data files.
+    # In live mode, wb_ledger.append_transaction already wrote wizbucks.json
+    # and wizbucks_transactions.json — do NOT overwrite them with stale
+    # in-memory copies.  In test mode we manage those files ourselves.
     if not test_mode:
+        _save_json(combined_path, combined_players)
+        _save_json(player_log_path, player_log)
+        _save_json(draft_order_path, draft_order)
+        _save_json(submissions_path, submissions)
+        # wizbucks.json + transactions handled by wb_ledger — skip
+    else:
         _save_json(combined_path, combined_players)
         _save_json(player_log_path, player_log)
         _save_json(draft_order_path, draft_order)
