@@ -1206,14 +1206,8 @@ async def api_manager_contract_purchase(
     upgrade_cost = result.get("cost")
     commit_msg = f"Contract purchase: {player_name} ({payload.team})"
 
-    # Commit/push is best-effort; it should not prevent the transaction
-    # from being logged to Discord.
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Contract purchase git commit/push failed:", exc)
-
-    # Discord notification to the transactions channel in the requested format.
+    # Discord notification FIRST — send before commit so a redeploy
+    # triggered by the push cannot kill the notification in-flight.
     try:
         player_rec = result.get("player") or {}
         player_team = player_rec.get("team") or ""
@@ -1228,8 +1222,15 @@ async def api_manager_contract_purchase(
             f"{timestamp}"
         )
         bot.loop.create_task(_send_transaction_log_message(discord_msg))
+        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Failed to send contract purchase Discord message:", exc)
+
+    # Commit/push is best-effort and may trigger a Railway redeploy.
+    try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Contract purchase git commit/push failed:", exc)
 
     return {
         "player": result.get("player"),
@@ -1267,10 +1268,10 @@ async def api_admin_update_player(
         "data/player_log.json",
     ]
     commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
-    try:
-        _commit_and_push(core_files, commit_msg)
 
-        # Send Discord notification with a mini "diff" so admins can audit changes.
+    # Discord notification FIRST — send before commit so a redeploy
+    # triggered by the push cannot kill the notification in-flight.
+    try:
         player_name = result['player'].get('name', 'Unknown')
         upid = result['player'].get('upid', payload.upid)
 
@@ -1282,7 +1283,6 @@ async def api_admin_update_player(
 
         change_lines = []
         changes = result.get("changes") or {}
-        # stable ordering so messages are predictable
         for field in sorted(changes.keys()):
             ch = changes.get(field) or {}
             before = _fmt(ch.get("from"))
@@ -1291,13 +1291,11 @@ async def api_admin_update_player(
                 continue
             change_lines.append(f"- `{field}`: {before} → {after}")
 
-        # WizBucks delta (if included as part of this update)
         wb_before = result.get("wizbucks_balance_before")
         wb_after = result.get("wizbucks_balance")
         if wb_before is not None and wb_after is not None and wb_before != wb_after:
             change_lines.append(f"- `wizbucks`: {wb_before} → {wb_after}")
 
-        # Keep messages readable / under Discord limits.
         max_lines = 12
         more = 0
         if len(change_lines) > max_lines:
@@ -1315,10 +1313,13 @@ async def api_admin_update_player(
             f"💾 Source: Website Admin Portal"
         )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
-
+        await asyncio.sleep(2)
     except Exception as exc:
-        # Commit/push failures should not hide the fact that the data files
-        # were already updated on disk.
+        print("⚠️ Admin update Discord notification failed:", exc)
+
+    try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
         print("⚠️ Admin update git commit/push failed:", exc)
 
     return result
@@ -1343,9 +1344,8 @@ async def api_admin_delete_player(
         "data/player_log.json",
     ]
     commit_msg = f"Admin delete: {result['player'].get('name', payload.upid)}"
+
     try:
-        _commit_and_push(core_files, commit_msg)
-        # Send Discord notification
         player_name = result['player'].get('name', 'Unknown')
         upid = result.get('upid', payload.upid)
         discord_msg = (
@@ -1354,6 +1354,12 @@ async def api_admin_delete_player(
             f"💾 Source: Website Admin Portal"
         )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
+        await asyncio.sleep(2)
+    except Exception as exc:
+        print("⚠️ Admin delete Discord notification failed:", exc)
+
+    try:
+        _commit_and_push(core_files, commit_msg)
     except Exception as exc:
         print("⚠️ Admin delete git commit/push failed:", exc)
 
@@ -1379,15 +1385,20 @@ async def api_admin_merge_players(
         "data/player_log.json",
     ]
     commit_msg = f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}"
+
     try:
-        _commit_and_push(core_files, commit_msg)
-        # Send Discord notification
         source_name = result.get('source_name', 'Unknown')
         target_name = result.get('target_name', 'Unknown')
         source_upid = result.get('source_upid', '?')
         target_upid = result.get('target_upid', '?')
         discord_msg = f"🔀 **Admin Merge**\n\n📥 Kept: **{target_name}** (UPID {target_upid})\n🗑️ Deleted: **{source_name}** (UPID {source_upid})\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
+        await asyncio.sleep(2)
+    except Exception as exc:
+        print("⚠️ Admin merge Discord notification failed:", exc)
+
+    try:
+        _commit_and_push(core_files, commit_msg)
     except Exception as exc:
         print("⚠️ Admin merge git commit/push failed:", exc)
 
@@ -1413,9 +1424,8 @@ async def api_admin_wizbucks_adjustment(
         "data/wizbucks_transactions.json",
     ]
     commit_msg = f"Admin WB: {result['team']} {result['amount']} ({result['installment']})"
+
     try:
-        _commit_and_push(core_files, commit_msg)
-        # Send Discord notification
         team = result['team']
         amount = result['amount']
         installment = result['installment']
@@ -1423,6 +1433,12 @@ async def api_admin_wizbucks_adjustment(
         sign = '+' if amount >= 0 else ''
         discord_msg = f"💰 **Admin WizBucks Adjustment**\n\n🏆 Team: **{team}**\n💸 Amount: **{sign}{amount}**\n📅 Installment: {installment}\n📊 New Balance: {new_balance}\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
+        await asyncio.sleep(2)
+    except Exception as exc:
+        print("⚠️ Admin WB Discord notification failed:", exc)
+
+    try:
+        _commit_and_push(core_files, commit_msg)
     except Exception as exc:
         print("⚠️ Admin WB git commit/push failed:", exc)
 
@@ -1829,36 +1845,55 @@ async def api_kap_submit(
     6. Posts to Discord transactions channel
     """
     print(f"📝 Processing KAP submission for {submission.team}...")
-    
+
     try:
-        # Process submission
         result = process_kap_submission(submission, test_mode=False)
-        
-        # Announce to Discord
-        if bot:
-            bot.loop.create_task(announce_kap_submission_to_discord(result, bot))
-            await asyncio.sleep(2)
-        
-        return {
-            "ok": True,
-            "team": result.team,
-            "season": result.season,
-            "timestamp": result.timestamp,
-            "keepers_selected": result.keepers_selected,
-            "keeper_salary_cost": result.keeper_salary_cost,
-            "rat_cost": result.rat_cost,
-            "buyin_cost": result.buyin_cost,
-            "total_taxable_spend": result.total_taxable_spend,
-            "wb_spent": result.wb_spent,
-            "wb_remaining": result.wb_remaining,
-            "draft_picks_taxed": result.draft_picks_taxed
-        }
-        
     except Exception as exc:
         import traceback
         print(f"❌ KAP submission failed: {exc}")
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(exc))
+
+    # Discord notification FIRST — send before commit so a redeploy
+    # triggered by the push cannot kill the notification in-flight.
+    try:
+        if bot:
+            bot.loop.create_task(announce_kap_submission_to_discord(result, bot))
+            await asyncio.sleep(2)
+    except Exception as exc:
+        print(f"⚠️ KAP Discord announcement failed: {exc}")
+
+    # Commit via the batched queue (same as all other endpoints).
+    try:
+        core_files = [
+            "data/combined_players.json",
+            "data/player_log.json",
+            "data/draft_order_2026.json",
+            "data/wizbucks.json",
+            "data/wizbucks_transactions.json",
+            "data/kap_submissions.json",
+        ]
+        _commit_and_push(
+            core_files,
+            f"KAP {result.season}: {result.team} submitted {result.keepers_selected} keepers",
+        )
+    except Exception as exc:
+        print(f"⚠️ KAP git commit/push failed: {exc}")
+
+    return {
+        "ok": True,
+        "team": result.team,
+        "season": result.season,
+        "timestamp": result.timestamp,
+        "keepers_selected": result.keepers_selected,
+        "keeper_salary_cost": result.keeper_salary_cost,
+        "rat_cost": result.rat_cost,
+        "buyin_cost": result.buyin_cost,
+        "total_taxable_spend": result.total_taxable_spend,
+        "wb_spent": result.wb_spent,
+        "wb_remaining": result.wb_remaining,
+        "draft_picks_taxed": result.draft_picks_taxed,
+    }
 
 
 @app.post("/api/admin/pad-test-discord")

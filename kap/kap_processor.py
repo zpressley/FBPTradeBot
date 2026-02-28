@@ -408,22 +408,6 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
     if _data_lock_acquired:
         DATA_LOCK.release()
 
-    if not test_mode:
-        # Commit and push to GitHub
-        _commit_and_push_kap_files(
-            team=team,
-            season=season,
-            keeper_count=len(submission.keepers),
-            files=[
-                combined_path,
-                player_log_path,
-                draft_order_path,
-                wizbucks_path,
-                transactions_path,
-                submissions_path
-            ]
-        )
-    
     return KAPResult(
         season=season,
         team=team,
