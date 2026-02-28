@@ -1538,5 +1538,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1772302071",
+    "timestamp": "2026-02-28T18:07:51.812910Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 325,
+    "balance_after": 310,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Luis Pena DC \u2192 BC",
+    "related_player": {
+      "upid": "7608",
+      "name": "Luis Pena"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
