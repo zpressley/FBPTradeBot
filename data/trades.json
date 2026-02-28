@@ -1776,5 +1776,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-280226_0007-010": {
+    "trade_id": "TRADE-280226_0007-010",
+    "teams": [
+      "WAR",
+      "LFB"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-02-28T05:07:04.799160Z",
+    "expires_at": "2026-03-14T05:07:04.799160Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4445",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "6725",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Spencer Torkelson [DET] [TC 1]"
+      ],
+      "LFB": [
+        "SP Jaxon Wiggins [CHC] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1477170219347607634",
+      "thread_url": "https://discord.com/channels/875592505926758480/1477170219347607634",
+      "admin_review_message_id": null
+    }
   }
 }
