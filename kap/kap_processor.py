@@ -305,11 +305,34 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
             player['FBP_Team'] = None
             player['contract_type'] = None
     
-    # Update draft picks - mark taxed rounds
-    for pick in draft_order:
-        if pick.get('draft') == 'keeper' and pick.get('current_owner') == team:
-            if pick.get('round') in taxed_rounds:
-                pick['taxed_out'] = True
+    # Update draft picks — mark taxed rounds + keeper-filled slots
+    ROSTER_SIZE = 26
+    picks_for_draft = ROSTER_SIZE - len(submission.keepers)
+
+    # Get all keeper-draft picks owned by this team, excluding unpurchased buy-ins
+    team_picks = [
+        p for p in draft_order
+        if p.get('draft') == 'keeper'
+        and p.get('current_owner') == team
+        and not (p.get('buyin_required') and not p.get('buyin_purchased'))
+    ]
+    team_picks.sort(key=lambda p: (p.get('round', 0), p.get('pick', 0)))
+
+    # First pass: mark taxed picks
+    for pick in team_picks:
+        if pick.get('round') in taxed_rounds:
+            pick['taxed_out'] = True
+
+    # Second pass: walk from top, keep picks_for_draft non-taxed picks for drafting,
+    # mark the rest as result: "keeper" (filled by keepers from the bottom up)
+    usable_count = 0
+    for pick in team_picks:
+        if pick.get('taxed_out'):
+            continue  # taxed picks don't count toward either bucket
+        if usable_count < picks_for_draft:
+            usable_count += 1  # this is a draft pick — leave as-is
+        else:
+            pick['result'] = 'keeper'  # filled by a keeper
     
     # Deduct WizBucks
     if not test_mode and total_spend > 0:
