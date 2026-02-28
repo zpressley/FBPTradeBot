@@ -36049,5 +36049,28 @@
     "years": "TC 1",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-02-28T13:07:12.672766-05:00-UPID_7607-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "WAR",
+    "timestamp": "2026-02-28T13:07:12.672766-05:00",
+    "upid": "7607",
+    "player_name": "Jesus Made",
+    "team": "MIL",
+    "pos": "2B,3B,SS",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Weekend Warriors",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 BC"
   }
 ]

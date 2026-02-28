@@ -1517,5 +1517,26 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1772302032",
+    "timestamp": "2026-02-28T18:07:12.667214Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 340,
+    "balance_after": 325,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Jesus Made DC \u2192 BC",
+    "related_player": {
+      "upid": "7607",
+      "name": "Jesus Made"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
