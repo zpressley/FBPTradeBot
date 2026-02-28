@@ -36141,5 +36141,805 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 BC"
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7709",
+      "name": "Jurrangelo Cijntje",
+      "mlb_team": "SEA"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3818",
+      "name": "Heliot Ramos",
+      "mlb_team": "SF"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2984",
+      "name": "Michael Wacha",
+      "mlb_team": "KC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3884",
+      "name": "Jackson Holliday",
+      "mlb_team": "BAL"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3183",
+      "name": "Ryan Weathers",
+      "mlb_team": "MIA"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3484",
+      "name": "Andrew Painter",
+      "mlb_team": "PHI"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7726",
+      "name": "Bo Davidson",
+      "mlb_team": "SF"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7630",
+      "name": "Charlie Condon",
+      "mlb_team": "COL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2275",
+      "name": "Christian Yelich",
+      "mlb_team": "MIL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3522",
+      "name": "Colson Montgomery",
+      "mlb_team": "CWS"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7130",
+      "name": "Franklin Arias",
+      "mlb_team": "BOS"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7236",
+      "name": "Gabriel Rincones",
+      "mlb_team": "PHI"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2494",
+      "name": "Garrett Crochet",
+      "mlb_team": "BOS"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 25,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3466",
+      "name": "Tyler Soderstrom",
+      "mlb_team": "ATH"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3845",
+      "name": "Ian Seymour",
+      "mlb_team": "TB"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2555",
+      "name": "Isaac Paredes",
+      "mlb_team": "HOU"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3456",
+      "name": "Jackson Jobe",
+      "mlb_team": "DET"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3944",
+      "name": "Jacob Melton",
+      "mlb_team": "HOU"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2620",
+      "name": "Jared Jones",
+      "mlb_team": "PIT"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7607",
+      "name": "Jesus Made",
+      "mlb_team": "MIL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3461",
+      "name": "Josh Jung",
+      "mlb_team": "TEX"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "2844",
+      "name": "Kris Bubic",
+      "mlb_team": "KC"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7608",
+      "name": "Luis Pena",
+      "mlb_team": "MIL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3520",
+      "name": "Masyn Winn",
+      "mlb_team": "STL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3903",
+      "name": "Chase DeLauter",
+      "mlb_team": "CLE"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7579",
+      "name": "Mois\u00e9s Chace",
+      "mlb_team": "PHI"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "6530",
+      "name": "Chase Meidroth",
+      "mlb_team": "CWS"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4315",
+      "name": "Riley Greene",
+      "mlb_team": "DET"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 25,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7624",
+      "name": "Ryan Waldschmidt",
+      "mlb_team": "AZ"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "6868",
+      "name": "Sawyer Gipson-Long",
+      "mlb_team": "DET"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4298",
+      "name": "Seiya Suzuki",
+      "mlb_team": "CHC"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3225",
+      "name": "Seth Lugo",
+      "mlb_team": "KC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7330",
+      "name": "Shane Smith",
+      "mlb_team": "CWS"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "6597",
+      "name": "Travis Sykora",
+      "mlb_team": "WSH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7670",
+      "name": "Trey Yesavage",
+      "mlb_team": "TOR"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3381",
+      "name": "William Contreras",
+      "mlb_team": "MIL"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "6565",
+      "name": "Wyatt Langford",
+      "mlb_team": "TEX"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7705",
+      "name": "Gage Jump",
+      "mlb_team": "ATH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3214",
+      "name": "Sean Newcomb",
+      "mlb_team": "ATH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3379",
+      "name": "Will Vest",
+      "mlb_team": "DET"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "3465",
+      "name": "Quinn Priester",
+      "mlb_team": "PIT"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4209",
+      "name": "Reed Garrett",
+      "mlb_team": "NYM"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4226",
+      "name": "Jared Koenig",
+      "mlb_team": "MIL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4291",
+      "name": "Jeremy Pe\u00f1a",
+      "mlb_team": "HOU"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4311",
+      "name": "Adam Frazier",
+      "mlb_team": "PIT"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "4445",
+      "name": "Spencer Torkelson",
+      "mlb_team": "DET"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "",
+      "new_contract": "",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7807",
+      "name": "Edgar Montero",
+      "mlb_team": "ATH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7896",
+      "name": "Josh Adamczewski",
+      "mlb_team": "MIL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7941",
+      "name": "Kade Anderson",
+      "mlb_team": "SEA"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7948",
+      "name": "JoJo Parker",
+      "mlb_team": "TOR"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "7950",
+      "name": "Ike Irish",
+      "mlb_team": "BAL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
+  },
+  {
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "team": "WAR",
+    "player": {
+      "upid": "8339",
+      "name": "Luis Hern\u00e1ndez",
+      "mlb_team": "SF"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": ""
+    }
   }
 ]

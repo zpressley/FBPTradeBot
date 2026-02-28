@@ -1,0 +1,143 @@
+{
+  "WAR": {
+    "season": 2026,
+    "team": "WAR",
+    "timestamp": "2026-02-28T19:38:09.336417",
+    "keeper_count": 18,
+    "keepers": [
+      {
+        "upid": "3183",
+        "name": "Ryan Weathers",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3884",
+        "name": "Jackson Holliday",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2494",
+        "name": "Garrett Crochet",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3466",
+        "name": "Tyler Soderstrom",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3845",
+        "name": "Ian Seymour",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2555",
+        "name": "Isaac Paredes",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3456",
+        "name": "Jackson Jobe",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2620",
+        "name": "Jared Jones",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2844",
+        "name": "Kris Bubic",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6530",
+        "name": "Chase Meidroth",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4315",
+        "name": "Riley Greene",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6868",
+        "name": "Sawyer Gipson-Long",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4298",
+        "name": "Seiya Suzuki",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "7330",
+        "name": "Shane Smith",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3381",
+        "name": "William Contreras",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6565",
+        "name": "Wyatt Langford",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4291",
+        "name": "Jeremy Pe\u00f1a",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4445",
+        "name": "Spencer Torkelson",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 325,
+    "tax_bracket": {
+      "min": 0,
+      "max": 325,
+      "rounds": []
+    },
+    "submitted_by": "WAR"
+  }
+}
