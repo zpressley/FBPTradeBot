@@ -1601,5 +1601,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WAR_KAP_submission_1772320613",
+    "timestamp": "2026-02-28T23:16:53.541994Z",
+    "team": "WAR",
+    "amount": -325,
+    "balance_before": 280,
+    "balance_after": -45,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 18 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 18,
+      "keeper_salary": 280,
+      "rat_cost": 0,
+      "buyin_cost": 45,
+      "taxable_spend": 325,
+      "taxed_rounds": [],
+      "submitted_by": "WAR"
+    }
   }
 ]

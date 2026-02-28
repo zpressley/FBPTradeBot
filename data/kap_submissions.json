@@ -2,20 +2,20 @@
   "WAR": {
     "season": 2026,
     "team": "WAR",
-    "timestamp": "2026-02-28T19:38:09.336417",
+    "timestamp": "2026-02-28T23:16:53.491266",
     "keeper_count": 18,
     "keepers": [
-      {
-        "upid": "3183",
-        "name": "Ryan Weathers",
-        "contract": "TC-1",
-        "has_il_tag": false,
-        "has_rat": false
-      },
       {
         "upid": "3884",
         "name": "Jackson Holliday",
         "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3183",
+        "name": "Ryan Weathers",
+        "contract": "TC-1",
         "has_il_tag": false,
         "has_rat": false
       },
@@ -83,16 +83,16 @@
         "has_rat": false
       },
       {
-        "upid": "6868",
-        "name": "Sawyer Gipson-Long",
-        "contract": "TC-R",
+        "upid": "4298",
+        "name": "Seiya Suzuki",
+        "contract": "VC-1",
         "has_il_tag": false,
         "has_rat": false
       },
       {
-        "upid": "4298",
-        "name": "Seiya Suzuki",
-        "contract": "VC-1",
+        "upid": "6868",
+        "name": "Sawyer Gipson-Long",
+        "contract": "TC-R",
         "has_il_tag": false,
         "has_rat": false
       },
