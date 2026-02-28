@@ -1497,5 +1497,25 @@
       "counterparty": "B2J",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_WAR_R2_P8_1772290426",
+    "timestamp": "2026-02-28T14:53:46.667254Z",
+    "team": "WAR",
+    "amount": -35,
+    "balance_before": 375,
+    "balance_after": 340,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 2 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 2,
+      "pick": 8,
+      "purchased_by": "WAR",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
