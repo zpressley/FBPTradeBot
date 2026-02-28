@@ -247,6 +247,12 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
     for player in combined_players:
         player_upid = str(player.get('upid', ''))
         
+        # Check if this player belongs to the submitting team
+        is_team_player = (
+            player.get('manager') == team_name
+            or str(player.get('FBP_Team') or '').upper() == team.upper()
+        )
+        
         if player_upid in keeper_upids:
             # Find keeper info
             keeper = next((k for k in submission.keepers if k.upid == player_upid), None)
@@ -279,6 +285,25 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                     'has_rat': keeper.has_rat
                 }
             })
+        elif is_team_player:
+            # Release non-kept players — clear ownership so they go to the draft
+            player_log.append({
+                'timestamp': now,
+                'team': team,
+                'player': {
+                    'upid': player_upid,
+                    'name': player.get('name', ''),
+                    'mlb_team': player.get('team', '')
+                },
+                'action': 'kap_release',
+                'details': {
+                    'season': season,
+                    'old_contract': player.get('contract', ''),
+                }
+            })
+            player['manager'] = None
+            player['FBP_Team'] = None
+            player['contract_type'] = None
     
     # Update draft picks - mark taxed rounds
     for pick in draft_order:
