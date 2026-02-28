@@ -1559,5 +1559,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1772304658",
+    "timestamp": "2026-02-28T18:50:58.005499Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 310,
+    "balance_after": 295,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Travis Sykora DC \u2192 BC",
+    "related_player": {
+      "upid": "6597",
+      "name": "Travis Sykora"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
