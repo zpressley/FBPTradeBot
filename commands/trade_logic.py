@@ -1,6 +1,7 @@
 # commands/trade_logic.py - Simplified version with fixed rejection modal
 
 import os
+import re
 import json
 import asyncio
 
@@ -30,6 +31,59 @@ TRADE_CHANNEL_ID = _env_int("TRADE_CHANNEL_ID", 1089979265619083444)  # final ap
 
 # Admin review channel
 TRADE_ADMIN_REVIEW_CHANNEL_ID = _env_int("TRADE_ADMIN_REVIEW_CHANNEL_ID", 875594022033436683)
+
+TRADE_PORTAL_URL = os.getenv("TRADE_PORTAL_URL", "https://www.pantheonleagues.com/trade-portal.html")
+
+
+# ========== DM NOTIFICATIONS ==========
+
+async def notify_trade_via_dm(guild, trade_data):
+    """DM partner managers (non-initiator) with trade summary + portal link.
+
+    This replaces the old private-thread approach to avoid Discord throttling.
+    """
+    initiator_team = str(trade_data.get("initiator_team") or "").strip().upper()
+    teams = trade_data.get("teams") or []
+    partner_teams = [t for t in teams if t.upper() != initiator_team]
+
+    if not partner_teams:
+        return
+
+    trade_id = trade_data.get("trade_id") or ""
+    source = trade_data.get("source") or ("🌐 Website" if trade_id else "💬 Discord")
+
+    msg = f"📬 **New Trade Proposal** ({source})\n"
+    if trade_id:
+        msg += f"Trade ID: `{trade_id}`\n"
+    msg += "\n" + format_trade_review(trade_data)
+    msg += f"\n\n👉 **Review & accept here:** {TRADE_PORTAL_URL}"
+
+    for team in partner_teams:
+        user_id = MANAGER_DISCORD_IDS.get(team)
+        if not user_id:
+            continue
+        try:
+            member = await guild.fetch_member(user_id)
+            if member:
+                await member.send(msg)
+        except Exception as e:
+            print(f"⚠️ Could not DM {team} ({user_id}): {e}")
+
+
+async def dm_trade_parties(guild, trade_data, content: str):
+    """DM all managers involved in a trade with an update message."""
+    teams = trade_data.get("teams") or []
+    for team in teams:
+        user_id = MANAGER_DISCORD_IDS.get(team)
+        if not user_id:
+            continue
+        try:
+            member = await guild.fetch_member(user_id)
+            if member:
+                await member.send(content)
+        except Exception as e:
+            print(f"⚠️ Could not DM {team} ({user_id}): {e}")
+
 
 # ========== TRADE VALIDATION ==========
 
@@ -309,19 +363,7 @@ async def send_to_admin_review(guild, trade_data):
         msg += f"Trade ID: `{trade_id}`\n"
     msg += "\n" + format_trade_review(trade_data)
 
-    # Try to include a direct link to the thread when available (web trades store this on submit)
-    try:
-        if trade_id:
-            from trade import trade_store
-
-            trade = trade_store.get_trade(trade_id)
-            thread_url = (trade.get("discord") or {}).get("thread_url")
-            if thread_url:
-                msg += f"\n\nThread: {thread_url}"
-    except Exception:
-        pass
-
-    view = AdminReviewView(trade_data)
+    view = AdminReviewView()
     await admin_channel.send(content=msg, view=view)
 
 
@@ -385,154 +427,217 @@ class AdminRejectionModal(Modal):
             except Exception as exc:
                 print(f"⚠️ Failed to sync admin rejection to store: {exc}")
 
+        # Update the admin review message: keep full details, append rejection, disable buttons
+        try:
+            # The modal's interaction.message is the admin review message
+            msg = interaction.message
+            if msg:
+                original = msg.content or ""
+                view = AdminReviewView()
+                for item in view.children:
+                    item.disabled = True
+                await msg.edit(
+                    content=original + f"\n\n❌ **REJECTED** by {admin_team}: {self.reason.value}",
+                    view=view,
+                )
+        except Exception as exc:
+            print(f"⚠️ Could not update admin review message after rejection: {exc}")
+
         try:
             await interaction.followup.send("❌ Trade rejected.", ephemeral=True)
         except Exception:
             pass
 
 
+def _parse_trade_id_from_message(content: str):
+    """Extract trade_id from admin review message content."""
+    m = re.search(r'Trade ID: `([^`]+)`', content)
+    return m.group(1) if m else None
+
+
+def _build_trade_data_from_store(trade_id: str) -> dict:
+    """Load trade from store and build the trade_data dict for display helpers."""
+    from trade import trade_store
+
+    trade = trade_store.get_trade(trade_id)
+    return {
+        "trade_id": trade_id,
+        "teams": trade.get("teams") or [],
+        "players": trade.get("receives") or {},
+        "initiator_team": trade.get("initiator_team"),
+        "source": trade.get("source") or "🌐 Website",
+    }
+
+
 class AdminReviewView(View):
-    def __init__(self, trade_data):
+    """Persistent admin review view — survives bot restarts.
+
+    Uses fixed custom_ids so discord.py can re-attach handlers.
+    Trade data is looked up from the store on each click (not held in memory).
+    """
+
+    def __init__(self):
         super().__init__(timeout=None)
-        self.trade_data = trade_data
-        self.admin_ids = _load_admin_discord_ids()
-        self._decision_lock = asyncio.Lock()
-        self._decision_made = False
 
     def _is_admin(self, user_id: int) -> bool:
-        if self.admin_ids:
-            return user_id in self.admin_ids
-        # fallback: allow any known manager if config fails
+        admin_ids = _load_admin_discord_ids()
+        if admin_ids:
+            return user_id in admin_ids
         return True
 
-    @discord.ui.button(label="✅ Approve Trade", style=discord.ButtonStyle.success)
+    @discord.ui.button(label="✅ Approve Trade", style=discord.ButtonStyle.success, custom_id="admin_trade_approve")
     async def approve(self, interaction: discord.Interaction, button: Button):
         if not self._is_admin(interaction.user.id):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
             return
 
-        async with self._decision_lock:
-            if self._decision_made:
-                await interaction.response.send_message("⚠️ This trade has already been processed.", ephemeral=True)
-                return
+        trade_id = _parse_trade_id_from_message(interaction.message.content or "")
+        if not trade_id:
+            await interaction.response.send_message("❌ Could not determine trade ID.", ephemeral=True)
+            return
 
-            trade_id = self.trade_data.get("trade_id")
-            admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
+        admin_team = DISCORD_ID_TO_TEAM.get(interaction.user.id) or "ADMIN"
 
-            # High-signal log: admin approvals are rare and debugging timeouts is hard.
-            try:
-                print(
-                    "🧾 DISCORD_ADMIN_APPROVE_CLICK",
-                    {"trade_id": trade_id, "admin": admin_team, "user_id": interaction.user.id},
-                )
-            except Exception:
-                pass
+        try:
+            print(
+                "🧾 DISCORD_ADMIN_APPROVE_CLICK",
+                {"trade_id": trade_id, "admin": admin_team, "user_id": interaction.user.id},
+            )
+        except Exception:
+            pass
 
-            # ACK the interaction immediately to avoid Discord's 3s timeout.
-            # We'll edit the admin-review message directly via interaction.message.
-            try:
-                await interaction.response.defer(ephemeral=True)
-            except Exception:
-                # If defer fails (e.g. already timed out), we still try best-effort message edits.
-                pass
+        try:
+            await interaction.response.defer(ephemeral=True)
+        except Exception:
+            pass
 
-            # For website-backed trades, approve in the store first (this applies data + can auto-withdraw on conflict)
-            if trade_id:
-                try:
-                    from fastapi import HTTPException
-                    from trade import trade_store
+        from trade import trade_store
 
-                    trade_store.admin_approve(trade_id, admin_team)
-                except HTTPException as exc:
-                    if exc.status_code == 409:
-                        # Disable buttons after decision
-                        for item in self.children:
-                            item.disabled = True
+        # Check current status — handles the restart case where approve already
+        # committed but post_approved_trade never ran.
+        trade = trade_store.get_trade(trade_id)
+        status = str(trade.get("status") or "")
 
-                        self._decision_made = True
-                        try:
-                            await interaction.message.edit(
-                                content="❌ Trade auto-withdrawn due to conflicting trade (assets no longer owned).",
-                                view=self,
-                            )
-                        except Exception:
-                            pass
-
-                        try:
-                            trade = trade_store.get_trade(trade_id)
-                            details = trade.get("withdraw_details") or []
-                            if details:
-                                detail_lines = "\n".join(f"• {d}" for d in details[:6])
-                                await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
-                        except Exception:
-                            pass
-
-                        try:
-                            await interaction.followup.send(
-                                "❌ Trade auto-withdrawn due to conflicting trade.",
-                                ephemeral=True,
-                            )
-                        except Exception:
-                            pass
-
-                        return
-
-                    if exc.status_code == 400:
-                        # Likely already approved/processed by another admin.
-                        self._decision_made = True
-                        try:
-                            await interaction.followup.send("⚠️ Trade has already been processed.", ephemeral=True)
-                        except Exception:
-                            pass
-                        return
-
-                    try:
-                        await interaction.followup.send(f"❌ Approval failed: {exc.detail}", ephemeral=True)
-                    except Exception:
-                        pass
-                    return
-                except Exception as exc:
-                    import traceback
-
-                    print(f"⚠️ Failed to sync admin approval to store: {exc}")
-                    traceback.print_exc()
-                    try:
-                        await interaction.followup.send("❌ Approval failed (store sync error).", ephemeral=True)
-                    except Exception:
-                        pass
-                    return
-
-            # Post to #trades
-            await post_approved_trade(interaction.guild, self.trade_data)
-
-            # Disable buttons after decision
+        if status == "approved":
+            # Already approved in store — just post to #trades
+            trade_data = _build_trade_data_from_store(trade_id)
+            await post_approved_trade(interaction.guild, trade_data)
             for item in self.children:
                 item.disabled = True
-
-            self._decision_made = True
             try:
-                await interaction.message.edit(content="✅ Approved and posted.", view=self)
+                original = interaction.message.content or ""
+                await interaction.message.edit(content=original + "\n\n✅ **APPROVED** and posted to #trades", view=self)
             except Exception:
                 pass
-
             try:
                 await interaction.followup.send("✅ Approved and posted.", ephemeral=True)
             except Exception:
                 pass
+            return
 
-    @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger)
+        if status != "admin_review":
+            try:
+                await interaction.followup.send(f"⚠️ Trade is `{status}` — already processed.", ephemeral=True)
+            except Exception:
+                pass
+            return
+
+        # Normal flow: approve in store, then post to #trades
+        try:
+            from fastapi import HTTPException
+
+            trade_store.admin_approve(trade_id, admin_team)
+        except HTTPException as exc:
+            if exc.status_code == 409:
+                for item in self.children:
+                    item.disabled = True
+                try:
+                    original = interaction.message.content or ""
+                    await interaction.message.edit(
+                        content=original + "\n\n❌ **AUTO-WITHDRAWN** — conflicting trade (assets no longer owned)",
+                        view=self,
+                    )
+                except Exception:
+                    pass
+                try:
+                    conflict_trade = trade_store.get_trade(trade_id)
+                    details = conflict_trade.get("withdraw_details") or []
+                    if details:
+                        detail_lines = "\n".join(f"• {d}" for d in details[:6])
+                        await interaction.channel.send("⚠️ Auto-withdraw details:\n" + detail_lines)
+                except Exception:
+                    pass
+                try:
+                    await interaction.followup.send("❌ Trade auto-withdrawn due to conflicting trade.", ephemeral=True)
+                except Exception:
+                    pass
+                return
+
+            if exc.status_code == 400:
+                try:
+                    await interaction.followup.send("⚠️ Trade has already been processed.", ephemeral=True)
+                except Exception:
+                    pass
+                return
+
+            try:
+                await interaction.followup.send(f"❌ Approval failed: {exc.detail}", ephemeral=True)
+            except Exception:
+                pass
+            return
+        except Exception as exc:
+            import traceback
+
+            print(f"⚠️ Failed to sync admin approval to store: {exc}")
+            traceback.print_exc()
+            try:
+                await interaction.followup.send("❌ Approval failed (store sync error).", ephemeral=True)
+            except Exception:
+                pass
+            return
+
+        # Post to #trades
+        trade_data = _build_trade_data_from_store(trade_id)
+        await post_approved_trade(interaction.guild, trade_data)
+
+        for item in self.children:
+            item.disabled = True
+        try:
+            original = interaction.message.content or ""
+            await interaction.message.edit(content=original + "\n\n✅ **APPROVED** and posted to #trades", view=self)
+        except Exception:
+            pass
+        try:
+            await interaction.followup.send("✅ Approved and posted.", ephemeral=True)
+        except Exception:
+            pass
+
+    @discord.ui.button(label="❌ Reject Trade", style=discord.ButtonStyle.danger, custom_id="admin_trade_reject")
     async def reject(self, interaction: discord.Interaction, button: Button):
         if not self._is_admin(interaction.user.id):
             await interaction.response.send_message("Not authorized.", ephemeral=True)
             return
 
-        async with self._decision_lock:
-            if self._decision_made:
-                await interaction.response.send_message("⚠️ This trade has already been processed.", ephemeral=True)
-                return
+        trade_id = _parse_trade_id_from_message(interaction.message.content or "")
+        if not trade_id:
+            await interaction.response.send_message("❌ Could not determine trade ID.", ephemeral=True)
+            return
 
-            modal = AdminRejectionModal(interaction.user, self.trade_data)
-            await interaction.response.send_modal(modal)
+        # Check status
+        try:
+            from trade import trade_store
+
+            trade = trade_store.get_trade(trade_id)
+            status = str(trade.get("status") or "")
+            if status != "admin_review":
+                await interaction.response.send_message(f"⚠️ Trade is `{status}` — already processed.", ephemeral=True)
+                return
+            trade_data = _build_trade_data_from_store(trade_id)
+        except Exception:
+            trade_data = {"trade_id": trade_id, "teams": [], "players": {}}
+
+        modal = AdminRejectionModal(interaction.user, trade_data)
+        await interaction.response.send_modal(modal)
 
 
 class RejectionReasonModal(Modal):

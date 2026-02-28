@@ -40,6 +40,10 @@ async def on_ready():
 
 @bot.event
 async def setup_hook():
+    # Register persistent views so buttons survive bot restarts
+    from commands.trade_logic import AdminReviewView
+    bot.add_view(AdminReviewView())
+
     await bot.load_extension("commands.draft")
     await bot.load_extension("commands.board")
     await bot.load_extension("commands.trade")

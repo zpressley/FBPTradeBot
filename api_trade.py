@@ -150,29 +150,26 @@ def require_manager_team(x_manager_team: Optional[str] = Header(None)) -> str:
     return team
 
 
-async def _post_thread_note(trade: dict, content: str) -> None:
+async def _dm_trade_parties(trade: dict, content: str) -> None:
+    """DM all managers involved in a trade with an update message."""
     if _bot_ref is None:
         return
 
-    discord_meta = trade.get("discord") or {}
-    thread_id = discord_meta.get("thread_id")
-    if not thread_id:
-        return
-
     async def _send() -> None:
+        guild = _select_guild()
+        if not guild:
+            return
         try:
-            chan = _bot_ref.get_channel(int(thread_id))
-            if not chan:
-                try:
-                    chan = await _bot_ref.fetch_channel(int(thread_id))
-                except Exception:
-                    chan = None
-            if chan:
-                await chan.send(content)
-        except Exception as exc:
-            print(f"⚠️ Failed posting trade note to thread: {exc}")
+            from commands.trade_logic import dm_trade_parties
 
-    _schedule_on_bot_loop(_send(), "post_thread_note")
+            trade_data = {
+                "teams": trade.get("teams") or [],
+            }
+            await dm_trade_parties(guild, trade_data, content)
+        except Exception as exc:
+            print(f"⚠️ Failed DMing trade parties: {exc}")
+
+    _schedule_on_bot_loop(_send(), "dm_trade_parties")
 
 
 
@@ -196,16 +193,16 @@ async def submit_trade(
     # Create trade record (validates window + rosters + WB)
     trade = trade_store.create_trade(payload, actor_team=manager_team)
 
-    # Best-effort: create Discord thread (non-blocking if bot is down)
+    # Best-effort: DM partner managers (non-blocking if bot is down)
     try:
         if _bot_ref is not None and _bot_ref.is_ready():
-            from commands.trade_logic import create_trade_thread
+            from commands.trade_logic import notify_trade_via_dm
 
-            async def _create_thread():
+            async def _send_dms():
                 guild = _select_guild()
                 if not guild:
-                    return None
-                return await create_trade_thread(
+                    return
+                await notify_trade_via_dm(
                     guild,
                     {
                         "trade_id": trade["trade_id"],
@@ -216,22 +213,19 @@ async def submit_trade(
                     },
                 )
 
-            thread = await _await_on_bot_loop(_create_thread(), "create_trade_thread")
-            if thread:
-                trade = trade_store.attach_discord_thread(trade["trade_id"], str(thread.id), thread.jump_url)
-                _log(
-                    "✅ TRADE_SUBMIT_OK",
-                    {
-                        "trade_id": trade.get("trade_id"),
-                        "teams": trade.get("teams"),
-                        "thread_id": str(thread.id),
-                    },
-                )
+            _schedule_on_bot_loop(_send_dms(), "notify_trade_via_dm")
+            _log(
+                "✅ TRADE_SUBMIT_OK",
+                {
+                    "trade_id": trade.get("trade_id"),
+                    "teams": trade.get("teams"),
+                },
+            )
         else:
             _log("⚠️ TRADE_SUBMIT_NO_DISCORD", {"trade_id": trade.get("trade_id"), "reason": "Bot not connected"})
     except Exception as exc:
-        # Discord thread failure is non-fatal — trade is already created
-        _log("⚠️ TRADE_SUBMIT_THREAD_FAILED", {"trade_id": trade.get("trade_id"), "error": str(exc)})
+        # DM failure is non-fatal — trade is already created
+        _log("⚠️ TRADE_SUBMIT_DM_FAILED", {"trade_id": trade.get("trade_id"), "error": str(exc)})
 
     return {
         "success": True,
@@ -302,7 +296,7 @@ async def accept_trade(
                 msg = "⚠️ **Trade auto-withdrawn**: conflicting trade (assets no longer owned)."
                 if detail_lines:
                     msg += "\n" + detail_lines
-                await _post_thread_note(trade, msg)
+                await _dm_trade_parties(trade, msg)
             except Exception:
                 pass
             raise
@@ -317,8 +311,8 @@ async def accept_trade(
             },
         )
         raise
-    # Post a note to the Discord thread
-    await _post_thread_note(trade, f"✅ **{manager_team}** accepted via website")
+    # DM all trade parties about the acceptance
+    await _dm_trade_parties(trade, f"✅ **{manager_team}** accepted the trade via website")
 
     if all_accepted:
         # Ping admin review in Discord (must run on bot loop)
@@ -364,7 +358,7 @@ async def reject_trade(
     manager_team: str = Depends(require_manager_team),
 ):
     trade = trade_store.reject_trade(payload.trade_id, manager_team, payload.reason)
-    await _post_thread_note(trade, f"❌ **{manager_team}** rejected via website: {payload.reason}")
+    await _dm_trade_parties(trade, f"❌ **{manager_team}** rejected the trade: {payload.reason}")
     return {"success": True, "status": trade.get("status")}
 
 
@@ -375,7 +369,7 @@ async def withdraw_trade(
     manager_team: str = Depends(require_manager_team),
 ):
     trade = trade_store.withdraw_trade(payload.trade_id, manager_team)
-    await _post_thread_note(trade, f"🗑️ **{manager_team}** withdrew this trade via website")
+    await _dm_trade_parties(trade, f"🗑️ **{manager_team}** withdrew this trade")
     return {"success": True, "status": trade.get("status")}
 
 

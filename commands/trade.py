@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ui import View, Button
 from commands.utils import MANAGER_DISCORD_IDS, DISCORD_ID_TO_TEAM
-from commands.trade_logic import create_trade_thread, post_approved_trade
+from commands.trade_logic import notify_trade_via_dm, post_approved_trade
 import re
 import json
 from difflib import get_close_matches
@@ -454,8 +454,8 @@ class PreviewConfirmView(View):
             await interaction.response.send_message("❌ Only the trade submitter can confirm.", ephemeral=True)
             return
 
-        await interaction.response.send_message("✅ Trade confirmed! Creating approval thread...", ephemeral=True)
-        await create_trade_thread(interaction.guild, self.trade_data)
+        await interaction.response.send_message("✅ Trade confirmed! Notifying partner managers...", ephemeral=True)
+        await notify_trade_via_dm(interaction.guild, self.trade_data)
 
     @discord.ui.button(label="❌ Cancel Trade", style=discord.ButtonStyle.danger)
     async def cancel(self, interaction: discord.Interaction, button: Button):
