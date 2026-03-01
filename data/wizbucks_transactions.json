@@ -1622,5 +1622,25 @@
       "taxed_rounds": [],
       "submitted_by": "WAR"
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_RV_R2_P4_1772323650",
+    "timestamp": "2026-03-01T00:07:30.242926Z",
+    "team": "RV",
+    "amount": -35,
+    "balance_before": 400,
+    "balance_after": 365,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 2 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 2,
+      "pick": 4,
+      "purchased_by": "rickvaughn.",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
