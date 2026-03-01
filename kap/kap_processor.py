@@ -491,10 +491,8 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
     submission_data = submissions.get(result.team, {})
     keepers = submission_data.get('keepers', [])
     
-    # Get team's KAP budget to calculate rollover
-    team_config = managers.get('teams', {}).get(result.team, {})
-    kap_budget = team_config.get('wizbucks', {}).get('2026', {}).get('allotments', {}).get('KAP', {}).get('total', 0)
-    rollover_to_apa = kap_budget - result.wb_spent
+    # Rollover to APA = current wallet balance after KAP deduction
+    rollover_to_apa = result.wb_remaining
     
     title = f"{result.team} – KAP Submission ({result.season})"
     
