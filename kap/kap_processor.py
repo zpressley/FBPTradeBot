@@ -256,12 +256,14 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
     keeper_salary_cost = sum(calculate_keeper_cost(k) for k in submission.keepers)
     rat_cost = len(submission.rat_applications) * 75
     
-    # Buy-ins already purchased via separate endpoint, just get total
+    # Buy-ins already purchased and deducted via separate endpoint.
+    # Include in taxable_spend (affects tax bracket) but NOT in total_spend
+    # (already paid — do not deduct again).
     buyin_costs = {1: 55, 2: 35, 3: 10}
     buyin_cost = sum(buyin_costs[r] for r in submission.buyins_purchased)
     
     total_taxable_spend = keeper_salary_cost + buyin_cost
-    total_spend = total_taxable_spend + rat_cost
+    total_spend = keeper_salary_cost + rat_cost  # buy-ins excluded — already paid
     
     # Get tax bracket
     tax_bracket = get_tax_bracket(total_taxable_spend)
