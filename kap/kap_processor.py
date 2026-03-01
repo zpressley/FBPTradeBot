@@ -469,6 +469,7 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
     
     import os
     import discord
+    from datetime import datetime
     
     # Use same transactions channel as PAD (1089979265619083444)
     channel_id = 1089979265619083444
@@ -477,6 +478,21 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
     if channel is None:
         print(f"⚠️ KAP announce: channel {channel_id} not found")
         return
+    
+    # Load additional data for detailed embed
+    submissions = _load_json('data/kap_submissions.json') or {}
+    combined_players = _load_json('data/combined_players.json') or []
+    draft_order = _load_json('data/draft_order_2026.json') or []
+    managers = _load_json('config/managers.json') or {}
+    
+    # Get submission details
+    submission_data = submissions.get(result.team, {})
+    keepers = submission_data.get('keepers', [])
+    
+    # Get team's KAP budget to calculate rollover
+    team_config = managers.get('teams', {}).get(result.team, {})
+    kap_budget = team_config.get('wizbucks', {}).get('2026', {}).get('allotments', {}).get('KAP', {}).get('total', 0)
+    rollover_to_apa = kap_budget - result.wb_spent
     
     title = f"{result.team} – KAP Submission ({result.season})"
     
@@ -530,7 +546,71 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
             inline=False
         )
     
-    embed.set_footer(text=f"Total WB Spent: ${result.wb_spent} | Remaining: ${result.wb_remaining} | {result.timestamp}")
+    # Build keeper list with positions and MLB teams
+    if keepers:
+        keeper_lines = []
+        # Create upid lookup dict
+        player_lookup = {str(p.get('upid', '')): p for p in combined_players}
+        
+        for keeper in keepers:
+            upid = str(keeper.get('upid', ''))
+            name = keeper.get('name', 'Unknown')
+            player_data = player_lookup.get(upid, {})
+            position = player_data.get('position', '??')
+            mlb_team = player_data.get('team', '???')
+            keeper_lines.append(f"• {position} {name} [{mlb_team}]")
+        
+        # Split into chunks if too long (Discord field limit is 1024 chars)
+        keeper_text = "\n".join(keeper_lines)
+        if len(keeper_text) > 1024:
+            # Split into multiple fields
+            mid = len(keeper_lines) // 2
+            embed.add_field(
+                name="Keepers (1/2)",
+                value="\n".join(keeper_lines[:mid]),
+                inline=False
+            )
+            embed.add_field(
+                name="Keepers (2/2)",
+                value="\n".join(keeper_lines[mid:]),
+                inline=False
+            )
+        else:
+            embed.add_field(
+                name="Keepers",
+                value=keeper_text,
+                inline=False
+            )
+    
+    # Build draft picks list (purchased buy-ins)
+    team_buyins = [
+        p for p in draft_order
+        if p.get('current_owner') == result.team
+        and p.get('buyin_required')
+        and p.get('buyin_purchased')
+    ]
+    
+    if team_buyins:
+        buyin_lines = []
+        for pick in sorted(team_buyins, key=lambda p: (p.get('round', 0), p.get('pick', 0))):
+            round_num = pick.get('round', '?')
+            pick_num = pick.get('pick', '?')
+            buyin_lines.append(f"• Round {round_num}, Pick {pick_num}")
+        
+        embed.add_field(
+            name="Draft Picks Purchased",
+            value="\n".join(buyin_lines),
+            inline=False
+        )
+    
+    # Format timestamp properly
+    try:
+        dt = datetime.fromisoformat(result.timestamp.replace('Z', '+00:00'))
+        formatted_time = dt.strftime('%Y-%m-%d %H:%M:%S UTC')
+    except:
+        formatted_time = result.timestamp
+    
+    embed.set_footer(text=f"Total WB Spent: ${result.wb_spent} | Rollover to APA: ${rollover_to_apa} | {formatted_time}")
     
     try:
         await channel.send(embed=embed)
