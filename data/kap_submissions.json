@@ -603,5 +603,108 @@
       ]
     },
     "submitted_by": "TBB"
+  },
+  "DRO": {
+    "season": 2026,
+    "team": "DRO",
+    "timestamp": "2026-03-02T22:28:56.743185",
+    "keeper_count": 12,
+    "keepers": [
+      {
+        "upid": "1909",
+        "name": "Juan Soto",
+        "contract": "FC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2437",
+        "name": "Edwin D\u00edaz",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2483",
+        "name": "Francisco Lindor",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2502",
+        "name": "Gavin Williams",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3514",
+        "name": "Hunter Brown",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "5891",
+        "name": "Ben Rice",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "5996",
+        "name": "Agustin Ramirez",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3489",
+        "name": "Vinnie Pasquantino",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3681",
+        "name": "Addison Barger",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1887",
+        "name": "Blake Snell",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3471",
+        "name": "Royce Lewis",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3885",
+        "name": "Brooks Lee",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 400,
+    "tax_bracket": {
+      "min": 376,
+      "max": 400,
+      "rounds": [
+        6,
+        7,
+        8
+      ]
+    },
+    "submitted_by": "DRO"
   }
 }

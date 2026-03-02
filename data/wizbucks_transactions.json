@@ -1895,5 +1895,30 @@
       ],
       "submitted_by": "TBB"
     }
+  },
+  {
+    "txn_id": "wb_DRO_KAP_submission_1772490536",
+    "timestamp": "2026-03-02T22:28:56.787044Z",
+    "team": "DRO",
+    "amount": -390,
+    "balance_before": 390,
+    "balance_after": 0,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 12 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 12,
+      "keeper_salary": 390,
+      "rat_cost": 0,
+      "buyin_cost": 10,
+      "taxable_spend": 400,
+      "taxed_rounds": [
+        6,
+        7,
+        8
+      ],
+      "submitted_by": "DRO"
+    }
   }
 ]
