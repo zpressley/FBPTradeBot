@@ -317,8 +317,9 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                     'has_rat': keeper.has_rat
                 }
             })
-        elif is_team_player:
-            # Release non-kept players — clear ownership so they go to the draft
+        elif is_team_player and player.get('player_type') == 'MLB':
+            # Release non-kept MLB players — clear ownership so they go to the draft
+            # Farm players (prospects) are NOT released and remain with the team
             old_years_simple = (player.get('years_simple') or '').strip()
             contract_key = _YEARS_SIMPLE_TO_KEY.get(old_years_simple, old_years_simple)
             player_log.append({
