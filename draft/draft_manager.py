@@ -112,6 +112,22 @@ class DraftManager:
             if isinstance(p, dict) and "_comment" not in p and p.get("draft") == self.draft_type
         ]
 
+        # For keeper drafts, exclude picks that are not draftable:
+        # - result == "keeper": slot already filled by a kept player
+        # - taxed_out == True: team exceeded tax bracket, pick forfeited
+        # - buyin_required + not buyin_purchased: buy-in round never purchased
+        if self.draft_type == "keeper":
+            before = len(filtered_picks)
+            filtered_picks = [
+                p for p in filtered_picks
+                if p.get("result") != "keeper"
+                and not p.get("taxed_out")
+                and not (p.get("buyin_required") and not p.get("buyin_purchased"))
+            ]
+            excluded = before - len(filtered_picks)
+            if excluded:
+                print(f"🚫 Excluded {excluded} non-draftable keeper picks (keepers/taxed/unpurchased buy-ins)")
+
         # Normalize fields for safety:
         # - Keeper picks may not include round_type; default to "standard".
         # - Prospect picks may have missing round_type; infer from round.
