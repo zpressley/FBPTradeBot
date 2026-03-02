@@ -1780,5 +1780,30 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_WIZ_KAP_submission_1772485171",
+    "timestamp": "2026-03-02T20:59:31.470543Z",
+    "team": "WIZ",
+    "amount": -400,
+    "balance_before": 405,
+    "balance_after": 5,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 15 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 15,
+      "keeper_salary": 325,
+      "rat_cost": 75,
+      "buyin_cost": 45,
+      "taxable_spend": 370,
+      "taxed_rounds": [
+        7,
+        8,
+        9
+      ],
+      "submitted_by": "WIZ"
+    }
   }
 ]

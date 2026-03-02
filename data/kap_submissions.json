@@ -231,5 +231,129 @@
       "rounds": []
     },
     "submitted_by": "CFL"
+  },
+  "WIZ": {
+    "season": 2026,
+    "team": "WIZ",
+    "timestamp": "2026-03-02T20:59:31.424522",
+    "keeper_count": 15,
+    "keepers": [
+      {
+        "upid": "2216",
+        "name": "Cal Raleigh",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1986",
+        "name": "Vladimir Guerrero Jr.",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": true
+      },
+      {
+        "upid": "3054",
+        "name": "Nico Hoerner",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4361",
+        "name": "Maikel Garcia",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1883",
+        "name": "Cody Bellinger",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2184",
+        "name": "Brent Rooker",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1950",
+        "name": "George Springer",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2314",
+        "name": "Cristopher S\u00e1nchez",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1903",
+        "name": "Brandon Woodruff",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2654",
+        "name": "Jes\u00fas Luzardo",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1934",
+        "name": "Carlos Rod\u00f3n",
+        "contract": "TC-1",
+        "has_il_tag": true,
+        "has_rat": false
+      },
+      {
+        "upid": "4077",
+        "name": "Edward Cabrera",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2967",
+        "name": "Merrill Kelly",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1902",
+        "name": "Aroldis Chapman",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6611",
+        "name": "Erik Sabrowski",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 370,
+    "tax_bracket": {
+      "min": 351,
+      "max": 375,
+      "rounds": [
+        7,
+        8,
+        9
+      ]
+    },
+    "submitted_by": "WIZ"
   }
 }
