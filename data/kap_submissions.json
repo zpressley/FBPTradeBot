@@ -355,5 +355,136 @@
       ]
     },
     "submitted_by": "WIZ"
+  },
+  "RV": {
+    "season": 2026,
+    "team": "RV",
+    "timestamp": "2026-03-02T21:23:25.529984",
+    "keeper_count": 16,
+    "keepers": [
+      {
+        "upid": "1888",
+        "name": "Gerrit Cole",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1910",
+        "name": "Ketel Marte",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1949",
+        "name": "Freddy Peralta",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1960",
+        "name": "Kyle Tucker",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2472",
+        "name": "Eugenio Su\u00e1rez",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3438",
+        "name": "Gunnar Henderson",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3551",
+        "name": "Spencer Schwellenbach",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3854",
+        "name": "Lawrence Butler",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3994",
+        "name": "Kyle Manzardo",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "7600",
+        "name": "Cam Smith",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "7703",
+        "name": "Nick Kurtz",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6097",
+        "name": "Abner Uribe",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1977",
+        "name": "Sandy Alcantara",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3612",
+        "name": "Andrew Abbott",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6983",
+        "name": "Jack Perkins",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4462",
+        "name": "Ceddanne Rafaela",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 380,
+    "tax_bracket": {
+      "min": 376,
+      "max": 400,
+      "rounds": [
+        6,
+        7,
+        8
+      ]
+    },
+    "submitted_by": "RV"
   }
 }

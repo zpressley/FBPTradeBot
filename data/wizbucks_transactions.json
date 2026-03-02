@@ -1805,5 +1805,30 @@
       ],
       "submitted_by": "WIZ"
     }
+  },
+  {
+    "txn_id": "wb_RV_KAP_submission_1772486605",
+    "timestamp": "2026-03-02T21:23:25.569434Z",
+    "team": "RV",
+    "amount": -280,
+    "balance_before": 300,
+    "balance_after": 20,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 16 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 16,
+      "keeper_salary": 280,
+      "rat_cost": 0,
+      "buyin_cost": 100,
+      "taxable_spend": 380,
+      "taxed_rounds": [
+        6,
+        7,
+        8
+      ],
+      "submitted_by": "RV"
+    }
   }
 ]
