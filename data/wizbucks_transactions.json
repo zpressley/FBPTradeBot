@@ -1850,5 +1850,25 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_TBB_R2_P1_1772489956",
+    "timestamp": "2026-03-02T22:19:16.734479Z",
+    "team": "TBB",
+    "amount": -35,
+    "balance_before": 415,
+    "balance_after": 380,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 2 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 2,
+      "pick": 1,
+      "purchased_by": "lyrx_",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
