@@ -6,8 +6,8 @@ Handles keeper selection submissions, contract updates, and WizBucks transaction
 import json
 import os
 from datetime import datetime
-from typing import Dict, List, Optional
-from pydantic import BaseModel
+from typing import Any, Dict, List, Optional, Union
+from pydantic import BaseModel, validator
 
 from data_lock import DATA_LOCK
 
@@ -88,11 +88,24 @@ class KAPSubmission(BaseModel):
     team: str
     season: int = 2026
     keepers: List[KeeperPlayer]
-    il_tags: Dict[str, Optional[str]] = {}  # tier -> upid
+    il_tags: Dict[str, Optional[Union[str, Dict[str, Any]]]] = {}  # tier -> upid or {upid, name, ...}
     rat_applications: List[str] = []  # list of upids
     buyins_purchased: List[int] = []  # rounds purchased (from separate buyin endpoint)
     taxable_spend: int
     submitted_by: str
+
+    @validator('il_tags', pre=True)
+    def normalize_il_tags(cls, v):
+        """Normalize il_tags values: extract upid string from object if needed"""
+        if not isinstance(v, dict):
+            return v
+        out = {}
+        for tier, val in v.items():
+            if isinstance(val, dict):
+                out[tier] = val.get('upid')
+            else:
+                out[tier] = val
+        return out
 
 
 class KAPResult(BaseModel):
@@ -354,6 +367,8 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
             player['manager'] = None
             player['FBP_Team'] = None
             player['contract_type'] = None
+            player['status'] = '[5] TC1'
+            player['years_simple'] = 'TC 1'
     
     # Update draft picks — mark taxed rounds + keeper-filled slots
     ROSTER_SIZE = 26
