@@ -274,8 +274,8 @@
     "manager": "The Bluke Blokes",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[0] FC2",
-    "years_simple": "FC 2",
+    "status": "[1] FC1",
+    "years_simple": "FC 1",
     "yahoo_id": "10420",
     "upid": "1927",
     "mlb_id": 663586,
@@ -288,7 +288,8 @@
     "throws": "R",
     "mlb_primary_position": "3B",
     "fypd": false,
-    "rank": 65
+    "rank": 65,
+    "level": "MLB"
   },
   {
     "name": "Bryan Reynolds",
