@@ -1870,5 +1870,30 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_TBB_KAP_submission_1772490295",
+    "timestamp": "2026-03-02T22:24:55.063786Z",
+    "team": "TBB",
+    "amount": -380,
+    "balance_before": 380,
+    "balance_after": 0,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 14 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 14,
+      "keeper_salary": 305,
+      "rat_cost": 75,
+      "buyin_cost": 100,
+      "taxable_spend": 405,
+      "taxed_rounds": [
+        5,
+        6,
+        7
+      ],
+      "submitted_by": "TBB"
+    }
   }
 ]

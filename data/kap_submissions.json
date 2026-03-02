@@ -486,5 +486,122 @@
       ]
     },
     "submitted_by": "RV"
+  },
+  "TBB": {
+    "season": 2026,
+    "team": "TBB",
+    "timestamp": "2026-03-02T22:24:55.026018",
+    "keeper_count": 14,
+    "keepers": [
+      {
+        "upid": "1927",
+        "name": "Austin Riley",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": true
+      },
+      {
+        "upid": "3613",
+        "name": "Joey Cantillo",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3338",
+        "name": "Tyler Glasnow",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3453",
+        "name": "Max Meyer",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3508",
+        "name": "Pete Crow-Armstrong",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3707",
+        "name": "Brice Turang",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6563",
+        "name": "Paul Skenes",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3321",
+        "name": "Trevor Rogers",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3475",
+        "name": "Brayan Bello",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3560",
+        "name": "Kyle Stowers",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6810",
+        "name": "Justin Sterner",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1940",
+        "name": "Corbin Burnes",
+        "contract": "VC-1",
+        "has_il_tag": true,
+        "has_rat": false
+      },
+      {
+        "upid": "1885",
+        "name": "Trea Turner",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1967",
+        "name": "Mike Trout",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 405,
+    "tax_bracket": {
+      "min": 401,
+      "max": 420,
+      "rounds": [
+        5,
+        6,
+        7
+      ]
+    },
+    "submitted_by": "TBB"
   }
 }
