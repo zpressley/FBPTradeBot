@@ -3588,8 +3588,8 @@
     "manager": "Whiz Kids",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[0] FC2",
-    "years_simple": "FC 2",
+    "status": "[1] FC1",
+    "years_simple": "FC 1",
     "yahoo_id": "10621",
     "upid": "1986",
     "mlb_id": 665489,
@@ -3602,7 +3602,8 @@
     "throws": "R",
     "mlb_primary_position": "1B",
     "fypd": false,
-    "rank": 22
+    "rank": 22,
+    "level": "MLB"
   },
   {
     "name": "Walker Buehler",

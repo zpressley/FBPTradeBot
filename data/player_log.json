@@ -40672,5 +40672,28 @@
     "years": "TC 1",
     "update_type": "KAP_Keeper",
     "event": "KAP 2026: TC-R->TC-1 ($5)"
+  },
+  {
+    "id": "2026-2026-03-02T18:14:42.349121-05:00-UPID_1986-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-03-02T18:14:42.349121-05:00",
+    "upid": "1986",
+    "player_name": "Vladimir Guerrero Jr.",
+    "team": "TOR",
+    "pos": "1B",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 22,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[1] FC1",
+    "years": "FC 1",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
