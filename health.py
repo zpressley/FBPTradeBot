@@ -565,6 +565,20 @@ async def setup_hook():
 # ---- FastAPI Web Server ----
 app = FastAPI()
 
+# Add exception handler to log validation errors
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    """Log validation errors for debugging"""
+    print(f"❌ Validation error on {request.method} {request.url.path}")
+    print(f"   Errors: {exc.errors()}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors()},
+    )
+
 # Include admin bulk operations router
 app.include_router(admin_bulk_router)
 # Prospect draft pool and web pick request routers
