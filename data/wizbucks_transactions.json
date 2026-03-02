@@ -1702,5 +1702,25 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_DMN_R3_P5_1772411041",
+    "timestamp": "2026-03-02T00:24:01.727320Z",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 430,
+    "balance_after": 420,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 5,
+      "purchased_by": "DMN",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
