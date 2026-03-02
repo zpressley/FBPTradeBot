@@ -1874,6 +1874,9 @@ async def api_kap_submit(
     6. Posts to Discord transactions channel
     """
     print(f"📝 Processing KAP submission for {submission.team}...")
+    print(f"   Keepers: {len(submission.keepers)}")
+    print(f"   Taxable spend: ${submission.taxable_spend}")
+    print(f"   Submitted by: {submission.submitted_by}")
 
     try:
         result = process_kap_submission(submission, test_mode=False)
