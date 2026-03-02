@@ -1682,5 +1682,25 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "txn_id": "wb_2026_BUYIN_RV_R3_P4_1772409815",
+    "timestamp": "2026-03-02T00:03:35.895644Z",
+    "team": "RV",
+    "amount": -10,
+    "balance_before": 310,
+    "balance_after": 300,
+    "transaction_type": "buyin_purchase",
+    "description": "Round 3 keeper draft buy-in purchase",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "draft": "keeper",
+      "round": 3,
+      "pick": 4,
+      "purchased_by": "RV",
+      "source": "buyin_api",
+      "trade_id": null
+    }
   }
 ]
