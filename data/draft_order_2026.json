@@ -1119,9 +1119,9 @@
     "traded": false,
     "buyin_required": true,
     "buyin_cost": 10,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
+    "buyin_purchased": true,
+    "buyin_purchased_at": "2026-03-02T19:54:29.189889Z",
+    "buyin_purchased_by": "B2J",
     "result": null,
     "taxed_out": false,
     "round_type": "standard"
