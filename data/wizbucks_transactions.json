@@ -1722,5 +1722,22 @@
       "source": "buyin_api",
       "trade_id": null
     }
+  },
+  {
+    "id": "buyin_CFL_R3_2026-03-01T21:25:59Z",
+    "timestamp": "2026-03-01T21:25:59.000000Z",
+    "team": "CFL",
+    "team_name": "Country Fried Lamb",
+    "amount": -10,
+    "balance_before": 235,
+    "balance_after": 225,
+    "transaction_type": "buyin_purchase",
+    "description": "Keeper draft buy-in: Round 3 ($10)",
+    "metadata": {
+      "round": 3,
+      "cost": 10,
+      "purchased_by": "CFL",
+      "note": "Manual fix - original commit lost in race condition"
+    }
   }
 ]

@@ -124,11 +124,15 @@ def _commit_worker_loop():
         if not pending:
             continue
         
-        # Batch all files and messages
+        # Batch all files, messages, and snapshots.
+        # Later queue entries override earlier ones for the same file,
+        # so the final snapshot reflects the most recent write.
         all_files = set()
+        all_snapshots: dict[str, bytes] = {}
         messages = []
-        for files, msg in pending:
+        for files, msg, snapshots in pending:
             all_files.update(files)
+            all_snapshots.update(snapshots)
             messages.append(msg)
         
         # Create batched commit message
@@ -139,14 +143,18 @@ def _commit_worker_loop():
             if len(messages) > 10:
                 commit_msg += f"\n... and {len(messages) - 10} more"
         
-        # Execute the commit
+        # Execute the commit with pre-saved snapshots
         try:
-            _execute_git_commit(list(all_files), commit_msg)
+            _execute_git_commit(list(all_files), commit_msg, file_snapshots=all_snapshots)
         except Exception as exc:
             print(f"⚠️ Batch commit failed: {exc}")
 
-def _execute_git_commit(file_paths: list[str], message: str) -> None:
-    """Execute a single git commit + push operation (called by worker thread)."""
+def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: dict[str, bytes] | None = None) -> None:
+    """Execute a single git commit + push operation (called by worker thread).
+
+    ``file_snapshots`` contains file contents captured at queue time so that
+    bootstrap / retry resets cannot lose data written by concurrent endpoints.
+    """
     import subprocess
 
     if shutil.which("git") is None:
@@ -225,9 +233,11 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
 
         init_remote = remote_url or f"https://github.com/{os.getenv('GITHUB_REPO', 'zpressley/FBPTradeBot')}.git"
 
-        # Preserve pending file changes across init/reset
-        saved_files: dict[str, bytes] = {}
+        # Use queue-time snapshots (preferred) or fall back to reading disk.
+        saved_files: dict[str, bytes] = dict(file_snapshots or {})
         for p in existing_paths:
+            if p in saved_files:
+                continue  # already have a snapshot from queue time
             try:
                 full = os.path.join(repo_root, p)
                 with open(full, "rb") as f:
@@ -241,6 +251,7 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
                 "repo_root": repo_root,
                 "has_git_dir": False,
                 "remote": _redact(init_remote),
+                "snapshot_count": len(saved_files),
             },
         )
 
@@ -250,7 +261,7 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
         _run(["git", "fetch", "origin", "main"])
         _run(["git", "checkout", "-f", "-B", "main", "FETCH_HEAD"])
 
-        # Restore pending file changes
+        # Restore snapshotted file contents (survives checkout -f)
         for rel, blob in saved_files.items():
             try:
                 full = os.path.join(repo_root, rel)
@@ -322,8 +333,11 @@ def _execute_git_commit(file_paths: list[str], message: str) -> None:
             # that no API endpoint reads stale (post-reset, pre-restore)
             # data from disk.
             if saved_files is None:
-                saved_files = {}
+                # Prefer queue-time snapshots; fall back to current disk.
+                saved_files = dict(file_snapshots or {})
                 for p in existing_paths:
+                    if p in saved_files:
+                        continue
                     try:
                         full = os.path.join(repo_root, p)
                         with open(full, "rb") as f:
@@ -882,9 +896,24 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
 
     Instead of committing immediately, add to queue processed by background worker.
     This prevents concurrent git operations from colliding.
+
+    IMPORTANT: File contents are snapshotted NOW (at queue time) so that
+    concurrent git operations (checkout -f, reset --hard) during commit
+    processing cannot erase pending changes from other endpoints.
     """
+    # Snapshot file contents immediately while they're correct on disk.
+    snapshots: dict[str, bytes] = {}
+    for p in (file_paths or []):
+        try:
+            full = os.path.join(REPO_ROOT, p)
+            if os.path.exists(full):
+                with open(full, "rb") as fh:
+                    snapshots[p] = fh.read()
+        except Exception:
+            pass
+
     with _commit_queue_lock:
-        _commit_queue.append((file_paths, message))
+        _commit_queue.append((file_paths, message, snapshots))
 
     # Render visibility: log enqueued operations so we can correlate later git failures.
     try:
