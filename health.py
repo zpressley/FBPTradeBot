@@ -1867,6 +1867,7 @@ async def api_admin_pad_retro_discord(
 from kap.kap_processor import (
     process_kap_submission,
     announce_kap_submission_to_discord,
+    notify_il_tags_to_admin,
     KAPSubmission,
     KAPResult,
 )
@@ -1900,11 +1901,12 @@ async def api_kap_submit(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(exc))
 
-    # Discord notification FIRST — send before commit so a redeploy
+    # Discord notifications FIRST — send before commit so a redeploy
     # triggered by the push cannot kill the notification in-flight.
     try:
         if bot:
             bot.loop.create_task(announce_kap_submission_to_discord(result, bot))
+            bot.loop.create_task(notify_il_tags_to_admin(submission, bot))
             await asyncio.sleep(2)
     except Exception as exc:
         print(f"⚠️ KAP Discord announcement failed: {exc}")

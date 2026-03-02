@@ -617,3 +617,68 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
         print(f"✅ KAP submission announced to Discord for {result.team}")
     except Exception as exc:
         print(f"⚠️ Failed to send KAP announcement: {exc}")
+
+
+async def notify_il_tags_to_admin(submission: 'KAPSubmission', bot) -> None:
+    """Send IL tag notifications to admin channel for review"""
+    
+    import discord
+    from datetime import datetime, timedelta
+    
+    # Admin channel ID
+    admin_channel_id = 875594022033436683
+    
+    # Check if any IL tags were used
+    il_tags_used = {tier: upid for tier, upid in submission.il_tags.items() if upid}
+    if not il_tags_used:
+        print(f"ℹ️ No IL tags used by {submission.team}")
+        return
+    
+    admin_channel = bot.get_channel(admin_channel_id)
+    if admin_channel is None:
+        print(f"⚠️ IL tag admin channel {admin_channel_id} not found")
+        return
+    
+    # Load player data and season dates
+    combined_players = _load_json('data/combined_players.json') or []
+    season_dates = _load_json('config/season_dates.json') or {}
+    
+    player_lookup = {str(p.get('upid', '')): p for p in combined_players}
+    
+    # Calculate eligible date (week_1_start + 5 weeks)
+    eligible_date_str = "TBD"
+    if season_dates.get('week_1_start'):
+        try:
+            week_1 = datetime.fromisoformat(season_dates['week_1_start'])
+            eligible_date = week_1 + timedelta(weeks=5)
+            eligible_date_str = eligible_date.strftime('%Y-%m-%d')
+        except:
+            pass
+    
+    # Send notification for each IL tag
+    for tier, upid in il_tags_used.items():
+        player_data = player_lookup.get(str(upid), {})
+        player_name = player_data.get('name', 'Unknown')
+        discount = IL_DISCOUNTS.get(tier, 0)
+        
+        embed = discord.Embed(
+            title="🏥 IL Tag Review Required",
+            description=f"{submission.team} has applied an IL tag during KAP submission.",
+            color=discord.Color.orange(),
+        )
+        
+        embed.add_field(name="FBP Team", value=submission.team, inline=True)
+        embed.add_field(name="IL Tag Tier", value=tier, inline=True)
+        embed.add_field(name="Discount", value=f"${discount}", inline=True)
+        
+        embed.add_field(name="Player", value=player_name, inline=True)
+        embed.add_field(name="UPID", value=upid, inline=True)
+        embed.add_field(name="Eligible Date", value=eligible_date_str, inline=True)
+        
+        embed.set_footer(text="If not approved, manually charge the manager for the discount amount.")
+        
+        try:
+            await admin_channel.send(embed=embed)
+            print(f"✅ IL tag notification sent to admin for {submission.team} - {tier} tag on {player_name}")
+        except Exception as exc:
+            print(f"⚠️ Failed to send IL tag admin notification: {exc}")
