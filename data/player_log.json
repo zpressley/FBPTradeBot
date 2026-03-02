@@ -36143,496 +36143,694 @@
     "event": "2026 DC \u2192 BC"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3818-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3818",
-      "name": "Heliot Ramos",
-      "mlb_team": "SF"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3818",
+    "player_name": "Heliot Ramos",
+    "team": "SF",
+    "pos": "CF",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 226,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2984-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2984",
-      "name": "Michael Wacha",
-      "mlb_team": "KC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "2984",
+    "player_name": "Michael Wacha",
+    "team": "KC",
+    "pos": "SP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 331,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3884-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3884",
-      "name": "Jackson Holliday",
-      "mlb_team": "BAL"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3884",
+    "player_name": "Jackson Holliday",
+    "team": "BAL",
+    "pos": "2B,SS",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 119,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3183-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3183",
-      "name": "Ryan Weathers",
-      "mlb_team": "MIA"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3183",
+    "player_name": "Ryan Weathers",
+    "team": "MIA",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 284,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2275-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2275",
-      "name": "Christian Yelich",
-      "mlb_team": "MIL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-2"
-    }
+    "upid": "2275",
+    "player_name": "Christian Yelich",
+    "team": "MIL",
+    "pos": "OF",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 93,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-2)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2494-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2494",
-      "name": "Garrett Crochet",
-      "mlb_team": "BOS"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-2",
-      "new_contract": "VC-1",
-      "salary": 25,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2494",
+    "player_name": "Garrett Crochet",
+    "team": "BOS",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 12,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-2->VC-1 ($25)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3466-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3466",
-      "name": "Tyler Soderstrom",
-      "mlb_team": "ATH"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3466",
+    "player_name": "Tyler Soderstrom",
+    "team": "ATH",
+    "pos": "1B,OF",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 83,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3845-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3845",
-      "name": "Ian Seymour",
-      "mlb_team": "TB"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3845",
+    "player_name": "Ian Seymour",
+    "team": "TB",
+    "pos": "SP,RP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 305,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2555-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2555",
-      "name": "Isaac Paredes",
-      "mlb_team": "HOU"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2555",
+    "player_name": "Isaac Paredes",
+    "team": "HOU",
+    "pos": "3B",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 184,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3456-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3456",
-      "name": "Jackson Jobe",
-      "mlb_team": "DET"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3456",
+    "player_name": "Jackson Jobe",
+    "team": "DET",
+    "pos": "SP,RP",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2620-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2620",
-      "name": "Jared Jones",
-      "mlb_team": "PIT"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2620",
+    "player_name": "Jared Jones",
+    "team": "PIT",
+    "pos": "P",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 348,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3461-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3461",
-      "name": "Josh Jung",
-      "mlb_team": "TEX"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-2"
-    }
+    "upid": "3461",
+    "player_name": "Josh Jung",
+    "team": "TEX",
+    "pos": "3B",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 306,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-2)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_2844-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "2844",
-      "name": "Kris Bubic",
-      "mlb_team": "KC"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2844",
+    "player_name": "Kris Bubic",
+    "team": "KC",
+    "pos": "SP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 215,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3520-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3520",
-      "name": "Masyn Winn",
-      "mlb_team": "STL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3520",
+    "player_name": "Masyn Winn",
+    "team": "STL",
+    "pos": "SS",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 281,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_6530-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "6530",
-      "name": "Chase Meidroth",
-      "mlb_team": "CWS"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "6530",
+    "player_name": "Chase Meidroth",
+    "team": "CWS",
+    "pos": "2B,3B,SS",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 414,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4315-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4315",
-      "name": "Riley Greene",
-      "mlb_team": "DET"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-2",
-      "new_contract": "VC-1",
-      "salary": 25,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "4315",
+    "player_name": "Riley Greene",
+    "team": "DET",
+    "pos": "CF",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 57,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-2->VC-1 ($25)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_6868-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "6868",
-      "name": "Sawyer Gipson-Long",
-      "mlb_team": "DET"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "6868",
+    "player_name": "Sawyer Gipson-Long",
+    "team": "DET",
+    "pos": "SP,RP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4298-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4298",
-      "name": "Seiya Suzuki",
-      "mlb_team": "CHC"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "4298",
+    "player_name": "Seiya Suzuki",
+    "team": "CHC",
+    "pos": "OF",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 88,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3225-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3225",
-      "name": "Seth Lugo",
-      "mlb_team": "KC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3225",
+    "player_name": "Seth Lugo",
+    "team": "KC",
+    "pos": "SP",
+    "age": 36,
+    "level": "",
+    "team_rank": null,
+    "rank": 309,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_7330-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "7330",
-      "name": "Shane Smith",
-      "mlb_team": "CWS"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "7330",
+    "player_name": "Shane Smith",
+    "team": "CWS",
+    "pos": "SP",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 275,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3381-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3381",
-      "name": "William Contreras",
-      "mlb_team": "MIL"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3381",
+    "player_name": "William Contreras",
+    "team": "MIL",
+    "pos": "C",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 55,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_6565-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "6565",
-      "name": "Wyatt Langford",
-      "mlb_team": "TEX"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "6565",
+    "player_name": "Wyatt Langford",
+    "team": "TEX",
+    "pos": "CF",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 50,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3214-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3214",
-      "name": "Sean Newcomb",
-      "mlb_team": "ATH"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3214",
+    "player_name": "Sean Newcomb",
+    "team": "ATH",
+    "pos": "SP,RP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3379-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3379",
-      "name": "Will Vest",
-      "mlb_team": "DET"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3379",
+    "player_name": "Will Vest",
+    "team": "DET",
+    "pos": "RP",
+    "age": 30,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 273,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_3465-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "3465",
-      "name": "Quinn Priester",
-      "mlb_team": "PIT"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "3465",
+    "player_name": "Quinn Priester",
+    "team": "PIT",
+    "pos": "SP,RP",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 248,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4209-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4209",
-      "name": "Reed Garrett",
-      "mlb_team": "NYM"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "4209",
+    "player_name": "Reed Garrett",
+    "team": "NYM",
+    "pos": "RP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4226-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4226",
-      "name": "Jared Koenig",
-      "mlb_team": "MIL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "4226",
+    "player_name": "Jared Koenig",
+    "team": "MIL",
+    "pos": "RP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4291-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4291",
-      "name": "Jeremy Pe\u00f1a",
-      "mlb_team": "HOU"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "4291",
+    "player_name": "Jeremy Pe\u00f1a",
+    "team": "HOU",
+    "pos": "SS",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 96,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4311-KAP_Release-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4311",
-      "name": "Adam Frazier",
-      "mlb_team": "PIT"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "4311",
+    "player_name": "Adam Frazier",
+    "team": "PIT",
+    "pos": "2B,OF",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-01T20:50:08.501675-UPID_4445-KAP_Keeper-WAR",
+    "season": 2026,
+    "source": "kap",
+    "admin": "WAR",
     "timestamp": "2026-03-01T20:50:08.501675",
-    "team": "WAR",
-    "player": {
-      "upid": "4445",
-      "name": "Spencer Torkelson",
-      "mlb_team": "DET"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "4445",
+    "player_name": "Spencer Torkelson",
+    "team": "DET",
+    "pos": "1B",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 175,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": null,
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
     "id": "2026-2026-03-02T00:24:53.932186Z-UPID_3885-Trade-TRADE-010326_1918-011",
@@ -36681,733 +36879,716 @@
     "event": "TRADE-010326_1918-011: DRO->DMN"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4283-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "6566",
-      "name": "Max Clark",
-      "mlb_team": "DET"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4283",
+    "player_name": "Adley Rutschman",
+    "team": "BAL",
+    "pos": "C",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 157,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_1882-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4283",
-      "name": "Adley Rutschman",
-      "mlb_team": "BAL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1"
-    }
+    "upid": "1882",
+    "player_name": "Alex Bregman",
+    "team": "BOS",
+    "pos": "3B",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 90,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2362-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "1882",
-      "name": "Alex Bregman",
-      "mlb_team": "BOS"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2362",
+    "player_name": "Daylen Lile",
+    "team": "WSH",
+    "pos": "OF",
+    "age": 23,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 241,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_3014-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7681",
-      "name": "Bryce Rainer",
-      "mlb_team": "DET"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "3014",
+    "player_name": "Mitch Keller",
+    "team": "PIT",
+    "pos": "SP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 350,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4010-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2237",
-      "name": "Carter Jensen",
-      "mlb_team": "KC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4010",
+    "player_name": "George Kirby",
+    "team": "SEA",
+    "pos": "SP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 72,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4324-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7112",
-      "name": "Cooper Ingle",
-      "mlb_team": "CLE"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4324",
+    "player_name": "Geraldo Perdomo",
+    "team": "AZ",
+    "pos": "SS",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 60,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2550-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2362",
-      "name": "Daylen Lile",
-      "mlb_team": "WSH"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2550",
+    "player_name": "Ian Happ",
+    "team": "CHC",
+    "pos": "OF",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 153,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2626-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "3014",
-      "name": "Mitch Keller",
-      "mlb_team": "PIT"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2626",
+    "player_name": "Jason Adam",
+    "team": "SD",
+    "pos": "RP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4040-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4010",
-      "name": "George Kirby",
-      "mlb_team": "SEA"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "4040",
+    "player_name": "MacKenzie Gore",
+    "team": "WSH",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 178,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_1972-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4324",
-      "name": "Geraldo Perdomo",
-      "mlb_team": "AZ"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "1972",
+    "player_name": "Ranger Su\u00e1rez",
+    "team": "PHI",
+    "pos": "SP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 171,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_3986-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2550",
-      "name": "Ian Happ",
-      "mlb_team": "CHC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1"
-    }
+    "upid": "3986",
+    "player_name": "Steven Kwan",
+    "team": "CLE",
+    "pos": "OF",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 156,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_1981-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2626",
-      "name": "Jason Adam",
-      "mlb_team": "SD"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "1981",
+    "player_name": "Tommy Edman",
+    "team": "LAD",
+    "pos": "2B,3B,CF",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 293,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-2)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_7287-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7199",
-      "name": "Josue Brice\u00f1o",
-      "mlb_team": "DET"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "7287",
+    "player_name": "Yoshinobu Yamamoto",
+    "team": "LAD",
+    "pos": "SP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 25,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_7282-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4040",
-      "name": "MacKenzie Gore",
-      "mlb_team": "WSH"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "7282",
+    "player_name": "Shota Imanaga",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 172,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2591-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "3895",
-      "name": "Justin Crawford",
-      "mlb_team": "PHI"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "2591",
+    "player_name": "Jake Cronenworth",
+    "team": "SD",
+    "pos": "1B,2B,SS",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 343,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_3435-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "1972",
-      "name": "Ranger Su\u00e1rez",
-      "mlb_team": "PHI"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "3435",
+    "player_name": "Francisco Alvarez",
+    "team": "NYM",
+    "pos": "C",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 217,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4019-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7595",
-      "name": "Seaver King",
-      "mlb_team": "WSH"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4019",
+    "player_name": "Nick Lodolo",
+    "team": "CIN",
+    "pos": "SP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 139,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-1->TC-2 ($15)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4174-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7623",
-      "name": "Slade Caldwell",
-      "mlb_team": "AZ"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4174",
+    "player_name": "Edwin Uceta",
+    "team": "TB",
+    "pos": "RP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 295,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_1933-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "3986",
-      "name": "Steven Kwan",
-      "mlb_team": "CLE"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1"
-    }
+    "upid": "1933",
+    "player_name": "Carlos Correa",
+    "team": "HOU",
+    "pos": "3B,SS",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 244,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2474-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "1981",
-      "name": "Tommy Edman",
-      "mlb_team": "LAD"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-2"
-    }
+    "upid": "2474",
+    "player_name": "Evan Carter",
+    "team": "TEX",
+    "pos": "CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 341,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: TC-R->TC-1 ($5)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2644-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7677",
-      "name": "Travis Bazzana",
-      "mlb_team": "CLE"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "2644",
+    "player_name": "Jeffrey Springs",
+    "team": "ATH",
+    "pos": "SP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 330,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2274-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7287",
-      "name": "Yoshinobu Yamamoto",
-      "mlb_team": "LAD"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2274",
+    "player_name": "Christian Walker",
+    "team": "HOU",
+    "pos": "1B",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 185,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (VC-2)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4101-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7282",
-      "name": "Shota Imanaga",
-      "mlb_team": "CHC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1"
-    }
+    "upid": "4101",
+    "player_name": "Shane Baz",
+    "team": "TB",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 237,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-2)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2795-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2591",
-      "name": "Jake Cronenworth",
-      "mlb_team": "SD"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "2795",
+    "player_name": "Jurickson Profar",
+    "team": "ATL",
+    "pos": "OF",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 166,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2521-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "3435",
-      "name": "Francisco Alvarez",
-      "mlb_team": "NYM"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "2521",
+    "player_name": "Griffin Jax",
+    "team": "MIN",
+    "pos": "RP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 272,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2767-KAP_Keeper-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4019",
-      "name": "Nick Lodolo",
-      "mlb_team": "CIN"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1",
-      "new_contract": "TC-2",
-      "salary": 15,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2767",
+    "player_name": "Josh Naylor",
+    "team": "AZ",
+    "pos": "1B",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 56,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "KAP_Keeper",
+    "event": "KAP 2026: VC-1->VC-2 ($35)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4266-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4174",
-      "name": "Edwin Uceta",
-      "mlb_team": "TB"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "4266",
+    "player_name": "Porter Hodge",
+    "team": "CHC",
+    "pos": "RP",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2045-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "6500",
-      "name": "Cris Rodriguez",
-      "mlb_team": "DET"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "2045",
+    "player_name": "Alejandro Kirk",
+    "team": "TOR",
+    "pos": "C",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 190,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2158-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "1933",
-      "name": "Carlos Correa",
-      "mlb_team": "HOU"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
+    "upid": "2158",
+    "player_name": "Brad Keller",
+    "team": "CHC",
+    "pos": "RP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_2643-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2474",
-      "name": "Evan Carter",
-      "mlb_team": "TEX"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-R",
-      "new_contract": "TC-1",
-      "salary": 5,
-      "has_il_tag": false,
-      "has_rat": false
-    }
+    "upid": "2643",
+    "player_name": "Jeff McNeil",
+    "team": "NYM",
+    "pos": "2B,CF",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 340,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   },
   {
+    "id": "2026-2026-03-02T18:35:45.188439-UPID_4027-KAP_Release-CFL",
+    "season": 2026,
+    "source": "kap",
+    "admin": "CFL",
     "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2644",
-      "name": "Jeffrey Springs",
-      "mlb_team": "ATH"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2274",
-      "name": "Christian Walker",
-      "mlb_team": "HOU"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-2"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4101",
-      "name": "Shane Baz",
-      "mlb_team": "TB"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-2"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2795",
-      "name": "Jurickson Profar",
-      "mlb_team": "ATL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2521",
-      "name": "Griffin Jax",
-      "mlb_team": "MIN"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2767",
-      "name": "Josh Naylor",
-      "mlb_team": "AZ"
-    },
-    "action": "keeper_selection",
-    "details": {
-      "season": 2026,
-      "old_contract": "VC-1",
-      "new_contract": "VC-2",
-      "salary": 35,
-      "has_il_tag": false,
-      "has_rat": false
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4266",
-      "name": "Porter Hodge",
-      "mlb_team": "CHC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "6595",
-      "name": "Colt Emerson",
-      "mlb_team": "SEA"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2045",
-      "name": "Alejandro Kirk",
-      "mlb_team": "TOR"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2158",
-      "name": "Brad Keller",
-      "mlb_team": "CHC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "2643",
-      "name": "Jeff McNeil",
-      "mlb_team": "NYM"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "4027",
-      "name": "Bryan Baker",
-      "mlb_team": "BAL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "TC-1"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7942",
-      "name": "Seth Hernandez",
-      "mlb_team": "PIT"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7943",
-      "name": "Jamie Arnold",
-      "mlb_team": "ATH"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7951",
-      "name": "Steele Hall",
-      "mlb_team": "CIN"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7963",
-      "name": "Slater de Brun",
-      "mlb_team": "BAL"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7965",
-      "name": "Josh Hammond",
-      "mlb_team": "KC"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "7975",
-      "name": "Cam Cannarella",
-      "mlb_team": "MIA"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
-  },
-  {
-    "timestamp": "2026-03-02T18:35:45.188439",
-    "team": "CFL",
-    "player": {
-      "upid": "8025",
-      "name": "Miguel Sime Jr.",
-      "mlb_team": "WSH"
-    },
-    "action": "kap_release",
-    "details": {
-      "season": 2026,
-      "old_contract": "P"
-    }
+    "upid": "4027",
+    "player_name": "Bryan Baker",
+    "team": "BAL",
+    "pos": "RP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": null,
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "KAP_Release",
+    "event": "KAP 2026: released (TC-1)"
   }
 ]

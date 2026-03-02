@@ -298,24 +298,30 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
                 player['years_simple'] = new_ys
                 player['status'] = new_status
             
-            # Log to player_log
+            # Log to player_log (flat schema matching trade/roster entries)
+            salary = calculate_keeper_cost(keeper)
             player_log.append({
+                'id': f'{season}-{now}-UPID_{player_upid}-KAP_Keeper-{team}',
+                'season': season,
+                'source': 'kap',
+                'admin': team,
                 'timestamp': now,
-                'team': team,
-                'player': {
-                    'upid': player_upid,
-                    'name': player.get('name', ''),
-                    'mlb_team': player.get('team', '')
-                },
-                'action': 'keeper_selection',
-                'details': {
-                    'season': season,
-                    'old_contract': contract_key,
-                    'new_contract': new_key,
-                    'salary': calculate_keeper_cost(keeper),
-                    'has_il_tag': keeper.has_il_tag,
-                    'has_rat': keeper.has_rat
-                }
+                'upid': player_upid,
+                'player_name': player.get('name', ''),
+                'team': player.get('team', ''),
+                'pos': player.get('position', ''),
+                'age': player.get('age'),
+                'level': player.get('level', ''),
+                'team_rank': player.get('team_rank'),
+                'rank': player.get('rank'),
+                'eta': player.get('eta', ''),
+                'player_type': player.get('player_type', ''),
+                'owner': team_name,
+                'contract': player.get('contract_type', ''),
+                'status': player.get('status', ''),
+                'years': player.get('years_simple', ''),
+                'update_type': 'KAP_Keeper',
+                'event': f'KAP {season}: {contract_key}->{new_key} (${salary})'
             })
         elif is_team_player and player.get('player_type') == 'MLB':
             # Release non-kept MLB players — clear ownership so they go to the draft
@@ -323,18 +329,27 @@ def process_kap_submission(submission: KAPSubmission, test_mode: bool = False) -
             old_years_simple = (player.get('years_simple') or '').strip()
             contract_key = _YEARS_SIMPLE_TO_KEY.get(old_years_simple, old_years_simple)
             player_log.append({
+                'id': f'{season}-{now}-UPID_{player_upid}-KAP_Release-{team}',
+                'season': season,
+                'source': 'kap',
+                'admin': team,
                 'timestamp': now,
-                'team': team,
-                'player': {
-                    'upid': player_upid,
-                    'name': player.get('name', ''),
-                    'mlb_team': player.get('team', '')
-                },
-                'action': 'kap_release',
-                'details': {
-                    'season': season,
-                    'old_contract': contract_key,
-                }
+                'upid': player_upid,
+                'player_name': player.get('name', ''),
+                'team': player.get('team', ''),
+                'pos': player.get('position', ''),
+                'age': player.get('age'),
+                'level': player.get('level', ''),
+                'team_rank': player.get('team_rank'),
+                'rank': player.get('rank'),
+                'eta': player.get('eta', ''),
+                'player_type': player.get('player_type', ''),
+                'owner': team_name,
+                'contract': player.get('contract_type', ''),
+                'status': player.get('status', ''),
+                'years': player.get('years_simple', ''),
+                'update_type': 'KAP_Release',
+                'event': f'KAP {season}: released ({contract_key})'
             })
             player['manager'] = None
             player['FBP_Team'] = None
