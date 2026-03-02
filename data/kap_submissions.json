@@ -139,5 +139,97 @@
       "rounds": []
     },
     "submitted_by": "WAR"
+  },
+  "CFL": {
+    "season": 2026,
+    "team": "CFL",
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "keeper_count": 11,
+    "keepers": [
+      {
+        "upid": "1882",
+        "name": "Alex Bregman",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2362",
+        "name": "Daylen Lile",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3014",
+        "name": "Mitch Keller",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4010",
+        "name": "George Kirby",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4324",
+        "name": "Geraldo Perdomo",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4040",
+        "name": "MacKenzie Gore",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1972",
+        "name": "Ranger Su\u00e1rez",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "7287",
+        "name": "Yoshinobu Yamamoto",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4019",
+        "name": "Nick Lodolo",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2474",
+        "name": "Evan Carter",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2767",
+        "name": "Josh Naylor",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 325,
+    "tax_bracket": {
+      "min": 0,
+      "max": 325,
+      "rounds": []
+    },
+    "submitted_by": "CFL"
   }
 }

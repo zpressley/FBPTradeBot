@@ -36679,5 +36679,735 @@
     "years": "TC R",
     "update_type": "Trade",
     "event": "TRADE-010326_1918-011: DRO->DMN"
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "6566",
+      "name": "Max Clark",
+      "mlb_team": "DET"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4283",
+      "name": "Adley Rutschman",
+      "mlb_team": "BAL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "1882",
+      "name": "Alex Bregman",
+      "mlb_team": "BOS"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1",
+      "new_contract": "VC-2",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7681",
+      "name": "Bryce Rainer",
+      "mlb_team": "DET"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2237",
+      "name": "Carter Jensen",
+      "mlb_team": "KC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7112",
+      "name": "Cooper Ingle",
+      "mlb_team": "CLE"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2362",
+      "name": "Daylen Lile",
+      "mlb_team": "WSH"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-R",
+      "new_contract": "TC-1",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "3014",
+      "name": "Mitch Keller",
+      "mlb_team": "PIT"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1",
+      "new_contract": "TC-2",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4010",
+      "name": "George Kirby",
+      "mlb_team": "SEA"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1",
+      "new_contract": "VC-2",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4324",
+      "name": "Geraldo Perdomo",
+      "mlb_team": "AZ"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1",
+      "new_contract": "TC-2",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2550",
+      "name": "Ian Happ",
+      "mlb_team": "CHC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2626",
+      "name": "Jason Adam",
+      "mlb_team": "SD"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7199",
+      "name": "Josue Brice\u00f1o",
+      "mlb_team": "DET"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4040",
+      "name": "MacKenzie Gore",
+      "mlb_team": "WSH"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1",
+      "new_contract": "TC-2",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "3895",
+      "name": "Justin Crawford",
+      "mlb_team": "PHI"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "1972",
+      "name": "Ranger Su\u00e1rez",
+      "mlb_team": "PHI"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1",
+      "new_contract": "TC-2",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7595",
+      "name": "Seaver King",
+      "mlb_team": "WSH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7623",
+      "name": "Slade Caldwell",
+      "mlb_team": "AZ"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "3986",
+      "name": "Steven Kwan",
+      "mlb_team": "CLE"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "1981",
+      "name": "Tommy Edman",
+      "mlb_team": "LAD"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-2"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7677",
+      "name": "Travis Bazzana",
+      "mlb_team": "CLE"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7287",
+      "name": "Yoshinobu Yamamoto",
+      "mlb_team": "LAD"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1",
+      "new_contract": "VC-2",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7282",
+      "name": "Shota Imanaga",
+      "mlb_team": "CHC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2591",
+      "name": "Jake Cronenworth",
+      "mlb_team": "SD"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "3435",
+      "name": "Francisco Alvarez",
+      "mlb_team": "NYM"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4019",
+      "name": "Nick Lodolo",
+      "mlb_team": "CIN"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1",
+      "new_contract": "TC-2",
+      "salary": 15,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4174",
+      "name": "Edwin Uceta",
+      "mlb_team": "TB"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "6500",
+      "name": "Cris Rodriguez",
+      "mlb_team": "DET"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "1933",
+      "name": "Carlos Correa",
+      "mlb_team": "HOU"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2474",
+      "name": "Evan Carter",
+      "mlb_team": "TEX"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-R",
+      "new_contract": "TC-1",
+      "salary": 5,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2644",
+      "name": "Jeffrey Springs",
+      "mlb_team": "ATH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2274",
+      "name": "Christian Walker",
+      "mlb_team": "HOU"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-2"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4101",
+      "name": "Shane Baz",
+      "mlb_team": "TB"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-2"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2795",
+      "name": "Jurickson Profar",
+      "mlb_team": "ATL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2521",
+      "name": "Griffin Jax",
+      "mlb_team": "MIN"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2767",
+      "name": "Josh Naylor",
+      "mlb_team": "AZ"
+    },
+    "action": "keeper_selection",
+    "details": {
+      "season": 2026,
+      "old_contract": "VC-1",
+      "new_contract": "VC-2",
+      "salary": 35,
+      "has_il_tag": false,
+      "has_rat": false
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4266",
+      "name": "Porter Hodge",
+      "mlb_team": "CHC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "6595",
+      "name": "Colt Emerson",
+      "mlb_team": "SEA"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2045",
+      "name": "Alejandro Kirk",
+      "mlb_team": "TOR"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2158",
+      "name": "Brad Keller",
+      "mlb_team": "CHC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "2643",
+      "name": "Jeff McNeil",
+      "mlb_team": "NYM"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "4027",
+      "name": "Bryan Baker",
+      "mlb_team": "BAL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "TC-1"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7942",
+      "name": "Seth Hernandez",
+      "mlb_team": "PIT"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7943",
+      "name": "Jamie Arnold",
+      "mlb_team": "ATH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7951",
+      "name": "Steele Hall",
+      "mlb_team": "CIN"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7963",
+      "name": "Slater de Brun",
+      "mlb_team": "BAL"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7965",
+      "name": "Josh Hammond",
+      "mlb_team": "KC"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "7975",
+      "name": "Cam Cannarella",
+      "mlb_team": "MIA"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
+  },
+  {
+    "timestamp": "2026-03-02T18:35:45.188439",
+    "team": "CFL",
+    "player": {
+      "upid": "8025",
+      "name": "Miguel Sime Jr.",
+      "mlb_team": "WSH"
+    },
+    "action": "kap_release",
+    "details": {
+      "season": 2026,
+      "old_contract": "P"
+    }
   }
 ]
