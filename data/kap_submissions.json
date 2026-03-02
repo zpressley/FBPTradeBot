@@ -706,5 +706,115 @@
       ]
     },
     "submitted_by": "DRO"
+  },
+  "DMN": {
+    "season": 2026,
+    "team": "DMN",
+    "timestamp": "2026-03-02T23:03:53.139787",
+    "keeper_count": 13,
+    "keepers": [
+      {
+        "upid": "1886",
+        "name": "Aaron Judge",
+        "contract": "FC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4090",
+        "name": "Luis Gil",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1877",
+        "name": "Freddie Freeman",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1943",
+        "name": "Dylan Cease",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1963",
+        "name": "Manny Machado",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3436",
+        "name": "Corbin Carroll",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2974",
+        "name": "Michael King",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3449",
+        "name": "Jack Leiter",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4295",
+        "name": "Bobby Witt",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2347",
+        "name": "Daulton Varsho",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3741",
+        "name": "Emmet Sheehan",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "7153",
+        "name": "Jacob Lopez",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2999",
+        "name": "Mike Burrows",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 395,
+    "tax_bracket": {
+      "min": 376,
+      "max": 400,
+      "rounds": [
+        6,
+        7,
+        8
+      ]
+    },
+    "submitted_by": "DMN"
   }
 }

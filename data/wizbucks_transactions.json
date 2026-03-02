@@ -1920,5 +1920,30 @@
       ],
       "submitted_by": "DRO"
     }
+  },
+  {
+    "txn_id": "wb_DMN_KAP_submission_1772492633",
+    "timestamp": "2026-03-02T23:03:53.166970Z",
+    "team": "DMN",
+    "amount": -385,
+    "balance_before": 420,
+    "balance_after": 35,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 13 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 13,
+      "keeper_salary": 385,
+      "rat_cost": 0,
+      "buyin_cost": 10,
+      "taxable_spend": 395,
+      "taxed_rounds": [
+        6,
+        7,
+        8
+      ],
+      "submitted_by": "DMN"
+    }
   }
 ]
