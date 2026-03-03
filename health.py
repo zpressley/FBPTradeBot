@@ -1044,7 +1044,7 @@ except Exception:
     pass
 
 
-def _resolve_prospect_name
+def _resolve_prospect_name(prospect_id):
     """Resolve a UPID to a player name for readable Discord messages."""
     try:
         with open("data/combined_players.json", "r", encoding="utf-8") as f:
