@@ -41385,5 +41385,28 @@
     "years": "TC 1",
     "update_type": "KAP_Release",
     "event": "KAP 2026: released (TC-1)"
+  },
+  {
+    "id": "2026-2026-03-02T19:21:32.722964-05:00-UPID_2210-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-03-02T19:21:32.722964-05:00",
+    "upid": "2210",
+    "player_name": "Bryce Harper",
+    "team": "PHI",
+    "pos": "1B",
+    "age": 33,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 38,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[2] VC2",
+    "years": "VC 2",
+    "update_type": "Admin",
+    "event": ""
   }
 ]

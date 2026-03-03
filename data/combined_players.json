@@ -1663,8 +1663,8 @@
     "manager": "Btwn2Jackies",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
-    "status": "[1] FC1",
-    "years_simple": "FC 1",
+    "status": "[2] VC2",
+    "years_simple": "VC 2",
     "yahoo_id": "8875",
     "upid": "2210",
     "mlb_id": 547180,
@@ -1677,7 +1677,8 @@
     "throws": "R",
     "mlb_primary_position": "1B",
     "fypd": false,
-    "rank": 38
+    "rank": 38,
+    "level": "MLB"
   },
   {
     "name": "Connor Wong",
