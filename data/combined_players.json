@@ -145200,7 +145200,7 @@
     "upid": "8440",
     "name": "Munetaka Murakami",
     "team": "CHW",
-    "position": "3B",
+    "position": "1B, 3B",
     "age": 26,
     "manager": "",
     "player_type": "MLB",
@@ -145213,7 +145213,9 @@
     "bats": "L",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "rank": "188",
+    "status": "[6] TCR"
   },
   {
     "upid": "8441",
