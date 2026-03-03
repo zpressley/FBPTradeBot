@@ -816,5 +816,129 @@
       ]
     },
     "submitted_by": "DMN"
+  },
+  "B2J": {
+    "season": 2026,
+    "team": "B2J",
+    "timestamp": "2026-03-03T00:13:18.201588",
+    "keeper_count": 15,
+    "keepers": [
+      {
+        "upid": "2176",
+        "name": "Brandon Nimmo",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2202",
+        "name": "Bryan Abreu",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2210",
+        "name": "Bryce Harper",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": true
+      },
+      {
+        "upid": "2581",
+        "name": "Jacob Wilson",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3513",
+        "name": "Iv\u00e1n Herrera",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3989",
+        "name": "Brendan Donovan",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1913",
+        "name": "Max Fried",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2624",
+        "name": "Jarren Duran",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4016",
+        "name": "Joe Ryan",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1928",
+        "name": "Bo Bichette",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1918",
+        "name": "Shane Bieber",
+        "contract": "TC-1",
+        "has_il_tag": true,
+        "has_rat": false
+      },
+      {
+        "upid": "2960",
+        "name": "Matthew Boyd",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2025",
+        "name": "Adrian Morejon",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1915",
+        "name": "Rafael Devers",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1958",
+        "name": "Kevin Gausman",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 370,
+    "tax_bracket": {
+      "min": 351,
+      "max": 375,
+      "rounds": [
+        7,
+        8,
+        9
+      ]
+    },
+    "submitted_by": "B2J"
   }
 }

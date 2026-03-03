@@ -1945,5 +1945,30 @@
       ],
       "submitted_by": "DMN"
     }
+  },
+  {
+    "txn_id": "wb_B2J_KAP_submission_1772496798",
+    "timestamp": "2026-03-03T00:13:18.255275Z",
+    "team": "B2J",
+    "amount": -380,
+    "balance_before": 380,
+    "balance_after": 0,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 15 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 15,
+      "keeper_salary": 305,
+      "rat_cost": 75,
+      "buyin_cost": 65,
+      "taxable_spend": 370,
+      "taxed_rounds": [
+        7,
+        8,
+        9
+      ],
+      "submitted_by": "B2J"
+    }
   }
 ]
