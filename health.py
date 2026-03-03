@@ -565,6 +565,18 @@ async def setup_hook():
 # ---- FastAPI Web Server ----
 app = FastAPI()
 
+# ── TEST MODE: enable CORS so the local website can reach the local API. ──
+# When DraftCommands.TEST_MODE is flipped back to False, the middleware is
+# still present but harmless (production traffic goes through the Cloudflare
+# Worker which adds its own CORS headers).
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Add exception handler to log validation errors
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -625,19 +637,28 @@ def detailed_health():
 
 # ---- API auth helpers ----
 
-def verify_api_key(x_api_key: str = Header(...)) -> bool:
+def verify_api_key(x_api_key: str | None = Header(default=None)) -> bool:
     """Simple API key gate for Cloudflare Worker → bot API traffic.
 
-    Logs minimal diagnostics for debugging, without exposing the key value.
+    In TEST MODE (DraftCommands.TEST_MODE == True), allows unauthenticated
+    requests so the local website can hit the local bot API directly without
+    the Cloudflare Worker injecting X-API-Key.
     """
+    # TEST MODE bypass: allow unauthenticated access for local testing
+    if not x_api_key:
+        try:
+            cog = bot.get_cog('DraftCommands')
+            if cog and getattr(cog, 'TEST_MODE', False):
+                return True
+        except Exception:
+            pass
 
     if not API_KEY:
         print("❌ API request received but BOT_API_KEY is not configured in environment")
         raise HTTPException(status_code=500, detail="BOT_API_KEY not configured")
 
-    if x_api_key != API_KEY:
-        # Do NOT log the provided key; just note that it was invalid.
-        print("❌ API request with invalid X-API-Key header")
+    if not x_api_key or x_api_key != API_KEY:
+        print("❌ API request with missing or invalid X-API-Key header")
         raise HTTPException(status_code=401, detail="Invalid API key")
 
     return True
@@ -776,8 +797,17 @@ def build_draft_payload(draft_type: str) -> dict:
     else:
         season = configured_season
 
-    # DraftManager will choose the appropriate state file based on type/season.
-    mgr = DraftManager(draft_type=draft_type, season=season)
+    # If the running draft cog has TEST_MODE enabled, the API should also
+    # read from the test state file so the website reflects the test draft.
+    test_mode = False
+    try:
+        cog = bot.get_cog('DraftCommands')
+        if cog and getattr(cog, 'TEST_MODE', False):
+            test_mode = True
+    except Exception:
+        pass
+
+    mgr = DraftManager(draft_type=draft_type, season=season, test_mode=test_mode)
     state = mgr.state
     order = mgr.draft_order
     current_pick = mgr.get_current_pick()
