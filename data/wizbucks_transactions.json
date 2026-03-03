@@ -1970,5 +1970,30 @@
       ],
       "submitted_by": "B2J"
     }
+  },
+  {
+    "txn_id": "wb_LFB_KAP_submission_1772504565",
+    "timestamp": "2026-03-03T02:22:45.602132Z",
+    "team": "LFB",
+    "amount": -420,
+    "balance_before": 430,
+    "balance_after": 10,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 14 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 14,
+      "keeper_salary": 420,
+      "rat_cost": 0,
+      "buyin_cost": 0,
+      "taxable_spend": 420,
+      "taxed_rounds": [
+        5,
+        6,
+        7
+      ],
+      "submitted_by": "LFB"
+    }
   }
 ]

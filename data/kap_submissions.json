@@ -940,5 +940,122 @@
       ]
     },
     "submitted_by": "B2J"
+  },
+  "LFB": {
+    "season": 2026,
+    "team": "LFB",
+    "timestamp": "2026-03-03T02:22:45.576715",
+    "keeper_count": 14,
+    "keepers": [
+      {
+        "upid": "1879",
+        "name": "Mookie Betts",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1945",
+        "name": "Fernando Tatis Jr.",
+        "contract": "FC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2636",
+        "name": "Jazz Chisholm Jr.",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3266",
+        "name": "Tarik Skubal",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3462",
+        "name": "Shea Langeliers",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4022",
+        "name": "Hunter Greene",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4018",
+        "name": "Andr\u00e9s Mu\u00f1oz",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1876",
+        "name": "Jacob deGrom",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1919",
+        "name": "Shohei Ohtani (2 Way player - Counts as 2 roster slots)",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1931",
+        "name": "Byron Buxton",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3116",
+        "name": "Randy Arozarena",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3399",
+        "name": "Yandy D\u00edaz",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3523",
+        "name": "Jordan Westburg",
+        "contract": "TC-2",
+        "has_il_tag": true,
+        "has_rat": false
+      },
+      {
+        "upid": "3559",
+        "name": "Coby Mayo",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 420,
+    "tax_bracket": {
+      "min": 401,
+      "max": 420,
+      "rounds": [
+        5,
+        6,
+        7
+      ]
+    },
+    "submitted_by": "LFB"
   }
 }
