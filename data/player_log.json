@@ -43271,5 +43271,23 @@
     "years": "TC 2",
     "update_type": "KAP_Keeper",
     "event": "KAP 2026: TC-1->TC-2 ($15)"
+  },
+  {
+    "id": "2026-2026-03-03T14:09:16.065850-UPID_7048-Merge-Admin_Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-03-03T14:09:16.065850",
+    "upid": "7048",
+    "player_name": "C.J. Kayfus",
+    "team": "CLE",
+    "owner": "Andromedans",
+    "update_type": "Merge",
+    "event": "MERGED: CJ Kayfus (UPID 7510) merged into this record",
+    "changes": {},
+    "merged_from": {
+      "upid": "7510",
+      "name": "CJ Kayfus"
+    }
   }
 ]
