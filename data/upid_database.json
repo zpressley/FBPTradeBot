@@ -66101,6 +66101,16 @@
       "pos": "3B",
       "alt_names": [],
       "approved_dupes": "FALSE"
+    },
+    "8442": {
+      "upid": "8442",
+      "name": "Sung-Mun Song",
+      "team": "SD",
+      "pos": "3B",
+      "alt_names": [
+        "Sung Mun Song"
+      ],
+      "approved_dupes": "FALSE"
     }
   },
   "name_index": {
@@ -87212,10 +87222,14 @@
       "8441"
     ],
     "sung-mun song": [
-      "8438"
+      "8438",
+      "8442"
     ],
     "tatsuya imai": [
       "8439"
+    ],
+    "sung mun song": [
+      "8442"
     ]
   }
 }
