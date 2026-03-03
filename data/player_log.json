@@ -43979,5 +43979,28 @@
     "years": "TC 1",
     "update_type": "KAP_Keeper",
     "event": "KAP 2026: TC-R->TC-1 ($5)"
+  },
+  {
+    "id": "2026-2026-03-03T14:50:21.157376-05:00-UPID_8439-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-03-03T14:50:21.157376-05:00",
+    "upid": "8439",
+    "player_name": "Tatsuya Imai",
+    "team": "HOU",
+    "pos": "P",
+    "age": 27,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "",
+    "contract": "",
+    "status": "",
+    "years": "TC R",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley"
   }
 ]
