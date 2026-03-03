@@ -1252,5 +1252,178 @@
       ]
     },
     "submitted_by": "HAM"
+  },
+  "SAD": {
+    "season": 2026,
+    "team": "SAD",
+    "timestamp": "2026-03-03T16:00:20.899188",
+    "keeper_count": 22,
+    "keepers": [
+      {
+        "upid": "1969",
+        "name": "Nathan Eovaldi",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2349",
+        "name": "David Bednar",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1973",
+        "name": "Robbie Ray",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1884",
+        "name": "Jos\u00e9 Ram\u00edrez",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1959",
+        "name": "Kyle Schwarber",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2445",
+        "name": "Elly De La Cruz",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3388",
+        "name": "Mason Miller",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3448",
+        "name": "Eury P\u00e9rez",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3468",
+        "name": "Jackson Chourio",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3887",
+        "name": "Zach Neto",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4463",
+        "name": "Junior Caminero",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6524",
+        "name": "Cade Smith",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2667",
+        "name": "Jo Adell",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3836",
+        "name": "Hunter Goodman",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "6592",
+        "name": "Matt Shaw",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4286",
+        "name": "Bryan Woo",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4454",
+        "name": "Julio Rodr\u00edguez",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4085",
+        "name": "Cole Ragans",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4045",
+        "name": "Kyle Bradish",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4155",
+        "name": "Jeremiah Estrada",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3534",
+        "name": "Ryne Nelson",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "5006",
+        "name": "Noah Cameron",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 410,
+    "tax_bracket": {
+      "min": 401,
+      "max": 420,
+      "rounds": [
+        5,
+        6,
+        7
+      ]
+    },
+    "submitted_by": "SAD"
   }
 }

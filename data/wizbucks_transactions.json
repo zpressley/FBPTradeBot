@@ -2041,5 +2041,30 @@
       ],
       "submitted_by": "HAM"
     }
+  },
+  {
+    "txn_id": "wb_SAD_KAP_submission_1772553620",
+    "timestamp": "2026-03-03T16:00:20.935727Z",
+    "team": "SAD",
+    "amount": -410,
+    "balance_before": 420,
+    "balance_after": 10,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 22 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 22,
+      "keeper_salary": 410,
+      "rat_cost": 0,
+      "buyin_cost": 0,
+      "taxable_spend": 410,
+      "taxed_rounds": [
+        5,
+        6,
+        7
+      ],
+      "submitted_by": "SAD"
+    }
   }
 ]
