@@ -2083,5 +2083,22 @@
       "admin": "zpressley",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_HAM_admin_adjustment_1772570997",
+    "timestamp": "2026-03-03T20:49:57.741303Z",
+    "team": "HAM",
+    "amount": -200,
+    "balance_before": 230,
+    "balance_after": 30,
+    "transaction_type": "admin_adjustment",
+    "description": "Admin Update - KAP Error",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
   }
 ]
