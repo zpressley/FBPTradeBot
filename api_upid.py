@@ -200,6 +200,151 @@ async def update_approved_dupes(
 
 
 # ---------------------------------------------------------------------------
+# POST /api/upid  (create new UPID record)
+# ---------------------------------------------------------------------------
+@router.post("")
+async def create_upid_record(
+    request: Request,
+    _=Depends(verify_api_key),
+):
+    """Create a new UPID record with auto-assigned ID."""
+    body = await request.json()
+    name = (body.get("name") or "").strip()
+    team = (body.get("team") or "").strip()
+    pos = (body.get("pos") or "").strip()
+    alt_names = body.get("alt_names", [])
+    approved_dupes = body.get("approved_dupes", "FALSE")
+    admin = body.get("admin", "unknown")
+
+    if not name:
+        raise HTTPException(status_code=400, detail="name is required")
+
+    with DATA_LOCK:
+        upid_db = _load_upid_db()
+        by_upid = upid_db.get("by_upid", {})
+
+        # Auto-assign next UPID (collision-safe)
+        if by_upid:
+            next_upid = max(int(k) for k in by_upid if k.isdigit()) + 1
+        else:
+            next_upid = 1
+        while str(next_upid) in by_upid:
+            next_upid += 1
+
+        rec = {
+            "upid": next_upid,
+            "name": name,
+            "team": team,
+            "pos": pos,
+            "alt_names": alt_names if isinstance(alt_names, list) else [],
+            "approved_dupes": approved_dupes if approved_dupes in ("TRUE", "FALSE") else "FALSE",
+        }
+        by_upid[str(next_upid)] = rec
+        upid_db["by_upid"] = by_upid
+        _rebuild_name_index(upid_db)
+        _save_upid_db(upid_db)
+
+    _enqueue_commit(f"UPID {next_upid}: created '{name}' by {admin}")
+
+    return {"upid": next_upid, "record": rec}
+
+
+# ---------------------------------------------------------------------------
+# DELETE /api/upid/{upid}
+# ---------------------------------------------------------------------------
+@router.delete("/{upid}")
+async def delete_upid_record(
+    upid: str,
+    request: Request,
+    _=Depends(verify_api_key),
+):
+    """Delete a UPID record."""
+    body = await request.json()
+    admin = body.get("admin", "unknown")
+
+    with DATA_LOCK:
+        upid_db = _load_upid_db()
+        rec = upid_db["by_upid"].pop(upid, None)
+        if not rec:
+            raise HTTPException(status_code=404, detail=f"UPID {upid} not found")
+
+        _rebuild_name_index(upid_db)
+        _save_upid_db(upid_db)
+
+    _enqueue_commit(f"UPID {upid}: deleted '{rec.get('name', '?')}' by {admin}")
+
+    return {"deleted": True, "record": rec}
+
+
+# ---------------------------------------------------------------------------
+# POST /api/upid/merge
+# ---------------------------------------------------------------------------
+@router.post("/merge")
+async def merge_upid_records(
+    request: Request,
+    _=Depends(verify_api_key),
+):
+    """Merge source UPID into target UPID.
+
+    Source's name and alt_names become alt_names on the target.
+    Source record is deleted.
+    """
+    body = await request.json()
+    source_upid = str(body.get("source_upid", "")).strip()
+    target_upid = str(body.get("target_upid", "")).strip()
+    admin = body.get("admin", "unknown")
+
+    if not source_upid or not target_upid:
+        raise HTTPException(status_code=400, detail="source_upid and target_upid are required")
+    if source_upid == target_upid:
+        raise HTTPException(status_code=400, detail="Cannot merge a record into itself")
+
+    with DATA_LOCK:
+        upid_db = _load_upid_db()
+        by_upid = upid_db.get("by_upid", {})
+
+        source = by_upid.get(source_upid)
+        target = by_upid.get(target_upid)
+        if not source:
+            raise HTTPException(status_code=404, detail=f"Source UPID {source_upid} not found")
+        if not target:
+            raise HTTPException(status_code=404, detail=f"Target UPID {target_upid} not found")
+
+        # Collect names to merge into target alt_names
+        incoming = [source.get("name", "")] + (source.get("alt_names") or [])
+        existing = set((n or "").strip().lower() for n in
+                       [target.get("name", "")] + (target.get("alt_names") or []))
+
+        merged_alts = list(target.get("alt_names") or [])
+        for n in incoming:
+            if (n or "").strip() and (n or "").strip().lower() not in existing:
+                merged_alts.append(n.strip())
+                existing.add(n.strip().lower())
+        target["alt_names"] = merged_alts
+
+        # Preserve approved_dupes if source had it
+        if (source.get("approved_dupes") or "").upper() == "TRUE":
+            target["approved_dupes"] = "TRUE"
+
+        # Remove source
+        del by_upid[source_upid]
+
+        _rebuild_name_index(upid_db)
+        _save_upid_db(upid_db)
+
+    _enqueue_commit(
+        f"UPID merge: {source_upid} ('{source.get('name', '?')}') → "
+        f"{target_upid} ('{target.get('name', '?')}') by {admin}"
+    )
+
+    return {
+        "merged": True,
+        "source": source,
+        "target": target,
+    }
+
+
+# ---------------------------------------------------------------------------
 # PUT /api/upid/{upid}
 # ---------------------------------------------------------------------------
 @router.put("/{upid}")
