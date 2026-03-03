@@ -145221,7 +145221,7 @@
     "upid": "8441",
     "name": "Kazuma Okamoto",
     "team": "TOR",
-    "position": "1B, 3B",
+    "position": "3B",
     "age": 29,
     "manager": "",
     "player_type": "MLB",
@@ -145234,15 +145234,13 @@
     "bats": "R",
     "throws": "R",
     "fypd": false,
-    "level": "MLB",
-    "rank": "206",
-    "status": "[6] TCR"
+    "level": "MLB"
   },
   {
     "upid": "8442",
     "name": "Sung-Mun Song",
     "team": "SD",
-    "position": "3B",
+    "position": "2B, 3B",
     "age": 29,
     "manager": "",
     "player_type": "MLB",
@@ -145255,6 +145253,8 @@
     "bats": "L",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "rank": "499",
+    "status": "[6] TCR"
   }
 ]
