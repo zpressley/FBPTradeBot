@@ -2016,5 +2016,30 @@
       "taxed_rounds": [],
       "submitted_by": "JEP"
     }
+  },
+  {
+    "txn_id": "wb_HAM_KAP_submission_1772510384",
+    "timestamp": "2026-03-03T03:59:44.542115Z",
+    "team": "HAM",
+    "amount": -290,
+    "balance_before": 420,
+    "balance_after": 130,
+    "transaction_type": "KAP_submission",
+    "description": "2026 KAP: 14 keepers selected",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "keeper_count": 14,
+      "keeper_salary": 290,
+      "rat_cost": 0,
+      "buyin_cost": 100,
+      "taxable_spend": 390,
+      "taxed_rounds": [
+        6,
+        7,
+        8
+      ],
+      "submitted_by": "HAM"
+    }
   }
 ]

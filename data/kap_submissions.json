@@ -1135,5 +1135,122 @@
       "rounds": []
     },
     "submitted_by": "JEP"
+  },
+  "HAM": {
+    "season": 2026,
+    "team": "HAM",
+    "timestamp": "2026-03-03T03:59:44.493578",
+    "keeper_count": 14,
+    "keepers": [
+      {
+        "upid": "1989",
+        "name": "Yordan Alvarez",
+        "contract": "TC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2575",
+        "name": "Jackson Merrill",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2883",
+        "name": "Logan Gilbert",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3953",
+        "name": "Chandler Simpson",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4575",
+        "name": "Drake Baldwin",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2884",
+        "name": "Logan Webb",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3998",
+        "name": "Jonathan Aranda",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2409",
+        "name": "Drew Rasmussen",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3473",
+        "name": "Michael Busch",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3478",
+        "name": "Andy Pages",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "5464",
+        "name": "Isaac Collins",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4005",
+        "name": "Spencer Strider",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "5829",
+        "name": "Caleb Durbin",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "2946",
+        "name": "Matt Chapman",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 390,
+    "tax_bracket": {
+      "min": 376,
+      "max": 400,
+      "rounds": [
+        6,
+        7,
+        8
+      ]
+    },
+    "submitted_by": "HAM"
   }
 }
