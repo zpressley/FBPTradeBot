@@ -321,10 +321,6 @@ class DraftCommands(commands.Cog):
         if not team:
             return False
 
-        # Forklift mode is only intended for the prospect draft (board-driven).
-        if self.draft_manager is not None and getattr(self.draft_manager, "draft_type", None) != "prospect":
-            return False
-
         if self.forklift_manager is None:
             return False
         return self.forklift_manager.is_forklift_enabled(team)
@@ -1509,11 +1505,7 @@ class DraftCommands(commands.Cog):
             self.board_manager = BoardManager(season=2026)
 
         if self.draft_manager is None:
-            # Create a lightweight manager just so we can git-commit/persist.
-            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
-
-        if self.draft_manager.draft_type != "prospect":
-            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            await interaction.response.send_message("❌ No active draft. Start a draft first.", ephemeral=True)
             return
 
         self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
@@ -1570,15 +1562,12 @@ class DraftCommands(commands.Cog):
         team = team.upper().strip()
 
         if self.draft_manager is None:
-            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
-
-        if self.draft_manager.draft_type != "prospect":
-            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            await interaction.response.send_message("❌ No active draft. Start a draft first.", ephemeral=True)
             return
 
         self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
 
-        ok, msg = self.forklift_manager.disable_forklift(team, disabled_by=interaction.user.name)  # type: ignore[union-attr]
+        ok, msg = self.forklift_manager.disable_forklift(team, disabled_by=interaction.user.name)
         if not ok:
             await interaction.response.send_message(f"⚠️ {msg}", ephemeral=True)
             return
@@ -1617,10 +1606,7 @@ class DraftCommands(commands.Cog):
             self.board_manager = BoardManager(season=2026)
 
         if self.draft_manager is None:
-            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
-
-        if self.draft_manager.draft_type != "prospect":
-            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            await interaction.response.send_message("❌ No active draft. Start a draft first.", ephemeral=True)
             return
 
         self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
@@ -1653,15 +1639,12 @@ class DraftCommands(commands.Cog):
             self.board_manager = BoardManager(season=2026)
 
         if self.draft_manager is None:
-            self.draft_manager = DraftManager(draft_type="prospect", season=2026, test_mode=self.TEST_MODE)
-
-        if self.draft_manager.draft_type != "prospect":
-            await interaction.response.send_message("❌ Forklift mode is only supported for the prospect draft.", ephemeral=True)
+            await interaction.response.send_message("❌ No active draft. Start a draft first.", ephemeral=True)
             return
 
         self._ensure_forklift_manager(season=2026, draft_type=self.draft_manager.draft_type)
 
-        teams = self.forklift_manager.get_forklift_teams() if self.forklift_manager else []
+        teams = self.forklift_manager.get_forklift_teams()
         if not teams:
             await interaction.response.send_message("📋 No teams are currently in Forklift Mode", ephemeral=True)
             return

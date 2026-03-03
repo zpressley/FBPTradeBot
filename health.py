@@ -53,6 +53,7 @@ from api_buyin import router as buyin_router, set_buyin_bot_reference, set_buyin
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 from api_settings import router as settings_router, set_settings_commit_fn
 from api_notes import router as notes_router, set_notes_commit_fn
+from api_upid import router as upid_router, set_upid_commit_fn
 from data_lock import DATA_LOCK
 
 # Load environment variables
@@ -324,9 +325,12 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
             _log("GIT_PUSH_RETRY", {"reason": "non-fast-forward", "output": combined[-1200:]})
 
             # Conflict-resistant retry:
+            # - Snapshot ALL data/*.json files (not just this batch's files)
+            #   so that concurrent writes from other endpoints are preserved
             # - Fetch remote main
             # - Hard reset local main to FETCH_HEAD
-            # - Re-apply ONLY the file contents we intended to commit
+            # - Restore ALL data files from snapshot
+            # - Overwrite with batch-specific snapshots (most recent versions)
             # - Commit + push
             #
             # IMPORTANT: Hold DATA_LOCK during the reset+restore+commit so
@@ -346,6 +350,21 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
                         continue
 
             with DATA_LOCK:
+                # Snapshot ALL data JSON files before reset so concurrent
+                # writes from other endpoints are not lost.
+                import glob as _glob
+                full_data_snapshot: dict[str, bytes] = {}
+                data_dir = os.path.join(repo_root, "data")
+                if os.path.isdir(data_dir):
+                    for json_path in _glob.glob(os.path.join(data_dir, "*.json")):
+                        rel = os.path.relpath(json_path, repo_root)
+                        try:
+                            with open(json_path, "rb") as fh:
+                                full_data_snapshot[rel] = fh.read()
+                        except Exception:
+                            pass
+                _log("GIT_FULL_DATA_SNAPSHOT", {"file_count": len(full_data_snapshot)})
+
                 # Best-effort cleanup of any interrupted operations
                 subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
                 subprocess.run(["git", "merge", "--abort"], cwd=repo_root, capture_output=True, text=True)
@@ -355,7 +374,20 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
                 _run(["git", "fetch", fetch_remote, "main"])
                 _run(["git", "reset", "--hard", "FETCH_HEAD"])
 
-                # Restore saved file contents
+                # Restore ALL data files from pre-reset snapshot first.
+                # This ensures no concurrent writes are lost.
+                for rel, blob in full_data_snapshot.items():
+                    try:
+                        full = os.path.join(repo_root, rel)
+                        os.makedirs(os.path.dirname(full), exist_ok=True)
+                        with open(full, "wb") as f:
+                            f.write(blob)
+                    except Exception as wexc:
+                        _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
+
+                # Then overwrite with batch-specific snapshots (these are
+                # the most recent versions of the files this batch cares
+                # about, captured at queue time).
                 for rel, blob in (saved_files or {}).items():
                     try:
                         full = os.path.join(repo_root, rel)
@@ -365,9 +397,11 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
                     except Exception as wexc:
                         _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
 
-                # Re-stage + commit while still holding the lock
-                if existing_paths:
-                    _run(["git", "add", *existing_paths])
+                # Re-stage + commit while still holding the lock.
+                # Stage all data files so nothing is left behind.
+                all_restore_paths = list(set(list(full_data_snapshot.keys()) + existing_paths))
+                if all_restore_paths:
+                    _run(["git", "add", *all_restore_paths])
 
                 staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
                 if not (staged.stdout or "").strip():
@@ -604,6 +638,8 @@ app.include_router(trade_router)
 app.include_router(settings_router)
 # Manager notes router
 app.include_router(notes_router)
+# UPID database management router
+app.include_router(upid_router)
 
 
 # Health check
@@ -1002,8 +1038,13 @@ try:
 except Exception:
     pass
 
+try:
+    set_upid_commit_fn(_commit_and_push)
+except Exception:
+    pass
 
-def _resolve_prospect_name(prospect_id: str) -> str:
+
+def _resolve_prospect_name
     """Resolve a UPID to a player name for readable Discord messages."""
     try:
         with open("data/combined_players.json", "r", encoding="utf-8") as f:

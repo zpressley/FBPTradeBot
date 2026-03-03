@@ -383,6 +383,10 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
 
             existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
             next_upid = (max(existing_upids) + 1) if existing_upids else 1
+            # Defensive: verify UPID is truly free (git reset --hard can
+            # revert upid_database.json, causing stale max reads).
+            while str(next_upid) in upid_db["by_upid"]:
+                next_upid += 1
             player_data["upid"] = str(next_upid)
 
             print(f"  📝 Assigned UPID: {next_upid}")
