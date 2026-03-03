@@ -1057,5 +1057,83 @@
       ]
     },
     "submitted_by": "LFB"
+  },
+  "JEP": {
+    "season": 2026,
+    "team": "JEP",
+    "timestamp": "2026-03-03T02:54:51.378452",
+    "keeper_count": 9,
+    "keepers": [
+      {
+        "upid": "3521",
+        "name": "James Wood",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1917",
+        "name": "Ronald Acu\u00f1a Jr.",
+        "contract": "VC-2",
+        "has_il_tag": false,
+        "has_rat": true
+      },
+      {
+        "upid": "1971",
+        "name": "Pete Alonso",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "1987",
+        "name": "Will Smith",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3043",
+        "name": "Nick Pivetta",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4424",
+        "name": "CJ Abrams",
+        "contract": "VC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4688",
+        "name": "Will Warren",
+        "contract": "TC-R",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "3506",
+        "name": "Ryan Pepiot",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      },
+      {
+        "upid": "4727",
+        "name": "Wilyer Abreu",
+        "contract": "TC-1",
+        "has_il_tag": false,
+        "has_rat": false
+      }
+    ],
+    "taxable_spend": 315,
+    "tax_bracket": {
+      "min": 0,
+      "max": 325,
+      "rounds": []
+    },
+    "submitted_by": "JEP"
   }
 }
