@@ -50,12 +50,15 @@ class DraftManager:
         self.season = season
 
         if test_mode is None:
-            test_mode = os.getenv("DRAFT_TEST_MODE", "false").lower() == "true"
+            test_mode = False
         self.test_mode = bool(test_mode)
         
         # File paths
         self.order_file = f"data/draft_order_{season}.json"
-        self.state_file = f"data/draft_state_{draft_type}_{season}.json"
+        if self.test_mode:
+            self.state_file = f"data/draft_state_{draft_type}_{season}_TEST.json"
+        else:
+            self.state_file = f"data/draft_state_{draft_type}_{season}.json"
         
         # Load draft configuration
         self.draft_order = self.load_draft_order()
@@ -959,6 +962,9 @@ class DraftManager:
         Uses REPO_ROOT when available (Render), otherwise current working
         directory. Failures are logged but never raised.
         """
+        if self.test_mode:
+            print(f"🧪 TEST MODE — skipping git commit/push: {message}")
+            return
         repo_root = os.getenv("REPO_ROOT", os.getcwd())
 
         try:

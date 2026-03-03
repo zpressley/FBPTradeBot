@@ -87,8 +87,8 @@ class PickValidator:
         if not ok:
             return False, f"❌ {reason}", player
         
-        # 4. Enforce FYPD-only constraint in rounds 1–2
-        if round_num in self.FYPD_ROUNDS and not bool(player.get("fypd")):
+        # 4. Enforce FYPD-only constraint in rounds 1–2 (prospect draft only)
+        if self.draft.draft_type == "prospect" and round_num in self.FYPD_ROUNDS and not bool(player.get("fypd")):
             return False, (
                 "❌ Rounds 1–2 are FYPD-only. "
                 f"{player['name']} is not in the FYPD pool."
@@ -150,14 +150,25 @@ class PickValidator:
         return matches[0] if matches else None
     
     def _is_prospect_eligible(self, player: Dict) -> Tuple[bool, str]:
-        """Check that a player is an eligible prospect for this draft.
+        """Check that a player is eligible for the current draft type.
 
-        Rules enforced here:
+        Prospect draft:
         - Must be a Farm prospect: player_type == "Farm".
         - Must not already have a BC/DC/PC contract: contract_type blank.
-        - (Service-time / graduation limits are assumed to be baked into
-          combined_players via the graduation pipeline.)
+
+        Keeper draft:
+        - Must be an MLB player: player_type == "MLB".
+        - Must not already be owned by a team (manager blank).
         """
+        if self.draft.draft_type == "keeper":
+            if player.get("player_type") != "MLB":
+                return False, "Player is not an MLB player."
+            owner = (player.get("manager") or "").strip()
+            if owner:
+                return False, f"Player is already owned by {owner}."
+            return True, "Eligible MLB player"
+
+        # Prospect draft
         if player.get("player_type") != "Farm":
             return False, "Player is not a Farm prospect."
 

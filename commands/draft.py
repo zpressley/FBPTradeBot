@@ -59,6 +59,10 @@ class PickConfirmationView(discord.ui.View):
         if interaction.user and interaction.user.id in self.allowed_user_ids:
             return True
 
+        # In test mode, server admins can confirm/cancel any pick.
+        if self.draft_cog._is_test_admin(interaction.user):
+            return True
+
         msg = "❌ Only the manager who submitted this pick can confirm/cancel it."
         try:
             if interaction.response.is_done():
@@ -206,9 +210,14 @@ class DraftCommands(commands.Cog):
         self.WARNING_TIME = 60
         self.current_timer_duration = self.PICK_TIMER_DURATION
         
-        # Draft test mode (defaults to OFF). When enabled, designated testers
-        # can submit picks for whichever team is on the clock.
-        self.TEST_MODE = os.getenv("DRAFT_TEST_MODE", "false").lower() == "true"
+        # ── TEST MODE TOGGLE ──────────────────────────────────────────
+        # Flip to True to run keeper draft locally without side effects:
+        #   • Uses _TEST state file (draft_state_keeper_2026_TEST.json)
+        #   • No Discord DMs
+        #   • No git commits / pushes
+        #   • No roster or draft-order mutations
+        # Flip back to False for the real draft.
+        self.TEST_MODE = True
         
         self.draft_manager = None
         self.pick_validator = None
@@ -232,6 +241,61 @@ class DraftCommands(commands.Cog):
             return True
         user_roles = [role.name for role in interaction.user.roles]
         return any(role in self.ADMIN_ROLE_NAMES for role in user_roles)
+
+    def _is_test_admin(self, member) -> bool:
+        """Check if a member can pick for any team in test mode.
+
+        Returns True when TEST_MODE is on and the member is:
+        - in TEST_USER_IDS, OR
+        - a server admin / Commissioner / Admin role holder.
+
+        Works with both interaction.user and message.author.
+        Falls back gracefully in DMs (no roles/permissions).
+        """
+        if not self.TEST_MODE:
+            return False
+        if member.id in TEST_USER_IDS:
+            return True
+        if hasattr(member, 'guild_permissions') and member.guild_permissions.administrator:
+            return True
+        if hasattr(member, 'roles'):
+            return any(role.name in self.ADMIN_ROLE_NAMES for role in member.roles)
+        return False
+
+    def _setup_test_boards(self):
+        """In TEST MODE, replace all team boards with MIA players sorted by rank.
+
+        Changes are in-memory only — real board file is never touched.
+        When TEST_MODE is flipped to False this method is never called and
+        real boards load normally.
+        """
+        if not self.TEST_MODE or not self.prospect_db or not self.board_manager:
+            return
+
+        mia_players = [
+            p for p in self.prospect_db.players.values()
+            if (p.get("team") or "").upper() == "MIA"
+        ]
+
+        # Sort by rank; players without a rank go to the end.
+        def _rank_key(p):
+            r = p.get("rank")
+            return r if isinstance(r, (int, float)) else 99999
+
+        mia_players.sort(key=_rank_key)
+
+        # Build encoded-UPID list for the BoardManager
+        test_board = []
+        for p in mia_players:
+            upid = str(p.get("upid") or "").strip()
+            if upid:
+                test_board.append(self.board_manager._encode(upid))
+
+        # Overwrite every team's board in memory (no disk write)
+        for team in list(self.board_manager.boards.keys()):
+            self.board_manager.boards[team] = test_board.copy()
+
+        print(f"\U0001f9ea TEST MODE \u2014 loaded {len(test_board)} MIA players as test board for all {len(self.board_manager.boards)} teams")
     
     def _get_team_for_user(self, user_id: int) -> str:
         from commands.utils import DISCORD_ID_TO_TEAM
@@ -293,8 +357,8 @@ class DraftCommands(commands.Cog):
         if not is_draft_channel and not is_dm:
             return
         
-        # TEST MODE: Allow test admins to pick for current team
-        if self.TEST_MODE and message.author.id in TEST_USER_IDS:
+        # TEST MODE: Allow test admins / server admins to pick for current team
+        if self._is_test_admin(message.author):
             user_team = current_pick['team']
         else:
             user_team = self._get_team_for_user(message.author.id)
@@ -327,10 +391,13 @@ class DraftCommands(commands.Cog):
             return
         
         # Show confirmation.
-        # - If the user typed in the draft channel, send the confirmation UI
-        #   to their DMs (hidden).
+        # - TEST MODE: always keep in channel (no DMs).
+        # - Normal: if user typed in draft channel, send confirmation to DMs.
         # - If they typed in DM, keep it in DM.
-        delivery = "dm" if is_draft_channel and not is_dm else "channel"
+        if self.TEST_MODE:
+            delivery = "channel"
+        else:
+            delivery = "dm" if is_draft_channel and not is_dm else "channel"
         await self.show_pick_confirmation(
             message.channel,
             message.author,
@@ -1183,6 +1250,9 @@ class DraftCommands(commands.Cog):
             # Initialize PickValidator
             self.pick_validator = PickValidator(self.prospect_db, self.draft_manager)
 
+            # In test mode, swap in MIA-only test boards (in-memory, no save)
+            self._setup_test_boards()
+
             # Initialize ForkliftManager (persists forklift teams across restarts)
             self.forklift_manager = ForkliftManager(season=2026, draft_type=draft_type.value)
             
@@ -1409,6 +1479,9 @@ class DraftCommands(commands.Cog):
             self.board_manager = BoardManager(season=2026)
             self.prospect_db = ProspectDatabase(season=2026, draft_type=draft_type)
             self.pick_validator = PickValidator(self.prospect_db, self.draft_manager)
+
+            # Restore test boards after reset
+            self._setup_test_boards()
 
             await interaction.followup.send(
                 f"✅ Draft reset to Pick 1. Cleared {len(mutated)} data artifact(s).",
