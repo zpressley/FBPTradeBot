@@ -215,8 +215,16 @@ def apply_admin_player_update(
             raise ValueError(f"Player with UPID {payload.upid} not found in combined_players")
 
         # Apply field changes and track diffs for auditing.
+        # Coerce known numeric fields so they're stored as numbers, not strings.
+        _NUMERIC_FIELDS = {"rank", "age"}
+
         changes_applied: Dict[str, Dict[str, Any]] = {}
         for field, value in payload.changes.items():
+            if field in _NUMERIC_FIELDS and value is not None:
+                try:
+                    value = int(value)
+                except (ValueError, TypeError):
+                    pass  # leave as-is if it can't be converted
             before = player.get(field)
             if before != value:
                 changes_applied[str(field)] = {"from": before, "to": value}

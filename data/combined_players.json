@@ -145195,7 +145195,7 @@
     "throws": "R",
     "fypd": false,
     "level": "MLB",
-    "rank": "180",
+    "rank": 180,
     "status": "[6] TCR"
   },
   {
@@ -145216,14 +145216,14 @@
     "throws": "R",
     "fypd": false,
     "level": "MLB",
-    "rank": "188",
+    "rank": 188,
     "status": "[6] TCR"
   },
   {
     "upid": "8441",
     "name": "Kazuma Okamoto",
     "team": "TOR",
-    "position": "3B",
+    "position": "1B, 3B",
     "age": 29,
     "manager": "",
     "player_type": "MLB",
@@ -145236,7 +145236,9 @@
     "bats": "R",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "rank": 206,
+    "status": "[6] TCR"
   },
   {
     "upid": "8442",
@@ -145256,7 +145258,7 @@
     "throws": "R",
     "fypd": false,
     "level": "MLB",
-    "rank": "499",
+    "rank": 499,
     "status": "[6] TCR"
   }
 ]

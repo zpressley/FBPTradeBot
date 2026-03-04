@@ -209,9 +209,6 @@ class DraftManager:
             team = pick["team"]
             team_counts[team] = team_counts.get(team, 0) + 1
         
-        print(f"📊 Pick distribution:")
-        for team, count in sorted(team_counts.items()):
-            print(f"   {team}: {count} picks")
     
     def load_or_init_state(self) -> Dict:
         """

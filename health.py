@@ -1320,8 +1320,14 @@ async def api_manager_contract_purchase(
     upgrade_cost = result.get("cost")
     commit_msg = f"Contract purchase: {player_name} ({payload.team})"
 
-    # Discord notification FIRST — send before commit so a redeploy
-    # triggered by the push cannot kill the notification in-flight.
+    # Snapshot + queue commit IMMEDIATELY so concurrent push-retries
+    # (git reset --hard) cannot erase our changes before snapshot.
+    try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Contract purchase git commit/push failed:", exc)
+
+    # Discord notification (non-blocking; actual push happens in background worker)
     try:
         player_rec = result.get("player") or {}
         player_team = player_rec.get("team") or ""
@@ -1336,15 +1342,8 @@ async def api_manager_contract_purchase(
             f"{timestamp}"
         )
         bot.loop.create_task(_send_transaction_log_message(discord_msg))
-        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Failed to send contract purchase Discord message:", exc)
-
-    # Commit/push is best-effort and may trigger a Railway redeploy.
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Contract purchase git commit/push failed:", exc)
 
     return {
         "player": result.get("player"),
@@ -1383,8 +1382,15 @@ async def api_admin_update_player(
     ]
     commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
 
-    # Discord notification FIRST — send before commit so a redeploy
-    # triggered by the push cannot kill the notification in-flight.
+    # Snapshot + queue commit IMMEDIATELY after data save so that a
+    # concurrent push-retry (git reset --hard) cannot erase our changes
+    # before the snapshot is captured.
+    try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Admin update git commit/push failed:", exc)
+
+    # Discord notification (non-blocking; actual push happens in background worker)
     try:
         player_name = result['player'].get('name', 'Unknown')
         upid = result['player'].get('upid', payload.upid)
@@ -1427,14 +1433,8 @@ async def api_admin_update_player(
             f"💾 Source: Website Admin Portal"
         )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
-        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Admin update Discord notification failed:", exc)
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin update git commit/push failed:", exc)
 
     return result
 
@@ -1460,6 +1460,11 @@ async def api_admin_delete_player(
     commit_msg = f"Admin delete: {result['player'].get('name', payload.upid)}"
 
     try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Admin delete git commit/push failed:", exc)
+
+    try:
         player_name = result['player'].get('name', 'Unknown')
         upid = result.get('upid', payload.upid)
         discord_msg = (
@@ -1468,14 +1473,8 @@ async def api_admin_delete_player(
             f"💾 Source: Website Admin Portal"
         )
         bot.loop.create_task(_send_admin_log_message(discord_msg))
-        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Admin delete Discord notification failed:", exc)
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin delete git commit/push failed:", exc)
 
     return result
 
@@ -1501,20 +1500,19 @@ async def api_admin_merge_players(
     commit_msg = f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}"
 
     try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Admin merge git commit/push failed:", exc)
+
+    try:
         source_name = result.get('source_name', 'Unknown')
         target_name = result.get('target_name', 'Unknown')
         source_upid = result.get('source_upid', '?')
         target_upid = result.get('target_upid', '?')
         discord_msg = f"🔀 **Admin Merge**\n\n📥 Kept: **{target_name}** (UPID {target_upid})\n🗑️ Deleted: **{source_name}** (UPID {source_upid})\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
-        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Admin merge Discord notification failed:", exc)
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin merge git commit/push failed:", exc)
 
     return result
 
@@ -1540,6 +1538,11 @@ async def api_admin_wizbucks_adjustment(
     commit_msg = f"Admin WB: {result['team']} {result['amount']} ({result['installment']})"
 
     try:
+        _commit_and_push(core_files, commit_msg)
+    except Exception as exc:
+        print("⚠️ Admin WB git commit/push failed:", exc)
+
+    try:
         team = result['team']
         amount = result['amount']
         installment = result['installment']
@@ -1547,14 +1550,8 @@ async def api_admin_wizbucks_adjustment(
         sign = '+' if amount >= 0 else ''
         discord_msg = f"💰 **Admin WizBucks Adjustment**\n\n🏆 Team: **{team}**\n💸 Amount: **{sign}{amount}**\n📅 Installment: {installment}\n📊 New Balance: {new_balance}\n💾 Source: Website Admin Portal"
         bot.loop.create_task(_send_admin_log_message(discord_msg))
-        await asyncio.sleep(2)
     except Exception as exc:
         print("⚠️ Admin WB Discord notification failed:", exc)
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin WB git commit/push failed:", exc)
 
     return result
 
