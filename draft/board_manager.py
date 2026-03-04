@@ -353,7 +353,14 @@ class BoardManager:
         Uses REPO_ROOT when available (Render), otherwise current working
         directory. Failures are logged but never raised.
         """
-        repo_root = os.getenv("REPO_ROOT", os.getcwd())
+        repo_root = os.getenv("REPO_ROOT", "")
+        if not repo_root or not os.path.isdir(repo_root):
+            for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
+                if candidate and os.path.isdir(candidate):
+                    repo_root = candidate
+                    break
+            else:
+                repo_root = os.getcwd()
         boards_rel = self.boards_file  # typically data/manager_boards_2026.json
 
         try:

@@ -677,10 +677,23 @@ class DraftCommands(commands.Cog):
             if user_id:
                 try:
                     user = await self.bot.fetch_user(user_id)
+                    
+                    # Build board suggestions for the warning DM
+                    board_text = ""
+                    if self.board_manager and self.draft_manager:
+                        resolved = self.board_manager.resolve_board(current_pick['team'])
+                        drafted = set(p['player'].lower() for p in self.draft_manager.state["picks_made"])
+                        available = [e['name'] for e in resolved if e['name'].lower() not in drafted]
+                        if available[:10]:
+                            board_text = "\n\n💡 **Your Board (Top 10 Available):**\n" + "\n".join(
+                                f"{i+1}. {p}" for i, p in enumerate(available[:10])
+                            )
+                    
                     await user.send(
                         f"⏰ **Clock almost up!**\n\n"
                         f"Round {current_pick['round']}, Pick {current_pick['pick']}\n"
                         f"Make your pick now!"
+                        f"{board_text}"
                     )
                 except:
                     pass
@@ -1104,10 +1117,10 @@ class DraftCommands(commands.Cog):
                 drafted = set(p['player'].lower() for p in self.draft_manager.state["picks_made"])
                 available = [e['name'] for e in resolved if e['name'].lower() not in drafted]
                 
-                if available[:5]:
-                    board_text = "\n".join(f"{i+1}. {p}" for i, p in enumerate(available[:5]))
+                if available[:10]:
+                    board_text = "\n".join(f"{i+1}. {p}" for i, p in enumerate(available[:10]))
                     embed.add_field(
-                        name="💡 Your Board (Top 5 Available)",
+                        name="💡 Your Board (Top 10 Available)",
                         value=board_text,
                         inline=False
                     )

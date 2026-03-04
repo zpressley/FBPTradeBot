@@ -962,7 +962,15 @@ class DraftManager:
         if self.test_mode:
             print(f"🧪 TEST MODE — skipping git commit/push: {message}")
             return
-        repo_root = os.getenv("REPO_ROOT", os.getcwd())
+        repo_root = os.getenv("REPO_ROOT", "")
+        if not repo_root or not os.path.isdir(repo_root):
+            # Smart fallback: prefer a directory with .git
+            for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
+                if candidate and os.path.isdir(candidate):
+                    repo_root = candidate
+                    break
+            else:
+                repo_root = os.getcwd()
 
         try:
             if file_paths:
