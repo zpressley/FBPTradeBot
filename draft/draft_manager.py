@@ -959,9 +959,10 @@ class DraftManager:
         Uses REPO_ROOT when available (Render), otherwise current working
         directory. Failures are logged but never raised.
         """
-        if self.test_mode:
-            print(f"🧪 TEST MODE — skipping git commit/push: {message}")
-            return
+        # Note: git commits are allowed even in test mode to verify the pipeline.
+        # if self.test_mode:
+        #     print(f"🧪 TEST MODE — skipping git commit/push: {message}")
+        #     return
         repo_root = os.getenv("REPO_ROOT", "")
         if not repo_root or not os.path.isdir(repo_root):
             # Smart fallback: prefer a directory with .git

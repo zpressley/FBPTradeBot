@@ -217,7 +217,7 @@ class DraftCommands(commands.Cog):
         #   • No git commits / pushes
         #   • No roster or draft-order mutations
         # Flip back to False for the real draft.
-        self.TEST_MODE = False
+        self.TEST_MODE = True
         
         self.draft_manager = None
         self.pick_validator = None
