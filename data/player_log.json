@@ -44163,5 +44163,28 @@
     "years": "",
     "update_type": "Admin",
     "event": "KAP Correction (Drop)"
+  },
+  {
+    "id": "2026-2026-03-04T22:47:45.892996-05:00-UPID_3228-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-03-04T22:47:45.892996-05:00",
+    "upid": "3228",
+    "player_name": "Shane McClanahan",
+    "team": "TB",
+    "pos": "SP",
+    "age": 28,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 249,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "Admin",
+    "event": "KAP Correction (Add)"
   }
 ]
