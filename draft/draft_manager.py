@@ -963,9 +963,20 @@ class DraftManager:
         # if self.test_mode:
         #     print(f"🧪 TEST MODE — skipping git commit/push: {message}")
         #     return
+
+        # Prefer the centralized commit queue from health.py which handles
+        # .git bootstrap, retries, and snapshot protection on Railway.
+        try:
+            from health import _commit_and_push
+            _commit_and_push(file_paths, message)
+            print(f"✅ Draft commit queued via health pipeline: {message}")
+            return
+        except ImportError:
+            pass
+
+        # Fallback: direct git operations (local development)
         repo_root = os.getenv("REPO_ROOT", "")
         if not repo_root or not os.path.isdir(repo_root):
-            # Smart fallback: prefer a directory with .git
             for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
                 if candidate and os.path.isdir(candidate):
                     repo_root = candidate

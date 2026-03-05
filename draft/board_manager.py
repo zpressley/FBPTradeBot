@@ -353,6 +353,19 @@ class BoardManager:
         Uses REPO_ROOT when available (Render), otherwise current working
         directory. Failures are logged but never raised.
         """
+        # Prefer the centralized commit queue from health.py which handles
+        # .git bootstrap on Railway.
+        boards_rel = self.boards_file
+        message = f"Update draft boards for season {self.season}"
+        try:
+            from health import _commit_and_push
+            _commit_and_push([boards_rel], message)
+            print(f"✅ Draft boards commit queued via health pipeline")
+            return
+        except ImportError:
+            pass
+
+        # Fallback: direct git operations (local development)
         repo_root = os.getenv("REPO_ROOT", "")
         if not repo_root or not os.path.isdir(repo_root):
             for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
@@ -361,7 +374,6 @@ class BoardManager:
                     break
             else:
                 repo_root = os.getcwd()
-        boards_rel = self.boards_file  # typically data/manager_boards_2026.json
 
         try:
             subprocess.run(
@@ -372,7 +384,6 @@ class BoardManager:
                 text=True,
             )
 
-            message = f"Update draft boards for season {self.season}"
             subprocess.run(
                 ["git", "commit", "-m", message],
                 check=True,
