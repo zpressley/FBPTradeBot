@@ -44140,5 +44140,28 @@
     "years": "TC R",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-03-04T22:40:28.430643-05:00-UPID_4022-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-03-04T22:40:28.430643-05:00",
+    "upid": "4022",
+    "player_name": "Hunter Greene",
+    "team": "CIN",
+    "pos": "SP",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 46,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "(empty)",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "Admin",
+    "event": "KAP Correction (Drop)"
   }
 ]
