@@ -10,7 +10,16 @@ value lives in config/board_cipher.json.
 import json
 import os
 import subprocess
-from typing import List, Optional, Dict
+from typing import Callable, List, Optional, Dict
+
+# Injected by health.py at module load — same pattern as api_settings, api_notes, etc.
+_board_commit_fn: Optional[Callable[[list[str], str], None]] = None
+
+
+def set_board_commit_fn(fn: Callable[[list[str], str], None]) -> None:
+    """Set the commit function (called from health.py at startup)."""
+    global _board_commit_fn
+    _board_commit_fn = fn
 
 
 class BoardManager:
@@ -348,138 +357,19 @@ class BoardManager:
     # ------------------------------------------------------------------ #
 
     def _commit_boards_file(self) -> None:
-        """Best-effort helper to git commit and push the boards file.
+        """Best-effort commit via the injected queue (set by health.py).
 
-        Uses REPO_ROOT when available (Render), otherwise current working
-        directory. Failures are logged but never raised.
+        Falls back to a no-op log if the commit function was never injected
+        (e.g. running board_manager standalone for tests).
         """
-        # Prefer the centralized commit queue from health.py which handles
-        # .git bootstrap on Railway.
-        boards_rel = self.boards_file
-        message = f"Update draft boards for season {self.season}"
-        try:
-            from health import _commit_and_push
-            _commit_and_push([boards_rel], message)
-            print(f"✅ Draft boards commit queued via health pipeline")
-            return
-        except ImportError:
-            pass
-
-        # Fallback: direct git operations (local development)
-        repo_root = os.getenv("REPO_ROOT", "")
-        if not repo_root or not os.path.isdir(repo_root):
-            for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
-                if candidate and os.path.isdir(candidate):
-                    repo_root = candidate
-                    break
-            else:
-                repo_root = os.getcwd()
-
-        try:
-            subprocess.run(
-                ["git", "add", boards_rel],
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
-
-            subprocess.run(
-                ["git", "commit", "-m", message],
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
-
-            token = os.getenv("GITHUB_TOKEN")
-            if token:
-                repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
-                username = os.getenv("GITHUB_USER", "x-access-token")
-                remote_url = f"https://{username}:{token}@github.com/{repo}.git"
-                push_cmd = ["git", "push", remote_url, "HEAD:main"]
-            else:
-                push_cmd = ["git", "push"]
-
-            subprocess.run(
-                push_cmd,
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
-            print("✅ Draft boards git commit and push succeeded")
-
-        except subprocess.CalledProcessError as exc:
-            print(f"⚠️ Draft boards git commit/push failed with code {exc.returncode}")
-        except Exception as exc:
-            print(f"⚠️ Draft boards git commit/push error: {exc}")
-    
-    def get_board_size(self, team: str) -> int:
-        """Get number of players on team's board"""
-        return len(self.boards.get(team, []))
-    
-    def clear_board(self, team: str) -> tuple[bool, str]:
-        """Clear all players from team's board"""
-        if team not in self.boards:
-            return False, "No board to clear"
-        
-        count = len(self.boards[team])
-        self.boards[team] = []
-        self.save_boards()
-        
-        return True, f"Cleared {count} players from your board"
-    
-    def get_next_available(self, team: str, drafted_players: List[str]) -> Optional[str]:
-        """
-        Get next available player from team's board.
-        Used for autopick logic.
-        
-        Args:
-            team: Team abbreviation
-            drafted_players: List of already-drafted player names
-            
-        Returns:
-            Next available player name, or None if board empty/all drafted
-        """
-        board = self.boards.get(team, [])
-        drafted_set = set(p.lower() for p in drafted_players)
-        
-        for player in board:
-            if player.lower() not in drafted_set:
-                return player
-        
-        return None  # No available players on board
-    
-    def mark_as_drafted(self, player_name: str) -> None:
-        """
-        Mark player as drafted across all boards.
-        (Optional - can be used to show strikethrough in board display)
-        
-        For now, we just leave them on the board and check availability at autopick time.
-        """
-        pass
-    
-    def get_board_stats(self, team: str, drafted_players: List[str]) -> Dict:
-        """
-        Get statistics about a team's board.
-        
-        Returns:
-            Dict with total, available, drafted counts
-        """
-        board = self.boards.get(team, [])
-        drafted_set = set(p.lower() for p in drafted_players)
-        
-        total = len(board)
-        drafted_count = sum(1 for p in board if p.lower() in drafted_set)
-        available = total - drafted_count
-        
-        return {
-            "total": total,
-            "available": available,
-            "drafted": drafted_count,
-            "slots_remaining": self.MAX_BOARD_SIZE - total
-        }
+        if _board_commit_fn is not None:
+            try:
+                _board_commit_fn([self.boards_file], f"Update draft boards for season {self.season}")
+                print("✅ Draft boards commit queued via health pipeline")
+            except Exception as exc:
+                print(f"⚠️ Draft boards commit queue error: {exc}")
+        else:
+            print("⚠️ Draft boards commit skipped (no commit function injected)")
 
 
 # Testing

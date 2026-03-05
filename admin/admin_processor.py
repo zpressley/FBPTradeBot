@@ -220,11 +220,15 @@ def apply_admin_player_update(
 
         changes_applied: Dict[str, Dict[str, Any]] = {}
         for field, value in payload.changes.items():
-            if field in _NUMERIC_FIELDS and value is not None:
-                try:
-                    value = int(value)
-                except (ValueError, TypeError):
-                    pass  # leave as-is if it can't be converted
+            if field in _NUMERIC_FIELDS:
+                # Coerce to int; treat empty/blank strings as None
+                if value is None or (isinstance(value, str) and not value.strip()):
+                    value = None
+                else:
+                    try:
+                        value = int(value)
+                    except (ValueError, TypeError):
+                        pass  # leave as-is if it can't be converted
             before = player.get(field)
             if before != value:
                 changes_applied[str(field)] = {"from": before, "to": value}

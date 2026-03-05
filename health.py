@@ -23,7 +23,7 @@ from auction_manager import AuctionManager
 from draft.draft_manager import DraftManager
 from draft.prospect_database import ProspectDatabase
 from draft.pick_validator import PickValidator
-from draft.board_manager import BoardManager
+from draft.board_manager import BoardManager, set_board_commit_fn
 from pad.pad_processor import (
     PadSubmissionPayload,
     PadAlreadySubmittedError,
@@ -1040,6 +1040,11 @@ except Exception:
 
 try:
     set_upid_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
+try:
+    set_board_commit_fn(_commit_and_push)
 except Exception:
     pass
 

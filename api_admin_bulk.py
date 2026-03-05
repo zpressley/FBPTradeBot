@@ -396,12 +396,22 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
             if not isinstance(players, list):
                 players = []
 
+            # Coerce numeric fields
+            raw_age = player_data.get("age")
+            if raw_age is not None and str(raw_age).strip():
+                try:
+                    raw_age = int(raw_age)
+                except (ValueError, TypeError):
+                    pass
+            else:
+                raw_age = None
+
             new_player = {
                 "upid": str(next_upid),
                 "name": player_data.get("name", ""),
                 "team": player_data.get("team", ""),
                 "position": player_data.get("position", ""),
-                "age": player_data.get("age"),
+                "age": raw_age,
                 "manager": player_data.get("manager", ""),
                 "player_type": player_data.get("player_type", "Farm"),
                 "contract_type": player_data.get("contract_type", ""),
