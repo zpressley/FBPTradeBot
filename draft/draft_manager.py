@@ -8,7 +8,7 @@ import os
 import subprocess
 import threading
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 from pad.pad_processor import (
     _append_player_log_entry,
@@ -16,6 +16,15 @@ from pad.pad_processor import (
     _save_json,
     load_managers_config,
 )
+
+# Injected by health.py at module load — same pattern as board_manager, api_settings, etc.
+_draft_commit_fn: Optional[Callable[[list[str], str], None]] = None
+
+
+def set_draft_commit_fn(fn: Callable[[list[str], str], None]) -> None:
+    """Set the commit function (called from health.py at startup)."""
+    global _draft_commit_fn
+    _draft_commit_fn = fn
 
 
 def _resolve_team_name(team_abbr: str) -> str:
@@ -954,76 +963,19 @@ class DraftManager:
 
 
     def _commit_draft_files(self, file_paths: List[str], message: str) -> None:
-        """Best-effort helper to git commit and push draft data files.
+        """Best-effort commit via the injected queue (set by health.py).
 
-        Uses REPO_ROOT when available (Render), otherwise current working
-        directory. Failures are logged but never raised.
+        Falls back to a no-op log if the commit function was never injected
+        (e.g. running draft_manager standalone for tests).
         """
-        # Note: git commits are allowed even in test mode to verify the pipeline.
-        # if self.test_mode:
-        #     print(f"🧪 TEST MODE — skipping git commit/push: {message}")
-        #     return
-
-        # Prefer the centralized commit queue from health.py which handles
-        # .git bootstrap, retries, and snapshot protection on Railway.
-        try:
-            from health import _commit_and_push
-            _commit_and_push(file_paths, message)
-            print(f"✅ Draft commit queued via health pipeline: {message}")
-            return
-        except ImportError:
-            pass
-
-        # Fallback: direct git operations (local development)
-        repo_root = os.getenv("REPO_ROOT", "")
-        if not repo_root or not os.path.isdir(repo_root):
-            for candidate in [os.getcwd(), os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "/app"]:
-                if candidate and os.path.isdir(candidate):
-                    repo_root = candidate
-                    break
-            else:
-                repo_root = os.getcwd()
-
-        try:
-            if file_paths:
-                subprocess.run(
-                    ["git", "add", *file_paths],
-                    check=True,
-                    cwd=repo_root,
-                    capture_output=True,
-                    text=True,
-                )
-
-            subprocess.run(
-                ["git", "commit", "-m", message],
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
-
-            token = os.getenv("GITHUB_TOKEN")
-            if token:
-                repo = os.getenv("GITHUB_REPO", "zpressley/FBPTradeBot")
-                username = os.getenv("GITHUB_USER", "x-access-token")
-                remote_url = f"https://{username}:{token}@github.com/{repo}.git"
-                push_cmd = ["git", "push", remote_url, "HEAD:main"]
-            else:
-                push_cmd = ["git", "push"]
-
-            subprocess.run(
-                push_cmd,
-                check=True,
-                cwd=repo_root,
-                capture_output=True,
-                text=True,
-            )
-            print("✅ Draft git commit and push succeeded")
-
-        except subprocess.CalledProcessError as exc:
-            print(f"⚠️ Draft git commit/push failed with code {exc.returncode}")
-        except Exception as exc:
-            print(f"⚠️ Draft git commit/push error: {exc}")
+        if _draft_commit_fn is not None:
+            try:
+                _draft_commit_fn(file_paths, message)
+                print(f"✅ Draft commit queued via health pipeline: {message}")
+            except Exception as exc:
+                print(f"⚠️ Draft commit queue error: {exc}")
+        else:
+            print(f"⚠️ Draft commit skipped (no commit function injected): {message}")
 
     def _commit_draft_files_async(self, file_paths: List[str], message: str) -> None:
         """Run git commit/push in a background thread.
