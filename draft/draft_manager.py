@@ -918,6 +918,19 @@ class DraftManager:
         if not isinstance(idx, int) or idx < 0 or idx >= len(picks):
             return
 
+        # Safety check: verify the file entry matches this pick's identity.
+        target = picks[idx]
+        if (target.get("round") != pick_record.get("round")
+                or target.get("pick") != pick_record.get("pick")
+                or target.get("draft") != self.draft_type):
+            print(
+                f"⚠️ _update_order_result: index {idx} mismatch! "
+                f"Expected R{pick_record.get('round')} P{pick_record.get('pick')} {self.draft_type}, "
+                f"got R{target.get('round')} P{target.get('pick')} {target.get('draft')}. "
+                f"Skipping write to prevent data corruption."
+            )
+            return
+
         result_payload = {
             "player": pick_record.get("player"),
             "timestamp": pick_record.get("timestamp"),
@@ -967,6 +980,19 @@ class DraftManager:
             container = data
 
         if not (0 <= idx < len(picks)):
+            return
+
+        # Safety check: verify the entry matches this pick's identity.
+        target = picks[idx]
+        if (target.get("round") != pick_record.get("round")
+                or target.get("pick") != pick_record.get("pick")
+                or target.get("draft") != self.draft_type):
+            print(
+                f"⚠️ _clear_order_result: index {idx} mismatch! "
+                f"Expected R{pick_record.get('round')} P{pick_record.get('pick')} {self.draft_type}, "
+                f"got R{target.get('round')} P{target.get('pick')} {target.get('draft')}. "
+                f"Skipping clear to prevent data corruption."
+            )
             return
 
         picks[idx]["result"] = None
