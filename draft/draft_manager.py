@@ -117,7 +117,14 @@ class DraftManager:
         
         if not picks:
             raise ValueError(f"No picks found in {self.order_file}")
-        
+
+        # Tag each pick with its position in the raw file so that
+        # _update_order_result / _clear_order_result write to the correct
+        # entry (the file contains both prospect + keeper picks).
+        for i, p in enumerate(picks):
+            if isinstance(p, dict):
+                p["_file_index"] = i
+
         # Filter by draft type and remove comment objects
         filtered_picks = [
             p for p in picks
@@ -592,7 +599,9 @@ class DraftManager:
                     container = data
 
                 for p in picks_list:
-                    p["result"] = None
+                    # Only clear results for picks belonging to this draft type.
+                    if p.get("draft") == self.draft_type:
+                        p["result"] = None
 
                 out = container if container is not None else picks_list
                 if container is not None:
@@ -747,9 +756,7 @@ class DraftManager:
         # corresponding result payload.
         if not self.test_mode:
             try:
-                idx = undone_pick.get("pick_index")
-                if isinstance(idx, int):
-                    self._clear_order_result(idx)
+                self._clear_order_result(undone_pick)
             except Exception as exc:
                 print(f"⚠️ Failed to clear draft order result on undo: {exc}")
 
@@ -900,7 +907,11 @@ class DraftManager:
             picks = data.get("picks") or data.get("rounds") or []
             container = data
 
-        idx = pick_record.get("pick_index")
+        # Use the original file index (_file_index) so we update the correct
+        # entry in the shared order file (which has both prospect + keeper picks).
+        idx = pick_record.get("_file_index")
+        if idx is None:
+            idx = pick_record.get("pick_index")
         if not isinstance(idx, int) or idx < 0 or idx >= len(picks):
             return
 
@@ -927,9 +938,16 @@ class DraftManager:
             json.dump(out, f, indent=2)
 
 
-    def _clear_order_result(self, pick_index: int) -> None:
-        """Clear the `result` payload for a given pick index in the order file."""
+    def _clear_order_result(self, pick_record: Dict) -> None:
+        """Clear the `result` payload for a given pick in the order file."""
         if not self.order_file:
+            return
+
+        # Use _file_index (preferred) or fall back to pick_index.
+        idx = pick_record.get("_file_index")
+        if idx is None:
+            idx = pick_record.get("pick_index")
+        if not isinstance(idx, int):
             return
 
         try:
@@ -945,13 +963,10 @@ class DraftManager:
             picks = data.get("picks") or data.get("rounds") or []
             container = data
 
-        if not (0 <= pick_index < len(picks)):
+        if not (0 <= idx < len(picks)):
             return
 
-        if "result" in picks[pick_index]:
-            picks[pick_index]["result"] = None
-        else:
-            picks[pick_index]["result"] = None
+        picks[idx]["result"] = None
 
         if container is not None:
             if "picks" in container:
