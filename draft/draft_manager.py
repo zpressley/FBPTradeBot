@@ -394,18 +394,21 @@ class DraftManager:
         player_rec["manager"] = franchise_name
         player_rec["FBP_Team"] = team_abbr
 
+        round_num = int(pick_record.get("round") or 0)
+
         if self.draft_type == "prospect":
             # Draft contract type is derived by round.
-            round_num = int(pick_record.get("round") or 0)
             if round_num <= 2:
                 contract_type = "Blue Chip Contract"
             else:
                 contract_type = "Development Cont."
             player_rec["contract_type"] = contract_type
         else:
-            # Keeper draft: do not assign prospect contract types.
-            # (We leave contract_type as None/blank for MLB players.)
-            player_rec["contract_type"] = player_rec.get("contract_type")
+            # Keeper draft: all picks are Keeper Contracts.
+            # Rounds 1-3 start at VC 1.
+            player_rec["contract_type"] = "Keeper Contract"
+            if round_num <= 3:
+                player_rec["years_simple"] = "VC 1"
 
         _save_json(combined_path, combined_players)
         mutated.append(combined_path)
@@ -472,8 +475,9 @@ class DraftManager:
                 # Keeper draft targets unowned MLB players.
                 player_rec["manager"] = None
                 player_rec["FBP_Team"] = ""
-                # Preserve contract_type (typically None for MLB).
-                player_rec["contract_type"] = player_rec.get("contract_type")
+                # Clear contract fields set during draft pick.
+                player_rec["contract_type"] = None
+                player_rec["years_simple"] = None
 
             _save_json(combined_path, combined_players)
             mutated.append(combined_path)
@@ -534,8 +538,8 @@ class DraftManager:
                         else:
                             rec["manager"] = None
                             rec["FBP_Team"] = ""
-                            # Preserve contract_type (typically None for MLB)
-                            rec["contract_type"] = rec.get("contract_type")
+                            rec["contract_type"] = None
+                            rec["years_simple"] = None
 
                 _save_json(combined_path, combined_players)
                 mutated.append(combined_path)
