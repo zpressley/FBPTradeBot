@@ -600,7 +600,10 @@ class DraftManager:
 
                 for p in picks_list:
                     # Only clear results for picks belonging to this draft type.
-                    if p.get("draft") == self.draft_type:
+                    # Preserve "keeper" sentinel — those slots are filled by
+                    # kept players (KAP) and must stay marked so the draft
+                    # engine skips them.
+                    if p.get("draft") == self.draft_type and p.get("result") != "keeper":
                         p["result"] = None
 
                 out = container if container is not None else picks_list
