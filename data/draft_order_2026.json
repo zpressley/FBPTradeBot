@@ -6,10 +6,10 @@
     "team": "WAR",
     "round_type": "fypd",
     "result": {
-      "player": "Oneil Cruz",
-      "timestamp": "2026-03-08T20:46:06.356144",
+      "player": "Kade Anderson",
+      "timestamp": "2026-02-16T01:34:39.077579",
       "pick_index": 0,
-      "upid": "4308"
+      "upid": "7941"
     }
   },
   {
@@ -2874,7 +2874,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3061,7 +3061,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3078,7 +3078,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3112,7 +3112,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3265,7 +3265,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3275,23 +3275,6 @@
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 13,
-    "pick": 10,
-    "team": "DRO",
-    "original_owner": "DRO",
-    "current_owner": "DRO",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3305,6 +3288,23 @@
   {
     "draft": "keeper",
     "round": 13,
+    "pick": 10,
+    "team": "DRO",
+    "original_owner": "DRO",
+    "current_owner": "DRO",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 13,
     "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
@@ -3401,7 +3401,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3411,23 +3411,6 @@
     "team": "DMN",
     "original_owner": "DMN",
     "current_owner": "DMN",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": null,
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 14,
-    "pick": 6,
-    "team": "CFL",
-    "original_owner": "CFL",
-    "current_owner": "CFL",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3441,6 +3424,23 @@
   {
     "draft": "keeper",
     "round": 14,
+    "pick": 6,
+    "team": "CFL",
+    "original_owner": "CFL",
+    "current_owner": "CFL",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 14,
     "pick": 7,
     "team": "JEP",
     "original_owner": "JEP",
@@ -3469,7 +3469,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3479,23 +3479,6 @@
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 14,
-    "pick": 10,
-    "team": "DRO",
-    "original_owner": "DRO",
-    "current_owner": "DRO",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3509,6 +3492,23 @@
   {
     "draft": "keeper",
     "round": 14,
+    "pick": 10,
+    "team": "DRO",
+    "original_owner": "DRO",
+    "current_owner": "DRO",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 14,
     "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
@@ -3571,7 +3571,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3581,40 +3581,6 @@
     "team": "HAM",
     "original_owner": "HAM",
     "current_owner": "HAM",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": null,
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 15,
-    "pick": 4,
-    "team": "RV",
-    "original_owner": "RV",
-    "current_owner": "RV",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 15,
-    "pick": 5,
-    "team": "DMN",
-    "original_owner": "DMN",
-    "current_owner": "DMN",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3628,6 +3594,40 @@
   {
     "draft": "keeper",
     "round": 15,
+    "pick": 4,
+    "team": "RV",
+    "original_owner": "RV",
+    "current_owner": "RV",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 15,
+    "pick": 5,
+    "team": "DMN",
+    "original_owner": "DMN",
+    "current_owner": "DMN",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 15,
     "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
@@ -3673,7 +3673,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3683,23 +3683,6 @@
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 15,
-    "pick": 10,
-    "team": "DRO",
-    "original_owner": "DRO",
-    "current_owner": "DRO",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3713,6 +3696,23 @@
   {
     "draft": "keeper",
     "round": 15,
+    "pick": 10,
+    "team": "DRO",
+    "original_owner": "DRO",
+    "current_owner": "DRO",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 15,
     "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
@@ -3758,7 +3758,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3768,57 +3768,6 @@
     "team": "B2J",
     "original_owner": "B2J",
     "current_owner": "B2J",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 16,
-    "pick": 3,
-    "team": "HAM",
-    "original_owner": "HAM",
-    "current_owner": "HAM",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 16,
-    "pick": 4,
-    "team": "RV",
-    "original_owner": "RV",
-    "current_owner": "RV",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 16,
-    "pick": 5,
-    "team": "DMN",
-    "original_owner": "DMN",
-    "current_owner": "DMN",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3832,6 +3781,57 @@
   {
     "draft": "keeper",
     "round": 16,
+    "pick": 3,
+    "team": "HAM",
+    "original_owner": "HAM",
+    "current_owner": "HAM",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 16,
+    "pick": 4,
+    "team": "RV",
+    "original_owner": "RV",
+    "current_owner": "RV",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 16,
+    "pick": 5,
+    "team": "DMN",
+    "original_owner": "DMN",
+    "current_owner": "DMN",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 16,
     "pick": 6,
     "team": "CFL",
     "original_owner": "CFL",
@@ -3843,7 +3843,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3877,7 +3877,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3887,23 +3887,6 @@
     "team": "SAD",
     "original_owner": "SAD",
     "current_owner": "SAD",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 16,
-    "pick": 10,
-    "team": "DRO",
-    "original_owner": "DRO",
-    "current_owner": "DRO",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -3917,6 +3900,23 @@
   {
     "draft": "keeper",
     "round": 16,
+    "pick": 10,
+    "team": "DRO",
+    "original_owner": "DRO",
+    "current_owner": "DRO",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 16,
     "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
@@ -3945,7 +3945,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3962,7 +3962,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3979,7 +3979,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -3996,7 +3996,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4013,7 +4013,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4047,7 +4047,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4057,57 +4057,6 @@
     "team": "JEP",
     "original_owner": "JEP",
     "current_owner": "JEP",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": null,
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 17,
-    "pick": 8,
-    "team": "WAR",
-    "original_owner": "WAR",
-    "current_owner": "WAR",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 17,
-    "pick": 9,
-    "team": "SAD",
-    "original_owner": "SAD",
-    "current_owner": "SAD",
-    "traded": false,
-    "buyin_required": false,
-    "buyin_cost": null,
-    "buyin_purchased": false,
-    "buyin_purchased_at": null,
-    "buyin_purchased_by": null,
-    "taxed_out": false,
-    "result": "keeper",
-    "round_type": "standard"
-  },
-  {
-    "draft": "keeper",
-    "round": 17,
-    "pick": 10,
-    "team": "DRO",
-    "original_owner": "DRO",
-    "current_owner": "DRO",
     "traded": false,
     "buyin_required": false,
     "buyin_cost": null,
@@ -4121,6 +4070,57 @@
   {
     "draft": "keeper",
     "round": 17,
+    "pick": 8,
+    "team": "WAR",
+    "original_owner": "WAR",
+    "current_owner": "WAR",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 17,
+    "pick": 9,
+    "team": "SAD",
+    "original_owner": "SAD",
+    "current_owner": "SAD",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 17,
+    "pick": 10,
+    "team": "DRO",
+    "original_owner": "DRO",
+    "current_owner": "DRO",
+    "traded": false,
+    "buyin_required": false,
+    "buyin_cost": null,
+    "buyin_purchased": false,
+    "buyin_purchased_at": null,
+    "buyin_purchased_by": null,
+    "taxed_out": false,
+    "result": null,
+    "round_type": "standard"
+  },
+  {
+    "draft": "keeper",
+    "round": 17,
     "pick": 11,
     "team": "LFB",
     "original_owner": "LFB",
@@ -4149,7 +4149,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4166,7 +4166,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4183,7 +4183,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4200,7 +4200,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4217,7 +4217,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4251,7 +4251,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4268,7 +4268,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4285,7 +4285,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4302,7 +4302,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4336,7 +4336,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4353,7 +4353,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4370,7 +4370,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4387,7 +4387,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4404,7 +4404,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4421,7 +4421,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4438,7 +4438,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4455,7 +4455,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4472,7 +4472,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4489,7 +4489,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4506,7 +4506,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4540,7 +4540,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4557,7 +4557,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4574,7 +4574,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4591,7 +4591,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4608,7 +4608,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4625,7 +4625,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4642,7 +4642,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4659,7 +4659,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4676,7 +4676,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4693,7 +4693,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4710,7 +4710,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4744,7 +4744,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4761,7 +4761,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4778,7 +4778,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4795,7 +4795,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4812,7 +4812,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4829,7 +4829,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4846,7 +4846,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4863,7 +4863,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4880,7 +4880,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4897,7 +4897,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4914,7 +4914,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4931,7 +4931,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4948,7 +4948,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4965,7 +4965,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4982,7 +4982,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -4999,7 +4999,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5016,7 +5016,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5033,7 +5033,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5050,7 +5050,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5067,7 +5067,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5084,7 +5084,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5101,7 +5101,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5118,7 +5118,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5135,7 +5135,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5152,7 +5152,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5169,7 +5169,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5186,7 +5186,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5203,7 +5203,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5220,7 +5220,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5237,7 +5237,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5254,7 +5254,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5271,7 +5271,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5288,7 +5288,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5305,7 +5305,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5322,7 +5322,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5339,7 +5339,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5356,7 +5356,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5373,7 +5373,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5390,7 +5390,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5407,7 +5407,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5424,7 +5424,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5441,7 +5441,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5458,7 +5458,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5475,7 +5475,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5492,7 +5492,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5509,7 +5509,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5526,7 +5526,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5543,7 +5543,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5560,7 +5560,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5577,7 +5577,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5594,7 +5594,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5611,7 +5611,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5628,7 +5628,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5645,7 +5645,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5662,7 +5662,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5679,7 +5679,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5696,7 +5696,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5713,7 +5713,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5730,7 +5730,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5747,7 +5747,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5764,7 +5764,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5781,7 +5781,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5798,7 +5798,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5815,7 +5815,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5832,7 +5832,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5849,7 +5849,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5866,7 +5866,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5883,7 +5883,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5900,7 +5900,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5917,7 +5917,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5934,7 +5934,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5951,7 +5951,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5968,7 +5968,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -5985,7 +5985,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6002,7 +6002,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6019,7 +6019,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6036,7 +6036,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6053,7 +6053,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6070,7 +6070,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6087,7 +6087,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6104,7 +6104,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6121,7 +6121,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6138,7 +6138,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6155,7 +6155,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6172,7 +6172,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6189,7 +6189,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6206,7 +6206,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6223,7 +6223,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6240,7 +6240,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6257,7 +6257,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6274,7 +6274,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6291,7 +6291,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6308,7 +6308,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6325,7 +6325,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6342,7 +6342,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6359,7 +6359,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6376,7 +6376,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6393,7 +6393,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6410,7 +6410,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6427,7 +6427,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6444,7 +6444,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6461,7 +6461,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6478,7 +6478,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6495,7 +6495,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6512,7 +6512,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6529,7 +6529,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6546,7 +6546,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6563,7 +6563,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6580,7 +6580,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   },
   {
@@ -6597,7 +6597,7 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": "keeper",
+    "result": null,
     "round_type": "standard"
   }
 ]
