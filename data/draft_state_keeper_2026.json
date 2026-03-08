@@ -1,13 +1,38 @@
 {
-  "status": "not_started",
+  "status": "paused",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 0,
-  "picks_made": [],
+  "current_pick_index": 1,
+  "picks_made": [
+    {
+      "draft": "keeper",
+      "round": 1,
+      "pick": 1,
+      "team": "TBB",
+      "original_owner": "TBB",
+      "current_owner": "TBB",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 55,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-02T22:18:30.419681Z",
+      "buyin_purchased_by": "lyrx_",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "player": "Oneil Cruz",
+      "timestamp": "2026-03-08T20:46:06.356144",
+      "pick_index": 0,
+      "upid": "4308",
+      "position": "CF",
+      "mlb_team": "PIT"
+    }
+  ],
   "timer_started_at": null,
-  "paused_at": null,
-  "started_at": null,
+  "paused_at": "2026-03-08T20:46:07.959961",
+  "started_at": "2026-03-08T20:45:13.215866",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-02-18T17:23:09.190691"
+  "last_updated": "2026-03-08T20:46:07.960537",
+  "timer_duration_seconds": null
 }
