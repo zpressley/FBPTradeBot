@@ -44209,5 +44209,28 @@
     "years": "",
     "update_type": "Admin",
     "event": ""
+  },
+  {
+    "id": "2026-2026-03-08T16:46:06.469783-04:00-UPID_4308-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T16:46:06.469783-04:00",
+    "upid": "4308",
+    "player_name": "Oneil Cruz",
+    "team": "PIT",
+    "pos": "CF",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 91,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Oneil Cruz (R1 P1)"
   }
 ]
