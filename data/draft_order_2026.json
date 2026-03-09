@@ -4149,7 +4149,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Reid Detmers",
+      "timestamp": "2026-03-09T03:03:30.534455",
+      "pick_index": 119,
+      "upid": "4014"
+    },
     "round_type": "standard"
   },
   {

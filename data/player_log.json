@@ -46969,5 +46969,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Zach Eflin (R14 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T23:03:30.730345-04:00-UPID_4014-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T23:03:30.730345-04:00",
+    "upid": "4014",
+    "player_name": "Reid Detmers",
+    "team": "LAA",
+    "pos": "RP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 366,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Reid Detmers (R15 P1)"
   }
 ]
