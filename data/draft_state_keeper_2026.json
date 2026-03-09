@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 136,
+  "current_pick_index": 137,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3271,6 +3271,30 @@
       "upid": "2591",
       "position": "1B,2B,SS",
       "mlb_team": "SD"
+    },
+    {
+      "draft": "keeper",
+      "round": 18,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 268,
+      "player": "Kumar Rocker",
+      "timestamp": "2026-03-09T03:25:21.782707",
+      "pick_index": 136,
+      "upid": "3937",
+      "position": "SP",
+      "mlb_team": "TEX"
     }
   ],
   "timer_started_at": "2026-03-09T03:22:45.163769",
@@ -3278,6 +3302,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:22:45.163834",
+  "last_updated": "2026-03-09T03:25:21.790953",
   "timer_duration_seconds": 240
 }

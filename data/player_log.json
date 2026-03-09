@@ -47360,5 +47360,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Jake Cronenworth (R18 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T23:25:21.936754-04:00-UPID_3937-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T23:25:21.936754-04:00",
+    "upid": "3937",
+    "player_name": "Kumar Rocker",
+    "team": "TEX",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 523,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Kumar Rocker (R18 P10)"
   }
 ]

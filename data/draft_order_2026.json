@@ -4999,7 +4999,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Kumar Rocker",
+      "timestamp": "2026-03-09T03:25:21.782707",
+      "pick_index": 136,
+      "upid": "3937"
+    },
     "round_type": "standard"
   },
   {
