@@ -1955,7 +1955,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Emilio Pag\u00e1n",
+      "timestamp": "2026-03-09T01:28:57.476104",
+      "pick_index": 44,
+      "upid": "2447"
+    },
     "round_type": "standard"
   },
   {

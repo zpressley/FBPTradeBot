@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 44,
+  "current_pick_index": 45,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1059,6 +1059,30 @@
       "upid": "2492",
       "position": "RP",
       "mlb_team": "TB"
+    },
+    {
+      "draft": "keeper",
+      "round": 6,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 116,
+      "player": "Emilio Pag\u00e1n",
+      "timestamp": "2026-03-09T01:28:57.476104",
+      "pick_index": 44,
+      "upid": "2447",
+      "position": "RP",
+      "mlb_team": "CIN"
     }
   ],
   "timer_started_at": "2026-03-09T01:27:01.582871",
@@ -1066,6 +1090,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:27:01.582957",
+  "last_updated": "2026-03-09T01:28:57.486016",
   "timer_duration_seconds": 240
 }
