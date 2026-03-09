@@ -47291,5 +47291,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Sean Manaea (R17 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T23:19:35.199852-04:00-UPID_1985-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T23:19:35.199852-04:00",
+    "upid": "1985",
+    "player_name": "Tyler O'Neill",
+    "team": "BAL",
+    "pos": "OF",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 365,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Tyler O'Neill (R17 P10)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 133,
+  "current_pick_index": 134,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3200,13 +3200,37 @@
       "upid": "1978",
       "position": "SP,RP",
       "mlb_team": "NYM"
+    },
+    {
+      "draft": "keeper",
+      "round": 17,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 256,
+      "player": "Tyler O'Neill",
+      "timestamp": "2026-03-09T03:19:35.027747",
+      "pick_index": 133,
+      "upid": "1985",
+      "position": "OF",
+      "mlb_team": "BAL"
     }
   ],
-  "timer_started_at": "2026-03-09T03:17:51.368240",
+  "timer_started_at": "2026-03-09T03:19:35.771793",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:17:51.368301",
+  "last_updated": "2026-03-09T03:19:35.771855",
   "timer_duration_seconds": 240
 }

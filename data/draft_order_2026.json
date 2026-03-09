@@ -4780,7 +4780,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Tyler O'Neill",
+      "timestamp": "2026-03-09T03:19:35.027747",
+      "pick_index": 133,
+      "upid": "1985"
+    },
     "round_type": "standard"
   },
   {
