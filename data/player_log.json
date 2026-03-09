@@ -44922,5 +44922,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Jeff Hoffman (R4 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T21:12:44.675447-04:00-UPID_3437-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T21:12:44.675447-04:00",
+    "upid": "3437",
+    "player_name": "Grayson Rodriguez",
+    "team": "BAL",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 276,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Grayson Rodriguez (R4 P8)"
   }
 ]

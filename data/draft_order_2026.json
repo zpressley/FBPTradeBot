@@ -1579,7 +1579,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Grayson Rodriguez",
+      "timestamp": "2026-03-09T01:12:44.494754",
+      "pick_index": 30,
+      "upid": "3437"
+    },
     "round_type": "standard"
   },
   {

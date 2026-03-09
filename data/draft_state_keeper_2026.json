@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 30,
+  "current_pick_index": 31,
   "picks_made": [
     {
       "draft": "keeper",
@@ -723,6 +723,30 @@
       "upid": "2641",
       "position": "RP",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 8,
+      "team": "LFB",
+      "original_owner": "WAR",
+      "current_owner": "LFB",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 98,
+      "player": "Grayson Rodriguez",
+      "timestamp": "2026-03-09T01:12:44.494754",
+      "pick_index": 30,
+      "upid": "3437",
+      "position": "SP",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-03-09T01:12:37.996614",
@@ -730,6 +754,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:12:37.996699",
+  "last_updated": "2026-03-09T01:12:44.504079",
   "timer_duration_seconds": 240
 }
