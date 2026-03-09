@@ -1363,7 +1363,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-23T15:50:32.679966Z",
     "buyin_purchased_by": "WAR",
-    "result": null,
+    "result": {
+      "player": "Sal Frelick",
+      "timestamp": "2026-03-09T00:56:58.747090",
+      "pick_index": 21,
+      "upid": "3479"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

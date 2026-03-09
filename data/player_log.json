@@ -44715,5 +44715,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Raisel Iglesias (R3 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T20:56:58.918420-04:00-UPID_3479-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T20:56:58.918420-04:00",
+    "upid": "3479",
+    "player_name": "Sal Frelick",
+    "team": "MIL",
+    "pos": "CF",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 212,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Sal Frelick (R3 P10)"
   }
 ]

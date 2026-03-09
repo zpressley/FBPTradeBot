@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 21,
+  "current_pick_index": 22,
   "picks_made": [
     {
       "draft": "keeper",
@@ -507,13 +507,37 @@
       "upid": "1916",
       "position": "RP",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 10,
+      "team": "CFL",
+      "original_owner": "DRO",
+      "current_owner": "CFL",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-23T15:50:32.679966Z",
+      "buyin_purchased_by": "WAR",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 88,
+      "player": "Sal Frelick",
+      "timestamp": "2026-03-09T00:56:58.747090",
+      "pick_index": 21,
+      "upid": "3479",
+      "position": "CF",
+      "mlb_team": "MIL"
     }
   ],
-  "timer_started_at": "2026-03-09T00:56:22.082200",
+  "timer_started_at": "2026-03-09T00:56:59.769400",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:56:22.082273",
+  "last_updated": "2026-03-09T00:56:59.769500",
   "timer_duration_seconds": 240
 }
