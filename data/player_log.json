@@ -44738,5 +44738,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Sal Frelick (R3 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T20:57:10.351340-04:00-UPID_3831-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T20:57:10.351340-04:00",
+    "upid": "3831",
+    "player_name": "Alec Burleson",
+    "team": "STL",
+    "pos": "1B,OF",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 187,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Alec Burleson (R3 P12)"
   }
 ]

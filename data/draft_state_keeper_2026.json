@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 22,
+  "current_pick_index": 23,
   "picks_made": [
     {
       "draft": "keeper",
@@ -531,13 +531,37 @@
       "upid": "3479",
       "position": "CF",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 12,
+      "team": "TBB",
+      "original_owner": "WIZ",
+      "current_owner": "TBB",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-26T18:44:52.069041Z",
+      "buyin_purchased_by": "WAR",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 90,
+      "player": "Alec Burleson",
+      "timestamp": "2026-03-09T00:57:10.181651",
+      "pick_index": 22,
+      "upid": "3831",
+      "position": "1B,OF",
+      "mlb_team": "STL"
     }
   ],
-  "timer_started_at": "2026-03-09T00:56:59.769400",
+  "timer_started_at": "2026-03-09T00:57:11.136134",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:56:59.769500",
+  "last_updated": "2026-03-09T00:57:11.136239",
   "timer_duration_seconds": 240
 }
