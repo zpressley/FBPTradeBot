@@ -4083,7 +4083,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "F\u00e9lix Bautista",
+      "timestamp": "2026-03-09T03:01:38.378041",
+      "pick_index": 116,
+      "upid": "4026"
+    },
     "round_type": "standard"
   },
   {

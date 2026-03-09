@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 116,
+  "current_pick_index": 117,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2792,13 +2792,37 @@
       "upid": "4034",
       "position": "RP",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 220,
+      "player": "F\u00e9lix Bautista",
+      "timestamp": "2026-03-09T03:01:38.378041",
+      "pick_index": 116,
+      "upid": "4026",
+      "position": "RP",
+      "mlb_team": "BAL"
     }
   ],
-  "timer_started_at": "2026-03-09T02:58:38.512471",
+  "timer_started_at": "2026-03-09T03:01:39.335338",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:58:38.512541",
+  "last_updated": "2026-03-09T03:01:39.335420",
   "timer_duration_seconds": 240
 }
