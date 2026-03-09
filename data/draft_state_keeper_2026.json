@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 28,
+  "current_pick_index": 29,
   "picks_made": [
     {
       "draft": "keeper",
@@ -675,6 +675,30 @@
       "upid": "4574",
       "position": "RP",
       "mlb_team": "CHC"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 96,
+      "player": "Zac Gallen",
+      "timestamp": "2026-03-09T01:05:41.714621",
+      "pick_index": 28,
+      "upid": "1990",
+      "position": "SP",
+      "mlb_team": "AZ"
     }
   ],
   "timer_started_at": "2026-03-09T01:05:00.669431",
@@ -682,6 +706,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:05:00.669497",
+  "last_updated": "2026-03-09T01:05:41.723572",
   "timer_duration_seconds": 240
 }

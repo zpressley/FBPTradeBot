@@ -1535,7 +1535,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Zac Gallen",
+      "timestamp": "2026-03-09T01:05:41.714621",
+      "pick_index": 28,
+      "upid": "1990"
+    },
     "round_type": "standard"
   },
   {
