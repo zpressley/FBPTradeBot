@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 40,
+  "current_pick_index": 41,
   "picks_made": [
     {
       "draft": "keeper",
@@ -963,13 +963,37 @@
       "upid": "3179",
       "position": "1B,OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 109,
+      "player": "Bryson Stott",
+      "timestamp": "2026-03-09T01:26:04.973367",
+      "pick_index": 40,
+      "upid": "4306",
+      "position": "2B,SS",
+      "mlb_team": "PHI"
     }
   ],
-  "timer_started_at": "2026-03-09T01:25:41.874750",
+  "timer_started_at": "2026-03-09T01:26:06.465367",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:25:41.874845",
+  "last_updated": "2026-03-09T01:26:06.465454",
   "timer_duration_seconds": 240
 }

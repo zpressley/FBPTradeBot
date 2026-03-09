@@ -1816,7 +1816,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Bryson Stott",
+      "timestamp": "2026-03-09T01:26:04.973367",
+      "pick_index": 40,
+      "upid": "4306"
+    },
     "round_type": "standard"
   },
   {
