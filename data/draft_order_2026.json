@@ -992,7 +992,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-03-02T00:03:26.487236Z",
     "buyin_purchased_by": "RV",
-    "result": null,
+    "result": {
+      "player": "Jose Altuve",
+      "timestamp": "2026-03-09T00:45:50.710753",
+      "pick_index": 8,
+      "upid": "1907"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

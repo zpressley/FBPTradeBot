@@ -44416,5 +44416,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Tatsuya Imai (R2 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T20:45:50.900747-04:00-UPID_1907-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T20:45:50.900747-04:00",
+    "upid": "1907",
+    "player_name": "Jose Altuve",
+    "team": "HOU",
+    "pos": "2B,OF",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 98,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Jose Altuve (R2 P4)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 8,
+  "current_pick_index": 9,
   "picks_made": [
     {
       "draft": "keeper",
@@ -195,6 +195,30 @@
       "upid": "8439",
       "position": "P",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "keeper",
+      "round": 2,
+      "pick": 4,
+      "team": "RV",
+      "original_owner": "RV",
+      "current_owner": "RV",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 35,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-02T00:03:26.487236Z",
+      "buyin_purchased_by": "RV",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 70,
+      "player": "Jose Altuve",
+      "timestamp": "2026-03-09T00:45:50.710753",
+      "pick_index": 8,
+      "upid": "1907",
+      "position": "2B,OF",
+      "mlb_team": "HOU"
     }
   ],
   "timer_started_at": "2026-03-09T00:45:20.723959",
@@ -202,6 +226,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:45:20.724049",
+  "last_updated": "2026-03-09T00:45:50.720828",
   "timer_duration_seconds": 240
 }
