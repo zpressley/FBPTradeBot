@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 1,
+  "current_pick_index": 2,
   "picks_made": [
     {
       "draft": "keeper",
@@ -27,6 +27,30 @@
       "upid": "1893",
       "position": "1B",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "keeper",
+      "round": 1,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 55,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-23T17:02:45.124941Z",
+      "buyin_purchased_by": "B2J",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 56,
+      "player": "Chris Sale",
+      "timestamp": "2026-03-09T00:37:02.012751",
+      "pick_index": 1,
+      "upid": "1937",
+      "position": "SP",
+      "mlb_team": "ATL"
     }
   ],
   "timer_started_at": "2026-03-09T00:35:32.892338",
@@ -34,6 +58,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:35:32.892417",
+  "last_updated": "2026-03-09T00:37:02.020991",
   "timer_duration_seconds": 240
 }

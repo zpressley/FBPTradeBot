@@ -719,7 +719,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-23T17:02:45.124941Z",
     "buyin_purchased_by": "B2J",
-    "result": null,
+    "result": {
+      "player": "Chris Sale",
+      "timestamp": "2026-03-09T00:37:02.012751",
+      "pick_index": 1,
+      "upid": "1937"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },
