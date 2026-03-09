@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 54,
+  "current_pick_index": 55,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1304,13 +1304,37 @@
       "upid": "5292",
       "position": "2B,3B,SS,OF",
       "mlb_team": "TB"
+    },
+    {
+      "draft": "keeper",
+      "round": 8,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 145,
+      "player": "Ryan Helsley",
+      "timestamp": "2026-03-09T01:43:44.809713",
+      "pick_index": 54,
+      "upid": "3170",
+      "position": "RP",
+      "mlb_team": "STL"
     }
   ],
-  "timer_started_at": "2026-03-09T01:40:31.887806",
+  "timer_started_at": "2026-03-09T01:43:45.874039",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:40:31.887860",
+  "last_updated": "2026-03-09T01:43:45.874085",
   "timer_duration_seconds": 240
 }

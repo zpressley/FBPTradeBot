@@ -2498,7 +2498,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ryan Helsley",
+      "timestamp": "2026-03-09T01:43:44.809713",
+      "pick_index": 54,
+      "upid": "3170"
+    },
     "round_type": "standard"
   },
   {
