@@ -1469,7 +1469,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Hunter Greene",
+      "timestamp": "2026-03-09T01:02:28.489883",
+      "pick_index": 25,
+      "upid": "4022"
+    },
     "round_type": "standard"
   },
   {

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 25,
+  "current_pick_index": 26,
   "picks_made": [
     {
       "draft": "keeper",
@@ -603,13 +603,37 @@
       "upid": "2001",
       "position": "SP",
       "mlb_team": "PHI"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 3,
+      "team": "WIZ",
+      "original_owner": "HAM",
+      "current_owner": "WIZ",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 93,
+      "player": "Hunter Greene",
+      "timestamp": "2026-03-09T01:02:28.489883",
+      "pick_index": 25,
+      "upid": "4022",
+      "position": "SP",
+      "mlb_team": "CIN"
     }
   ],
-  "timer_started_at": "2026-03-09T01:02:02.155207",
+  "timer_started_at": "2026-03-09T01:02:29.692018",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:02:02.155312",
+  "last_updated": "2026-03-09T01:02:29.692099",
   "timer_duration_seconds": 240
 }

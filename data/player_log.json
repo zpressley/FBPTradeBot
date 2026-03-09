@@ -44807,5 +44807,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Aaron Nola (R4 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T21:02:28.781599-04:00-UPID_4022-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T21:02:28.781599-04:00",
+    "upid": "4022",
+    "player_name": "Hunter Greene",
+    "team": "CIN",
+    "pos": "SP",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 46,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Hunter Greene (R4 P3)"
   }
 ]
