@@ -44508,5 +44508,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Luis Castillo (R2 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T20:48:47.707038-04:00-UPID_4023-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T20:48:47.707038-04:00",
+    "upid": "4023",
+    "player_name": "Jhoan Duran",
+    "team": "MIN",
+    "pos": "RP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 70,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Jhoan Duran (R2 P12)"
   }
 ]

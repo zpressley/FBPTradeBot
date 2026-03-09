@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 12,
+  "current_pick_index": 13,
   "picks_made": [
     {
       "draft": "keeper",
@@ -291,13 +291,37 @@
       "upid": "1912",
       "position": "SP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "keeper",
+      "round": 2,
+      "pick": 12,
+      "team": "HAM",
+      "original_owner": "WIZ",
+      "current_owner": "HAM",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 35,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-22T12:18:54.966853Z",
+      "buyin_purchased_by": "WIZ",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 78,
+      "player": "Jhoan Duran",
+      "timestamp": "2026-03-09T00:48:47.570520",
+      "pick_index": 12,
+      "upid": "4023",
+      "position": "RP",
+      "mlb_team": "MIN"
     }
   ],
-  "timer_started_at": "2026-03-09T00:48:17.478252",
+  "timer_started_at": "2026-03-09T00:48:48.272018",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:48:17.478341",
+  "last_updated": "2026-03-09T00:48:48.272097",
   "timer_duration_seconds": 240
 }
