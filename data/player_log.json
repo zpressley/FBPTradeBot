@@ -44393,5 +44393,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Devin Williams (R2 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T20:45:19.798258-04:00-UPID_8439-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T20:45:19.798258-04:00",
+    "upid": "8439",
+    "player_name": "Tatsuya Imai",
+    "team": "HOU",
+    "pos": "P",
+    "age": 27,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 180,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[6] TCR",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Tatsuya Imai (R2 P3)"
   }
 ]

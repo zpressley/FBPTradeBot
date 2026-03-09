@@ -145185,10 +145185,10 @@
     "team": "HOU",
     "position": "P",
     "age": 27,
-    "manager": "",
+    "manager": "Hammers",
     "player_type": "MLB",
-    "contract_type": "",
-    "years_simple": "TC R",
+    "contract_type": "Keeper Contract",
+    "years_simple": "VC 1",
     "yahoo_id": null,
     "mlb_id": "837227",
     "birth_date": "1998-05-09",
@@ -145198,7 +145198,8 @@
     "fypd": false,
     "level": "MLB",
     "rank": 180,
-    "status": "[6] TCR"
+    "status": "[6] TCR",
+    "FBP_Team": "HAM"
   },
   {
     "upid": "8440",
