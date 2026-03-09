@@ -46141,5 +46141,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Otto Lopez (R11 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T22:12:40.640081-04:00-UPID_6937-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T22:12:40.640081-04:00",
+    "upid": "6937",
+    "player_name": "Matt Svanson",
+    "team": "STL",
+    "pos": "RP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 402,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Matt Svanson (R11 P4)"
   }
 ]
