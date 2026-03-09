@@ -46624,5 +46624,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Trevor Story (R13 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T22:42:21.706036-04:00-UPID_1982-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T22:42:21.706036-04:00",
+    "upid": "1982",
+    "player_name": "Trent Grisham",
+    "team": "NYY",
+    "pos": "CF",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 224,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Trent Grisham (R13 P5)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 104,
+  "current_pick_index": 105,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2504,6 +2504,30 @@
       "upid": "1899",
       "position": "SS",
       "mlb_team": "BOS"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 203,
+      "player": "Trent Grisham",
+      "timestamp": "2026-03-09T02:42:21.536237",
+      "pick_index": 104,
+      "upid": "1982",
+      "position": "CF",
+      "mlb_team": "NYY"
     }
   ],
   "timer_started_at": "2026-03-09T02:39:50.944220",
@@ -2511,6 +2535,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:39:50.944279",
+  "last_updated": "2026-03-09T02:42:21.551930",
   "timer_duration_seconds": 240
 }

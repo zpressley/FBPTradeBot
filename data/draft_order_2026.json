@@ -3734,7 +3734,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Trent Grisham",
+      "timestamp": "2026-03-09T02:42:21.536237",
+      "pick_index": 104,
+      "upid": "1982"
+    },
     "round_type": "standard"
   },
   {
