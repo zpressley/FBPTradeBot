@@ -45428,5 +45428,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Steven Okert (R7 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T21:39:41.767946-04:00-UPID_4283-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T21:39:41.767946-04:00",
+    "upid": "4283",
+    "player_name": "Adley Rutschman",
+    "team": "BAL",
+    "pos": "C",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 157,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Adley Rutschman (R8 P1)"
   }
 ]

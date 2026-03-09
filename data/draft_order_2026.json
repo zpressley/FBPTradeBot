@@ -2386,7 +2386,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Adley Rutschman",
+      "timestamp": "2026-03-09T01:39:41.682280",
+      "pick_index": 52,
+      "upid": "4283"
+    },
     "round_type": "standard"
   },
   {
