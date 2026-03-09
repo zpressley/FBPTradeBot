@@ -45635,5 +45635,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Dennis Santana (R9 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T21:51:37.296282-04:00-UPID_4138-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T21:51:37.296282-04:00",
+    "upid": "4138",
+    "player_name": "Tyler Holton",
+    "team": "DET",
+    "pos": "SP,RP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 400,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Tyler Holton (R9 P5)"
   }
 ]

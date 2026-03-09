@@ -2703,7 +2703,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Tyler Holton",
+      "timestamp": "2026-03-09T01:51:37.212393",
+      "pick_index": 61,
+      "upid": "4138"
+    },
     "round_type": "standard"
   },
   {

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 61,
+  "current_pick_index": 62,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1472,13 +1472,37 @@
       "upid": "2370",
       "position": "RP",
       "mlb_team": "PIT"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 155,
+      "player": "Tyler Holton",
+      "timestamp": "2026-03-09T01:51:37.212393",
+      "pick_index": 61,
+      "upid": "4138",
+      "position": "SP,RP",
+      "mlb_team": "DET"
     }
   ],
-  "timer_started_at": "2026-03-09T01:50:46.591090",
+  "timer_started_at": "2026-03-09T01:51:38.295145",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:50:46.591150",
+  "last_updated": "2026-03-09T01:51:38.295186",
   "timer_duration_seconds": 240
 }
