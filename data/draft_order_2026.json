@@ -3292,7 +3292,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Adolis Garc\u00eda",
+      "timestamp": "2026-03-09T02:15:58.985287",
+      "pick_index": 87,
+      "upid": "2022"
+    },
     "round_type": "standard"
   },
   {

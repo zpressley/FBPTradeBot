@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 87,
+  "current_pick_index": 88,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2096,13 +2096,37 @@
       "upid": "3465",
       "position": "SP,RP",
       "mlb_team": "PIT"
+    },
+    {
+      "draft": "keeper",
+      "round": 11,
+      "pick": 8,
+      "team": "WAR",
+      "original_owner": "WAR",
+      "current_owner": "WAR",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 182,
+      "player": "Adolis Garc\u00eda",
+      "timestamp": "2026-03-09T02:15:58.985287",
+      "pick_index": 87,
+      "upid": "2022",
+      "position": "OF",
+      "mlb_team": "PHI"
     }
   ],
-  "timer_started_at": "2026-03-09T02:14:58.056512",
+  "timer_started_at": "2026-03-09T02:15:59.783978",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:14:58.056562",
+  "last_updated": "2026-03-09T02:15:59.784040",
   "timer_duration_seconds": 240
 }
