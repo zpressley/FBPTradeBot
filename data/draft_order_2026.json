@@ -2725,7 +2725,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Pablo L\u00f3pez",
+      "timestamp": "2026-03-09T01:52:41.987064",
+      "pick_index": 62,
+      "upid": "3071"
+    },
     "round_type": "standard"
   },
   {

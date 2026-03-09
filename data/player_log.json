@@ -45658,5 +45658,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Tyler Holton (R9 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T21:52:42.072103-04:00-UPID_3071-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T21:52:42.072103-04:00",
+    "upid": "3071",
+    "player_name": "Pablo L\u00f3pez",
+    "team": "MIN",
+    "pos": "SP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 125,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Pablo L\u00f3pez (R9 P6)"
   }
 ]
