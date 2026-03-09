@@ -46210,5 +46210,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Alex Vesia (R11 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T22:14:57.459680-04:00-UPID_3465-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T22:14:57.459680-04:00",
+    "upid": "3465",
+    "player_name": "Quinn Priester",
+    "team": "PIT",
+    "pos": "SP,RP",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 248,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Quinn Priester (R11 P7)"
   }
 ]
