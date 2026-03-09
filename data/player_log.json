@@ -46716,5 +46716,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Jose A. Ferrer (R13 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T22:45:02.792812-04:00-UPID_3477-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T22:45:02.792812-04:00",
+    "upid": "3477",
+    "player_name": "Cade Cavalli",
+    "team": "WSH",
+    "pos": "SP",
+    "age": 27,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 421,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Cade Cavalli (R13 P11)"
   }
 ]
