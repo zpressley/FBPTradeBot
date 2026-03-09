@@ -2050,7 +2050,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Pete Fairbanks",
+      "timestamp": "2026-03-09T01:30:35.746099",
+      "pick_index": 46,
+      "upid": "3092"
+    },
     "round_type": "standard"
   },
   {

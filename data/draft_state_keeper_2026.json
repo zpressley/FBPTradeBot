@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 46,
+  "current_pick_index": 47,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1107,6 +1107,30 @@
       "upid": "2687",
       "position": "SP",
       "mlb_team": "PIT"
+    },
+    {
+      "draft": "keeper",
+      "round": 6,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 121,
+      "player": "Pete Fairbanks",
+      "timestamp": "2026-03-09T01:30:35.746099",
+      "pick_index": 46,
+      "upid": "3092",
+      "position": "RP",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-03-09T01:30:18.347815",
@@ -1114,6 +1138,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:30:18.347892",
+  "last_updated": "2026-03-09T01:30:35.753925",
   "timer_duration_seconds": 240
 }

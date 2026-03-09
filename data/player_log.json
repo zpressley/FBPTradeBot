@@ -45290,5 +45290,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Johan Oviedo (R6 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T21:30:35.909284-04:00-UPID_3092-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T21:30:35.909284-04:00",
+    "upid": "3092",
+    "player_name": "Pete Fairbanks",
+    "team": "MIA",
+    "pos": "RP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 165,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Pete Fairbanks (R6 P7)"
   }
 ]
