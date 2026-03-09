@@ -763,7 +763,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-03-01T23:41:51.332431Z",
     "buyin_purchased_by": "rickvaughn.",
-    "result": null,
+    "result": {
+      "player": "Framber Valdez",
+      "timestamp": "2026-03-09T00:37:41.358680",
+      "pick_index": 3,
+      "upid": "1946"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

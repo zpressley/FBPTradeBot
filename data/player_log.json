@@ -44301,5 +44301,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Corey Seager (R1 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T20:37:41.508681-04:00-UPID_1946-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T20:37:41.508681-04:00",
+    "upid": "1946",
+    "player_name": "Framber Valdez",
+    "team": "HOU",
+    "pos": "SP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 86,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Framber Valdez (R1 P4)"
   }
 ]
