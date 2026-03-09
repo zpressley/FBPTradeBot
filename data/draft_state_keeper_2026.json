@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 51,
+  "current_pick_index": 52,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1232,6 +1232,30 @@
       "upid": "3373",
       "position": "SP",
       "mlb_team": "NYM"
+    },
+    {
+      "draft": "keeper",
+      "round": 7,
+      "pick": 8,
+      "team": "WAR",
+      "original_owner": "WAR",
+      "current_owner": "WAR",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 134,
+      "player": "Steven Okert",
+      "timestamp": "2026-03-09T01:39:30.159960",
+      "pick_index": 51,
+      "upid": "3255",
+      "position": "RP",
+      "mlb_team": "MIN"
     }
   ],
   "timer_started_at": "2026-03-09T01:39:19.350035",
@@ -1239,6 +1263,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:39:19.350080",
+  "last_updated": "2026-03-09T01:39:30.165323",
   "timer_duration_seconds": 240
 }

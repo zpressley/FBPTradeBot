@@ -45405,5 +45405,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Kodai Senga (R7 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T21:39:30.255203-04:00-UPID_3255-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T21:39:30.255203-04:00",
+    "upid": "3255",
+    "player_name": "Steven Okert",
+    "team": "MIN",
+    "pos": "RP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Steven Okert (R7 P8)"
   }
 ]
