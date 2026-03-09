@@ -1,5 +1,5 @@
 {
-  "status": "paused",
+  "status": "active",
   "draft_type": "keeper",
   "season": 2026,
   "current_pick_index": 32,
@@ -773,11 +773,11 @@
       "mlb_team": "PIT"
     }
   ],
-  "timer_started_at": null,
+  "timer_started_at": "2026-03-09T01:17:23.299098",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:16:51.772857",
-  "timer_duration_seconds": null
+  "last_updated": "2026-03-09T01:17:23.299184",
+  "timer_duration_seconds": 240
 }
