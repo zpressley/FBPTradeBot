@@ -45888,5 +45888,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Carlos Correa (R10 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T22:05:17.375774-04:00-UPID_3285-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T22:05:17.375774-04:00",
+    "upid": "3285",
+    "player_name": "Tim Hill",
+    "team": "NYY",
+    "pos": "RP",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Tim Hill (R10 P5)"
   }
 ]
