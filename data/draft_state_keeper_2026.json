@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 79,
+  "current_pick_index": 80,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1904,6 +1904,30 @@
       "upid": "3732",
       "position": "3B",
       "mlb_team": "NYM"
+    },
+    {
+      "draft": "keeper",
+      "round": 10,
+      "pick": 12,
+      "team": "DRO",
+      "original_owner": "WIZ",
+      "current_owner": "DRO",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 174,
+      "player": "Jung Hoo Lee",
+      "timestamp": "2026-03-09T02:10:15.123355",
+      "pick_index": 79,
+      "upid": "7286",
+      "position": "CF",
+      "mlb_team": "SF"
     }
   ],
   "timer_started_at": "2026-03-09T02:09:24.619036",
@@ -1911,6 +1935,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:09:24.619088",
+  "last_updated": "2026-03-09T02:10:15.128332",
   "timer_duration_seconds": 240
 }

@@ -46049,5 +46049,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Mark Vientos (R10 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T22:10:15.218468-04:00-UPID_7286-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T22:10:15.218468-04:00",
+    "upid": "7286",
+    "player_name": "Jung Hoo Lee",
+    "team": "SF",
+    "pos": "CF",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 302,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Jung Hoo Lee (R10 P12)"
   }
 ]
