@@ -2072,7 +2072,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ronny Henriquez",
+      "timestamp": "2026-03-09T01:31:00.541166",
+      "pick_index": 47,
+      "upid": "3726"
+    },
     "round_type": "standard"
   },
   {
