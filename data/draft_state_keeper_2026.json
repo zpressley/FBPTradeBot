@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 2,
+  "current_pick_index": 3,
   "picks_made": [
     {
       "draft": "keeper",
@@ -51,6 +51,30 @@
       "upid": "1937",
       "position": "SP",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "keeper",
+      "round": 1,
+      "pick": 3,
+      "team": "HAM",
+      "original_owner": "HAM",
+      "current_owner": "HAM",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 55,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-23T09:40:00.295971Z",
+      "buyin_purchased_by": "HAM",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 57,
+      "player": "Corey Seager",
+      "timestamp": "2026-03-09T00:37:18.059636",
+      "pick_index": 2,
+      "upid": "1941",
+      "position": "SS",
+      "mlb_team": "TEX"
     }
   ],
   "timer_started_at": "2026-03-09T00:37:04.348533",
@@ -58,6 +82,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:37:04.348626",
+  "last_updated": "2026-03-09T00:37:18.067739",
   "timer_duration_seconds": 240
 }
