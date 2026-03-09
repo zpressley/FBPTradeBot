@@ -1623,7 +1623,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Salvador Perez",
+      "timestamp": "2026-03-09T01:17:30.188507",
+      "pick_index": 32,
+      "upid": "1976"
+    },
     "round_type": "standard"
   },
   {

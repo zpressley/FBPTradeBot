@@ -44968,5 +44968,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): SAD selected Brandon Lowe (R4 P9)"
+  },
+  {
+    "id": "2026-2026-03-08T21:17:30.387515-04:00-UPID_1976-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T21:17:30.387515-04:00",
+    "upid": "1976",
+    "player_name": "Salvador Perez",
+    "team": "KC",
+    "pos": "C,1B",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 106,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Salvador Perez (R4 P10)"
   }
 ]
