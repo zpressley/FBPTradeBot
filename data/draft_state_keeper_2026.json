@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 107,
+  "current_pick_index": 108,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2576,13 +2576,37 @@
       "upid": "1980",
       "position": "OF",
       "mlb_team": "LAD"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 208,
+      "player": "Jose A. Ferrer",
+      "timestamp": "2026-03-09T02:44:39.955913",
+      "pick_index": 107,
+      "upid": "5298",
+      "position": "RP",
+      "mlb_team": "WSH"
     }
   ],
-  "timer_started_at": "2026-03-09T02:44:15.349145",
+  "timer_started_at": "2026-03-09T02:44:40.974380",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:44:15.349218",
+  "last_updated": "2026-03-09T02:44:40.974456",
   "timer_duration_seconds": 240
 }

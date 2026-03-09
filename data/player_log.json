@@ -46693,5 +46693,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Teoscar Hern\u00e1ndez (R13 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T22:44:40.148858-04:00-UPID_5298-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T22:44:40.148858-04:00",
+    "upid": "5298",
+    "player_name": "Jose A. Ferrer",
+    "team": "WSH",
+    "pos": "RP",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 457,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Jose A. Ferrer (R13 P10)"
   }
 ]
