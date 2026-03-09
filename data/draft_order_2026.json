@@ -1324,7 +1324,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-26T18:21:09.755936Z",
     "buyin_purchased_by": "WAR",
-    "result": null,
+    "result": {
+      "player": "Raisel Iglesias",
+      "timestamp": "2026-03-09T00:56:20.951601",
+      "pick_index": 20,
+      "upid": "1916"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

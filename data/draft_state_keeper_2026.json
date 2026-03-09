@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 20,
+  "current_pick_index": 21,
   "picks_made": [
     {
       "draft": "keeper",
@@ -483,13 +483,37 @@
       "upid": "8440",
       "position": "1B, 3B",
       "mlb_team": "CHW"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 8,
+      "team": "CFL",
+      "original_owner": "WAR",
+      "current_owner": "CFL",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-26T18:21:09.755936Z",
+      "buyin_purchased_by": "WAR",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 86,
+      "player": "Raisel Iglesias",
+      "timestamp": "2026-03-09T00:56:20.951601",
+      "pick_index": 20,
+      "upid": "1916",
+      "position": "RP",
+      "mlb_team": "ATL"
     }
   ],
-  "timer_started_at": "2026-03-09T00:55:52.675752",
+  "timer_started_at": "2026-03-09T00:56:22.082200",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:55:52.675808",
+  "last_updated": "2026-03-09T00:56:22.082273",
   "timer_duration_seconds": 240
 }
