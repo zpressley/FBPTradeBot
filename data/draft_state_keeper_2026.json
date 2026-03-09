@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 6,
+  "current_pick_index": 7,
   "picks_made": [
     {
       "draft": "keeper",
@@ -147,6 +147,30 @@
       "upid": "7282",
       "position": "SP",
       "mlb_team": "CHC"
+    },
+    {
+      "draft": "keeper",
+      "round": 2,
+      "pick": 1,
+      "team": "TBB",
+      "original_owner": "TBB",
+      "current_owner": "TBB",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 35,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-02T22:19:16.734479Z",
+      "buyin_purchased_by": "lyrx_",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 67,
+      "player": "Devin Williams",
+      "timestamp": "2026-03-09T00:44:53.852479",
+      "pick_index": 6,
+      "upid": "2378",
+      "position": "RP",
+      "mlb_team": "NYM"
     }
   ],
   "timer_started_at": "2026-03-09T00:42:48.037288",
@@ -154,6 +178,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:42:48.037371",
+  "last_updated": "2026-03-09T00:44:53.860986",
   "timer_duration_seconds": 240
 }
