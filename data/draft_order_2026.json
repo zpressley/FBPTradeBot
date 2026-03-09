@@ -4909,7 +4909,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Jake Cronenworth",
+      "timestamp": "2026-03-09T03:22:44.389960",
+      "pick_index": 135,
+      "upid": "2591"
+    },
     "round_type": "standard"
   },
   {

@@ -47337,5 +47337,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Ronny Henriquez (R17 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T23:22:44.584776-04:00-UPID_2591-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T23:22:44.584776-04:00",
+    "upid": "2591",
+    "player_name": "Jake Cronenworth",
+    "team": "SD",
+    "pos": "1B,2B,SS",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 343,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Jake Cronenworth (R18 P5)"
   }
 ]
