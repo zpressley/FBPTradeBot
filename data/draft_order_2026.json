@@ -4271,7 +4271,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Josh H. Smith",
+      "timestamp": "2026-03-09T03:06:44.957670",
+      "pick_index": 123,
+      "upid": "2774"
+    },
     "round_type": "standard"
   },
   {

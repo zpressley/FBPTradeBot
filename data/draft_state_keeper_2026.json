@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 123,
+  "current_pick_index": 124,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2960,6 +2960,30 @@
       "upid": "4254",
       "position": "RP",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "keeper",
+      "round": 15,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 229,
+      "player": "Josh H. Smith",
+      "timestamp": "2026-03-09T03:06:44.957670",
+      "pick_index": 123,
+      "upid": "2774",
+      "position": "1B,3B,SS,OF",
+      "mlb_team": "TEX"
     }
   ],
   "timer_started_at": "2026-03-09T03:05:24.535805",
@@ -2967,6 +2991,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:05:24.535891",
+  "last_updated": "2026-03-09T03:06:44.969741",
   "timer_duration_seconds": 240
 }
