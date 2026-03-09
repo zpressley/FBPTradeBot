@@ -4327,7 +4327,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Sung-Mun Song",
+      "timestamp": "2026-03-09T03:10:32.301436",
+      "pick_index": 124,
+      "upid": "8442"
+    },
     "round_type": "standard"
   },
   {

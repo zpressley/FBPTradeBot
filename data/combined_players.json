@@ -145251,9 +145251,9 @@
     "team": "SD",
     "position": "2B, 3B",
     "age": 29,
-    "manager": "",
+    "manager": "Andromedans",
     "player_type": "MLB",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "years_simple": "TC R",
     "yahoo_id": null,
     "mlb_id": "823550",
@@ -145264,6 +145264,7 @@
     "fypd": false,
     "level": "MLB",
     "rank": 499,
-    "status": "[6] TCR"
+    "status": "[6] TCR",
+    "FBP_Team": "DRO"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 124,
+  "current_pick_index": 125,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2984,6 +2984,30 @@
       "upid": "2774",
       "position": "1B,3B,SS,OF",
       "mlb_team": "TEX"
+    },
+    {
+      "draft": "keeper",
+      "round": 15,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 232,
+      "player": "Sung-Mun Song",
+      "timestamp": "2026-03-09T03:10:32.301436",
+      "pick_index": 124,
+      "upid": "8442",
+      "position": "2B, 3B",
+      "mlb_team": "SD"
     }
   ],
   "timer_started_at": "2026-03-09T03:06:51.124718",
@@ -2991,6 +3015,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:06:51.124791",
+  "last_updated": "2026-03-09T03:10:32.308686",
   "timer_duration_seconds": 240
 }
