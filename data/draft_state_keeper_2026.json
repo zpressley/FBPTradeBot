@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 50,
+  "current_pick_index": 51,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1208,13 +1208,37 @@
       "upid": "3277",
       "position": "OF",
       "mlb_team": "LAA"
+    },
+    {
+      "draft": "keeper",
+      "round": 7,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 133,
+      "player": "Kodai Senga",
+      "timestamp": "2026-03-09T01:39:18.565122",
+      "pick_index": 50,
+      "upid": "3373",
+      "position": "SP",
+      "mlb_team": "NYM"
     }
   ],
-  "timer_started_at": "2026-03-09T01:38:42.731550",
+  "timer_started_at": "2026-03-09T01:39:19.350035",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:38:42.731596",
+  "last_updated": "2026-03-09T01:39:19.350080",
   "timer_duration_seconds": 240
 }

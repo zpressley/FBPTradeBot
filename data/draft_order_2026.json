@@ -2274,7 +2274,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Kodai Senga",
+      "timestamp": "2026-03-09T01:39:18.565122",
+      "pick_index": 50,
+      "upid": "3373"
+    },
     "round_type": "standard"
   },
   {
