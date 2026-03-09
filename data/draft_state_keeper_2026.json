@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 115,
+  "current_pick_index": 116,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2768,6 +2768,30 @@
       "upid": "2854",
       "position": "RP",
       "mlb_team": "WSH"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 217,
+      "player": "Seranthony Dom\u00ednguez",
+      "timestamp": "2026-03-09T02:54:15.341809",
+      "pick_index": 115,
+      "upid": "4034",
+      "position": "RP",
+      "mlb_team": "BAL"
     }
   ],
   "timer_started_at": "2026-03-09T02:54:09.288193",
@@ -2775,6 +2799,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:54:09.288264",
+  "last_updated": "2026-03-09T02:54:15.352688",
   "timer_duration_seconds": 240
 }
