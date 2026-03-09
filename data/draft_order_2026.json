@@ -1667,7 +1667,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Garrett Whitlock",
+      "timestamp": "2026-03-09T01:19:41.274677",
+      "pick_index": 34,
+      "upid": "2498"
+    },
     "round_type": "standard"
   },
   {

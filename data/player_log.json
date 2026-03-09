@@ -45014,5 +45014,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Trevor Megill (R4 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T21:19:41.412212-04:00-UPID_2498-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T21:19:41.412212-04:00",
+    "upid": "2498",
+    "player_name": "Garrett Whitlock",
+    "team": "BOS",
+    "pos": "RP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 372,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Garrett Whitlock (R4 P12)"
   }
 ]

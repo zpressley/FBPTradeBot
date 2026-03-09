@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 34,
+  "current_pick_index": 35,
   "picks_made": [
     {
       "draft": "keeper",
@@ -819,13 +819,37 @@
       "upid": "3319",
       "position": "RP",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 12,
+      "team": "TBB",
+      "original_owner": "WIZ",
+      "current_owner": "TBB",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 102,
+      "player": "Garrett Whitlock",
+      "timestamp": "2026-03-09T01:19:41.274677",
+      "pick_index": 34,
+      "upid": "2498",
+      "position": "RP",
+      "mlb_team": "BOS"
     }
   ],
-  "timer_started_at": "2026-03-09T01:18:39.569204",
+  "timer_started_at": "2026-03-09T01:19:42.291721",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:18:39.569287",
+  "last_updated": "2026-03-09T01:19:42.291817",
   "timer_duration_seconds": 240
 }
