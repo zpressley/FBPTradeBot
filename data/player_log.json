@@ -46279,5 +46279,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Tanner Scott (R11 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T22:17:20.035325-04:00-UPID_4048-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T22:17:20.035325-04:00",
+    "upid": "4048",
+    "player_name": "Matt Brash",
+    "team": "SEA",
+    "pos": "RP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 512,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Matt Brash (R11 P11)"
   }
 ]
