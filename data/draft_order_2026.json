@@ -1557,7 +1557,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Jeff Hoffman",
+      "timestamp": "2026-03-09T01:06:23.650556",
+      "pick_index": 29,
+      "upid": "2641"
+    },
     "round_type": "standard"
   },
   {

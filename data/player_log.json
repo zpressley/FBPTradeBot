@@ -44899,5 +44899,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Zac Gallen (R4 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T21:06:23.812431-04:00-UPID_2641-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T21:06:23.812431-04:00",
+    "upid": "2641",
+    "player_name": "Jeff Hoffman",
+    "team": "TOR",
+    "pos": "RP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 145,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Jeff Hoffman (R4 P7)"
   }
 ]
