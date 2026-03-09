@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 47,
+  "current_pick_index": 48,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1131,13 +1131,42 @@
       "upid": "3092",
       "position": "RP",
       "mlb_team": "MIA"
+    },
+    {
+      "draft": "keeper",
+      "round": 6,
+      "pick": 8,
+      "team": "WAR",
+      "original_owner": "WAR",
+      "current_owner": "WAR",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": {
+        "player": "Ronny Henriquez",
+        "timestamp": "2026-03-09T01:31:00.541166",
+        "pick_index": 47,
+        "upid": "3726"
+      },
+      "round_type": "standard",
+      "_file_index": 122,
+      "player": "Shawn Armstrong",
+      "timestamp": "2026-03-09T01:37:11.908566",
+      "pick_index": 47,
+      "upid": "3230",
+      "position": "RP",
+      "mlb_team": "TEX"
     }
   ],
-  "timer_started_at": "2026-03-09T01:36:25.350197",
+  "timer_started_at": "2026-03-09T01:37:13.388017",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:36:25.350238",
+  "last_updated": "2026-03-09T01:37:13.388077",
   "timer_duration_seconds": 240
 }

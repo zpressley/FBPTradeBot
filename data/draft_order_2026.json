@@ -2072,7 +2072,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Shawn Armstrong",
+      "timestamp": "2026-03-09T01:37:11.908566",
+      "pick_index": 47,
+      "upid": "3230"
+    },
     "round_type": "standard"
   },
   {

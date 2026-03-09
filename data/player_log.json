@@ -45313,5 +45313,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Pete Fairbanks (R6 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T21:37:11.992797-04:00-UPID_3230-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T21:37:11.992797-04:00",
+    "upid": "3230",
+    "player_name": "Shawn Armstrong",
+    "team": "TEX",
+    "pos": "RP",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 406,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Shawn Armstrong (R6 P8)"
   }
 ]
