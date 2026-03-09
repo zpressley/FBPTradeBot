@@ -1838,7 +1838,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Gabe Speier",
+      "timestamp": "2026-03-09T01:26:13.483042",
+      "pick_index": 41,
+      "upid": "2489"
+    },
     "round_type": "standard"
   },
   {

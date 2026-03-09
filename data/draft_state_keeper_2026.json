@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 41,
+  "current_pick_index": 42,
   "picks_made": [
     {
       "draft": "keeper",
@@ -987,13 +987,37 @@
       "upid": "4306",
       "position": "2B,SS",
       "mlb_team": "PHI"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 8,
+      "team": "WAR",
+      "original_owner": "WAR",
+      "current_owner": "WAR",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 110,
+      "player": "Gabe Speier",
+      "timestamp": "2026-03-09T01:26:13.483042",
+      "pick_index": 41,
+      "upid": "2489",
+      "position": "RP",
+      "mlb_team": "SEA"
     }
   ],
-  "timer_started_at": "2026-03-09T01:26:06.465367",
+  "timer_started_at": "2026-03-09T01:26:15.286672",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:26:06.465454",
+  "last_updated": "2026-03-09T01:26:15.286748",
   "timer_duration_seconds": 240
 }

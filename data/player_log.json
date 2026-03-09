@@ -45175,5 +45175,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Bryson Stott (R5 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T21:26:13.662794-04:00-UPID_2489-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T21:26:13.662794-04:00",
+    "upid": "2489",
+    "player_name": "Gabe Speier",
+    "team": "SEA",
+    "pos": "RP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Gabe Speier (R5 P8)"
   }
 ]
