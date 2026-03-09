@@ -47268,5 +47268,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Aaron Ashby (R17 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T23:17:50.383574-04:00-UPID_1978-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T23:17:50.383574-04:00",
+    "upid": "1978",
+    "player_name": "Sean Manaea",
+    "team": "NYM",
+    "pos": "SP,RP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 286,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Sean Manaea (R17 P7)"
   }
 ]

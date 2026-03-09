@@ -4724,7 +4724,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Sean Manaea",
+      "timestamp": "2026-03-09T03:17:50.253449",
+      "pick_index": 132,
+      "upid": "1978"
+    },
     "round_type": "standard"
   },
   {

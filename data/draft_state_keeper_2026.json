@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 132,
+  "current_pick_index": 133,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3176,6 +3176,30 @@
       "upid": "1995",
       "position": "RP",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "keeper",
+      "round": 17,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 253,
+      "player": "Sean Manaea",
+      "timestamp": "2026-03-09T03:17:50.253449",
+      "pick_index": 132,
+      "upid": "1978",
+      "position": "SP,RP",
+      "mlb_team": "NYM"
     }
   ],
   "timer_started_at": "2026-03-09T03:17:35.269143",
@@ -3183,6 +3207,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:17:35.269232",
+  "last_updated": "2026-03-09T03:17:50.260835",
   "timer_duration_seconds": 240
 }
