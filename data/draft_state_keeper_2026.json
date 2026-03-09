@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 130,
+  "current_pick_index": 131,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3128,13 +3128,37 @@
       "upid": "2643",
       "position": "2B,CF",
       "mlb_team": "NYM"
+    },
+    {
+      "draft": "keeper",
+      "round": 16,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 245,
+      "player": "Luis Robert",
+      "timestamp": "2026-03-09T03:17:18.830316",
+      "pick_index": 130,
+      "upid": "2907",
+      "position": "CF",
+      "mlb_team": "CWS"
     }
   ],
-  "timer_started_at": "2026-03-09T03:16:26.004982",
+  "timer_started_at": "2026-03-09T03:17:19.566561",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:16:26.005051",
+  "last_updated": "2026-03-09T03:17:19.566627",
   "timer_duration_seconds": 240
 }

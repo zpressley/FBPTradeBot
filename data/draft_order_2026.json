@@ -4578,7 +4578,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Luis Robert",
+      "timestamp": "2026-03-09T03:17:18.830316",
+      "pick_index": 130,
+      "upid": "2907"
+    },
     "round_type": "standard"
   },
   {
