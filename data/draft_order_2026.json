@@ -2520,7 +2520,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Eduard Bazardo",
+      "timestamp": "2026-03-09T01:44:20.233964",
+      "pick_index": 55,
+      "upid": "2432"
+    },
     "round_type": "standard"
   },
   {

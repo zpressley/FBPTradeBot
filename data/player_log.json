@@ -45497,5 +45497,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Ryan Helsley (R8 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T21:44:20.318941-04:00-UPID_2432-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T21:44:20.318941-04:00",
+    "upid": "2432",
+    "player_name": "Eduard Bazardo",
+    "team": "SEA",
+    "pos": "RP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Eduard Bazardo (R8 P8)"
   }
 ]
