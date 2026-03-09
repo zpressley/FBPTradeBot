@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 27,
+  "current_pick_index": 28,
   "picks_made": [
     {
       "draft": "keeper",
@@ -651,6 +651,30 @@
       "upid": "1953",
       "position": "SP",
       "mlb_team": "SD"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 95,
+      "player": "Daniel Palencia",
+      "timestamp": "2026-03-09T01:04:53.928849",
+      "pick_index": 27,
+      "upid": "4574",
+      "position": "RP",
+      "mlb_team": "CHC"
     }
   ],
   "timer_started_at": "2026-03-09T01:03:55.849699",
@@ -658,6 +682,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:03:55.849773",
+  "last_updated": "2026-03-09T01:04:53.938363",
   "timer_duration_seconds": 240
 }

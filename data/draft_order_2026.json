@@ -1513,7 +1513,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Daniel Palencia",
+      "timestamp": "2026-03-09T01:04:53.928849",
+      "pick_index": 27,
+      "upid": "4574"
+    },
     "round_type": "standard"
   },
   {

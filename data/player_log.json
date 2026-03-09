@@ -44853,5 +44853,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Joe Musgrove (R4 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T21:04:54.082025-04:00-UPID_4574-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T21:04:54.082025-04:00",
+    "upid": "4574",
+    "player_name": "Daniel Palencia",
+    "team": "CHC",
+    "pos": "RP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 169,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Daniel Palencia (R4 P5)"
   }
 ]
