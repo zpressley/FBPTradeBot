@@ -1601,7 +1601,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Brandon Lowe",
+      "timestamp": "2026-03-09T01:12:55.274500",
+      "pick_index": 31,
+      "upid": "1929"
+    },
     "round_type": "standard"
   },
   {

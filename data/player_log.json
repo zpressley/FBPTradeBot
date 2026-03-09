@@ -44945,5 +44945,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Grayson Rodriguez (R4 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T21:12:55.415754-04:00-UPID_1929-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-03-08T21:12:55.415754-04:00",
+    "upid": "1929",
+    "player_name": "Brandon Lowe",
+    "team": "PIT",
+    "pos": "2B",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 168,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "not much of a donkey",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): SAD selected Brandon Lowe (R4 P9)"
   }
 ]

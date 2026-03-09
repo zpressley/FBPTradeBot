@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 31,
+  "current_pick_index": 32,
   "picks_made": [
     {
       "draft": "keeper",
@@ -747,13 +747,37 @@
       "upid": "3437",
       "position": "SP",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 9,
+      "team": "SAD",
+      "original_owner": "SAD",
+      "current_owner": "SAD",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 99,
+      "player": "Brandon Lowe",
+      "timestamp": "2026-03-09T01:12:55.274500",
+      "pick_index": 31,
+      "upid": "1929",
+      "position": "2B",
+      "mlb_team": "PIT"
     }
   ],
-  "timer_started_at": "2026-03-09T01:12:45.549800",
+  "timer_started_at": "2026-03-09T01:12:56.004972",
   "paused_at": "2026-03-09T01:09:22.613985",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:12:45.549880",
+  "last_updated": "2026-03-09T01:12:56.005059",
   "timer_duration_seconds": 240
 }
