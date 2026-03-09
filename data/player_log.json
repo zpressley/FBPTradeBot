@@ -46739,5 +46739,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Cade Cavalli (R13 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T22:46:18.276870-04:00-UPID_2872-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T22:46:18.276870-04:00",
+    "upid": "2872",
+    "player_name": "Lars Nootbaar",
+    "team": "STL",
+    "pos": "CF",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 408,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Lars Nootbaar (R13 P12)"
   }
 ]

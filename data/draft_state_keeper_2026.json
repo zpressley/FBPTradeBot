@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 109,
+  "current_pick_index": 110,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2624,13 +2624,37 @@
       "upid": "3477",
       "position": "SP",
       "mlb_team": "WSH"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 12,
+      "team": "WIZ",
+      "original_owner": "WIZ",
+      "current_owner": "WIZ",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 210,
+      "player": "Lars Nootbaar",
+      "timestamp": "2026-03-09T02:46:18.094451",
+      "pick_index": 109,
+      "upid": "2872",
+      "position": "CF",
+      "mlb_team": "STL"
     }
   ],
-  "timer_started_at": "2026-03-09T02:45:04.025253",
+  "timer_started_at": "2026-03-09T02:46:18.910235",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:45:04.025346",
+  "last_updated": "2026-03-09T02:46:18.910304",
   "timer_duration_seconds": 240
 }
