@@ -45957,5 +45957,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Shane Baz (R10 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T22:07:01.650036-04:00-UPID_6353-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T22:07:01.650036-04:00",
+    "upid": "6353",
+    "player_name": "Ryan Weiss",
+    "team": "KC",
+    "pos": "P",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "P",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Ryan Weiss (R10 P8)"
   }
 ]
