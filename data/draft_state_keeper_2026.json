@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 4,
+  "current_pick_index": 5,
   "picks_made": [
     {
       "draft": "keeper",
@@ -99,6 +99,30 @@
       "upid": "1946",
       "position": "SP",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "keeper",
+      "round": 1,
+      "pick": 6,
+      "team": "B2J",
+      "original_owner": "CFL",
+      "current_owner": "B2J",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 55,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-20T02:21:42.295971Z",
+      "buyin_purchased_by": "CFL",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 60,
+      "player": "Zack Wheeler",
+      "timestamp": "2026-03-09T00:39:28.444828",
+      "pick_index": 4,
+      "upid": "1901",
+      "position": "SP",
+      "mlb_team": "PHI"
     }
   ],
   "timer_started_at": "2026-03-09T00:37:42.467346",
@@ -106,6 +130,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:37:42.467421",
+  "last_updated": "2026-03-09T00:39:28.452610",
   "timer_duration_seconds": 240
 }

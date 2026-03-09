@@ -802,7 +802,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-20T02:21:42.295971Z",
     "buyin_purchased_by": "CFL",
-    "result": null,
+    "result": {
+      "player": "Zack Wheeler",
+      "timestamp": "2026-03-09T00:39:28.444828",
+      "pick_index": 4,
+      "upid": "1901"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

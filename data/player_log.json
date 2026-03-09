@@ -44324,5 +44324,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Framber Valdez (R1 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T20:39:28.605146-04:00-UPID_1901-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T20:39:28.605146-04:00",
+    "upid": "1901",
+    "player_name": "Zack Wheeler",
+    "team": "PHI",
+    "pos": "SP",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 131,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Zack Wheeler (R1 P6)"
   }
 ]
