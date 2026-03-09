@@ -44830,5 +44830,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Hunter Greene (R4 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T21:03:54.943426-04:00-UPID_1953-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T21:03:54.943426-04:00",
+    "upid": "1953",
+    "player_name": "Joe Musgrove",
+    "team": "SD",
+    "pos": "SP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 259,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Joe Musgrove (R4 P4)"
   }
 ]

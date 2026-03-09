@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 26,
+  "current_pick_index": 27,
   "picks_made": [
     {
       "draft": "keeper",
@@ -627,13 +627,37 @@
       "upid": "4022",
       "position": "SP",
       "mlb_team": "CIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 4,
+      "team": "RV",
+      "original_owner": "RV",
+      "current_owner": "RV",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 94,
+      "player": "Joe Musgrove",
+      "timestamp": "2026-03-09T01:03:54.752898",
+      "pick_index": 26,
+      "upid": "1953",
+      "position": "SP",
+      "mlb_team": "SD"
     }
   ],
-  "timer_started_at": "2026-03-09T01:02:29.692018",
+  "timer_started_at": "2026-03-09T01:03:55.849699",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:02:29.692099",
+  "last_updated": "2026-03-09T01:03:55.849773",
   "timer_duration_seconds": 240
 }

@@ -1491,7 +1491,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Joe Musgrove",
+      "timestamp": "2026-03-09T01:03:54.752898",
+      "pick_index": 26,
+      "upid": "1953"
+    },
     "round_type": "standard"
   },
   {
