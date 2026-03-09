@@ -1645,7 +1645,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Trevor Megill",
+      "timestamp": "2026-03-09T01:18:25.019922",
+      "pick_index": 33,
+      "upid": "3319"
+    },
     "round_type": "standard"
   },
   {

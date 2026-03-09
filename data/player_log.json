@@ -44991,5 +44991,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Salvador Perez (R4 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T21:18:25.190047-04:00-UPID_3319-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T21:18:25.190047-04:00",
+    "upid": "3319",
+    "player_name": "Trevor Megill",
+    "team": "MIL",
+    "pos": "RP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 142,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Trevor Megill (R4 P11)"
   }
 ]
