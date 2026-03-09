@@ -4227,7 +4227,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Tyler Mahle",
+      "timestamp": "2026-03-09T03:04:35.735897",
+      "pick_index": 121,
+      "upid": "1984"
+    },
     "round_type": "standard"
   },
   {
