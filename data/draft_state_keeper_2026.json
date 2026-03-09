@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 74,
+  "current_pick_index": 75,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1784,13 +1784,37 @@
       "upid": "2045",
       "position": "C",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "keeper",
+      "round": 10,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 169,
+      "player": "Shane Baz",
+      "timestamp": "2026-03-09T02:06:48.227469",
+      "pick_index": 74,
+      "upid": "4101",
+      "position": "SP",
+      "mlb_team": "TB"
     }
   ],
-  "timer_started_at": "2026-03-09T02:06:20.457901",
+  "timer_started_at": "2026-03-09T02:06:48.903029",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:06:20.457955",
+  "last_updated": "2026-03-09T02:06:48.903085",
   "timer_duration_seconds": 240
 }

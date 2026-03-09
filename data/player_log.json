@@ -45934,5 +45934,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Alejandro Kirk (R10 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T22:06:48.322302-04:00-UPID_4101-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T22:06:48.322302-04:00",
+    "upid": "4101",
+    "player_name": "Shane Baz",
+    "team": "TB",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 237,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Shane Baz (R10 P7)"
   }
 ]
