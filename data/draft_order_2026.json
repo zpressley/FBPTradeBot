@@ -2252,7 +2252,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Taylor Ward",
+      "timestamp": "2026-03-09T01:38:42.012799",
+      "pick_index": 49,
+      "upid": "3277"
+    },
     "round_type": "standard"
   },
   {

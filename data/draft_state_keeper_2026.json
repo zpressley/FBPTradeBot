@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 49,
+  "current_pick_index": 50,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1184,13 +1184,37 @@
       "upid": "8441",
       "position": "1B, 3B",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "keeper",
+      "round": 7,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 132,
+      "player": "Taylor Ward",
+      "timestamp": "2026-03-09T01:38:42.012799",
+      "pick_index": 49,
+      "upid": "3277",
+      "position": "OF",
+      "mlb_team": "LAA"
     }
   ],
-  "timer_started_at": "2026-03-09T01:38:08.959413",
+  "timer_started_at": "2026-03-09T01:38:42.731550",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:38:08.959465",
+  "last_updated": "2026-03-09T01:38:42.731596",
   "timer_duration_seconds": 240
 }

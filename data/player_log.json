@@ -45359,5 +45359,28 @@
     "years": "TC R",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Kazuma Okamoto (R6 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T21:38:42.103472-04:00-UPID_3277-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T21:38:42.103472-04:00",
+    "upid": "3277",
+    "player_name": "Taylor Ward",
+    "team": "LAA",
+    "pos": "OF",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 129,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Taylor Ward (R7 P6)"
   }
 ]
