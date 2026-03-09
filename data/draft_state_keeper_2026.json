@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 105,
+  "current_pick_index": 106,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2528,6 +2528,30 @@
       "upid": "1982",
       "position": "CF",
       "mlb_team": "NYY"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 204,
+      "player": "Fernando Cruz",
+      "timestamp": "2026-03-09T02:43:56.382045",
+      "pick_index": 105,
+      "upid": "7480",
+      "position": "SS",
+      "mlb_team": "CHC"
     }
   ],
   "timer_started_at": "2026-03-09T02:42:35.974495",
@@ -2535,6 +2559,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:42:35.974562",
+  "last_updated": "2026-03-09T02:43:56.391841",
   "timer_duration_seconds": 240
 }

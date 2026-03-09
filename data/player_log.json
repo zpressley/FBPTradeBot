@@ -46647,5 +46647,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Trent Grisham (R13 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T22:43:56.559725-04:00-UPID_7480-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T22:43:56.559725-04:00",
+    "upid": "7480",
+    "player_name": "Fernando Cruz",
+    "team": "CHC",
+    "pos": "SS",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Fernando Cruz (R13 P6)"
   }
 ]
