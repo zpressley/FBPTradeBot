@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 65,
+  "current_pick_index": 66,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1568,6 +1568,30 @@
       "upid": "4174",
       "position": "RP",
       "mlb_team": "TB"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 9,
+      "team": "SAD",
+      "original_owner": "SAD",
+      "current_owner": "SAD",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 159,
+      "player": "Dylan Crews",
+      "timestamp": "2026-03-09T01:57:29.324029",
+      "pick_index": 65,
+      "upid": "6562",
+      "position": "CF",
+      "mlb_team": "WSH"
     }
   ],
   "timer_started_at": "2026-03-09T01:53:45.573933",
@@ -1575,6 +1599,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:53:45.573986",
+  "last_updated": "2026-03-09T01:57:29.329055",
   "timer_duration_seconds": 240
 }

@@ -2791,7 +2791,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Dylan Crews",
+      "timestamp": "2026-03-09T01:57:29.324029",
+      "pick_index": 65,
+      "upid": "6562"
+    },
     "round_type": "standard"
   },
   {

@@ -45727,5 +45727,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Edwin Uceta (R9 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T21:57:29.420272-04:00-UPID_6562-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-03-08T21:57:29.420272-04:00",
+    "upid": "6562",
+    "player_name": "Dylan Crews",
+    "team": "WSH",
+    "pos": "CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 193,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "not much of a donkey",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): SAD selected Dylan Crews (R9 P9)"
   }
 ]
