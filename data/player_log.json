@@ -47429,5 +47429,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Ha-Seong Kim (R20 P10)"
+  },
+  {
+    "id": "2026-2026-03-09T09:47:27.652917-04:00-UPID_4081-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-03-09T09:47:27.652917-04:00",
+    "upid": "4081",
+    "player_name": "Fernando Cruz",
+    "team": "NYY",
+    "pos": "RP",
+    "age": 35,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Admin",
+    "event": "Pick the RP Jake!"
   }
 ]

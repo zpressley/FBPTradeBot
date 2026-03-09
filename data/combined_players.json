@@ -37664,15 +37664,15 @@
     "name": "Fernando Cruz",
     "team": "NYY",
     "position": "RP",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "player_type": "MLB",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "status": "[5] TC1",
     "years_simple": "TC 1",
     "yahoo_id": "12690",
     "upid": "4081",
     "mlb_id": 518585,
-    "FBP_Team": null,
+    "FBP_Team": "CFL",
     "birth_date": "1990-03-28",
     "age": 35,
     "height": "6' 2\"",
@@ -37680,7 +37680,8 @@
     "bats": "R",
     "throws": "R",
     "mlb_primary_position": "P",
-    "fypd": false
+    "fypd": false,
+    "level": "MLB"
   },
   {
     "name": "Tanner Banks",
