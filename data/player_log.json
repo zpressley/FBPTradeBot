@@ -46440,5 +46440,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Luke Weaver (R12 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T22:31:34.008114-04:00-UPID_2702-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T22:31:34.008114-04:00",
+    "upid": "2702",
+    "player_name": "JoJo Romero",
+    "team": "STL",
+    "pos": "RP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 496,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected JoJo Romero (R12 P6)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 96,
+  "current_pick_index": 97,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2312,13 +2312,37 @@
       "upid": "2916",
       "position": "RP",
       "mlb_team": "NYY"
+    },
+    {
+      "draft": "keeper",
+      "round": 12,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 192,
+      "player": "JoJo Romero",
+      "timestamp": "2026-03-09T02:31:33.923885",
+      "pick_index": 96,
+      "upid": "2702",
+      "position": "RP",
+      "mlb_team": "STL"
     }
   ],
-  "timer_started_at": "2026-03-09T02:29:36.098268",
+  "timer_started_at": "2026-03-09T02:31:35.231085",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:29:36.098329",
+  "last_updated": "2026-03-09T02:31:35.231138",
   "timer_duration_seconds": 240
 }
