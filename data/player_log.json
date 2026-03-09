@@ -45451,5 +45451,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Adley Rutschman (R8 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T21:40:30.782609-04:00-UPID_5292-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T21:40:30.782609-04:00",
+    "upid": "5292",
+    "player_name": "Jos\u00e9 Caballero",
+    "team": "TB",
+    "pos": "2B,3B,SS,OF",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 220,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Jos\u00e9 Caballero (R8 P6)"
   }
 ]
