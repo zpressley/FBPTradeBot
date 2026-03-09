@@ -45612,5 +45612,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Ryan Walker (R9 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T21:50:45.283970-04:00-UPID_2370-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T21:50:45.283970-04:00",
+    "upid": "2370",
+    "player_name": "Dennis Santana",
+    "team": "PIT",
+    "pos": "RP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 197,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Dennis Santana (R9 P4)"
   }
 ]

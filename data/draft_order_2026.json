@@ -2681,7 +2681,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Dennis Santana",
+      "timestamp": "2026-03-09T01:50:45.178569",
+      "pick_index": 60,
+      "upid": "2370"
+    },
     "round_type": "standard"
   },
   {

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 60,
+  "current_pick_index": 61,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1448,6 +1448,30 @@
       "upid": "6748",
       "position": "RP",
       "mlb_team": "SF"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 4,
+      "team": "RV",
+      "original_owner": "RV",
+      "current_owner": "RV",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 154,
+      "player": "Dennis Santana",
+      "timestamp": "2026-03-09T01:50:45.178569",
+      "pick_index": 60,
+      "upid": "2370",
+      "position": "RP",
+      "mlb_team": "PIT"
     }
   ],
   "timer_started_at": "2026-03-09T01:50:20.893217",
@@ -1455,6 +1479,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:50:20.893265",
+  "last_updated": "2026-03-09T01:50:45.183432",
   "timer_duration_seconds": 240
 }
