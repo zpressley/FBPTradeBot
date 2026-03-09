@@ -46463,5 +46463,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected JoJo Romero (R12 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T22:31:41.757283-04:00-UPID_6643-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T22:31:41.757283-04:00",
+    "upid": "6643",
+    "player_name": "Jordan Leasure",
+    "team": "CWS",
+    "pos": "RP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 316,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Jordan Leasure (R12 P7)"
   }
 ]

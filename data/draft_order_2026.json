@@ -3529,7 +3529,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Jordan Leasure",
+      "timestamp": "2026-03-09T02:31:41.670018",
+      "pick_index": 97,
+      "upid": "6643"
+    },
     "round_type": "standard"
   },
   {
