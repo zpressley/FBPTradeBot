@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 112,
+  "current_pick_index": 113,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2696,13 +2696,37 @@
       "upid": "3346",
       "position": "RP",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 3,
+      "team": "HAM",
+      "original_owner": "HAM",
+      "current_owner": "HAM",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 213,
+      "player": "Dominic Canzone",
+      "timestamp": "2026-03-09T02:50:22.374365",
+      "pick_index": 112,
+      "upid": "5631",
+      "position": "OF",
+      "mlb_team": "SEA"
     }
   ],
-  "timer_started_at": "2026-03-09T02:47:07.870372",
+  "timer_started_at": "2026-03-09T02:50:23.192693",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:50:08.801175",
+  "last_updated": "2026-03-09T02:50:23.192858",
   "timer_duration_seconds": 240
 }

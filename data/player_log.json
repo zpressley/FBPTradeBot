@@ -46808,5 +46808,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Tyler Rogers (R14 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T22:50:22.556019-04:00-UPID_5631-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T22:50:22.556019-04:00",
+    "upid": "5631",
+    "player_name": "Dominic Canzone",
+    "team": "SEA",
+    "pos": "OF",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 355,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Dominic Canzone (R14 P3)"
   }
 ]
