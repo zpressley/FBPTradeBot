@@ -2813,7 +2813,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Kyle Harrison",
+      "timestamp": "2026-03-09T01:58:39.083962",
+      "pick_index": 66,
+      "upid": "3457"
+    },
     "round_type": "standard"
   },
   {

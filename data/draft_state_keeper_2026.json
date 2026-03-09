@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 66,
+  "current_pick_index": 67,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1592,6 +1592,30 @@
       "upid": "6562",
       "position": "CF",
       "mlb_team": "WSH"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 160,
+      "player": "Kyle Harrison",
+      "timestamp": "2026-03-09T01:58:39.083962",
+      "pick_index": 66,
+      "upid": "3457",
+      "position": "SP,RP",
+      "mlb_team": "SF"
     }
   ],
   "timer_started_at": "2026-03-09T01:57:31.078663",
@@ -1599,6 +1623,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:57:31.078715",
+  "last_updated": "2026-03-09T01:58:39.088464",
   "timer_duration_seconds": 240
 }
