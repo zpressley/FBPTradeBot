@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 134,
+  "current_pick_index": 135,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3224,6 +3224,29 @@
       "upid": "1985",
       "position": "OF",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "keeper",
+      "round": 17,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 257,
+      "player": "Ronny Henriquez",
+      "timestamp": "2026-03-09T03:21:14.498909",
+      "pick_index": 134,
+      "upid": "3726",
+      "position": "RP"
     }
   ],
   "timer_started_at": "2026-03-09T03:19:35.771793",
@@ -3231,6 +3254,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:19:35.771855",
+  "last_updated": "2026-03-09T03:21:14.511764",
   "timer_duration_seconds": 240
 }
