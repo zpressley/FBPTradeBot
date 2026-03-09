@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 127,
+  "current_pick_index": 128,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3056,6 +3056,30 @@
       "upid": "6503",
       "position": "SP,RP",
       "mlb_team": "LAD"
+    },
+    {
+      "draft": "keeper",
+      "round": 16,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 239,
+      "player": "Austin Wells",
+      "timestamp": "2026-03-09T03:13:12.946594",
+      "pick_index": 127,
+      "upid": "3502",
+      "position": "C",
+      "mlb_team": "NYY"
     }
   ],
   "timer_started_at": "2026-03-09T03:11:19.513979",
@@ -3063,6 +3087,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:11:19.514047",
+  "last_updated": "2026-03-09T03:13:12.956330",
   "timer_duration_seconds": 240
 }

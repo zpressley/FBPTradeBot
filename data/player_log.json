@@ -47153,5 +47153,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Jack Dreyer (R15 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T23:13:13.127317-04:00-UPID_3502-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T23:13:13.127317-04:00",
+    "upid": "3502",
+    "player_name": "Austin Wells",
+    "team": "NYY",
+    "pos": "C",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 242,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Austin Wells (R16 P5)"
   }
 ]

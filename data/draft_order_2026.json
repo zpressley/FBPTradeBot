@@ -4461,7 +4461,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Austin Wells",
+      "timestamp": "2026-03-09T03:13:12.946594",
+      "pick_index": 127,
+      "upid": "3502"
+    },
     "round_type": "standard"
   },
   {
