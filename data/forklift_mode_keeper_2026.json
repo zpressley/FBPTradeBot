@@ -1,7 +1,5 @@
 {
-  "forklift_teams": [
-    "HAM"
-  ],
+  "forklift_teams": [],
   "history": [
     {
       "team": "HAM",
@@ -20,6 +18,12 @@
       "action": "enabled",
       "by": "zpressley",
       "timestamp": "2026-03-09T02:18:35.291366"
+    },
+    {
+      "team": "HAM",
+      "action": "disabled",
+      "by": "autopick",
+      "timestamp": "2026-03-09T02:18:46.239087"
     }
   ]
 }
