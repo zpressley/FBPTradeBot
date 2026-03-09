@@ -2028,7 +2028,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Johan Oviedo",
+      "timestamp": "2026-03-09T01:30:16.886718",
+      "pick_index": 45,
+      "upid": "2687"
+    },
     "round_type": "standard"
   },
   {

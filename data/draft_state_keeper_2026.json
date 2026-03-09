@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 45,
+  "current_pick_index": 46,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1083,6 +1083,30 @@
       "upid": "2447",
       "position": "RP",
       "mlb_team": "CIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 6,
+      "pick": 6,
+      "team": "WIZ",
+      "original_owner": "CFL",
+      "current_owner": "WIZ",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 120,
+      "player": "Johan Oviedo",
+      "timestamp": "2026-03-09T01:30:16.886718",
+      "pick_index": 45,
+      "upid": "2687",
+      "position": "SP",
+      "mlb_team": "PIT"
     }
   ],
   "timer_started_at": "2026-03-09T01:28:58.519531",
@@ -1090,6 +1114,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:28:58.519598",
+  "last_updated": "2026-03-09T01:30:16.896983",
   "timer_duration_seconds": 240
 }
