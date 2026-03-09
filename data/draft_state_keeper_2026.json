@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 48,
+  "current_pick_index": 47,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1131,36 +1131,13 @@
       "upid": "3092",
       "position": "RP",
       "mlb_team": "MIA"
-    },
-    {
-      "draft": "keeper",
-      "round": 6,
-      "pick": 8,
-      "team": "WAR",
-      "original_owner": "WAR",
-      "current_owner": "WAR",
-      "traded": false,
-      "buyin_required": false,
-      "buyin_cost": null,
-      "buyin_purchased": false,
-      "buyin_purchased_at": null,
-      "buyin_purchased_by": null,
-      "taxed_out": false,
-      "result": null,
-      "round_type": "standard",
-      "_file_index": 122,
-      "player": "Ronny Henriquez",
-      "timestamp": "2026-03-09T01:31:00.541166",
-      "pick_index": 47,
-      "upid": "3726",
-      "position": "RP"
     }
   ],
-  "timer_started_at": "2026-03-09T01:36:15.460285",
+  "timer_started_at": "2026-03-09T01:36:25.350197",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:36:15.460355",
+  "last_updated": "2026-03-09T01:36:25.350238",
   "timer_duration_seconds": 240
 }
