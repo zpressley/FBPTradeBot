@@ -45819,5 +45819,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Bryan Reynolds (R10 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T22:01:44.424955-04:00-UPID_1957-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T22:01:44.424955-04:00",
+    "upid": "1957",
+    "player_name": "Kenley Jansen",
+    "team": "DET",
+    "pos": "RP",
+    "age": 38,
+    "level": "",
+    "team_rank": null,
+    "rank": 173,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Kenley Jansen (R10 P2)"
   }
 ]
