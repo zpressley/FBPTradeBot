@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 122,
+  "current_pick_index": 123,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2936,6 +2936,30 @@
       "upid": "1984",
       "position": "SP",
       "mlb_team": "SF"
+    },
+    {
+      "draft": "keeper",
+      "round": 15,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 228,
+      "player": "Bennett Sousa",
+      "timestamp": "2026-03-09T03:05:20.830061",
+      "pick_index": 122,
+      "upid": "4254",
+      "position": "RP",
+      "mlb_team": "HOU"
     }
   ],
   "timer_started_at": "2026-03-09T03:04:36.652518",
@@ -2943,6 +2967,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:04:36.652600",
+  "last_updated": "2026-03-09T03:05:20.839384",
   "timer_duration_seconds": 240
 }
