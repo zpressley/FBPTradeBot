@@ -44462,5 +44462,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Luis Arraez (R2 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T20:47:37.435159-04:00-UPID_3451-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T20:47:37.435159-04:00",
+    "upid": "3451",
+    "player_name": "Noelvi Marte",
+    "team": "CIN",
+    "pos": "3B,OF",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 149,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Noelvi Marte (R2 P7)"
   }
 ]

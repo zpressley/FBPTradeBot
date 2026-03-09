@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 10,
+  "current_pick_index": 11,
   "picks_made": [
     {
       "draft": "keeper",
@@ -243,6 +243,30 @@
       "upid": "2893",
       "position": "1B,2B",
       "mlb_team": "SD"
+    },
+    {
+      "draft": "keeper",
+      "round": 2,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 35,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-25T18:13:39.576687Z",
+      "buyin_purchased_by": "jepordizers",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 73,
+      "player": "Noelvi Marte",
+      "timestamp": "2026-03-09T00:47:37.269993",
+      "pick_index": 10,
+      "upid": "3451",
+      "position": "3B,OF",
+      "mlb_team": "CIN"
     }
   ],
   "timer_started_at": "2026-03-09T00:46:12.828707",
@@ -250,6 +274,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:46:12.828818",
+  "last_updated": "2026-03-09T00:47:37.280456",
   "timer_duration_seconds": 240
 }
