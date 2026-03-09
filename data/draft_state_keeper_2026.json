@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 81,
+  "current_pick_index": 82,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1952,13 +1952,37 @@
       "upid": "7488",
       "position": "RP",
       "mlb_team": "TEX"
+    },
+    {
+      "draft": "keeper",
+      "round": 11,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 176,
+      "player": "Giancarlo Stanton",
+      "timestamp": "2026-03-09T02:11:43.521225",
+      "pick_index": 81,
+      "upid": "2507",
+      "position": "OF",
+      "mlb_team": "NYY"
     }
   ],
-  "timer_started_at": "2026-03-09T02:11:38.421012",
+  "timer_started_at": "2026-03-09T02:11:44.986323",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:11:38.421058",
+  "last_updated": "2026-03-09T02:11:44.986390",
   "timer_duration_seconds": 240
 }

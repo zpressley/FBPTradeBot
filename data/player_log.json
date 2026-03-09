@@ -46095,5 +46095,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Robert Garcia (R11 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T22:11:43.613779-04:00-UPID_2507-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T22:11:43.613779-04:00",
+    "upid": "2507",
+    "player_name": "Giancarlo Stanton",
+    "team": "NYY",
+    "pos": "OF",
+    "age": 36,
+    "level": "",
+    "team_rank": null,
+    "rank": 205,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Giancarlo Stanton (R11 P2)"
   }
 ]
