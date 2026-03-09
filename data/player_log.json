@@ -46785,5 +46785,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Zach McKinstry (R14 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T22:50:08.955111-04:00-UPID_3346-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T22:50:08.955111-04:00",
+    "upid": "3346",
+    "player_name": "Tyler Rogers",
+    "team": "TOR",
+    "pos": "RP",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 399,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Tyler Rogers (R14 P2)"
   }
 ]

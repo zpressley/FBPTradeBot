@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 111,
+  "current_pick_index": 112,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2672,6 +2672,30 @@
       "upid": "3423",
       "position": "3B,SS,OF",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 212,
+      "player": "Tyler Rogers",
+      "timestamp": "2026-03-09T02:50:08.787186",
+      "pick_index": 111,
+      "upid": "3346",
+      "position": "RP",
+      "mlb_team": "TOR"
     }
   ],
   "timer_started_at": "2026-03-09T02:47:07.870372",
@@ -2679,6 +2703,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:47:07.870451",
+  "last_updated": "2026-03-09T02:50:08.801175",
   "timer_duration_seconds": 240
 }
