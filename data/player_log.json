@@ -44531,5 +44531,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Jhoan Duran (R2 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T20:49:13.922968-04:00-UPID_1908-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T20:49:13.922968-04:00",
+    "upid": "1908",
+    "player_name": "Josh Hader",
+    "team": "HOU",
+    "pos": "RP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 89,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Josh Hader (R3 P1)"
   }
 ]

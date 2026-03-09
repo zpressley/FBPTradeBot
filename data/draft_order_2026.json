@@ -1170,7 +1170,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-26T18:44:52.069041Z",
     "buyin_purchased_by": "WAR",
-    "result": null,
+    "result": {
+      "player": "Josh Hader",
+      "timestamp": "2026-03-09T00:49:13.766078",
+      "pick_index": 13,
+      "upid": "1908"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

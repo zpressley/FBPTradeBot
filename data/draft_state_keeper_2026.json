@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 13,
+  "current_pick_index": 14,
   "picks_made": [
     {
       "draft": "keeper",
@@ -315,13 +315,37 @@
       "upid": "4023",
       "position": "RP",
       "mlb_team": "MIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 1,
+      "team": "WIZ",
+      "original_owner": "TBB",
+      "current_owner": "WIZ",
+      "traded": true,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-26T18:44:52.069041Z",
+      "buyin_purchased_by": "WAR",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 79,
+      "player": "Josh Hader",
+      "timestamp": "2026-03-09T00:49:13.766078",
+      "pick_index": 13,
+      "upid": "1908",
+      "position": "RP",
+      "mlb_team": "HOU"
     }
   ],
-  "timer_started_at": "2026-03-09T00:48:48.272018",
+  "timer_started_at": "2026-03-09T00:49:14.871207",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:48:48.272097",
+  "last_updated": "2026-03-09T00:49:14.871308",
   "timer_duration_seconds": 240
 }
