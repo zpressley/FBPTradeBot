@@ -4685,7 +4685,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Aaron Ashby",
+      "timestamp": "2026-03-09T03:17:29.519189",
+      "pick_index": 131,
+      "upid": "1995"
+    },
     "round_type": "standard"
   },
   {

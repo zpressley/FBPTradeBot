@@ -47245,5 +47245,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Luis Robert (R16 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T23:17:29.688549-04:00-UPID_1995-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T23:17:29.688549-04:00",
+    "upid": "1995",
+    "player_name": "Aaron Ashby",
+    "team": "MIL",
+    "pos": "RP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Aaron Ashby (R17 P5)"
   }
 ]

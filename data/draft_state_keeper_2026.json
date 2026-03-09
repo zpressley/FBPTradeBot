@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 131,
+  "current_pick_index": 132,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3152,6 +3152,30 @@
       "upid": "2907",
       "position": "CF",
       "mlb_team": "CWS"
+    },
+    {
+      "draft": "keeper",
+      "round": 17,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 251,
+      "player": "Aaron Ashby",
+      "timestamp": "2026-03-09T03:17:29.519189",
+      "pick_index": 131,
+      "upid": "1995",
+      "position": "RP",
+      "mlb_team": "MIL"
     }
   ],
   "timer_started_at": "2026-03-09T03:17:19.566561",
@@ -3159,6 +3183,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:17:19.566627",
+  "last_updated": "2026-03-09T03:17:29.538531",
   "timer_duration_seconds": 240
 }
