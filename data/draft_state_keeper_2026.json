@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 126,
+  "current_pick_index": 127,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3032,6 +3032,30 @@
       "upid": "3385",
       "position": "SS",
       "mlb_team": "SF"
+    },
+    {
+      "draft": "keeper",
+      "round": 15,
+      "pick": 12,
+      "team": "WIZ",
+      "original_owner": "WIZ",
+      "current_owner": "WIZ",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 234,
+      "player": "Jack Dreyer",
+      "timestamp": "2026-03-09T03:11:10.221943",
+      "pick_index": 126,
+      "upid": "6503",
+      "position": "SP,RP",
+      "mlb_team": "LAD"
     }
   ],
   "timer_started_at": "2026-03-09T03:11:03.299580",
@@ -3039,6 +3063,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:11:03.299658",
+  "last_updated": "2026-03-09T03:11:10.232893",
   "timer_duration_seconds": 240
 }

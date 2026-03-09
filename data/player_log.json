@@ -47130,5 +47130,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Willy Adames (R15 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T23:11:10.390895-04:00-UPID_6503-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T23:11:10.390895-04:00",
+    "upid": "6503",
+    "player_name": "Jack Dreyer",
+    "team": "LAD",
+    "pos": "SP,RP",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Jack Dreyer (R15 P12)"
   }
 ]

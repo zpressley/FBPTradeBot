@@ -4371,7 +4371,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Jack Dreyer",
+      "timestamp": "2026-03-09T03:11:10.221943",
+      "pick_index": 126,
+      "upid": "6503"
+    },
     "round_type": "standard"
   },
   {
