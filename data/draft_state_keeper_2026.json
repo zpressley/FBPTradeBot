@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 14,
+  "current_pick_index": 15,
   "picks_made": [
     {
       "draft": "keeper",
@@ -339,13 +339,37 @@
       "upid": "1908",
       "position": "RP",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-02T19:54:29.189889Z",
+      "buyin_purchased_by": "B2J",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 80,
+      "player": "Christian Yelich",
+      "timestamp": "2026-03-09T00:50:45.671271",
+      "pick_index": 14,
+      "upid": "2275",
+      "position": "OF",
+      "mlb_team": "MIL"
     }
   ],
-  "timer_started_at": "2026-03-09T00:49:14.871207",
+  "timer_started_at": "2026-03-09T00:50:46.865805",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:49:14.871308",
+  "last_updated": "2026-03-09T00:50:46.865884",
   "timer_duration_seconds": 240
 }
