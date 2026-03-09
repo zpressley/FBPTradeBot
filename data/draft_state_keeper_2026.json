@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 56,
+  "current_pick_index": 57,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1352,6 +1352,30 @@
       "upid": "2432",
       "position": "RP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "keeper",
+      "round": 8,
+      "pick": 9,
+      "team": "SAD",
+      "original_owner": "SAD",
+      "current_owner": "SAD",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 147,
+      "player": "Gleyber Torres",
+      "timestamp": "2026-03-09T01:48:14.727730",
+      "pick_index": 56,
+      "upid": "1905",
+      "position": "2B",
+      "mlb_team": "DET"
     }
   ],
   "timer_started_at": "2026-03-09T01:44:21.533818",
@@ -1359,6 +1383,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:44:21.533871",
+  "last_updated": "2026-03-09T01:48:14.735222",
   "timer_duration_seconds": 240
 }

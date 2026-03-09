@@ -45520,5 +45520,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Eduard Bazardo (R8 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T21:48:14.827600-04:00-UPID_1905-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-03-08T21:48:14.827600-04:00",
+    "upid": "1905",
+    "player_name": "Gleyber Torres",
+    "team": "DET",
+    "pos": "2B",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 223,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "not much of a donkey",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): SAD selected Gleyber Torres (R8 P9)"
   }
 ]

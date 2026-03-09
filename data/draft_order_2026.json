@@ -2542,7 +2542,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Gleyber Torres",
+      "timestamp": "2026-03-09T01:48:14.727730",
+      "pick_index": 56,
+      "upid": "1905"
+    },
     "round_type": "standard"
   },
   {
