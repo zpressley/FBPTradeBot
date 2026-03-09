@@ -46831,5 +46831,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Dominic Canzone (R14 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T22:52:20.890467-04:00-UPID_3640-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T22:52:20.890467-04:00",
+    "upid": "3640",
+    "player_name": "Colt Keith",
+    "team": "DET",
+    "pos": "1B,2B,3B",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": 291,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Colt Keith (R14 P5)"
   }
 ]
