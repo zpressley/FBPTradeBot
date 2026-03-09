@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 99,
+  "current_pick_index": 100,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2384,13 +2384,37 @@
       "upid": "2956",
       "position": "RP",
       "mlb_team": "PHI"
+    },
+    {
+      "draft": "keeper",
+      "round": 12,
+      "pick": 12,
+      "team": "CFL",
+      "original_owner": "WIZ",
+      "current_owner": "CFL",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 198,
+      "player": "Justin Steele",
+      "timestamp": "2026-03-09T02:38:20.971840",
+      "pick_index": 99,
+      "upid": "2801",
+      "position": "SP",
+      "mlb_team": "CHC"
     }
   ],
-  "timer_started_at": "2026-03-09T02:36:53.013732",
+  "timer_started_at": "2026-03-09T02:38:22.124771",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:36:53.013804",
+  "last_updated": "2026-03-09T02:38:22.124863",
   "timer_duration_seconds": 240
 }

@@ -46509,5 +46509,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Matt Strahm (R12 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T22:38:21.160722-04:00-UPID_2801-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T22:38:21.160722-04:00",
+    "upid": "2801",
+    "player_name": "Justin Steele",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 376,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Justin Steele (R12 P12)"
   }
 ]
