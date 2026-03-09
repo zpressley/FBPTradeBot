@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 59,
+  "current_pick_index": 60,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1424,13 +1424,37 @@
       "upid": "2239",
       "position": "SP",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 3,
+      "team": "HAM",
+      "original_owner": "HAM",
+      "current_owner": "HAM",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 153,
+      "player": "Ryan Walker",
+      "timestamp": "2026-03-09T01:50:19.621894",
+      "pick_index": 59,
+      "upid": "6748",
+      "position": "RP",
+      "mlb_team": "SF"
     }
   ],
-  "timer_started_at": "2026-03-09T01:49:35.288179",
+  "timer_started_at": "2026-03-09T01:50:20.893217",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:49:35.288238",
+  "last_updated": "2026-03-09T01:50:20.893265",
   "timer_duration_seconds": 240
 }

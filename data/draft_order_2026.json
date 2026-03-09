@@ -2659,7 +2659,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ryan Walker",
+      "timestamp": "2026-03-09T01:50:19.621894",
+      "pick_index": 59,
+      "upid": "6748"
+    },
     "round_type": "standard"
   },
   {
