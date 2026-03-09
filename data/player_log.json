@@ -46348,5 +46348,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Alec Bohm (R12 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T22:17:57.898680-04:00-UPID_3379-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T22:17:57.898680-04:00",
+    "upid": "3379",
+    "player_name": "Will Vest",
+    "team": "DET",
+    "pos": "RP",
+    "age": 30,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 273,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Will Vest (R12 P2)"
   }
 ]

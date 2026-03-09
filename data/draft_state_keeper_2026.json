@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 92,
+  "current_pick_index": 93,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2216,13 +2216,37 @@
       "upid": "2039",
       "position": "1B,3B",
       "mlb_team": "PHI"
+    },
+    {
+      "draft": "keeper",
+      "round": 12,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 188,
+      "player": "Will Vest",
+      "timestamp": "2026-03-09T02:17:57.807516",
+      "pick_index": 92,
+      "upid": "3379",
+      "position": "RP",
+      "mlb_team": "DET"
     }
   ],
-  "timer_started_at": "2026-03-09T02:17:46.612694",
+  "timer_started_at": "2026-03-09T02:17:58.775822",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:17:46.612794",
-  "timer_duration_seconds": 240
+  "last_updated": "2026-03-09T02:17:58.775876",
+  "timer_duration_seconds": 10
 }
