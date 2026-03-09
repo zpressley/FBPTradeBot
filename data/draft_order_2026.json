@@ -3138,7 +3138,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Robert Garcia",
+      "timestamp": "2026-03-09T02:11:12.149862",
+      "pick_index": 80,
+      "upid": "7488"
+    },
     "round_type": "standard"
   },
   {
