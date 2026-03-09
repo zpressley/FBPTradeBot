@@ -45980,5 +45980,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Ryan Weiss (R10 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T22:08:36.712157-04:00-UPID_3470-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "SAD",
+    "timestamp": "2026-03-08T22:08:36.712157-04:00",
+    "upid": "3470",
+    "player_name": "Jasson Dom\u00ednguez",
+    "team": "NYY",
+    "pos": "CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 238,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "not much of a donkey",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): SAD selected Jasson Dom\u00ednguez (R10 P9)"
   }
 ]
