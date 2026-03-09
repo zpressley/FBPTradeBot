@@ -47199,5 +47199,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Heliot Ramos (R16 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T23:16:25.444011-04:00-UPID_2643-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T23:16:25.444011-04:00",
+    "upid": "2643",
+    "player_name": "Jeff McNeil",
+    "team": "NYM",
+    "pos": "2B,CF",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 340,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Jeff McNeil (R16 P10)"
   }
 ]

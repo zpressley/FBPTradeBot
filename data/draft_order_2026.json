@@ -4556,7 +4556,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Jeff McNeil",
+      "timestamp": "2026-03-09T03:16:25.288652",
+      "pick_index": 129,
+      "upid": "2643"
+    },
     "round_type": "standard"
   },
   {
