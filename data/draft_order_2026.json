@@ -2769,7 +2769,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Edwin Uceta",
+      "timestamp": "2026-03-09T01:53:44.912245",
+      "pick_index": 64,
+      "upid": "4174"
+    },
     "round_type": "standard"
   },
   {
