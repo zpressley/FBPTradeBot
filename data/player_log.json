@@ -44439,5 +44439,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Jose Altuve (R2 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T20:46:11.480801-04:00-UPID_2893-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T20:46:11.480801-04:00",
+    "upid": "2893",
+    "player_name": "Luis Arraez",
+    "team": "SD",
+    "pos": "1B,2B",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 258,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Luis Arraez (R2 P6)"
   }
 ]
