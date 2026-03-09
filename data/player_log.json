@@ -46854,5 +46854,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Colt Keith (R14 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T22:54:08.518687-04:00-UPID_2854-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T22:54:08.518687-04:00",
+    "upid": "2854",
+    "player_name": "Kyle Finnegan",
+    "team": "WSH",
+    "pos": "RP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 346,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Kyle Finnegan (R14 P6)"
   }
 ]
