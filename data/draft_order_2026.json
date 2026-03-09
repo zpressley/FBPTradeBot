@@ -4500,7 +4500,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Heliot Ramos",
+      "timestamp": "2026-03-09T03:13:24.060867",
+      "pick_index": 128,
+      "upid": "3818"
+    },
     "round_type": "standard"
   },
   {
