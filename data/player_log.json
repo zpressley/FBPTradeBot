@@ -44623,5 +44623,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): RV selected Steven Kwan (R3 P4)"
+  },
+  {
+    "id": "2026-2026-03-08T20:53:59.046347-04:00-UPID_3995-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DMN",
+    "timestamp": "2026-03-08T20:53:59.046347-04:00",
+    "upid": "3995",
+    "player_name": "Tanner Bibee",
+    "team": "CLE",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 181,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Damn Yankees",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DMN selected Tanner Bibee (R3 P5)"
   }
 ]

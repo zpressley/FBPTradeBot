@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 17,
+  "current_pick_index": 18,
   "picks_made": [
     {
       "draft": "keeper",
@@ -411,13 +411,37 @@
       "upid": "3986",
       "position": "OF",
       "mlb_team": "CLE"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-02T00:24:01.727320Z",
+      "buyin_purchased_by": "DMN",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 83,
+      "player": "Tanner Bibee",
+      "timestamp": "2026-03-09T00:53:58.857575",
+      "pick_index": 17,
+      "upid": "3995",
+      "position": "SP",
+      "mlb_team": "CLE"
     }
   ],
-  "timer_started_at": "2026-03-09T00:52:39.234157",
+  "timer_started_at": "2026-03-09T00:54:00.023465",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:52:39.234242",
+  "last_updated": "2026-03-09T00:54:00.023549",
   "timer_duration_seconds": 240
 }
