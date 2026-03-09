@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 18,
+  "current_pick_index": 19,
   "picks_made": [
     {
       "draft": "keeper",
@@ -435,13 +435,37 @@
       "upid": "3995",
       "position": "SP",
       "mlb_team": "CLE"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-03-01T21:25:59.000000Z",
+      "buyin_purchased_by": "CFL",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 84,
+      "player": "Robert Suarez",
+      "timestamp": "2026-03-09T00:55:05.901017",
+      "pick_index": 18,
+      "upid": "4046",
+      "position": "RP",
+      "mlb_team": "SD"
     }
   ],
-  "timer_started_at": "2026-03-09T00:54:00.023465",
+  "timer_started_at": "2026-03-09T00:55:06.882714",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:54:00.023549",
+  "last_updated": "2026-03-09T00:55:06.882786",
   "timer_duration_seconds": 240
 }
