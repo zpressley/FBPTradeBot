@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 101,
+  "current_pick_index": 102,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2432,13 +2432,37 @@
       "upid": "4426",
       "position": "CF",
       "mlb_team": "LAA"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 200,
+      "player": "Jorge Polanco",
+      "timestamp": "2026-03-09T02:38:51.467368",
+      "pick_index": 101,
+      "upid": "1954",
+      "position": "2B,3B",
+      "mlb_team": "NYM"
     }
   ],
-  "timer_started_at": "2026-03-09T02:38:41.802944",
+  "timer_started_at": "2026-03-09T02:38:52.068794",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:38:41.803033",
-  "timer_duration_seconds": 240
+  "last_updated": "2026-03-09T02:38:52.068876",
+  "timer_duration_seconds": 10
 }
