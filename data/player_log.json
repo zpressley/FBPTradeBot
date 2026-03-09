@@ -47107,5 +47107,28 @@
     "years": "TC R",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Sung-Mun Song (R15 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T23:11:02.175715-04:00-UPID_3385-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T23:11:02.175715-04:00",
+    "upid": "3385",
+    "player_name": "Willy Adames",
+    "team": "SF",
+    "pos": "SS",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 111,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Willy Adames (R15 P11)"
   }
 ]

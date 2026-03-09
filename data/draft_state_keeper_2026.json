@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 125,
+  "current_pick_index": 126,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3008,13 +3008,37 @@
       "upid": "8442",
       "position": "2B, 3B",
       "mlb_team": "SD"
+    },
+    {
+      "draft": "keeper",
+      "round": 15,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 233,
+      "player": "Willy Adames",
+      "timestamp": "2026-03-09T03:11:01.921186",
+      "pick_index": 125,
+      "upid": "3385",
+      "position": "SS",
+      "mlb_team": "SF"
     }
   ],
-  "timer_started_at": "2026-03-09T03:10:33.666262",
+  "timer_started_at": "2026-03-09T03:11:03.299580",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:10:33.666332",
+  "last_updated": "2026-03-09T03:11:03.299658",
   "timer_duration_seconds": 240
 }

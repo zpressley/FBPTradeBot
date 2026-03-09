@@ -4349,7 +4349,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Willy Adames",
+      "timestamp": "2026-03-09T03:11:01.921186",
+      "pick_index": 125,
+      "upid": "3385"
+    },
     "round_type": "standard"
   },
   {
