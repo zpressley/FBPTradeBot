@@ -46302,5 +46302,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Matt Brash (R11 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T22:17:35.311512-04:00-UPID_2158-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T22:17:35.311512-04:00",
+    "upid": "2158",
+    "player_name": "Brad Keller",
+    "team": "CHC",
+    "pos": "RP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Brad Keller (R11 P12)"
   }
 ]

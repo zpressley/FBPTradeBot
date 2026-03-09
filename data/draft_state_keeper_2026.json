@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 90,
+  "current_pick_index": 91,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2168,13 +2168,37 @@
       "upid": "4048",
       "position": "RP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "keeper",
+      "round": 11,
+      "pick": 12,
+      "team": "WIZ",
+      "original_owner": "WIZ",
+      "current_owner": "WIZ",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 186,
+      "player": "Brad Keller",
+      "timestamp": "2026-03-09T02:17:35.219737",
+      "pick_index": 90,
+      "upid": "2158",
+      "position": "RP",
+      "mlb_team": "CHC"
     }
   ],
-  "timer_started_at": "2026-03-09T02:17:20.908798",
+  "timer_started_at": "2026-03-09T02:17:36.262339",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:17:20.908862",
+  "last_updated": "2026-03-09T02:17:36.262390",
   "timer_duration_seconds": 240
 }
