@@ -46923,5 +46923,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected F\u00e9lix Bautista (R14 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T23:02:05.255971-04:00-UPID_3384-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T23:02:05.255971-04:00",
+    "upid": "3384",
+    "player_name": "Willson Contreras",
+    "team": "BOS",
+    "pos": "1B",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 177,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Willson Contreras (R14 P11)"
   }
 ]

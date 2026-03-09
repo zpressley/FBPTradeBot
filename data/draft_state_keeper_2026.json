@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 117,
+  "current_pick_index": 118,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2816,13 +2816,37 @@
       "upid": "4026",
       "position": "RP",
       "mlb_team": "BAL"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 221,
+      "player": "Willson Contreras",
+      "timestamp": "2026-03-09T03:02:05.072245",
+      "pick_index": 117,
+      "upid": "3384",
+      "position": "1B",
+      "mlb_team": "BOS"
     }
   ],
-  "timer_started_at": "2026-03-09T03:01:39.335338",
+  "timer_started_at": "2026-03-09T03:02:06.109899",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:01:39.335420",
+  "last_updated": "2026-03-09T03:02:06.109971",
   "timer_duration_seconds": 240
 }

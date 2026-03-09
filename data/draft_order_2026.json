@@ -4105,7 +4105,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Willson Contreras",
+      "timestamp": "2026-03-09T03:02:05.072245",
+      "pick_index": 117,
+      "upid": "3384"
+    },
     "round_type": "standard"
   },
   {
