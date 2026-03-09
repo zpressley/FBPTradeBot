@@ -46578,5 +46578,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Jorge Polanco (R13 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T22:39:03.583270-04:00-UPID_1894-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T22:39:03.583270-04:00",
+    "upid": "1894",
+    "player_name": "Max Muncy",
+    "team": "LAD",
+    "pos": "3B",
+    "age": 35,
+    "level": "",
+    "team_rank": null,
+    "rank": 203,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Max Muncy (R13 P3)"
   }
 ]
