@@ -2620,7 +2620,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Casey Mize",
+      "timestamp": "2026-03-09T01:49:28.926883",
+      "pick_index": 58,
+      "upid": "2239"
+    },
     "round_type": "standard"
   },
   {

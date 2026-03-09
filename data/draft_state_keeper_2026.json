@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 58,
+  "current_pick_index": 59,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1400,6 +1400,30 @@
       "upid": "4284",
       "position": "CF",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 1,
+      "team": "TBB",
+      "original_owner": "TBB",
+      "current_owner": "TBB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 151,
+      "player": "Casey Mize",
+      "timestamp": "2026-03-09T01:49:28.926883",
+      "pick_index": 58,
+      "upid": "2239",
+      "position": "SP",
+      "mlb_team": "DET"
     }
   ],
   "timer_started_at": "2026-03-09T01:49:20.997367",
@@ -1407,6 +1431,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:49:20.997408",
+  "last_updated": "2026-03-09T01:49:28.932198",
   "timer_duration_seconds": 240
 }

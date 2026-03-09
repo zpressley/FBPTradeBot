@@ -45566,5 +45566,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Michael Harris (R8 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T21:49:29.035694-04:00-UPID_2239-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T21:49:29.035694-04:00",
+    "upid": "2239",
+    "player_name": "Casey Mize",
+    "team": "DET",
+    "pos": "SP",
+    "age": 28,
+    "level": "",
+    "team_rank": null,
+    "rank": 267,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Casey Mize (R9 P1)"
   }
 ]
