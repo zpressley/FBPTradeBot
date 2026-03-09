@@ -46187,5 +46187,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Kerry Carpenter (R11 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T22:14:27.771003-04:00-UPID_2061-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T22:14:27.771003-04:00",
+    "upid": "2061",
+    "player_name": "Alex Vesia",
+    "team": "LAD",
+    "pos": "RP",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 443,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Alex Vesia (R11 P6)"
   }
 ]

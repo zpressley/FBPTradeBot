@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 85,
+  "current_pick_index": 86,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2048,13 +2048,37 @@
       "upid": "4333",
       "position": "OF",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "keeper",
+      "round": 11,
+      "pick": 6,
+      "team": "LFB",
+      "original_owner": "CFL",
+      "current_owner": "LFB",
+      "traded": true,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 180,
+      "player": "Alex Vesia",
+      "timestamp": "2026-03-09T02:14:27.682860",
+      "pick_index": 85,
+      "upid": "2061",
+      "position": "RP",
+      "mlb_team": "LAD"
     }
   ],
-  "timer_started_at": "2026-03-09T02:14:06.158791",
+  "timer_started_at": "2026-03-09T02:14:28.617367",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:14:06.158841",
+  "last_updated": "2026-03-09T02:14:28.617427",
   "timer_duration_seconds": 240
 }
