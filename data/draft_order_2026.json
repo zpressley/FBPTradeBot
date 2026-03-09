@@ -2874,7 +2874,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Bryan Reynolds",
+      "timestamp": "2026-03-09T02:00:46.177196",
+      "pick_index": 68,
+      "upid": "1930"
+    },
     "round_type": "standard"
   },
   {

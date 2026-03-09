@@ -45796,5 +45796,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Jack Flaherty (R9 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T22:00:46.263882-04:00-UPID_1930-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T22:00:46.263882-04:00",
+    "upid": "1930",
+    "player_name": "Bryan Reynolds",
+    "team": "PIT",
+    "pos": "CF",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 176,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Bryan Reynolds (R10 P1)"
   }
 ]
