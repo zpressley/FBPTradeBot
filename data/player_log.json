@@ -45083,5 +45083,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Bryce Miller (R5 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T21:22:40.813426-04:00-UPID_2521-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T21:22:40.813426-04:00",
+    "upid": "2521",
+    "player_name": "Griffin Jax",
+    "team": "MIN",
+    "pos": "RP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 272,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Griffin Jax (R5 P4)"
   }
 ]

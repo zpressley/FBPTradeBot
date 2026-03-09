@@ -1750,7 +1750,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Griffin Jax",
+      "timestamp": "2026-03-09T01:22:40.625623",
+      "pick_index": 37,
+      "upid": "2521"
+    },
     "round_type": "standard"
   },
   {
