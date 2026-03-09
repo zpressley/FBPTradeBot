@@ -1447,7 +1447,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Aaron Nola",
+      "timestamp": "2026-03-09T01:02:01.268119",
+      "pick_index": 24,
+      "upid": "2001"
+    },
     "round_type": "standard"
   },
   {

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 24,
+  "current_pick_index": 25,
   "picks_made": [
     {
       "draft": "keeper",
@@ -579,13 +579,37 @@
       "upid": "3840",
       "position": "2B,SS",
       "mlb_team": "MIA"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 2,
+      "team": "B2J",
+      "original_owner": "B2J",
+      "current_owner": "B2J",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 92,
+      "player": "Aaron Nola",
+      "timestamp": "2026-03-09T01:02:01.268119",
+      "pick_index": 24,
+      "upid": "2001",
+      "position": "SP",
+      "mlb_team": "PHI"
     }
   ],
-  "timer_started_at": "2026-03-09T00:59:50.286693",
+  "timer_started_at": "2026-03-09T01:02:02.155207",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:59:50.286792",
+  "last_updated": "2026-03-09T01:02:02.155312",
   "timer_duration_seconds": 240
 }

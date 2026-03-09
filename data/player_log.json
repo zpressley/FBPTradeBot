@@ -44784,5 +44784,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Xavier Edwards (R4 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T21:02:01.508027-04:00-UPID_2001-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T21:02:01.508027-04:00",
+    "upid": "2001",
+    "player_name": "Aaron Nola",
+    "team": "PHI",
+    "pos": "SP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 209,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Aaron Nola (R4 P2)"
   }
 ]
