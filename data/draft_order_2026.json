@@ -2581,7 +2581,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Michael Harris",
+      "timestamp": "2026-03-09T01:49:18.833957",
+      "pick_index": 57,
+      "upid": "4284"
+    },
     "round_type": "standard"
   },
   {

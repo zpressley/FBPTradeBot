@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 57,
+  "current_pick_index": 58,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1376,6 +1376,30 @@
       "upid": "1905",
       "position": "2B",
       "mlb_team": "DET"
+    },
+    {
+      "draft": "keeper",
+      "round": 8,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 149,
+      "player": "Michael Harris",
+      "timestamp": "2026-03-09T01:49:18.833957",
+      "pick_index": 57,
+      "upid": "4284",
+      "position": "CF",
+      "mlb_team": "ATL"
     }
   ],
   "timer_started_at": "2026-03-09T01:48:15.880480",
@@ -1383,6 +1407,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:48:15.880522",
+  "last_updated": "2026-03-09T01:49:18.840720",
   "timer_duration_seconds": 240
 }
