@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 36,
+  "current_pick_index": 37,
   "picks_made": [
     {
       "draft": "keeper",
@@ -867,13 +867,37 @@
       "upid": "2467",
       "position": "1B,2B,3B,SS",
       "mlb_team": "TOR"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 3,
+      "team": "HAM",
+      "original_owner": "HAM",
+      "current_owner": "HAM",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 105,
+      "player": "Bryce Miller",
+      "timestamp": "2026-03-09T01:22:23.779604",
+      "pick_index": 36,
+      "upid": "2211",
+      "position": "SP",
+      "mlb_team": "SEA"
     }
   ],
-  "timer_started_at": "2026-03-09T01:20:57.291191",
+  "timer_started_at": "2026-03-09T01:22:25.173065",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:20:57.291287",
+  "last_updated": "2026-03-09T01:22:25.173146",
   "timer_duration_seconds": 240
 }

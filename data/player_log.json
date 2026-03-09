@@ -45060,5 +45060,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Ernie Clement (R5 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T21:22:23.977391-04:00-UPID_2211-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T21:22:23.977391-04:00",
+    "upid": "2211",
+    "player_name": "Bryce Miller",
+    "team": "SEA",
+    "pos": "SP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 262,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Bryce Miller (R5 P3)"
   }
 ]

@@ -1728,7 +1728,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Bryce Miller",
+      "timestamp": "2026-03-09T01:22:23.779604",
+      "pick_index": 36,
+      "upid": "2211"
+    },
     "round_type": "standard"
   },
   {
