@@ -3397,7 +3397,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Alec Bohm",
+      "timestamp": "2026-03-09T02:17:45.855301",
+      "pick_index": 91,
+      "upid": "2039"
+    },
     "round_type": "standard"
   },
   {

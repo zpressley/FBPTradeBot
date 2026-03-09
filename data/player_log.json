@@ -46325,5 +46325,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WIZ selected Brad Keller (R11 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T22:17:45.948840-04:00-UPID_2039-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T22:17:45.948840-04:00",
+    "upid": "2039",
+    "player_name": "Alec Bohm",
+    "team": "PHI",
+    "pos": "1B,3B",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 245,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Alec Bohm (R12 P1)"
   }
 ]
