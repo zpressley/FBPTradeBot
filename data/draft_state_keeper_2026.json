@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 38,
+  "current_pick_index": 39,
   "picks_made": [
     {
       "draft": "keeper",
@@ -915,6 +915,30 @@
       "upid": "2521",
       "position": "RP",
       "mlb_team": "MIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 5,
+      "team": "DMN",
+      "original_owner": "DMN",
+      "current_owner": "DMN",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 107,
+      "player": "Yainer Diaz",
+      "timestamp": "2026-03-09T01:23:19.983967",
+      "pick_index": 38,
+      "upid": "3656",
+      "position": "C",
+      "mlb_team": "HOU"
     }
   ],
   "timer_started_at": "2026-03-09T01:22:41.976594",
@@ -922,6 +946,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:22:41.976690",
+  "last_updated": "2026-03-09T01:23:19.989404",
   "timer_duration_seconds": 240
 }

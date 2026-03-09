@@ -1772,7 +1772,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Yainer Diaz",
+      "timestamp": "2026-03-09T01:23:19.983967",
+      "pick_index": 38,
+      "upid": "3656"
+    },
     "round_type": "standard"
   },
   {
