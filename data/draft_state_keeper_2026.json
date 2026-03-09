@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 15,
+  "current_pick_index": 16,
   "picks_made": [
     {
       "draft": "keeper",
@@ -363,13 +363,37 @@
       "upid": "2275",
       "position": "OF",
       "mlb_team": "MIL"
+    },
+    {
+      "draft": "keeper",
+      "round": 3,
+      "pick": 3,
+      "team": "HAM",
+      "original_owner": "HAM",
+      "current_owner": "HAM",
+      "traded": false,
+      "buyin_required": true,
+      "buyin_cost": 10,
+      "buyin_purchased": true,
+      "buyin_purchased_at": "2026-02-23T09:40:00.295971Z",
+      "buyin_purchased_by": "HAM",
+      "result": null,
+      "taxed_out": false,
+      "round_type": "standard",
+      "_file_index": 81,
+      "player": "Sonny Gray",
+      "timestamp": "2026-03-09T00:51:59.460265",
+      "pick_index": 15,
+      "upid": "3236",
+      "position": "SP",
+      "mlb_team": "BOS"
     }
   ],
-  "timer_started_at": "2026-03-09T00:50:46.865805",
+  "timer_started_at": "2026-03-09T00:52:00.480080",
   "paused_at": null,
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:50:46.865884",
+  "last_updated": "2026-03-09T00:52:00.480170",
   "timer_duration_seconds": 240
 }

@@ -44577,5 +44577,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Christian Yelich (R3 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T20:51:59.623515-04:00-UPID_3236-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T20:51:59.623515-04:00",
+    "upid": "3236",
+    "player_name": "Sonny Gray",
+    "team": "BOS",
+    "pos": "SP",
+    "age": 36,
+    "level": "",
+    "team_rank": null,
+    "rank": 114,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Sonny Gray (R3 P3)"
   }
 ]
