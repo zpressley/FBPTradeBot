@@ -46486,5 +46486,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Jordan Leasure (R12 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T22:32:09.856693-04:00-UPID_2956-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T22:32:09.856693-04:00",
+    "upid": "2956",
+    "player_name": "Matt Strahm",
+    "team": "PHI",
+    "pos": "RP",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 398,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Matt Strahm (R12 P10)"
   }
 ]

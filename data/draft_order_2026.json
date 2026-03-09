@@ -3585,7 +3585,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Matt Strahm",
+      "timestamp": "2026-03-09T02:32:09.765366",
+      "pick_index": 98,
+      "upid": "2956"
+    },
     "round_type": "standard"
   },
   {
