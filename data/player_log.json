@@ -46992,5 +46992,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Reid Detmers (R15 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T23:03:40.626920-04:00-UPID_3556-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T23:03:40.626920-04:00",
+    "upid": "3556",
+    "player_name": "AJ Smith-Shawver",
+    "team": "ATL",
+    "pos": "SP",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected AJ Smith-Shawver (R15 P3)"
   }
 ]
