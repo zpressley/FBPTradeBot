@@ -1425,7 +1425,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Xavier Edwards",
+      "timestamp": "2026-03-09T00:59:49.139883",
+      "pick_index": 23,
+      "upid": "3840"
+    },
     "round_type": "standard"
   },
   {

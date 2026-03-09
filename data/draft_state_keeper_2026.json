@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 23,
+  "current_pick_index": 24,
   "picks_made": [
     {
       "draft": "keeper",
@@ -555,6 +555,30 @@
       "upid": "3831",
       "position": "1B,OF",
       "mlb_team": "STL"
+    },
+    {
+      "draft": "keeper",
+      "round": 4,
+      "pick": 1,
+      "team": "TBB",
+      "original_owner": "TBB",
+      "current_owner": "TBB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 91,
+      "player": "Xavier Edwards",
+      "timestamp": "2026-03-09T00:59:49.139883",
+      "pick_index": 23,
+      "upid": "3840",
+      "position": "2B,SS",
+      "mlb_team": "MIA"
     }
   ],
   "timer_started_at": "2026-03-09T00:57:11.136134",
@@ -562,6 +586,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T00:57:11.136239",
+  "last_updated": "2026-03-09T00:59:49.148986",
   "timer_duration_seconds": 240
 }

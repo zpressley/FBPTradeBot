@@ -44761,5 +44761,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Alec Burleson (R3 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T20:59:49.324964-04:00-UPID_3840-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T20:59:49.324964-04:00",
+    "upid": "3840",
+    "player_name": "Xavier Edwards",
+    "team": "MIA",
+    "pos": "2B,SS",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 170,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Xavier Edwards (R4 P1)"
   }
 ]
