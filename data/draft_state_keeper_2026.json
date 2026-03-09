@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 67,
+  "current_pick_index": 68,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1616,6 +1616,30 @@
       "upid": "3457",
       "position": "SP,RP",
       "mlb_team": "SF"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 11,
+      "team": "LFB",
+      "original_owner": "LFB",
+      "current_owner": "LFB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 161,
+      "player": "Jack Flaherty",
+      "timestamp": "2026-03-09T02:00:10.514503",
+      "pick_index": 67,
+      "upid": "1906",
+      "position": "SP",
+      "mlb_team": "DET"
     }
   ],
   "timer_started_at": "2026-03-09T01:58:39.897291",
@@ -1623,6 +1647,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:58:39.897338",
+  "last_updated": "2026-03-09T02:00:10.519029",
   "timer_duration_seconds": 240
 }

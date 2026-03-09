@@ -45773,5 +45773,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Kyle Harrison (R9 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T22:00:10.605758-04:00-UPID_1906-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T22:00:10.605758-04:00",
+    "upid": "1906",
+    "player_name": "Jack Flaherty",
+    "team": "DET",
+    "pos": "SP",
+    "age": 30,
+    "level": "",
+    "team_rank": null,
+    "rank": 200,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Jack Flaherty (R9 P11)"
   }
 ]
