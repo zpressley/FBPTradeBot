@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 71,
+  "current_pick_index": 72,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1712,6 +1712,30 @@
       "upid": "2952",
       "position": "2B",
       "mlb_team": "CIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 10,
+      "pick": 4,
+      "team": "RV",
+      "original_owner": "RV",
+      "current_owner": "RV",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 166,
+      "player": "Carlos Correa",
+      "timestamp": "2026-03-09T02:02:57.408876",
+      "pick_index": 71,
+      "upid": "1933",
+      "position": "3B,SS",
+      "mlb_team": "HOU"
     }
   ],
   "timer_started_at": "2026-03-09T02:02:17.620251",
@@ -1719,6 +1743,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:02:17.620302",
+  "last_updated": "2026-03-09T02:02:57.413961",
   "timer_duration_seconds": 240
 }
