@@ -46003,5 +46003,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): SAD selected Jasson Dom\u00ednguez (R10 P9)"
+  },
+  {
+    "id": "2026-2026-03-08T22:09:07.629108-04:00-UPID_2282-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T22:09:07.629108-04:00",
+    "upid": "2282",
+    "player_name": "Cody Ponce",
+    "team": "PIT",
+    "pos": "P",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 315,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "P",
+    "years": "",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Cody Ponce (R10 P10)"
   }
 ]

@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 77,
+  "current_pick_index": 78,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1856,6 +1856,30 @@
       "upid": "3470",
       "position": "CF",
       "mlb_team": "NYY"
+    },
+    {
+      "draft": "keeper",
+      "round": 10,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 172,
+      "player": "Cody Ponce",
+      "timestamp": "2026-03-09T02:09:07.531727",
+      "pick_index": 77,
+      "upid": "2282",
+      "position": "P",
+      "mlb_team": "PIT"
     }
   ],
   "timer_started_at": "2026-03-09T02:08:37.429335",
@@ -1863,6 +1887,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:08:37.429389",
+  "last_updated": "2026-03-09T02:09:07.537466",
   "timer_duration_seconds": 240
 }
