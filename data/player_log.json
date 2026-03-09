@@ -44232,5 +44232,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Oneil Cruz (R1 P1)"
+  },
+  {
+    "id": "2026-2026-03-08T20:35:31.815704-04:00-UPID_1893-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T20:35:31.815704-04:00",
+    "upid": "1893",
+    "player_name": "Matt Olson",
+    "team": "ATL",
+    "pos": "1B",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 37,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Matt Olson (R1 P1)"
   }
 ]
