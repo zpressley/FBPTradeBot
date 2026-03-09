@@ -44485,5 +44485,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): JEP selected Noelvi Marte (R2 P7)"
+  },
+  {
+    "id": "2026-2026-03-08T20:48:16.442363-04:00-UPID_1912-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WAR",
+    "timestamp": "2026-03-08T20:48:16.442363-04:00",
+    "upid": "1912",
+    "player_name": "Luis Castillo",
+    "team": "SEA",
+    "pos": "SP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 140,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WAR selected Luis Castillo (R2 P8)"
   }
 ]
