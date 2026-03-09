@@ -1877,7 +1877,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ozzie Albies",
+      "timestamp": "2026-03-09T01:26:35.938160",
+      "pick_index": 42,
+      "upid": "3069"
+    },
     "round_type": "standard"
   },
   {

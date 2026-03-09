@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 42,
+  "current_pick_index": 43,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1011,6 +1011,30 @@
       "upid": "2489",
       "position": "RP",
       "mlb_team": "SEA"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 112,
+      "player": "Ozzie Albies",
+      "timestamp": "2026-03-09T01:26:35.938160",
+      "pick_index": 42,
+      "upid": "3069",
+      "position": "2B",
+      "mlb_team": "ATL"
     }
   ],
   "timer_started_at": "2026-03-09T01:26:15.286672",
@@ -1018,6 +1042,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:26:15.286748",
+  "last_updated": "2026-03-09T01:26:35.950632",
   "timer_duration_seconds": 240
 }

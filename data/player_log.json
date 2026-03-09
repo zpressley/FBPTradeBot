@@ -45198,5 +45198,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): WAR selected Gabe Speier (R5 P8)"
+  },
+  {
+    "id": "2026-2026-03-08T21:26:36.146484-04:00-UPID_3069-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "DRO",
+    "timestamp": "2026-03-08T21:26:36.146484-04:00",
+    "upid": "3069",
+    "player_name": "Ozzie Albies",
+    "team": "ATL",
+    "pos": "2B",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 138,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): DRO selected Ozzie Albies (R5 P10)"
   }
 ]
