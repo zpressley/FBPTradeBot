@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 63,
+  "current_pick_index": 64,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1520,6 +1520,30 @@
       "upid": "3071",
       "position": "SP",
       "mlb_team": "MIN"
+    },
+    {
+      "draft": "keeper",
+      "round": 9,
+      "pick": 7,
+      "team": "JEP",
+      "original_owner": "JEP",
+      "current_owner": "JEP",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 157,
+      "player": "Ian Happ",
+      "timestamp": "2026-03-09T01:53:03.190010",
+      "pick_index": 63,
+      "upid": "2550",
+      "position": "OF",
+      "mlb_team": "CHC"
     }
   ],
   "timer_started_at": "2026-03-09T01:52:43.279133",
@@ -1527,6 +1551,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:52:43.279174",
+  "last_updated": "2026-03-09T01:53:03.195278",
   "timer_duration_seconds": 240
 }

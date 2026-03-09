@@ -2747,7 +2747,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ian Happ",
+      "timestamp": "2026-03-09T01:53:03.190010",
+      "pick_index": 63,
+      "upid": "2550"
+    },
     "round_type": "standard"
   },
   {
