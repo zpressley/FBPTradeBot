@@ -3331,7 +3331,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Tanner Scott",
+      "timestamp": "2026-03-09T02:16:14.763496",
+      "pick_index": 88,
+      "upid": "3265"
+    },
     "round_type": "standard"
   },
   {
