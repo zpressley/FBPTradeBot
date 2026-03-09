@@ -46532,5 +46532,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Justin Steele (R12 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T22:38:40.481443-04:00-UPID_4426-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "TBB",
+    "timestamp": "2026-03-08T22:38:40.481443-04:00",
+    "upid": "4426",
+    "player_name": "Mickey Moniak",
+    "team": "LAA",
+    "pos": "CF",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 268,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "The Bluke Blokes",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): TBB selected Mickey Moniak (R13 P1)"
   }
 ]

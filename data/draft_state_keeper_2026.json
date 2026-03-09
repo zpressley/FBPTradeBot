@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 100,
+  "current_pick_index": 101,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2408,13 +2408,37 @@
       "upid": "2801",
       "position": "SP",
       "mlb_team": "CHC"
+    },
+    {
+      "draft": "keeper",
+      "round": 13,
+      "pick": 1,
+      "team": "TBB",
+      "original_owner": "TBB",
+      "current_owner": "TBB",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 199,
+      "player": "Mickey Moniak",
+      "timestamp": "2026-03-09T02:38:40.320396",
+      "pick_index": 100,
+      "upid": "4426",
+      "position": "CF",
+      "mlb_team": "LAA"
     }
   ],
-  "timer_started_at": "2026-03-09T02:38:22.124771",
+  "timer_started_at": "2026-03-09T02:38:41.802944",
   "paused_at": "2026-03-09T02:19:26.664121",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:38:22.124863",
+  "last_updated": "2026-03-09T02:38:41.803033",
   "timer_duration_seconds": 240
 }
