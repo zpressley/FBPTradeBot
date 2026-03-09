@@ -45221,5 +45221,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Ozzie Albies (R5 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T21:27:00.430888-04:00-UPID_2492-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T21:27:00.430888-04:00",
+    "upid": "2492",
+    "player_name": "Garrett Cleavinger",
+    "team": "TB",
+    "pos": "RP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Garrett Cleavinger (R5 P12)"
   }
 ]
