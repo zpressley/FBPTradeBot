@@ -46601,5 +46601,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): HAM selected Max Muncy (R13 P3)"
+  },
+  {
+    "id": "2026-2026-03-08T22:39:50.201456-04:00-UPID_1899-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "RV",
+    "timestamp": "2026-03-08T22:39:50.201456-04:00",
+    "upid": "1899",
+    "player_name": "Trevor Story",
+    "team": "BOS",
+    "pos": "SS",
+    "age": 33,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 107,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Rick Vaughn",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): RV selected Trevor Story (R13 P4)"
   }
 ]
