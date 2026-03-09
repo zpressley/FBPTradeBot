@@ -1302,7 +1302,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-25T18:13:47.236991Z",
     "buyin_purchased_by": "jepordizers",
-    "result": null,
+    "result": {
+      "player": "Munetaka Murakami",
+      "timestamp": "2026-03-09T00:55:51.537856",
+      "pick_index": 19,
+      "upid": "8440"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },
