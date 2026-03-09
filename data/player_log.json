@@ -46371,5 +46371,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Will Vest (R12 P2)"
+  },
+  {
+    "id": "2026-2026-03-08T22:29:03.877781-04:00-UPID_2229-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "HAM",
+    "timestamp": "2026-03-08T22:29:03.877781-04:00",
+    "upid": "2229",
+    "player_name": "Carlos Est\u00e9vez",
+    "team": "KC",
+    "pos": "RP",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 126,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Hammers",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): HAM selected Carlos Est\u00e9vez (R12 P3)"
   }
 ]
