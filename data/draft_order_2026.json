@@ -5417,7 +5417,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ha-Seong Kim",
+      "timestamp": "2026-03-09T03:27:51.833964",
+      "pick_index": 138,
+      "upid": "2523"
+    },
     "round_type": "standard"
   },
   {

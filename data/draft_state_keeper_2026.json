@@ -1,8 +1,8 @@
 {
-  "status": "active",
+  "status": "completed",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 138,
+  "current_pick_index": 139,
   "picks_made": [
     {
       "draft": "keeper",
@@ -3319,13 +3319,37 @@
       "upid": "4017",
       "position": "SP",
       "mlb_team": "ATL"
+    },
+    {
+      "draft": "keeper",
+      "round": 20,
+      "pick": 10,
+      "team": "DRO",
+      "original_owner": "DRO",
+      "current_owner": "DRO",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 292,
+      "player": "Ha-Seong Kim",
+      "timestamp": "2026-03-09T03:27:51.833964",
+      "pick_index": 138,
+      "upid": "2523",
+      "position": "2B,SS",
+      "mlb_team": "TB"
     }
   ],
   "timer_started_at": "2026-03-09T03:26:37.056731",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
-  "completed_at": null,
+  "completed_at": "2026-03-09T03:27:51.842769",
   "team_slots": {},
-  "last_updated": "2026-03-09T03:26:37.056814",
+  "last_updated": "2026-03-09T03:27:51.843002",
   "timer_duration_seconds": 240
 }
