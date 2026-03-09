@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 118,
+  "current_pick_index": 119,
   "picks_made": [
     {
       "draft": "keeper",
@@ -2840,13 +2840,37 @@
       "upid": "3384",
       "position": "1B",
       "mlb_team": "BOS"
+    },
+    {
+      "draft": "keeper",
+      "round": 14,
+      "pick": 12,
+      "team": "WIZ",
+      "original_owner": "WIZ",
+      "current_owner": "WIZ",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 222,
+      "player": "Zach Eflin",
+      "timestamp": "2026-03-09T03:03:01.564209",
+      "pick_index": 118,
+      "upid": "3421",
+      "position": "SP",
+      "mlb_team": "BAL"
     }
   ],
-  "timer_started_at": "2026-03-09T03:02:06.109899",
+  "timer_started_at": "2026-03-09T03:03:03.026306",
   "paused_at": "2026-03-09T02:58:09.630020",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T03:02:06.109971",
+  "last_updated": "2026-03-09T03:03:03.026375",
   "timer_duration_seconds": 240
 }

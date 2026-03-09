@@ -46946,5 +46946,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): LFB selected Willson Contreras (R14 P11)"
+  },
+  {
+    "id": "2026-2026-03-08T23:03:01.736649-04:00-UPID_3421-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "WIZ",
+    "timestamp": "2026-03-08T23:03:01.736649-04:00",
+    "upid": "3421",
+    "player_name": "Zach Eflin",
+    "team": "BAL",
+    "pos": "SP",
+    "age": 31,
+    "level": "",
+    "team_rank": null,
+    "rank": 379,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Whiz Kids",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): WIZ selected Zach Eflin (R14 P12)"
   }
 ]

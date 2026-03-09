@@ -4127,7 +4127,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Zach Eflin",
+      "timestamp": "2026-03-09T03:03:01.564209",
+      "pick_index": 118,
+      "upid": "3421"
+    },
     "round_type": "standard"
   },
   {
