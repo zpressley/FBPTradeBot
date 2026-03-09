@@ -46026,5 +46026,28 @@
     "years": "",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DRO selected Cody Ponce (R10 P10)"
+  },
+  {
+    "id": "2026-2026-03-08T22:09:23.806247-04:00-UPID_3732-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "LFB",
+    "timestamp": "2026-03-08T22:09:23.806247-04:00",
+    "upid": "3732",
+    "player_name": "Mark Vientos",
+    "team": "NYM",
+    "pos": "3B",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 234,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "La Flama Blanca",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): LFB selected Mark Vientos (R10 P11)"
   }
 ]
