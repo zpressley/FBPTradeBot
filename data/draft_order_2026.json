@@ -824,7 +824,12 @@
     "buyin_purchased": true,
     "buyin_purchased_at": "2026-02-25T18:13:09.488532Z",
     "buyin_purchased_by": "jepordizers",
-    "result": null,
+    "result": {
+      "player": "Shota Imanaga",
+      "timestamp": "2026-03-09T00:42:43.498566",
+      "pick_index": 5,
+      "upid": "7282"
+    },
     "taxed_out": false,
     "round_type": "standard"
   },

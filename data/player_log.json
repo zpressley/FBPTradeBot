@@ -44347,5 +44347,28 @@
     "years": "VC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): B2J selected Zack Wheeler (R1 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T20:42:43.676764-04:00-UPID_7282-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T20:42:43.676764-04:00",
+    "upid": "7282",
+    "player_name": "Shota Imanaga",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 172,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "VC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Shota Imanaga (R1 P7)"
   }
 ]
