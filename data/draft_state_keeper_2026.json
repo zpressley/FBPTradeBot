@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 73,
+  "current_pick_index": 74,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1760,13 +1760,37 @@
       "upid": "3285",
       "position": "RP",
       "mlb_team": "NYY"
+    },
+    {
+      "draft": "keeper",
+      "round": 10,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 168,
+      "player": "Alejandro Kirk",
+      "timestamp": "2026-03-09T02:06:19.772085",
+      "pick_index": 73,
+      "upid": "2045",
+      "position": "C",
+      "mlb_team": "TOR"
     }
   ],
-  "timer_started_at": "2026-03-09T02:05:18.691247",
+  "timer_started_at": "2026-03-09T02:06:20.457901",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T02:05:18.691300",
+  "last_updated": "2026-03-09T02:06:20.457955",
   "timer_duration_seconds": 240
 }
