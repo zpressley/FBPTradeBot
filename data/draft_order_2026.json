@@ -2145,7 +2145,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Kazuma Okamoto",
+      "timestamp": "2026-03-09T01:38:00.416232",
+      "pick_index": 48,
+      "upid": "8441"
+    },
     "round_type": "standard"
   },
   {

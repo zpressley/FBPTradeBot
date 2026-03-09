@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 48,
+  "current_pick_index": 49,
   "picks_made": [
     {
       "draft": "keeper",
@@ -1160,6 +1160,30 @@
       "upid": "3230",
       "position": "RP",
       "mlb_team": "TEX"
+    },
+    {
+      "draft": "keeper",
+      "round": 6,
+      "pick": 12,
+      "team": "WIZ",
+      "original_owner": "WIZ",
+      "current_owner": "WIZ",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 126,
+      "player": "Kazuma Okamoto",
+      "timestamp": "2026-03-09T01:38:00.416232",
+      "pick_index": 48,
+      "upid": "8441",
+      "position": "1B, 3B",
+      "mlb_team": "TOR"
     }
   ],
   "timer_started_at": "2026-03-09T01:37:13.388017",
@@ -1167,6 +1191,6 @@
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:37:13.388077",
+  "last_updated": "2026-03-09T01:38:00.420796",
   "timer_duration_seconds": 240
 }
