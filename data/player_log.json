@@ -46670,5 +46670,28 @@
     "years": "P",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): CFL selected Fernando Cruz (R13 P6)"
+  },
+  {
+    "id": "2026-2026-03-08T22:44:13.277951-04:00-UPID_1980-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "JEP",
+    "timestamp": "2026-03-08T22:44:13.277951-04:00",
+    "upid": "1980",
+    "player_name": "Teoscar Hern\u00e1ndez",
+    "team": "LAD",
+    "pos": "OF",
+    "age": 33,
+    "level": "",
+    "team_rank": null,
+    "rank": 112,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): JEP selected Teoscar Hern\u00e1ndez (R13 P7)"
   }
 ]
