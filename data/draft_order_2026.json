@@ -1706,7 +1706,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ernie Clement",
+      "timestamp": "2026-03-09T01:20:56.012163",
+      "pick_index": 35,
+      "upid": "2467"
+    },
     "round_type": "standard"
   },
   {

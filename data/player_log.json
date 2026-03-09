@@ -45037,5 +45037,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): TBB selected Garrett Whitlock (R4 P12)"
+  },
+  {
+    "id": "2026-2026-03-08T21:20:56.171557-04:00-UPID_2467-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "B2J",
+    "timestamp": "2026-03-08T21:20:56.171557-04:00",
+    "upid": "2467",
+    "player_name": "Ernie Clement",
+    "team": "TOR",
+    "pos": "1B,2B,3B,SS",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 260,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): B2J selected Ernie Clement (R5 P2)"
   }
 ]
