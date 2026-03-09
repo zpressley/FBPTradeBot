@@ -1794,7 +1794,12 @@
     "buyin_purchased_at": null,
     "buyin_purchased_by": null,
     "taxed_out": false,
-    "result": null,
+    "result": {
+      "player": "Ryan O'Hearn",
+      "timestamp": "2026-03-09T01:25:40.955352",
+      "pick_index": 39,
+      "upid": "3179"
+    },
     "round_type": "standard"
   },
   {

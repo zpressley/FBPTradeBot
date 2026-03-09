@@ -45129,5 +45129,28 @@
     "years": "TC 1",
     "update_type": "draft_pick",
     "event": "Draft pick (keeper): DMN selected Yainer Diaz (R5 P5)"
+  },
+  {
+    "id": "2026-2026-03-08T21:25:41.126321-04:00-UPID_3179-draft_pick-draft",
+    "season": 2026,
+    "source": "draft",
+    "admin": "CFL",
+    "timestamp": "2026-03-08T21:25:41.126321-04:00",
+    "upid": "3179",
+    "player_name": "Ryan O'Hearn",
+    "team": "BAL",
+    "pos": "1B,OF",
+    "age": 32,
+    "level": "",
+    "team_rank": null,
+    "rank": 280,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "draft_pick",
+    "event": "Draft pick (keeper): CFL selected Ryan O'Hearn (R5 P6)"
   }
 ]

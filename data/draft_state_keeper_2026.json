@@ -2,7 +2,7 @@
   "status": "active",
   "draft_type": "keeper",
   "season": 2026,
-  "current_pick_index": 39,
+  "current_pick_index": 40,
   "picks_made": [
     {
       "draft": "keeper",
@@ -939,13 +939,37 @@
       "upid": "3656",
       "position": "C",
       "mlb_team": "HOU"
+    },
+    {
+      "draft": "keeper",
+      "round": 5,
+      "pick": 6,
+      "team": "CFL",
+      "original_owner": "CFL",
+      "current_owner": "CFL",
+      "traded": false,
+      "buyin_required": false,
+      "buyin_cost": null,
+      "buyin_purchased": false,
+      "buyin_purchased_at": null,
+      "buyin_purchased_by": null,
+      "taxed_out": false,
+      "result": null,
+      "round_type": "standard",
+      "_file_index": 108,
+      "player": "Ryan O'Hearn",
+      "timestamp": "2026-03-09T01:25:40.955352",
+      "pick_index": 39,
+      "upid": "3179",
+      "position": "1B,OF",
+      "mlb_team": "BAL"
     }
   ],
-  "timer_started_at": "2026-03-09T01:23:28.074448",
+  "timer_started_at": "2026-03-09T01:25:41.874750",
   "paused_at": "2026-03-09T01:16:51.770088",
   "started_at": "2026-03-09T00:35:23.886209",
   "completed_at": null,
   "team_slots": {},
-  "last_updated": "2026-03-09T01:23:28.074516",
+  "last_updated": "2026-03-09T01:25:41.874845",
   "timer_duration_seconds": 240
 }
