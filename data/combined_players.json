@@ -13765,7 +13765,7 @@
     "name": "Lars Nootbaar",
     "team": "STL",
     "position": "CF",
-    "manager": "Whiz Kids",
+    "manager": "",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "",
@@ -13773,7 +13773,7 @@
     "yahoo_id": "12212",
     "upid": "2872",
     "mlb_id": 663457,
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "birth_date": "1997-09-08",
     "age": 28,
     "height": "6' 1\"",
@@ -13782,7 +13782,8 @@
     "throws": "R",
     "mlb_primary_position": "LF",
     "fypd": false,
-    "rank": 408
+    "rank": 408,
+    "level": "MLB"
   },
   {
     "name": "Matt Strahm",
