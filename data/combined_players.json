@@ -4374,7 +4374,7 @@
     "name": "Oneil Cruz",
     "team": "PIT",
     "position": "CF",
-    "manager": "",
+    "manager": "Whiz Kids",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "status": "[5] TC1",
@@ -4382,7 +4382,7 @@
     "yahoo_id": "11370",
     "upid": "4308",
     "mlb_id": 665833,
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "birth_date": "1998-10-04",
     "age": 27,
     "height": "6' 7\"",
@@ -4391,7 +4391,8 @@
     "throws": "R",
     "mlb_primary_position": "CF",
     "fypd": false,
-    "rank": 91
+    "rank": 91,
+    "level": "MLB"
   },
   {
     "name": "Drake Baldwin",
