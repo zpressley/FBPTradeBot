@@ -9,14 +9,30 @@ from token_manager import get_access_token
 
 
 
-LEAGUE_ID = "15505"
-GAME_KEY = "mlb"
-YAHOO_TEAM_MAP = {
-    "1": "WIZ", "2": "B2J", "3": "CFL", "4": "HAM",
-    "5": "JEP", "6": "LFB", "7": "DMN", "8": "SAD",
-    "9": "DRO", "10": "RV", "11": "TBB", "12": "WAR"
-}
+LEAGUE_ID = "8560"
+GAME_KEY = "469"  # 2026 MLB season
 OUTPUT_FILE = "data/standings.json"
+
+
+def _load_managers_config():
+    """Load managers.json and return the teams dict."""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "managers.json")
+    with open(config_path, "r", encoding="utf-8") as f:
+        return json.load(f).get("teams", {})
+
+
+def _load_yahoo_team_map(teams_cfg):
+    """Build yahoo_team_id -> FBP abbreviation map from managers.json."""
+    return {str(info["yahoo_team_id"]): abbr for abbr, info in teams_cfg.items() if info.get("yahoo_team_id")}
+
+
+def _preseason_rank(teams_cfg, abbr):
+    """Return final_rank_2025 as pre-season rank fallback."""
+    return teams_cfg.get(abbr, {}).get("final_rank_2025", 99)
+
+
+MANAGERS_CFG = _load_managers_config()
+YAHOO_TEAM_MAP = _load_yahoo_team_map(MANAGERS_CFG)
 
 def fetch_and_save_standings():
     token = get_access_token()
@@ -49,19 +65,26 @@ def fetch_and_save_standings():
         team_id = team.find("y:team_id", ns).text
         abbr = YAHOO_TEAM_MAP.get(team_id, f"Team {team_id}")
         standings_node = team.find("y:team_standings", ns)
-        if standings_node is None:
-            continue
 
-        wins = int(standings_node.attrib.get("wins", 0))
-        losses = int(standings_node.attrib.get("losses", 0))
-        ties = int(standings_node.attrib.get("ties", 0))
+        # Pre-season: team_standings may be missing or have no rank/record
+        wins, losses, ties = 0, 0, 0
+        rank = 0
+
+        if standings_node is not None:
+            wins = int(standings_node.attrib.get("wins", 0))
+            losses = int(standings_node.attrib.get("losses", 0))
+            ties = int(standings_node.attrib.get("ties", 0))
+            rank_el = team.find("y:team_standings/y:rank", ns)
+            if rank_el is not None and rank_el.text:
+                rank = int(rank_el.text)
+
         total = wins + losses + ties
         win_pct = wins + 0.5 * ties
         pct_display = round(win_pct / total, 3) if total > 0 else 0.000
-        rank = int(team.find("y:team_standings/y:rank", ns).text)
 
         standings.append({
-            "rank": rank,
+            "rank": rank or _preseason_rank(MANAGERS_CFG, abbr),
+            "manager": abbr,
             "team": abbr,
             "record": f"{wins}-{losses}-{ties}",
             "win_pct": pct_display

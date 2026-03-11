@@ -1,118 +1,90 @@
 {
-  "season": 2024,
-  "date": "2026-01-01",
+  "date": "2026-03-11",
   "standings": [
     {
       "rank": 1,
-      "team": "ANGE",
-      "team_name": "Angel Dust",
-      "manager": "Blake",
+      "manager": "WIZ",
+      "team": "WIZ",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 2,
-      "team": "WAR",
-      "team_name": "Weekend Warriors",
-      "manager": "Zach",
+      "manager": "LFB",
+      "team": "LFB",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 3,
-      "team": "RV",
-      "team_name": "Rick Vaughn",
-      "manager": "Richard",
+      "manager": "SAD",
+      "team": "SAD",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 4,
-      "team": "WIZ",
-      "team_name": "Whiz Kids",
-      "manager": "Kyle",
+      "manager": "DRO",
+      "team": "DRO",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 5,
-      "team": "PLAY",
-      "team_name": "Playa Haters Ball",
-      "manager": "Nathan",
+      "manager": "TBB",
+      "team": "TBB",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 6,
-      "team": "DRO",
-      "team_name": "Andromedans",
-      "manager": "Zakkeroni",
+      "manager": "B2J",
+      "team": "B2J",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 7,
-      "team": "B2J",
-      "team_name": "Btwn2Jackies",
-      "manager": "Lauren",
+      "manager": "DMN",
+      "team": "DMN",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 8,
-      "team": "HURL",
-      "team_name": "Hurl it into theDunn",
-      "manager": "ben",
+      "manager": "CFL",
+      "team": "CFL",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 9,
-      "team": "BATI",
-      "team_name": "Batin Stallion",
-      "manager": "Erik",
+      "manager": "HAM",
+      "team": "HAM",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 10,
-      "team": "GANG",
-      "team_name": "Gang Greek",
-      "manager": "Jake",
+      "manager": "RV",
+      "team": "RV",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 11,
-      "team": "CASC",
-      "team_name": "Cascading Failures",
-      "manager": "John Mobley",
+      "manager": "JEP",
+      "team": "JEP",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
       "rank": 12,
-      "team": "TROU",
-      "team_name": "Trouble w/ the Curve",
-      "manager": "Derek",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 13,
-      "team": "PINS",
-      "team_name": "Pinstripe Pussies",
-      "manager": "Stephen",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 14,
-      "team": "JES\u00da",
-      "team_name": "Jes\u00fas saves",
-      "manager": "Alex",
+      "manager": "WAR",
+      "team": "WAR",
       "record": "0-0-0",
       "win_pct": 0.0
     }
-  ]
+  ],
+  "matchups": []
 }
