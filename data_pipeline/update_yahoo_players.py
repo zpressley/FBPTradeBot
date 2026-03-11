@@ -7,24 +7,25 @@ from token_manager import get_access_token as get_token
  # You already have this
 import os
 
-# Your league + team mapping
-LEAGUE_ID = "15505"
-GAME_KEY = "404"  # This may need to be dynamically fetched via API, but 'mlb' usually works
+# Yahoo league config
+LEAGUE_ID = "8560"
+GAME_KEY = "469"  # 2026 MLB season
 
-YAHOO_TEAM_MAP = {
-    "1": "WIZ",
-    "2": "B2J",
-    "3": "CFL",
-    "4": "HAM",
-    "5": "JEP",
-    "6": "LFB",
-    "7": "DMN",
-    "8": "SAD",
-    "9": "DRO",
-    "10": "RV",
-    "11": "TBB",
-    "12": "WAR"
-}
+
+def _load_yahoo_team_map():
+    """Build yahoo_team_id -> FBP abbreviation map from managers.json."""
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", "managers.json")
+    with open(config_path, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+    mapping = {}
+    for abbr, info in cfg.get("teams", {}).items():
+        yid = info.get("yahoo_team_id")
+        if yid:
+            mapping[str(yid)] = abbr
+    return mapping
+
+
+YAHOO_TEAM_MAP = _load_yahoo_team_map()
 
 def fetch_yahoo_rosters():
     token = get_token()
@@ -33,7 +34,7 @@ def fetch_yahoo_rosters():
         "Accept": "application/json"
     }
 
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/404.l.{LEAGUE_ID}/teams;out=roster"
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{GAME_KEY}.l.{LEAGUE_ID}/teams;out=roster"
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:

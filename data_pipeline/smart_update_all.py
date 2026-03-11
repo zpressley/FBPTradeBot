@@ -193,6 +193,23 @@ class SmartDataPipeline:
         )
         
         print("✅ Data merged")
+
+    def sync_rosters(self):
+        """In-season roster sync: diff Yahoo rosters against combined_players.
+
+        Replaces merge_all_data() during in-season phases. Applies
+        targeted adds/drops, logs transactions, and enforces prospect
+        rules instead of blindly overwriting ownership.
+        """
+        print("\n🔄 SYNCING YAHOO ROSTERS")
+        print("=" * 50)
+
+        self.run_script(
+            "roster_sync.py",
+            "Diff Yahoo rosters and apply targeted roster changes"
+        )
+
+        print("✅ Roster sync complete")
     
     def run_full_pipeline(self):
         """Run complete data update based on current phase"""
@@ -224,8 +241,11 @@ class SmartDataPipeline:
         # 5. Update standings (only in-season)
         self.update_standings()
         
-        # 6. Merge everything together
-        self.merge_all_data()
+        # 6. Merge or sync rosters depending on season phase
+        if self.manager.should_update_yahoo_rosters():
+            self.sync_rosters()
+        else:
+            self.merge_all_data()
         
         # Summary
         end_time = datetime.now()
@@ -286,6 +306,10 @@ class SmartDataPipeline:
 
 def main():
     """Main pipeline execution"""
+    # Rolling daily backup before any data mutations
+    from data_pipeline.backup_data import run_daily
+    run_daily()
+
     pipeline = SmartDataPipeline()
     
     # Determine which update mode to use

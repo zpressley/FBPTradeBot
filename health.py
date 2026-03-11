@@ -12,7 +12,7 @@ import re
 import shutil
 
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from fastapi import FastAPI, Depends, HTTPException, Header, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -556,6 +556,11 @@ async def on_ready():
     except Exception as exc:
         print(f"⚠️ Failed to set commit fn for settings API: {exc}")
     
+    # Start the 9 AM ET roster sync batched message task
+    if not roster_sync_batch_tick.is_running():
+        roster_sync_batch_tick.start()
+        print("   ✅ Roster sync batch task started (9 AM ET daily)")
+
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -1074,6 +1079,8 @@ async def get_current_auction(authorized: bool = Depends(verify_api_key)):
     manager = AuctionManager()
     now = datetime.now(tz=ET)
     state = manager._load_or_initialize_auction(now)
+    # Override with the actual computed phase (respects schedule gating)
+    state["phase"] = manager.get_current_phase(now).value
     return state
 
 
@@ -1939,6 +1946,95 @@ async def api_admin_pad_retro_discord(
             "dropped_prospects": len(dropped),
         },
     }
+
+
+# ---- Roster Sync Message Posting ----
+
+ROSTER_SYNC_MESSAGES_FILE = "data/roster_sync_messages.json"
+
+# Guard: only post batched messages once per calendar day
+_roster_sync_last_batch_date: str | None = None
+
+
+@tasks.loop(minutes=1)
+async def roster_sync_batch_tick():
+    """Check if it's 9:00 AM ET and post batched call-up/send-down messages."""
+    global _roster_sync_last_batch_date
+    now = datetime.now(tz=ET)
+    date_key = now.date().isoformat()
+
+    if now.hour == 9 and now.minute == 0 and _roster_sync_last_batch_date != date_key:
+        _roster_sync_last_batch_date = date_key
+        await _post_roster_sync_batched_messages()
+
+
+async def _post_roster_sync_immediate_messages():
+    """Post immediate roster sync messages (adds, drops, prospect alerts).
+
+    Called after a roster sync run. Reads queued messages from
+    roster_sync_messages.json and posts them to the transaction channel.
+    """
+    try:
+        if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
+            return
+        with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
+            messages = json.load(f)
+
+        immediate = messages.get("immediate", [])
+        if not immediate:
+            return
+
+        for msg in immediate:
+            await _send_transaction_log_message(msg)
+
+        print(f"✅ Posted {len(immediate)} immediate roster sync messages to Discord")
+    except Exception as exc:
+        print(f"⚠️ Failed to post roster sync messages: {exc}")
+
+
+async def _post_roster_sync_batched_messages():
+    """Post batched call-up/send-down messages at 9 AM ET.
+
+    Reads the batched messages from roster_sync_messages.json, posts them
+    as a single combined message, then clears the batched queue.
+    """
+    try:
+        if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
+            return
+        with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
+            messages = json.load(f)
+
+        batched = messages.get("batched", [])
+        if not batched:
+            return
+
+        # Combine into a single message
+        header = f"📋 **Roster Moves — {datetime.now(tz=ET).strftime('%B %d, %Y')}**\n"
+        body = "\n".join(batched)
+        await _send_transaction_log_message(header + body)
+
+        # Clear batched messages after posting
+        messages["batched"] = []
+        with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
+            json.dump(messages, f, indent=2)
+
+        print(f"✅ Posted {len(batched)} batched roster sync messages (call-ups/send-downs)")
+    except Exception as exc:
+        print(f"⚠️ Failed to post batched roster sync messages: {exc}")
+
+
+@app.post("/api/admin/roster-sync-post")
+async def api_roster_sync_post(
+    authorized: bool = Depends(verify_api_key),
+):
+    """Manually trigger posting of queued roster sync Discord messages.
+
+    Posts immediate messages now and batched messages now (regardless of
+    the 9 AM schedule). Useful for testing or manual runs.
+    """
+    await _post_roster_sync_immediate_messages()
+    await _post_roster_sync_batched_messages()
+    return {"ok": True}
 
 
 # ---- KAP Submission API ----
