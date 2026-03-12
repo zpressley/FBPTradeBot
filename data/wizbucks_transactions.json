@@ -2119,14 +2119,14 @@
     }
   },
   {
-    "txn_id": "wb_SAD_admin_adjustment_1773359865",
-    "timestamp": "2026-03-12T23:57:45.251521Z",
-    "team": "SAD",
-    "amount": 115,
-    "balance_before": 10,
-    "balance_after": 125,
+    "txn_id": "wb_WAR_admin_adjustment_1773359797",
+    "timestamp": "2026-03-12T23:56:37.713157Z",
+    "team": "WAR",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
     "transaction_type": "admin_adjustment",
-    "description": "APA + Rollover",
+    "description": "APA",
     "related_player": null,
     "metadata": {
       "season": 2026,
@@ -2136,14 +2136,14 @@
     }
   },
   {
-    "txn_id": "wb_DMN_admin_adjustment_1773359883",
-    "timestamp": "2026-03-12T23:58:03.034526Z",
-    "team": "DMN",
-    "amount": 125,
-    "balance_before": 35,
-    "balance_after": 160,
+    "txn_id": "wb_LFB_admin_adjustment_1773359897",
+    "timestamp": "2026-03-12T23:58:17.944411Z",
+    "team": "LFB",
+    "amount": 100,
+    "balance_before": 10,
+    "balance_after": 110,
     "transaction_type": "admin_adjustment",
-    "description": "APA + Rollover",
+    "description": "APA",
     "related_player": null,
     "metadata": {
       "season": 2026,
