@@ -2202,5 +2202,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_DRO_admin_adjustment_1773359970",
+    "timestamp": "2026-03-12T23:59:30.274701Z",
+    "team": "DRO",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "admin_adjustment",
+    "description": "APA",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
