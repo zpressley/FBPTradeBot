@@ -2117,5 +2117,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_WAR_admin_adjustment_1773359797",
+    "timestamp": "2026-03-12T23:56:37.713157Z",
+    "team": "WAR",
+    "amount": 100,
+    "balance_before": 0,
+    "balance_after": 100,
+    "transaction_type": "admin_adjustment",
+    "description": "APA",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
