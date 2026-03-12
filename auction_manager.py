@@ -440,9 +440,15 @@ class AuctionManager:
         priority_order = self._compute_priority_order()
         utc_now = datetime.now(tz=timezone.utc)
 
+        # Respect schedule: if week is not active, store off_week
+        if self._is_week_active(now.date(), schedule_meta):
+            phase = self._phase_for_time(now).value
+        else:
+            phase = AuctionPhase.OFF_WEEK.value
+
         state: Dict[str, Any] = {
             "week_start": week_start.isoformat(),
-            "phase": self._phase_for_time(now).value,
+            "phase": phase,
             "priority_order": priority_order,
             "bids": [],
             "matches": [],

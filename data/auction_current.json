@@ -1,23 +1,21 @@
 {
   "bids": [],
-  "last_updated": "2026-02-26T18:13:26.948638+00:00",
+  "last_updated": "2026-03-12T17:59:09.093027+00:00",
   "matches": [],
-  "phase": "cb_window",
+  "phase": "off_week",
   "priority_order": [
-    "JES\u00da",
-    "PINS",
-    "TROU",
-    "CASC",
-    "GANG",
-    "BATI",
-    "HURL",
-    "B2J",
-    "DRO",
-    "PLAY",
-    "WIZ",
-    "RV",
     "WAR",
-    "ANGE"
+    "JEP",
+    "RV",
+    "HAM",
+    "CFL",
+    "DMN",
+    "B2J",
+    "TBB",
+    "DRO",
+    "SAD",
+    "LFB",
+    "WIZ"
   ],
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
@@ -25,5 +23,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-02-23"
+  "week_start": "2026-03-09"
 }
