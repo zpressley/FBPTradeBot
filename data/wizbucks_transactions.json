@@ -2134,5 +2134,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_TBB_admin_adjustment_1773359822",
+    "timestamp": "2026-03-12T23:57:02.834857Z",
+    "team": "TBB",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
