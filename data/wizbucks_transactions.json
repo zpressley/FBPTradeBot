@@ -2100,5 +2100,22 @@
       "admin": "zpressley",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_admin_adjustment_1773359776",
+    "timestamp": "2026-03-12T23:56:16.174256Z",
+    "team": "WIZ",
+    "amount": 125,
+    "balance_before": 5,
+    "balance_after": 130,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + EOS Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
