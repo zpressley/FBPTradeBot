@@ -2136,14 +2136,31 @@
     }
   },
   {
-    "txn_id": "wb_LFB_admin_adjustment_1773359897",
-    "timestamp": "2026-03-12T23:58:17.944411Z",
-    "team": "LFB",
-    "amount": 100,
-    "balance_before": 10,
-    "balance_after": 110,
+    "txn_id": "wb_TBB_admin_adjustment_1773359822",
+    "timestamp": "2026-03-12T23:57:02.834857Z",
+    "team": "TBB",
+    "amount": 120,
+    "balance_before": 0,
+    "balance_after": 120,
     "transaction_type": "admin_adjustment",
-    "description": "APA",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_admin_adjustment_1773359918",
+    "timestamp": "2026-03-12T23:58:38.068710Z",
+    "team": "JEP",
+    "amount": 120,
+    "balance_before": 40,
+    "balance_after": 160,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
     "related_player": null,
     "metadata": {
       "season": 2026,
