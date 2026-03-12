@@ -2151,5 +2151,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_RV_admin_adjustment_1773359845",
+    "timestamp": "2026-03-12T23:57:25.972719Z",
+    "team": "RV",
+    "amount": 125,
+    "balance_before": 20,
+    "balance_after": 145,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
