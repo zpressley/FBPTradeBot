@@ -2134,5 +2134,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_DMN_admin_adjustment_1773359883",
+    "timestamp": "2026-03-12T23:58:03.034526Z",
+    "team": "DMN",
+    "amount": 125,
+    "balance_before": 35,
+    "balance_after": 160,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
