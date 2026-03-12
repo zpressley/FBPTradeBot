@@ -4,10 +4,9 @@ permissions:
   contents: write
 
 on:
-  # Schedule temporarily disabled; keep manual trigger only.
-  # schedule:
-  #   # Run daily at 6am EST (11am UTC)
-  #   - cron: "0 11 * * *"
+  schedule:
+    # Run daily at 5am EST (10am UTC)
+    - cron: "0 10 * * *"
   
   # Allow manual trigger
   workflow_dispatch:
@@ -81,16 +80,16 @@ jobs:
       run: |
         python3 data_pipeline/update_top100_prospects_for_hub.py --hub-path fbp-hub
 
-    - name: Copy managers.json, draft order, and trades to fbp-hub
+    - name: Copy data files to fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       run: |
         cp config/managers.json fbp-hub/data/managers.json
-        if [ -f data/draft_order_2026.json ]; then
-          cp data/draft_order_2026.json fbp-hub/data/draft_order_2026.json
-        fi
-        if [ -f data/trades.json ]; then
-          cp data/trades.json fbp-hub/data/trades.json
-        fi
+        for f in draft_order_2026.json trades.json standings.json combined_players.json \
+                 wizbucks.json auction_current.json roster_sync_messages.json; do
+          if [ -f "data/$f" ]; then
+            cp "data/$f" "fbp-hub/data/$f"
+          fi
+        done
 
     - name: Commit and push data to fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
@@ -98,7 +97,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/top100_prospects.json data/managers.json data/draft_order_2026.json data/trades.json
+        git add -A data/
         git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update data from pipeline - $(date)" && git push)
 
     - name: Resolve weekly auction (Sundays only)
