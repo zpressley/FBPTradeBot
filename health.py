@@ -1973,6 +1973,7 @@ async def _post_roster_sync_immediate_messages():
 
     Called after a roster sync run. Reads queued messages from
     roster_sync_messages.json and posts them to the transaction channel.
+    Only clears posted messages from the queue after confirmed send.
     """
     try:
         if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
@@ -1984,12 +1985,24 @@ async def _post_roster_sync_immediate_messages():
         if not immediate:
             return
 
-        for msg in immediate:
-            await _send_transaction_log_message(msg)
+        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
+        if not channel:
+            print("⚠️ Transaction log channel not found — skipping immediate roster sync post")
+            return
 
-        print(f"✅ Posted {len(immediate)} immediate roster sync messages to Discord")
+        posted = 0
+        for msg in immediate:
+            await channel.send(msg)
+            posted += 1
+
+        # Only clear after all sends succeeded
+        messages["immediate"] = []
+        with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
+            json.dump(messages, f, indent=2)
+
+        print(f"✅ Posted {posted} immediate roster sync messages to Discord")
     except Exception as exc:
-        print(f"⚠️ Failed to post roster sync messages: {exc}")
+        print(f"⚠️ Failed to post roster sync messages (will retry): {exc}")
 
 
 async def _post_roster_sync_batched_messages():
@@ -1997,6 +2010,7 @@ async def _post_roster_sync_batched_messages():
 
     Reads the batched messages from roster_sync_messages.json, posts them
     as a single combined message, then clears the batched queue.
+    Only clears the queue after a confirmed successful send.
     """
     try:
         if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
@@ -2008,19 +2022,25 @@ async def _post_roster_sync_batched_messages():
         if not batched:
             return
 
+        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
+        if not channel:
+            print("⚠️ Transaction log channel not found — skipping batched roster sync post")
+            return
+
         # Combine into a single message
         header = f"📋 **Roster Moves — {datetime.now(tz=ET).strftime('%B %d, %Y')}**\n"
         body = "\n".join(batched)
-        await _send_transaction_log_message(header + body)
+        await channel.send(header + body)
 
-        # Clear batched messages after posting
+        # Only clear batched messages after confirmed successful send
+        count = len(batched)
         messages["batched"] = []
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
 
-        print(f"✅ Posted {len(batched)} batched roster sync messages (call-ups/send-downs)")
+        print(f"✅ Posted {count} batched roster sync messages (call-ups/send-downs)")
     except Exception as exc:
-        print(f"⚠️ Failed to post batched roster sync messages: {exc}")
+        print(f"⚠️ Failed to post batched roster sync messages (will retry next tick): {exc}")
 
 
 @app.post("/api/admin/roster-sync-post")
@@ -2031,9 +2051,21 @@ async def api_roster_sync_post(
 
     Posts immediate messages now and batched messages now (regardless of
     the 9 AM schedule). Useful for testing or manual runs.
+
+    Discord HTTP operations must run on the bot's event loop (main thread),
+    not on FastAPI's event loop (background thread).
     """
-    await _post_roster_sync_immediate_messages()
-    await _post_roster_sync_batched_messages()
+    async def _do_post():
+        await _post_roster_sync_immediate_messages()
+        await _post_roster_sync_batched_messages()
+
+    fut = asyncio.run_coroutine_threadsafe(_do_post(), bot.loop)
+    try:
+        # Wait for completion (run_in_executor avoids blocking FastAPI's loop)
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, fut.result, 30)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to post messages: {exc}")
     return {"ok": True}
 
 
