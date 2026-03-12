@@ -2185,5 +2185,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_B2J_admin_adjustment_1773359957",
+    "timestamp": "2026-03-12T23:59:17.718325Z",
+    "team": "B2J",
+    "amount": 125,
+    "balance_before": 0,
+    "balance_after": 125,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
