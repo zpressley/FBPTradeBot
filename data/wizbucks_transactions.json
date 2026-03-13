@@ -2287,5 +2287,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_HAM_admin_adjustment_1773364356",
+    "timestamp": "2026-03-13T01:12:36.057070Z",
+    "team": "HAM",
+    "amount": 100,
+    "balance_before": 30,
+    "balance_after": 130,
+    "transaction_type": "admin_adjustment",
+    "description": "APA",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
