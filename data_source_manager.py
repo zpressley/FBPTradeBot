@@ -213,15 +213,19 @@ class DataSourceManager:
         return DataSource.MLB_API
     
     def should_update_yahoo_rosters(self) -> bool:
-        """Check if Yahoo rosters should be synced"""
-        phase = self.current_phase
-        
-        # Only sync Yahoo rosters during active fantasy season
-        return phase in [
-            SeasonPhase.WEEK_1_START,
-            SeasonPhase.IN_SEASON,
-            SeasonPhase.PLAYOFFS
-        ]
+        """Check if Yahoo rosters should be synced.
+
+        Rosters go live on Yahoo after the keeper draft, so we start
+        syncing from that point forward through the end of playoffs.
+        """
+        today = date.today()
+        keeper_draft = datetime.strptime(
+            self.season_dates["keeper_draft"], "%Y-%m-%d"
+        ).date()
+        playoffs_end = datetime.strptime(
+            self.season_dates["playoffs_end"], "%Y-%m-%d"
+        ).date()
+        return keeper_draft < today <= playoffs_end
     
     def should_update_mlb_bio(self) -> bool:
         """Check if MLB biographical data should be refreshed"""

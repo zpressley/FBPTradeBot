@@ -331,6 +331,12 @@
       "position": "SP",
       "team": "NYM",
       "yahoo_id": "64978"
+    },
+    {
+      "name": "Carlos Lagrange",
+      "position": "SP",
+      "team": "NYY",
+      "yahoo_id": "63611"
     }
   ],
   "B2J": [
@@ -499,18 +505,6 @@
       "yahoo_id": "11853"
     },
     {
-      "name": "Josh Naylor",
-      "position": "1B",
-      "team": "SEA",
-      "yahoo_id": "10572"
-    },
-    {
-      "name": "Luis Arraez",
-      "position": "1B,2B",
-      "team": "SF",
-      "yahoo_id": "11221"
-    },
-    {
       "name": "Alex Bregman",
       "position": "3B",
       "team": "CHC",
@@ -521,6 +515,30 @@
       "position": "SS",
       "team": "AZ",
       "yahoo_id": "11417"
+    },
+    {
+      "name": "Luis Arraez",
+      "position": "1B,2B",
+      "team": "SF",
+      "yahoo_id": "11221"
+    },
+    {
+      "name": "Josh Naylor",
+      "position": "1B",
+      "team": "SEA",
+      "yahoo_id": "10572"
+    },
+    {
+      "name": "Ryan O'Hearn",
+      "position": "1B,OF",
+      "team": "PIT",
+      "yahoo_id": "10485"
+    },
+    {
+      "name": "Jos\u00e9 Caballero",
+      "position": "2B,3B,SS,OF",
+      "team": "NYY",
+      "yahoo_id": "60776"
     },
     {
       "name": "Sal Frelick",
@@ -541,22 +559,16 @@
       "yahoo_id": "10496"
     },
     {
-      "name": "Ryan O'Hearn",
-      "position": "1B,OF",
-      "team": "PIT",
-      "yahoo_id": "10485"
-    },
-    {
-      "name": "Jos\u00e9 Caballero",
-      "position": "2B,3B,SS,OF",
-      "team": "NYY",
-      "yahoo_id": "60776"
-    },
-    {
       "name": "Evan Carter",
       "position": "CF",
       "team": "TEX",
       "yahoo_id": "12563"
+    },
+    {
+      "name": "Carter Jensen",
+      "position": "C",
+      "team": "KC",
+      "yahoo_id": "12451"
     },
     {
       "name": "Fernando Cruz",
@@ -1121,6 +1133,30 @@
       "position": "SP",
       "team": "LAA",
       "yahoo_id": "11277"
+    },
+    {
+      "name": "Ronny Henriquez",
+      "position": "RP",
+      "team": "MIA",
+      "yahoo_id": "12328"
+    },
+    {
+      "name": "Justin Martinez",
+      "position": "RP",
+      "team": "AZ",
+      "yahoo_id": "12750"
+    },
+    {
+      "name": "Clarke Schmidt",
+      "position": "SP",
+      "team": "NYY",
+      "yahoo_id": "10926"
+    },
+    {
+      "name": "Tylor Megill",
+      "position": "SP",
+      "team": "NYM",
+      "yahoo_id": "12215"
     }
   ],
   "DMN": [
@@ -1589,6 +1625,12 @@
       "position": "RP",
       "team": "STL",
       "yahoo_id": "63308"
+    },
+    {
+      "name": "A.J. Puk",
+      "position": "RP",
+      "team": "AZ",
+      "yahoo_id": "10548"
     },
     {
       "name": "Spencer Schwellenbach",

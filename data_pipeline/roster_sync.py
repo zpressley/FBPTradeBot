@@ -358,22 +358,29 @@ def run_sync(
                     }
                 else:
                     # Case 4: Valid call-up (owned by same manager, not DC)
-                    result.call_ups.append({
-                        "name": name,
-                        "upid": upid,
-                        "team": fbp_team,
-                        "full_name": full_name,
-                        "mlb_team": rec.get("team", ""),
-                        "position": rec.get("position", ""),
-                    })
-                    _append_player_log_entry(
-                        player_log, rec,
-                        season=SEASON,
-                        source="yahoo_roster_sync",
-                        update_type="Roster",
-                        event="Call Up",
-                        admin="roster_sync",
-                    )
+                    # Only flag as NEW call-up if the player wasn't already
+                    # on Yahoo in the previous sync (same guard as send-downs).
+                    was_on_yahoo = upid in prev_yahoo_farm.get(fbp_team, set())
+                    if not is_first_run and was_on_yahoo:
+                        # Already reported in a prior run — skip
+                        continue
+                    if not is_first_run:
+                        result.call_ups.append({
+                            "name": name,
+                            "upid": upid,
+                            "team": fbp_team,
+                            "full_name": full_name,
+                            "mlb_team": rec.get("team", ""),
+                            "position": rec.get("position", ""),
+                        })
+                        _append_player_log_entry(
+                            player_log, rec,
+                            season=SEASON,
+                            source="yahoo_roster_sync",
+                            update_type="Roster",
+                            event="Call Up",
+                            admin="roster_sync",
+                        )
                     continue
 
                 # Log the alert
@@ -525,8 +532,19 @@ def _save_messages(result: RosterSyncResult) -> None:
         "batched": [],      # post at 9 AM ET (call-ups, send-downs)
     }
 
-    # MLB adds/drops: no Discord messages — Yahoo handles those notifications.
-    # We still track them in player_log for audit purposes.
+    # MLB adds (batched at 9 AM with call-ups/send-downs)
+    for add in result.mlb_adds:
+        messages["batched"].append(
+            f"📥 **{add['full_name']}** adds {add['name']} "
+            f"{add['mlb_team']} {add['position']}"
+        )
+
+    # MLB drops
+    for drop in result.mlb_drops:
+        messages["batched"].append(
+            f"📤 **{drop['full_name']}** drops {drop['name']} "
+            f"{drop['mlb_team']} {drop['position']}"
+        )
 
     # Prospect alerts (immediate)
     for alert in result.prospect_alerts:
