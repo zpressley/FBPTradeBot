@@ -2236,5 +2236,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_LFB_admin_adjustment_1773364162",
+    "timestamp": "2026-03-13T01:09:22.849714Z",
+    "team": "LFB",
+    "amount": 110,
+    "balance_before": 10,
+    "balance_after": 120,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Hunter Greene/Shane McClanahan diff",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
