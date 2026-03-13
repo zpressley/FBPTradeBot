@@ -2253,5 +2253,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_SAD_admin_adjustment_1773364209",
+    "timestamp": "2026-03-13T01:10:09.717389Z",
+    "team": "SAD",
+    "amount": 115,
+    "balance_before": 10,
+    "balance_after": 125,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
