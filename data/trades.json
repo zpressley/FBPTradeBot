@@ -1886,5 +1886,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-130326_1600-012": {
+    "trade_id": "TRADE-130326_1600-012",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-03-13T20:00:02.008645Z",
+    "expires_at": "2026-03-27T20:00:02.008645Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7612",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 5,
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "SS,CF Konnor Griffin [PIT] [BC]"
+      ],
+      "WIZ": [
+        "$5 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
