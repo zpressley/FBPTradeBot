@@ -236,8 +236,12 @@ def run_sync(
         if manager and fbp and upid:
             current_farm_roster[upid] = fbp
 
-    # Track which combined-players UPIDs appear on Yahoo rosters (per team)
+    # Track which combined-players UPIDs and yahoo_ids appear on Yahoo
+    # rosters (per team). We need both because duplicate records may have
+    # a UPID on one record and a yahoo_id on another (e.g. "Bobby Witt"
+    # vs "Bobby Witt Jr.").
     yahoo_rostered_upids: Dict[str, set] = {t: set() for t in teams_cfg}
+    yahoo_rostered_yids: Dict[str, set] = {t: set() for t in teams_cfg}
 
     # Load previous Yahoo Farm roster state (for send-down detection).
     # If no state file exists, this is the first run and we won't flag
@@ -272,6 +276,9 @@ def run_sync(
             # Track this player as on Yahoo for this team
             if upid:
                 yahoo_rostered_upids.setdefault(fbp_team, set()).add(upid)
+            rec_yid = str(rec.get("yahoo_id") or "").strip()
+            if rec_yid:
+                yahoo_rostered_yids.setdefault(fbp_team, set()).add(rec_yid)
 
             # --- MLB player logic ---
             if player_type == "MLB":
@@ -416,7 +423,11 @@ def run_sync(
         if fbp_team not in yahoo_data:
             continue
 
-        on_yahoo = upid in yahoo_rostered_upids.get(fbp_team, set())
+        yahoo_id = str(p.get("yahoo_id") or "").strip()
+        on_yahoo = (
+            upid in yahoo_rostered_upids.get(fbp_team, set())
+            or yahoo_id in yahoo_rostered_yids.get(fbp_team, set())
+        )
 
         if not on_yahoo:
             name = (p.get("name") or "").strip()
@@ -535,14 +546,14 @@ def _save_messages(result: RosterSyncResult) -> None:
     # MLB adds (batched at 9 AM with call-ups/send-downs)
     for add in result.mlb_adds:
         messages["batched"].append(
-            f"📥 **{add['full_name']}** adds {add['name']} "
+            f"\u2705 **{add['full_name']}** adds {add['name']} "
             f"{add['mlb_team']} {add['position']}"
         )
 
     # MLB drops
     for drop in result.mlb_drops:
         messages["batched"].append(
-            f"📤 **{drop['full_name']}** drops {drop['name']} "
+            f"\U0001f5d1\ufe0f **{drop['full_name']}** drops {drop['name']} "
             f"{drop['mlb_team']} {drop['position']}"
         )
 
