@@ -1,0 +1,137 @@
+{
+  "_comment": "FBP Hub manager/league configuration. WARNING: This file must remain valid JSON (no // comments). Use _comment fields like this one to document schema and league rules.",
+  "teams": {
+    "WIZ": {
+      "name": "Whiz Kids",
+      "full_name": "Whiz Kids",
+      "discord_id": "161967242118955008",
+      "yahoo_team_id": "1",
+      "manager": "WIZ",
+      "role": "admin",
+      "final_rank_2025": 1,
+      "kap_rollover_2026": 0,
+      "standing": 1
+    },
+    "B2J": {
+      "name": "Btwn2Jackies",
+      "full_name": "Btwn2Jackies",
+      "discord_id": "689952988957245578",
+      "yahoo_team_id": "3",
+      "manager": "B2J",
+      "role": "",
+      "final_rank_2025": 6,
+      "kap_rollover_2026": 0,
+      "standing": 6
+    },
+    "CFL": {
+      "name": "Country Fried Lamb",
+      "full_name": "Country Fried Lamb",
+      "discord_id": "689887002887454815",
+      "yahoo_team_id": "4",
+      "manager": "CFL",
+      "role": "",
+      "final_rank_2025": 8,
+      "kap_rollover_2026": 0,
+      "standing": 8
+    },
+    "HAM": {
+      "name": "Hammers",
+      "full_name": "Hammers",
+      "discord_id": "347571660230230017",
+      "yahoo_team_id": "5",
+      "manager": "HAM",
+      "role": "",
+      "final_rank_2025": 9,
+      "kap_rollover_2026": 0,
+      "standing": 9
+    },
+    "RV": {
+      "name": "Rick Vaughn",
+      "full_name": "Rick Vaughn",
+      "discord_id": "689911142432112657",
+      "yahoo_team_id": "10",
+      "manager": "RV",
+      "role": "",
+      "final_rank_2025": 10,
+      "kap_rollover_2026": 0,
+      "standing": 10
+    },
+    "LFB": {
+      "name": "La Flama Blanca",
+      "full_name": "La Flama Blanca",
+      "discord_id": "890059214586773574",
+      "yahoo_team_id": "7",
+      "manager": "LFB",
+      "role": "",
+      "final_rank_2025": 2,
+      "kap_rollover_2026": 0,
+      "standing": 2
+    },
+    "JEP": {
+      "name": "Jepordizers!",
+      "full_name": "Jepordizers!",
+      "discord_id": "814294382529347594",
+      "yahoo_team_id": "6",
+      "manager": "JEP",
+      "role": "",
+      "final_rank_2025": 11,
+      "kap_rollover_2026": 0,
+      "standing": 11
+    },
+    "TBB": {
+      "name": "The Bluke Blokes",
+      "full_name": "The Bluke Blokes",
+      "discord_id": "161932197308137473",
+      "yahoo_team_id": "11",
+      "manager": "TBB",
+      "role": "admin",
+      "final_rank_2025": 5,
+      "kap_rollover_2026": 0,
+      "standing": 5
+    },
+    "DRO": {
+      "name": "Andromedans",
+      "full_name": "Andromedans",
+      "discord_id": "541092942455242754",
+      "yahoo_team_id": "2",
+      "manager": "DRO",
+      "role": "",
+      "final_rank_2025": 4,
+      "kap_rollover_2026": 0,
+      "standing": 4
+    },
+    "SAD": {
+      "name": "not much of a donkey",
+      "full_name": "not much of a donkey",
+      "discord_id": "875750135005597728",
+      "yahoo_team_id": "9",
+      "manager": "SAD",
+      "role": "admin",
+      "final_rank_2025": 3,
+      "kap_rollover_2026": 0,
+      "standing": 3
+    },
+    "WAR": {
+      "name": "Weekend Warriors",
+      "full_name": "Weekend Warriors",
+      "discord_id": "664280448788201522",
+      "yahoo_team_id": "12",
+      "manager": "WAR",
+      "role": "admin",
+      "final_rank_2025": 12,
+      "kap_rollover_2026": 0,
+      "standing": 12
+    },
+    "DMN": {
+      "name": "The Damn Yankees",
+      "full_name": "The Damn Yankees",
+      "discord_id": "1085200118149562419",
+      "yahoo_team_id": "8",
+      "manager": "DMN",
+      "final_rank_2025": 7,
+      "kap_rollover_2026": 0,
+      "standing": 7
+    }
+  },
+  "commissioner": "161967242118955008"
+}

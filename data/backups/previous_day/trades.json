@@ -1,0 +1,1890 @@
+{
+  "WEB-TRADE-20260218-134238": {
+    "trade_id": "WEB-TRADE-20260218-134238",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "rejected",
+    "created_at": "2026-02-18T13:42:38.575966Z",
+    "expires_at": "2026-03-04T13:42:38.575966Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "3818",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ],
+      "WIZ": [
+        "SP Michael Wacha [KC] [TC 1]",
+        "CF Heliot Ramos [SF] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "bad",
+    "rejected_by": "WIZ",
+    "processed_at": "2026-02-18T17:18:05.029473Z"
+  },
+  "WEB-TRADE-20260218-171757": {
+    "trade_id": "WEB-TRADE-20260218-171757",
+    "teams": [
+      "SAD",
+      "WIZ"
+    ],
+    "initiator_team": "SAD",
+    "status": "rejected",
+    "created_at": "2026-02-18T17:17:57.384124Z",
+    "expires_at": "2026-03-04T17:17:57.384124Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1919",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "1920",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "1959",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "SAD"
+    ],
+    "receives": {
+      "SAD": [
+        "Util Shohei Ohtani (Batter) [LAD] [VC 1]",
+        "SP Shohei Ohtani (Pitcher) [LAD] [VC 1]"
+      ],
+      "WIZ": [
+        "OF Kyle Schwarber [PHI] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "I want to - I just cant",
+    "rejected_by": "WIZ",
+    "processed_at": "2026-02-18T17:19:09.630696Z"
+  },
+  "WEB-TRADE-20260218-172910": {
+    "trade_id": "WEB-TRADE-20260218-172910",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "withdrawn",
+    "created_at": "2026-02-18T17:29:10.590741Z",
+    "expires_at": "2026-03-04T17:29:10.590741Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ],
+      "WIZ": [
+        "SP Michael Wacha [KC] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-02-18T17:45:17.677608Z"
+  },
+  "WEB-TRADE-20260218-172925": {
+    "trade_id": "WEB-TRADE-20260218-172925",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "withdrawn",
+    "created_at": "2026-02-18T17:29:25.577234Z",
+    "expires_at": "2026-03-04T17:29:25.577234Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ],
+      "WIZ": [
+        "SP Michael Wacha [KC] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-02-18T17:45:19.045915Z"
+  },
+  "WEB-TRADE-20260218-172933": {
+    "trade_id": "WEB-TRADE-20260218-172933",
+    "teams": [
+      "SAD",
+      "WAR"
+    ],
+    "initiator_team": "SAD",
+    "status": "withdrawn",
+    "created_at": "2026-02-18T17:29:33.688840Z",
+    "expires_at": "2026-03-04T17:29:33.688840Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7630",
+        "from_team": "WAR",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "2984",
+        "from_team": "WAR",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "1969",
+        "from_team": "SAD",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "SAD"
+    ],
+    "receives": {
+      "SAD": [
+        "1B,OF Charlie Condon [COL] [BC]",
+        "SP Michael Wacha [KC] [TC 1]"
+      ],
+      "WAR": [
+        "SP Nathan Eovaldi [TEX] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-02-18T17:42:23.038437Z"
+  },
+  "WEB-TRADE-20260218-174102": {
+    "trade_id": "WEB-TRADE-20260218-174102",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "withdrawn",
+    "created_at": "2026-02-18T17:41:02.783417Z",
+    "expires_at": "2026-03-04T17:41:02.783417Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1950",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3385",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "1876",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2360",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "1902",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2184",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "1934",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "1920",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "6578",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "6590",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3461",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "CF George Springer [TOR] [TC 1]",
+        "SS Willy Adames [SF] [TC 2]",
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]",
+        "SP Jacob deGrom [TEX] [VC 1]",
+        "RP David Robertson [TEX] [TC 1]",
+        "RP Aroldis Chapman [BOS] [TC 1]",
+        "OF Brent Rooker [ATH] [VC 1]",
+        "SP Carlos Rod\u00f3n [NYY] [TC 1]",
+        "SP Shohei Ohtani (Pitcher) [LAD] [VC 1]",
+        "SS Aidan Miller [PHI] [BC]",
+        "SS Arjun Nimmala [TOR] [BC]"
+      ],
+      "WIZ": [
+        "3B Josh Jung [TEX] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-02-18T17:45:23.147705Z"
+  },
+  "WEB-TRADE-20260218-174104": {
+    "trade_id": "WEB-TRADE-20260218-174104",
+    "teams": [
+      "SAD",
+      "WIZ"
+    ],
+    "initiator_team": "SAD",
+    "status": "rejected",
+    "created_at": "2026-02-18T17:41:04.387984Z",
+    "expires_at": "2026-03-04T17:41:04.387984Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7964",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "7553",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6555",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "7605",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6578",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "2314",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "3458",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "4045",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "4333",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "6583",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "3836",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "SAD"
+    ],
+    "receives": {
+      "SAD": [
+        "SS Xavier Neyens [HOU] [BC]",
+        "SP Esteban Mejia [BAL] [DC]",
+        "CF Jakob Marsee [MIA] [PC]",
+        "OF Mike Sirota [LAD] [DC]",
+        "SS Aidan Miller [PHI] [BC]",
+        "SP Cristopher S\u00e1nchez [PHI] [VC 1]"
+      ],
+      "WIZ": [
+        "SP Bobby Miller [LAD] [TC 1]",
+        "SP Kyle Bradish [BAL] [TC 1]",
+        "OF Kerry Carpenter [DET] [TC 1]",
+        "SS Cooper Pratt [MIL] [DC]",
+        "C Hunter Goodman [COL] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "$0bad",
+    "rejected_by": "WIZ",
+    "processed_at": "2026-02-18T18:16:03.581740Z"
+  },
+  "WEB-TRADE-20260218-174304": {
+    "trade_id": "WEB-TRADE-20260218-174304",
+    "teams": [
+      "WIZ",
+      "SAD"
+    ],
+    "initiator_team": "WIZ",
+    "status": "rejected",
+    "created_at": "2026-02-18T17:43:04.189319Z",
+    "expires_at": "2026-03-04T17:43:04.189319Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1959",
+        "from_team": "SAD",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "7173",
+        "from_team": "WIZ",
+        "to_team": "SAD"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "OF Kyle Schwarber [PHI] [VC 1]"
+      ],
+      "SAD": [
+        "SS Leodalis De Vries [SD] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "Who's all the best players",
+    "rejected_by": "SAD",
+    "processed_at": "2026-02-18T17:45:43.732343Z"
+  },
+  "WEB-TRADE-20260218-181443": {
+    "trade_id": "WEB-TRADE-20260218-181443",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-02-18T18:14:43.310377Z",
+    "expires_at": "2026-03-04T18:14:43.310377Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6643",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "WIZ"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Jordan Leasure [CWS] [TC 1]"
+      ],
+      "WIZ": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1473744596994490389",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473744596994490389",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-18T18:16:15.863312Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-18T18:17:22.505858Z"
+  },
+  "WEB-TRADE-20260218-190605": {
+    "trade_id": "WEB-TRADE-20260218-190605",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "withdrawn",
+    "created_at": "2026-02-18T19:06:05.277542Z",
+    "expires_at": "2026-03-04T19:06:05.277542Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6643",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Jordan Leasure [CWS] [TC 1]"
+      ],
+      "WIZ": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1473757511684325640",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473757511684325640",
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-02-19T19:59:13.028243Z"
+  },
+  "WEB-TRADE-20260218-191207": {
+    "trade_id": "WEB-TRADE-20260218-191207",
+    "teams": [
+      "WAR",
+      "SAD"
+    ],
+    "initiator_team": "WAR",
+    "status": "rejected",
+    "created_at": "2026-02-18T19:12:07.891540Z",
+    "expires_at": "2026-03-04T19:12:07.891540Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6752",
+        "from_team": "SAD",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Grant Taylor [CWS] [PC]"
+      ],
+      "SAD": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1473759012498440252",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473759012498440252",
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "test",
+    "rejected_by": "WAR",
+    "processed_at": "2026-02-18T19:12:28.858816Z"
+  },
+  "WEB-TRADE-20260218-191255": {
+    "trade_id": "WEB-TRADE-20260218-191255",
+    "teams": [
+      "WAR",
+      "SAD"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-02-18T19:12:55.286595Z",
+    "expires_at": "2026-03-04T19:12:55.286595Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3379",
+        "from_team": "WAR",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "4155",
+        "from_team": "SAD",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "SAD"
+    ],
+    "receives": {
+      "WAR": [
+        "RP Jeremiah Estrada [SD] [TC 1]"
+      ],
+      "SAD": [
+        "RP Will Vest [DET] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1473759211006595123",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473759211006595123",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-18T19:13:35.149529Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-18T19:13:45.609762Z",
+    "data_applied_at": "2026-02-18T19:13:45.779419Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260218-222755": {
+    "trade_id": "WEB-TRADE-20260218-222755",
+    "teams": [
+      "WIZ",
+      "LFB"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-02-18T22:27:55.288869Z",
+    "expires_at": "2026-03-04T22:27:55.288869Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1876",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1920",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1919",
+        "from_team": "WIZ",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "1903",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "2654",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "7612",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "8111",
+        "from_team": "LFB",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "LFB"
+    ],
+    "receives": {
+      "WIZ": [
+        "SP Brandon Woodruff [MIL] [TC 2]",
+        "SP Jes\u00fas Luzardo [PHI] [TC 1]",
+        "SS,CF Konnor Griffin [PIT] [BC]",
+        "LF Francisco Renteria [PHI] [DC]"
+      ],
+      "LFB": [
+        "SP Jacob deGrom [TEX] [VC 1]",
+        "SP Shohei Ohtani (Pitcher) [LAD] [VC 1]",
+        "Util Shohei Ohtani (Batter) [LAD] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1473808278361211126",
+      "thread_url": "https://discord.com/channels/875592505926758480/1473808278361211126",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-18T22:28:23.193804Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-18T22:29:02.797727Z",
+    "data_applied_at": "2026-02-18T22:29:03.190566Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 7,
+      "player_log_entries": 7,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260219-125654": {
+    "trade_id": "WEB-TRADE-20260219-125654",
+    "teams": [
+      "DRO",
+      "TBB"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-02-19T12:56:54.823814Z",
+    "expires_at": "2026-03-05T12:56:54.823814Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1927",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3613",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "6810",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3596",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7048",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1916",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "TBB"
+    ],
+    "receives": {
+      "DRO": [
+        "2B,3B Hao-Yu Lee [DET] [DC]",
+        "1B,OF C.J. Kayfus [CLE] [PC]"
+      ],
+      "TBB": [
+        "3B Austin Riley [ATL] [FC 1]",
+        "SP,RP Joey Cantillo [CLE] [TC R]",
+        "RP Justin Sterner [FA] [TC R]",
+        "RP Raisel Iglesias [ATL] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1474026968285708308",
+      "thread_url": "https://discord.com/channels/875592505926758480/1474026968285708308",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-19T13:00:33.612672Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-19T13:02:01.310471Z",
+    "data_applied_at": "2026-02-19T13:02:01.517298Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 6,
+      "player_log_entries": 6,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260219-130729": {
+    "trade_id": "WEB-TRADE-20260219-130729",
+    "teams": [
+      "HAM",
+      "CFL"
+    ],
+    "initiator_team": "HAM",
+    "status": "approved",
+    "created_at": "2026-02-19T13:07:29.507544Z",
+    "expires_at": "2026-03-05T13:07:29.507544Z",
+    "transfers": [
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "CFL",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "7282",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "HAM",
+      "CFL"
+    ],
+    "receives": {
+      "HAM": [
+        "$15 WB via CFL"
+      ],
+      "CFL": [
+        "SP Shota Imanaga [CHC] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1474029629835575343",
+      "thread_url": "https://discord.com/channels/875592505926758480/1474029629835575343",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-19T13:07:43.305773Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-19T13:12:50.611513Z",
+    "data_applied_at": "2026-02-19T13:12:50.905257Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260219-200217": {
+    "trade_id": "WEB-TRADE-20260219-200217",
+    "teams": [
+      "WAR",
+      "DMN"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-02-19T20:02:17.788079Z",
+    "expires_at": "2026-03-05T20:02:17.788079Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3884",
+        "from_team": "DMN",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7950",
+        "from_team": "DMN",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WAR",
+        "to_team": "DMN"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "DMN"
+    ],
+    "receives": {
+      "WAR": [
+        "2B,SS Jackson Holliday [BAL] [TC R]",
+        "C,1B,OF Ike Irish [BAL] [DC]"
+      ],
+      "DMN": [
+        "$15 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": "1474134019091206147",
+      "thread_url": "https://discord.com/channels/875592505926758480/1474134019091206147",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-19T20:02:42.287318Z",
+    "admin_decision_by": "ADMIN",
+    "processed_at": "2026-02-20T03:57:36.529763Z",
+    "data_applied_at": "2026-02-20T03:57:36.529763Z",
+    "data_applied_by": "ADMIN",
+    "data_applied_summary": {
+      "player_moves": 0,
+      "player_log_entries": 0,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": [
+        "Manual finalize: WB ledger/balance applied in repo; players already appeared moved before final approval, so player_moves not applied here."
+      ]
+    },
+    "manual_fix": {
+      "finalized_wb_at": "2026-02-20T03:57:36.529763Z",
+      "finalized_wb_backup_dir": "data/manual_backups/20260220_035736Z"
+    }
+  },
+  "WEB-TRADE-20260219-135722": {
+    "acceptances": [
+      "CFL",
+      "DMN"
+    ],
+    "created_at": "2026-02-19T13:57:22Z",
+    "discord": {
+      "admin_review_message_id": null,
+      "thread_id": null,
+      "thread_url": null
+    },
+    "expires_at": "2026-02-26T13:57:22Z",
+    "initiator_team": "CFL",
+    "manager_approved_at": "2026-02-19T13:57:22Z",
+    "manual_fix": {
+      "backup_dir": "data/manual_backups/20260219_214745Z",
+      "note": "Record reconstructed locally because original trade_id was missing from data/trades.json"
+    },
+    "receives": {
+      "CFL": [
+        "OF Cris Rodriguez [DET] [DC]"
+      ],
+      "DMN": [
+        "SP Jacob Lopez [TB] [TC 1]"
+      ]
+    },
+    "status": "approved",
+    "teams": [
+      "CFL",
+      "DMN"
+    ],
+    "trade_id": "WEB-TRADE-20260219-135722",
+    "transfers": [
+      {
+        "from_team": "DMN",
+        "to_team": "CFL",
+        "type": "player",
+        "upid": "6500"
+      },
+      {
+        "from_team": "CFL",
+        "to_team": "DMN",
+        "type": "player",
+        "upid": "7153"
+      }
+    ],
+    "admin_decision_by": "ADMIN",
+    "processed_at": "2026-02-19T21:47:45.972762Z",
+    "data_applied_at": "2026-02-19T21:47:46.008206Z",
+    "data_applied_by": "ADMIN",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL": {
+    "trade_id": "WEB-TRADE-20260219-RENDERLOST-WIZ-CFL",
+    "teams": [
+      "WIZ",
+      "CFL"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-02-19T21:00:00Z",
+    "expires_at": "2026-02-26T21:00:00Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2767",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 6,
+        "pick": 6,
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 12,
+        "pick": 12,
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 20,
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "CFL"
+    ],
+    "manager_approved_at": "2026-02-19T21:00:00Z",
+    "receives": {
+      "WIZ": [
+        "Keeper Pick R6 P66 via CFL",
+        "$20 WB via CFL"
+      ],
+      "CFL": [
+        "1B Josh Naylor [AZ] [VC 1]",
+        "Keeper Pick R12 P144 via WIZ"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manual_fix": {
+      "note": "Reconstructed because trade existed on Render but not in repo trades.json; applied via trade_store.admin_approve for consistent side-effects",
+      "backup_dir": "data/manual_backups/20260220_014458Z",
+      "ui_pick_numbers": {
+        "r6_overall": 66,
+        "r12_overall": 144,
+        "mapped_to": {
+          "r6_pick": 6,
+          "r12_pick": 12
+        }
+      }
+    },
+    "admin_decision_by": "ADMIN",
+    "processed_at": "2026-02-20T01:44:58.521887Z",
+    "data_applied_at": "2026-02-20T01:44:58.545757Z",
+    "data_applied_by": "ADMIN",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 2,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260220-003855-160": {
+    "trade_id": "WEB-TRADE-20260220-003855-160",
+    "teams": [
+      "CFL",
+      "B2J"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-02-20T00:38:55.160548Z",
+    "expires_at": "2026-03-06T00:38:55.160548Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6566",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7943",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 1,
+        "pick": 6,
+        "from_team": "CFL",
+        "to_team": "B2J"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "B2J"
+    ],
+    "receives": {
+      "CFL": [
+        "CF Max Clark [DET] [BC]",
+        "SP Jamie Arnold [ATH] [BC]"
+      ],
+      "B2J": [
+        "Keeper Pick R1 P6 via CFL"
+      ]
+    },
+    "discord": {
+      "thread_id": "1474203633330684066",
+      "thread_url": "https://discord.com/channels/875592505926758480/1474203633330684066",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-20T00:40:44.460887Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-20T02:21:42.083336Z",
+    "data_applied_at": "2026-02-20T02:21:42.295971Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 1,
+      "wb_transfers": 0,
+      "buyins_purchased": 1,
+      "warnings": []
+    }
+  },
+  "WEB-TRADE-20260220-142637-737": {
+    "trade_id": "WEB-TRADE-20260220-142637-737",
+    "teams": [
+      "CFL",
+      "LFB"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-02-20T14:26:37.737500Z",
+    "expires_at": "2026-03-06T14:26:37.737500Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7710",
+        "from_team": "CFL",
+        "to_team": "LFB"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 11,
+        "pick": 6,
+        "from_team": "CFL",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "4019",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "LFB"
+    ],
+    "manager_approved_at": "2026-02-20T14:26:37.737500Z",
+    "receives": {
+      "LFB": [
+        "SP Ryan Sloan [SEA] [DC]",
+        "Keeper Pick R11 P126 via CFL"
+      ],
+      "CFL": [
+        "SP Nick Lodolo [CIN] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manual_fix": {
+      "note": "Reconstructed missing Render-only trade so it can be admin-approved and posted.",
+      "backup_dir": "data/manual_backups/20260220_142637Z",
+      "pick_mapping": {
+        "overall": 126,
+        "round": 11,
+        "pick": 6
+      }
+    },
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-20T15:38:26.535652Z",
+    "data_applied_at": "2026-02-20T15:38:26.925249Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 1,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-210226_0804-003": {
+    "trade_id": "TRADE-210226_0804-003",
+    "teams": [
+      "WIZ",
+      "HAM"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-02-21T13:04:27.054509Z",
+    "expires_at": "2026-03-07T13:04:27.054509Z",
+    "transfers": [
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 4,
+        "pick": 3,
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "7953",
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 2,
+        "pick": 12,
+        "from_team": "WIZ",
+        "to_team": "HAM"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "HAM"
+    ],
+    "receives": {
+      "WIZ": [
+        "SS Kayson Cunningham [AZ] [DC]",
+        "Keeper Pick R4 P3 via HAM",
+        "$10 WB via HAM"
+      ],
+      "HAM": [
+        "Keeper Pick R2 P12 via WIZ"
+      ]
+    },
+    "discord": {
+      "thread_id": "1474753640810938493",
+      "thread_url": "https://discord.com/channels/875592505926758480/1474753640810938493",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-21T13:04:53.249140Z"
+  },
+  "TRADE-220226_1326-004": {
+    "trade_id": "TRADE-220226_1326-004",
+    "teams": [
+      "CFL",
+      "LFB"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-02-22T18:26:15.935802Z",
+    "expires_at": "2026-03-08T18:26:15.935802Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7948",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 20,
+        "from_team": "CFL",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "LFB"
+    ],
+    "receives": {
+      "CFL": [
+        "SS JoJo Parker [TOR] [BC]"
+      ],
+      "LFB": [
+        "$20 WB via CFL"
+      ]
+    },
+    "discord": {
+      "thread_id": "1475197016727490744",
+      "thread_url": "https://discord.com/channels/875592505926758480/1475197016727490744",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-22T18:26:36.038469Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-22T18:29:20.735639Z",
+    "data_applied_at": "2026-02-22T18:29:21.042380Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-230226_1049-005": {
+    "trade_id": "TRADE-230226_1049-005",
+    "teams": [
+      "DRO",
+      "CFL"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-02-23T15:49:14.873658Z",
+    "expires_at": "2026-03-09T15:49:14.873658Z",
+    "transfers": [
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 3,
+        "pick": 10,
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7658",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "CFL",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "CFL"
+    ],
+    "receives": {
+      "DRO": [
+        "SP,RP Payton Tolle [BOS] [PC]",
+        "$15 WB via CFL"
+      ],
+      "CFL": [
+        "Keeper Pick R3 P10 via DRO"
+      ]
+    },
+    "discord": {
+      "thread_id": "1475519888612393194",
+      "thread_url": "https://discord.com/channels/875592505926758480/1475519888612393194",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-23T15:50:01.274497Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-23T15:50:32.473900Z",
+    "data_applied_at": "2026-02-23T15:50:32.679966Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 1,
+      "wb_transfers": 1,
+      "buyins_purchased": 1,
+      "warnings": []
+    }
+  },
+  "TRADE-250226_1356-006": {
+    "trade_id": "TRADE-250226_1356-006",
+    "teams": [
+      "WAR",
+      "LFB"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-02-25T18:56:39.862744Z",
+    "expires_at": "2026-03-11T18:56:39.862744Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4291",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 12,
+        "pick": 11,
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 4,
+        "pick": 8,
+        "from_team": "WAR",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "LFB"
+    ],
+    "receives": {
+      "WAR": [
+        "SS Jeremy Pe\u00f1a [HOU] [TC 1]",
+        "Keeper Pick R12 P11 via LFB"
+      ],
+      "LFB": [
+        "Keeper Pick R4 P8 via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": "1476291828700676282",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476291828700676282",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-25T18:57:02.265136Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-02-25T19:03:59.770628Z",
+    "data_applied_at": "2026-02-25T19:04:00.064711Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 2,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-250226_1502-007": {
+    "trade_id": "TRADE-250226_1502-007",
+    "teams": [
+      "WIZ",
+      "TBB"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-02-25T20:02:50.087898Z",
+    "expires_at": "2026-03-11T20:02:50.087898Z",
+    "transfers": [
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 3,
+        "pick": 1,
+        "from_team": "TBB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 10,
+        "pick": 1,
+        "from_team": "TBB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 3,
+        "pick": 12,
+        "from_team": "WIZ",
+        "to_team": "TBB"
+      },
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 4,
+        "pick": 12,
+        "from_team": "WIZ",
+        "to_team": "TBB"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "TBB"
+    ],
+    "receives": {
+      "WIZ": [
+        "Keeper Pick R3 P1 via TBB",
+        "Keeper Pick R10 P1 via TBB"
+      ],
+      "TBB": [
+        "Keeper Pick R3 P12 via WIZ",
+        "Keeper Pick R4 P12 via WIZ"
+      ]
+    },
+    "discord": {
+      "thread_id": "1476308481362628773",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476308481362628773",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-25T20:03:05.085648Z"
+  },
+  "TRADE-250226_2338-008": {
+    "trade_id": "TRADE-250226_2338-008",
+    "teams": [
+      "DRO",
+      "WAR"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-02-25T23:38:00.000000Z",
+    "expires_at": "2026-03-11T23:38:00.000000Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6910",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6677",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7709",
+        "from_team": "DRO",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3183",
+        "from_team": "DRO",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "DRO",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "WAR"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Jonah Tong [NYM] [PC]",
+        "RP Andrew Walters [CLE] [PC]"
+      ],
+      "WAR": [
+        "SP Jurrangelo Cijntje [SEA] [PC]",
+        "SP Ryan Weathers [MIA] [TC 1]",
+        "$10 WB via DRO"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-25T23:38:30.000000Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-26T18:20:07.445490Z",
+    "data_applied_at": "2026-02-26T18:20:07.471976Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-260226_0933-008": {
+    "trade_id": "TRADE-260226_0933-008",
+    "teams": [
+      "CFL",
+      "WAR"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-02-26T14:33:30.356803Z",
+    "expires_at": "2026-03-12T14:33:30.356803Z",
+    "transfers": [
+      {
+        "type": "draft_pick",
+        "draft": "keeper",
+        "round": 3,
+        "pick": 8,
+        "from_team": "WAR",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "6725",
+        "from_team": "CFL",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7948",
+        "from_team": "CFL",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "CFL",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "WAR"
+    ],
+    "receives": {
+      "CFL": [
+        "Keeper Pick R3 P8 via WAR"
+      ],
+      "WAR": [
+        "SP Jaxon Wiggins [CHC] [DC]",
+        "SS JoJo Parker [TOR] [BC]",
+        "$15 WB via CFL"
+      ]
+    },
+    "discord": {
+      "thread_id": "1476587991353917531",
+      "thread_url": "https://discord.com/channels/875592505926758480/1476587991353917531",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-26T14:44:29.456894Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-26T18:21:09.720479Z",
+    "data_applied_at": "2026-02-26T18:21:09.755936Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 1,
+      "wb_transfers": 1,
+      "buyins_purchased": 1,
+      "warnings": []
+    }
+  },
+  "TRADE-270226_0022-009": {
+    "trade_id": "TRADE-270226_0022-009",
+    "teams": [
+      "LFB",
+      "B2J"
+    ],
+    "initiator_team": "LFB",
+    "status": "approved",
+    "created_at": "2026-02-27T05:22:00.645294Z",
+    "expires_at": "2026-03-13T05:22:00.645294Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4016",
+        "from_team": "LFB",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "3399",
+        "from_team": "B2J",
+        "to_team": "LFB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "B2J",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "LFB"
+    ],
+    "receives": {
+      "LFB": [
+        "1B Yandy D\u00edaz [TB] [TC 1]",
+        "$10 WB via B2J"
+      ],
+      "B2J": [
+        "SP Joe Ryan [MIN] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-27T20:18:49.196776Z",
+    "data_applied_at": "2026-02-27T20:18:49.243164Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-280226_0007-010": {
+    "trade_id": "TRADE-280226_0007-010",
+    "teams": [
+      "WAR",
+      "LFB"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-02-28T05:07:04.799160Z",
+    "expires_at": "2026-03-14T05:07:04.799160Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4445",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "6725",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "LFB"
+    ],
+    "receives": {
+      "WAR": [
+        "1B Spencer Torkelson [DET] [TC 1]"
+      ],
+      "LFB": [
+        "SP Jaxon Wiggins [CHC] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": "1477170219347607634",
+      "thread_url": "https://discord.com/channels/875592505926758480/1477170219347607634",
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-02-28T05:07:21.930817Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-02-28T12:23:48.642956Z",
+    "data_applied_at": "2026-02-28T12:23:48.687047Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-010326_1918-011": {
+    "trade_id": "TRADE-010326_1918-011",
+    "teams": [
+      "DRO",
+      "DMN"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-03-02T00:18:53.204990Z",
+    "expires_at": "2026-03-16T00:18:53.204990Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3885",
+        "from_team": "DMN",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "2999",
+        "from_team": "DRO",
+        "to_team": "DMN"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "DMN"
+    ],
+    "receives": {
+      "DRO": [
+        "2B,3B,SS Brooks Lee [MIN] [TC R]"
+      ],
+      "DMN": [
+        "SP,RP Mike Burrows [PIT] [TC R]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-03-02T00:20:28.564238Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-03-02T00:24:53.894949Z",
+    "data_applied_at": "2026-03-02T00:24:53.932186Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  }
+}
