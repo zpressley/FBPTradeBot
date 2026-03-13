@@ -228,11 +228,13 @@ def load_trade_window_status(now: Optional[datetime] = None) -> TradeWindowStatu
 
     season_year = int(season_dates.get("season_year") or now.year)
     kap_open = season_dates.get("kap_open_date")
-    preseason_deadline = season_dates.get("preseason-trade deadline")
-    auction_start = ((season_dates.get("auction") or {}) or {}).get("start")
+    kap_end = season_dates.get("kap_end_date")
+    keeper_draft = season_dates.get("keeper_draft")
+    trade_deadline = season_dates.get("trade_deadline")
 
-    # July 31 (in-season deadline)
-    july_31 = datetime(season_year, 7, 31, tzinfo=timezone.utc)
+    # Backward-compatible fallbacks for older season_dates payloads.
+    auction_start = ((season_dates.get("auction") or {}) or {}).get("start")
+    default_trade_deadline = datetime(season_year, 7, 31, tzinfo=timezone.utc).date().isoformat()
 
     def in_range(start_s: Optional[str], end_s: Optional[str]) -> bool:
         if not start_s or not end_s:
@@ -243,12 +245,16 @@ def load_trade_window_status(now: Optional[datetime] = None) -> TradeWindowStatu
             return start <= now < end
         except Exception:
             return False
+    # KAP window: draft-pick trades are only allowed in this range.
+    if in_range(kap_open, kap_end):
+        return TradeWindowStatus(True, "KAP", f"Open (KAP) until {kap_end}")
 
-    if in_range(kap_open, preseason_deadline):
-        return TradeWindowStatus(True, "KAP", f"Open (KAP) until {preseason_deadline}")
+    # Portal trade window (no draft picks): post-keeper draft until trade deadline.
+    portal_start = keeper_draft or auction_start
+    portal_end = trade_deadline or default_trade_deadline
 
-    if auction_start and _parse_date_yyyy_mm_dd(auction_start) <= now < july_31 + timedelta(days=1):
-        return TradeWindowStatus(True, "IN_SEASON", f"Open (in-season) until {season_year}-07-31")
+    if in_range(portal_start, portal_end):
+        return TradeWindowStatus(True, "IN_SEASON", f"Open (in-season, no draft picks) until {portal_end}")
 
     return TradeWindowStatus(False, "CLOSED", "Trade window is closed")
 
