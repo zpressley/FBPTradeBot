@@ -2270,5 +2270,22 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_JEP_admin_adjustment_1773364285",
+    "timestamp": "2026-03-13T01:11:25.262699Z",
+    "team": "JEP",
+    "amount": 120,
+    "balance_before": 40,
+    "balance_after": 160,
+    "transaction_type": "admin_adjustment",
+    "description": "APA + Rollover",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "kylek_japisx",
+      "source": "admin_portal"
+    }
   }
 ]
