@@ -1981,7 +1981,7 @@
       "TBB"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-03-14T02:01:38.280212Z",
     "expires_at": "2026-03-28T02:01:38.280212Z",
     "transfers": [
@@ -2011,7 +2011,8 @@
       }
     ],
     "acceptances": [
-      "WIZ"
+      "WIZ",
+      "TBB"
     ],
     "receives": {
       "WIZ": [
@@ -2027,6 +2028,7 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-03-14T02:07:29.209173Z"
   }
 }
