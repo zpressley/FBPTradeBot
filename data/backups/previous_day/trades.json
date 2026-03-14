@@ -1886,5 +1886,161 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-130326_1600-012": {
+    "trade_id": "TRADE-130326_1600-012",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "rejected",
+    "created_at": "2026-03-13T20:00:02.008645Z",
+    "expires_at": "2026-03-27T20:00:02.008645Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7612",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 5,
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "SS,CF Konnor Griffin [PIT] [BC]"
+      ],
+      "WIZ": [
+        "$5 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "rejection_reason": "Too good",
+    "rejected_by": "WIZ",
+    "processed_at": "2026-03-13T20:03:20.357934Z"
+  },
+  "TRADE-130326_1605-013": {
+    "trade_id": "TRADE-130326_1605-013",
+    "teams": [
+      "DMN",
+      "HAM"
+    ],
+    "initiator_team": "DMN",
+    "status": "admin_review",
+    "created_at": "2026-03-13T20:05:57.250130Z",
+    "expires_at": "2026-03-27T20:05:57.250130Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4138",
+        "from_team": "DMN",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "3482",
+        "from_team": "HAM",
+        "to_team": "DMN"
+      }
+    ],
+    "acceptances": [
+      "DMN",
+      "HAM"
+    ],
+    "receives": {
+      "DMN": [
+        "3B Brady House [WSH] [PC]"
+      ],
+      "HAM": [
+        "SP,RP Tyler Holton [DET] [Keeper Contract]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-03-13T21:05:56.172144Z"
+  },
+  "TRADE-130326_2201-014": {
+    "trade_id": "TRADE-130326_2201-014",
+    "teams": [
+      "WIZ",
+      "TBB"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-03-14T02:01:38.280212Z",
+    "expires_at": "2026-03-28T02:01:38.280212Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1930",
+        "from_team": "WIZ",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "8441",
+        "from_team": "WIZ",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "2039",
+        "from_team": "TBB",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "1967",
+        "from_team": "TBB",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "TBB"
+    ],
+    "receives": {
+      "WIZ": [
+        "1B,3B Alec Bohm [PHI] [TC 1]",
+        "CF Mike Trout [LAA] [VC 2]"
+      ],
+      "TBB": [
+        "CF Bryan Reynolds [PIT] [TC 1]",
+        "1B,3B Kazuma Okamoto [TOR] [TC R]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-03-14T02:07:29.209173Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-03-14T02:17:03.292560Z",
+    "data_applied_at": "2026-03-14T02:17:03.340574Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
