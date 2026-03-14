@@ -1981,7 +1981,7 @@
       "TBB"
     ],
     "initiator_team": "WIZ",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-03-14T02:01:38.280212Z",
     "expires_at": "2026-03-28T02:01:38.280212Z",
     "transfers": [
@@ -2029,6 +2029,18 @@
       "thread_url": null,
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-03-14T02:07:29.209173Z"
+    "manager_approved_at": "2026-03-14T02:07:29.209173Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-03-14T02:17:03.292560Z",
+    "data_applied_at": "2026-03-14T02:17:03.340574Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
