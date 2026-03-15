@@ -2042,5 +2042,74 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-140326_1024-015": {
+    "trade_id": "TRADE-140326_1024-015",
+    "teams": [
+      "JEP",
+      "CFL"
+    ],
+    "initiator_team": "JEP",
+    "status": "approved",
+    "created_at": "2026-03-14T14:24:08.841612Z",
+    "expires_at": "2026-03-28T14:24:08.841612Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1917",
+        "from_team": "JEP",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7947",
+        "from_team": "JEP",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7287",
+        "from_team": "CFL",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "7681",
+        "from_team": "CFL",
+        "to_team": "JEP"
+      }
+    ],
+    "acceptances": [
+      "JEP",
+      "CFL"
+    ],
+    "receives": {
+      "JEP": [
+        "SP Yoshinobu Yamamoto [LAD] [VC 2]",
+        "SS Bryce Rainer [DET] [BC]"
+      ],
+      "CFL": [
+        "OF Ronald Acu\u00f1a Jr. [ATL] [FC 2]",
+        "SP Liam Doyle [STL] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-03-14T14:25:01.817234Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-03-14T14:26:03.189219Z",
+    "data_applied_at": "2026-03-14T14:26:03.210021Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
