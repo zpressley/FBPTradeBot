@@ -48671,5 +48671,28 @@
     "years": "P",
     "update_type": "Trade",
     "event": "TRADE-160326_1159-016: DMN->JEP"
+  },
+  {
+    "id": "2026-2026-03-17T06:59:41.816458-04:00-UPID_4688-Roster-yahoo_roster_sync",
+    "season": 2026,
+    "source": "yahoo_roster_sync",
+    "admin": "roster_sync",
+    "timestamp": "2026-03-17T06:59:41.816458-04:00",
+    "upid": "4688",
+    "player_name": "Will Warren",
+    "team": "NYY",
+    "pos": "SP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 289,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Jepordizers!",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Roster",
+    "event": "In Season Add"
   }
 ]
