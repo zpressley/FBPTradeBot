@@ -48717,5 +48717,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-03-18T23:24:01.491001-04:00-UPID_7710-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "LFB",
+    "timestamp": "2026-03-18T23:24:01.491001-04:00",
+    "upid": "7710",
+    "player_name": "Ryan Sloan",
+    "team": "SEA",
+    "pos": "SP",
+    "age": 20,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]

@@ -2325,5 +2325,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1773890641",
+    "timestamp": "2026-03-19T03:24:01.487947Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 115,
+    "balance_after": 110,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Ryan Sloan DC \u2192 PC",
+    "related_player": {
+      "upid": "7710",
+      "name": "Ryan Sloan"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
