@@ -2304,5 +2304,26 @@
       "admin": "kylek_japisx",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1773890622",
+    "timestamp": "2026-03-19T03:23:42.876419Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 120,
+    "balance_after": 115,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Jarlin Susana DC \u2192 PC",
+    "related_player": {
+      "upid": "3875",
+      "name": "Jarlin Susana"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

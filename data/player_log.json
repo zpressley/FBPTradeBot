@@ -48694,5 +48694,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Add"
+  },
+  {
+    "id": "2026-2026-03-18T23:23:42.893540-04:00-UPID_3875-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "LFB",
+    "timestamp": "2026-03-18T23:23:42.893540-04:00",
+    "upid": "3875",
+    "player_name": "Jarlin Susana",
+    "team": "WSH",
+    "pos": "SP",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
