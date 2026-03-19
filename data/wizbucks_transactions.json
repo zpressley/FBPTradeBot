@@ -2346,5 +2346,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1773890655",
+    "timestamp": "2026-03-19T03:24:15.358917Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 110,
+    "balance_after": 105,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Jaxon Wiggins DC \u2192 PC",
+    "related_player": {
+      "upid": "6725",
+      "name": "Jaxon Wiggins"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

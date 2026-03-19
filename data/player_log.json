@@ -48740,5 +48740,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-03-18T23:24:15.361238-04:00-UPID_6725-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "LFB",
+    "timestamp": "2026-03-18T23:24:15.361238-04:00",
+    "upid": "6725",
+    "player_name": "Jaxon Wiggins",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
