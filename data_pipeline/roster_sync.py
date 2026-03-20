@@ -37,8 +37,10 @@ MANAGERS_FILE = "config/managers.json"
 MESSAGES_FILE = "data/roster_sync_messages.json"
 STATE_FILE = "data/roster_sync_state.json"
 UPID_DB_FILE = "data/upid_database.json"
+TRADES_FILE = "data/trades.json"
 
 HUB_BASE = "https://www.pantheonleagues.com"
+TRADE_GUARD_DAYS = 14
 
 
 # ---------------------------------------------------------------------------
@@ -116,6 +118,61 @@ def _load_upid_name_index() -> Dict[str, List[str]]:
     return db.get("name_index", {})
 
 
+def _load_upid_by_upid() -> Dict[str, Dict]:
+    """Load UPID metadata keyed by UPID."""
+    db = _load_json(UPID_DB_FILE) or {}
+    by_upid = db.get("by_upid")
+    return by_upid if isinstance(by_upid, dict) else {}
+
+
+def _load_trade_owner_lock_map(now: Optional[datetime] = None) -> Dict[str, str]:
+    """Return a recent approved-trade ownership map: upid -> owner team."""
+    now = now or datetime.now(tz=ET)
+
+    trades_obj = _load_json(TRADES_FILE) or {}
+    if isinstance(trades_obj, dict):
+        trades = list(trades_obj.values())
+    elif isinstance(trades_obj, list):
+        trades = trades_obj
+    else:
+        trades = []
+
+    records: List[Tuple[datetime, str, str]] = []
+    for rec in trades:
+        if not isinstance(rec, dict):
+            continue
+        if str(rec.get("status") or "").strip().lower() != "approved":
+            continue
+
+        ts_raw = rec.get("processed_at") or rec.get("manager_approved_at") or rec.get("created_at")
+        if not ts_raw:
+            continue
+        try:
+            ts = datetime.fromisoformat(str(ts_raw).replace("Z", "+00:00")).astimezone(ET)
+        except Exception:
+            continue
+
+        age_days = (now - ts).total_seconds() / 86400.0
+        if age_days < 0 or age_days > TRADE_GUARD_DAYS:
+            continue
+
+        for t in rec.get("transfers") or []:
+            if not isinstance(t, dict):
+                continue
+            if t.get("type") != "player":
+                continue
+            upid = str(t.get("upid") or "").strip()
+            to_team = str(t.get("to_team") or "").strip().upper()
+            if upid and to_team:
+                records.append((ts, upid, to_team))
+
+    records.sort(key=lambda x: x[0])  # latest transfer wins
+    out: Dict[str, str] = {}
+    for _, upid, to_team in records:
+        out[upid] = to_team
+    return out
+
+
 def _match_yahoo_player(
     yahoo_player: Dict,
     idx: Dict[str, Dict],
@@ -182,6 +239,7 @@ class RosterSyncResult:
         self.call_ups: List[Dict] = []         # batched at 9 AM
         self.send_downs: List[Dict] = []       # batched at 9 AM
         self.unmatched: List[Dict] = []        # Yahoo players we couldn't match
+        self.trade_guard_skips: List[Dict] = []  # Yahoo changes suppressed by recent approved trades
         self.mutated_files: List[str] = []
 
 
@@ -213,6 +271,8 @@ def run_sync(
 
     idx = _build_combined_indexes(combined)
     upid_name_index = _load_upid_name_index()
+    upid_by_upid = _load_upid_by_upid()
+    trade_owner_lock = _load_trade_owner_lock_map()
 
     # Build current ownership map
     current_mlb_roster: Dict[str, str] = {}  # upid -> fbp_team
@@ -266,8 +326,66 @@ def run_sync(
             rec = _match_yahoo_player(yp, idx, upid_name_index)
 
             if rec is None:
-                result.unmatched.append({"yahoo_player": yp, "fbp_team": fbp_team})
-                continue
+                # Try UPID-backed auto-create for Yahoo MLB players that are
+                # not yet present in combined_players.
+                name = (yp.get("name") or "").strip()
+                upid_hits = upid_name_index.get(name.lower(), [])
+                unique_upids = list(dict.fromkeys(upid_hits))
+                created = None
+
+                if len(unique_upids) == 1:
+                    upid_from_name = unique_upids[0]
+                    rec_existing = idx["by_upid"].get(upid_from_name)
+                    if rec_existing is not None:
+                        rec = rec_existing
+                    else:
+                        meta = upid_by_upid.get(upid_from_name, {})
+                        created = {
+                            "upid": upid_from_name,
+                            "name": name or meta.get("name") or "Unknown",
+                            "team": (yp.get("team") or meta.get("team") or "").strip(),
+                            "position": (yp.get("position") or meta.get("pos") or "").strip(),
+                            "player_type": "MLB",
+                            "manager": full_name,
+                            "FBP_Team": abbr,
+                            "contract_type": "Keeper Contract",
+                            "years_simple": "TC 1",
+                            "yahoo_id": str(yp.get("yahoo_id") or "").strip(),
+                            "status": "",
+                        }
+                        combined.append(created)
+                        rec = created
+
+                        # Keep indexes in sync for downstream matching/drop checks.
+                        idx["by_upid"][upid_from_name] = created
+                        created_yid = str(created.get("yahoo_id") or "").strip()
+                        if created_yid:
+                            idx["by_yahoo_id"][created_yid] = created
+                        created_name = (created.get("name") or "").strip().lower()
+                        if created_name:
+                            idx["by_name"].setdefault(created_name, []).append(created)
+
+                if rec is None:
+                    result.unmatched.append({"yahoo_player": yp, "fbp_team": fbp_team})
+                    continue
+                elif created is not None:
+                    result.mlb_adds.append({
+                        "name": created.get("name", ""),
+                        "upid": created.get("upid", ""),
+                        "team": fbp_team,
+                        "full_name": full_name,
+                        "mlb_team": created.get("team", ""),
+                        "position": created.get("position", ""),
+                        "previous_owner": None,
+                    })
+                    _append_player_log_entry(
+                        player_log, created,
+                        season=SEASON,
+                        source="yahoo_roster_sync",
+                        update_type="Roster",
+                        event="In Season Add",
+                        admin="roster_sync",
+                    )
 
             upid = str(rec.get("upid") or "").strip()
             player_type = (rec.get("player_type") or "").strip()
@@ -283,9 +401,21 @@ def run_sync(
             # --- MLB player logic ---
             if player_type == "MLB":
                 current_owner = (rec.get("FBP_Team") or "").strip()
+                locked_owner = trade_owner_lock.get(upid) if upid else None
 
                 if current_owner == fbp_team:
                     # Already owned by same team — no change
+                    continue
+
+                # Guardrail: preserve recent approved-trade ownership while
+                # Yahoo/admin roster state catches up.
+                if locked_owner and current_owner and current_owner.upper() == locked_owner and fbp_team.upper() != locked_owner:
+                    result.trade_guard_skips.append({
+                        "name": name,
+                        "upid": upid,
+                        "yahoo_team": fbp_team,
+                        "locked_owner": locked_owner,
+                    })
                     continue
 
                 # New add (or ownership change)
@@ -432,8 +562,17 @@ def run_sync(
         if not on_yahoo:
             name = (p.get("name") or "").strip()
             _, full_name = _team_labels(teams_cfg, fbp_team)
+            locked_owner = trade_owner_lock.get(upid)
 
             if player_type == "MLB":
+                if locked_owner and fbp_team.upper() == locked_owner:
+                    result.trade_guard_skips.append({
+                        "name": name,
+                        "upid": upid,
+                        "yahoo_team": None,
+                        "locked_owner": locked_owner,
+                    })
+                    continue
                 # MLB drop
                 p["manager"] = None
                 p["FBP_Team"] = ""
@@ -523,6 +662,7 @@ def run_sync(
     print(f"   Call ups:          {len(result.call_ups)}")
     print(f"   Send downs:        {len(result.send_downs)}")
     print(f"   Unmatched:         {len(result.unmatched)}")
+    print(f"   Trade-guard skips: {len(result.trade_guard_skips)}")
     if result.unmatched:
         for u in result.unmatched[:5]:
             yp = u["yahoo_player"]
@@ -560,6 +700,16 @@ def _save_messages(result: RosterSyncResult) -> None:
     # Prospect alerts (immediate)
     for alert in result.prospect_alerts:
         messages["immediate"].append(alert["message"])
+
+    # Unmatched Yahoo players should be surfaced immediately so they are not
+    # silently missed in daily snapshots.
+    for item in result.unmatched[:25]:
+        yp = item.get("yahoo_player") or {}
+        team = item.get("fbp_team") or "UNKNOWN"
+        messages["immediate"].append(
+            f"⚠️ **Roster Sync Unmatched**: {team} has {yp.get('name','Unknown')} "
+            f"({yp.get('position','N/A')} {yp.get('team','N/A')}) that could not be mapped in UPID/combined."
+        )
 
     # Call-ups / send-downs (batched at 9 AM)
     for cu in result.call_ups:
