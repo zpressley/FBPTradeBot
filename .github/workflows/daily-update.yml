@@ -115,6 +115,21 @@ jobs:
         git add -A data/
         git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update data from pipeline - $(date)" && git push)
 
+    - name: Copy combined_players.json to email-digest
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
+      run: |
+        cp data/combined_players.json email-digest/data/combined_players.json
+
+    - name: Commit combined_players.json to email-digest
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
+      working-directory: email-digest
+      run: |
+        git config user.name "fbp-pipeline-bot"
+        git config user.email "bot@fbp-pipeline"
+        git add data/combined_players.json
+        git diff --staged --quiet || git commit -m "chore: sync combined_players.json from trade bot $(date +%Y-%m-%d)"
+        git push
+
     - name: Resolve weekly auction (Sundays only)
       if: "${{ github.event_name == 'schedule' && startsWith(github.event.schedule, '0 18') }}"
       # 18:00 UTC ~= 2pm ET during standard time; adjust if needed for DST.
