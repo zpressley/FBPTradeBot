@@ -5,7 +5,15 @@ from discord import app_commands
 from auction_manager import AuctionManager, AuctionPhase, ET
 from commands.utils import DISCORD_ID_TO_TEAM
 
-TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
+AUCTION_CHANNEL_ID = 1089979265619083444  # transactions channel for auction logs
+
+# Module-level commit function, set by health.py on_ready
+_auction_commit_fn = None
+
+
+def set_auction_commit_fn(fn):
+    global _auction_commit_fn
+    _auction_commit_fn = fn
 
 
 def _resolve_prospect_name(prospect_id: str) -> str:
@@ -43,6 +51,7 @@ class Auction(commands.Cog):
         self._cb_open_week = None
         self._cb_close_week = None
         self._last_summary_date = None  # YYYY-MM-DD in ET
+        self._last_synced_phase = None  # track phase for website sync
 
         # Start background task that checks phase/time once per minute
         self.auction_tick.start()
@@ -161,8 +170,8 @@ class Auction(commands.Cog):
             ephemeral=True,
         )
 
-        # Log to test auction channel
-        channel = self.bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+        # Log to auction channel
+        channel = self.bot.get_channel(AUCTION_CHANNEL_ID)
         if channel:
             is_ob = bid_data["bid_type"] == "OB"
             header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
@@ -194,6 +203,23 @@ class Auction(commands.Cog):
 
         now = datetime.now(tz=ET)
         phase = self.manager.get_current_phase(now)
+
+        # Sync phase to auction_current.json + GitHub so the website stays current
+        phase_val = phase.value
+        if phase_val != self._last_synced_phase:
+            try:
+                state = self.manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
+                if state.get("phase") != phase_val:
+                    state["phase"] = phase_val
+                    self.manager._save_auction_state(state)  # type: ignore[attr-defined]
+                    if _auction_commit_fn:
+                        _auction_commit_fn(
+                            ["data/auction_current.json"],
+                            f"Auction phase sync: {phase_val}",
+                        )
+            except Exception as exc:
+                print(f"⚠️ Failed to sync auction phase: {exc}")
+            self._last_synced_phase = phase_val
 
         # If auctions are not active this week, do nothing
         if phase is AuctionPhase.OFF_WEEK:
@@ -238,14 +264,14 @@ class Auction(commands.Cog):
     # Alert helpers
     # ------------------------------------------------------------------
 
-    async def _get_test_channel(self) -> discord.TextChannel | None:
-        channel = self.bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+    async def _get_auction_channel(self) -> discord.TextChannel | None:
+        channel = self.bot.get_channel(AUCTION_CHANNEL_ID)
         if isinstance(channel, discord.TextChannel):
             return channel
         return None
 
     async def _send_ob_open_alert(self) -> None:
-        channel = await self._get_test_channel()
+        channel = await self._get_auction_channel()
         if not channel:
             return
         msg = (
@@ -255,7 +281,7 @@ class Auction(commands.Cog):
         await channel.send(msg)
 
     async def _send_ob_closed_alert(self) -> None:
-        channel = await self._get_test_channel()
+        channel = await self._get_auction_channel()
         if not channel:
             return
         msg = (
@@ -265,7 +291,7 @@ class Auction(commands.Cog):
         await channel.send(msg)
 
     async def _send_cb_open_alert(self) -> None:
-        channel = await self._get_test_channel()
+        channel = await self._get_auction_channel()
         if not channel:
             return
         msg = (
@@ -275,7 +301,7 @@ class Auction(commands.Cog):
         await channel.send(msg)
 
     async def _send_cb_closed_alert(self) -> None:
-        channel = await self._get_test_channel()
+        channel = await self._get_auction_channel()
         if not channel:
             return
         msg = (
@@ -287,7 +313,7 @@ class Auction(commands.Cog):
     async def _send_daily_summary(self) -> None:
         """Post a daily auction summary similar to legacy Apps Script."""
 
-        channel = await self._get_test_channel()
+        channel = await self._get_auction_channel()
         if not channel:
             return
 
@@ -311,11 +337,11 @@ class Auction(commands.Cog):
         lines: list[str] = ["📊 Daily Auction Summary", ""]
 
         for prospect_id, pbids in by_prospect.items():
-            ob = next((b for b in pbids if b["type"] == "OB"), None)
+            ob = next((b for b in pbids if b["bid_type"] == "OB"), None)
             if not ob:
                 continue
 
-            cbs = [b for b in pbids if b["type"] == "CB"]
+            cbs = [b for b in pbids if b["bid_type"] == "CB"]
             lines.append(f"🧢 Player: {_resolve_prospect_name(prospect_id)}")
             lines.append(f"📌 Originating Team: {ob['team']}")
 

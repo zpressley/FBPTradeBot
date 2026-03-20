@@ -184,12 +184,12 @@ class AuctionManager:
         # Enforce OB rules
         if bid_type_enum is BidType.OB:
             # 1 OB per team per week
-            if any(b["team"] == normalized_team and b["type"] == "OB" for b in bids):
+            if any(b["team"] == normalized_team and b["bid_type"] == "OB" for b in bids):
                 return {"success": False, "error": "You have already placed an originating bid this week."}
 
             # Only one OB per prospect per week
             if any(
-                b["prospect_id"] == prospect["upid"] and b["type"] == "OB" for b in bids
+                b["prospect_id"] == prospect["upid"] and b["bid_type"] == "OB" for b in bids
             ):
                 return {"success": False, "error": "This prospect already has an originating bid."}
 
@@ -211,12 +211,28 @@ class AuctionManager:
                     "error": f"Challenge bids must be at least $5 above current high (${current_high}).",
                 }
 
+            # Friday spoiler-bid rule: on Friday, a team can only raise an
+            # existing CB they already placed earlier in the week. New teams
+            # cannot enter a CB race on the last day.
+            if now.weekday() == 4:  # Friday
+                has_prior_cb = any(
+                    b["team"] == normalized_team
+                    and b["prospect_id"] == prospect["upid"]
+                    and b["bid_type"] == "CB"
+                    for b in bids
+                )
+                if not has_prior_cb:
+                    return {
+                        "success": False,
+                        "error": "Friday CBs require at least one prior CB on this prospect earlier in the week. No last-minute spoiler bids.",
+                    }
+
             # 1 CB per team per prospect per calendar day (ET)
             et_date_str = now.date().isoformat()
             if any(
                 b["team"] == normalized_team
                 and b["prospect_id"] == prospect["upid"]
-                and b["type"] == "CB"
+                and b["bid_type"] == "CB"
                 and b.get("date") == et_date_str
                 for b in bids
             ):
@@ -228,7 +244,7 @@ class AuctionManager:
         # Check WizBucks balance (simple check: total - committed >= bid amount)
         # NOTE: committed calculation here is conservative and will be
         # refined alongside full Sunday resolution logic.
-        total_balance = int(wizbucks.get(normalized_team, 0))
+        total_balance = self._resolve_wb_balance(wizbucks, normalized_team)
         committed = self._get_committed_wb_for_team(bids, normalized_team)
         available = total_balance - committed
 
@@ -387,7 +403,7 @@ class AuctionManager:
 
             # Update players list: assign manager + PC contract if still unowned
             for p in players:
-                if str(p.get("id")) == prospect_id:
+                if str(p.get("upid", "")) == prospect_id:
                     p["manager"] = team
                     # Do not overwrite an existing contract_type if present
                     if not p.get("contract_type"):
@@ -631,8 +647,8 @@ class AuctionManager:
 
         for prospect_id, pbids in by_prospect.items():
             # Find OB and CBs
-            ob_bid = next((b for b in pbids if b["type"] == "OB"), None)
-            cb_bids = [b for b in pbids if b["type"] == "CB"]
+            ob_bid = next((b for b in pbids if b["bid_type"] == "OB"), None)
+            cb_bids = [b for b in pbids if b["bid_type"] == "CB"]
 
             if not ob_bid and not cb_bids:
                 continue
@@ -740,7 +756,7 @@ class AuctionManager:
 
         # Per-team pass
         for team, wins in list(winners_per_team.items()):
-            total_balance = int(wizbucks.get(team, 0))
+            total_balance = self._resolve_wb_balance(wizbucks, team)
 
             def current_spend() -> int:
                 return sum(w["amount"] for w in winners_per_team.get(team, []))
@@ -777,6 +793,15 @@ class AuctionManager:
 
         return winners_by_prospect
 
+    def _resolve_wb_balance(self, wizbucks: Dict[str, Any], team_abbr: str) -> int:
+        """Look up a team's WB balance, resolving abbr → full franchise name."""
+        if team_abbr in wizbucks:
+            return int(wizbucks[team_abbr])
+        mgr = self._load_json(self.managers_file) or {}
+        teams = mgr.get("teams") or {}
+        full_name = (teams.get(team_abbr) or {}).get("name", "")
+        return int(wizbucks.get(full_name, 0))
+
     def _is_team_known(self, team: str, players: List[Dict[str, Any]]) -> bool:
         return any(p.get("manager") == team for p in players)
 
@@ -798,7 +823,7 @@ class AuctionManager:
     @staticmethod
     def _get_ob_team_for_prospect(bids: List[Dict[str, Any]], prospect_id: str) -> Optional[str]:
         for b in bids:
-            if b["prospect_id"] == str(prospect_id) and b["type"] == "OB":
+            if b["prospect_id"] == str(prospect_id) and b["bid_type"] == "OB":
                 return b["team"]
         return None
 

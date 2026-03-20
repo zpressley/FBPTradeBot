@@ -166,6 +166,22 @@ class SmartDataPipeline:
         
         print("✅ Standings updated")
     
+    def update_baselines(self):
+        """
+        Calculate league baselines from Yahoo stats.
+        Writes daily snapshot to email-digest and league_baselines.json to fbp-hub.
+        Only runs in-season when Yahoo rosters are active (requires yahoo_players.json).
+        """
+        print("\n📊 CALCULATING LEAGUE BASELINES")
+        print("=" * 50)
+
+        self.run_script(
+            "./calculate_baselines.py",
+            "Derive FBP+ baselines from rostered player stats"
+        )
+
+        print("✅ Baselines updated")
+
     def merge_all_data(self):
         """Merge data from all sources into combined_players.json.
 
@@ -231,8 +247,12 @@ class SmartDataPipeline:
         
         # 2. Update rosters from appropriate source
         self.update_roster_data()
-        
-        # 3. Update prospect tracking (service time, roster status)
+
+        # 3. Calculate league baselines (in-season only, runs after yahoo_players.json is written)
+        if self.manager.should_update_yahoo_rosters():
+            self.update_baselines()
+
+        # 4. Update prospect tracking (service time, roster status)
         self.update_prospect_data()
         
         # 4. Update WizBucks

@@ -16,11 +16,29 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
-    
+      EMAIL_DIGEST_DATA_DIR: email-digest/data
+      FBP_HUB_DATA_DIR: fbp-hub/data
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    
+
+    - name: Checkout email-digest repository
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
+      uses: actions/checkout@v3
+      with:
+        repository: zpressley/email-digest
+        path: email-digest
+        token: ${{ env.FBP_HUB_PUSH_TOKEN }}
+
+    - name: Checkout fbp-hub repository
+      if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
+      uses: actions/checkout@v3
+      with:
+        repository: "zpressley/fbp-hub"
+        path: fbp-hub
+        token: ${{ env.FBP_HUB_PUSH_TOKEN }}
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -62,18 +80,15 @@ jobs:
         git commit -m "🔄 Daily data update - $(date)"
         git push
 
-    # Optional: sync Top 100 prospects into the fbp-hub repo for the website.
-    # This assumes you have created a personal access token with repo write
-    # access to the fbp-hub repository and stored it in the secret
-    # FBP_HUB_PUSH_TOKEN. Adjust the `repository` value if your GitHub org/user
-    # or repo name differs.
-    - name: Checkout fbp-hub repository
+    - name: Commit email-digest baseline snapshots
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
-      uses: actions/checkout@v3
-      with:
-        repository: "zpressley/fbp-hub"
-        path: fbp-hub
-        token: ${{ env.FBP_HUB_PUSH_TOKEN }}
+      working-directory: email-digest
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+        git add data/baselines/
+        git diff --staged --quiet || git commit -m "Daily baseline snapshot $(date +%F)"
+        git push
 
     - name: Update top100_prospects.json in fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}

@@ -55,6 +55,7 @@ from api_trade import router as trade_router, set_trade_bot_reference, set_trade
 from api_settings import router as settings_router, set_settings_commit_fn
 from api_notes import router as notes_router, set_notes_commit_fn
 from api_upid import router as upid_router, set_upid_commit_fn
+from commands.auction import set_auction_commit_fn
 from data_lock import DATA_LOCK
 
 # Load environment variables
@@ -555,6 +556,12 @@ async def on_ready():
         set_settings_commit_fn(_commit_and_push)
     except Exception as exc:
         print(f"⚠️ Failed to set commit fn for settings API: {exc}")
+
+    # Allow auction cog to commit phase changes
+    try:
+        set_auction_commit_fn(_commit_and_push)
+    except Exception as exc:
+        print(f"⚠️ Failed to set commit fn for auction cog: {exc}")
     
     # Start the 9 AM ET roster sync batched message task
     if not roster_sync_batch_tick.is_running():
@@ -938,9 +945,9 @@ def _get_prospect_draft_components():
 
 
 async def _send_auction_log_message(content: str) -> None:
-    """Post an auction log message to the test channel, if available."""
+    """Post an auction log message to the transactions channel."""
     try:
-        channel = bot.get_channel(TEST_AUCTION_CHANNEL_ID)
+        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
         if channel:
             await channel.send(content)
     except Exception as exc:
