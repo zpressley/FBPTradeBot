@@ -2179,5 +2179,60 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-200326_1140-017": {
+    "trade_id": "TRADE-200326_1140-017",
+    "teams": [
+      "WIZ",
+      "WAR"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-03-20T15:40:04.476269Z",
+    "expires_at": "2026-04-03T15:40:04.476269Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3484",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "7605",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 5,
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "1903",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "SP Andrew Painter [PHI] [BC]",
+        "$5 WB via WAR"
+      ],
+      "WAR": [
+        "OF Mike Sirota [LAD] [DC]",
+        "SP Brandon Woodruff [MIL] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
