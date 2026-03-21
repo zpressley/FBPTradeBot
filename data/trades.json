@@ -2187,7 +2187,7 @@
       "WAR"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "rejected",
     "created_at": "2026-03-20T15:40:04.476269Z",
     "expires_at": "2026-04-03T15:40:04.476269Z",
     "transfers": [
@@ -2233,6 +2233,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "rejection_reason": "Brad scratchy dick and some dodger who will never get playing time for the second coming of Gerrit Cole.",
+    "rejected_by": "WAR",
+    "processed_at": "2026-03-21T04:03:08.750457Z"
   }
 }
