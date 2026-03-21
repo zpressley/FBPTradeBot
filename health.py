@@ -1965,14 +1965,20 @@ _roster_sync_last_batch_date: str | None = None
 
 @tasks.loop(minutes=1)
 async def roster_sync_batch_tick():
-    """Check if it's 9:00 AM ET and post batched call-up/send-down messages."""
+    """Post batched roster sync messages once daily at/after 9:00 AM ET.
+
+    This catch-up behavior ensures a brief restart around 9:00 won't cause
+    the day to be missed.
+    """
     global _roster_sync_last_batch_date
     now = datetime.now(tz=ET)
     date_key = now.date().isoformat()
 
-    if now.hour == 9 and now.minute == 0 and _roster_sync_last_batch_date != date_key:
-        _roster_sync_last_batch_date = date_key
-        await _post_roster_sync_batched_messages()
+    after_batch_window = now.hour >= 9
+    if after_batch_window and _roster_sync_last_batch_date != date_key:
+        ok = await _post_roster_sync_batched_messages()
+        if ok:
+            _roster_sync_last_batch_date = date_key
 
 
 async def _post_roster_sync_immediate_messages():
@@ -2012,7 +2018,7 @@ async def _post_roster_sync_immediate_messages():
         print(f"⚠️ Failed to post roster sync messages (will retry): {exc}")
 
 
-async def _post_roster_sync_batched_messages():
+async def _post_roster_sync_batched_messages() -> bool:
     """Post batched call-up/send-down messages at 9 AM ET.
 
     Reads the batched messages from roster_sync_messages.json, posts them
@@ -2021,18 +2027,18 @@ async def _post_roster_sync_batched_messages():
     """
     try:
         if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
-            return
+            return True
         with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
             messages = json.load(f)
 
         batched = messages.get("batched", [])
         if not batched:
-            return
+            return True
 
         channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
         if not channel:
             print("⚠️ Transaction log channel not found — skipping batched roster sync post")
-            return
+            return False
 
         # Combine into a single message
         header = f"📋 **Roster Moves — {datetime.now(tz=ET).strftime('%B %d, %Y')}**\n"
@@ -2046,8 +2052,10 @@ async def _post_roster_sync_batched_messages():
             json.dump(messages, f, indent=2)
 
         print(f"✅ Posted {count} batched roster sync messages (call-ups/send-downs)")
+        return True
     except Exception as exc:
         print(f"⚠️ Failed to post batched roster sync messages (will retry next tick): {exc}")
+        return False
 
 
 @app.post("/api/admin/roster-sync-post")

@@ -86,9 +86,13 @@ jobs:
       run: |
         git config user.name "github-actions"
         git config user.email "actions@github.com"
-        git add data/baselines/
-        git diff --staged --quiet || git commit -m "Daily baseline snapshot $(date +%F)"
-        git push
+        if [ -d data/baselines ]; then
+          git add data/baselines/
+          git diff --staged --quiet || git commit -m "Daily baseline snapshot $(date +%F)"
+          git push
+        else
+          echo "No data/baselines/ directory yet — skipping."
+        fi
 
     - name: Update top100_prospects.json in fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
