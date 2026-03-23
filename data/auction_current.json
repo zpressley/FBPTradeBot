@@ -7,9 +7,17 @@
       "prospect_id": "7304",
       "team": "HAM",
       "timestamp": "2026-03-23T20:32:48.980152+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_type": "OB",
+      "date": "2026-03-23",
+      "prospect_id": "4611",
+      "team": "DRO",
+      "timestamp": "2026-03-23T20:37:33.580733+00:00"
     }
   ],
-  "last_updated": "2026-03-23T20:32:48.980152+00:00",
+  "last_updated": "2026-03-23T20:37:33.580733+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
