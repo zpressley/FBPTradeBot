@@ -23,9 +23,17 @@
       "prospect_id": "6551",
       "team": "DMN",
       "timestamp": "2026-03-23T20:38:22.060974+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_type": "OB",
+      "date": "2026-03-23",
+      "prospect_id": "6532",
+      "team": "LFB",
+      "timestamp": "2026-03-23T21:01:09.268360+00:00"
     }
   ],
-  "last_updated": "2026-03-23T20:38:22.060974+00:00",
+  "last_updated": "2026-03-23T21:01:09.268360+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
