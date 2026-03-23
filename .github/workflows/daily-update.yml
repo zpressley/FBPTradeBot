@@ -49,12 +49,6 @@ jobs:
         python3 -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Setup credentials
-      env:
-        YAHOO_TOKEN_JSON: ${{ secrets.YAHOO_TOKEN_JSON }}
-      run: |
-        printenv YAHOO_TOKEN_JSON > token.json
-    
     - name: Run Smart Data Pipeline
       run: |
         # The smart pipeline automatically detects season phase
@@ -66,10 +60,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-        # Stage only data/ so secrets in token.json/google_creds.json never
-        # affect this commit step. We intentionally ignore working-tree
-        # changes outside data/ (like token.json).
-        git add data/
+        # Stage data/ and token.json (token_manager auto-refreshes expired tokens)
+        git add data/ token.json
 
         # If there are no staged changes under data/, exit successfully
         # without committing.
