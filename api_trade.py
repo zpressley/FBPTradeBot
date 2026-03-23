@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import asyncio
 import os
-from datetime import datetime
+import threading
+import time
 from typing import Optional, TypeVar
 
 from fastapi import APIRouter, Depends, Header, HTTPException
@@ -31,6 +32,90 @@ def _log(event: str, data: dict) -> None:
             print(event)
         except Exception:
             pass
+TRADE_POLL_IDLE_SECONDS = int(os.getenv("TRADE_POLL_IDLE_SECONDS", "90"))
+TRADE_POLL_SWEEP_SECONDS = int(os.getenv("TRADE_POLL_SWEEP_SECONDS", "15"))
+_trade_poll_lock = threading.Lock()
+_trade_poll_activity: dict[str, dict] = {}
+_trade_poll_sweeper_started = False
+
+
+def _touch_trade_poll(team: str, endpoint: str) -> None:
+    """Mark poll activity and emit only lifecycle logs (start/end)."""
+    now = time.time()
+    team = (team or "").strip().upper()
+    if not team:
+        return
+
+    with _trade_poll_lock:
+        state = _trade_poll_activity.get(team)
+        if not state or (now - float(state.get("last_seen_ts", 0))) > TRADE_POLL_IDLE_SECONDS:
+            _trade_poll_activity[team] = {
+                "started_ts": now,
+                "last_seen_ts": now,
+                "request_count": 1,
+                "first_endpoint": endpoint,
+            }
+            _log(
+                "🔔 TRADE_POLL_LIVE_START",
+                {
+                    "team": team,
+                    "endpoint": endpoint,
+                    "idle_timeout_s": TRADE_POLL_IDLE_SECONDS,
+                },
+            )
+            return
+
+        state["last_seen_ts"] = now
+        state["request_count"] = int(state.get("request_count", 0)) + 1
+
+
+def _trade_poll_sweeper_loop() -> None:
+    """Emit end notifications after poll inactivity."""
+    while True:
+        time.sleep(max(5, TRADE_POLL_SWEEP_SECONDS))
+        now = time.time()
+        ended: list[dict] = []
+        with _trade_poll_lock:
+            for team, state in list(_trade_poll_activity.items()):
+                last_seen = float(state.get("last_seen_ts", 0))
+                idle_seconds = now - last_seen
+                if idle_seconds <= TRADE_POLL_IDLE_SECONDS:
+                    continue
+                started = float(state.get("started_ts", last_seen))
+                ended.append(
+                    {
+                        "team": team,
+                        "request_count": int(state.get("request_count", 0)),
+                        "active_seconds": int(max(0, last_seen - started)),
+                        "idle_seconds": int(idle_seconds),
+                        "first_endpoint": state.get("first_endpoint"),
+                    }
+                )
+                _trade_poll_activity.pop(team, None)
+
+        for item in ended:
+            _log("🛑 TRADE_POLL_LIVE_END", item)
+
+
+def _start_trade_poll_sweeper_once() -> None:
+    global _trade_poll_sweeper_started
+    with _trade_poll_lock:
+        if _trade_poll_sweeper_started:
+            return
+        _trade_poll_sweeper_started = True
+    thread = threading.Thread(
+        target=_trade_poll_sweeper_loop,
+        daemon=True,
+        name="trade-poll-sweeper",
+    )
+    thread.start()
+    _log(
+        "ℹ️ TRADE_POLL_TRACKING_ENABLED",
+        {
+            "idle_timeout_s": TRADE_POLL_IDLE_SECONDS,
+            "sweep_interval_s": TRADE_POLL_SWEEP_SECONDS,
+        },
+    )
 
 
 router = APIRouter(prefix="/api/trade", tags=["trade"])
@@ -45,6 +130,8 @@ _bot_ref = None
 _commit_fn = None
 
 T = TypeVar("T")
+
+_start_trade_poll_sweeper_once()
 
 
 def _schedule_on_bot_loop(coro, label: str) -> None:
@@ -237,6 +324,7 @@ async def get_queue(
     _: bool = Depends(verify_key),
     manager_team: str = Depends(require_manager_team),
 ):
+    _touch_trade_poll(manager_team, "queue")
     return {"trades": trade_store.list_queue(manager_team)}
 
 
@@ -245,6 +333,7 @@ async def get_inbox(
     _: bool = Depends(verify_key),
     manager_team: str = Depends(require_manager_team),
 ):
+    _touch_trade_poll(manager_team, "inbox")
     return {"trades": trade_store.list_inbox(manager_team)}
 
 

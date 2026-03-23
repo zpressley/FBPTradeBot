@@ -861,7 +861,11 @@ class AuctionManager:
         return int(wizbucks.get(full_name, 0))
 
     def _is_team_known(self, team: str, players: List[Dict[str, Any]]) -> bool:
-        return any(p.get("manager") == team for p in players)
+        # Check both abbreviation (FBP_Team) and full name (manager)
+        return any(
+            p.get("FBP_Team") == team or p.get("manager") == team
+            for p in players
+        )
 
     def _find_prospect(self, players: List[Dict[str, Any]], prospect_id: str) -> Optional[Dict[str, Any]]:
         # Primary: match by UPID (canonical identifier)
