@@ -79,12 +79,8 @@ class SmartDataPipeline:
         print("\n📋 UPDATING PLAYER BIOGRAPHICAL DATA")
         print("=" * 50)
         
-        # Build MLB ID cache (includes UPID mapping). Script currently lives
-        # under random/, so we call it via explicit relative path.
-        self.run_script(
-            "random/build_mlb_id_cache.py",
-            "Sync UPID mappings and MLB IDs"
-        )
+        # MLB ID cache is now maintained by scripts/enrich_player_ids.py
+        # and the UPID database. No Google Sheets dependency needed.
         
         print("✅ Player bio data updated")
     
@@ -119,16 +115,10 @@ class SmartDataPipeline:
         print("\n🌱 UPDATING PROSPECT DATA")
         print("=" * 50)
         
-        # Bot manages prospects, but we track service time from MLB
-        self.run_script(
-            "track_roster_status.py",
-            "Track MLB roster status for prospects"
-        )
-        
-        self.run_script(
-            "log_roster_events.py",
-            "Log call-ups and demotions"
-        )
+        # Prospect roster tracking is handled by the in-season roster
+        # sync (roster_sync.py) which detects call-ups and send-downs.
+        # The standalone scripts were never implemented.
+        print("   (Prospect tracking handled by roster_sync.py)")
         
         print("✅ Prospect data updated")
     

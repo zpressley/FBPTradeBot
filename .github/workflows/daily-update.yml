@@ -50,9 +50,10 @@ jobs:
         pip install -r requirements.txt
     
     - name: Setup credentials
+      env:
+        YAHOO_TOKEN_JSON: ${{ secrets.YAHOO_TOKEN_JSON }}
       run: |
-        echo '${{ secrets.YAHOO_TOKEN_JSON }}' > token.json
-        echo '${{ secrets.GOOGLE_CREDS_JSON }}' > google_creds.json
+        printenv YAHOO_TOKEN_JSON > token.json
     
     - name: Run Smart Data Pipeline
       run: |
