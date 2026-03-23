@@ -178,6 +178,13 @@ class Auction(commands.Cog):
             ephemeral=True,
         )
 
+        # Commit to GitHub so the website sees it immediately
+        if _auction_commit_fn:
+            _auction_commit_fn(
+                ["data/auction_current.json"],
+                f"Auction bid: {bid_data['bid_type']} ${bid_data['amount']} on {prospect_name} by {bid_data['team']} (Discord)",
+            )
+
         # Log to auction channel
         channel = self.bot.get_channel(AUCTION_CHANNEL_ID)
         if channel:
