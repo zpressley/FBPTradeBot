@@ -392,47 +392,96 @@ class AuctionManager:
             priority_index=priority_index,
         )
 
-        # 3) Apply results to players (assign PC contract + manager) and wizbucks
+        # 3) Apply results to players, WB ledger, and player log
         winners_summary: Dict[str, Any] = {}
+        week_start = state.get("week_start", "?")
+        week_end_date = date.fromisoformat(week_start) + timedelta(days=6) if week_start != "?" else None
+        week_label = f"{week_start} to {week_end_date.isoformat()}" if week_end_date else week_start
+        event_label = f"Auction {week_label}"
 
-        by_team_totals: Dict[str, int] = {}
+        from wb_ledger import append_transaction as _wb_append
+
+        # Load player_log for appending
+        player_log_file = self.data_dir / "player_log.json"
+        try:
+            with player_log_file.open("r", encoding="utf-8") as f:
+                player_log = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            player_log = []
+
+        resolve_ts = datetime.now(tz=timezone.utc).isoformat()
+
         for prospect_id, win in winners_by_prospect.items():
             team = win["team"]
             amount = int(win["amount"])
-            by_team_totals[team] = by_team_totals.get(team, 0) + amount
 
-            # Update players list: assign manager + PC contract if still unowned
+            # Find the player record
+            player_record = None
             for p in players:
                 if str(p.get("upid", "")) == prospect_id:
-                    p["manager"] = team
-                    # Do not overwrite an existing contract_type if present
-                    if not p.get("contract_type"):
-                        p["contract_type"] = "PC"
+                    player_record = p
                     break
 
-            winners_summary[prospect_id] = {
-                "team": team,
-                "amount": amount,
-            }
+            if not player_record:
+                continue
 
-        # Apply WizBucks debits via wb_ledger
-        from wb_ledger import append_transaction as _wb_append
+            # Update player: assign owner + Purchased Contract
+            player_record["manager"] = team
+            if not player_record.get("contract_type"):
+                player_record["contract_type"] = "Purchased Contract"
 
-        for team, spent in by_team_totals.items():
+            # WB ledger: one entry per winner (not batched per team)
             _wb_append(
                 team=team,
-                amount=-spent,
+                amount=-amount,
                 transaction_type="auction_winner",
-                description=f"Prospect auction week of {state.get('week_start', '?')}",
+                description=f"{event_label}: {player_record.get('name', prospect_id)}",
+                related_player={"upid": prospect_id, "name": player_record.get("name", "")},
                 metadata={
-                    "week_start": state.get("week_start"),
+                    "week_start": week_start,
+                    "prospect_id": prospect_id,
+                    "amount": amount,
                     "source": "auction_resolve",
                 },
             )
 
-        # Persist updated player data (wb_ledger already saved wallet + ledger)
+            # Player log entry
+            player_log.append({
+                "id": f"2026-{resolve_ts}-UPID_{prospect_id}-Auction-bot",
+                "season": 2026,
+                "source": "Auction Resolve",
+                "admin": "bot",
+                "timestamp": resolve_ts,
+                "upid": prospect_id,
+                "player_name": player_record.get("name", ""),
+                "team": player_record.get("mlb_team", player_record.get("team", "")),
+                "pos": player_record.get("position", ""),
+                "age": player_record.get("age"),
+                "level": player_record.get("level", ""),
+                "team_rank": None,
+                "rank": None,
+                "eta": player_record.get("eta", ""),
+                "player_type": player_record.get("player_type", "Farm"),
+                "owner": team,
+                "contract": "Purchased Contract",
+                "status": player_record.get("status", ""),
+                "years": "P",
+                "update_type": "Auction",
+                "event": event_label,
+            })
+
+            winners_summary[prospect_id] = {
+                "team": team,
+                "amount": amount,
+                "name": player_record.get("name", ""),
+            }
+
+        # Persist updated player data and player log
         with self.players_file.open("w", encoding="utf-8") as f_players:
             json.dump(players, f_players, indent=2, sort_keys=True)
+
+        with player_log_file.open("w", encoding="utf-8") as f_log:
+            json.dump(player_log, f_log, indent=2, ensure_ascii=False)
 
         state["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
         state["phase"] = AuctionPhase.PROCESSING.value
@@ -445,13 +494,18 @@ class AuctionManager:
     # ------------------------------------------------------------------
 
     def _load_or_initialize_auction(self, now: datetime) -> Dict[str, Any]:
+        current_monday = self._monday_for_date(now.date())
+
         if self.auction_file.exists():
             data = self._load_json(self.auction_file) or {}
-            if data.get("week_start"):
+            stored_week = data.get("week_start", "")
+            # Return existing state if it's still the same week
+            if stored_week == current_monday.isoformat():
                 return data
+            # Stale week → fall through to re-initialize for the new week
 
-        # If no file or missing week_start, initialize for current week
-        week_start = self._monday_for_date(now.date())
+        # Initialize fresh state for the current week
+        week_start = current_monday
         schedule_meta = self._default_schedule_meta()
         priority_order = self._compute_priority_order()
         utc_now = datetime.now(tz=timezone.utc)

@@ -1,49 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_type": "OB",
-      "date": "2026-03-17",
-      "prospect_id": "7778",
-      "team": "SAD",
-      "timestamp": "2026-03-17T19:01:45+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_type": "OB",
-      "date": "2026-03-17",
-      "prospect_id": "6693",
-      "team": "HAM",
-      "timestamp": "2026-03-17T19:02:45+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_type": "OB",
-      "date": "2026-03-17",
-      "prospect_id": "7679",
-      "team": "WIZ",
-      "timestamp": "2026-03-17T19:12:45+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_type": "OB",
-      "date": "2026-03-17",
-      "prospect_id": "3454",
-      "team": "LFB",
-      "timestamp": "2026-03-17T19:52:45+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_type": "OB",
-      "date": "2026-03-17",
-      "prospect_id": "8443",
-      "team": "DRO",
-      "timestamp": "2026-03-18T02:46:31+00:00"
-    }
-  ],
-  "last_updated": "2026-03-20T03:50:00+00:00",
+  "bids": [],
+  "last_updated": "2026-03-23T19:37:02.456702+00:00",
   "matches": [],
-  "phase": "cb_window",
+  "phase": "ob_window",
   "priority_order": [
     "WAR",
     "JEP",
@@ -64,5 +23,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-03-16"
+  "week_start": "2026-03-23"
 }

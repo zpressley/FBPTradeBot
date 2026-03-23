@@ -135,11 +135,16 @@ jobs:
         git push
 
     - name: Resolve weekly auction (Sundays only)
-      if: "${{ github.event_name == 'schedule' && startsWith(github.event.schedule, '0 18') }}"
-      # 18:00 UTC ~= 2pm ET during standard time; adjust if needed for DST.
+      if: "${{ github.event_name == 'schedule' }}"
       run: |
-        python3 scripts/resolve_auction.py
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add data/combined_players.json data/wizbucks.json data/auction_current.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🏁 Resolve weekly auction - $(date)" && git push)
+        # Only run on Sundays (day 0)
+        if [ "$(date +%u)" = "7" ]; then
+          echo "Sunday detected — resolving auction..."
+          python3 scripts/resolve_auction.py
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/combined_players.json data/wizbucks.json data/wizbucks_transactions.json data/auction_current.json data/player_log.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🏁 Resolve weekly auction - $(date)" && git push)
+        else
+          echo "Not Sunday — skipping auction resolve."
+        fi

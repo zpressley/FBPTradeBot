@@ -30,6 +30,13 @@ def _resolve_prospect_name(prospect_id: str) -> str:
     return str(prospect_id)
 
 
+def _bbref_link(name: str) -> str:
+    """Return a Discord markdown link to a Baseball Reference search for the player."""
+    from urllib.parse import quote
+    url = f"https://www.baseball-reference.com/search/search.fcgi?search={quote(name)}"
+    return f"[{name}]({url})"
+
+
 class Auction(commands.Cog):
     """Discord interface for the Prospect Auction Portal.
 
@@ -50,6 +57,7 @@ class Auction(commands.Cog):
         self._ob_close_week = None
         self._cb_open_week = None
         self._cb_close_week = None
+        self._weekly_summary_week = None  # Saturday weekly summary guard
         self._last_summary_date = None  # YYYY-MM-DD in ET
         self._last_synced_phase = None  # track phase for website sync
 
@@ -236,8 +244,8 @@ class Auction(commands.Cog):
                 await self._send_ob_open_alert()
                 self._ob_open_week = week_key
 
-        # OB window closed: Tuesday 11:00pm ET
-        if now.weekday() == 1 and now.hour == 23 and now.minute == 0:
+        # OB window closed: Tuesday 9:00pm ET
+        if now.weekday() == 1 and now.hour == 21 and now.minute == 0:
             if self._ob_close_week != week_key:
                 await self._send_ob_closed_alert()
                 self._ob_close_week = week_key
@@ -254,8 +262,42 @@ class Auction(commands.Cog):
                 await self._send_cb_closed_alert()
                 self._cb_close_week = week_key
 
-        # Daily summary: 9:30am ET, once per calendar day
-        if now.hour == 9 and now.minute == 30:
+        # Saturday 9:00am ET: weekly summary (results + match/forfeit questions)
+        if now.weekday() == 5 and now.hour == 9 and now.minute == 0:
+            if self._weekly_summary_week != week_key:
+                await self._send_weekly_summary()
+                self._weekly_summary_week = week_key
+
+        # Sunday 2:00pm ET: resolve the week (assign winners, charge WB)
+        if now.weekday() == 6 and now.hour == 14 and now.minute == 0:
+            try:
+                result = self.manager.resolve_week(now=now)
+                status = result.get("status", "")
+                winners = result.get("winners", {})
+                if status == "resolved" and winners:
+                    channel = await self._get_auction_channel()
+                    if channel:
+                        lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
+                        for pid, info in winners.items():
+                            name = info.get("name", _resolve_prospect_name(pid))
+                            lines.append(f"✅ **{info['team']}** → {_bbref_link(name)} (${info['amount']} WB)")
+                        await channel.send("\n".join(lines))
+                    # Commit updated files
+                    if _auction_commit_fn:
+                        _auction_commit_fn(
+                            ["data/combined_players.json", "data/wizbucks.json",
+                             "data/wizbucks_transactions.json", "data/auction_current.json",
+                             "data/player_log.json"],
+                            f"Auction resolved: week of {week_key}",
+                        )
+                    print(f"✅ Auction resolved: {len(winners)} winners")
+                elif status == "no_bids":
+                    print("Auction resolve: no bids this week")
+            except Exception as exc:
+                print(f"⚠️ Auction resolve failed: {exc}")
+
+        # Daily summary: 9:00am ET, Tue–Fri only (Saturday has weekly summary)
+        if now.weekday() in (1, 2, 3, 4) and now.hour == 9 and now.minute == 0:
             if self._last_summary_date != date_key:
                 await self._send_daily_summary()
                 self._last_summary_date = date_key
@@ -342,7 +384,8 @@ class Auction(commands.Cog):
                 continue
 
             cbs = [b for b in pbids if b["bid_type"] == "CB"]
-            lines.append(f"🧢 Player: {_resolve_prospect_name(prospect_id)}")
+            player_name = _resolve_prospect_name(prospect_id)
+            lines.append(f"🧢 Player: {_bbref_link(player_name)}")
             lines.append(f"📌 Originating Team: {ob['team']}")
 
             if cbs:
@@ -357,6 +400,64 @@ class Auction(commands.Cog):
 
         msg = "\n".join(lines).rstrip()
         await channel.send(msg)
+
+
+    async def _send_weekly_summary(self) -> None:
+        """Saturday 9am — weekly auction results + match/forfeit questions.
+
+        Mirrors the Apps Script sendWeeklySummary:
+        - Uncontested OBs → "✅ TEAM wins PLAYER — no challengers."
+        - Contested prospects → "🔔 TEAM, do you want to match $X by CHALLENGER for PLAYER?"
+        """
+
+        channel = await self._get_auction_channel()
+        if not channel:
+            return
+
+        from datetime import datetime
+
+        now = datetime.now(tz=ET)
+        state = self.manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
+        bids = state.get("bids", [])
+
+        if not bids:
+            await channel.send("🏁 **Weekly Auction Results**\n\nNo bids this week.")
+            return
+
+        # Group bids by prospect
+        by_prospect: dict[str, list[dict]] = {}
+        for b in bids:
+            pid = str(b["prospect_id"])
+            by_prospect.setdefault(pid, []).append(b)
+
+        winners_lines: list[str] = ["🏁 **Weekly Auction Results**", ""]
+        match_lines: list[str] = ["❓ **Do You Want to Match?**", ""]
+        has_contested = False
+
+        for prospect_id, pbids in by_prospect.items():
+            ob = next((b for b in pbids if b["bid_type"] == "OB"), None)
+            if not ob:
+                continue
+
+            cbs = [b for b in pbids if b["bid_type"] == "CB"]
+            player_name = _resolve_prospect_name(prospect_id)
+            ob_team = ob["team"]
+
+            linked = _bbref_link(player_name)
+            if not cbs:
+                winners_lines.append(f"✅ **{ob_team} wins** {linked} — no challengers.")
+            else:
+                max_amt = max(int(cb["amount"]) for cb in cbs)
+                top_cb = next(cb for cb in cbs if int(cb["amount"]) == max_amt)
+                match_lines.append(
+                    f"🔔 **{ob_team}**, do you want to match the high bid of "
+                    f"**${max_amt}** by **{top_cb['team']}** for {linked}?"
+                )
+                has_contested = True
+
+        await channel.send("\n".join(winners_lines))
+        if has_contested:
+            await channel.send("\n".join(match_lines))
 
 
 async def setup(bot: commands.Bot) -> None:

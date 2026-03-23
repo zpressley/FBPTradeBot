@@ -2367,5 +2367,105 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_SAD_auction_winner_1774294470",
+    "timestamp": "2026-03-23T19:34:30.525658Z",
+    "team": "SAD",
+    "amount": -10,
+    "balance_before": 125,
+    "balance_after": 115,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-16 to 2026-03-22: Trey Gibson",
+    "related_player": {
+      "upid": "7778",
+      "name": "Trey Gibson"
+    },
+    "metadata": {
+      "week_start": "2026-03-16",
+      "prospect_id": "7778",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_HAM_auction_winner_1774294470",
+    "timestamp": "2026-03-23T19:34:30.529158Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 130,
+    "balance_after": 120,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-16 to 2026-03-22: Caden Scarborough",
+    "related_player": {
+      "upid": "6693",
+      "name": "Caden Scarborough"
+    },
+    "metadata": {
+      "week_start": "2026-03-16",
+      "prospect_id": "6693",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1774294470",
+    "timestamp": "2026-03-23T19:34:30.531660Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 130,
+    "balance_after": 120,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-16 to 2026-03-22: Braylon Doughty",
+    "related_player": {
+      "upid": "7679",
+      "name": "Braylon Doughty"
+    },
+    "metadata": {
+      "week_start": "2026-03-16",
+      "prospect_id": "7679",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_LFB_auction_winner_1774294470",
+    "timestamp": "2026-03-23T19:34:30.533656Z",
+    "team": "LFB",
+    "amount": -10,
+    "balance_before": 105,
+    "balance_after": 95,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-16 to 2026-03-22: Zac Veen",
+    "related_player": {
+      "upid": "3454",
+      "name": "Zac Veen"
+    },
+    "metadata": {
+      "week_start": "2026-03-16",
+      "prospect_id": "3454",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1774294470",
+    "timestamp": "2026-03-23T19:34:30.536229Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-16 to 2026-03-22: Ryan Lambert",
+    "related_player": {
+      "upid": "8443",
+      "name": "Ryan Lambert"
+    },
+    "metadata": {
+      "week_start": "2026-03-16",
+      "prospect_id": "8443",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]

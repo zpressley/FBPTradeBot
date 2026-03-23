@@ -10,6 +10,7 @@ import time
 import traceback
 import re
 import shutil
+import logging
 
 import discord
 from discord.ext import commands, tasks
@@ -60,6 +61,38 @@ from data_lock import DATA_LOCK
 
 # Load environment variables
 load_dotenv()
+
+
+class _SuppressTradePollAccessLogs(logging.Filter):
+    """Drop high-frequency trade poll access logs from uvicorn.access."""
+
+    _blocked_tokens = (
+        "\"GET /api/trade/inbox HTTP/1.1\"",
+        "\"GET /api/trade/queue HTTP/1.1\"",
+    )
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        try:
+            msg = record.getMessage()
+        except Exception:
+            return True
+        return not any(token in msg for token in self._blocked_tokens)
+
+
+_access_log_filter_configured = False
+
+
+def _configure_access_log_filter() -> None:
+    """Install access-log filter once so trade poll requests don't spam logs."""
+    global _access_log_filter_configured
+    if _access_log_filter_configured:
+        return
+    try:
+        logging.getLogger("uvicorn.access").addFilter(_SuppressTradePollAccessLogs())
+        _access_log_filter_configured = True
+        print("✅ Access log filter enabled for trade poll endpoints")
+    except Exception as exc:
+        print(f"⚠️ Failed to configure access log filter: {exc}")
 
 
 def configure_git() -> None:
@@ -2559,6 +2592,7 @@ async def start_bot():
 def run_server():
     """Run FastAPI server (blocking)"""
     print(f"🌐 Starting FastAPI server on port {PORT}...")
+    _configure_access_log_filter()
     
     config = uvicorn.Config(
         app, 
