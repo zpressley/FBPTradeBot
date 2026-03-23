@@ -426,7 +426,11 @@ class AuctionManager:
                 continue
 
             # Update player: assign owner + Purchased Contract
-            player_record["manager"] = team
+            # manager = full franchise name, FBP_Team = abbreviation
+            mgr_data = self._load_json(self.managers_file) or {}
+            team_info = (mgr_data.get("teams") or {}).get(team, {})
+            player_record["manager"] = team_info.get("name", team)
+            player_record["FBP_Team"] = team
             if not player_record.get("contract_type"):
                 player_record["contract_type"] = "Purchased Contract"
 
