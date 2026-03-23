@@ -49660,5 +49660,28 @@
     "years": "TC R",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-03-23T16:37:10.273195-04:00-UPID_3852-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "DRO",
+    "timestamp": "2026-03-23T16:37:10.273195-04:00",
+    "upid": "3852",
+    "player_name": "Roman Anthony",
+    "team": "BOS",
+    "pos": "CF",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": 49,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Andromedans",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]

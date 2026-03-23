@@ -2467,5 +2467,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_DRO_contract_purchase_1774298230",
+    "timestamp": "2026-03-23T20:37:10.266075Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Roman Anthony PC \u2192 BC",
+    "related_player": {
+      "upid": "3852",
+      "name": "Roman Anthony"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
