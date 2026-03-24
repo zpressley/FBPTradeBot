@@ -433,10 +433,11 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
                         _log("GIT_RESTORE_FILE_FAILED", {"path": rel, "error": str(wexc)})
 
                 # Re-stage + commit while still holding the lock.
-                # Stage all data files so nothing is left behind.
-                all_restore_paths = list(set(list(full_data_snapshot.keys()) + existing_paths))
-                if all_restore_paths:
-                    _run(["git", "add", *all_restore_paths])
+                # Only stage the files this batch is responsible for —
+                # restored snapshot files stay on disk but are NOT staged
+                # (they'll be committed by their own future batch).
+                if existing_paths:
+                    _run(["git", "add", *existing_paths])
 
                 staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
                 if not (staged.stdout or "").strip():
