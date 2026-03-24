@@ -679,54 +679,57 @@ def _save_messages(result: RosterSyncResult) -> None:
     """Write queued Discord messages to roster_sync_messages.json."""
     messages: Dict[str, Any] = {
         "generated_at": datetime.now(tz=ET).isoformat(),
-        "immediate": [],   # post right away (prospect alerts)
-        "batched": [],      # post at 9 AM ET (call-ups, send-downs)
+        "immediate": [],            # post right away (prospect alerts)
+        "batched_prospect": [],     # post at 9 AM → Prospect Moves channel
+        "batched_free_agency": [],  # post at 9 AM → Free Agency channel
     }
 
-    # MLB adds (batched at 9 AM with call-ups/send-downs)
+    # MLB adds → Free Agency channel
     for add in result.mlb_adds:
-        messages["batched"].append(
+        messages["batched_free_agency"].append(
             f"\u2705 **{add['full_name']}** adds {add['name']} "
             f"{add['mlb_team']} {add['position']}"
         )
 
-    # MLB drops
+    # MLB drops → Free Agency channel
     for drop in result.mlb_drops:
-        messages["batched"].append(
+        messages["batched_free_agency"].append(
             f"\U0001f5d1\ufe0f **{drop['full_name']}** drops {drop['name']} "
             f"{drop['mlb_team']} {drop['position']}"
         )
 
-    # Prospect alerts (immediate)
+    # Prospect alerts (immediate) → Prospect Moves channel
     for alert in result.prospect_alerts:
         messages["immediate"].append(alert["message"])
 
-    # Unmatched Yahoo players should be surfaced immediately so they are not
-    # silently missed in daily snapshots.
+    # Unmatched Yahoo players → immediate / Prospect Moves channel
     for item in result.unmatched[:25]:
         yp = item.get("yahoo_player") or {}
         team = item.get("fbp_team") or "UNKNOWN"
         messages["immediate"].append(
-            f"⚠️ **Roster Sync Unmatched**: {team} has {yp.get('name','Unknown')} "
+            f"\u26a0\ufe0f **Roster Sync Unmatched**: {team} has {yp.get('name','Unknown')} "
             f"({yp.get('position','N/A')} {yp.get('team','N/A')}) that could not be mapped in UPID/combined."
         )
 
-    # Call-ups / send-downs (batched at 9 AM)
+    # Call-ups → Prospect Moves channel
     for cu in result.call_ups:
-        messages["batched"].append(
-            f"⬆️ **{cu['full_name']}** calls up {cu['name']} "
+        messages["batched_prospect"].append(
+            f"\u2b06\ufe0f **{cu['full_name']}** calls up {cu['name']} "
             f"{cu['mlb_team']} {cu['position']}"
         )
 
+    # Send-downs → Prospect Moves channel
     for sd in result.send_downs:
-        messages["batched"].append(
-            f"⬇️ **{sd['full_name']}** sends down {sd['name']} "
+        messages["batched_prospect"].append(
+            f"\u2b07\ufe0f **{sd['full_name']}** sends down {sd['name']} "
             f"{sd['mlb_team']} {sd['position']}"
         )
 
     _save_json(MESSAGES_FILE, messages)
-    total = len(messages["immediate"]) + len(messages["batched"])
-    print(f"   Messages queued:   {total} ({len(messages['immediate'])} immediate, {len(messages['batched'])} batched)")
+    bp = len(messages["batched_prospect"])
+    bf = len(messages["batched_free_agency"])
+    imm = len(messages["immediate"])
+    print(f"   Messages queued:   {imm + bp + bf} ({imm} immediate, {bp} prospect, {bf} free agency)")
 
 
 # ---------------------------------------------------------------------------

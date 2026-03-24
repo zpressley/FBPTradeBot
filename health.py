@@ -490,8 +490,11 @@ PAD_LIVE_PAD_CHANNEL_ID = int(os.getenv("PAD_LIVE_PAD_CHANNEL_ID", "0"))  # live
 
 TEST_AUCTION_CHANNEL_ID = 1197200421639438537  # test channel for auction logs
 ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # channel for admin change notifications
-TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444  # channel for manager transactions
+TRANSACTION_LOG_CHANNEL_ID = 1089979265619083444  # Trades channel
 ADMIN_TASKS_CHANNEL_ID = 875594022033436683  # daily processing summary tasks
+PROSPECT_MOVES_CHANNEL_ID = 1486083067784331445  # prospect call-ups, send-downs, contract purchases
+AUCTION_CHANNEL_ID = 1351376690319851520  # auction OB/CB bids, match/forfeit
+FREE_AGENCY_CHANNEL_ID = 1486083376766255114  # Yahoo keeper adds/drops
 
 def _resolve_repo_root() -> str:
     """Resolve the repo root for git operations.
@@ -979,9 +982,9 @@ def _get_prospect_draft_components():
 
 
 async def _send_auction_log_message(content: str) -> None:
-    """Post an auction log message to the transactions channel."""
+    """Post an auction log message to the auction portal channel."""
     try:
-        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
+        channel = bot.get_channel(AUCTION_CHANNEL_ID)
         if channel:
             await channel.send(content)
     except Exception as exc:
@@ -1400,7 +1403,9 @@ async def api_manager_contract_purchase(
             f"Manager: {manager_name}\n"
             f"{timestamp}"
         )
-        bot.loop.create_task(_send_transaction_log_message(discord_msg))
+        ch = bot.get_channel(PROSPECT_MOVES_CHANNEL_ID)
+        if ch:
+            bot.loop.create_task(ch.send(discord_msg))
     except Exception as exc:
         print("⚠️ Failed to send contract purchase Discord message:", exc)
 
@@ -2045,9 +2050,9 @@ async def _post_roster_sync_immediate_messages():
         if not immediate:
             return
 
-        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
+        channel = bot.get_channel(PROSPECT_MOVES_CHANNEL_ID)
         if not channel:
-            print("⚠️ Transaction log channel not found — skipping immediate roster sync post")
+            print("⚠️ Prospect moves channel not found — skipping immediate roster sync post")
             return
 
         posted = 0
@@ -2078,29 +2083,52 @@ async def _post_roster_sync_batched_messages() -> bool:
         with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
             messages = json.load(f)
 
-        batched = messages.get("batched", [])
-        if not batched:
+        # Split batched messages into prospect moves vs free agency.
+        # New keys are preferred; fall back to legacy "batched" key.
+        prospect_msgs = messages.get("batched_prospect", [])
+        fa_msgs = messages.get("batched_free_agency", [])
+        legacy = messages.get("batched", [])
+
+        # Migrate legacy: call-ups/send-downs (⬆️/⬇️) → prospect, adds/drops (✅/🗑) → free agency
+        for msg in legacy:
+            if msg.startswith("⬆️") or msg.startswith("⬇️"):
+                prospect_msgs.append(msg)
+            else:
+                fa_msgs.append(msg)
+
+        if not prospect_msgs and not fa_msgs:
             return True
 
-        channel = bot.get_channel(TRANSACTION_LOG_CHANNEL_ID)
-        if not channel:
-            print("⚠️ Transaction log channel not found — skipping batched roster sync post")
-            return False
+        date_str = datetime.now(tz=ET).strftime('%B %d, %Y')
+        posted = 0
 
-        # Combine into a single message
-        header = f"📋 **Roster Moves — {datetime.now(tz=ET).strftime('%B %d, %Y')}**\n"
-        body = "\n".join(batched)
-        await channel.send(header + body)
+        if prospect_msgs:
+            ch = bot.get_channel(PROSPECT_MOVES_CHANNEL_ID)
+            if ch:
+                header = f"📋 **Prospect Moves — {date_str}**\n"
+                await ch.send(header + "\n".join(prospect_msgs))
+                posted += len(prospect_msgs)
+            else:
+                print("⚠️ Prospect moves channel not found")
 
-        # Only clear batched messages after confirmed successful send.
-        # Persist the posted date so bot restarts don't re-post.
-        count = len(batched)
+        if fa_msgs:
+            ch = bot.get_channel(FREE_AGENCY_CHANNEL_ID)
+            if ch:
+                header = f"📋 **Free Agency — {date_str}**\n"
+                await ch.send(header + "\n".join(fa_msgs))
+                posted += len(fa_msgs)
+            else:
+                print("⚠️ Free agency channel not found")
+
+        # Clear all batched queues and persist posted date.
         messages["batched"] = []
+        messages["batched_prospect"] = []
+        messages["batched_free_agency"] = []
         messages["last_posted_date"] = datetime.now(tz=ET).date().isoformat()
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
 
-        print(f"✅ Posted {count} batched roster sync messages (call-ups/send-downs)")
+        print(f"✅ Posted {posted} batched roster sync messages (prospect + free agency)")
         return True
     except Exception as exc:
         print(f"⚠️ Failed to post batched roster sync messages (will retry next tick): {exc}")
