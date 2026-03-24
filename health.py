@@ -2003,10 +2003,23 @@ async def roster_sync_batch_tick():
 
     This catch-up behavior ensures a brief restart around 9:00 won't cause
     the day to be missed.
+
+    The last-posted date is persisted inside roster_sync_messages.json so
+    that bot restarts (e.g. from auto-deploy after a git push) do not
+    cause duplicate Roster Moves posts.
     """
     global _roster_sync_last_batch_date
     now = datetime.now(tz=ET)
     date_key = now.date().isoformat()
+
+    # Hydrate in-memory guard from disk on first tick after restart
+    if _roster_sync_last_batch_date is None:
+        try:
+            if os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
+                with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
+                    _roster_sync_last_batch_date = json.load(f).get("last_posted_date")
+        except Exception:
+            pass
 
     after_batch_window = now.hour >= 9
     if after_batch_window and _roster_sync_last_batch_date != date_key:
@@ -2079,9 +2092,11 @@ async def _post_roster_sync_batched_messages() -> bool:
         body = "\n".join(batched)
         await channel.send(header + body)
 
-        # Only clear batched messages after confirmed successful send
+        # Only clear batched messages after confirmed successful send.
+        # Persist the posted date so bot restarts don't re-post.
         count = len(batched)
         messages["batched"] = []
+        messages["last_posted_date"] = datetime.now(tz=ET).date().isoformat()
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
 
