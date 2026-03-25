@@ -1147,14 +1147,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "birth_date": "1999-08-14",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 8\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 671212,
     "mlb_primary_position": "P",
     "name": "Joe Boyle",
@@ -1819,14 +1819,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "S",
     "birth_date": "1997-04-24",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 650489,
     "mlb_primary_position": "LF",
     "name": "Willi Castro",
@@ -1839,7 +1839,7 @@
     "upid": "3380",
     "weight": 206,
     "yahoo_id": "10868",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "LFB",
@@ -5732,14 +5732,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "LFB",
     "age": 29,
     "bats": "L",
     "birth_date": "1996-03-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 656550,
     "mlb_primary_position": "P",
     "name": "Grant Holmes",
@@ -7575,14 +7575,14 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "DMN",
     "age": 34,
     "bats": "R",
     "birth_date": "1991-07-01",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 608379,
     "mlb_primary_position": "P",
     "name": "Michael Wacha",
@@ -11727,14 +11727,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 25,
     "bats": "R",
     "birth_date": "2000-09-17",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "",
+    "manager": "Andromedans",
     "mlb_id": 690829,
     "mlb_primary_position": "P",
     "name": "Ben Joyce",
@@ -11746,7 +11746,7 @@
     "upid": "3963",
     "weight": 225,
     "yahoo_id": "60218",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "TBB",
@@ -21925,14 +21925,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "birth_date": "1998-03-02",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 670912,
     "mlb_primary_position": "P",
     "name": "Johan Oviedo",
