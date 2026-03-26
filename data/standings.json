@@ -143,33 +143,33 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "DRO",
-      "score": "10",
-      "opponent_score": "7",
+      "score": "9",
+      "opponent_score": "8",
       "ties": "3",
-      "live_record": "10-7-3",
-      "live_win_pct": 0.575,
+      "live_record": "9-8-3",
+      "live_win_pct": 0.525,
       "categories": {
-        "H/AB": "5/16",
+        "H/AB": "5/18",
         "R": 2,
         "H": 5,
         "HR": 1,
         "RBI": 4,
         "SB": 0,
         "BB": 2,
-        "K": 12,
+        "K": 14,
         "TB": 12,
-        "AVG": ".312",
-        "OPS": ".681",
+        "AVG": ".278",
+        "OPS": ".611",
         "APP": 3,
-        "IP": "12.0",
+        "IP": "13.0",
         "ER": 6,
-        "ERA": "4.50",
-        "K/9": "9.00",
-        "H/9": "6.00",
-        "BB/9": "2.25",
+        "ERA": "4.15",
+        "K/9": "9.69",
+        "H/9": "5.54",
+        "BB/9": "2.08",
         "QS": 1
       },
-      "live_rank": 3
+      "live_rank": 5
     },
     {
       "rank": 2,
@@ -178,11 +178,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "B2J",
-      "score": "7",
-      "opponent_score": "10",
+      "score": "8",
+      "opponent_score": "9",
       "ties": "3",
-      "live_record": "7-10-3",
-      "live_win_pct": 0.425,
+      "live_record": "8-9-3",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "3/15",
         "R": 5,
@@ -204,7 +204,7 @@
         "BB/9": "20.25",
         "QS": 0
       },
-      "live_rank": 9
+      "live_rank": 7
     },
     {
       "rank": 3,
@@ -213,13 +213,13 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "DMN",
-      "score": "2",
-      "opponent_score": "6",
-      "ties": "12",
-      "live_record": "2-6-12",
-      "live_win_pct": 0.4,
+      "score": "1",
+      "opponent_score": "11",
+      "ties": "8",
+      "live_record": "1-11-8",
+      "live_win_pct": 0.25,
       "categories": {
-        "H/AB": "2/10",
+        "H/AB": "2/11",
         "R": 3,
         "H": 2,
         "HR": 0,
@@ -228,8 +228,8 @@
         "BB": 0,
         "K": 0,
         "TB": 0,
-        "AVG": ".200",
-        "OPS": ".400",
+        "AVG": ".182",
+        "OPS": ".364",
         "APP": 1,
         "IP": "0.0",
         "ER": 0,
@@ -239,7 +239,7 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 11
+      "live_rank": 12
     },
     {
       "rank": 4,
@@ -248,23 +248,23 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "LFB",
-      "score": "10",
+      "score": "11",
       "opponent_score": "7",
-      "ties": "3",
-      "live_record": "10-7-3",
-      "live_win_pct": 0.575,
+      "ties": "2",
+      "live_record": "11-7-2",
+      "live_win_pct": 0.6,
       "categories": {
-        "H/AB": "4/15",
-        "R": 4,
-        "H": 4,
+        "H/AB": "5/19",
+        "R": 5,
+        "H": 5,
         "HR": 0,
-        "RBI": 3,
+        "RBI": 5,
         "SB": 0,
         "BB": 3,
         "K": 0,
         "TB": 0,
-        "AVG": ".267",
-        "OPS": ".856",
+        "AVG": ".263",
+        "OPS": ".943",
         "APP": 1,
         "IP": "0.0",
         "ER": 0,
@@ -274,7 +274,7 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 4
+      "live_rank": 3
     },
     {
       "rank": 5,
@@ -283,11 +283,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "WAR",
-      "score": "6",
-      "opponent_score": "7",
+      "score": "7",
+      "opponent_score": "6",
       "ties": "7",
-      "live_record": "6-7-7",
-      "live_win_pct": 0.475,
+      "live_record": "7-6-7",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "2/5",
         "R": 1,
@@ -295,12 +295,12 @@
         "HR": 0,
         "RBI": 1,
         "SB": 0,
-        "BB": 1,
+        "BB": 2,
         "K": 7,
         "TB": 11,
         "AVG": ".400",
-        "OPS": "1.100",
-        "APP": 2,
+        "OPS": "1.171",
+        "APP": 3,
         "IP": "5.0",
         "ER": 6,
         "ERA": "10.80",
@@ -309,7 +309,7 @@
         "BB/9": "1.80",
         "QS": 0
       },
-      "live_rank": 7
+      "live_rank": 6
     },
     {
       "rank": 6,
@@ -318,24 +318,24 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "RV",
-      "score": "9",
+      "score": "11",
       "opponent_score": "7",
-      "ties": "4",
-      "live_record": "9-7-4",
-      "live_win_pct": 0.55,
+      "ties": "2",
+      "live_record": "11-7-2",
+      "live_win_pct": 0.6,
       "categories": {
-        "H/AB": "2/13",
+        "H/AB": "4/15",
         "R": 0,
-        "H": 2,
+        "H": 4,
         "HR": 1,
         "RBI": 2,
         "SB": 0,
         "BB": 2,
         "K": 11,
         "TB": 5,
-        "AVG": ".154",
-        "OPS": ".421",
-        "APP": 2,
+        "AVG": ".267",
+        "OPS": ".620",
+        "APP": 3,
         "IP": "5.0",
         "ER": 1,
         "ERA": "1.80",
@@ -344,7 +344,7 @@
         "BB/9": "5.40",
         "QS": 0
       },
-      "live_rank": 5
+      "live_rank": 4
     },
     {
       "rank": 7,
@@ -354,10 +354,10 @@
       "win_pct": 0.0,
       "opponent": "CFL",
       "score": "7",
-      "opponent_score": "10",
-      "ties": "3",
-      "live_record": "7-10-3",
-      "live_win_pct": 0.425,
+      "opponent_score": "11",
+      "ties": "2",
+      "live_record": "7-11-2",
+      "live_win_pct": 0.4,
       "categories": {
         "H/AB": "2/13",
         "R": 2,
@@ -379,7 +379,7 @@
         "BB/9": "7.36",
         "QS": 0
       },
-      "live_rank": 10
+      "live_rank": 9
     },
     {
       "rank": 8,
@@ -388,11 +388,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "WIZ",
-      "score": "6",
-      "opponent_score": "2",
-      "ties": "12",
-      "live_record": "6-2-12",
-      "live_win_pct": 0.6,
+      "score": "11",
+      "opponent_score": "1",
+      "ties": "8",
+      "live_record": "11-1-8",
+      "live_win_pct": 0.75,
       "categories": {
         "H/AB": "3/13",
         "R": 1,
@@ -401,20 +401,20 @@
         "RBI": 2,
         "SB": 0,
         "BB": 1,
-        "K": 0,
+        "K": 1,
         "TB": 0,
         "AVG": ".231",
         "OPS": ".670",
-        "APP": 0,
-        "IP": "0.0",
+        "APP": 1,
+        "IP": "0.2",
         "ER": 0,
-        "ERA": null,
-        "K/9": null,
-        "H/9": null,
-        "BB/9": null,
+        "ERA": "0.00",
+        "K/9": "13.50",
+        "H/9": "0.00",
+        "BB/9": "0.00",
         "QS": 0
       },
-      "live_rank": 2
+      "live_rank": 1
     },
     {
       "rank": 9,
@@ -449,7 +449,7 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 12
+      "live_rank": 11
     },
     {
       "rank": 10,
@@ -459,10 +459,10 @@
       "win_pct": 0.0,
       "opponent": "JEP",
       "score": "7",
-      "opponent_score": "9",
-      "ties": "4",
-      "live_record": "7-9-4",
-      "live_win_pct": 0.45,
+      "opponent_score": "11",
+      "ties": "2",
+      "live_record": "7-11-2",
+      "live_win_pct": 0.4,
       "categories": {
         "H/AB": "2/4",
         "R": 2,
@@ -484,7 +484,7 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "live_rank": 8
+      "live_rank": 10
     },
     {
       "rank": 11,
@@ -507,19 +507,19 @@
         "SB": 0,
         "BB": 0,
         "K": 4,
-        "TB": 9,
+        "TB": 10,
         "AVG": ".333",
         "OPS": ".778",
         "APP": 2,
-        "IP": "3.0",
+        "IP": "3.2",
         "ER": 5,
-        "ERA": "15.00",
-        "K/9": "12.00",
-        "H/9": "18.00",
-        "BB/9": "9.00",
+        "ERA": "12.27",
+        "K/9": "9.82",
+        "H/9": "17.18",
+        "BB/9": "9.82",
         "QS": 0
       },
-      "live_rank": 1
+      "live_rank": 2
     },
     {
       "rank": 12,
@@ -528,11 +528,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "HAM",
-      "score": "7",
-      "opponent_score": "6",
+      "score": "6",
+      "opponent_score": "7",
       "ties": "7",
-      "live_record": "7-6-7",
-      "live_win_pct": 0.525,
+      "live_record": "6-7-7",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "2/7",
         "R": 1,
@@ -554,7 +554,7 @@
         "BB/9": "10.80",
         "QS": 0
       },
-      "live_rank": 6
+      "live_rank": 8
     }
   ],
   "matchups": [
@@ -562,9 +562,9 @@
       "team1": {
         "team": "WIZ",
         "name": "Whiz Kids",
-        "score": "2",
+        "score": "1",
         "categories": {
-          "H/AB": "2/10",
+          "H/AB": "2/11",
           "R": 3,
           "H": 2,
           "HR": 0,
@@ -573,8 +573,8 @@
           "BB": 0,
           "K": 0,
           "TB": 0,
-          "AVG": ".200",
-          "OPS": ".400",
+          "AVG": ".182",
+          "OPS": ".364",
           "APP": 1,
           "IP": "0.0",
           "ER": 0,
@@ -588,7 +588,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "6",
+        "score": "11",
         "categories": {
           "H/AB": "3/13",
           "R": 1,
@@ -597,17 +597,17 @@
           "RBI": 2,
           "SB": 0,
           "BB": 1,
-          "K": 0,
+          "K": 1,
           "TB": 0,
           "AVG": ".231",
           "OPS": ".670",
-          "APP": 0,
-          "IP": "0.0",
+          "APP": 1,
+          "IP": "0.2",
           "ER": 0,
-          "ERA": null,
-          "K/9": null,
-          "H/9": null,
-          "BB/9": null,
+          "ERA": "0.00",
+          "K/9": "13.50",
+          "H/9": "0.00",
+          "BB/9": "0.00",
           "QS": 0
         }
       }
@@ -616,7 +616,7 @@
       "team1": {
         "team": "DRO",
         "name": "Andromedans",
-        "score": "7",
+        "score": "8",
         "categories": {
           "H/AB": "3/15",
           "R": 5,
@@ -642,26 +642,26 @@
       "team2": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "10",
+        "score": "9",
         "categories": {
-          "H/AB": "5/16",
+          "H/AB": "5/18",
           "R": 2,
           "H": 5,
           "HR": 1,
           "RBI": 4,
           "SB": 0,
           "BB": 2,
-          "K": 12,
+          "K": 14,
           "TB": 12,
-          "AVG": ".312",
-          "OPS": ".681",
+          "AVG": ".278",
+          "OPS": ".611",
           "APP": 3,
-          "IP": "12.0",
+          "IP": "13.0",
           "ER": 6,
-          "ERA": "4.50",
-          "K/9": "9.00",
-          "H/9": "6.00",
-          "BB/9": "2.25",
+          "ERA": "4.15",
+          "K/9": "9.69",
+          "H/9": "5.54",
+          "BB/9": "2.08",
           "QS": 1
         }
       }
@@ -670,19 +670,19 @@
       "team1": {
         "team": "CFL",
         "name": "Country Fried Lamb",
-        "score": "10",
+        "score": "11",
         "categories": {
-          "H/AB": "4/15",
-          "R": 4,
-          "H": 4,
+          "H/AB": "5/19",
+          "R": 5,
+          "H": 5,
           "HR": 0,
-          "RBI": 3,
+          "RBI": 5,
           "SB": 0,
           "BB": 3,
           "K": 0,
           "TB": 0,
-          "AVG": ".267",
-          "OPS": ".856",
+          "AVG": ".263",
+          "OPS": ".943",
           "APP": 1,
           "IP": "0.0",
           "ER": 0,
@@ -724,7 +724,7 @@
       "team1": {
         "team": "HAM",
         "name": "Hammers",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "2/5",
           "R": 1,
@@ -732,12 +732,12 @@
           "HR": 0,
           "RBI": 1,
           "SB": 0,
-          "BB": 1,
+          "BB": 2,
           "K": 7,
           "TB": 11,
           "AVG": ".400",
-          "OPS": "1.100",
-          "APP": 2,
+          "OPS": "1.171",
+          "APP": 3,
           "IP": "5.0",
           "ER": 6,
           "ERA": "10.80",
@@ -750,7 +750,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "7",
+        "score": "6",
         "categories": {
           "H/AB": "2/7",
           "R": 1,
@@ -778,20 +778,20 @@
       "team1": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "9",
+        "score": "11",
         "categories": {
-          "H/AB": "2/13",
+          "H/AB": "4/15",
           "R": 0,
-          "H": 2,
+          "H": 4,
           "HR": 1,
           "RBI": 2,
           "SB": 0,
           "BB": 2,
           "K": 11,
           "TB": 5,
-          "AVG": ".154",
-          "OPS": ".421",
-          "APP": 2,
+          "AVG": ".267",
+          "OPS": ".620",
+          "APP": 3,
           "IP": "5.0",
           "ER": 1,
           "ERA": "1.80",
@@ -868,19 +868,20 @@
           "SB": 0,
           "BB": 0,
           "K": 4,
-          "TB": 9,
+          "TB": 10,
           "AVG": ".333",
           "OPS": ".778",
           "APP": 2,
-          "IP": "3.0",
+          "IP": "3.2",
           "ER": 5,
-          "ERA": "15.00",
-          "K/9": "12.00",
-          "H/9": "18.00",
-          "BB/9": "9.00",
+          "ERA": "12.27",
+          "K/9": "9.82",
+          "H/9": "17.18",
+          "BB/9": "9.82",
           "QS": 0
         }
       }
     }
-  ]
+  ],
+  "refreshed_at": "2026-03-26T20:04:10.973554+00:00"
 }
