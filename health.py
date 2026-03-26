@@ -2215,10 +2215,10 @@ _roster_sync_last_batch_date: str | None = None
 
 @tasks.loop(minutes=1)
 async def roster_sync_batch_tick():
-    """Post batched roster sync messages once daily at/after 9:00 AM ET.
+    """Post batched roster sync messages once daily in a short 9:00 AM ET window.
 
     This catch-up behavior ensures a brief restart around 9:00 won't cause
-    the day to be missed.
+    the day to be missed while avoiding reposts from later-day rebuilds.
 
     The last-posted date is persisted inside roster_sync_messages.json so
     that bot restarts (e.g. from auto-deploy after a git push) do not
@@ -2237,8 +2237,8 @@ async def roster_sync_batch_tick():
         except Exception:
             pass
 
-    after_batch_window = now.hour >= 9
-    if after_batch_window and _roster_sync_last_batch_date != date_key:
+    in_batch_window = now.hour == 9 and now.minute < 15
+    if in_batch_window and _roster_sync_last_batch_date != date_key:
         ok = await _post_roster_sync_batched_messages()
         if ok:
             _roster_sync_last_batch_date = date_key
@@ -2297,6 +2297,30 @@ async def _post_roster_sync_batched_messages() -> bool:
 
         date_key = datetime.now(tz=ET).date().isoformat()
         persisted_last_posted = messages.get("last_posted_date")
+        generated_at_raw = messages.get("generated_at")
+
+        # Safety guard: never post stale batched payloads from a prior date.
+        if generated_at_raw:
+            try:
+                generated_date = datetime.fromisoformat(generated_at_raw).date().isoformat()
+            except Exception:
+                generated_date = None
+            if generated_date and generated_date != date_key:
+                had_queued = bool(
+                    messages.get("batched")
+                    or messages.get("batched_prospect")
+                    or messages.get("batched_free_agency")
+                )
+                if had_queued:
+                    messages["batched"] = []
+                    messages["batched_prospect"] = []
+                    messages["batched_free_agency"] = []
+                    with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
+                        json.dump(messages, f, indent=2)
+                print(
+                    f"ℹ️ Skipping batched roster sync post: stale queue date {generated_date} (today {date_key})"
+                )
+                return True
 
         # Idempotency guard: if we've already posted today's batch, skip any
         # re-entry (manual trigger, restart catch-up overlap, etc.).
