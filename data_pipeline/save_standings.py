@@ -62,13 +62,20 @@ def fetch_and_save_standings():
     stat_cats = settings_data["fantasy_content"]["league"][1]["settings"][0]["stat_categories"]["stats"]
     stat_names = {}
     stat_list = []
+    seen_display = set()
     for s in stat_cats:
         stat = s["stat"]
         sid = str(stat["stat_id"])
-        stat_names[sid] = stat["display_name"]
+        display = stat["display_name"]
+        # Disambiguate duplicate names (batting HR vs pitching HR, etc.)
+        # Pitching stats have stat_id >= 24
+        if display in seen_display:
+            display = f"P_{display}"  # e.g. P_HR, P_K, P_TB
+        seen_display.add(stat["display_name"])
+        stat_names[sid] = display
         stat_list.append({
             "stat_id": sid,
-            "display_name": stat["display_name"],
+            "display_name": display,
             "name": stat["name"],
             "display_only": stat.get("is_only_display_stat", "0") == "1",
         })
