@@ -1,66 +1,66 @@
 {
-  "date": "2026-03-11",
+  "date": "2026-03-26",
   "standings": [
     {
       "rank": 1,
-      "manager": "WIZ",
-      "team": "WIZ",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 2,
-      "manager": "LFB",
-      "team": "LFB",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 3,
-      "manager": "SAD",
-      "team": "SAD",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 4,
-      "manager": "DRO",
-      "team": "DRO",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 5,
-      "manager": "TBB",
-      "team": "TBB",
-      "record": "0-0-0",
-      "win_pct": 0.0
-    },
-    {
-      "rank": 6,
       "manager": "B2J",
       "team": "B2J",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
-      "rank": 7,
-      "manager": "DMN",
-      "team": "DMN",
+      "rank": 2,
+      "manager": "DRO",
+      "team": "DRO",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
-      "rank": 8,
+      "rank": 3,
+      "manager": "WIZ",
+      "team": "WIZ",
+      "record": "0-0-0",
+      "win_pct": 0.0
+    },
+    {
+      "rank": 4,
       "manager": "CFL",
       "team": "CFL",
       "record": "0-0-0",
       "win_pct": 0.0
     },
     {
-      "rank": 9,
+      "rank": 5,
       "manager": "HAM",
       "team": "HAM",
+      "record": "0-0-0",
+      "win_pct": 0.0
+    },
+    {
+      "rank": 6,
+      "manager": "JEP",
+      "team": "JEP",
+      "record": "0-0-0",
+      "win_pct": 0.0
+    },
+    {
+      "rank": 7,
+      "manager": "LFB",
+      "team": "LFB",
+      "record": "0-0-0",
+      "win_pct": 0.0
+    },
+    {
+      "rank": 8,
+      "manager": "DMN",
+      "team": "DMN",
+      "record": "0-0-0",
+      "win_pct": 0.0
+    },
+    {
+      "rank": 9,
+      "manager": "SAD",
+      "team": "SAD",
       "record": "0-0-0",
       "win_pct": 0.0
     },
@@ -73,8 +73,8 @@
     },
     {
       "rank": 11,
-      "manager": "JEP",
-      "team": "JEP",
+      "manager": "TBB",
+      "team": "TBB",
       "record": "0-0-0",
       "win_pct": 0.0
     },
