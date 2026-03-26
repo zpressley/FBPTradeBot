@@ -2179,28 +2179,62 @@ async def api_admin_pad_retro_discord(
 
 # ---- Live Standings Refresh ----
 
-@tasks.loop(minutes=15)
+_standings_last_refresh: str | None = None
+
+
+@tasks.loop(minutes=5)
 async def standings_refresh_tick():
     """Refresh standings.json from Yahoo every 15 minutes during game hours.
 
     Active window: noon – 1:00 AM ET (covers all MLB game times).
-    Commits updated standings.json so the website picks up live scores.
+    Uses a disk-persisted timestamp to enforce the 15-min interval even
+    across bot restarts (Railway redeploys after every git push).
     """
+    global _standings_last_refresh
     now = datetime.now(tz=ET)
     hour = now.hour
 
     # Active window: noon (12) through 1 AM (hour 0)
-    # i.e. hour >= 12 OR hour < 1
     if not (hour >= 12 or hour < 1):
         return
+
+    # Hydrate from disk on first tick
+    if _standings_last_refresh is None:
+        try:
+            with open("data/standings.json", "r") as f:
+                stored = json.load(f)
+            _standings_last_refresh = stored.get("refreshed_at", "")
+        except Exception:
+            _standings_last_refresh = ""
+
+    # Enforce 15-minute minimum gap
+    if _standings_last_refresh:
+        try:
+            last = datetime.fromisoformat(_standings_last_refresh.replace("Z", "+00:00"))
+            elapsed = (now.astimezone(timezone.utc) - last.astimezone(timezone.utc)).total_seconds()
+            if elapsed < 900:  # 15 minutes
+                return
+        except Exception:
+            pass
 
     try:
         from data_pipeline.save_standings import fetch_and_save_standings
         fetch_and_save_standings()
+
+        # Stamp the file with refresh time so restarts respect the interval
+        with open("data/standings.json", "r") as f:
+            data = json.load(f)
+        data["refreshed_at"] = datetime.now(tz=timezone.utc).isoformat()
+        with open("data/standings.json", "w") as f:
+            json.dump(data, f, indent=2)
+
+        _standings_last_refresh = data["refreshed_at"]
+
         _commit_and_push(
             ["data/standings.json"],
             f"Live standings refresh {now.strftime('%H:%M ET')}",
         )
+        print(f"✅ Standings refreshed at {now.strftime('%I:%M %p ET')}")
     except Exception as exc:
         print(f"⚠️ Standings refresh failed: {exc}")
 
