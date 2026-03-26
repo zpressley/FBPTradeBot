@@ -2255,11 +2255,34 @@ async def _post_roster_sync_batched_messages() -> bool:
     as a single combined message, then clears the batched queue.
     Only clears the queue after a confirmed successful send.
     """
+    global _roster_sync_last_batch_date
     try:
         if not os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
             return True
         with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
             messages = json.load(f)
+
+        date_key = datetime.now(tz=ET).date().isoformat()
+        persisted_last_posted = messages.get("last_posted_date")
+
+        # Idempotency guard: if we've already posted today's batch, skip any
+        # re-entry (manual trigger, restart catch-up overlap, etc.).
+        if _roster_sync_last_batch_date == date_key or persisted_last_posted == date_key:
+            had_queued = bool(
+                messages.get("batched")
+                or messages.get("batched_prospect")
+                or messages.get("batched_free_agency")
+            )
+            if had_queued:
+                messages["batched"] = []
+                messages["batched_prospect"] = []
+                messages["batched_free_agency"] = []
+                messages["last_posted_date"] = date_key
+                with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
+                    json.dump(messages, f, indent=2)
+            _roster_sync_last_batch_date = date_key
+            print("ℹ️ Skipping batched roster sync post: already sent today")
+            return True
 
         # Split batched messages into prospect moves vs free agency.
         # New keys are preferred; fall back to legacy "batched" key.
@@ -2302,9 +2325,10 @@ async def _post_roster_sync_batched_messages() -> bool:
         messages["batched"] = []
         messages["batched_prospect"] = []
         messages["batched_free_agency"] = []
-        messages["last_posted_date"] = datetime.now(tz=ET).date().isoformat()
+        messages["last_posted_date"] = date_key
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
+        _roster_sync_last_batch_date = date_key
 
         print(f"✅ Posted {posted} batched roster sync messages (prospect + free agency)")
         return True

@@ -318,8 +318,15 @@ class Auction(commands.Cog):
 
     async def _get_auction_channel(self) -> discord.TextChannel | None:
         channel = self.bot.get_channel(AUCTION_CHANNEL_ID)
+        if channel is None:
+            try:
+                channel = await self.bot.fetch_channel(AUCTION_CHANNEL_ID)
+            except Exception as exc:
+                print(f"⚠️ Failed to resolve auction channel {AUCTION_CHANNEL_ID}: {exc}")
+                return None
         if isinstance(channel, discord.TextChannel):
             return channel
+        print(f"⚠️ Auction channel {AUCTION_CHANNEL_ID} is not a text channel")
         return None
 
     async def _send_ob_open_alert(self) -> None:

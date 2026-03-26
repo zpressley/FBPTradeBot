@@ -677,12 +677,16 @@ def run_sync(
 
 def _save_messages(result: RosterSyncResult) -> None:
     """Write queued Discord messages to roster_sync_messages.json."""
+    existing = _load_json(MESSAGES_FILE) or {}
+    last_posted_date = existing.get("last_posted_date") if isinstance(existing, dict) else None
     messages: Dict[str, Any] = {
         "generated_at": datetime.now(tz=ET).isoformat(),
         "immediate": [],            # post right away (prospect alerts)
         "batched_prospect": [],     # post at 9 AM → Prospect Moves channel
         "batched_free_agency": [],  # post at 9 AM → Free Agency channel
     }
+    if last_posted_date:
+        messages["last_posted_date"] = last_posted_date
 
     # MLB adds → Free Agency channel
     for add in result.mlb_adds:
