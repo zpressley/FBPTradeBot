@@ -61,7 +61,9 @@ jobs:
         git config --local user.name "GitHub Action"
 
         # Stage data/ and token.json (token_manager auto-refreshes expired tokens)
+        # Exclude transient message queues — they're consumed by the bot, not version-controlled.
         git add data/ token.json
+        git reset HEAD -- data/roster_sync_messages.json data/roster_sync_state.json 2>/dev/null || true
 
         # If there are no staged changes under data/, exit successfully
         # without committing.
@@ -97,7 +99,7 @@ jobs:
       run: |
         cp config/managers.json fbp-hub/data/managers.json
         for f in draft_order_2026.json trades.json standings.json combined_players.json \
-                 wizbucks.json auction_current.json roster_sync_messages.json; do
+                 wizbucks.json auction_current.json; do
           if [ -f "data/$f" ]; then
             cp "data/$f" "fbp-hub/data/$f"
           fi
