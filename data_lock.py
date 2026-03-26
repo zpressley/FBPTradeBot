@@ -19,4 +19,4 @@ Usage::
 
 import threading
 
-DATA_LOCK = threading.Lock()
+DATA_LOCK = threading.RLock()

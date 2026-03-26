@@ -17,6 +17,7 @@ from __future__ import annotations
 import dataclasses
 import enum
 import json
+import uuid
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
@@ -49,6 +50,7 @@ class BidType(str, enum.Enum):
 
 @dataclass
 class Bid:
+    bid_id: str
     team: str
     prospect_id: str
     amount: int
@@ -257,6 +259,7 @@ class AuctionManager:
         # Construct bid payload
         utc_now = datetime.now(tz=timezone.utc)
         bid = Bid(
+            bid_id=self._generate_bid_id(),
             team=normalized_team,
             prospect_id=str(prospect["upid"]),
             amount=int(amount),
@@ -264,14 +267,141 @@ class AuctionManager:
             timestamp=utc_now.isoformat(),
             date=now.date().isoformat(),
         )
-
-        bids.append(dataclasses.asdict(bid))
+        bid_payload = dataclasses.asdict(bid)
+        bid_payload["bid_type"] = bid_type_enum.value
+        bids.append(bid_payload)
         state["last_updated"] = utc_now.isoformat()
         state["phase"] = self._phase_for_time(now).value
 
         self._save_auction_state(state)
+        return {"success": True, "bid": bid_payload, "phase": state["phase"]}
 
-        return {"success": True, "bid": dataclasses.asdict(bid), "phase": state["phase"]}
+    def admin_list_bids(self, now: Optional[datetime] = None) -> Dict[str, Any]:
+        """Return auction bids for admin tooling, sorted by newest first."""
+        now = now or datetime.now(tz=ET)
+        state = self._load_or_initialize_auction(now)
+        bids: List[Dict[str, Any]] = state.setdefault("bids", [])
+        ordered = sorted(bids, key=lambda b: b.get("timestamp", ""), reverse=True)
+        return {
+            "success": True,
+            "week_start": state.get("week_start"),
+            "phase": state.get("phase"),
+            "bids": ordered,
+        }
+
+    def admin_add_bid(
+        self,
+        *,
+        team: str,
+        prospect_id: str,
+        amount: int,
+        bid_type: str,
+        admin: str = "",
+        now: Optional[datetime] = None,
+    ) -> Dict[str, Any]:
+        """Add a bid directly for admin correction workflows.
+
+        This bypasses phase-specific guardrails and is intended for manual
+        correction actions from admin tooling.
+        """
+        now = now or datetime.now(tz=ET)
+        state = self._load_or_initialize_auction(now)
+
+        try:
+            bid_type_enum = BidType(bid_type.upper())
+        except ValueError:
+            return {"success": False, "error": "Invalid bid type. Use OB or CB."}
+
+        if amount <= 0:
+            return {"success": False, "error": "Bid amount must be positive."}
+
+        players = self._load_json(self.players_file) or []
+        normalized_team = team.upper().strip()
+        if not self._is_team_known(normalized_team, players):
+            return {"success": False, "error": f"Unknown team: {normalized_team}"}
+
+        prospect = self._find_prospect(players, prospect_id)
+        if not prospect:
+            return {"success": False, "error": "Prospect not found or not eligible."}
+
+        if prospect.get("manager"):
+            return {"success": False, "error": "Prospect already owned and not eligible for auction."}
+
+        utc_now = datetime.now(tz=timezone.utc)
+        bid = Bid(
+            bid_id=self._generate_bid_id(),
+            team=normalized_team,
+            prospect_id=str(prospect["upid"]),
+            amount=int(amount),
+            bid_type=bid_type_enum,
+            timestamp=utc_now.isoformat(),
+            date=now.date().isoformat(),
+        )
+        bid_payload = dataclasses.asdict(bid)
+        bid_payload["bid_type"] = bid_type_enum.value
+        bid_payload["source"] = "admin"
+        if admin:
+            bid_payload["admin"] = admin
+
+        bids: List[Dict[str, Any]] = state.setdefault("bids", [])
+        bids.append(bid_payload)
+        state["last_updated"] = utc_now.isoformat()
+        self._save_auction_state(state)
+        return {"success": True, "bid": bid_payload}
+
+    def admin_remove_bid(
+        self,
+        *,
+        bid_id: str,
+        admin: str = "",
+        now: Optional[datetime] = None,
+    ) -> Dict[str, Any]:
+        """Remove a bid by bid_id for admin correction workflows."""
+        now = now or datetime.now(tz=ET)
+        state = self._load_or_initialize_auction(now)
+        bids: List[Dict[str, Any]] = state.setdefault("bids", [])
+        idx = self._find_bid_index_by_id(bids, bid_id)
+        if idx < 0:
+            return {"success": False, "error": "Bid not found."}
+
+        removed_bid = bids.pop(idx)
+        utc_now = datetime.now(tz=timezone.utc)
+        state["last_updated"] = utc_now.isoformat()
+        self._save_auction_state(state)
+
+        return {"success": True, "removed_bid": removed_bid, "admin": admin}
+
+    def admin_update_bid_amount(
+        self,
+        *,
+        bid_id: str,
+        amount: int,
+        admin: str = "",
+        now: Optional[datetime] = None,
+    ) -> Dict[str, Any]:
+        """Update bid amount by bid_id for admin correction workflows."""
+        now = now or datetime.now(tz=ET)
+        if amount <= 0:
+            return {"success": False, "error": "Bid amount must be positive."}
+
+        state = self._load_or_initialize_auction(now)
+        bids: List[Dict[str, Any]] = state.setdefault("bids", [])
+        idx = self._find_bid_index_by_id(bids, bid_id)
+        if idx < 0:
+            return {"success": False, "error": "Bid not found."}
+
+        prev_amount = int(bids[idx].get("amount", 0))
+        bids[idx]["amount"] = int(amount)
+        bids[idx]["source"] = bids[idx].get("source") or "admin"
+        bids[idx]["date"] = now.date().isoformat()
+        bids[idx]["last_admin_update_at"] = datetime.now(tz=timezone.utc).isoformat()
+        if admin:
+            bids[idx]["last_admin_update_by"] = admin
+
+        state["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
+        self._save_auction_state(state)
+
+        return {"success": True, "bid": bids[idx], "previous_amount": prev_amount}
 
     def record_match(
         self,
@@ -505,6 +635,10 @@ class AuctionManager:
             stored_week = data.get("week_start", "")
             # Return existing state if it's still the same week
             if stored_week == current_monday.isoformat():
+                bids = data.setdefault("bids", [])
+                if self._ensure_bid_ids(bids):
+                    data["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
+                    self._save_auction_state(data)
                 return data
             # Stale week → fall through to re-initialize for the new week
 
@@ -923,3 +1057,35 @@ class AuctionManager:
                 committed += amt
 
         return committed
+
+    @staticmethod
+    def _generate_bid_id() -> str:
+        return f"bid-{uuid.uuid4().hex[:12]}"
+
+    def _ensure_bid_ids(self, bids: List[Dict[str, Any]]) -> bool:
+        changed = False
+        seen = set()
+
+        for bid in bids:
+            raw_bid_id = str(bid.get("bid_id", "")).strip()
+            if not raw_bid_id or raw_bid_id in seen:
+                raw_bid_id = self._generate_bid_id()
+                while raw_bid_id in seen:
+                    raw_bid_id = self._generate_bid_id()
+                bid["bid_id"] = raw_bid_id
+                changed = True
+            seen.add(raw_bid_id)
+
+            bid_type = str(bid.get("bid_type", "")).upper()
+            if bid_type in {"OB", "CB"} and bid.get("bid_type") != bid_type:
+                bid["bid_type"] = bid_type
+                changed = True
+
+        return changed
+
+    def _find_bid_index_by_id(self, bids: List[Dict[str, Any]], bid_id: str) -> int:
+        normalized = str(bid_id).strip()
+        for idx, bid in enumerate(bids):
+            if str(bid.get("bid_id", "")).strip() == normalized:
+                return idx
+        return -1

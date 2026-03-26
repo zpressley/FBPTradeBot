@@ -236,6 +236,43 @@ def main():
     # RV has NO prior CB on P002 → spoiler bid rejected
     r = am.place_bid(team="RV", prospect_id="P003", amount=15, bid_type="CB", now=FRI_NOON)
     check_err_contains("RV spoiler CB on P003 (no prior CB)", r, "no last-minute spoiler")
+    # ── 3c. Admin bid management ──────────────────────────
+    print("\n── Admin Bid Management ──")
+
+    # Add a corrective admin CB on P003, then update and remove it.
+    r = am.admin_add_bid(
+        admin="TEST_ADMIN",
+        team="HAM",
+        prospect_id="P003",
+        amount=20,
+        bid_type="CB",
+        now=THU_NOON,
+    )
+    check("Admin add bid on P003", r["success"], True)
+    admin_bid_id = (r.get("bid") or {}).get("bid_id")
+    check("Admin add returned bid_id", bool(admin_bid_id), True)
+
+    r = am.admin_update_bid_amount(
+        admin="TEST_ADMIN",
+        bid_id=admin_bid_id,
+        amount=25,
+        now=THU_NOON,
+    )
+    check("Admin update bid amount", r["success"], True)
+    check("Admin update previous amount", r.get("previous_amount"), 20)
+    check("Admin update new amount", (r.get("bid") or {}).get("amount"), 25)
+
+    r = am.admin_remove_bid(
+        admin="TEST_ADMIN",
+        bid_id=admin_bid_id,
+        now=THU_NOON,
+    )
+    check("Admin remove bid", r["success"], True)
+    check("Admin remove returns same bid_id", (r.get("removed_bid") or {}).get("bid_id"), admin_bid_id)
+
+    r = am.admin_list_bids(now=THU_NOON)
+    remaining_ids = {(b.get("bid_id") or "") for b in r.get("bids", [])}
+    check("Removed bid absent from list", admin_bid_id in remaining_ids, False)
 
     # ── 4. Match / Forfeit (Saturday) ─────────────────────
     print("\n── Match / Forfeit (Saturday noon) ──")
@@ -292,10 +329,10 @@ def main():
     # Players assigned to winning teams
     players = json.loads((data_dir / "combined_players.json").read_text())
     by_upid = {p["upid"]: p for p in players}
-    check("P001 assigned to HAM", by_upid["P001"].get("manager"), "HAM")
-    check("P001 contract = PC",   by_upid["P001"].get("contract_type"), "PC")
-    check("P002 assigned to RV",  by_upid["P002"].get("manager"), "RV")
-    check("P003 assigned to CFL", by_upid["P003"].get("manager"), "CFL")
+    check("P001 assigned to HAM", by_upid["P001"].get("manager"), "Hammers")
+    check("P001 contract = Purchased Contract", by_upid["P001"].get("contract_type"), "Purchased Contract")
+    check("P002 assigned to RV",  by_upid["P002"].get("manager"), "Rick Vaughn")
+    check("P003 assigned to CFL", by_upid["P003"].get("manager"), "Country Fried Lamb")
 
     # Ledger entries recorded
     ledger = json.loads((data_dir / "wizbucks_transactions.json").read_text())

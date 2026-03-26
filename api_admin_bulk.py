@@ -215,10 +215,6 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
                 # Use per-player tier if provided, else default
                 contract_tier = upid_tier_map.get(p_upid, default_tier)
 
-                old_type = p.get("player_type", "")
-                old_contract = p.get("years_simple", "")
-                old_contract_type = p.get("contract_type", "")
-
                 p["player_type"] = "MLB"
                 p["years_simple"] = contract_tier
                 p["contract_type"] = "Keeper Contract"
@@ -233,9 +229,10 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
 
         save_json(COMBINED_FILE, players)
 
+        commit_msg = f"Admin bulk graduate: {len(updated)} players"
+        _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+
     # Commit + sync
-    commit_msg = f"Admin bulk graduate: {len(updated)} players"
-    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -282,9 +279,9 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
                     updated.append(p.get("name", "Unknown"))
 
         save_json(COMBINED_FILE, players)
+        commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
+        _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
-    commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
-    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -318,8 +315,6 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
         for p in players:
             if str(p.get("upid")) in [str(u) for u in upids]:
                 old_owner = p.get("manager", "")
-                old_contract = p.get("years_simple", "")
-                old_type = p.get("contract_type", "")
 
                 p["manager"] = ""
                 p["FBP_Team"] = "" if "FBP_Team" in p else p.get("FBP_Team")
@@ -335,9 +330,9 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
                 released.append({"name": p.get("name", "Unknown"), "former_owner": old_owner})
 
         save_json(COMBINED_FILE, players)
+        commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
+        _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
-    commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
-    _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -459,9 +454,11 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
             )
             print(f"  💾 Saved to player_log.json")
 
-        # --- Queue git commit (best-effort; data is already persisted to disk) ---
-        commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
-        _enqueue_commit([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+            # Queue git commit while DATA_LOCK is still held so snapshot
+            # capture cannot miss this write during concurrent resets.
+            commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
+            _enqueue_commit([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+
 
         # --- Sync to website ---
         try:

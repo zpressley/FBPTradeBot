@@ -763,6 +763,24 @@ class MatchRequest(BaseModel):
     decision: str  # "match" or "forfeit"
     source: str = "web"  # or "discord"
 
+class AdminAuctionAddBidRequest(BaseModel):
+    admin: str
+    team: str
+    prospect_id: str
+    amount: int
+    bid_type: str  # "OB" or "CB"
+
+
+class AdminAuctionRemoveBidRequest(BaseModel):
+    admin: str
+    bid_id: str
+
+
+class AdminAuctionUpdateBidAmountRequest(BaseModel):
+    admin: str
+    bid_id: str
+    amount: int
+
 
 class ProspectValidateRequest(BaseModel):
     team: str
@@ -1122,9 +1140,10 @@ async def get_current_auction(authorized: bool = Depends(verify_api_key)):
     """Return the current auction state for API consumers."""
     manager = AuctionManager()
     now = datetime.now(tz=ET)
-    state = manager._load_or_initialize_auction(now)
-    # Override with the actual computed phase (respects schedule gating)
-    state["phase"] = manager.get_current_phase(now).value
+    with DATA_LOCK:
+        state = manager._load_or_initialize_auction(now)
+        # Override with the actual computed phase (respects schedule gating)
+        state["phase"] = manager.get_current_phase(now).value
     return state
 
 
@@ -1135,32 +1154,177 @@ async def api_place_bid(
 ):
     """Place an OB or CB bid from the website via Cloudflare Worker."""
     manager = AuctionManager()
-    result = manager.place_bid(
-        team=payload.team,
-        prospect_id=payload.prospect_id,
-        amount=payload.amount,
-        bid_type=payload.bid_type,
-    )
-
-    if result.get("success"):
-        _commit_and_push(["data/auction_current.json"],
-                         f"Auction bid: {payload.bid_type} ${payload.amount} on {payload.prospect_id} by {payload.team}")
-
-        bid = result.get("bid", {})
-        is_ob = bid.get("bid_type", payload.bid_type) == "OB"
-        prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
-        header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
-        content = (
-            f"{header}\n\n"
-            f"🏷️ Team: {bid.get('team', payload.team)}\n"
-            f"💰 Bid: ${bid.get('amount', payload.amount)}\n"
-            f"🧢 Player: {prospect_name}\n\n"
-            f"Source: Website Portal"
+    with DATA_LOCK:
+        result = manager.place_bid(
+            team=payload.team,
+            prospect_id=payload.prospect_id,
+            amount=payload.amount,
+            bid_type=payload.bid_type,
         )
-        bot.loop.create_task(_send_auction_log_message(content))
+
+        if result.get("success"):
+            _commit_and_push(
+                ["data/auction_current.json"],
+                f"Auction bid: {payload.bid_type} ${payload.amount} on {payload.prospect_id} by {payload.team}",
+            )
 
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
+    bid = result.get("bid", {})
+    is_ob = bid.get("bid_type", payload.bid_type) == "OB"
+    prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
+    header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
+    content = (
+        f"{header}\n\n"
+        f"🏷️ Team: {bid.get('team', payload.team)}\n"
+        f"💰 Bid: ${bid.get('amount', payload.amount)}\n"
+        f"🧢 Player: {prospect_name}\n\n"
+        f"Source: Website Portal"
+    )
+    bot.loop.create_task(_send_auction_log_message(content))
+
+    return result
+
+
+@app.get("/api/admin/auction/bids")
+async def api_admin_auction_bids(authorized: bool = Depends(verify_api_key)):
+    """Return the current week's auction bids for admin tooling."""
+    manager = AuctionManager()
+    now = datetime.now(tz=ET)
+    with DATA_LOCK:
+        state = manager._load_or_initialize_auction(now)
+        phase = manager.get_current_phase(now).value
+        listing = manager.admin_list_bids(now=now)
+
+    bids = listing.get("bids", [])
+    enriched_bids = []
+    for bid in bids:
+        b = dict(bid)
+        b["prospect_name"] = _resolve_prospect_name(b.get("prospect_id", ""))
+        enriched_bids.append(b)
+
+    return {
+        "success": True,
+        "week_start": state.get("week_start"),
+        "phase": phase,
+        "bids": enriched_bids,
+    }
+
+
+@app.post("/api/admin/auction/bids/add")
+async def api_admin_auction_add_bid(
+    payload: AdminAuctionAddBidRequest,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Admin: add an auction bid directly."""
+    manager = AuctionManager()
+    with DATA_LOCK:
+        result = manager.admin_add_bid(
+            admin=payload.admin,
+            team=payload.team,
+            prospect_id=payload.prospect_id,
+            amount=payload.amount,
+            bid_type=payload.bid_type,
+        )
+        if result.get("success"):
+            bid = result.get("bid", {})
+            _commit_and_push(
+                ["data/auction_current.json"],
+                f"Auction admin add bid: {bid.get('bid_type', payload.bid_type)} ${bid.get('amount', payload.amount)} on {bid.get('prospect_id', payload.prospect_id)} by {bid.get('team', payload.team)}",
+            )
+
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
+
+    bid = result.get("bid", {})
+    prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
+    bot.loop.create_task(
+        _send_admin_log_message(
+            f"🛠️ **Auction Admin Add Bid**\n"
+            f"Admin: `{payload.admin}`\n"
+            f"Team: `{bid.get('team', payload.team)}`\n"
+            f"Bid: `${bid.get('amount', payload.amount)}` `{bid.get('bid_type', payload.bid_type)}`\n"
+            f"Prospect: {prospect_name}"
+        )
+    )
+
+    return result
+
+
+@app.post("/api/admin/auction/bids/remove")
+async def api_admin_auction_remove_bid(
+    payload: AdminAuctionRemoveBidRequest,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Admin: remove an auction bid by bid_id."""
+    manager = AuctionManager()
+    with DATA_LOCK:
+        result = manager.admin_remove_bid(
+            admin=payload.admin,
+            bid_id=payload.bid_id,
+        )
+        if result.get("success"):
+            removed_bid = result.get("removed_bid", {})
+            _commit_and_push(
+                ["data/auction_current.json"],
+                f"Auction admin remove bid: {removed_bid.get('bid_id', payload.bid_id)}",
+            )
+
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
+
+    removed_bid = result.get("removed_bid", {})
+    prospect_name = _resolve_prospect_name(removed_bid.get("prospect_id", ""))
+    bot.loop.create_task(
+        _send_admin_log_message(
+            f"🧹 **Auction Admin Remove Bid**\n"
+            f"Admin: `{payload.admin}`\n"
+            f"Bid ID: `{removed_bid.get('bid_id', payload.bid_id)}`\n"
+            f"Team: `{removed_bid.get('team', '')}`\n"
+            f"Prospect: {prospect_name}\n"
+            f"Amount: `${removed_bid.get('amount', '')}` `{removed_bid.get('bid_type', '')}`"
+        )
+    )
+
+    return result
+
+
+@app.post("/api/admin/auction/bids/update-amount")
+async def api_admin_auction_update_amount(
+    payload: AdminAuctionUpdateBidAmountRequest,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Admin: update a bid amount by bid_id."""
+    manager = AuctionManager()
+    with DATA_LOCK:
+        result = manager.admin_update_bid_amount(
+            admin=payload.admin,
+            bid_id=payload.bid_id,
+            amount=payload.amount,
+        )
+        if result.get("success"):
+            bid = result.get("bid", {})
+            previous = result.get("previous_amount")
+            _commit_and_push(
+                ["data/auction_current.json"],
+                f"Auction admin update bid amount: {bid.get('bid_id', payload.bid_id)} ${previous} -> ${bid.get('amount', payload.amount)}",
+            )
+
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
+
+    bid = result.get("bid", {})
+    prospect_name = _resolve_prospect_name(bid.get("prospect_id", ""))
+    bot.loop.create_task(
+        _send_admin_log_message(
+            f"✏️ **Auction Admin Update Bid Amount**\n"
+            f"Admin: `{payload.admin}`\n"
+            f"Bid ID: `{bid.get('bid_id', payload.bid_id)}`\n"
+            f"Team: `{bid.get('team', '')}`\n"
+            f"Prospect: {prospect_name}\n"
+            f"Amount: `${result.get('previous_amount', '')}` → `${bid.get('amount', payload.amount)}`"
+        )
+    )
 
     return result
 
@@ -1172,32 +1336,33 @@ async def api_record_match(
 ):
     """Record an explicit Match / Forfeit decision from OB manager."""
     manager = AuctionManager()
-    result = manager.record_match(
-        team=payload.team,
-        prospect_id=payload.prospect_id,
-        decision=payload.decision,
-        source=payload.source,
-    )
-    
-    if result.get("success"):
-        _commit_and_push(["data/auction_current.json"],
-                         f"Auction match: {payload.decision} on {payload.prospect_id} by {payload.team}")
-    
-        match = result.get("match", {})
-        decision = match.get("decision", payload.decision)
-        prospect_name = _resolve_prospect_name(match.get("prospect_id", payload.prospect_id))
-        emoji = "✅" if decision == "match" else "🚫"
-        content = (
-            f"{emoji} **OB Decision**\n"
-            f"Team: `{match.get('team', payload.team)}`\n"
-            f"Prospect: {prospect_name}\n"
-            f"Decision: `{decision}` (via Website Portal)"
+    with DATA_LOCK:
+        result = manager.record_match(
+            team=payload.team,
+            prospect_id=payload.prospect_id,
+            decision=payload.decision,
+            source=payload.source,
         )
-        bot.loop.create_task(_send_auction_log_message(content))
-    
+
+        if result.get("success"):
+            _commit_and_push(
+                ["data/auction_current.json"],
+                f"Auction match: {payload.decision} on {payload.prospect_id} by {payload.team}",
+            )
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error", "Unknown error"))
-    
+
+    match = result.get("match", {})
+    decision = match.get("decision", payload.decision)
+    prospect_name = _resolve_prospect_name(match.get("prospect_id", payload.prospect_id))
+    emoji = "✅" if decision == "match" else "🚫"
+    content = (
+        f"{emoji} **OB Decision**\n"
+        f"Team: `{match.get('team', payload.team)}`\n"
+        f"Prospect: {prospect_name}\n"
+        f"Decision: `{decision}` (via Website Portal)"
+    )
+    bot.loop.create_task(_send_auction_log_message(content))
     return result
 
 
@@ -1432,27 +1597,28 @@ async def api_admin_update_player(
     files back to Git.
     """
     try:
-        result = apply_admin_player_update(payload, test_mode=False)
+        with DATA_LOCK:
+            result = apply_admin_player_update(payload, test_mode=False)
+
+            core_files = [
+                "data/combined_players.json",
+                "data/wizbucks.json",
+                "data/player_log.json",
+            ]
+            commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
+
+            # Snapshot + queue commit while still holding DATA_LOCK so
+            # no concurrent reset/write can erase this update before
+            # snapshot capture.
+            try:
+                _commit_and_push(core_files, commit_msg)
+            except Exception as exc:
+                print("⚠️ Admin update git commit/push failed:", exc)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:  # pragma: no cover - defensive
         print("❌ Admin update error:", e)
         raise HTTPException(status_code=500, detail="Admin update error")
-
-    core_files = [
-        "data/combined_players.json",
-        "data/wizbucks.json",
-        "data/player_log.json",
-    ]
-    commit_msg = f"Admin update: {result['player'].get('name', payload.upid)}"
-
-    # Snapshot + queue commit IMMEDIATELY after data save so that a
-    # concurrent push-retry (git reset --hard) cannot erase our changes
-    # before the snapshot is captured.
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin update git commit/push failed:", exc)
 
     # Discord notification (non-blocking; actual push happens in background worker)
     try:
@@ -1510,23 +1676,24 @@ async def api_admin_delete_player(
 ):
     """Delete a player from combined_players and log the deletion."""
     try:
-        result = apply_admin_delete_player(payload, test_mode=False)
+        with DATA_LOCK:
+            result = apply_admin_delete_player(payload, test_mode=False)
+
+            core_files = [
+                "data/combined_players.json",
+                "data/player_log.json",
+            ]
+            commit_msg = f"Admin delete: {result['player'].get('name', payload.upid)}"
+
+            try:
+                _commit_and_push(core_files, commit_msg)
+            except Exception as exc:
+                print("⚠️ Admin delete git commit/push failed:", exc)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:  # pragma: no cover - defensive
         print("❌ Admin delete player error:", e)
         raise HTTPException(status_code=500, detail="Admin delete player error")
-
-    core_files = [
-        "data/combined_players.json",
-        "data/player_log.json",
-    ]
-    commit_msg = f"Admin delete: {result['player'].get('name', payload.upid)}"
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin delete git commit/push failed:", exc)
 
     try:
         player_name = result['player'].get('name', 'Unknown')
@@ -1550,23 +1717,24 @@ async def api_admin_merge_players(
 ):
     """Merge two players: source fields fill target's missing values, source is deleted."""
     try:
-        result = apply_admin_merge_players(payload, test_mode=False)
+        with DATA_LOCK:
+            result = apply_admin_merge_players(payload, test_mode=False)
+
+            core_files = [
+                "data/combined_players.json",
+                "data/player_log.json",
+            ]
+            commit_msg = f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}"
+
+            try:
+                _commit_and_push(core_files, commit_msg)
+            except Exception as exc:
+                print("⚠️ Admin merge git commit/push failed:", exc)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:  # pragma: no cover - defensive
         print("❌ Admin merge players error:", e)
         raise HTTPException(status_code=500, detail="Admin merge players error")
-
-    core_files = [
-        "data/combined_players.json",
-        "data/player_log.json",
-    ]
-    commit_msg = f"Admin merge: {result.get('source_upid')} -> {result.get('target_upid')}"
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin merge git commit/push failed:", exc)
 
     try:
         source_name = result.get('source_name', 'Unknown')
@@ -1588,23 +1756,24 @@ async def api_admin_wizbucks_adjustment(
 ):
     """Apply a manual WizBucks adjustment and persist to wizbucks data files."""
     try:
-        result = apply_admin_wb_adjustment(payload, test_mode=False)
+        with DATA_LOCK:
+            result = apply_admin_wb_adjustment(payload, test_mode=False)
+
+            core_files = [
+                "data/wizbucks.json",
+                "data/wizbucks_transactions.json",
+            ]
+            commit_msg = f"Admin WB: {result['team']} {result['amount']} ({result['installment']})"
+
+            try:
+                _commit_and_push(core_files, commit_msg)
+            except Exception as exc:
+                print("⚠️ Admin WB git commit/push failed:", exc)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:  # pragma: no cover - defensive
         print("❌ Admin WB adjustment error:", e)
         raise HTTPException(status_code=500, detail="Admin WB adjustment error")
-
-    core_files = [
-        "data/wizbucks.json",
-        "data/wizbucks_transactions.json",
-    ]
-    commit_msg = f"Admin WB: {result['team']} {result['amount']} ({result['installment']})"
-
-    try:
-        _commit_and_push(core_files, commit_msg)
-    except Exception as exc:
-        print("⚠️ Admin WB git commit/push failed:", exc)
 
     try:
         team = result['team']

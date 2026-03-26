@@ -153,8 +153,7 @@ async def update_alt_names(
         rec["alt_names"] = alt_names
         _rebuild_name_index(upid_db)
         _save_upid_db(upid_db)
-
-    _enqueue_commit(f"UPID {upid}: alt-names updated by {admin}")
+        _enqueue_commit(f"UPID {upid}: alt-names updated by {admin}")
 
     return {
         "upid": upid,
@@ -189,8 +188,7 @@ async def update_approved_dupes(
         old_value = rec.get("approved_dupes", "FALSE")
         rec["approved_dupes"] = new_value
         _save_upid_db(upid_db)
-
-    _enqueue_commit(f"UPID {upid}: approved_dupes → {new_value} by {admin}")
+        _enqueue_commit(f"UPID {upid}: approved_dupes → {new_value} by {admin}")
 
     return {
         "upid": upid,
@@ -243,8 +241,7 @@ async def create_upid_record(
         upid_db["by_upid"] = by_upid
         _rebuild_name_index(upid_db)
         _save_upid_db(upid_db)
-
-    _enqueue_commit(f"UPID {next_upid}: created '{name}' by {admin}")
+        _enqueue_commit(f"UPID {next_upid}: created '{name}' by {admin}")
 
     return {"upid": next_upid, "record": rec}
 
@@ -270,8 +267,7 @@ async def delete_upid_record(
 
         _rebuild_name_index(upid_db)
         _save_upid_db(upid_db)
-
-    _enqueue_commit(f"UPID {upid}: deleted '{rec.get('name', '?')}' by {admin}")
+        _enqueue_commit(f"UPID {upid}: deleted '{rec.get('name', '?')}' by {admin}")
 
     return {"deleted": True, "record": rec}
 
@@ -331,11 +327,10 @@ async def merge_upid_records(
 
         _rebuild_name_index(upid_db)
         _save_upid_db(upid_db)
-
-    _enqueue_commit(
-        f"UPID merge: {source_upid} ('{source.get('name', '?')}') → "
-        f"{target_upid} ('{target.get('name', '?')}') by {admin}"
-    )
+        _enqueue_commit(
+            f"UPID merge: {source_upid} ('{source.get('name', '?')}') → "
+            f"{target_upid} ('{target.get('name', '?')}') by {admin}"
+        )
 
     return {
         "merged": True,
@@ -386,8 +381,7 @@ async def update_upid_record(
             _rebuild_name_index(upid_db)
 
         _save_upid_db(upid_db)
-
-    _enqueue_commit(f"UPID {upid}: updated {list(changes.keys())} by {admin}")
+        _enqueue_commit(f"UPID {upid}: updated {list(changes.keys())} by {admin}")
 
     return {
         "upid": upid,

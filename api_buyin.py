@@ -19,6 +19,7 @@ from typing import Callable, Optional
 
 from buyin.buyin_service import BUY_IN_COSTS, apply_keeper_buyin_purchase, apply_keeper_buyin_refund
 from team_utils import normalize_team_abbr
+from data_lock import DATA_LOCK
 
 router = APIRouter(prefix="/api/buyin", tags=["buyin"])
 
@@ -204,53 +205,54 @@ async def purchase_buyin(payload: BuyinPurchasePayload, authorized: bool = Depen
     if payload.cost != expected_cost:
         raise HTTPException(status_code=400, detail=f"Invalid cost. Round {payload.round} buy-in is ${expected_cost}")
     
-    # Load data files
-    draft_order = load_json_file("data/draft_order_2026.json")
-    managers_data = load_json_file("config/managers.json")
+    with DATA_LOCK:
+        # Load data files
+        draft_order = load_json_file("data/draft_order_2026.json")
+        managers_data = load_json_file("config/managers.json")
 
-    team = normalize_team_abbr(payload.team, managers_data=managers_data)
+        team = normalize_team_abbr(payload.team, managers_data=managers_data)
 
-    # Apply purchase (wb_ledger handles wallet + ledger files)
-    try:
-        result = apply_keeper_buyin_purchase(
-            team=team,
-            round=payload.round,
-            pick=payload.pick,
-            draft_order=draft_order,
-            managers_data=managers_data,
-            purchased_by=payload.purchased_by,
-            source="buyin_api",
-            trade_id=None,
-        )
-    except ValueError as exc:
+        # Apply purchase (wb_ledger handles wallet + ledger files)
         try:
-            print(
-                "❌ BUYIN_PURCHASE_FAILED",
-                {
-                    "team": payload.team,
-                    "round": payload.round,
-                    "error": str(exc),
-                },
+            result = apply_keeper_buyin_purchase(
+                team=team,
+                round=payload.round,
+                pick=payload.pick,
+                draft_order=draft_order,
+                managers_data=managers_data,
+                purchased_by=payload.purchased_by,
+                source="buyin_api",
+                trade_id=None,
             )
-        except Exception:
-            pass
-        raise HTTPException(status_code=400, detail=str(exc))
+        except ValueError as exc:
+            try:
+                print(
+                    "❌ BUYIN_PURCHASE_FAILED",
+                    {
+                        "team": payload.team,
+                        "round": payload.round,
+                        "error": str(exc),
+                    },
+                )
+            except Exception:
+                pass
+            raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save draft order (wb_ledger already saved wallet + ledger)
-    try:
-        save_json_file("data/draft_order_2026.json", draft_order)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
-    
-    # Queue git commit
-    try:
-        commit_msg = f"Keeper draft buy-in: {team} Round {payload.round} (${result.cost})"
-        _enqueue_commit(
-            ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
-            commit_msg,
-        )
-    except Exception as e:
-        print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
+        # Save draft order (wb_ledger already saved wallet + ledger)
+        try:
+            save_json_file("data/draft_order_2026.json", draft_order)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
+        
+        # Queue git commit while lock is held so snapshot capture is atomic.
+        try:
+            commit_msg = f"Keeper draft buy-in: {team} Round {payload.round} (${result.cost})"
+            _enqueue_commit(
+                ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
+                commit_msg,
+            )
+        except Exception as e:
+            print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:
@@ -300,56 +302,57 @@ async def refund_buyin(payload: BuyinRefundPayload, authorized: bool = Depends(v
     - wizbucks_transactions.json: Log refund transaction
     """
     
-    # Load data files
-    draft_order = load_json_file("data/draft_order_2026.json")
-    managers_data = load_json_file("config/managers.json")
+    with DATA_LOCK:
+        # Load data files
+        draft_order = load_json_file("data/draft_order_2026.json")
+        managers_data = load_json_file("config/managers.json")
 
-    team = normalize_team_abbr(payload.team, managers_data=managers_data)
-    admin_team = normalize_team_abbr(payload.admin_user, managers_data=managers_data)
+        team = normalize_team_abbr(payload.team, managers_data=managers_data)
+        admin_team = normalize_team_abbr(payload.admin_user, managers_data=managers_data)
 
-    if not validate_admin(admin_team, managers_data):
-        raise HTTPException(status_code=403, detail="Admin access required")
+        if not validate_admin(admin_team, managers_data):
+            raise HTTPException(status_code=403, detail="Admin access required")
 
-    # Apply refund (wb_ledger handles wallet + ledger files)
-    try:
-        result = apply_keeper_buyin_refund(
-            team=team,
-            round=payload.round,
-            pick=None,
-            draft_order=draft_order,
-            managers_data=managers_data,
-            refunded_by=admin_team,
-            source="buyin_api",
-        )
-    except ValueError as exc:
+        # Apply refund (wb_ledger handles wallet + ledger files)
         try:
-            print(
-                "❌ BUYIN_REFUND_FAILED",
-                {
-                    "team": payload.team,
-                    "round": payload.round,
-                    "error": str(exc),
-                },
+            result = apply_keeper_buyin_refund(
+                team=team,
+                round=payload.round,
+                pick=None,
+                draft_order=draft_order,
+                managers_data=managers_data,
+                refunded_by=admin_team,
+                source="buyin_api",
             )
-        except Exception:
-            pass
-        raise HTTPException(status_code=400, detail=str(exc))
+        except ValueError as exc:
+            try:
+                print(
+                    "❌ BUYIN_REFUND_FAILED",
+                    {
+                        "team": payload.team,
+                        "round": payload.round,
+                        "error": str(exc),
+                    },
+                )
+            except Exception:
+                pass
+            raise HTTPException(status_code=400, detail=str(exc))
 
-    # Save draft order (wb_ledger already saved wallet + ledger)
-    try:
-        save_json_file("data/draft_order_2026.json", draft_order)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
-    
-    # Queue git commit
-    try:
-        commit_msg = f"Keeper draft buy-in refund: {team} Round {payload.round} (${result.amount})"
-        _enqueue_commit(
-            ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
-            commit_msg,
-        )
-    except Exception as e:
-        print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
+        # Save draft order (wb_ledger already saved wallet + ledger)
+        try:
+            save_json_file("data/draft_order_2026.json", draft_order)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to save changes: {str(e)}")
+        
+        # Queue git commit while lock is held so snapshot capture is atomic.
+        try:
+            commit_msg = f"Keeper draft buy-in refund: {team} Round {payload.round} (${result.amount})"
+            _enqueue_commit(
+                ["data/draft_order_2026.json", "data/wizbucks.json", "data/wizbucks_transactions.json"],
+                commit_msg,
+            )
+        except Exception as e:
+            print(f"⚠️ Git commit/push enqueue failed (data saved locally): {e}")
 
     # Post to Discord (do not block the API response; run on bot loop)
     try:
