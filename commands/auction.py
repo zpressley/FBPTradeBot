@@ -3,9 +3,11 @@ from discord.ext import commands, tasks
 from discord import app_commands
 
 from auction_manager import AuctionManager, AuctionPhase, ET
-from commands.utils import DISCORD_ID_TO_TEAM
+from commands.utils import DISCORD_ID_TO_TEAM, MANAGER_DISCORD_IDS
 
-AUCTION_CHANNEL_ID = 1089979265619083444  # transactions channel for auction logs
+AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel
+AUCTION_BOARD_URL = "https://zpressley.github.io/fbp-hub/auction.html"
+PLAYER_PROFILE_BASE_URL = "https://zpressley.github.io/fbp-hub/player-profile.html"
 
 # Module-level commit function, set by health.py on_ready
 _auction_commit_fn = None
@@ -30,11 +32,12 @@ def _resolve_prospect_name(prospect_id: str) -> str:
     return str(prospect_id)
 
 
-def _bbref_link(name: str) -> str:
-    """Return a Discord markdown link to a Baseball Reference search for the player."""
+def _player_profile_link(prospect_id: str, name: str | None = None) -> str:
+    """Return a Discord markdown link to the FBP Hub player profile."""
     from urllib.parse import quote
-    url = f"https://www.baseball-reference.com/search/search.fcgi?search={quote(name)}"
-    return f"[{name}]({url})"
+    display = name or _resolve_prospect_name(prospect_id)
+    url = f"{PLAYER_PROFILE_BASE_URL}?upid={quote(str(prospect_id))}"
+    return f"[{display}]({url})"
 
 
 class Auction(commands.Cog):
@@ -87,8 +90,8 @@ class Auction(commands.Cog):
         # Basic phase copy; website will provide the full portal UI.
         phase_text = {
             AuctionPhase.OFF_WEEK: "No auction this week.",
-            AuctionPhase.OB_WINDOW: "Originating bids are open (Mon 3pm–Tue night).",
-            AuctionPhase.CB_WINDOW: "Challenge bids are open (Wed–Fri 9pm).",
+            AuctionPhase.OB_WINDOW: "Originating bids are open (Mon 3pm–Tue 6:00am).",
+            AuctionPhase.CB_WINDOW: "Challenge bids are open (Tue 6:00am–Fri 9:00pm).",
             AuctionPhase.OB_FINAL: "OB managers may match or forfeit (Saturday).",
             AuctionPhase.PROCESSING: "Auction is processing (Sunday).",
         }[phase]
@@ -190,11 +193,12 @@ class Auction(commands.Cog):
         if channel:
             is_ob = bid_data["bid_type"] == "OB"
             header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
+            player_link = _player_profile_link(bid_data["prospect_id"], prospect_name)
             content = (
                 f"{header}\n\n"
                 f"🏷️ Team: {bid_data['team']}\n"
                 f"💰 Bid: ${bid_data['amount']}\n"
-                f"🧢 Player: {prospect_name}\n\n"
+                f"🧢 Player: {player_link}\n\n"
                 f"Source: Discord /bid"
             )
             try:
@@ -251,14 +255,13 @@ class Auction(commands.Cog):
                 await self._send_ob_open_alert()
                 self._ob_open_week = week_key
 
-        # OB window closed: Tuesday 9:00pm ET
-        if now.weekday() == 1 and now.hour == 21 and now.minute == 0:
+        # OB window closed: Tuesday 8:00am ET (window actually closes at 6am)
+        if now.weekday() == 1 and now.hour == 8 and now.minute == 0:
             if self._ob_close_week != week_key:
                 await self._send_ob_closed_alert()
                 self._ob_close_week = week_key
-
-        # CB window open: Wednesday 12:00am ET
-        if now.weekday() == 2 and now.hour == 0 and now.minute == 0:
+        # CB window open message: Tuesday 8:00am ET (window opens at 6am)
+        if now.weekday() == 1 and now.hour == 8 and now.minute == 0:
             if self._cb_open_week != week_key:
                 await self._send_cb_open_alert()
                 self._cb_open_week = week_key
@@ -287,7 +290,7 @@ class Auction(commands.Cog):
                         lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
                         for pid, info in winners.items():
                             name = info.get("name", _resolve_prospect_name(pid))
-                            lines.append(f"✅ **{info['team']}** → {_bbref_link(name)} (${info['amount']} WB)")
+                            lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
                         await channel.send("\n".join(lines))
                     # Commit updated files
                     if _auction_commit_fn:
@@ -335,7 +338,7 @@ class Auction(commands.Cog):
             return
         msg = (
             "@everyone 🛑 **Originating Bid Window is Now Closed!**\n"
-            "You may no longer place OBs for this week."
+            "OBs closed at 6:00 AM ET for this week."
         )
         await channel.send(msg)
 
@@ -345,7 +348,7 @@ class Auction(commands.Cog):
             return
         msg = (
             "@everyone 🟡 **Challenge Bid Window is Now Open!**\n"
-            "You may now place Challenge Bids (CBs) against existing OBs."
+            "CBs opened at 6:00 AM ET. Posting this reminder at 8:00 AM ET."
         )
         await channel.send(msg)
 
@@ -374,7 +377,10 @@ class Auction(commands.Cog):
         bids = state.get("bids", [])
 
         if not bids:
-            await channel.send("📊 Daily Auction Summary\n\nNo active bids yet this week.")
+            await channel.send(
+                "📊 Daily Auction Summary\n\nNo active bids yet this week.\n\n"
+                f"🔗 Auction Board: {AUCTION_BOARD_URL}"
+            )
             return
 
         # Group bids by prospect and identify OB + high CB
@@ -392,7 +398,7 @@ class Auction(commands.Cog):
 
             cbs = [b for b in pbids if b["bid_type"] == "CB"]
             player_name = _resolve_prospect_name(prospect_id)
-            lines.append(f"🧢 Player: {_bbref_link(player_name)}")
+            lines.append(f"🧢 Player: {player_name}")
             lines.append(f"📌 Originating Team: {ob['team']}")
 
             if cbs:
@@ -404,6 +410,8 @@ class Auction(commands.Cog):
                 lines.append("🚫 No Challenges Yet")
 
             lines.append("──────────────────────")
+        lines.append("")
+        lines.append(f"🔗 Auction Board: {AUCTION_BOARD_URL}")
 
         msg = "\n".join(lines).rstrip()
         await channel.send(msg)
@@ -440,6 +448,7 @@ class Auction(commands.Cog):
         winners_lines: list[str] = ["🏁 **Weekly Auction Results**", ""]
         match_lines: list[str] = ["❓ **Do You Want to Match?**", ""]
         has_contested = False
+        contested_prompts: list[tuple[str, str, int, str]] = []
 
         for prospect_id, pbids in by_prospect.items():
             ob = next((b for b in pbids if b["bid_type"] == "OB"), None)
@@ -450,7 +459,7 @@ class Auction(commands.Cog):
             player_name = _resolve_prospect_name(prospect_id)
             ob_team = ob["team"]
 
-            linked = _bbref_link(player_name)
+            linked = _player_profile_link(prospect_id, player_name)
             if not cbs:
                 winners_lines.append(f"✅ **{ob_team} wins** {linked} — no challengers.")
             else:
@@ -460,11 +469,49 @@ class Auction(commands.Cog):
                     f"🔔 **{ob_team}**, do you want to match the high bid of "
                     f"**${max_amt}** by **{top_cb['team']}** for {linked}?"
                 )
+                contested_prompts.append((ob_team, prospect_id, max_amt, top_cb["team"]))
                 has_contested = True
 
         await channel.send("\n".join(winners_lines))
         if has_contested:
             await channel.send("\n".join(match_lines))
+            for ob_team, prospect_id, max_amt, challenger_team in contested_prompts:
+                await self._send_match_prompt_dm(ob_team, prospect_id, max_amt, challenger_team)
+
+    async def _send_match_prompt_dm(
+        self,
+        ob_team: str,
+        prospect_id: str,
+        amount: int,
+        challenger_team: str,
+    ) -> None:
+        """DM OB managers on Saturday for contested prospects."""
+        manager_id = MANAGER_DISCORD_IDS.get(ob_team)
+        if not manager_id:
+            return
+
+        user = self.bot.get_user(manager_id)
+        if user is None:
+            try:
+                user = await self.bot.fetch_user(manager_id)
+            except Exception as exc:
+                print(f"⚠️ Failed to fetch OB manager for DM ({ob_team}): {exc}")
+                return
+
+        player_name = _resolve_prospect_name(prospect_id)
+        player_link = _player_profile_link(prospect_id, player_name)
+        message = (
+            "🔔 **Auction Match Decision Needed**\n\n"
+            f"Your OB is contested for {player_link}.\n"
+            f"High challenge bid: **${amount}** by **{challenger_team}**.\n\n"
+            f"Please submit your decision in the Auction Portal: {AUCTION_BOARD_URL}\n"
+            "(Saturday match/forfeit window)"
+        )
+
+        try:
+            await user.send(message)
+        except Exception as exc:
+            print(f"⚠️ Failed to DM OB manager ({ob_team}) for match prompt: {exc}")
 
 
 async def setup(bot: commands.Bot) -> None:

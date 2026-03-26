@@ -1135,6 +1135,14 @@ def _resolve_prospect_name(prospect_id):
     return str(prospect_id)
 
 
+def _player_profile_link(prospect_id, prospect_name=None):
+    """Return a Discord markdown link to the FBP Hub player profile."""
+    from urllib.parse import quote
+    name = prospect_name or _resolve_prospect_name(prospect_id)
+    url = f"https://zpressley.github.io/fbp-hub/player-profile.html?upid={quote(str(prospect_id))}"
+    return f"[{name}]({url})"
+
+
 @app.get("/api/auction/current")
 async def get_current_auction(authorized: bool = Depends(verify_api_key)):
     """Return the current auction state for API consumers."""
@@ -1173,12 +1181,13 @@ async def api_place_bid(
     bid = result.get("bid", {})
     is_ob = bid.get("bid_type", payload.bid_type) == "OB"
     prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
+    player_link = _player_profile_link(bid.get("prospect_id", payload.prospect_id), prospect_name)
     header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
     content = (
         f"{header}\n\n"
         f"🏷️ Team: {bid.get('team', payload.team)}\n"
         f"💰 Bid: ${bid.get('amount', payload.amount)}\n"
-        f"🧢 Player: {prospect_name}\n\n"
+        f"🧢 Player: {player_link}\n\n"
         f"Source: Website Portal"
     )
     bot.loop.create_task(_send_auction_log_message(content))

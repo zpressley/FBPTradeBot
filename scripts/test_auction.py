@@ -4,7 +4,7 @@ Simulates a full auction week lifecycle using the first real auction week
 (Mar 16–22, 2026):
 
   Mon 3:30pm  → OB bids
-  Wed–Fri     → CB bids
+  Tue 6:00am–Fri 9:00pm → CB bids
   Sat noon    → Match / Forfeit decisions
   Sun 2pm     → resolve_week()
 
@@ -33,6 +33,8 @@ from auction_manager import AuctionManager, AuctionPhase, ET
 # ── Simulated timestamps (first auction week: Mar 16–22 2026) ────────
 
 MON_3PM  = datetime(2026, 3, 16, 15, 30, tzinfo=ET)
+TUE_5AM  = datetime(2026, 3, 17, 5, 0,  tzinfo=ET)
+TUE_6AM  = datetime(2026, 3, 17, 6, 0,  tzinfo=ET)
 TUE_NOON = datetime(2026, 3, 17, 12, 0,  tzinfo=ET)
 WED_NOON = datetime(2026, 3, 18, 12, 0,  tzinfo=ET)
 THU_NOON = datetime(2026, 3, 19, 12, 0,  tzinfo=ET)
@@ -159,7 +161,9 @@ def main():
     pre = datetime(2026, 3, 10, 12, 0, tzinfo=ET)
     check("Pre-season (Mar 10)",   am.get_current_phase(pre),      AuctionPhase.OFF_WEEK)
     check("Mon 3:30pm ET",         am.get_current_phase(MON_3PM),  AuctionPhase.OB_WINDOW)
-    check("Tue noon ET",           am.get_current_phase(TUE_NOON), AuctionPhase.OB_WINDOW)
+    check("Tue 5:00am ET",         am.get_current_phase(TUE_5AM),  AuctionPhase.OB_WINDOW)
+    check("Tue 6:00am ET",         am.get_current_phase(TUE_6AM),  AuctionPhase.CB_WINDOW)
+    check("Tue noon ET",           am.get_current_phase(TUE_NOON), AuctionPhase.CB_WINDOW)
     check("Wed noon ET",           am.get_current_phase(WED_NOON), AuctionPhase.CB_WINDOW)
     check("Thu noon ET",           am.get_current_phase(THU_NOON), AuctionPhase.CB_WINDOW)
     check("Fri noon ET",           am.get_current_phase(FRI_NOON), AuctionPhase.CB_WINDOW)
@@ -337,6 +341,10 @@ def main():
     # Ledger entries recorded
     ledger = json.loads((data_dir / "wizbucks_transactions.json").read_text())
     check("Ledger has entries", len(ledger) > 0, True)
+    # Auction state reset after resolve
+    auction_state = json.loads((data_dir / "auction_current.json").read_text())
+    check("Auction bids reset after resolve", len(auction_state.get("bids", [])), 0)
+    check("Auction matches reset after resolve", len(auction_state.get("matches", [])), 0)
 
     # ── Summary ───────────────────────────────────────────
     total = passed + failed

@@ -172,10 +172,10 @@ class AuctionManager:
 
         # Phase-specific rules
         if bid_type_enum is BidType.OB and phase is not AuctionPhase.OB_WINDOW:
-            return {"success": False, "error": "Originating bids are only allowed Mon 3pm–Tue EOD (ET)."}
+            return {"success": False, "error": "Originating bids are only allowed Mon 3pm–Tue 6:00am (ET)."}
 
         if bid_type_enum is BidType.CB and phase is not AuctionPhase.CB_WINDOW:
-            return {"success": False, "error": "Challenge bids are only allowed Wed–Fri 9pm (ET)."}
+            return {"success": False, "error": "Challenge bids are only allowed Tue 6:00am–Fri 9:00pm (ET)."}
 
         if bid_type_enum is BidType.OB and amount < 10:
             return {"success": False, "error": "Originating bids must be at least $10 WB."}
@@ -619,6 +619,10 @@ class AuctionManager:
 
         state["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
         state["phase"] = AuctionPhase.PROCESSING.value
+        state["resolved_at"] = resolve_ts
+        state["resolved_winners"] = winners_summary
+        state["bids"] = []
+        state["matches"] = []
         self._save_auction_state(state)
 
         return {"status": "resolved", "winners": winners_summary}
@@ -636,7 +640,21 @@ class AuctionManager:
             # Return existing state if it's still the same week
             if stored_week == current_monday.isoformat():
                 bids = data.setdefault("bids", [])
+                changed = False
                 if self._ensure_bid_ids(bids):
+                    changed = True
+
+                schedule_meta = data.get("schedule_meta") or self._default_schedule_meta()
+                expected_phase = (
+                    self._phase_for_time(now).value
+                    if self._is_week_active(now.date(), schedule_meta)
+                    else AuctionPhase.OFF_WEEK.value
+                )
+                if data.get("phase") != expected_phase:
+                    data["phase"] = expected_phase
+                    changed = True
+
+                if changed:
                     data["last_updated"] = datetime.now(tz=timezone.utc).isoformat()
                     self._save_auction_state(data)
                 return data
@@ -743,16 +761,18 @@ class AuctionManager:
         def et_time(h: int, m: int = 0) -> time:
             return time(hour=h, minute=m, tzinfo=ET)
 
-        # OB: Mon 3pm – Tue 11:59pm
+        # OB: Mon 3pm – Tue 5:59am
         if weekday == 0 and t >= et_time(15):
             return AuctionPhase.OB_WINDOW
-        if weekday == 1:
+        if weekday == 1 and t < et_time(6):
             return AuctionPhase.OB_WINDOW
-
+        # CB: Tue 6am – Fri 9pm
+        if weekday == 1 and t >= et_time(6):
+            return AuctionPhase.CB_WINDOW
         # CB: Wed 12am – Fri 9pm
         if weekday == 2 or weekday == 3:
             return AuctionPhase.CB_WINDOW
-        if weekday == 4 and t <= et_time(21):
+        if weekday == 4 and t < et_time(21):
             return AuctionPhase.CB_WINDOW
 
         # OB final: Sat 12am – Sat 10pm
