@@ -605,6 +605,11 @@ async def on_ready():
         roster_sync_batch_tick.start()
         print("   ✅ Roster sync batch task started (9 AM ET daily)")
 
+    # Start live standings refresh (every 15 min during game hours)
+    if not standings_refresh_tick.is_running():
+        standings_refresh_tick.start()
+        print("   ✅ Standings refresh task started (every 15 min, noon–1 AM ET)")
+
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -2170,6 +2175,34 @@ async def api_admin_pad_retro_discord(
             "dropped_prospects": len(dropped),
         },
     }
+
+
+# ---- Live Standings Refresh ----
+
+@tasks.loop(minutes=15)
+async def standings_refresh_tick():
+    """Refresh standings.json from Yahoo every 15 minutes during game hours.
+
+    Active window: noon – 1:00 AM ET (covers all MLB game times).
+    Commits updated standings.json so the website picks up live scores.
+    """
+    now = datetime.now(tz=ET)
+    hour = now.hour
+
+    # Active window: noon (12) through 1 AM (hour 0)
+    # i.e. hour >= 12 OR hour < 1
+    if not (hour >= 12 or hour < 1):
+        return
+
+    try:
+        from data_pipeline.save_standings import fetch_and_save_standings
+        fetch_and_save_standings()
+        _commit_and_push(
+            ["data/standings.json"],
+            f"Live standings refresh {now.strftime('%H:%M ET')}",
+        )
+    except Exception as exc:
+        print(f"⚠️ Standings refresh failed: {exc}")
 
 
 # ---- Roster Sync Message Posting ----
