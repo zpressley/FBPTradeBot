@@ -333,11 +333,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "RV",
-      "score": "11",
+      "score": "10",
       "opponent_score": "4",
-      "ties": "5",
-      "live_record": "11-4-5",
-      "live_win_pct": 0.675,
+      "ties": "6",
+      "live_record": "10-4-6",
+      "live_win_pct": 0.65,
       "categories": {
         "H/AB": "9/38",
         "R": 3,
@@ -362,7 +362,7 @@
         "BB/9": "3.38",
         "QS": 1
       },
-      "live_rank": 3
+      "live_rank": 4
     },
     {
       "rank": 7,
@@ -400,7 +400,7 @@
         "BB/9": "2.79",
         "QS": 1
       },
-      "live_rank": 4
+      "live_rank": 3
     },
     {
       "rank": 8,
@@ -486,10 +486,10 @@
       "win_pct": 0.0,
       "opponent": "JEP",
       "score": "4",
-      "opponent_score": "11",
-      "ties": "5",
-      "live_record": "4-11-5",
-      "live_win_pct": 0.325,
+      "opponent_score": "10",
+      "ties": "6",
+      "live_record": "4-10-6",
+      "live_win_pct": 0.35,
       "categories": {
         "H/AB": "7/36",
         "R": 3,
@@ -502,7 +502,7 @@
         "TB": 11,
         "AVG": ".194",
         "OPS": ".581",
-        "APP": 4,
+        "APP": 5,
         "IP": "12.2",
         "ER": 5,
         "P_HR": 3,
@@ -838,7 +838,7 @@
       "team1": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "11",
+        "score": "10",
         "categories": {
           "H/AB": "9/38",
           "R": 3,
@@ -880,7 +880,7 @@
           "TB": 11,
           "AVG": ".194",
           "OPS": ".581",
-          "APP": 4,
+          "APP": 5,
           "IP": "12.2",
           "ER": 5,
           "P_HR": 3,
@@ -955,5 +955,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-03-27T17:11:46.806982+00:00"
+  "refreshed_at": "2026-03-27T17:28:46.266673+00:00"
 }
