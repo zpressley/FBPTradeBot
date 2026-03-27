@@ -172,7 +172,7 @@
         "BB/9": "2.20",
         "QS": 1
       },
-      "live_rank": 5
+      "live_rank": 3
     },
     {
       "rank": 2,
@@ -210,7 +210,7 @@
         "BB/9": "7.36",
         "QS": 0
       },
-      "live_rank": 8
+      "live_rank": 9
     },
     {
       "rank": 3,
@@ -257,11 +257,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "LFB",
-      "score": "11",
-      "opponent_score": "6",
+      "score": "10",
+      "opponent_score": "7",
       "ties": "3",
-      "live_record": "11-6-3",
-      "live_win_pct": 0.625,
+      "live_record": "10-7-3",
+      "live_win_pct": 0.575,
       "categories": {
         "H/AB": "8/28",
         "R": 6,
@@ -275,15 +275,15 @@
         "AVG": ".286",
         "OPS": ".875",
         "APP": 2,
-        "IP": "1.2",
+        "IP": "2.2",
         "ER": 0,
         "P_HR": 0,
-        "P_K": 1,
+        "P_K": 2,
         "P_TB": 3,
         "ERA": "0.00",
-        "K/9": "5.40",
-        "H/9": "16.20",
-        "BB/9": "0.00",
+        "K/9": "6.75",
+        "H/9": "10.12",
+        "BB/9": "3.38",
         "QS": 0
       },
       "live_rank": 4
@@ -301,17 +301,17 @@
       "live_record": "8-10-2",
       "live_win_pct": 0.45,
       "categories": {
-        "H/AB": "7/28",
+        "H/AB": "7/29",
         "R": 4,
         "H": 7,
         "HR": 1,
         "RBI": 3,
         "SB": 0,
         "BB": 6,
-        "K": 7,
+        "K": 8,
         "TB": 12,
-        "AVG": ".250",
-        "OPS": ".800",
+        "AVG": ".241",
+        "OPS": ".775",
         "APP": 6,
         "IP": "12.1",
         "ER": 8,
@@ -333,13 +333,13 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "RV",
-      "score": "12",
-      "opponent_score": "6",
+      "score": "10",
+      "opponent_score": "8",
       "ties": "2",
-      "live_record": "12-6-2",
-      "live_win_pct": 0.65,
+      "live_record": "10-8-2",
+      "live_win_pct": 0.55,
       "categories": {
-        "H/AB": "6/30",
+        "H/AB": "6/32",
         "R": 1,
         "H": 6,
         "HR": 1,
@@ -348,21 +348,21 @@
         "BB": 3,
         "K": 13,
         "TB": 9,
-        "AVG": ".200",
-        "OPS": ".565",
+        "AVG": ".188",
+        "OPS": ".531",
         "APP": 5,
-        "IP": "11.1",
+        "IP": "12.0",
         "ER": 7,
         "P_HR": 1,
-        "P_K": 19,
-        "P_TB": 16,
-        "ERA": "5.56",
-        "K/9": "15.09",
-        "H/9": "8.74",
-        "BB/9": "4.76",
+        "P_K": 20,
+        "P_TB": 18,
+        "ERA": "5.25",
+        "K/9": "15.00",
+        "H/9": "9.00",
+        "BB/9": "4.50",
         "QS": 0
       },
-      "live_rank": 2
+      "live_rank": 5
     },
     {
       "rank": 7,
@@ -371,11 +371,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "CFL",
-      "score": "6",
-      "opponent_score": "11",
+      "score": "7",
+      "opponent_score": "10",
       "ties": "3",
-      "live_record": "6-11-3",
-      "live_win_pct": 0.375,
+      "live_record": "7-10-3",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "8/27",
         "R": 5,
@@ -400,7 +400,7 @@
         "BB/9": "2.79",
         "QS": 1
       },
-      "live_rank": 9
+      "live_rank": 10
     },
     {
       "rank": 8,
@@ -485,11 +485,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "JEP",
-      "score": "6",
-      "opponent_score": "12",
+      "score": "8",
+      "opponent_score": "10",
       "ties": "2",
-      "live_record": "6-12-2",
-      "live_win_pct": 0.35,
+      "live_record": "8-10-2",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "5/26",
         "R": 2,
@@ -514,7 +514,7 @@
         "BB/9": "1.42",
         "QS": 1
       },
-      "live_rank": 10
+      "live_rank": 8
     },
     {
       "rank": 11,
@@ -552,7 +552,7 @@
         "BB/9": "6.23",
         "QS": 1
       },
-      "live_rank": 3
+      "live_rank": 2
     },
     {
       "rank": 12,
@@ -718,7 +718,7 @@
       "team1": {
         "team": "CFL",
         "name": "Country Fried Lamb",
-        "score": "11",
+        "score": "10",
         "categories": {
           "H/AB": "8/28",
           "R": 6,
@@ -732,22 +732,22 @@
           "AVG": ".286",
           "OPS": ".875",
           "APP": 2,
-          "IP": "1.2",
+          "IP": "2.2",
           "ER": 0,
           "P_HR": 0,
-          "P_K": 1,
+          "P_K": 2,
           "P_TB": 3,
           "ERA": "0.00",
-          "K/9": "5.40",
-          "H/9": "16.20",
-          "BB/9": "0.00",
+          "K/9": "6.75",
+          "H/9": "10.12",
+          "BB/9": "3.38",
           "QS": 0
         }
       },
       "team2": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "8/27",
           "R": 5,
@@ -780,17 +780,17 @@
         "name": "Hammers",
         "score": "8",
         "categories": {
-          "H/AB": "7/28",
+          "H/AB": "7/29",
           "R": 4,
           "H": 7,
           "HR": 1,
           "RBI": 3,
           "SB": 0,
           "BB": 6,
-          "K": 7,
+          "K": 8,
           "TB": 12,
-          "AVG": ".250",
-          "OPS": ".800",
+          "AVG": ".241",
+          "OPS": ".775",
           "APP": 6,
           "IP": "12.1",
           "ER": 8,
@@ -838,9 +838,9 @@
       "team1": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "12",
+        "score": "10",
         "categories": {
-          "H/AB": "6/30",
+          "H/AB": "6/32",
           "R": 1,
           "H": 6,
           "HR": 1,
@@ -849,25 +849,25 @@
           "BB": 3,
           "K": 13,
           "TB": 9,
-          "AVG": ".200",
-          "OPS": ".565",
+          "AVG": ".188",
+          "OPS": ".531",
           "APP": 5,
-          "IP": "11.1",
+          "IP": "12.0",
           "ER": 7,
           "P_HR": 1,
-          "P_K": 19,
-          "P_TB": 16,
-          "ERA": "5.56",
-          "K/9": "15.09",
-          "H/9": "8.74",
-          "BB/9": "4.76",
+          "P_K": 20,
+          "P_TB": 18,
+          "ERA": "5.25",
+          "K/9": "15.00",
+          "H/9": "9.00",
+          "BB/9": "4.50",
           "QS": 0
         }
       },
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "6",
+        "score": "8",
         "categories": {
           "H/AB": "5/26",
           "R": 2,
@@ -955,5 +955,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-03-27T00:52:16.466123+00:00"
+  "refreshed_at": "2026-03-27T01:08:36.505544+00:00"
 }
