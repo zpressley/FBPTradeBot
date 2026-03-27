@@ -286,7 +286,7 @@
         "BB/9": "3.86",
         "QS": 0
       },
-      "live_rank": 9
+      "live_rank": 10
     },
     {
       "rank": 5,
@@ -334,10 +334,10 @@
       "win_pct": 0.0,
       "opponent": "RV",
       "score": "10",
-      "opponent_score": "4",
-      "ties": "6",
-      "live_record": "10-4-6",
-      "live_win_pct": 0.65,
+      "opponent_score": "5",
+      "ties": "5",
+      "live_record": "10-5-5",
+      "live_win_pct": 0.625,
       "categories": {
         "H/AB": "9/38",
         "R": 3,
@@ -485,11 +485,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "JEP",
-      "score": "4",
+      "score": "5",
       "opponent_score": "10",
-      "ties": "6",
-      "live_record": "4-10-6",
-      "live_win_pct": 0.35,
+      "ties": "5",
+      "live_record": "5-10-5",
+      "live_win_pct": 0.375,
       "categories": {
         "H/AB": "7/36",
         "R": 3,
@@ -502,7 +502,7 @@
         "TB": 11,
         "AVG": ".194",
         "OPS": ".581",
-        "APP": 5,
+        "APP": 6,
         "IP": "12.2",
         "ER": 5,
         "P_HR": 3,
@@ -514,7 +514,7 @@
         "BB/9": "1.42",
         "QS": 1
       },
-      "live_rank": 10
+      "live_rank": 9
     },
     {
       "rank": 11,
@@ -867,7 +867,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "4",
+        "score": "5",
         "categories": {
           "H/AB": "7/36",
           "R": 3,
@@ -880,7 +880,7 @@
           "TB": 11,
           "AVG": ".194",
           "OPS": ".581",
-          "APP": 5,
+          "APP": 6,
           "IP": "12.2",
           "ER": 5,
           "P_HR": 3,
@@ -955,5 +955,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-03-27T18:18:31.955911+00:00"
+  "refreshed_at": "2026-03-27T18:34:55.979790+00:00"
 }
