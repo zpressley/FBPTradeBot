@@ -274,7 +274,7 @@
         "TB": 22,
         "AVG": ".190",
         "OPS": ".588",
-        "APP": 8,
+        "APP": 9,
         "IP": "13.1",
         "ER": 5,
         "P_HR": 2,
@@ -447,11 +447,11 @@
       "record": "0-0-0",
       "win_pct": 0.0,
       "opponent": "TBB",
-      "score": "5",
+      "score": "6",
       "opponent_score": "10",
-      "ties": "5",
-      "live_record": "5-10-5",
-      "live_win_pct": 0.375,
+      "ties": "4",
+      "live_record": "6-10-4",
+      "live_win_pct": 0.4,
       "categories": {
         "H/AB": "16/53",
         "R": 9,
@@ -464,7 +464,7 @@
         "TB": 26,
         "AVG": ".302",
         "OPS": ".912",
-        "APP": 4,
+        "APP": 5,
         "IP": "6.2",
         "ER": 8,
         "P_HR": 3,
@@ -524,10 +524,10 @@
       "win_pct": 0.0,
       "opponent": "SAD",
       "score": "10",
-      "opponent_score": "5",
-      "ties": "5",
-      "live_record": "10-5-5",
-      "live_win_pct": 0.625,
+      "opponent_score": "6",
+      "ties": "4",
+      "live_record": "10-6-4",
+      "live_win_pct": 0.6,
       "categories": {
         "H/AB": "22/44",
         "R": 9,
@@ -731,7 +731,7 @@
           "TB": 22,
           "AVG": ".190",
           "OPS": ".588",
-          "APP": 8,
+          "APP": 9,
           "IP": "13.1",
           "ER": 5,
           "P_HR": 2,
@@ -898,7 +898,7 @@
       "team1": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "5",
+        "score": "6",
         "categories": {
           "H/AB": "16/53",
           "R": 9,
@@ -911,7 +911,7 @@
           "TB": 26,
           "AVG": ".302",
           "OPS": ".912",
-          "APP": 4,
+          "APP": 5,
           "IP": "6.2",
           "ER": 8,
           "P_HR": 3,
@@ -955,5 +955,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-03-28T16:35:41.953044+00:00"
+  "refreshed_at": "2026-03-28T16:51:58.120242+00:00"
 }
