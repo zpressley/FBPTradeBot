@@ -785,6 +785,9 @@ class AdminAuctionUpdateBidAmountRequest(BaseModel):
     admin: str
     bid_id: str
     amount: int
+class AdminAuctionResolveNowRequest(BaseModel):
+    admin: str = "admin"
+    announce_discord: bool = True
 
 
 class ProspectValidateRequest(BaseModel):
@@ -1153,10 +1156,23 @@ async def get_current_auction(authorized: bool = Depends(verify_api_key)):
     """Return the current auction state for API consumers."""
     manager = AuctionManager()
     now = datetime.now(tz=ET)
+    old_state = manager._load_json(manager.auction_file) or {}
     with DATA_LOCK:
         state = manager._load_or_initialize_auction(now)
         # Override with the actual computed phase (respects schedule gating)
-        state["phase"] = manager.get_current_phase(now).value
+        computed_phase = manager.get_current_phase(now).value
+        if state.get("phase") != computed_phase:
+            state["phase"] = computed_phase
+            manager._save_auction_state(state)
+
+    if (
+        old_state.get("week_start") != state.get("week_start")
+        or old_state.get("phase") != state.get("phase")
+    ):
+        _commit_and_push(
+            ["data/auction_current.json"],
+            f"Auction state sync: week {state.get('week_start')} phase {state.get('phase')}",
+        )
     return state
 
 
@@ -1342,6 +1358,66 @@ async def api_admin_auction_update_amount(
 
     return result
 
+@app.post("/api/admin/auction/resolve-now")
+async def api_admin_auction_resolve_now(
+    payload: AdminAuctionResolveNowRequest | None = None,
+    authorized: bool = Depends(verify_api_key),
+):
+    """Admin: resolve the current auction week immediately."""
+    manager = AuctionManager()
+    now = datetime.now(tz=ET)
+    week_key = manager._monday_for_date(now.date()).isoformat()  # type: ignore[attr-defined]
+    actor = ((payload.admin if payload else "admin") or "admin").strip()
+    announce_discord = payload.announce_discord if payload is not None else True
+
+    with DATA_LOCK:
+        result = manager.resolve_week(now=now)
+        status = result.get("status", "")
+        winners = result.get("winners", {}) or {}
+
+        if status == "resolved":
+            _commit_and_push(
+                [
+                    "data/combined_players.json",
+                    "data/wizbucks.json",
+                    "data/wizbucks_transactions.json",
+                    "data/auction_current.json",
+                    "data/player_log.json",
+                ],
+                f"Auction admin resolve-now: week of {week_key}",
+            )
+
+    if announce_discord:
+        if status == "resolved":
+            if winners:
+                lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
+                for pid, info in winners.items():
+                    name = info.get("name", _resolve_prospect_name(pid))
+                    lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
+                bot.loop.create_task(_send_auction_log_message("\n".join(lines)))
+            else:
+                bot.loop.create_task(
+                    _send_auction_log_message("🏁 **Auction Resolved**\nNo winners recorded for this week.")
+                )
+        elif status == "no_bids":
+            bot.loop.create_task(_send_auction_log_message("🏁 **Auction Resolve (Manual)**\nNo bids to resolve this week."))
+
+    bot.loop.create_task(
+        _send_admin_log_message(
+            f"🛠️ **Auction Resolve Now**\n"
+            f"Admin: `{actor}`\n"
+            f"Week: `{week_key}`\n"
+            f"Status: `{status}`\n"
+            f"Winners: `{len(winners)}`"
+        )
+    )
+
+    return {
+        "success": True,
+        "status": status,
+        "week_start": week_key,
+        "winners": winners,
+    }
 
 @app.post("/api/auction/match")
 async def api_record_match(
@@ -2249,7 +2325,7 @@ _roster_sync_last_batch_date: str | None = None
 
 @tasks.loop(minutes=1)
 async def roster_sync_batch_tick():
-    """Post batched roster sync messages once daily in a short 9:00 AM ET window.
+    """Post batched roster sync messages once daily at/after 9:00 AM ET.
 
     This catch-up behavior ensures a brief restart around 9:00 won't cause
     the day to be missed while avoiding reposts from later-day rebuilds.
@@ -2271,7 +2347,7 @@ async def roster_sync_batch_tick():
         except Exception:
             pass
 
-    in_batch_window = now.hour == 9 and now.minute < 15
+    in_batch_window = now.hour >= 9
     if in_batch_window and _roster_sync_last_batch_date != date_key:
         ok = await _post_roster_sync_batched_messages()
         if ok:
@@ -2428,8 +2504,18 @@ async def _post_roster_sync_batched_messages() -> bool:
         return False
 
 
+class RosterSyncPostRequest(BaseModel):
+    generated_at: str | None = None
+    immediate: list[str] = []
+    batched: list[str] = []
+    batched_prospect: list[str] = []
+    batched_free_agency: list[str] = []
+    post_batched_now: bool = True
+
+
 @app.post("/api/admin/roster-sync-post")
 async def api_roster_sync_post(
+    payload: RosterSyncPostRequest | None = None,
     authorized: bool = Depends(verify_api_key),
 ):
     """Manually trigger posting of queued roster sync Discord messages.
@@ -2441,8 +2527,19 @@ async def api_roster_sync_post(
     not on FastAPI's event loop (background thread).
     """
     async def _do_post():
+        if payload is not None:
+            queue_payload = {
+                "generated_at": payload.generated_at or datetime.now(tz=ET).isoformat(),
+                "immediate": list(payload.immediate or []),
+                "batched": list(payload.batched or []),
+                "batched_prospect": list(payload.batched_prospect or []),
+                "batched_free_agency": list(payload.batched_free_agency or []),
+            }
+            with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
+                json.dump(queue_payload, f, indent=2)
         await _post_roster_sync_immediate_messages()
-        await _post_roster_sync_batched_messages()
+        if payload is None or payload.post_batched_now:
+            await _post_roster_sync_batched_messages()
 
     fut = asyncio.run_coroutine_threadsafe(_do_post(), bot.loop)
     try:

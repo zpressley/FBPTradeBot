@@ -561,8 +561,8 @@ class AuctionManager:
             team_info = (mgr_data.get("teams") or {}).get(team, {})
             player_record["manager"] = team_info.get("name", team)
             player_record["FBP_Team"] = team
-            if not player_record.get("contract_type"):
-                player_record["contract_type"] = "Purchased Contract"
+            player_record["owner"] = team
+            player_record["contract_type"] = "Purchased Contract"
 
             # WB ledger: one entry per winner (not batched per team)
             _wb_append(

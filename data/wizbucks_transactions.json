@@ -2488,5 +2488,125 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_HAM_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.921301Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 120,
+    "balance_after": 110,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Didier Fuentes",
+    "related_player": {
+      "upid": "7304",
+      "name": "Didier Fuentes"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "7304",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.925073Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 80,
+    "balance_after": 70,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Bradgley Rodriguez",
+    "related_player": {
+      "upid": "4611",
+      "name": "Bradgley Rodriguez"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "4611",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.927794Z",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 160,
+    "balance_after": 150,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Chase Hampton",
+    "related_player": {
+      "upid": "6551",
+      "name": "Chase Hampton"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "6551",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_LFB_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.930079Z",
+    "team": "LFB",
+    "amount": -10,
+    "balance_before": 95,
+    "balance_after": 85,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Hector Rodriguez",
+    "related_player": {
+      "upid": "6532",
+      "name": "Hector Rodriguez"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "6532",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_WAR_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.932204Z",
+    "team": "WAR",
+    "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Brock Wilken",
+    "related_player": {
+      "upid": "6585",
+      "name": "Brock Wilken"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "6585",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1774899746",
+    "timestamp": "2026-03-30T19:42:26.934218Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 120,
+    "balance_after": 110,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-03-23 to 2026-03-29: Max Muncy",
+    "related_player": {
+      "upid": "4001",
+      "name": "Max Muncy"
+    },
+    "metadata": {
+      "week_start": "2026-03-23",
+      "prospect_id": "4001",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]

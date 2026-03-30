@@ -149,6 +149,13 @@ def fetch_and_save_standings():
     # ── 4. Per-team matchup summary with ties ──
     scoring_cats = sum(1 for c in stat_list if not c["display_only"])
 
+    def _parse_record(rec: str) -> tuple[int, int, int]:
+        try:
+            w, l, t = [int(x) for x in str(rec or "0-0-0").split("-")]
+            return w, l, t
+        except Exception:
+            return 0, 0, 0
+
     team_matchups = {}
     for mu in matchups:
         t1, t2 = mu["team1"], mu["team2"]
@@ -178,10 +185,21 @@ def fetch_and_save_standings():
         s["live_win_pct"] = mu.get("live_win_pct", 0.0)
         s["categories"] = mu.get("categories", {})
 
-    # Compute live_rank: sort by live_win_pct descending, break ties by score
+        # Overall live = completed record + current live matchup record.
+        # Example: 8-11-1 + 1-0-19 => 9-11-20
+        rw, rl, rt = _parse_record(s.get("record"))
+        lw, ll, lt = _parse_record(s.get("live_record"))
+        ow, ol, ot = rw + lw, rl + ll, rt + lt
+        total = ow + ol + ot
+        overall_pct = round((ow + 0.5 * ot) / total, 3) if total > 0 else 0.0
+        s["overall_live_record"] = f"{ow}-{ol}-{ot}"
+        s["overall_live_win_pct"] = overall_pct
+
+    # Compute live_rank: sort by overall live win% descending, break ties by
+    # current matchup score.
     sorted_live = sorted(
         standings,
-        key=lambda x: (x["live_win_pct"], int(x.get("score", "0"))),
+        key=lambda x: (x.get("overall_live_win_pct", x.get("live_win_pct", 0.0)), int(x.get("score", "0"))),
         reverse=True,
     )
     for i, s in enumerate(sorted_live, 1):

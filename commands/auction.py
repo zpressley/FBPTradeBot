@@ -61,6 +61,7 @@ class Auction(commands.Cog):
         self._cb_open_week = None
         self._cb_close_week = None
         self._weekly_summary_week = None  # Saturday weekly summary guard
+        self._resolved_week = None  # Sunday resolve guard
         self._last_summary_date = None  # YYYY-MM-DD in ET
         self._last_synced_phase = None  # track phase for website sync
 
@@ -278,8 +279,9 @@ class Auction(commands.Cog):
                 await self._send_weekly_summary()
                 self._weekly_summary_week = week_key
 
-        # Sunday 2:00pm ET: resolve the week (assign winners, charge WB)
-        if now.weekday() == 6 and now.hour == 14 and now.minute == 0:
+        # Sunday 2:00pm+ ET: resolve the week once (assign winners, charge WB).
+        # Catch-up window avoids missing resolution if the bot restarts at 2:01+.
+        if now.weekday() == 6 and now.hour >= 14 and self._resolved_week != week_key:
             try:
                 result = self.manager.resolve_week(now=now)
                 status = result.get("status", "")
@@ -301,13 +303,17 @@ class Auction(commands.Cog):
                             f"Auction resolved: week of {week_key}",
                         )
                     print(f"✅ Auction resolved: {len(winners)} winners")
+                    self._resolved_week = week_key
                 elif status == "no_bids":
                     print("Auction resolve: no bids this week")
+                    self._resolved_week = week_key
+                elif status == "inactive":
+                    self._resolved_week = week_key
             except Exception as exc:
                 print(f"⚠️ Auction resolve failed: {exc}")
-
-        # Daily summary: 9:00am ET, Tue–Fri only (Saturday has weekly summary)
-        if now.weekday() in (1, 2, 3, 4) and now.hour == 9 and now.minute == 0:
+        # Daily summary: 9:00–9:59am ET, Tue–Fri only (Saturday has weekly summary).
+        # Hour-long window prevents missed updates after brief restarts.
+        if now.weekday() in (1, 2, 3, 4) and now.hour == 9:
             if self._last_summary_date != date_key:
                 await self._send_daily_summary()
                 self._last_summary_date = date_key

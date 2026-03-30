@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      BOT_API_URL: ${{ secrets.BOT_API_URL }}
+      BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
       EMAIL_DIGEST_DATA_DIR: email-digest/data
       FBP_HUB_DATA_DIR: fbp-hub/data
 
@@ -54,6 +56,40 @@ jobs:
         # The smart pipeline automatically detects season phase
         # and only runs necessary updates
         python3 data_pipeline/smart_update_all.py
+
+    - name: Post roster sync Discord updates via bot API
+      if: ${{ env.BOT_API_URL != '' && env.BOT_API_KEY != '' }}
+      run: |
+        if [ ! -f data/roster_sync_messages.json ]; then
+          echo "No roster_sync_messages.json found — skipping Discord post."
+          exit 0
+        fi
+
+        python3 - <<'PY'
+import json
+import os
+import requests
+
+path = "data/roster_sync_messages.json"
+with open(path, "r", encoding="utf-8") as f:
+    payload = json.load(f)
+
+has_updates = any(payload.get(k) for k in ("immediate", "batched", "batched_prospect", "batched_free_agency"))
+if not has_updates:
+    print("No roster-sync updates queued — skipping Discord post.")
+    raise SystemExit(0)
+
+payload["post_batched_now"] = False
+url = os.environ["BOT_API_URL"].rstrip("/") + "/api/admin/roster-sync-post"
+resp = requests.post(
+    url,
+    headers={"X-API-Key": os.environ["BOT_API_KEY"]},
+    json=payload,
+    timeout=45,
+)
+print(f"Roster-sync post status: {resp.status_code}")
+resp.raise_for_status()
+PY
 
     - name: Commit and push if data/ changed (fbp-trade-bot)
       run: |
