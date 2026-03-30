@@ -144,10 +144,10 @@
       "win_pct": 0.825,
       "opponent": "WAR",
       "score": "0",
-      "opponent_score": "1",
-      "ties": "19",
-      "live_record": "0-1-19",
-      "live_win_pct": 0.475,
+      "opponent_score": "0",
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -160,7 +160,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -172,7 +172,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 12
+      "overall_live_record": "16-3-21",
+      "overall_live_win_pct": 0.662,
+      "live_rank": 1
     },
     {
       "rank": 2,
@@ -210,6 +212,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "15-4-21",
+      "overall_live_win_pct": 0.637,
       "live_rank": 2
     },
     {
@@ -220,10 +224,10 @@
       "win_pct": 0.725,
       "opponent": "RV",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -248,6 +252,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "14-6-20",
+      "overall_live_win_pct": 0.6,
       "live_rank": 3
     },
     {
@@ -258,10 +264,10 @@
       "win_pct": 0.6,
       "opponent": "DMN",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -286,6 +292,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "11-8-21",
+      "overall_live_win_pct": 0.537,
       "live_rank": 4
     },
     {
@@ -324,6 +332,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "11-8-21",
+      "overall_live_win_pct": 0.537,
       "live_rank": 5
     },
     {
@@ -333,11 +343,11 @@
       "record": "10-9-1",
       "win_pct": 0.525,
       "opponent": "LFB",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -350,7 +360,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -362,6 +372,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "11-9-20",
+      "overall_live_win_pct": 0.525,
       "live_rank": 6
     },
     {
@@ -400,6 +412,8 @@
         "BB/9": null,
         "QS": 0
       },
+      "overall_live_record": "9-10-21",
+      "overall_live_win_pct": 0.487,
       "live_rank": 7
     },
     {
@@ -409,11 +423,11 @@
       "record": "8-11-1",
       "win_pct": 0.425,
       "opponent": "WIZ",
-      "score": "1",
+      "score": "0",
       "opponent_score": "0",
-      "ties": "19",
-      "live_record": "1-0-19",
-      "live_win_pct": 0.525,
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -438,7 +452,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 1
+      "overall_live_record": "8-11-21",
+      "overall_live_win_pct": 0.463,
+      "live_rank": 8
     },
     {
       "rank": 9,
@@ -476,7 +492,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 8
+      "overall_live_record": "7-11-22",
+      "overall_live_win_pct": 0.45,
+      "live_rank": 9
     },
     {
       "rank": 10,
@@ -502,7 +520,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -514,7 +532,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 9
+      "overall_live_record": "5-14-21",
+      "overall_live_win_pct": 0.388,
+      "live_rank": 10
     },
     {
       "rank": 11,
@@ -540,7 +560,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -552,7 +572,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 10
+      "overall_live_record": "4-15-21",
+      "overall_live_win_pct": 0.362,
+      "live_rank": 11
     },
     {
       "rank": 12,
@@ -561,11 +583,11 @@
       "record": "3-16-1",
       "win_pct": 0.175,
       "opponent": "TBB",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -578,7 +600,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -590,7 +612,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "live_rank": 11
+      "overall_live_record": "4-16-20",
+      "overall_live_win_pct": 0.35,
+      "live_rank": 12
     }
   ],
   "matchups": [
@@ -611,7 +635,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -627,7 +651,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "1",
+        "score": "0",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -671,7 +695,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -700,7 +724,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -867,7 +891,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -880,7 +904,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -898,7 +922,7 @@
       "team1": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -911,7 +935,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -954,6 +978,5 @@
         }
       }
     }
-  ],
-  "refreshed_at": "2026-03-30T17:09:17.847189+00:00"
+  ]
 }
