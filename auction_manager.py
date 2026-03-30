@@ -156,9 +156,9 @@ class AuctionManager:
         wizbucks = self._load_json(self.wizbucks_file) or {}
 
         # Basic validations
-        normalized_team = team.upper()
-        if not self._is_team_known(normalized_team, players):
-            return {"success": False, "error": f"Unknown team: {normalized_team}"}
+        normalized_team = self._canonical_team(team, players=players)
+        if not normalized_team:
+            return {"success": False, "error": f"Unknown team: {team}"}
 
         if amount <= 0:
             return {"success": False, "error": "Bid amount must be positive."}
@@ -316,9 +316,9 @@ class AuctionManager:
             return {"success": False, "error": "Bid amount must be positive."}
 
         players = self._load_json(self.players_file) or []
-        normalized_team = team.upper().strip()
-        if not self._is_team_known(normalized_team, players):
-            return {"success": False, "error": f"Unknown team: {normalized_team}"}
+        normalized_team = self._canonical_team(team, players=players)
+        if not normalized_team:
+            return {"success": False, "error": f"Unknown team: {team}"}
 
         prospect = self._find_prospect(players, prospect_id)
         if not prospect:
@@ -436,7 +436,9 @@ class AuctionManager:
         bids: List[Dict[str, Any]] = state.setdefault("bids", [])
         matches: List[Dict[str, Any]] = state.setdefault("matches", [])
 
-        normalized_team = team.upper()
+        normalized_team = self._canonical_team(team)
+        if not normalized_team:
+            return {"success": False, "error": f"Unknown team: {team}"}
         prospect_id_str = str(prospect_id)
 
         # Verify this team is the OB manager for this prospect
@@ -1005,21 +1007,84 @@ class AuctionManager:
 
         return winners_by_prospect
 
-    def _resolve_wb_balance(self, wizbucks: Dict[str, Any], team_abbr: str) -> int:
-        """Look up a team's WB balance, resolving abbr → full franchise name."""
-        if team_abbr in wizbucks:
-            return int(wizbucks[team_abbr])
+    @staticmethod
+    def _normalize_team_token(value: Any) -> str:
+        return " ".join(str(value or "").strip().upper().split())
+
+    def _team_alias_map(self) -> Dict[str, str]:
+        """Return normalized team aliases -> canonical abbreviation."""
         mgr = self._load_json(self.managers_file) or {}
         teams = mgr.get("teams") or {}
-        full_name = (teams.get(team_abbr) or {}).get("name", "")
-        return int(wizbucks.get(full_name, 0))
+        alias_map: Dict[str, str] = {}
+
+        for abbr, info in teams.items():
+            canonical = str(abbr or "").strip().upper()
+            if not canonical:
+                continue
+
+            aliases = {
+                canonical,
+                info.get("manager"),
+                info.get("name"),
+                info.get("full_name"),
+            }
+            for alias in aliases:
+                token = self._normalize_team_token(alias)
+                if token:
+                    alias_map[token] = canonical
+
+        return alias_map
+
+    def _canonical_team(self, team: str, players: Optional[List[Dict[str, Any]]] = None) -> Optional[str]:
+        """Resolve a team input to canonical FBP abbreviation."""
+        token = self._normalize_team_token(team)
+        if not token:
+            return None
+
+        alias_map = self._team_alias_map()
+        if token in alias_map:
+            return alias_map[token]
+
+        # Fallback: derive from players data if available.
+        players = players or []
+        for p in players:
+            abbr = self._normalize_team_token(p.get("FBP_Team"))
+            if not abbr:
+                continue
+            aliases = (
+                p.get("FBP_Team"),
+                p.get("manager"),
+                p.get("owner"),
+            )
+            for alias in aliases:
+                if self._normalize_team_token(alias) == token:
+                    return abbr
+
+        return None
+
+    def _resolve_wb_balance(self, wizbucks: Dict[str, Any], team_abbr: str) -> int:
+        """Look up a team's WB balance, resolving aliases via managers config."""
+        canonical = self._canonical_team(team_abbr) or self._normalize_team_token(team_abbr)
+        if canonical in wizbucks:
+            return int(wizbucks[canonical])
+
+        mgr = self._load_json(self.managers_file) or {}
+        teams = mgr.get("teams") or {}
+        info = teams.get(canonical) or {}
+        lookup_candidates = [
+            info.get("name"),
+            info.get("full_name"),
+            info.get("manager"),
+            canonical,
+        ]
+        for key in lookup_candidates:
+            if key in wizbucks:
+                return int(wizbucks[key])
+
+        return 0
 
     def _is_team_known(self, team: str, players: List[Dict[str, Any]]) -> bool:
-        # Check both abbreviation (FBP_Team) and full name (manager)
-        return any(
-            p.get("FBP_Team") == team or p.get("manager") == team
-            for p in players
-        )
+        return self._canonical_team(team, players=players) is not None
 
     def _find_prospect(self, players: List[Dict[str, Any]], prospect_id: str) -> Optional[Dict[str, Any]]:
         # Primary: match by UPID (canonical identifier)
