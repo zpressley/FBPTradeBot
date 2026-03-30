@@ -609,6 +609,11 @@ async def on_ready():
     if not standings_refresh_tick.is_running():
         standings_refresh_tick.start()
         print("   ✅ Standings refresh task started (every 15 min, noon–1 AM ET)")
+    
+    # Start hourly standings commit/push task during game hours
+    if not standings_commit_tick.is_running():
+        standings_commit_tick.start()
+        print("   ✅ Standings commit task started (hourly, noon–1 AM ET)")
 
     await bot.change_presence(
         activity=discord.Activity(
@@ -2256,6 +2261,7 @@ async def api_admin_pad_retro_discord(
 # ---- Live Standings Refresh ----
 
 _standings_last_refresh: str | None = None
+_standings_last_commit_hour: str | None = None
 
 
 @tasks.loop(minutes=5)
@@ -2306,13 +2312,38 @@ async def standings_refresh_tick():
 
         _standings_last_refresh = data["refreshed_at"]
 
-        _commit_and_push(
-            ["data/standings.json"],
-            f"Live standings refresh {now.strftime('%H:%M ET')}",
-        )
-        print(f"✅ Standings refreshed at {now.strftime('%I:%M %p ET')}")
+        print(f"✅ Standings refreshed at {now.strftime('%I:%M %p ET')} (commit deferred to hourly tick)")
     except Exception as exc:
         print(f"⚠️ Standings refresh failed: {exc}")
+
+
+@tasks.loop(minutes=5)
+async def standings_commit_tick():
+    """Commit/push standings.json at most once per hour during game hours."""
+    global _standings_last_commit_hour
+    now = datetime.now(tz=ET)
+    hour = now.hour
+
+    # Active window: noon (12) through 1 AM (hour 0)
+    if not (hour >= 12 or hour < 1):
+        return
+
+    hour_key = now.strftime("%Y-%m-%d %H")
+    if _standings_last_commit_hour == hour_key:
+        return
+
+    if not os.path.exists("data/standings.json"):
+        return
+
+    try:
+        _commit_and_push(
+            ["data/standings.json"],
+            f"Live standings hourly commit {now.strftime('%Y-%m-%d %H:00 ET')}",
+        )
+        _standings_last_commit_hour = hour_key
+        print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
+    except Exception as exc:
+        print(f"⚠️ Standings hourly commit failed: {exc}")
 
 
 # ---- Roster Sync Message Posting ----
