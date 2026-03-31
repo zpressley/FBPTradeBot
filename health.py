@@ -2401,7 +2401,7 @@ def _commit_roster_sync_queue_state(reason: str) -> None:
 
 @tasks.loop(minutes=1)
 async def roster_sync_batch_tick():
-    """Post batched roster sync messages once daily in a short 9:00 AM ET window.
+    """Post batched roster sync messages once daily at exactly 9:00 AM ET.
 
     This catch-up behavior ensures a brief restart around 9:00 won't cause
     the day to be missed while avoiding reposts from later-day rebuilds.
@@ -2423,7 +2423,7 @@ async def roster_sync_batch_tick():
         except Exception:
             pass
 
-    in_batch_window = now.hour == 9 and now.minute < 15
+    in_batch_window = now.hour == 9 and now.minute == 0
     if in_batch_window and _roster_sync_last_batch_date != date_key:
         ok = await _post_roster_sync_batched_messages()
         if ok:
