@@ -2388,10 +2388,20 @@ ROSTER_SYNC_MESSAGES_FILE = "data/roster_sync_messages.json"
 # Guard: only post batched messages once per calendar day
 _roster_sync_last_batch_date: str | None = None
 
+def _commit_roster_sync_queue_state(reason: str) -> None:
+    """Persist roster sync queue state updates so redeploys don't replay batches."""
+    try:
+        _commit_and_push(
+            [ROSTER_SYNC_MESSAGES_FILE],
+            f"Roster sync queue: {reason}",
+        )
+    except Exception as exc:
+        print(f"⚠️ Failed to queue roster sync queue-state commit: {exc}")
+
 
 @tasks.loop(minutes=1)
 async def roster_sync_batch_tick():
-    """Post batched roster sync messages once daily at/after 9:00 AM ET.
+    """Post batched roster sync messages once daily in a short 9:00 AM ET window.
 
     This catch-up behavior ensures a brief restart around 9:00 won't cause
     the day to be missed while avoiding reposts from later-day rebuilds.
@@ -2413,7 +2423,7 @@ async def roster_sync_batch_tick():
         except Exception:
             pass
 
-    in_batch_window = now.hour >= 9
+    in_batch_window = now.hour == 9 and now.minute < 15
     if in_batch_window and _roster_sync_last_batch_date != date_key:
         ok = await _post_roster_sync_batched_messages()
         if ok:
@@ -2451,6 +2461,7 @@ async def _post_roster_sync_immediate_messages():
         messages["immediate"] = []
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
+        _commit_roster_sync_queue_state("clear immediate queue after Discord post")
 
         print(f"✅ Posted {posted} immediate roster sync messages to Discord")
     except Exception as exc:
@@ -2493,6 +2504,9 @@ async def _post_roster_sync_batched_messages() -> bool:
                     messages["batched_free_agency"] = []
                     with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
                         json.dump(messages, f, indent=2)
+                    _commit_roster_sync_queue_state(
+                        f"clear stale batched queue ({generated_date} != {date_key})"
+                    )
                 print(
                     f"ℹ️ Skipping batched roster sync post: stale queue date {generated_date} (today {date_key})"
                 )
@@ -2513,6 +2527,9 @@ async def _post_roster_sync_batched_messages() -> bool:
                 messages["last_posted_date"] = date_key
                 with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
                     json.dump(messages, f, indent=2)
+                _commit_roster_sync_queue_state(
+                    f"clear duplicate batched queue for already-posted date {date_key}"
+                )
             _roster_sync_last_batch_date = date_key
             print("ℹ️ Skipping batched roster sync post: already sent today")
             return True
@@ -2561,6 +2578,7 @@ async def _post_roster_sync_batched_messages() -> bool:
         messages["last_posted_date"] = date_key
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
             json.dump(messages, f, indent=2)
+        _commit_roster_sync_queue_state(f"mark batched posted for {date_key}")
         _roster_sync_last_batch_date = date_key
 
         print(f"✅ Posted {posted} batched roster sync messages (prospect + free agency)")
@@ -2594,6 +2612,13 @@ async def api_roster_sync_post(
     """
     async def _do_post():
         if payload is not None:
+            existing_payload = {}
+            try:
+                if os.path.exists(ROSTER_SYNC_MESSAGES_FILE):
+                    with open(ROSTER_SYNC_MESSAGES_FILE, "r", encoding="utf-8") as f:
+                        existing_payload = json.load(f) or {}
+            except Exception:
+                existing_payload = {}
             queue_payload = {
                 "generated_at": payload.generated_at or datetime.now(tz=ET).isoformat(),
                 "immediate": list(payload.immediate or []),
@@ -2601,6 +2626,9 @@ async def api_roster_sync_post(
                 "batched_prospect": list(payload.batched_prospect or []),
                 "batched_free_agency": list(payload.batched_free_agency or []),
             }
+            last_posted_date = (existing_payload or {}).get("last_posted_date")
+            if last_posted_date:
+                queue_payload["last_posted_date"] = last_posted_date
             with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
                 json.dump(queue_payload, f, indent=2)
         await _post_roster_sync_immediate_messages()
