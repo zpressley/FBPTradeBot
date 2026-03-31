@@ -1016,8 +1016,15 @@ async def _send_auction_log_message(content: str) -> None:
     """Post an auction log message to the auction portal channel."""
     try:
         channel = bot.get_channel(AUCTION_CHANNEL_ID)
-        if channel:
-            await channel.send(content)
+        if channel is None:
+            try:
+                channel = await bot.fetch_channel(AUCTION_CHANNEL_ID)
+            except Exception:
+                channel = None
+        if channel is None:
+            print(f"⚠️ Auction log channel not found: {AUCTION_CHANNEL_ID}")
+            return
+        await channel.send(content)
     except Exception as exc:
         print(f"⚠️ Failed to send auction log message: {exc}")
 
@@ -1026,8 +1033,15 @@ async def _send_admin_log_message(content: str) -> None:
     """Post an admin change notification to the admin log channel."""
     try:
         channel = bot.get_channel(ADMIN_LOG_CHANNEL_ID)
-        if channel:
-            await channel.send(content)
+        if channel is None:
+            try:
+                channel = await bot.fetch_channel(ADMIN_LOG_CHANNEL_ID)
+            except Exception:
+                channel = None
+        if channel is None:
+            print(f"⚠️ Admin log channel not found: {ADMIN_LOG_CHANNEL_ID}")
+            return
+        await channel.send(content)
     except Exception as exc:
         print(f"⚠️ Failed to send admin log message: {exc}")
 
@@ -1050,6 +1064,27 @@ async def _send_admin_tasks_message(content: str) -> None:
             await channel.send(content)
     except Exception as exc:
         print(f"⚠️ Failed to send admin tasks message: {exc}")
+
+
+def _schedule_bot_coro(coro) -> None:
+    """Schedule a coroutine on the Discord bot loop from any thread."""
+    try:
+        loop = getattr(bot, "loop", None)
+        if loop is None or loop.is_closed():
+            print("⚠️ Discord bot loop unavailable; skipping scheduled coroutine")
+            return
+
+        fut = asyncio.run_coroutine_threadsafe(coro, loop)
+
+        def _done_callback(done_fut):
+            try:
+                done_fut.result()
+            except Exception as exc:
+                print(f"⚠️ Scheduled Discord coroutine failed: {exc}")
+
+        fut.add_done_callback(_done_callback)
+    except Exception as exc:
+        print(f"⚠️ Failed to schedule Discord coroutine: {exc}")
 
 
 def _commit_and_push(file_paths: list[str], message: str) -> None:
@@ -1216,7 +1251,7 @@ async def api_place_bid(
         f"🧢 Player: {player_link}\n\n"
         f"Source: Website Portal"
     )
-    bot.loop.create_task(_send_auction_log_message(content))
+    _schedule_bot_coro(_send_auction_log_message(content))
 
     return result
 
@@ -1273,7 +1308,7 @@ async def api_admin_auction_add_bid(
 
     bid = result.get("bid", {})
     prospect_name = _resolve_prospect_name(bid.get("prospect_id", payload.prospect_id))
-    bot.loop.create_task(
+    _schedule_bot_coro(
         _send_admin_log_message(
             f"🛠️ **Auction Admin Add Bid**\n"
             f"Admin: `{payload.admin}`\n"
@@ -1310,7 +1345,7 @@ async def api_admin_auction_remove_bid(
 
     removed_bid = result.get("removed_bid", {})
     prospect_name = _resolve_prospect_name(removed_bid.get("prospect_id", ""))
-    bot.loop.create_task(
+    _schedule_bot_coro(
         _send_admin_log_message(
             f"🧹 **Auction Admin Remove Bid**\n"
             f"Admin: `{payload.admin}`\n"
@@ -1350,7 +1385,7 @@ async def api_admin_auction_update_amount(
 
     bid = result.get("bid", {})
     prospect_name = _resolve_prospect_name(bid.get("prospect_id", ""))
-    bot.loop.create_task(
+    _schedule_bot_coro(
         _send_admin_log_message(
             f"✏️ **Auction Admin Update Bid Amount**\n"
             f"Admin: `{payload.admin}`\n"
