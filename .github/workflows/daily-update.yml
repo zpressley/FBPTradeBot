@@ -95,11 +95,21 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-
-        # Stage data/ and token.json (token_manager auto-refreshes expired tokens)
+        # Stage data/ and token.json (token_manager auto-refreshes expired tokens).
         # Exclude transient message queues — they're consumed by the bot, not version-controlled.
         git add data/ token.json
-        git reset HEAD -- data/roster_sync_messages.json data/roster_sync_state.json 2>/dev/null || true
+
+        # Roster-sync queue handling:
+        # - If BOT API credentials exist, workflow posts queues directly to the bot API,
+        #   so queue files remain transient (not committed).
+        # - If credentials are missing, keep queue files in git as a fallback so the
+        #   deployed bot can pick them up and post via scheduled batch tick.
+        if [ -n "${BOT_API_URL:-}" ] && [ -n "${BOT_API_KEY:-}" ]; then
+          git reset HEAD -- data/roster_sync_messages.json data/roster_sync_state.json 2>/dev/null || true
+          echo "BOT API credentials detected; queue files excluded from commit."
+        else
+          echo "⚠️ BOT API credentials missing; queue files will be committed for bot-side posting fallback."
+        fi
 
         # If there are no staged changes under data/, exit successfully
         # without committing.
