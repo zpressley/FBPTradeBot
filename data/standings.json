@@ -144,10 +144,10 @@
       "win_pct": 0.825,
       "opponent": "WAR",
       "score": "3",
-      "opponent_score": "14",
-      "ties": "3",
-      "live_record": "3-14-3",
-      "live_win_pct": 0.225,
+      "opponent_score": "13",
+      "ties": "4",
+      "live_record": "3-13-4",
+      "live_win_pct": 0.25,
       "categories": {
         "H/AB": "5/32",
         "R": 4,
@@ -160,7 +160,7 @@
         "TB": 10,
         "AVG": ".156",
         "OPS": ".535",
-        "APP": 5,
+        "APP": 6,
         "IP": "18.0",
         "ER": 8,
         "P_HR": 1,
@@ -172,8 +172,8 @@
         "BB/9": "5.00",
         "QS": 2
       },
-      "overall_live_record": "19-17-4",
-      "overall_live_win_pct": 0.525,
+      "overall_live_record": "19-16-5",
+      "overall_live_win_pct": 0.537,
       "live_rank": 6
     },
     {
@@ -423,11 +423,11 @@
       "record": "8-11-1",
       "win_pct": 0.425,
       "opponent": "WIZ",
-      "score": "14",
+      "score": "13",
       "opponent_score": "3",
-      "ties": "3",
-      "live_record": "14-3-3",
-      "live_win_pct": 0.775,
+      "ties": "4",
+      "live_record": "13-3-4",
+      "live_win_pct": 0.75,
       "categories": {
         "H/AB": "10/28",
         "R": 2,
@@ -452,8 +452,8 @@
         "BB/9": "3.50",
         "QS": 2
       },
-      "overall_live_record": "22-14-4",
-      "overall_live_win_pct": 0.6,
+      "overall_live_record": "21-14-5",
+      "overall_live_win_pct": 0.588,
       "live_rank": 4
     },
     {
@@ -635,7 +635,7 @@
           "TB": 10,
           "AVG": ".156",
           "OPS": ".535",
-          "APP": 5,
+          "APP": 6,
           "IP": "18.0",
           "ER": 8,
           "P_HR": 1,
@@ -651,7 +651,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "14",
+        "score": "13",
         "categories": {
           "H/AB": "10/28",
           "R": 2,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-03-31T20:29:55.254622+00:00"
+  "refreshed_at": "2026-03-31T20:45:39.889478+00:00"
 }
