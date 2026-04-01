@@ -183,13 +183,13 @@
       "record": "15-4-1",
       "win_pct": 0.775,
       "opponent": "JEP",
-      "score": "9",
-      "opponent_score": "8",
+      "score": "10",
+      "opponent_score": "7",
       "ties": "3",
-      "live_record": "9-8-3",
-      "live_win_pct": 0.525,
+      "live_record": "10-7-3",
+      "live_win_pct": 0.575,
       "categories": {
-        "H/AB": "14/60",
+        "H/AB": "14/59",
         "R": 1,
         "H": 14,
         "HR": 0,
@@ -198,8 +198,8 @@
         "BB": 8,
         "K": 11,
         "TB": 17,
-        "AVG": ".233",
-        "OPS": ".607",
+        "AVG": ".237",
+        "OPS": ".616",
         "APP": 2,
         "IP": "4.0",
         "ER": 0,
@@ -212,9 +212,9 @@
         "BB/9": "2.25",
         "QS": 0
       },
-      "overall_live_record": "24-12-4",
-      "overall_live_win_pct": 0.65,
-      "live_rank": 3
+      "overall_live_record": "25-11-4",
+      "overall_live_win_pct": 0.675,
+      "live_rank": 1
     },
     {
       "rank": 3,
@@ -294,7 +294,7 @@
       },
       "overall_live_record": "25-12-3",
       "overall_live_win_pct": 0.662,
-      "live_rank": 1
+      "live_rank": 2
     },
     {
       "rank": 5,
@@ -315,26 +315,26 @@
         "HR": 5,
         "RBI": 8,
         "SB": 2,
-        "BB": 9,
+        "BB": 8,
         "K": 6,
         "TB": 33,
         "AVG": ".263",
-        "OPS": ".943",
+        "OPS": ".933",
         "APP": 6,
-        "IP": "9.1",
+        "IP": "8.2",
         "ER": 4,
         "P_HR": 1,
         "P_K": 9,
         "P_TB": 13,
-        "ERA": "3.86",
-        "K/9": "8.68",
-        "H/9": "7.71",
-        "BB/9": "7.71",
+        "ERA": "4.15",
+        "K/9": "9.35",
+        "H/9": "8.31",
+        "BB/9": "8.31",
         "QS": 0
       },
       "overall_live_record": "25-13-2",
       "overall_live_win_pct": 0.65,
-      "live_rank": 2
+      "live_rank": 3
     },
     {
       "rank": 6,
@@ -383,11 +383,11 @@
       "record": "9-10-1",
       "win_pct": 0.475,
       "opponent": "B2J",
-      "score": "8",
-      "opponent_score": "9",
+      "score": "7",
+      "opponent_score": "10",
       "ties": "3",
-      "live_record": "8-9-3",
-      "live_win_pct": 0.475,
+      "live_record": "7-10-3",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "13/62",
         "R": 7,
@@ -412,8 +412,8 @@
         "BB/9": "3.38",
         "QS": 1
       },
-      "overall_live_record": "17-19-4",
-      "overall_live_win_pct": 0.475,
+      "overall_live_record": "16-20-4",
+      "overall_live_win_pct": 0.45,
       "live_rank": 8
     },
     {
@@ -742,9 +742,9 @@
       "team1": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "9",
+        "score": "10",
         "categories": {
-          "H/AB": "14/60",
+          "H/AB": "14/59",
           "R": 1,
           "H": 14,
           "HR": 0,
@@ -753,8 +753,8 @@
           "BB": 8,
           "K": 11,
           "TB": 17,
-          "AVG": ".233",
-          "OPS": ".607",
+          "AVG": ".237",
+          "OPS": ".616",
           "APP": 2,
           "IP": "4.0",
           "ER": 0,
@@ -771,7 +771,7 @@
       "team2": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "8",
+        "score": "7",
         "categories": {
           "H/AB": "13/62",
           "R": 7,
@@ -810,21 +810,21 @@
           "HR": 5,
           "RBI": 8,
           "SB": 2,
-          "BB": 9,
+          "BB": 8,
           "K": 6,
           "TB": 33,
           "AVG": ".263",
-          "OPS": ".943",
+          "OPS": ".933",
           "APP": 6,
-          "IP": "9.1",
+          "IP": "8.2",
           "ER": 4,
           "P_HR": 1,
           "P_K": 9,
           "P_TB": 13,
-          "ERA": "3.86",
-          "K/9": "8.68",
-          "H/9": "7.71",
-          "BB/9": "7.71",
+          "ERA": "4.15",
+          "K/9": "9.35",
+          "H/9": "8.31",
+          "BB/9": "8.31",
           "QS": 0
         }
       },
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-01T02:38:07.035745+00:00"
+  "refreshed_at": "2026-04-01T02:37:06.096977+00:00"
 }
