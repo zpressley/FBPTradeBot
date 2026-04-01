@@ -3,7 +3,9 @@ name: Notify Website of Data Changes
 on:
   push:
     paths:
-      - 'data/**'  # Only trigger when files in data/ directory change
+      - 'data/**'
+      - '!data/standings.json'
+      - '!data/standings_commit_state.json'
     branches:
       - main
 

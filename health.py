@@ -2297,6 +2297,7 @@ async def api_admin_pad_retro_discord(
 
 _standings_last_refresh: str | None = None
 _standings_last_commit_hour: str | None = None
+_STANDINGS_COMMIT_STATE_FILE = "data/standings_commit_state.json"
 
 
 @tasks.loop(minutes=5)
@@ -2359,26 +2360,39 @@ async def standings_commit_tick():
     now = datetime.now(tz=ET)
     hour = now.hour
 
-    # Active window: noon (12) through 1 AM (hour 0)
     if not (hour >= 12 or hour < 1):
         return
 
     hour_key = now.strftime("%Y-%m-%d %H")
+
+    # Hydrate from disk on first tick after restart so redeploys don't reset the guard
+    if _standings_last_commit_hour is None:
+        try:
+            with open(_STANDINGS_COMMIT_STATE_FILE, "r") as f:
+                _standings_last_commit_hour = json.load(f).get("last_commit_hour")
+        except Exception:
+            pass
+
     if _standings_last_commit_hour == hour_key:
         return
 
     if not os.path.exists("data/standings.json"):
         return
 
+    _commit_and_push(
+        ["data/standings.json"],
+        f"Live standings hourly commit {now.strftime('%Y-%m-%d %H:00 ET')}",
+    )
+    _standings_last_commit_hour = hour_key
+
+    # Persist so the next redeploy doesn't re-commit the same hour
     try:
-        _commit_and_push(
-            ["data/standings.json"],
-            f"Live standings hourly commit {now.strftime('%Y-%m-%d %H:00 ET')}",
-        )
-        _standings_last_commit_hour = hour_key
-        print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
-    except Exception as exc:
-        print(f"⚠️ Standings hourly commit failed: {exc}")
+        with open(_STANDINGS_COMMIT_STATE_FILE, "w") as f:
+            json.dump({"last_commit_hour": hour_key}, f)
+    except Exception:
+        pass
+
+    print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
 
 
 # ---- Roster Sync Message Posting ----
