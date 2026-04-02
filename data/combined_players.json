@@ -11065,17 +11065,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "vargami01",
     "birth_date": "1999-11-17",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20178",
     "fangraphs_name": "Miguel Vargas",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "La Flama Blanca",
     "mlb_id": 678246,
     "mlb_primary_position": "3B",
     "name": "Miguel Vargas",
@@ -11088,7 +11088,7 @@
     "upid": "3501",
     "weight": 225,
     "yahoo_id": "11781",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -11468,7 +11468,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "beckjo01",
@@ -11478,7 +11478,7 @@
     "fangraphs_name": "Jordan Beck",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 687597,
     "mlb_primary_position": "LF",
     "name": "Jordan Beck",
@@ -22736,17 +22736,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 30,
     "bats": "L",
     "bbref_id": "sotogr01",
     "birth_date": "1995-02-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19677",
     "fangraphs_name": "Gregory Soto",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 642397,
     "mlb_primary_position": "P",
     "name": "Gregory Soto",
@@ -32038,7 +32038,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "mckinza01",
@@ -32048,7 +32048,7 @@
     "fangraphs_name": "Zach McKinstry",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 656716,
     "mlb_primary_position": "3B",
     "name": "Zach McKinstry",
@@ -36588,7 +36588,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 27,
     "bats": "R",
     "bbref_id": "vasqura02",
@@ -36598,7 +36598,7 @@
     "fangraphs_name": "Randy Vasquez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 681190,
     "mlb_primary_position": "P",
     "name": "Randy Vasquez",
@@ -40745,7 +40745,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "harvehu01",
@@ -40755,7 +40755,7 @@
     "fangraphs_name": "Hunter Harvey",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 640451,
     "mlb_primary_position": "P",
     "name": "Hunter Harvey",
@@ -41935,17 +41935,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 27,
     "bats": "R",
     "bbref_id": "delucjo01",
     "birth_date": "1998-07-10",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26365",
     "fangraphs_name": "Jonny Deluca",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 676356,
     "mlb_primary_position": "CF",
     "name": "Jonny Deluca",
@@ -50995,17 +50995,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 26,
     "bats": "L",
     "bbref_id": "hicksli01",
     "birth_date": "1999-06-02",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29844",
     "fangraphs_name": "Liam Hicks",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 689414,
     "mlb_primary_position": "C",
     "name": "Liam Hicks",
@@ -52019,7 +52019,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 28,
     "bats": "S",
     "bbref_id": "colliis01",
@@ -52030,7 +52030,7 @@
     "fypd": false,
     "height": "5' 8\"",
     "level": "MLB",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 686555,
     "mlb_primary_position": "LF",
     "name": "Isaac Collins",
