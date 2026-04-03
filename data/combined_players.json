@@ -31914,17 +31914,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 30,
     "bats": "R",
     "bbref_id": "ramiryo01",
     "birth_date": "1995-05-06",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19444",
     "fangraphs_name": "Yohan Ramirez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 670990,
     "mlb_primary_position": "P",
     "name": "Yohan Ramirez",
@@ -37975,7 +37975,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "birth_date": "1999-09-05",
@@ -37984,7 +37984,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 678495,
     "mlb_primary_position": "P",
     "name": "Randy Rodriguez",
@@ -60296,7 +60296,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "leasujo01",
@@ -60306,7 +60306,7 @@
     "fangraphs_name": "Jordan Leasure",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 673929,
     "mlb_primary_position": "P",
     "name": "Jordan Leasure",
