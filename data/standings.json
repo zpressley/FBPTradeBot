@@ -264,10 +264,10 @@
       "win_pct": 0.6,
       "opponent": "DMN",
       "score": "15",
-      "opponent_score": "5",
-      "ties": "0",
-      "live_record": "15-5-0",
-      "live_win_pct": 0.75,
+      "opponent_score": "4",
+      "ties": "1",
+      "live_record": "15-4-1",
+      "live_win_pct": 0.775,
       "categories": {
         "H/AB": "32/129",
         "R": 21,
@@ -280,7 +280,7 @@
         "TB": 59,
         "AVG": ".248",
         "OPS": ".788",
-        "APP": 12,
+        "APP": 13,
         "IP": "34.2",
         "ER": 10,
         "P_HR": 2,
@@ -292,8 +292,8 @@
         "BB/9": "4.15",
         "QS": 2
       },
-      "overall_live_record": "26-12-2",
-      "overall_live_win_pct": 0.675,
+      "overall_live_record": "26-11-3",
+      "overall_live_win_pct": 0.688,
       "live_rank": 1
     },
     {
@@ -583,11 +583,11 @@
       "record": "3-16-1",
       "win_pct": 0.175,
       "opponent": "TBB",
-      "score": "5",
+      "score": "4",
       "opponent_score": "15",
-      "ties": "0",
-      "live_record": "5-15-0",
-      "live_win_pct": 0.25,
+      "ties": "1",
+      "live_record": "4-15-1",
+      "live_win_pct": 0.225,
       "categories": {
         "H/AB": "27/126",
         "R": 19,
@@ -612,8 +612,8 @@
         "BB/9": "3.99",
         "QS": 1
       },
-      "overall_live_record": "8-31-1",
-      "overall_live_win_pct": 0.212,
+      "overall_live_record": "7-31-2",
+      "overall_live_win_pct": 0.2,
       "live_rank": 12
     }
   ],
@@ -922,7 +922,7 @@
       "team1": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "5",
+        "score": "4",
         "categories": {
           "H/AB": "27/126",
           "R": 19,
@@ -964,7 +964,7 @@
           "TB": 59,
           "AVG": ".248",
           "OPS": ".788",
-          "APP": 12,
+          "APP": 13,
           "IP": "34.2",
           "ER": 10,
           "P_HR": 2,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-04T16:01:28.117179+00:00"
+  "refreshed_at": "2026-04-04T16:58:25.048222+00:00"
 }
