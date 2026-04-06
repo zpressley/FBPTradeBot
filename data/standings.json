@@ -384,10 +384,10 @@
       "win_pct": 0.463,
       "opponent": "DMN",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -412,9 +412,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "18-21-21",
-      "overall_live_win_pct": 0.475,
-      "live_rank": 7
+      "overall_live_record": "18-22-20",
+      "overall_live_win_pct": 0.467,
+      "live_rank": 8
     },
     {
       "rank": 8,
@@ -454,7 +454,7 @@
       },
       "overall_live_record": "17-20-23",
       "overall_live_win_pct": 0.475,
-      "live_rank": 8
+      "live_rank": 7
     },
     {
       "rank": 9,
@@ -543,11 +543,11 @@
       "record": "11-27-2",
       "win_pct": 0.3,
       "opponent": "WAR",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -560,7 +560,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -572,8 +572,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "11-27-22",
-      "overall_live_win_pct": 0.367,
+      "overall_live_record": "12-27-21",
+      "overall_live_win_pct": 0.375,
       "live_rank": 11
     },
     {
@@ -922,7 +922,7 @@
       "team1": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -935,7 +935,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-06T17:57:47.735107+00:00"
+  "refreshed_at": "2026-04-06T18:55:40.007822+00:00"
 }
