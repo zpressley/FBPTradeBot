@@ -184,10 +184,10 @@
       "win_pct": 0.663,
       "opponent": "RV",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -212,9 +212,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "25-12-23",
-      "overall_live_win_pct": 0.608,
-      "live_rank": 2
+      "overall_live_record": "25-13-22",
+      "overall_live_win_pct": 0.6,
+      "live_rank": 3
     },
     {
       "rank": 3,
@@ -223,11 +223,11 @@
       "record": "26-13-1",
       "win_pct": 0.663,
       "opponent": "JEP",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -240,7 +240,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -252,9 +252,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "26-13-21",
-      "overall_live_win_pct": 0.608,
-      "live_rank": 3
+      "overall_live_record": "27-13-20",
+      "overall_live_win_pct": 0.617,
+      "live_rank": 2
     },
     {
       "rank": 4,
@@ -343,11 +343,11 @@
       "record": "21-17-2",
       "win_pct": 0.55,
       "opponent": "B2J",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -360,7 +360,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -372,8 +372,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "21-17-22",
-      "overall_live_win_pct": 0.533,
+      "overall_live_record": "22-17-21",
+      "overall_live_win_pct": 0.542,
       "live_rank": 6
     },
     {
@@ -414,7 +414,7 @@
       },
       "overall_live_record": "18-22-20",
       "overall_live_win_pct": 0.467,
-      "live_rank": 8
+      "live_rank": 7
     },
     {
       "rank": 8,
@@ -424,10 +424,10 @@
       "win_pct": 0.463,
       "opponent": "WIZ",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -452,9 +452,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "17-20-23",
-      "overall_live_win_pct": 0.475,
-      "live_rank": 7
+      "overall_live_record": "17-21-22",
+      "overall_live_win_pct": 0.467,
+      "live_rank": 8
     },
     {
       "rank": 9,
@@ -622,7 +622,7 @@
       "team1": {
         "team": "WIZ",
         "name": "Whiz Kids",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -635,7 +635,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -771,7 +771,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -784,7 +784,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-06T18:55:40.007822+00:00"
+  "refreshed_at": "2026-04-06T19:49:56.594179+00:00"
 }
