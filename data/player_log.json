@@ -54651,5 +54651,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-06T11:16:14.025340-04:00-UPID_6263-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "WIZ",
+    "timestamp": "2026-04-06T11:16:14.025340-04:00",
+    "upid": "6263",
+    "player_name": "Braxton Ashcraft",
+    "team": "PIT",
+    "pos": "SP,RP",
+    "age": 26,
+    "level": "",
+    "team_rank": null,
+    "rank": 274,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]

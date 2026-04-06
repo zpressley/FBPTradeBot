@@ -2608,5 +2608,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_contract_purchase_1775488574",
+    "timestamp": "2026-04-06T15:16:14.013824Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 110,
+    "balance_after": 100,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Braxton Ashcraft PC \u2192 BC",
+    "related_player": {
+      "upid": "6263",
+      "name": "Braxton Ashcraft"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
