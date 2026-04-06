@@ -331,7 +331,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 31,
     "bats": "S",
     "bbref_id": "reynobr01",
@@ -341,7 +341,7 @@
     "fangraphs_name": "Bryan Reynolds",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 668804,
     "mlb_primary_position": "RF",
     "name": "Bryan Reynolds",
@@ -953,7 +953,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "vientma01",
@@ -963,7 +963,7 @@
     "fangraphs_name": "Mark Vientos",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 668901,
     "mlb_primary_position": "3B",
     "name": "Mark Vientos",
@@ -2044,7 +2044,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "S",
     "bbref_id": "castrwi01",
@@ -2054,7 +2054,7 @@
     "fangraphs_name": "Willi Castro",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 650489,
     "mlb_primary_position": "LF",
     "name": "Willi Castro",
@@ -7310,7 +7310,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "mayoco01",
@@ -7321,7 +7321,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 691723,
     "mlb_primary_position": "1B",
     "name": "Coby Mayo",
@@ -12717,17 +12717,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "L",
     "bbref_id": "halldl01",
     "birth_date": "1998-09-19",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22207",
     "fangraphs_name": "DL Hall",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "",
+    "manager": "La Flama Blanca",
     "mlb_id": 669084,
     "mlb_primary_position": "P",
     "name": "DL Hall",
@@ -12739,7 +12739,7 @@
     "upid": "3497",
     "weight": 204,
     "yahoo_id": "10848",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "TBB",
@@ -26371,17 +26371,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "L",
     "bbref_id": "isbelky01",
     "birth_date": "1997-03-03",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21614",
     "fangraphs_name": "Kyle Isbel",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 664728,
     "mlb_primary_position": "CF",
     "name": "Kyle Isbel",
@@ -31440,7 +31440,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "megilty01",
@@ -31450,7 +31450,7 @@
     "fangraphs_name": "Tylor Megill",
     "fypd": false,
     "height": "6' 7\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 656731,
     "mlb_primary_position": "P",
     "name": "Tylor Megill",
@@ -100505,7 +100505,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "ponceco01",
@@ -100515,7 +100515,7 @@
     "fangraphs_name": "Cody Ponce",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 664074,
     "mlb_primary_position": "P",
     "name": "Cody Ponce",
@@ -107488,7 +107488,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "lauerer01",
@@ -107499,7 +107499,7 @@
     "fangraphs_name": "Eric Lauer",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 641778,
     "mlb_primary_position": "P",
     "name": "Eric Lauer",
