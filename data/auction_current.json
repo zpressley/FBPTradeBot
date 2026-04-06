@@ -1,44 +1,21 @@
 {
-  "bids": [
-    {
-      "admin": "zpressley",
-      "amount": 10,
-      "bid_id": "bid-75d5ab0ed795",
-      "bid_type": "OB",
-      "date": "2026-03-30",
-      "prospect_id": "7066",
-      "source": "admin",
-      "team": "HAM",
-      "timestamp": "2026-03-31T03:51:04.941413+00:00"
-    },
-    {
-      "admin": "zpressley",
-      "amount": 10,
-      "bid_id": "bid-7d5fb3f2d301",
-      "bid_type": "OB",
-      "date": "2026-03-30",
-      "prospect_id": "4634",
-      "source": "admin",
-      "team": "DRO",
-      "timestamp": "2026-03-31T03:55:59.739546+00:00"
-    }
-  ],
-  "last_updated": "2026-04-04T04:00:07.794513+00:00",
+  "bids": [],
+  "last_updated": "2026-04-06T19:00:28.699728+00:00",
   "matches": [],
-  "phase": "ob_final",
+  "phase": "ob_window",
   "priority_order": [
-    "DMN",
-    "DRO",
-    "CFL",
     "SAD",
-    "WAR",
+    "DMN",
+    "CFL",
+    "DRO",
     "JEP",
+    "WAR",
     "RV",
-    "HAM",
-    "TBB",
     "LFB",
+    "TBB",
+    "WIZ",
     "B2J",
-    "WIZ"
+    "HAM"
   ],
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
@@ -46,5 +23,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-03-30"
+  "week_start": "2026-04-06"
 }
