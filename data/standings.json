@@ -184,10 +184,10 @@
       "win_pct": 0.663,
       "opponent": "RV",
       "score": "8",
-      "opponent_score": "8",
-      "ties": "4",
-      "live_record": "8-8-4",
-      "live_win_pct": 0.5,
+      "opponent_score": "9",
+      "ties": "3",
+      "live_record": "8-9-3",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "8/32",
         "R": 3,
@@ -212,8 +212,8 @@
         "BB/9": "5.00",
         "QS": 0
       },
-      "overall_live_record": "33-20-7",
-      "overall_live_win_pct": 0.608,
+      "overall_live_record": "33-21-6",
+      "overall_live_win_pct": 0.6,
       "live_rank": 2
     },
     {
@@ -280,7 +280,7 @@
         "TB": 5,
         "AVG": ".139",
         "OPS": ".364",
-        "APP": 4,
+        "APP": 5,
         "IP": "7.1",
         "ER": 6,
         "P_HR": 1,
@@ -343,11 +343,11 @@
       "record": "21-17-2",
       "win_pct": 0.55,
       "opponent": "B2J",
-      "score": "8",
+      "score": "9",
       "opponent_score": "8",
-      "ties": "4",
-      "live_record": "8-8-4",
-      "live_win_pct": 0.5,
+      "ties": "3",
+      "live_record": "9-8-3",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "8/29",
         "R": 9,
@@ -360,7 +360,7 @@
         "TB": 14,
         "AVG": ".276",
         "OPS": ".816",
-        "APP": 2,
+        "APP": 3,
         "IP": "5.0",
         "ER": 6,
         "P_HR": 2,
@@ -372,8 +372,8 @@
         "BB/9": "7.20",
         "QS": 0
       },
-      "overall_live_record": "29-25-6",
-      "overall_live_win_pct": 0.533,
+      "overall_live_record": "30-25-5",
+      "overall_live_win_pct": 0.542,
       "live_rank": 5
     },
     {
@@ -503,11 +503,11 @@
       "record": "14-24-2",
       "win_pct": 0.375,
       "opponent": "SAD",
-      "score": "6",
+      "score": "7",
       "opponent_score": "6",
-      "ties": "8",
-      "live_record": "6-6-8",
-      "live_win_pct": 0.5,
+      "ties": "7",
+      "live_record": "7-6-7",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "9/31",
         "R": 5,
@@ -520,7 +520,7 @@
         "TB": 15,
         "AVG": ".290",
         "OPS": ".807",
-        "APP": 1,
+        "APP": 2,
         "IP": "1.0",
         "ER": 0,
         "P_HR": 0,
@@ -532,8 +532,8 @@
         "BB/9": "9.00",
         "QS": 0
       },
-      "overall_live_record": "20-30-10",
-      "overall_live_win_pct": 0.417,
+      "overall_live_record": "21-30-9",
+      "overall_live_win_pct": 0.425,
       "live_rank": 9
     },
     {
@@ -584,10 +584,10 @@
       "win_pct": 0.3,
       "opponent": "CFL",
       "score": "6",
-      "opponent_score": "6",
-      "ties": "8",
-      "live_record": "6-6-8",
-      "live_win_pct": 0.5,
+      "opponent_score": "7",
+      "ties": "7",
+      "live_record": "6-7-7",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "8/32",
         "R": 5,
@@ -612,8 +612,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "17-33-10",
-      "overall_live_win_pct": 0.367,
+      "overall_live_record": "17-34-9",
+      "overall_live_win_pct": 0.358,
       "live_rank": 12
     }
   ],
@@ -771,7 +771,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "8",
+        "score": "9",
         "categories": {
           "H/AB": "8/29",
           "R": 9,
@@ -784,7 +784,7 @@
           "TB": 14,
           "AVG": ".276",
           "OPS": ".816",
-          "APP": 2,
+          "APP": 3,
           "IP": "5.0",
           "ER": 6,
           "P_HR": 2,
@@ -802,7 +802,7 @@
       "team1": {
         "team": "CFL",
         "name": "Country Fried Lamb",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "9/31",
           "R": 5,
@@ -815,7 +815,7 @@
           "TB": 15,
           "AVG": ".290",
           "OPS": ".807",
-          "APP": 1,
+          "APP": 2,
           "IP": "1.0",
           "ER": 0,
           "P_HR": 0,
@@ -904,7 +904,7 @@
           "TB": 5,
           "AVG": ".139",
           "OPS": ".364",
-          "APP": 4,
+          "APP": 5,
           "IP": "7.1",
           "ER": 6,
           "P_HR": 1,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-07T16:03:34.846638+00:00"
+  "refreshed_at": "2026-04-07T17:00:26.776910+00:00"
 }
