@@ -62,9 +62,20 @@
       "prospect_id": "3913",
       "team": "DRO",
       "timestamp": "2026-04-07T19:07:50.278997+00:00"
+    },
+    {
+      "admin": "kylek_japisx",
+      "amount": 10,
+      "bid_id": "bid-3ca4b816f8b2",
+      "bid_type": "OB",
+      "date": "2026-04-07",
+      "prospect_id": "3909",
+      "source": "admin",
+      "team": "WIZ",
+      "timestamp": "2026-04-08T02:56:15.506406+00:00"
     }
   ],
-  "last_updated": "2026-04-07T19:07:50.278997+00:00",
+  "last_updated": "2026-04-08T02:56:15.506406+00:00",
   "matches": [],
   "phase": "cb_window",
   "priority_order": [
