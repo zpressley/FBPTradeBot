@@ -55456,5 +55456,28 @@
     "years": "",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-08T09:18:57.025350-04:00-UPID_3584-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "JEP",
+    "timestamp": "2026-04-08T09:18:57.025350-04:00",
+    "upid": "3584",
+    "player_name": "Owen Caissie",
+    "team": "CHC",
+    "pos": "CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 381,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]

@@ -2629,5 +2629,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775654337",
+    "timestamp": "2026-04-08T13:18:57.014661Z",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 160,
+    "balance_after": 150,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Owen Caissie PC \u2192 BC",
+    "related_player": {
+      "upid": "3584",
+      "name": "Owen Caissie"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
