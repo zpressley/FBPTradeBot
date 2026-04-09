@@ -2951,7 +2951,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "singebr01",
@@ -2961,7 +2961,7 @@
     "fangraphs_name": "Brady Singer",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 663903,
     "mlb_primary_position": "P",
     "name": "Brady Singer",
@@ -41935,7 +41935,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "delucjo01",
@@ -41945,7 +41945,7 @@
     "fangraphs_name": "Jonny Deluca",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 676356,
     "mlb_primary_position": "CF",
     "name": "Jonny Deluca",
@@ -49495,17 +49495,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
     "birth_date": "1997-06-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26143",
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -58236,7 +58236,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "dreyeja01",
@@ -58249,7 +58249,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 676263,
     "mlb_primary_position": "P",
     "name": "Jack Dreyer",
