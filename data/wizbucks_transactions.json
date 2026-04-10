@@ -2671,5 +2671,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775849054",
+    "timestamp": "2026-04-10T19:24:14.142199Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 150,
+    "balance_after": 145,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: James Triantos DC \u2192 PC",
+    "related_player": {
+      "upid": "3580",
+      "name": "James Triantos"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

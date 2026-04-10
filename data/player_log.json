@@ -55939,5 +55939,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-04-10T15:24:14.144550-04:00-UPID_3580-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "JEP",
+    "timestamp": "2026-04-10T15:24:14.144550-04:00",
+    "upid": "3580",
+    "player_name": "James Triantos",
+    "team": "CHC",
+    "pos": "2B,CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
