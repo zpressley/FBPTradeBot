@@ -55916,5 +55916,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-10T14:23:46.456222-04:00-UPID_7624-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "WAR",
+    "timestamp": "2026-04-10T14:23:46.456222-04:00",
+    "upid": "7624",
+    "player_name": "Ryan Waldschmidt",
+    "team": "AZ",
+    "pos": "CF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Weekend Warriors",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 BC"
   }
 ]
