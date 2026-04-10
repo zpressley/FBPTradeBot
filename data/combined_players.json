@@ -21938,7 +21938,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 34,
     "bats": "L",
     "bbref_id": "paganem01",
@@ -21948,7 +21948,7 @@
     "fangraphs_name": "Emilio Pagan",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 641941,
     "mlb_primary_position": "P",
     "name": "Emilio Pag\u00e1n",
@@ -31738,7 +31738,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "vestwi01",
@@ -31749,7 +31749,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 676684,
     "mlb_primary_position": "P",
     "name": "Will Vest",
@@ -31914,7 +31914,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 30,
     "bats": "R",
     "bbref_id": "ramiryo01",
@@ -31924,7 +31924,7 @@
     "fangraphs_name": "Yohan Ramirez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 670990,
     "mlb_primary_position": "P",
     "name": "Yohan Ramirez",
@@ -57600,19 +57600,19 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 28,
     "bats": "L",
     "bbref_id": "headrbr01",
     "birth_date": "1997-12-17",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "27702",
     "fangraphs_name": "Brent Headrick",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "",
+    "manager": "Btwn2Jackies",
     "mlb_id": 687396,
     "mlb_primary_position": "P",
     "name": "Brent Headrick",
