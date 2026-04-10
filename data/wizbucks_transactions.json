@@ -2692,5 +2692,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775849077",
+    "timestamp": "2026-04-10T19:24:37.181465Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 145,
+    "balance_after": 140,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: JR Ritchie DC \u2192 PC",
+    "related_player": {
+      "upid": "3921",
+      "name": "JR Ritchie"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
