@@ -75,7 +75,7 @@
       "timestamp": "2026-04-08T02:56:15.506406+00:00"
     }
   ],
-  "last_updated": "2026-04-11T11:45:06.499247+00:00",
+  "last_updated": "2026-04-11T14:34:05.114865+00:00",
   "matches": [
     {
       "decided_at": "2026-04-11T11:45:06.499247+00:00",
@@ -83,6 +83,13 @@
       "prospect_id": "3913",
       "source": "web",
       "team": "DMN"
+    },
+    {
+      "decided_at": "2026-04-11T14:34:05.114865+00:00",
+      "decision": "forfeit",
+      "prospect_id": "7646",
+      "source": "web",
+      "team": "LFB"
     }
   ],
   "phase": "ob_final",
