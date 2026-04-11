@@ -429,7 +429,9 @@ class AdminRejectionModal(Modal):
 
         # Update the admin review message: keep full details, append rejection, disable buttons
         try:
-            # The modal's interaction.message is the admin review message
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
+            ts = datetime.now(tz=ZoneInfo("US/Eastern")).strftime("%m/%d/%Y %I:%M %p ET")
             msg = interaction.message
             if msg:
                 original = msg.content or ""
@@ -437,7 +439,7 @@ class AdminRejectionModal(Modal):
                 for item in view.children:
                     item.disabled = True
                 await msg.edit(
-                    content=original + f"\n\n❌ **REJECTED** by {admin_team}: {self.reason.value}",
+                    content=original + f"\n\n❌ **REJECTED** by {admin_team} (<@{self.rejector.id}>) — {ts}\nReason: {self.reason.value}",
                     view=view,
                 )
         except Exception as exc:
@@ -525,8 +527,14 @@ class AdminReviewView(View):
             for item in self.children:
                 item.disabled = True
             try:
+                from datetime import datetime
+                from zoneinfo import ZoneInfo
+                ts = datetime.now(tz=ZoneInfo("US/Eastern")).strftime("%m/%d/%Y %I:%M %p ET")
                 original = interaction.message.content or ""
-                await interaction.message.edit(content=original + "\n\n✅ **APPROVED** and posted to #trades", view=self)
+                await interaction.message.edit(
+                    content=original + f"\n\n✅ **APPROVED** by {admin_team} (<@{interaction.user.id}>) — {ts}\nPosted to #trades.",
+                    view=self,
+                )
             except Exception:
                 pass
             try:
@@ -603,8 +611,14 @@ class AdminReviewView(View):
         for item in self.children:
             item.disabled = True
         try:
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
+            ts = datetime.now(tz=ZoneInfo("US/Eastern")).strftime("%m/%d/%Y %I:%M %p ET")
             original = interaction.message.content or ""
-            await interaction.message.edit(content=original + "\n\n✅ **APPROVED** and posted to #trades", view=self)
+            await interaction.message.edit(
+                content=original + f"\n\n✅ **APPROVED** by {admin_team} (<@{interaction.user.id}>) — {ts}\nPosted to #trades.",
+                view=self,
+            )
         except Exception:
             pass
         try:

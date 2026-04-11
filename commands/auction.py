@@ -1,3 +1,5 @@
+import json
+
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands
@@ -8,6 +10,7 @@ from commands.utils import DISCORD_ID_TO_TEAM, MANAGER_DISCORD_IDS
 AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel
 AUCTION_BOARD_URL = "https://zpressley.github.io/fbp-hub/auction.html"
 PLAYER_PROFILE_BASE_URL = "https://zpressley.github.io/fbp-hub/player-profile.html"
+_AUCTION_RESOLVED_STATE_FILE = "data/auction_resolved_state.json"
 
 # Module-level commit function, set by health.py on_ready
 _auction_commit_fn = None
@@ -91,8 +94,8 @@ class Auction(commands.Cog):
         # Basic phase copy; website will provide the full portal UI.
         phase_text = {
             AuctionPhase.OFF_WEEK: "No auction this week.",
-            AuctionPhase.OB_WINDOW: "Originating bids are open (Mon 3pm–Tue 6:00am).",
-            AuctionPhase.CB_WINDOW: "Challenge bids are open (Tue 6:00am–Fri 9:00pm).",
+            AuctionPhase.OB_WINDOW: "Originating bids are open (Mon 3pm\u2013Tue midnight ET).",
+            AuctionPhase.CB_WINDOW: "Challenge bids are open (Wed midnight\u2013Fri 9:00pm ET).",
             AuctionPhase.OB_FINAL: "OB managers may match or forfeit (Saturday).",
             AuctionPhase.PROCESSING: "Auction is processing (Sunday).",
         }[phase]
@@ -250,19 +253,28 @@ class Auction(commands.Cog):
         week_key = week_start.isoformat()
         date_key = now.date().isoformat()
 
+        # Hydrate _resolved_week from disk on first tick after restart so
+        # Railway redeploys don't reset the Sunday resolve guard.
+        if self._resolved_week is None:
+            try:
+                with open(_AUCTION_RESOLVED_STATE_FILE, "r") as f:
+                    self._resolved_week = json.load(f).get("resolved_week")
+            except Exception:
+                pass
+
         # OB window open: Monday 3:00pm ET
         if now.weekday() == 0 and now.hour == 15 and now.minute == 0:
             if self._ob_open_week != week_key:
                 await self._send_ob_open_alert()
                 self._ob_open_week = week_key
 
-        # OB window closed: Tuesday 8:00am ET (window actually closes at 6am)
-        if now.weekday() == 1 and now.hour == 8 and now.minute == 0:
+        # OB window closed: Wednesday 8:00am ET (window closed at midnight Tue/Wed)
+        if now.weekday() == 2 and now.hour == 8 and now.minute == 0:
             if self._ob_close_week != week_key:
                 await self._send_ob_closed_alert()
                 self._ob_close_week = week_key
-        # CB window open message: Tuesday 8:00am ET (window opens at 6am)
-        if now.weekday() == 1 and now.hour == 8 and now.minute == 0:
+        # CB window open message: Wednesday 8:00am ET (window opened at midnight Tue/Wed)
+        if now.weekday() == 2 and now.hour == 8 and now.minute == 0:
             if self._cb_open_week != week_key:
                 await self._send_cb_open_alert()
                 self._cb_open_week = week_key
@@ -304,11 +316,24 @@ class Auction(commands.Cog):
                         )
                     print(f"✅ Auction resolved: {len(winners)} winners")
                     self._resolved_week = week_key
+                    try:
+                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
+                            json.dump({"resolved_week": week_key}, f)
+                    except Exception:
+                        pass
                 elif status == "no_bids":
                     print("Auction resolve: no bids this week")
                     self._resolved_week = week_key
                 elif status == "inactive":
                     self._resolved_week = week_key
+                elif status == "already_resolved":
+                    print(f"ℹ️ Auction already resolved for week {week_key} — skipping")
+                    self._resolved_week = week_key
+                    try:
+                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
+                            json.dump({"resolved_week": week_key}, f)
+                    except Exception:
+                        pass
             except Exception as exc:
                 print(f"⚠️ Auction resolve failed: {exc}")
         # Daily summary: 9:00–9:59am ET, Tue–Fri only (Saturday has weekly summary).
@@ -351,7 +376,7 @@ class Auction(commands.Cog):
             return
         msg = (
             "@everyone 🛑 **Originating Bid Window is Now Closed!**\n"
-            "OBs closed at 6:00 AM ET for this week."
+            "OBs closed at midnight ET. Challenge Bid window is now open."
         )
         await channel.send(msg)
 
@@ -361,7 +386,7 @@ class Auction(commands.Cog):
             return
         msg = (
             "@everyone 🟡 **Challenge Bid Window is Now Open!**\n"
-            "CBs opened at 6:00 AM ET. Posting this reminder at 8:00 AM ET."
+            "CBs opened at midnight ET. Challenge Bid window runs Wed\u2013Fri 9:00 PM ET."
         )
         await channel.send(msg)
 

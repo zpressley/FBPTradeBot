@@ -172,10 +172,10 @@ class AuctionManager:
 
         # Phase-specific rules
         if bid_type_enum is BidType.OB and phase is not AuctionPhase.OB_WINDOW:
-            return {"success": False, "error": "Originating bids are only allowed Mon 3pm–Tue 6:00am (ET)."}
+            return {"success": False, "error": "Originating bids are only allowed Mon 3pm\u2013Tue midnight ET."}
 
         if bid_type_enum is BidType.CB and phase is not AuctionPhase.CB_WINDOW:
-            return {"success": False, "error": "Challenge bids are only allowed Tue 6:00am–Fri 9:00pm (ET)."}
+            return {"success": False, "error": "Challenge bids are only allowed Wed midnight\u2013Fri 9:00pm ET."}
 
         if bid_type_enum is BidType.OB and amount < 10:
             return {"success": False, "error": "Originating bids must be at least $10 WB."}
@@ -493,6 +493,12 @@ class AuctionManager:
         if not self._is_week_active(now.date(), state["schedule_meta"]):
             return {"status": "inactive", "winners": {}}
 
+        # Idempotency guard: if already resolved this week, don't re-process.
+        # This prevents Railway redeploys from re-running resolution and
+        # re-posting the Discord announcement.
+        if state.get("resolved_at"):
+            return {"status": "already_resolved", "winners": state.get("resolved_winners") or {}}
+
         bids: List[Dict[str, Any]] = state.setdefault("bids", [])
         matches: List[Dict[str, Any]] = state.setdefault("matches", [])
 
@@ -763,15 +769,12 @@ class AuctionManager:
         def et_time(h: int, m: int = 0) -> time:
             return time(hour=h, minute=m, tzinfo=ET)
 
-        # OB: Mon 3pm – Tue 5:59am
+        # OB: Mon 3pm – Tue midnight (EOD Tuesday)
         if weekday == 0 and t >= et_time(15):
             return AuctionPhase.OB_WINDOW
-        if weekday == 1 and t < et_time(6):
+        if weekday == 1:
             return AuctionPhase.OB_WINDOW
-        # CB: Tue 6am – Fri 9pm
-        if weekday == 1 and t >= et_time(6):
-            return AuctionPhase.CB_WINDOW
-        # CB: Wed 12am – Fri 9pm
+        # CB: Wed midnight – Fri 9pm
         if weekday == 2 or weekday == 3:
             return AuctionPhase.CB_WINDOW
         if weekday == 4 and t < et_time(21):
