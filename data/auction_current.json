@@ -75,9 +75,17 @@
       "timestamp": "2026-04-08T02:56:15.506406+00:00"
     }
   ],
-  "last_updated": "2026-04-08T02:56:15.506406+00:00",
-  "matches": [],
-  "phase": "cb_window",
+  "last_updated": "2026-04-11T11:45:06.499247+00:00",
+  "matches": [
+    {
+      "decided_at": "2026-04-11T11:45:06.499247+00:00",
+      "decision": "match",
+      "prospect_id": "3913",
+      "source": "web",
+      "team": "DMN"
+    }
+  ],
+  "phase": "ob_final",
   "priority_order": [
     "SAD",
     "DMN",
