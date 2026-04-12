@@ -2610,6 +2610,111 @@
     }
   },
   {
+    "txn_id": "wb_WIZ_contract_purchase_1775488574",
+    "timestamp": "2026-04-06T15:16:14.013824Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 110,
+    "balance_after": 100,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Braxton Ashcraft PC → BC",
+    "related_player": {
+      "upid": "6263",
+      "name": "Braxton Ashcraft"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC → BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775654337",
+    "timestamp": "2026-04-08T13:18:57.014661Z",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 160,
+    "balance_after": 150,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Owen Caissie PC → BC",
+    "related_player": {
+      "upid": "3584",
+      "name": "Owen Caissie"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC → BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1775845426",
+    "timestamp": "2026-04-10T18:23:46.451904Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 90,
+    "balance_after": 75,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Ryan Waldschmidt DC → BC",
+    "related_player": {
+      "upid": "7624",
+      "name": "Ryan Waldschmidt"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC → BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775849054",
+    "timestamp": "2026-04-10T19:24:14.142199Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 150,
+    "balance_after": 145,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: James Triantos DC → PC",
+    "related_player": {
+      "upid": "3580",
+      "name": "James Triantos"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC → PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1775849077",
+    "timestamp": "2026-04-10T19:24:37.181465Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 145,
+    "balance_after": 140,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: JR Ritchie DC → PC",
+    "related_player": {
+      "upid": "3921",
+      "name": "JR Ritchie"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC → PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
+  },
+  {
     "team": "HAM",
     "amount": -10,
     "transaction_type": "auction_winner",
