@@ -8623,7 +8623,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "marteno01",
@@ -8633,7 +8633,7 @@
     "fangraphs_name": "Noelvi Marte",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 682622,
     "mlb_primary_position": "OF",
     "name": "Noelvi Marte",
@@ -8675,17 +8675,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 24,
     "bats": "S",
     "bbref_id": "martian02",
     "birth_date": "2002-01-27",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26540",
     "fangraphs_name": "Angel Martinez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 682657,
     "mlb_primary_position": "CF",
     "name": "Angel Mart\u00ednez",
@@ -8697,7 +8697,7 @@
     "upid": "3615",
     "weight": 200,
     "yahoo_id": "12400",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "DMN",
@@ -8956,7 +8956,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "stottbr01",
@@ -8966,7 +8966,7 @@
     "fangraphs_name": "Bryson Stott",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 681082,
     "mlb_primary_position": "2B",
     "name": "Bryson Stott",
@@ -12896,7 +12896,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "diazya02",
@@ -12906,7 +12906,7 @@
     "fangraphs_name": "Yainer Diaz",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 673237,
     "mlb_primary_position": "C",
     "name": "Yainer Diaz",
@@ -21339,17 +21339,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 30,
     "bats": "L",
     "bbref_id": "smithdo02",
     "birth_date": "1995-06-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "15653",
     "fangraphs_name": "Dominic Smith",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 642086,
     "mlb_primary_position": "1B",
     "name": "Dominic Smith",
@@ -34442,7 +34442,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 27,
     "bats": "R",
     "bbref_id": "dingldi01",
@@ -34452,7 +34452,7 @@
     "fangraphs_name": "Dillon Dingler",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 693307,
     "mlb_primary_position": "C",
     "name": "Dillon Dingler",

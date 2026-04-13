@@ -2299,5 +2299,226 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-120426_1636-019": {
+    "trade_id": "TRADE-120426_1636-019",
+    "teams": [
+      "DRO",
+      "CFL"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-04-12T20:36:28.165605Z",
+    "expires_at": "2026-04-26T20:36:28.165605Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7677",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1917",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "4254",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "2483",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "6938",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "DRO",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "2B Travis Bazzana [CLE] [BC]",
+        "OF Ronald Acu\u00f1a Jr. [ATL] [FC 2]",
+        "RP Bennett Sousa [HOU] [TC 1]"
+      ],
+      "CFL": [
+        "SS Francisco Lindor [NYM] [FC 1]",
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "OF Zyhir Hope [LAD] [BC]",
+        "SP Carlos Lagrange [NYY] [PC]",
+        "$10 WB via DRO"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-120426_1700-020": {
+    "trade_id": "TRADE-120426_1700-020",
+    "teams": [
+      "DRO",
+      "CFL"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-04-12T21:00:20.507740Z",
+    "expires_at": "2026-04-26T21:00:20.507740Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7677",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1917",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "4254",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6910",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "2483",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "DRO",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "2B Travis Bazzana [CLE] [BC]",
+        "OF Ronald Acu\u00f1a Jr. [ATL] [FC 2]",
+        "RP Bennett Sousa [HOU] [TC 1]"
+      ],
+      "CFL": [
+        "SP Jonah Tong [NYM] [PC]",
+        "OF Zyhir Hope [LAD] [BC]",
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "SS Francisco Lindor [NYM] [FC 1]",
+        "$15 WB via DRO"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-130426_0543-021": {
+    "trade_id": "TRADE-130426_0543-021",
+    "teams": [
+      "WIZ",
+      "DRO"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-04-13T09:43:27.093574Z",
+    "expires_at": "2026-04-27T09:43:27.093574Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "WIZ",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 30,
+        "from_team": "DRO",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "DRO"
+    ],
+    "receives": {
+      "WIZ": [
+        "$30 WB via DRO"
+      ],
+      "DRO": [
+        "SP Edward Cabrera [CHC] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-04-13T10:04:14.390548Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-04-13T10:04:30.364334Z",
+    "data_applied_at": "2026-04-13T10:04:30.397969Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
