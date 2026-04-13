@@ -1,6 +1,16 @@
 {
-  "bids": [],
-  "last_updated": "2026-04-13T19:00:01.425692+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-81b124e2623a",
+      "bid_type": "OB",
+      "date": "2026-04-13",
+      "prospect_id": "4569",
+      "team": "DMN",
+      "timestamp": "2026-04-13T19:00:16.502924+00:00"
+    }
+  ],
+  "last_updated": "2026-04-13T19:00:16.502924+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
