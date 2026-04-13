@@ -56744,5 +56744,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-13T10:04:30.397969Z-UPID_4077-Trade-TRADE-130426_0543-021",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WIZ",
+    "timestamp": "2026-04-13T10:04:30.397969Z",
+    "upid": "4077",
+    "player_name": "Edward Cabrera",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 27,
+    "level": "",
+    "team_rank": null,
+    "rank": 207,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Andromedans",
+    "contract": "",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "Trade",
+    "event": "TRADE-130426_0543-021: WIZ->DRO"
   }
 ]
