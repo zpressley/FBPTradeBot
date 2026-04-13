@@ -56767,5 +56767,28 @@
     "years": "TC 2",
     "update_type": "Trade",
     "event": "TRADE-130426_0543-021: WIZ->DRO"
+  },
+  {
+    "id": "2026-2026-04-13T06:29:01.134332-04:00-UPID_6696-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "WIZ",
+    "timestamp": "2026-04-13T06:29:01.134332-04:00",
+    "upid": "6696",
+    "player_name": "Cole Carrigg",
+    "team": "COL",
+    "pos": "OF",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]

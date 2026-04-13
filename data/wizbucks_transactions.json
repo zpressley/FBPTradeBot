@@ -2779,5 +2779,26 @@
       "counterparty": "DRO",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_contract_purchase_1776076141",
+    "timestamp": "2026-04-13T10:29:01.130882Z",
+    "team": "WIZ",
+    "amount": -5,
+    "balance_before": 130,
+    "balance_after": 125,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Cole Carrigg DC \u2192 PC",
+    "related_player": {
+      "upid": "6696",
+      "name": "Cole Carrigg"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
