@@ -26,9 +26,18 @@
       "prospect_id": "7979",
       "team": "WIZ",
       "timestamp": "2026-04-14T02:09:38.778126+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-cab768ba856f",
+      "bid_type": "OB",
+      "date": "2026-04-13",
+      "prospect_id": "8047",
+      "team": "WAR",
+      "timestamp": "2026-04-14T02:09:58.027305+00:00"
     }
   ],
-  "last_updated": "2026-04-14T02:09:38.778126+00:00",
+  "last_updated": "2026-04-14T02:09:58.027305+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
