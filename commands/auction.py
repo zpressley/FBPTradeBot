@@ -306,27 +306,33 @@ class Auction(commands.Cog):
                             name = info.get("name", _resolve_prospect_name(pid))
                             lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
                         await channel.send("\n".join(lines))
-                    # Commit updated files
-                    if _auction_commit_fn:
-                        _auction_commit_fn(
-                            ["data/combined_players.json", "data/wizbucks.json",
-                             "data/wizbucks_transactions.json", "data/auction_current.json",
-                             "data/player_log.json"],
-                            f"Auction resolved: week of {week_key}",
-                        )
-                    print(f"✅ Auction resolved: {len(winners)} winners")
+                    # Write guard file to disk BEFORE snapshot so it's captured
+                    # in the commit and survives Railway redeploys.
                     self._resolved_week = week_key
                     try:
                         with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
                             json.dump({"resolved_week": week_key}, f)
                     except Exception:
                         pass
+                    # Commit all updated files including the guard file so that
+                    # any Railway instance deploying from this commit will skip
+                    # re-resolution via both the disk file and resolved_at guards.
+                    if _auction_commit_fn:
+                        _auction_commit_fn(
+                            ["data/combined_players.json", "data/wizbucks.json",
+                             "data/wizbucks_transactions.json", "data/auction_current.json",
+                             "data/player_log.json", _AUCTION_RESOLVED_STATE_FILE],
+                            f"Auction resolved: week of {week_key}",
+                        )
+                    print(f"✅ Auction resolved: {len(winners)} winners")
                 elif status == "no_bids":
                     print("Auction resolve: no bids this week")
                     self._resolved_week = week_key
                 elif status == "inactive":
                     self._resolved_week = week_key
                 elif status == "already_resolved":
+                    # Write + commit the guard file so future Railway deploys
+                    # (e.g. from the next hourly standings push) won't re-resolve.
                     print(f"ℹ️ Auction already resolved for week {week_key} — skipping")
                     self._resolved_week = week_key
                     try:
@@ -334,6 +340,11 @@ class Auction(commands.Cog):
                             json.dump({"resolved_week": week_key}, f)
                     except Exception:
                         pass
+                    if _auction_commit_fn:
+                        _auction_commit_fn(
+                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
+                            f"Auction resolve guard: week of {week_key} [skip notify]",
+                        )
             except Exception as exc:
                 print(f"⚠️ Auction resolve failed: {exc}")
         # Daily summary: 9:00–9:59am ET, Tue–Fri only (Saturday has weekly summary).
