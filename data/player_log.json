@@ -57710,5 +57710,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-14T12:53:39.087341-04:00-UPID_7889-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "TBB",
+    "timestamp": "2026-04-14T12:53:39.087341-04:00",
+    "upid": "7889",
+    "player_name": "Sam Antonacci",
+    "team": "CWS",
+    "pos": "A+",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Bluke Blokes",
+    "contract": "Purchased Contract",
+    "status": "P",
+    "years": "",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
