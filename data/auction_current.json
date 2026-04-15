@@ -44,11 +44,20 @@
       "prospect_id": "7952",
       "team": "HAM",
       "timestamp": "2026-04-14T12:46:08.925866+00:00"
+    },
+    {
+      "amount": 15,
+      "bid_id": "bid-8b03fbaa4fb2",
+      "bid_type": "CB",
+      "date": "2026-04-15",
+      "prospect_id": "8047",
+      "team": "CFL",
+      "timestamp": "2026-04-15T13:23:12.906701+00:00"
     }
   ],
-  "last_updated": "2026-04-14T12:46:08.925866+00:00",
+  "last_updated": "2026-04-15T13:23:12.906701+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "cb_window",
   "priority_order": [
     "DRO",
     "CFL",
