@@ -12434,7 +12434,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "romanjo03",
@@ -12444,7 +12444,7 @@
     "fangraphs_name": "Jordan Romano",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 605447,
     "mlb_primary_position": "P",
     "name": "Jordan Romano",
@@ -15399,7 +15399,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 34,
     "bats": "R",
     "bbref_id": "strahma01",
@@ -15409,7 +15409,7 @@
     "fangraphs_name": "Matt Strahm",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 621381,
     "mlb_primary_position": "P",
     "name": "Matt Strahm",
@@ -21716,7 +21716,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 32,
     "bats": "L",
     "bbref_id": "rodried05",
@@ -21726,7 +21726,7 @@
     "fangraphs_name": "Eduardo Rodriguez",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 593958,
     "mlb_primary_position": "P",
     "name": "Eduardo Rodriguez",
@@ -41666,7 +41666,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41676,7 +41676,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
@@ -58821,16 +58821,16 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "R",
     "birth_date": "1999-11-28",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "",
+    "manager": "Hammers",
     "mlb_id": 694361,
     "mlb_primary_position": "P",
     "name": "Will Klein",
@@ -64628,17 +64628,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 25,
     "bats": "R",
     "bbref_id": "monteke01",
     "birth_date": "2000-07-06",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22630",
     "fangraphs_name": "Keider Montero",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 672456,
     "mlb_primary_position": "P",
     "name": "Keider Montero",
