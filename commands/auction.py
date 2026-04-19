@@ -299,6 +299,23 @@ class Auction(commands.Cog):
                 status = result.get("status", "")
                 winners = result.get("winners", {})
                 if status == "resolved" and winners:
+                    # Step 1: write + commit the guard file and auction state
+                    # BEFORE posting the Discord message. This ensures the guard
+                    # lands in git even if the data commit (step 3) fails, so
+                    # Railway redeploys won't re-resolve and re-announce.
+                    self._resolved_week = week_key
+                    try:
+                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
+                            json.dump({"resolved_week": week_key}, f)
+                    except Exception:
+                        pass
+                    if _auction_commit_fn:
+                        _auction_commit_fn(
+                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
+                            f"Auction resolve guard: week of {week_key}",
+                        )
+
+                    # Step 2: post Discord announcement.
                     channel = await self._get_auction_channel()
                     if channel:
                         lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
@@ -306,23 +323,14 @@ class Auction(commands.Cog):
                             name = info.get("name", _resolve_prospect_name(pid))
                             lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
                         await channel.send("\n".join(lines))
-                    # Write guard file to disk BEFORE snapshot so it's captured
-                    # in the commit and survives Railway redeploys.
-                    self._resolved_week = week_key
-                    try:
-                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
-                            json.dump({"resolved_week": week_key}, f)
-                    except Exception:
-                        pass
-                    # Commit all updated files including the guard file so that
-                    # any Railway instance deploying from this commit will skip
-                    # re-resolution via both the disk file and resolved_at guards.
+
+                    # Step 3: commit the data files. These can fail without
+                    # causing duplicate announcements since the guard is in git.
                     if _auction_commit_fn:
                         _auction_commit_fn(
                             ["data/combined_players.json", "data/wizbucks.json",
-                             "data/wizbucks_transactions.json", "data/auction_current.json",
-                             "data/player_log.json", _AUCTION_RESOLVED_STATE_FILE],
-                            f"Auction resolved: week of {week_key}",
+                             "data/wizbucks_transactions.json", "data/player_log.json"],
+                            f"Auction resolved data: week of {week_key}",
                         )
                     print(f"✅ Auction resolved: {len(winners)} winners")
                 elif status == "no_bids":

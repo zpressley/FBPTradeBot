@@ -1,79 +1,7 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-81b124e2623a",
-      "bid_type": "OB",
-      "date": "2026-04-13",
-      "prospect_id": "4569",
-      "team": "DMN",
-      "timestamp": "2026-04-13T19:00:16.502924+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-c495c5261dda",
-      "bid_type": "OB",
-      "date": "2026-04-13",
-      "prospect_id": "3608",
-      "team": "DRO",
-      "timestamp": "2026-04-13T20:45:26.346620+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-b48fefa9e552",
-      "bid_type": "OB",
-      "date": "2026-04-13",
-      "prospect_id": "7979",
-      "team": "WIZ",
-      "timestamp": "2026-04-14T02:09:38.778126+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-cab768ba856f",
-      "bid_type": "OB",
-      "date": "2026-04-13",
-      "prospect_id": "8047",
-      "team": "WAR",
-      "timestamp": "2026-04-14T02:09:58.027305+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-8357f14c68b3",
-      "bid_type": "OB",
-      "date": "2026-04-14",
-      "prospect_id": "7952",
-      "team": "HAM",
-      "timestamp": "2026-04-14T12:46:08.925866+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-8b03fbaa4fb2",
-      "bid_type": "CB",
-      "date": "2026-04-15",
-      "prospect_id": "8047",
-      "team": "CFL",
-      "timestamp": "2026-04-15T13:23:12.906701+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-af0166a64775",
-      "bid_type": "CB",
-      "date": "2026-04-15",
-      "prospect_id": "4569",
-      "team": "WAR",
-      "timestamp": "2026-04-16T01:58:11.612726+00:00"
-    }
-  ],
-  "last_updated": "2026-04-19T19:06:32.495329+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-04-18T13:26:54.380145+00:00",
-      "decision": "match",
-      "prospect_id": "4569",
-      "source": "web",
-      "team": "DMN"
-    }
-  ],
+  "bids": [],
+  "last_updated": "2026-04-19T19:16:47.925310+00:00",
+  "matches": [],
   "phase": "processing",
   "priority_order": [
     "DRO",
@@ -89,6 +17,34 @@
     "B2J",
     "LFB"
   ],
+  "resolved_at": "2026-04-19T18:00:00+00:00",
+  "resolved_winners": {
+    "3608": {
+      "amount": 10,
+      "name": "Rece Hinds",
+      "team": "DRO"
+    },
+    "4569": {
+      "amount": 15,
+      "name": "Luis Lara",
+      "team": "DMN"
+    },
+    "7952": {
+      "amount": 10,
+      "name": "Daniel Pierce",
+      "team": "HAM"
+    },
+    "7979": {
+      "amount": 10,
+      "name": "Anthony Eyanson",
+      "team": "WIZ"
+    },
+    "8047": {
+      "amount": 15,
+      "name": "Josiah Hartshorn",
+      "team": "CFL"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

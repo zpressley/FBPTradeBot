@@ -243,12 +243,28 @@ class AuctionManager:
                     "error": "You already have a challenge bid on this prospect today.",
                 }
 
-        # Check WizBucks balance (simple check: total - committed >= bid amount)
-        # NOTE: committed calculation here is conservative and will be
-        # refined alongside full Sunday resolution logic.
+        # Check WizBucks balance
         total_balance = self._resolve_wb_balance(wizbucks, normalized_team)
         committed = self._get_committed_wb_for_team(bids, normalized_team)
         available = total_balance - committed
+
+        # For CB raises: if this team already holds the high CB on this prospect,
+        # that amount is included in `committed`. Raising replaces that commitment
+        # rather than adding to it, so add it back to available.
+        if bid_type_enum is BidType.CB:
+            prospect_upid = str(prospect["upid"])
+            current_overall_high = self._get_current_high_bid_amount(bids, prospect_upid)
+            team_high_on_prospect = max(
+                (int(b["amount"]) for b in bids
+                 if b["team"] == normalized_team
+                 and b["prospect_id"] == prospect_upid
+                 and b["bid_type"] == "CB"),
+                default=0,
+            )
+            # Only adjust when team's existing CB is the current high bid
+            # (i.e., it is actually included in committed).
+            if team_high_on_prospect > 0 and team_high_on_prospect >= current_overall_high:
+                available += team_high_on_prospect
 
         if amount > available:
             return {
