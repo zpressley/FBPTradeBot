@@ -62,20 +62,9 @@
       "prospect_id": "4569",
       "team": "WAR",
       "timestamp": "2026-04-16T01:58:11.612726+00:00"
-    },
-    {
-      "admin": "zpressley",
-      "amount": 20,
-      "bid_id": "bid-a87cb096abf1",
-      "bid_type": "CB",
-      "date": "2026-04-17",
-      "prospect_id": "4596",
-      "source": "admin",
-      "team": "WAR",
-      "timestamp": "2026-04-18T03:49:09.285469+00:00"
     }
   ],
-  "last_updated": "2026-04-19T02:06:43.373226+00:00",
+  "last_updated": "2026-04-19T19:06:32.495329+00:00",
   "matches": [
     {
       "decided_at": "2026-04-18T13:26:54.380145+00:00",
@@ -85,7 +74,7 @@
       "team": "DMN"
     }
   ],
-  "phase": "off_week",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "CFL",
