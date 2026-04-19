@@ -229,19 +229,34 @@ class AuctionManager:
                         "error": "Friday CBs require at least one prior CB on this prospect earlier in the week. No last-minute spoiler bids.",
                     }
 
-            # 1 CB per team per prospect per calendar day (ET)
+            # 1 CB per team per prospect per calendar day (ET).
+            # Exception: same-day raises are allowed when the team already
+            # holds the high bid (they're updating their own position, not
+            # entering a new challenge).
             et_date_str = now.date().isoformat()
-            if any(
+            has_cb_today = any(
                 b["team"] == normalized_team
-                and b["prospect_id"] == prospect["upid"]
+                and b["prospect_id"] == str(prospect["upid"])
                 and b["bid_type"] == "CB"
                 and b.get("date") == et_date_str
                 for b in bids
-            ):
-                return {
-                    "success": False,
-                    "error": "You already have a challenge bid on this prospect today.",
-                }
+            )
+            if has_cb_today:
+                current_overall_high = self._get_current_high_bid_amount(bids, str(prospect["upid"]))
+                team_high_today = max(
+                    (int(b["amount"]) for b in bids
+                     if b["team"] == normalized_team
+                     and b["prospect_id"] == str(prospect["upid"])
+                     and b["bid_type"] == "CB"),
+                    default=0,
+                )
+                if team_high_today < current_overall_high:
+                    # Team was outbid — must wait until the next day to counter.
+                    return {
+                        "success": False,
+                        "error": "You already have a challenge bid on this prospect today.",
+                    }
+                # else: team still holds the high bid — allow same-day raise.
 
         # Check WizBucks balance
         total_balance = self._resolve_wb_balance(wizbucks, normalized_team)
