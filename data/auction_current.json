@@ -1,55 +1,27 @@
 {
   "bids": [],
-  "last_updated": "2026-04-19T19:16:47.925310+00:00",
+  "last_updated": "2026-04-20T19:05:47.392752+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
-    "CFL",
-    "SAD",
-    "DMN",
     "JEP",
     "WAR",
-    "RV",
+    "CFL",
+    "SAD",
     "TBB",
+    "RV",
+    "DMN",
     "HAM",
-    "WIZ",
     "B2J",
+    "WIZ",
     "LFB"
   ],
-  "resolved_at": "2026-04-19T18:00:00+00:00",
-  "resolved_winners": {
-    "3608": {
-      "amount": 10,
-      "name": "Rece Hinds",
-      "team": "DRO"
-    },
-    "4569": {
-      "amount": 15,
-      "name": "Luis Lara",
-      "team": "DMN"
-    },
-    "7952": {
-      "amount": 10,
-      "name": "Daniel Pierce",
-      "team": "HAM"
-    },
-    "7979": {
-      "amount": 10,
-      "name": "Anthony Eyanson",
-      "team": "WIZ"
-    },
-    "8047": {
-      "amount": 15,
-      "name": "Josiah Hartshorn",
-      "team": "CFL"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-04-13"
+  "week_start": "2026-04-20"
 }
