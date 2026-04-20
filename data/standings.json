@@ -280,7 +280,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 2,
+        "APP": 3,
         "IP": "3.1",
         "ER": 4,
         "P_HR": 0,
@@ -334,7 +334,7 @@
       },
       "overall_live_record": "40-43-17",
       "overall_live_win_pct": 0.485,
-      "live_rank": 7
+      "live_rank": 8
     },
     {
       "rank": 6,
@@ -383,11 +383,11 @@
       "record": "37-39-4",
       "win_pct": 0.488,
       "opponent": "DRO",
-      "score": "5",
+      "score": "6",
       "opponent_score": "7",
-      "ties": "8",
-      "live_record": "5-7-8",
-      "live_win_pct": 0.45,
+      "ties": "7",
+      "live_record": "6-7-7",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -400,7 +400,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 2,
+        "APP": 3,
         "IP": "1.0",
         "ER": 0,
         "P_HR": 0,
@@ -412,9 +412,9 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "overall_live_record": "42-46-12",
-      "overall_live_win_pct": 0.48,
-      "live_rank": 9
+      "overall_live_record": "43-46-11",
+      "overall_live_win_pct": 0.485,
+      "live_rank": 7
     },
     {
       "rank": 8,
@@ -534,7 +534,7 @@
       },
       "overall_live_record": "40-44-16",
       "overall_live_win_pct": 0.48,
-      "live_rank": 8
+      "live_rank": 9
     },
     {
       "rank": 11,
@@ -584,10 +584,10 @@
       "win_pct": 0.331,
       "opponent": "TBB",
       "score": "7",
-      "opponent_score": "5",
-      "ties": "8",
-      "live_record": "7-5-8",
-      "live_win_pct": 0.55,
+      "opponent_score": "6",
+      "ties": "7",
+      "live_record": "7-6-7",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "1/2",
         "R": 0,
@@ -612,8 +612,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "31-56-13",
-      "overall_live_win_pct": 0.375,
+      "overall_live_record": "31-57-12",
+      "overall_live_win_pct": 0.37,
       "live_rank": 12
     }
   ],
@@ -711,7 +711,7 @@
       "team2": {
         "team": "TBB",
         "name": "The Bluke Blokes",
-        "score": "5",
+        "score": "6",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -724,7 +724,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 2,
+          "APP": 3,
           "IP": "1.0",
           "ER": 0,
           "P_HR": 0,
@@ -815,7 +815,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 2,
+          "APP": 3,
           "IP": "3.1",
           "ER": 4,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-20T20:50:03.241774+00:00"
+  "refreshed_at": "2026-04-20T21:46:27.429570+00:00"
 }
