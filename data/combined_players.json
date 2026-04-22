@@ -7230,7 +7230,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "tovarez01",
@@ -7240,7 +7240,7 @@
     "fangraphs_name": "Ezequiel Tovar",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 678662,
     "mlb_primary_position": "SS",
     "name": "Ezequiel Tovar",
@@ -12718,7 +12718,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 27,
     "bats": "L",
     "bbref_id": "halldl01",
@@ -12728,7 +12728,7 @@
     "fangraphs_name": "DL Hall",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 669084,
     "mlb_primary_position": "P",
     "name": "DL Hall",
@@ -20635,17 +20635,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "L",
     "bbref_id": "lynchda02",
     "birth_date": "1996-11-17",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21537",
     "fangraphs_name": "Daniel Lynch",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 663738,
     "mlb_primary_position": "P",
     "name": "Daniel Lynch IV",
@@ -29475,7 +29475,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "jeffery01",
@@ -29485,7 +29485,7 @@
     "fangraphs_name": "Ryan Jeffers",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 680777,
     "mlb_primary_position": "C",
     "name": "Ryan Jeffers",
@@ -43660,7 +43660,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "sousabe01",
@@ -43670,7 +43670,7 @@
     "fangraphs_name": "Bennett Sousa",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 656986,
     "mlb_primary_position": "P",
     "name": "Bennett Sousa",
