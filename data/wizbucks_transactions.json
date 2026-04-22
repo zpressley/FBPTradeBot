@@ -1526,7 +1526,7 @@
     "balance_before": 340,
     "balance_after": 325,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Jesus Made DC → BC",
+    "description": "Dashboard Self-Service: Jesus Made DC \u2192 BC",
     "related_player": {
       "upid": "7607",
       "name": "Jesus Made"
@@ -1534,7 +1534,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → BC",
+      "upgrade": "DC \u2192 BC",
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
@@ -1547,7 +1547,7 @@
     "balance_before": 325,
     "balance_after": 310,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Luis Pena DC → BC",
+    "description": "Dashboard Self-Service: Luis Pena DC \u2192 BC",
     "related_player": {
       "upid": "7608",
       "name": "Luis Pena"
@@ -1555,7 +1555,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → BC",
+      "upgrade": "DC \u2192 BC",
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
@@ -1568,7 +1568,7 @@
     "balance_before": 310,
     "balance_after": 295,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Travis Sykora DC → BC",
+    "description": "Dashboard Self-Service: Travis Sykora DC \u2192 BC",
     "related_player": {
       "upid": "6597",
       "name": "Travis Sykora"
@@ -1576,7 +1576,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → BC",
+      "upgrade": "DC \u2192 BC",
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
@@ -1589,7 +1589,7 @@
     "balance_before": 295,
     "balance_after": 280,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Gage Jump DC → BC",
+    "description": "Dashboard Self-Service: Gage Jump DC \u2192 BC",
     "related_player": {
       "upid": "7705",
       "name": "Gage Jump"
@@ -1597,7 +1597,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → BC",
+      "upgrade": "DC \u2192 BC",
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
@@ -2313,7 +2313,7 @@
     "balance_before": 120,
     "balance_after": 115,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Jarlin Susana DC → PC",
+    "description": "Dashboard Self-Service: Jarlin Susana DC \u2192 PC",
     "related_player": {
       "upid": "3875",
       "name": "Jarlin Susana"
@@ -2321,7 +2321,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2334,7 +2334,7 @@
     "balance_before": 115,
     "balance_after": 110,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Ryan Sloan DC → PC",
+    "description": "Dashboard Self-Service: Ryan Sloan DC \u2192 PC",
     "related_player": {
       "upid": "7710",
       "name": "Ryan Sloan"
@@ -2342,7 +2342,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2355,7 +2355,7 @@
     "balance_before": 110,
     "balance_after": 105,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Jaxon Wiggins DC → PC",
+    "description": "Dashboard Self-Service: Jaxon Wiggins DC \u2192 PC",
     "related_player": {
       "upid": "6725",
       "name": "Jaxon Wiggins"
@@ -2363,7 +2363,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2476,7 +2476,7 @@
     "balance_before": 90,
     "balance_after": 80,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Roman Anthony PC → BC",
+    "description": "Dashboard Self-Service: Roman Anthony PC \u2192 BC",
     "related_player": {
       "upid": "3852",
       "name": "Roman Anthony"
@@ -2484,7 +2484,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "PC → BC",
+      "upgrade": "PC \u2192 BC",
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
@@ -2617,7 +2617,7 @@
     "balance_before": 110,
     "balance_after": 100,
     "transaction_type": "contract_purchase",
-    "description": "Player Profile Self-Service: Braxton Ashcraft PC → BC",
+    "description": "Player Profile Self-Service: Braxton Ashcraft PC \u2192 BC",
     "related_player": {
       "upid": "6263",
       "name": "Braxton Ashcraft"
@@ -2625,7 +2625,7 @@
     "metadata": {
       "season": 2026,
       "source": "Player Profile Self-Service",
-      "upgrade": "PC → BC",
+      "upgrade": "PC \u2192 BC",
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
@@ -2638,7 +2638,7 @@
     "balance_before": 160,
     "balance_after": 150,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: Owen Caissie PC → BC",
+    "description": "Dashboard Self-Service: Owen Caissie PC \u2192 BC",
     "related_player": {
       "upid": "3584",
       "name": "Owen Caissie"
@@ -2646,7 +2646,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "PC → BC",
+      "upgrade": "PC \u2192 BC",
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
@@ -2659,7 +2659,7 @@
     "balance_before": 90,
     "balance_after": 75,
     "transaction_type": "contract_purchase",
-    "description": "Player Profile Self-Service: Ryan Waldschmidt DC → BC",
+    "description": "Player Profile Self-Service: Ryan Waldschmidt DC \u2192 BC",
     "related_player": {
       "upid": "7624",
       "name": "Ryan Waldschmidt"
@@ -2667,7 +2667,7 @@
     "metadata": {
       "season": 2026,
       "source": "Player Profile Self-Service",
-      "upgrade": "DC → BC",
+      "upgrade": "DC \u2192 BC",
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
@@ -2680,7 +2680,7 @@
     "balance_before": 150,
     "balance_after": 145,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: James Triantos DC → PC",
+    "description": "Dashboard Self-Service: James Triantos DC \u2192 PC",
     "related_player": {
       "upid": "3580",
       "name": "James Triantos"
@@ -2688,7 +2688,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2701,7 +2701,7 @@
     "balance_before": 145,
     "balance_after": 140,
     "transaction_type": "contract_purchase",
-    "description": "Dashboard Self-Service: JR Ritchie DC → PC",
+    "description": "Dashboard Self-Service: JR Ritchie DC \u2192 PC",
     "related_player": {
       "upid": "3921",
       "name": "JR Ritchie"
@@ -2709,7 +2709,7 @@
     "metadata": {
       "season": 2026,
       "source": "Dashboard Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2788,7 +2788,7 @@
     "balance_before": 130,
     "balance_after": 125,
     "transaction_type": "contract_purchase",
-    "description": "Player Profile Self-Service: Cole Carrigg DC → PC",
+    "description": "Player Profile Self-Service: Cole Carrigg DC \u2192 PC",
     "related_player": {
       "upid": "6696",
       "name": "Cole Carrigg"
@@ -2796,7 +2796,7 @@
     "metadata": {
       "season": 2026,
       "source": "Player Profile Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -2805,7 +2805,7 @@
     "team": "DRO",
     "amount": 20,
     "transaction_type": "auction_correction",
-    "description": "Over-deduction correction: 2026-04-06 auction ran 3× due to Railway redeploy bug",
+    "description": "Over-deduction correction: 2026-04-06 auction ran 3\u00d7 due to Railway redeploy bug",
     "timestamp": "2026-04-12T18:00:00+00:00",
     "metadata": {
       "source": "retroactive_fix",
@@ -2905,7 +2905,7 @@
     "balance_before": 120,
     "balance_after": 115,
     "transaction_type": "contract_purchase",
-    "description": "Player Profile Self-Service: Sam Antonacci DC → PC",
+    "description": "Player Profile Self-Service: Sam Antonacci DC \u2192 PC",
     "related_player": {
       "upid": "7889",
       "name": "Sam Antonacci"
@@ -2913,7 +2913,7 @@
     "metadata": {
       "season": 2026,
       "source": "Player Profile Self-Service",
-      "upgrade": "DC → PC",
+      "upgrade": "DC \u2192 PC",
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
@@ -3001,6 +3001,38 @@
       "prospect_id": "7952",
       "amount": 10,
       "source": "auction_resolve_retroactive_fix"
+    }
+  },
+  {
+    "txn_id": "wb_2026-04-22_trade_TRADE-220426_1542-023_DMN_debit_25",
+    "timestamp": "2026-04-22T22:59:38.761808Z",
+    "team": "DMN",
+    "amount": -25,
+    "balance_before": 115,
+    "balance_after": 90,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-220426_1542-023: WizBucks sent to DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-220426_1542-023",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-04-22_trade_TRADE-220426_1542-023_DRO_credit_25",
+    "timestamp": "2026-04-22T22:59:38.761808Z",
+    "team": "DRO",
+    "amount": 25,
+    "balance_before": 30,
+    "balance_after": 55,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-220426_1542-023: WizBucks received from DMN",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-220426_1542-023",
+      "counterparty": "DMN",
+      "source": "trade_portal"
     }
   }
 ]
