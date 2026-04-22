@@ -2591,5 +2591,53 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-220426_1542-023": {
+    "trade_id": "TRADE-220426_1542-023",
+    "teams": [
+      "DRO",
+      "DMN"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-04-22T19:42:31.965760Z",
+    "expires_at": "2026-05-06T19:42:31.965760Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6938",
+        "from_team": "DRO",
+        "to_team": "DMN"
+      },
+      {
+        "type": "player",
+        "upid": "2999",
+        "from_team": "DMN",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 25,
+        "from_team": "DMN",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP,RP Mike Burrows [HOU] [TC 1]",
+        "$25 WB via DMN"
+      ],
+      "DMN": [
+        "SP Carlos Lagrange [NYY] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
