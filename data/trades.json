@@ -2522,5 +2522,60 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-220426_1406-022": {
+    "trade_id": "TRADE-220426_1406-022",
+    "teams": [
+      "HAM",
+      "CFL"
+    ],
+    "initiator_team": "HAM",
+    "status": "pending",
+    "created_at": "2026-04-22T18:06:19.321934Z",
+    "expires_at": "2026-05-06T18:06:19.321934Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1917",
+        "from_team": "CFL",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "2884",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7657",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7944",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "HAM"
+    ],
+    "receives": {
+      "HAM": [
+        "OF Ronald Acu\u00f1a Jr. [ATL] [FC 2]"
+      ],
+      "CFL": [
+        "SP Logan Webb [SF] [FC 1]",
+        "OF Braden Montgomery [CWS] [PC]",
+        "SS Eli Willits [WSH] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
