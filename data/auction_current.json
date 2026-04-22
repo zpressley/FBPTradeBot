@@ -35,9 +35,18 @@
       "prospect_id": "6572",
       "team": "LFB",
       "timestamp": "2026-04-22T11:34:36.949356+00:00"
+    },
+    {
+      "amount": 20,
+      "bid_id": "bid-68ce066e08f2",
+      "bid_type": "CB",
+      "date": "2026-04-22",
+      "prospect_id": "6572",
+      "team": "DRO",
+      "timestamp": "2026-04-22T19:41:51.136774+00:00"
     }
   ],
-  "last_updated": "2026-04-22T11:34:36.949356+00:00",
+  "last_updated": "2026-04-22T19:41:51.136774+00:00",
   "matches": [],
   "phase": "cb_window",
   "priority_order": [
