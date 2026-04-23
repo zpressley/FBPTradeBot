@@ -2522,5 +2522,136 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-220426_1406-022": {
+    "trade_id": "TRADE-220426_1406-022",
+    "teams": [
+      "HAM",
+      "CFL"
+    ],
+    "initiator_team": "HAM",
+    "status": "approved",
+    "created_at": "2026-04-22T18:06:19.321934Z",
+    "expires_at": "2026-05-06T18:06:19.321934Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1917",
+        "from_team": "CFL",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "2884",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7657",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7944",
+        "from_team": "HAM",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "HAM",
+      "CFL"
+    ],
+    "receives": {
+      "HAM": [
+        "OF Ronald Acu\u00f1a Jr. [ATL] [FC 2]"
+      ],
+      "CFL": [
+        "SP Logan Webb [SF] [FC 1]",
+        "OF Braden Montgomery [CWS] [PC]",
+        "SS Eli Willits [WSH] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-04-22T18:07:40.544359Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-04-22T18:28:53.350139Z",
+    "data_applied_at": "2026-04-22T18:28:53.380242Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-220426_1542-023": {
+    "trade_id": "TRADE-220426_1542-023",
+    "teams": [
+      "DRO",
+      "DMN"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-04-22T19:42:31.965760Z",
+    "expires_at": "2026-05-06T19:42:31.965760Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6938",
+        "from_team": "DRO",
+        "to_team": "DMN"
+      },
+      {
+        "type": "player",
+        "upid": "2999",
+        "from_team": "DMN",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 25,
+        "from_team": "DMN",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "DMN"
+    ],
+    "receives": {
+      "DRO": [
+        "SP,RP Mike Burrows [HOU] [TC 1]",
+        "$25 WB via DMN"
+      ],
+      "DMN": [
+        "SP Carlos Lagrange [NYY] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-04-22T20:48:46.726785Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-04-22T22:59:38.726575Z",
+    "data_applied_at": "2026-04-22T22:59:38.761808Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

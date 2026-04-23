@@ -383,7 +383,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "manaese01",
@@ -393,7 +393,7 @@
     "fangraphs_name": "Sean Manaea",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 640455,
     "mlb_primary_position": "P",
     "name": "Sean Manaea",
@@ -2951,7 +2951,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "R",
     "bbref_id": "singebr01",
@@ -2961,7 +2961,7 @@
     "fangraphs_name": "Brady Singer",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 663903,
     "mlb_primary_position": "P",
     "name": "Brady Singer",
@@ -9414,7 +9414,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "realmjt01",
@@ -9424,7 +9424,7 @@
     "fangraphs_name": "J.T. Realmuto",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 592663,
     "mlb_primary_position": "C",
     "name": "J.T. Realmuto",
@@ -15506,17 +15506,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
     "birth_date": "2001-04-28",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27647",
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "",
+    "manager": "La Flama Blanca",
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -15529,7 +15529,7 @@
     "upid": "3441",
     "weight": 197,
     "yahoo_id": "11809",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "DRO",
@@ -15617,7 +15617,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "schmicl01",
@@ -15627,7 +15627,7 @@
     "fangraphs_name": "Clarke Schmidt",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 657376,
     "mlb_primary_position": "P",
     "name": "Clarke Schmidt",
@@ -19584,17 +19584,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 31,
     "bats": "R",
     "bbref_id": "kellyca02",
     "birth_date": "1994-07-14",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "13620",
     "fangraphs_name": "Carson Kelly",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 608348,
     "mlb_primary_position": "C",
     "name": "Carson Kelly",
@@ -21007,7 +21007,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "peterda01",
@@ -21017,7 +21017,7 @@
     "fangraphs_name": "David Peterson",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 656849,
     "mlb_primary_position": "P",
     "name": "David Peterson",
@@ -22690,7 +22690,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 27,
     "bats": "L",
     "bbref_id": "ashcrgr01",
@@ -22700,7 +22700,7 @@
     "fangraphs_name": "Graham Ashcraft",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 668933,
     "mlb_primary_position": "P",
     "name": "Graham Ashcraft",
@@ -51737,17 +51737,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 29,
     "bats": "S",
     "bbref_id": "manguja01",
     "birth_date": "1996-03-08",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26202",
     "fangraphs_name": "Jake Mangum",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 663968,
     "mlb_primary_position": "LF",
     "name": "Jake Mangum",
@@ -72961,7 +72961,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "kingbr02",
@@ -72971,7 +72971,7 @@
     "fangraphs_name": "Bryan King",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 687911,
     "mlb_primary_position": "P",
     "name": "Bryan King",
