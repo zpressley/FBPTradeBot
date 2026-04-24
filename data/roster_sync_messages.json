@@ -1,7 +1,6 @@
 {
-  "generated_at": "2026-04-23T07:08:14.754548-04:00",
+  "generated_at": "2026-04-24T07:05:57.566871-04:00",
   "immediate": [
-    "\ud83d\udeab Andromedans rostered [Carlos Lagrange](https://www.pantheonleagues.com/player-profile.html?upid=6938) who is owned by The Damn Yankees! Andromedans must drop Carlos Lagrange immediately!",
     "\ud83d\udea8 Country Fried Lamb rostered [Michael McGreevy](https://www.pantheonleagues.com/player-profile.html?upid=2979) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 not much of a donkey rostered [Julio Rodr\u00edguez](https://www.pantheonleagues.com/player-profile.html?upid=6516) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 not much of a donkey rostered [Anthony Nunez](https://www.pantheonleagues.com/player-profile.html?upid=7924) who is unowned. Player must go through auction. Drop required.",
@@ -10,8 +9,20 @@
     "\ud83d\udea8 Weekend Warriors rostered [Luis Castillo](https://www.pantheonleagues.com/player-profile.html?upid=7135) who is unowned. Player must go through auction. Drop required.",
     "\u26a0\ufe0f **Roster Sync Unmatched**: RV has Gavin Collyer (RP TEX) that could not be mapped in UPID/combined."
   ],
-  "batched_prospect": [],
-  "batched_free_agency": [],
-  "last_posted_date": "2026-04-23",
-  "batched": []
+  "batched_prospect": [
+    "\u2b07\ufe0f **Hammers** sends down Didier Fuentes ATL SP",
+    "\u2b07\ufe0f **The Damn Yankees** sends down Parker Messick CLE SP"
+  ],
+  "batched_free_agency": [
+    "\u2705 **Whiz Kids** adds Dean Kremer BAL SP",
+    "\u2705 **Hammers** adds Yusei Kikuchi LAA SP",
+    "\u2705 **La Flama Blanca** adds Fernando Cruz NYY RP",
+    "\u2705 **The Damn Yankees** adds Ryan Jeffers MIN C",
+    "\u2705 **The Damn Yankees** adds Brayan Rocchio CLE 2B,SS",
+    "\u2705 **Weekend Warriors** adds Christian Scott NYM SP",
+    "\ud83d\uddd1\ufe0f **La Flama Blanca** drops Reynaldo L\u00f3pez ATL SP",
+    "\ud83d\uddd1\ufe0f **Andromedans** drops Matthew Liberatore STL SP",
+    "\ud83d\uddd1\ufe0f **Whiz Kids** drops Jake Mangum TB CF"
+  ],
+  "last_posted_date": "2026-04-23"
 }

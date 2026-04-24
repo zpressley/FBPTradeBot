@@ -4520,17 +4520,17 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 34,
     "bats": "L",
     "bbref_id": "kikucyu01",
     "birth_date": "1991-06-17",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20633",
     "fangraphs_name": "Yusei Kikuchi",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "",
+    "manager": "Hammers",
     "mlb_id": 579328,
     "mlb_primary_position": "P",
     "name": "Yusei Kikuchi",
@@ -4543,7 +4543,7 @@
     "upid": "3415",
     "weight": 210,
     "yahoo_id": "11263",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "HAM",
@@ -6151,7 +6151,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "lopezre01",
@@ -6161,7 +6161,7 @@
     "fangraphs_name": "Reynaldo Lopez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 625643,
     "mlb_primary_position": "P",
     "name": "Reynaldo L\u00f3pez",
@@ -13700,17 +13700,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "scottch01",
     "birth_date": "1999-06-15",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "30107",
     "fangraphs_name": "Christian Scott",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "",
+    "manager": "Weekend Warriors",
     "mlb_id": 681035,
     "mlb_primary_position": "P",
     "name": "Christian Scott",
@@ -13722,7 +13722,7 @@
     "upid": "6124",
     "weight": 215,
     "yahoo_id": "60292",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "B2J",
@@ -21058,17 +21058,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "R",
     "bbref_id": "kremede01",
     "birth_date": "1996-01-07",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19350",
     "fangraphs_name": "Dean Kremer",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 665152,
     "mlb_primary_position": "P",
     "name": "Dean Kremer",
@@ -29475,7 +29475,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "R",
     "bbref_id": "jeffery01",
@@ -29485,7 +29485,7 @@
     "fangraphs_name": "Ryan Jeffers",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 680777,
     "mlb_primary_position": "C",
     "name": "Ryan Jeffers",
@@ -32449,7 +32449,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "liberma01",
@@ -32459,7 +32459,7 @@
     "fangraphs_name": "Matthew Liberatore",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 669461,
     "mlb_primary_position": "P",
     "name": "Matthew Liberatore",
@@ -32829,17 +32829,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
     "birth_date": "2001-01-13",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "23690",
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -41667,7 +41667,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41677,7 +41677,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
@@ -51737,7 +51737,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 29,
     "bats": "S",
     "bbref_id": "manguja01",
@@ -51747,7 +51747,7 @@
     "fangraphs_name": "Jake Mangum",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 663968,
     "mlb_primary_position": "LF",
     "name": "Jake Mangum",
