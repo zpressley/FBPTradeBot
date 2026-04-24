@@ -144,10 +144,10 @@
       "win_pct": 0.675,
       "opponent": "HAM",
       "score": "8",
-      "opponent_score": "11",
-      "ties": "1",
-      "live_record": "8-11-1",
-      "live_win_pct": 0.425,
+      "opponent_score": "12",
+      "ties": "0",
+      "live_record": "8-12-0",
+      "live_win_pct": 0.4,
       "categories": {
         "H/AB": "37/125",
         "R": 15,
@@ -172,8 +172,8 @@
         "BB/9": "1.84",
         "QS": 1
       },
-      "overall_live_record": "60-35-5",
-      "overall_live_win_pct": 0.625,
+      "overall_live_record": "60-36-4",
+      "overall_live_win_pct": 0.62,
       "live_rank": 1
     },
     {
@@ -200,7 +200,7 @@
         "TB": 68,
         "AVG": ".285",
         "OPS": ".859",
-        "APP": 12,
+        "APP": 13,
         "IP": "28.0",
         "ER": 28,
         "P_HR": 8,
@@ -263,11 +263,11 @@
       "record": "48-29-3",
       "win_pct": 0.619,
       "opponent": "LFB",
-      "score": "11",
+      "score": "12",
       "opponent_score": "8",
-      "ties": "1",
-      "live_record": "11-8-1",
-      "live_win_pct": 0.575,
+      "ties": "0",
+      "live_record": "12-8-0",
+      "live_win_pct": 0.6,
       "categories": {
         "H/AB": "36/127",
         "R": 28,
@@ -280,7 +280,7 @@
         "TB": 67,
         "AVG": ".283",
         "OPS": ".912",
-        "APP": 11,
+        "APP": 12,
         "IP": "21.1",
         "ER": 10,
         "P_HR": 3,
@@ -292,8 +292,8 @@
         "BB/9": "5.06",
         "QS": 0
       },
-      "overall_live_record": "59-37-4",
-      "overall_live_win_pct": 0.61,
+      "overall_live_record": "60-37-3",
+      "overall_live_win_pct": 0.615,
       "live_rank": 2
     },
     {
@@ -360,7 +360,7 @@
         "TB": 37,
         "AVG": ".186",
         "OPS": ".556",
-        "APP": 10,
+        "APP": 11,
         "IP": "22.2",
         "ER": 12,
         "P_HR": 6,
@@ -560,7 +560,7 @@
         "TB": 60,
         "AVG": ".250",
         "OPS": ".816",
-        "APP": 8,
+        "APP": 9,
         "IP": "26.0",
         "ER": 9,
         "P_HR": 1,
@@ -600,7 +600,7 @@
         "TB": 43,
         "AVG": ".241",
         "OPS": ".724",
-        "APP": 8,
+        "APP": 9,
         "IP": "20.2",
         "ER": 5,
         "P_HR": 1,
@@ -635,7 +635,7 @@
           "TB": 68,
           "AVG": ".285",
           "OPS": ".859",
-          "APP": 12,
+          "APP": 13,
           "IP": "28.0",
           "ER": 28,
           "P_HR": 8,
@@ -695,7 +695,7 @@
           "TB": 43,
           "AVG": ".241",
           "OPS": ".724",
-          "APP": 8,
+          "APP": 9,
           "IP": "20.2",
           "ER": 5,
           "P_HR": 1,
@@ -802,7 +802,7 @@
       "team1": {
         "team": "HAM",
         "name": "Hammers",
-        "score": "11",
+        "score": "12",
         "categories": {
           "H/AB": "36/127",
           "R": 28,
@@ -815,7 +815,7 @@
           "TB": 67,
           "AVG": ".283",
           "OPS": ".912",
-          "APP": 11,
+          "APP": 12,
           "IP": "21.1",
           "ER": 10,
           "P_HR": 3,
@@ -875,7 +875,7 @@
           "TB": 60,
           "AVG": ".250",
           "OPS": ".816",
-          "APP": 8,
+          "APP": 9,
           "IP": "26.0",
           "ER": 9,
           "P_HR": 1,
@@ -964,7 +964,7 @@
           "TB": 37,
           "AVG": ".186",
           "OPS": ".556",
-          "APP": 10,
+          "APP": 11,
           "IP": "22.2",
           "ER": 12,
           "P_HR": 6,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-24T18:50:34.206402+00:00"
+  "refreshed_at": "2026-04-24T19:46:43.935676+00:00"
 }
