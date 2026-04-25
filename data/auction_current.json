@@ -64,9 +64,17 @@
       "timestamp": "2026-04-23T14:25:53.188815+00:00"
     }
   ],
-  "last_updated": "2026-04-23T14:25:53.188815+00:00",
-  "matches": [],
-  "phase": "cb_window",
+  "last_updated": "2026-04-25T16:02:38.517896+00:00",
+  "matches": [
+    {
+      "decided_at": "2026-04-25T16:02:38.517896+00:00",
+      "decision": "match",
+      "prospect_id": "3444",
+      "source": "web",
+      "team": "DRO"
+    }
+  ],
+  "phase": "ob_final",
   "priority_order": [
     "DRO",
     "JEP",
