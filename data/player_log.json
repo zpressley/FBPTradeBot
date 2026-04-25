@@ -62011,5 +62011,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-04-25T07:10:09.476492-04:00-UPID_2237-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "CFL",
+    "timestamp": "2026-04-25T07:10:09.476492-04:00",
+    "upid": "2237",
+    "player_name": "Carter Jensen",
+    "team": "KC",
+    "pos": "C",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 236,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
