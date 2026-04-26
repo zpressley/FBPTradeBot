@@ -303,11 +303,11 @@
       "record": "39-38-3",
       "win_pct": 0.506,
       "opponent": "RV",
-      "score": "8",
+      "score": "9",
       "opponent_score": "10",
-      "ties": "2",
-      "live_record": "8-10-2",
-      "live_win_pct": 0.45,
+      "ties": "1",
+      "live_record": "9-10-1",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "34/176",
         "R": 21,
@@ -320,7 +320,7 @@
         "TB": 41,
         "AVG": ".193",
         "OPS": ".557",
-        "APP": 17,
+        "APP": 18,
         "IP": "42.2",
         "ER": 23,
         "P_HR": 4,
@@ -332,8 +332,8 @@
         "BB/9": "2.95",
         "QS": 2
       },
-      "overall_live_record": "47-48-5",
-      "overall_live_win_pct": 0.495,
+      "overall_live_record": "48-48-4",
+      "overall_live_win_pct": 0.5,
       "live_rank": 7
     },
     {
@@ -344,10 +344,10 @@
       "win_pct": 0.494,
       "opponent": "DMN",
       "score": "10",
-      "opponent_score": "8",
-      "ties": "2",
-      "live_record": "10-8-2",
-      "live_win_pct": 0.55,
+      "opponent_score": "9",
+      "ties": "1",
+      "live_record": "10-9-1",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "40/177",
         "R": 29,
@@ -372,8 +372,8 @@
         "BB/9": "4.34",
         "QS": 3
       },
-      "overall_live_record": "46-45-9",
-      "overall_live_win_pct": 0.505,
+      "overall_live_record": "46-46-8",
+      "overall_live_win_pct": 0.5,
       "live_rank": 6
     },
     {
@@ -400,7 +400,7 @@
         "TB": 81,
         "AVG": ".251",
         "OPS": ".754",
-        "APP": 16,
+        "APP": 17,
         "IP": "42.1",
         "ER": 16,
         "P_HR": 1,
@@ -600,7 +600,7 @@
         "TB": 77,
         "AVG": ".268",
         "OPS": ".764",
-        "APP": 16,
+        "APP": 17,
         "IP": "37.1",
         "ER": 16,
         "P_HR": 4,
@@ -695,7 +695,7 @@
           "TB": 77,
           "AVG": ".268",
           "OPS": ".764",
-          "APP": 16,
+          "APP": 17,
           "IP": "37.1",
           "ER": 16,
           "P_HR": 4,
@@ -724,7 +724,7 @@
           "TB": 81,
           "AVG": ".251",
           "OPS": ".754",
-          "APP": 16,
+          "APP": 17,
           "IP": "42.1",
           "ER": 16,
           "P_HR": 1,
@@ -922,7 +922,7 @@
       "team1": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "8",
+        "score": "9",
         "categories": {
           "H/AB": "34/176",
           "R": 21,
@@ -935,7 +935,7 @@
           "TB": 41,
           "AVG": ".193",
           "OPS": ".557",
-          "APP": 17,
+          "APP": 18,
           "IP": "42.2",
           "ER": 23,
           "P_HR": 4,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-26T16:01:50.656027+00:00"
+  "refreshed_at": "2026-04-26T16:57:57.216634+00:00"
 }
