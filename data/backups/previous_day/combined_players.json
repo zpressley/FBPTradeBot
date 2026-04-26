@@ -718,7 +718,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "R",
     "bbref_id": "cavalca01",
@@ -729,7 +729,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 676917,
     "mlb_primary_position": "P",
     "name": "Cade Cavalli",
@@ -1577,7 +1577,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 30,
     "bats": "R",
     "bbref_id": "flaheja01",
@@ -1587,7 +1587,7 @@
     "fangraphs_name": "Jack Flaherty",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 656427,
     "mlb_primary_position": "P",
     "name": "Jack Flaherty",
@@ -3066,7 +3066,7 @@
     "bats": "L",
     "bbref_id": "jenseca01",
     "birth_date": "2003-07-03",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": "09/02/2025",
     "debuted": true,
     "fangraphs_id": "29478",
@@ -3587,7 +3587,7 @@
     "bats": "L",
     "bbref_id": "crawfju01",
     "birth_date": "2004-01-13",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3020240",
@@ -7310,18 +7310,18 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 24,
     "bats": "R",
     "bbref_id": "mayoco01",
     "birth_date": "2001-12-10",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "28312",
     "fangraphs_name": "Coby Mayo",
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 691723,
     "mlb_primary_position": "1B",
     "name": "Coby Mayo",
@@ -9544,7 +9544,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9554,7 +9554,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -10654,7 +10654,7 @@
     "bats": "S",
     "bbref_id": "montgbr01",
     "birth_date": "2003-04-16",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3038253",
@@ -13700,7 +13700,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "scottch01",
@@ -13710,7 +13710,7 @@
     "fangraphs_name": "Christian Scott",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 681035,
     "mlb_primary_position": "P",
     "name": "Christian Scott",
@@ -21058,7 +21058,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "kremede01",
@@ -21068,7 +21068,7 @@
     "fangraphs_name": "Dean Kremer",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 665152,
     "mlb_primary_position": "P",
     "name": "Dean Kremer",
@@ -26861,7 +26861,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "raleylu01",
@@ -26871,7 +26871,7 @@
     "fangraphs_name": "Luke Raley",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 670042,
     "mlb_primary_position": "RF",
     "name": "Luke Raley",
@@ -38004,7 +38004,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "schmica01",
@@ -38014,7 +38014,7 @@
     "fangraphs_name": "Casey Schmitt",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 669477,
     "mlb_primary_position": "3B",
     "name": "Casey Schmitt",
@@ -41667,7 +41667,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41677,7 +41677,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
@@ -52459,7 +52459,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "canzodo01",
@@ -52469,7 +52469,7 @@
     "fangraphs_name": "Dominic Canzone",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 686527,
     "mlb_primary_position": "RF",
     "name": "Dominic Canzone",
@@ -64630,7 +64630,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 25,
     "bats": "R",
     "bbref_id": "monteke01",
@@ -64640,7 +64640,7 @@
     "fangraphs_name": "Keider Montero",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 672456,
     "mlb_primary_position": "P",
     "name": "Keider Montero",

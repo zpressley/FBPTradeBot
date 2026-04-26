@@ -2653,5 +2653,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-250426_2025-024": {
+    "trade_id": "TRADE-250426_2025-024",
+    "teams": [
+      "LFB",
+      "HAM"
+    ],
+    "initiator_team": "LFB",
+    "status": "pending",
+    "created_at": "2026-04-26T00:25:56.696990Z",
+    "expires_at": "2026-05-10T00:25:56.696990Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7347",
+        "from_team": "LFB",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "2211",
+        "from_team": "HAM",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "LFB"
+    ],
+    "receives": {
+      "LFB": [
+        "SP Bryce Miller [SEA] [TC 1]"
+      ],
+      "HAM": [
+        "SP Cam Caminiti [ATL] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }

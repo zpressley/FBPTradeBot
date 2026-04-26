@@ -2070,7 +2070,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "adamewi01",
@@ -2080,7 +2080,7 @@
     "fangraphs_name": "Willy Adames",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 642715,
     "mlb_primary_position": "SS",
     "name": "Willy Adames",
@@ -2951,7 +2951,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "singebr01",
@@ -2961,7 +2961,7 @@
     "fangraphs_name": "Brady Singer",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 663903,
     "mlb_primary_position": "P",
     "name": "Brady Singer",
@@ -6707,7 +6707,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "torregl01",
@@ -6717,7 +6717,7 @@
     "fangraphs_name": "Gleyber Torres",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 650402,
     "mlb_primary_position": "2B",
     "name": "Gleyber Torres",
@@ -14404,17 +14404,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "LFB",
     "age": 23,
     "bats": "R",
     "bbref_id": "winnma01",
     "birth_date": "2002-03-21",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27479",
     "fangraphs_name": "Masyn Winn",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 691026,
     "mlb_primary_position": "SS",
     "name": "Masyn Winn",
@@ -15506,7 +15506,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15516,7 +15516,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -23981,7 +23981,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 33,
     "bats": "L",
     "bbref_id": "mcneije01",
@@ -23991,7 +23991,7 @@
     "fangraphs_name": "Jeff McNeil",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 643446,
     "mlb_primary_position": "2B",
     "name": "Jeff McNeil",
@@ -37270,17 +37270,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 26,
     "bats": "R",
     "bbref_id": "mlodzca01",
     "birth_date": "1999-02-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27572",
     "fangraphs_name": "Carmen Mlodzinski",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 669387,
     "mlb_primary_position": "P",
     "name": "Carmen Mlodzinski",
@@ -56818,17 +56818,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "R",
     "bbref_id": "phillty01",
     "birth_date": "1997-10-27",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20629",
     "fangraphs_name": "Tyler Phillips",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 663969,
     "mlb_primary_position": "P",
     "name": "Tyler Phillips",
@@ -108912,17 +108912,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "R",
     "bbref_id": "grifffo01",
     "birth_date": "1995-07-27",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "16432",
     "fangraphs_name": "Foster Griffin",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 656492,
     "mlb_primary_position": "P",
     "name": "Foster Griffin",
@@ -108934,7 +108934,7 @@
     "upid": "4164",
     "weight": 225,
     "yahoo_id": "10489",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
