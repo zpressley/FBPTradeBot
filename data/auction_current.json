@@ -1,16 +1,6 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-0e74811ee214",
-      "bid_type": "OB",
-      "date": "2026-04-27",
-      "prospect_id": "3914",
-      "team": "DRO",
-      "timestamp": "2026-04-27T19:00:48.945419+00:00"
-    }
-  ],
-  "last_updated": "2026-04-27T19:00:48.945419+00:00",
+  "bids": [],
+  "last_updated": "2026-04-27T22:09:49.686997+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
