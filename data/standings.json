@@ -144,10 +144,10 @@
       "win_pct": 0.65,
       "opponent": "B2J",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -172,8 +172,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "63-33-24",
-      "overall_live_win_pct": 0.625,
+      "overall_live_record": "63-34-23",
+      "overall_live_win_pct": 0.621,
       "live_rank": 1
     },
     {
@@ -183,11 +183,11 @@
       "record": "50-44-6",
       "win_pct": 0.53,
       "opponent": "HAM",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -200,7 +200,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -212,9 +212,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "50-44-26",
-      "overall_live_win_pct": 0.525,
-      "live_rank": 4
+      "overall_live_record": "51-44-25",
+      "overall_live_win_pct": 0.529,
+      "live_rank": 3
     },
     {
       "rank": 3,
@@ -254,7 +254,7 @@
       },
       "overall_live_record": "50-43-27",
       "overall_live_win_pct": 0.529,
-      "live_rank": 3
+      "live_rank": 4
     },
     {
       "rank": 4,
@@ -742,7 +742,7 @@
       "team1": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -755,7 +755,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-04-27T21:02:19.801899+00:00"
+  "refreshed_at": "2026-04-27T21:59:06.997319+00:00"
 }
