@@ -2,92 +2,30 @@
   "bids": [
     {
       "amount": 10,
-      "bid_id": "bid-7007a0d6dce5",
+      "bid_id": "bid-0e74811ee214",
       "bid_type": "OB",
-      "date": "2026-04-20",
-      "prospect_id": "7284",
-      "team": "CFL",
-      "timestamp": "2026-04-20T19:06:20.927163+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-8ddcaaad9684",
-      "bid_type": "OB",
-      "date": "2026-04-20",
-      "prospect_id": "3444",
+      "date": "2026-04-27",
+      "prospect_id": "3914",
       "team": "DRO",
-      "timestamp": "2026-04-20T20:03:45.196161+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-a293c04fed40",
-      "bid_type": "OB",
-      "date": "2026-04-20",
-      "prospect_id": "6572",
-      "team": "RV",
-      "timestamp": "2026-04-21T01:14:29.606736+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-22fd8b5fe222",
-      "bid_type": "CB",
-      "date": "2026-04-22",
-      "prospect_id": "6572",
-      "team": "LFB",
-      "timestamp": "2026-04-22T11:34:36.949356+00:00"
-    },
-    {
-      "amount": 20,
-      "bid_id": "bid-68ce066e08f2",
-      "bid_type": "CB",
-      "date": "2026-04-22",
-      "prospect_id": "6572",
-      "team": "DRO",
-      "timestamp": "2026-04-22T19:41:51.136774+00:00"
-    },
-    {
-      "amount": 25,
-      "bid_id": "bid-7cea42316290",
-      "bid_type": "CB",
-      "date": "2026-04-23",
-      "prospect_id": "6572",
-      "team": "LFB",
-      "timestamp": "2026-04-23T12:46:49.966616+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-50016345e5ca",
-      "bid_type": "CB",
-      "date": "2026-04-23",
-      "prospect_id": "3444",
-      "team": "WAR",
-      "timestamp": "2026-04-23T14:25:53.188815+00:00"
+      "timestamp": "2026-04-27T19:00:48.945419+00:00"
     }
   ],
-  "last_updated": "2026-04-25T16:02:38.517896+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-04-25T16:02:38.517896+00:00",
-      "decision": "match",
-      "prospect_id": "3444",
-      "source": "web",
-      "team": "DRO"
-    }
-  ],
-  "phase": "ob_final",
+  "last_updated": "2026-04-27T19:00:48.945419+00:00",
+  "matches": [],
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "JEP",
     "WAR",
-    "CFL",
     "SAD",
-    "TBB",
+    "CFL",
     "RV",
     "DMN",
-    "HAM",
-    "B2J",
+    "TBB",
+    "LFB",
     "WIZ",
-    "LFB"
+    "B2J",
+    "HAM"
   ],
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
@@ -95,5 +33,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-04-20"
+  "week_start": "2026-04-27"
 }
