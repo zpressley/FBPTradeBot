@@ -1,6 +1,18 @@
 {
-  "bids": [],
-  "last_updated": "2026-04-27T22:09:49.686997+00:00",
+  "bids": [
+    {
+      "admin": "zpressley",
+      "amount": 10,
+      "bid_id": "bid-437dcb829ed6",
+      "bid_type": "OB",
+      "date": "2026-04-27",
+      "prospect_id": "7357",
+      "source": "admin",
+      "team": "DRO",
+      "timestamp": "2026-04-27T22:10:47.575620+00:00"
+    }
+  ],
+  "last_updated": "2026-04-27T22:10:47.575620+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
