@@ -19,9 +19,18 @@
       "prospect_id": "3766",
       "team": "SAD",
       "timestamp": "2026-04-28T10:24:20.276747+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-0b1ec82d4fdd",
+      "bid_type": "OB",
+      "date": "2026-04-28",
+      "prospect_id": "7532",
+      "team": "HAM",
+      "timestamp": "2026-04-28T15:32:51.387856+00:00"
     }
   ],
-  "last_updated": "2026-04-28T10:24:20.276747+00:00",
+  "last_updated": "2026-04-28T15:32:51.387856+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
