@@ -824,7 +824,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "CFL",
     "age": 27,
     "bats": "R",
     "bbref_id": "brownhu01",
@@ -834,7 +834,7 @@
     "fangraphs_name": "Hunter Brown",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": "Country Fried Lamb",
     "mlb_id": 686613,
     "mlb_primary_position": "P",
     "name": "Hunter Brown",
@@ -3923,7 +3923,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "DRO",
     "age": 23,
     "bats": "L",
     "bbref_id": "bazzatr01",
@@ -3935,7 +3935,7 @@
     "fangraphs_name": "Travis Bazzana",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Country Fried Lamb",
+    "manager": "Andromedans",
     "mlb_id": 683953,
     "mlb_primary_position": "2B",
     "name": "Travis Bazzana",
@@ -4314,7 +4314,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "R",
     "bbref_id": "millebr04",
@@ -4324,7 +4324,7 @@
     "fangraphs_name": "Bryce Miller",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": "La Flama Blanca",
     "mlb_id": 682243,
     "mlb_primary_position": "P",
     "name": "Bryce Miller",
@@ -12796,7 +12796,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "norbyco01",
@@ -12806,7 +12806,7 @@
     "fangraphs_name": "Connor Norby",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 681393,
     "mlb_primary_position": "3B",
     "name": "Connor Norby",
@@ -25000,7 +25000,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "solerjo01",
@@ -25010,7 +25010,7 @@
     "fangraphs_name": "Jorge Soler",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 624585,
     "mlb_primary_position": "RF",
     "name": "Jorge Soler",
@@ -30215,7 +30215,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 34,
     "bats": "R",
     "bbref_id": "matzst01",
@@ -30225,7 +30225,7 @@
     "fangraphs_name": "Steven Matz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 571927,
     "mlb_primary_position": "P",
     "name": "Steven Matz",
@@ -97889,18 +97889,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "L",
     "bbref_id": "corteca01",
     "birth_date": "1997-06-30",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fangraphs_id": "21842",
     "fangraphs_name": "Carlos Cortes",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 666126,
     "mlb_primary_position": "LF",
     "name": "Carlos Cortes",
@@ -108912,7 +108912,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "grifffo01",
@@ -108922,7 +108922,7 @@
     "fangraphs_name": "Foster Griffin",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656492,
     "mlb_primary_position": "P",
     "name": "Foster Griffin",
