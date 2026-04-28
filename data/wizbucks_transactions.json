@@ -3097,5 +3097,37 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_2026-04-28_trade_TRADE-280426_0147-025_CFL_debit_15",
+    "timestamp": "2026-04-28T10:32:10.865688Z",
+    "team": "CFL",
+    "amount": -15,
+    "balance_before": 80,
+    "balance_after": 65,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-280426_0147-025: WizBucks sent to DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-280426_0147-025",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-04-28_trade_TRADE-280426_0147-025_DRO_credit_15",
+    "timestamp": "2026-04-28T10:32:10.865688Z",
+    "team": "DRO",
+    "amount": 15,
+    "balance_before": 55,
+    "balance_after": 70,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-280426_0147-025: WizBucks received from CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-280426_0147-025",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
   }
 ]
