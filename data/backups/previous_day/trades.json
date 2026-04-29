@@ -2756,5 +2756,179 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-280426_1532-026": {
+    "trade_id": "TRADE-280426_1532-026",
+    "teams": [
+      "DRO",
+      "B2J"
+    ],
+    "initiator_team": "DRO",
+    "status": "withdrawn",
+    "created_at": "2026-04-28T19:32:06.007871Z",
+    "expires_at": "2026-05-12T19:32:06.007871Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "3069",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "1928",
+        "from_team": "B2J",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3809",
+        "from_team": "B2J",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SS Bo Bichette [NYM] [VC 2]",
+        "OF Lazaro Montes [SEA] [BC]"
+      ],
+      "B2J": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "2B Ozzie Albies [ATL] [TC 1]",
+        "SP Edward Cabrera [CHC] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-04-29T02:53:35.664709Z"
+  },
+  "TRADE-280426_1533-027": {
+    "trade_id": "TRADE-280426_1533-027",
+    "teams": [
+      "DRO",
+      "B2J"
+    ],
+    "initiator_team": "DRO",
+    "status": "withdrawn",
+    "created_at": "2026-04-28T19:33:49.099127Z",
+    "expires_at": "2026-05-12T19:33:49.099127Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3069",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "B2J",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1928",
+        "from_team": "B2J",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SS Bo Bichette [NYM] [VC 2]",
+        "$10 WB via B2J"
+      ],
+      "B2J": [
+        "2B Ozzie Albies [ATL] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-04-28T21:29:41.932297Z"
+  },
+  "TRADE-280426_2319-028": {
+    "trade_id": "TRADE-280426_2319-028",
+    "teams": [
+      "B2J",
+      "DRO"
+    ],
+    "initiator_team": "B2J",
+    "status": "approved",
+    "created_at": "2026-04-29T03:19:13.373160Z",
+    "expires_at": "2026-05-13T03:19:13.373160Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3069",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "1928",
+        "from_team": "B2J",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "B2J",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "B2J",
+      "DRO"
+    ],
+    "receives": {
+      "B2J": [
+        "2B Ozzie Albies [ATL] [TC 1]"
+      ],
+      "DRO": [
+        "SS Bo Bichette [NYM] [VC 2]",
+        "$10 WB via B2J"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-04-29T03:24:11.800862Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-04-29T10:40:35.585510Z",
+    "data_applied_at": "2026-04-29T10:40:35.620998Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
