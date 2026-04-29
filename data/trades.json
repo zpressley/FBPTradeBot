@@ -2876,7 +2876,7 @@
       "DRO"
     ],
     "initiator_team": "B2J",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-04-29T03:19:13.373160Z",
     "expires_at": "2026-05-13T03:19:13.373160Z",
     "transfers": [
@@ -2900,7 +2900,8 @@
       }
     ],
     "acceptances": [
-      "B2J"
+      "B2J",
+      "DRO"
     ],
     "receives": {
       "B2J": [
@@ -2915,6 +2916,7 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-04-29T03:24:11.800862Z"
   }
 }
