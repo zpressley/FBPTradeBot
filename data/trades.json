@@ -2868,5 +2868,53 @@
       "admin_review_message_id": null
     },
     "processed_at": "2026-04-28T21:29:41.932297Z"
+  },
+  "TRADE-280426_2319-028": {
+    "trade_id": "TRADE-280426_2319-028",
+    "teams": [
+      "B2J",
+      "DRO"
+    ],
+    "initiator_team": "B2J",
+    "status": "pending",
+    "created_at": "2026-04-29T03:19:13.373160Z",
+    "expires_at": "2026-05-13T03:19:13.373160Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3069",
+        "from_team": "DRO",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "1928",
+        "from_team": "B2J",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "B2J",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "B2J"
+    ],
+    "receives": {
+      "B2J": [
+        "2B Ozzie Albies [ATL] [TC 1]"
+      ],
+      "DRO": [
+        "SS Bo Bichette [NYM] [VC 2]",
+        "$10 WB via B2J"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
