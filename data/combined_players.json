@@ -9673,7 +9673,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 33,
     "bats": "L",
     "bbref_id": "sprinje01",
@@ -9683,7 +9683,7 @@
     "fangraphs_name": "Jeffrey Springs",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 605488,
     "mlb_primary_position": "P",
     "name": "Jeffrey Springs",
@@ -17733,7 +17733,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "R",
     "bbref_id": "kirkal01",
@@ -17743,7 +17743,7 @@
     "fangraphs_name": "Alejandro Kirk",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 672386,
     "mlb_primary_position": "C",
     "name": "Alejandro Kirk",
@@ -24698,7 +24698,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "romerjo01",
@@ -24708,7 +24708,7 @@
     "fangraphs_name": "JoJo Romero",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 668941,
     "mlb_primary_position": "P",
     "name": "JoJo Romero",
@@ -28703,7 +28703,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "lambepe01",
@@ -28713,7 +28713,7 @@
     "fangraphs_name": "Peter Lambert",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 663567,
     "mlb_primary_position": "P",
     "name": "Peter Lambert",
@@ -30715,17 +30715,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 34,
     "bats": "R",
     "bbref_id": "nanceto01",
     "birth_date": "1991-03-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19178",
     "fangraphs_name": "Tommy Nance",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 667297,
     "mlb_primary_position": "P",
     "name": "Tommy Nance",
@@ -32293,7 +32293,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32303,7 +32303,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -36227,7 +36227,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "henriro01",
@@ -36239,7 +36239,7 @@
     "fangraphs_name": "Ronny Henriquez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 678692,
     "mlb_primary_position": "P",
     "name": "Ronny Henriquez",
@@ -44838,17 +44838,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "LFB",
     "age": 29,
     "bats": "R",
     "bbref_id": "latzja01",
     "birth_date": "1996-04-08",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21306",
     "fangraphs_name": "Jacob Latz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 656641,
     "mlb_primary_position": "P",
     "name": "Jacob Latz",

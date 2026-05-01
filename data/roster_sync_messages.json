@@ -1,17 +1,28 @@
 {
-  "generated_at": "2026-04-30T07:27:35.348018-04:00",
+  "generated_at": "2026-05-01T07:05:20.641709-04:00",
   "immediate": [
     "\ud83d\udea8 Country Fried Lamb rostered [Michael McGreevy](https://www.pantheonleagues.com/player-profile.html?upid=2979) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 Jepordizers! rostered [Nathan Church](https://www.pantheonleagues.com/player-profile.html?upid=7762) who is unowned. Player must go through auction. Drop required.",
-    "\u26a0\ufe0f The Damn Yankees rostered [Elmer Rodr\u00edguez](https://www.pantheonleagues.com/player-profile.html?upid=8319) who has a Development Contract. Player must be purchased before rostering.",
     "\ud83d\udea8 not much of a donkey rostered [Julio Rodr\u00edguez](https://www.pantheonleagues.com/player-profile.html?upid=6516) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 not much of a donkey rostered [Anthony Nunez](https://www.pantheonleagues.com/player-profile.html?upid=7924) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 The Bluke Blokes rostered [Jeremiah Jackson](https://www.pantheonleagues.com/player-profile.html?upid=3678) who is unowned. Player must go through auction. Drop required.",
     "\ud83d\udea8 Weekend Warriors rostered [Dalton Rushing](https://www.pantheonleagues.com/player-profile.html?upid=3914) who is unowned. Player must go through auction. Drop required.",
     "\u26a0\ufe0f **Roster Sync Unmatched**: RV has Gavin Collyer (RP TEX) that could not be mapped in UPID/combined."
   ],
-  "batched_prospect": [],
-  "batched_free_agency": [],
-  "last_posted_date": "2026-04-30",
-  "batched": []
+  "batched_prospect": [
+    "\u2b06\ufe0f **not much of a donkey** calls up Grant Taylor CWS RP",
+    "\u2b06\ufe0f **The Bluke Blokes** calls up Rhett Lowder CIN SP",
+    "\u2b07\ufe0f **The Damn Yankees** sends down Elmer Rodr\u00edguez RHP NYY"
+  ],
+  "batched_free_agency": [
+    "\u2705 **Country Fried Lamb** adds Tommy Nance TOR RP",
+    "\u2705 **La Flama Blanca** adds Jacob Latz TEX SP,RP",
+    "\u2705 **La Flama Blanca** adds Alejandro Kirk TOR C",
+    "\u2705 **Weekend Warriors** adds Nick Gonzales PIT 2B,SS",
+    "\ud83d\uddd1\ufe0f **La Flama Blanca** drops Jeffrey Springs ATH SP",
+    "\ud83d\uddd1\ufe0f **Country Fried Lamb** drops JoJo Romero STL RP",
+    "\ud83d\uddd1\ufe0f **not much of a donkey** drops Peter Lambert COL P",
+    "\ud83d\uddd1\ufe0f **La Flama Blanca** drops Ronny Henriquez  RP"
+  ],
+  "last_posted_date": "2026-04-30"
 }
