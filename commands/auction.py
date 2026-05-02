@@ -96,7 +96,7 @@ class Auction(commands.Cog):
             AuctionPhase.OFF_WEEK: "No auction this week.",
             AuctionPhase.OB_WINDOW: "Originating bids are open (Mon 3pm\u2013Tue midnight ET).",
             AuctionPhase.CB_WINDOW: "Challenge bids are open (Wed midnight\u2013Fri 9:00pm ET).",
-            AuctionPhase.OB_FINAL: "OB managers may match or forfeit (Saturday).",
+            AuctionPhase.OB_FINAL: "OB managers may match or forfeit (Sat\u2013Sun 10am ET).",
             AuctionPhase.PROCESSING: "Auction is processing (Sunday).",
         }[phase]
 
@@ -227,15 +227,18 @@ class Auction(commands.Cog):
         now = datetime.now(tz=ET)
         phase = self.manager.get_current_phase(now)
 
-        # Sync phase to auction_current.json + GitHub so the website stays current
+        # Sync phase to auction_current.json + GitHub so the website stays current.
+        # Skip the commit during the Sunday resolve window to avoid triggering
+        # a Railway redeploy before the resolve guard lands.
         phase_val = phase.value
+        is_resolve_window = now.weekday() == 6 and now.hour == 10 and now.minute < 15
         if phase_val != self._last_synced_phase:
             try:
                 state = self.manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
                 if state.get("phase") != phase_val:
                     state["phase"] = phase_val
                     self.manager._save_auction_state(state)  # type: ignore[attr-defined]
-                    if _auction_commit_fn:
+                    if _auction_commit_fn and not is_resolve_window:
                         _auction_commit_fn(
                             ["data/auction_current.json"],
                             f"Auction phase sync: {phase_val}",
@@ -291,31 +294,41 @@ class Auction(commands.Cog):
                 await self._send_weekly_summary()
                 self._weekly_summary_week = week_key
 
-        # Sunday 2:00pm+ ET: resolve the week once (assign winners, charge WB).
-        # Catch-up window avoids missing resolution if the bot restarts at 2:01+.
-        if now.weekday() == 6 and now.hour >= 14 and self._resolved_week != week_key:
+        # Sunday 10:00am ET: resolve the week once (assign winners, charge WB).
+        # Narrow 15-minute window reduces Railway redeploy race exposure.
+        # If the bot misses this window, use the admin resolve-now API.
+        if now.weekday() == 6 and now.hour == 10 and now.minute < 15 and self._resolved_week != week_key:
             try:
+                # Pre-resolve guard: write BEFORE resolution so any concurrent
+                # Railway deploy that reads this file will skip.
+                self._resolved_week = week_key
+                try:
+                    with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
+                        json.dump({"resolved_week": week_key}, f)
+                except Exception:
+                    pass
+
                 result = self.manager.resolve_week(now=now)
                 status = result.get("status", "")
                 winners = result.get("winners", {})
                 if status == "resolved" and winners:
-                    # Step 1: write + commit the guard file and auction state
-                    # BEFORE posting the Discord message. This ensures the guard
-                    # lands in git even if the data commit (step 3) fails, so
-                    # Railway redeploys won't re-resolve and re-announce.
-                    self._resolved_week = week_key
-                    try:
-                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
-                            json.dump({"resolved_week": week_key}, f)
-                    except Exception:
-                        pass
+                    # Single commit: guard + auction state + all data files.
+                    # Batching prevents partial commits where the guard lands
+                    # but the data doesn't (or vice versa).
                     if _auction_commit_fn:
                         _auction_commit_fn(
-                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
-                            f"Auction resolve guard: week of {week_key}",
+                            [_AUCTION_RESOLVED_STATE_FILE,
+                             "data/auction_current.json",
+                             "data/combined_players.json",
+                             "data/wizbucks.json",
+                             "data/wizbucks_transactions.json",
+                             "data/player_log.json"],
+                            f"Auction resolved: week of {week_key}",
                         )
+                    else:
+                        print("⚠️ _auction_commit_fn is None — resolve data not committed!")
 
-                    # Step 2: post Discord announcement.
+                    # Post Discord announcement after commit is queued.
                     channel = await self._get_auction_channel()
                     if channel:
                         lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
@@ -323,38 +336,22 @@ class Auction(commands.Cog):
                             name = info.get("name", _resolve_prospect_name(pid))
                             lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
                         await channel.send("\n".join(lines))
-
-                    # Step 3: commit the data files. These can fail without
-                    # causing duplicate announcements since the guard is in git.
-                    if _auction_commit_fn:
-                        _auction_commit_fn(
-                            ["data/combined_players.json", "data/wizbucks.json",
-                             "data/wizbucks_transactions.json", "data/player_log.json"],
-                            f"Auction resolved data: week of {week_key}",
-                        )
                     print(f"✅ Auction resolved: {len(winners)} winners")
                 elif status == "no_bids":
                     print("Auction resolve: no bids this week")
-                    self._resolved_week = week_key
                 elif status == "inactive":
-                    self._resolved_week = week_key
+                    pass
                 elif status == "already_resolved":
-                    # Write + commit the guard file so future Railway deploys
-                    # (e.g. from the next hourly standings push) won't re-resolve.
                     print(f"ℹ️ Auction already resolved for week {week_key} — skipping")
-                    self._resolved_week = week_key
-                    try:
-                        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
-                            json.dump({"resolved_week": week_key}, f)
-                    except Exception:
-                        pass
                     if _auction_commit_fn:
                         _auction_commit_fn(
                             [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
                             f"Auction resolve guard: week of {week_key} [skip notify]",
                         )
             except Exception as exc:
+                import traceback
                 print(f"⚠️ Auction resolve failed: {exc}")
+                traceback.print_exc()
         # Daily summary: 9:00–9:59am ET, Tue–Fri only (Saturday has weekly summary).
         # Hour-long window prevents missed updates after brief restarts.
         if now.weekday() in (1, 2, 3, 4) and now.hour == 9:

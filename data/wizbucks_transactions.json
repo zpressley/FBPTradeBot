@@ -3161,5 +3161,65 @@
       "counterparty": "B2J",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_LFB_auction_winner_1777760946",
+    "timestamp": "2026-04-26T14:00:00+00:00",
+    "team": "LFB",
+    "amount": -25,
+    "balance_before": 85,
+    "balance_after": 60,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-04-20 to 2026-04-26: Chase Dollander",
+    "related_player": {
+      "upid": "6572",
+      "name": "Chase Dollander"
+    },
+    "metadata": {
+      "week_start": "2026-04-20",
+      "prospect_id": "6572",
+      "amount": 25,
+      "source": "auction_resolve_retroactive"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1777760946",
+    "timestamp": "2026-04-26T14:00:00+00:00",
+    "team": "DRO",
+    "amount": -15,
+    "balance_before": 80,
+    "balance_after": 65,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-04-20 to 2026-04-26: Daniel Espino",
+    "related_player": {
+      "upid": "3444",
+      "name": "Daniel Espino"
+    },
+    "metadata": {
+      "week_start": "2026-04-20",
+      "prospect_id": "3444",
+      "amount": 15,
+      "source": "auction_resolve_retroactive"
+    }
+  },
+  {
+    "txn_id": "wb_CFL_auction_winner_1777760946",
+    "timestamp": "2026-04-26T14:00:00+00:00",
+    "team": "CFL",
+    "amount": -10,
+    "balance_before": 65,
+    "balance_after": 55,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-04-20 to 2026-04-26: A.J. Ewing",
+    "related_player": {
+      "upid": "7284",
+      "name": "A.J. Ewing"
+    },
+    "metadata": {
+      "week_start": "2026-04-20",
+      "prospect_id": "7284",
+      "amount": 10,
+      "source": "auction_resolve_retroactive"
+    }
   }
 ]

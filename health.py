@@ -1169,6 +1169,11 @@ try:
 except Exception:
     pass
 
+try:
+    set_auction_commit_fn(_commit_and_push)
+except Exception:
+    pass
+
 
 def _resolve_prospect_name(prospect_id):
     """Resolve a UPID to a player name for readable Discord messages."""

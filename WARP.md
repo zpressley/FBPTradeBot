@@ -9,9 +9,36 @@ A Python Discord bot for an FBP fantasy league with:
 - A draft system (stateful, persisted to `data/`)
 - Service-days tracking commands backed by a generated stats JSON
 
-Rules: 
-For fbp-trade-bot and fbp-hub repos make sure to always run player data through UPID first to ensure that there is a unique ID for players that connects it with all other players in the system. 
-
+## Rules
+### Data Identity
+For fbp-trade-bot and fbp-hub repos make sure to always run player data through UPID first to ensure that there is a unique ID for players that connects it with all other players in the system.
+### Coding Guidelines (Karpathy Behavioral Rules)
+These guidelines apply to all code changes in this repo.
+#### 1. Think Before Coding
+- State assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them instead of picking silently.
+- If a simpler approach exists, say so.
+- If something is unclear, stop and name what is confusing.
+#### 2. Simplicity First
+- Write the minimum code that solves the problem. Nothing speculative.
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No configurability that was not requested.
+- No error handling for impossible scenarios.
+- If a solution is overcomplicated, simplify it.
+#### 3. Surgical Changes
+- Touch only what you must.
+- Do not improve adjacent code, comments, or formatting unless required.
+- Do not refactor things that are not broken.
+- Match existing style.
+- If unrelated dead code is noticed, mention it instead of deleting it.
+- Remove imports, variables, and functions made unused by your own changes, but do not remove pre-existing dead code unless asked.
+- Every changed line should trace directly to the request.
+#### 4. Goal-Driven Execution
+- Turn tasks into verifiable goals before implementing.
+- For bug fixes, reproduce the bug first and verify the fix.
+- For refactors, verify behavior before and after.
+- For multi-step tasks, use a brief plan with a verification step for each stage.
 
 ## Common commands
 This repo does not include a formal task runner (no `Makefile`, `pyproject.toml`, `pytest.ini`, etc.). The commands below reflect what exists in the code today.

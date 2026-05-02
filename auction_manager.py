@@ -458,7 +458,7 @@ class AuctionManager:
 
         phase = self._phase_for_time(now)
         if phase is not AuctionPhase.OB_FINAL:
-            return {"success": False, "error": "Match / Forfeit is only allowed Sat\u2013Sun before 2pm ET."}
+            return {"success": False, "error": "Match / Forfeit is only allowed Sat–Sun before 10am ET."}
 
         decision_norm = decision.lower()
         if decision_norm not in {"match", "forfeit"}:
@@ -811,13 +811,13 @@ class AuctionManager:
         if weekday == 4 and t < et_time(21):
             return AuctionPhase.CB_WINDOW
 
-        # OB final: Sat 12am – Sun 2pm ET (match/forfeit window stays open until resolution)
+        # OB final: Sat 12am – Sun 10am ET (match/forfeit window)
         if weekday == 5:  # all day Saturday
             return AuctionPhase.OB_FINAL
-        if weekday == 6 and t < et_time(14):  # Sunday before 2pm
+        if weekday == 6 and t < et_time(10):  # Sunday before 10am
             return AuctionPhase.OB_FINAL
 
-        # Processing: Sunday 2pm+
+        # Processing: Sunday 10am+
         if weekday == 6:
             return AuctionPhase.PROCESSING
 
