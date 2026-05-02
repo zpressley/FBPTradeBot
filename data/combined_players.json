@@ -5728,7 +5728,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "fairbpe01",
@@ -5738,7 +5738,7 @@
     "fangraphs_name": "Pete Fairbanks",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 664126,
     "mlb_primary_position": "P",
     "name": "Pete Fairbanks",
@@ -6707,7 +6707,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 29,
     "bats": "R",
     "bbref_id": "torregl01",
@@ -6717,7 +6717,7 @@
     "fangraphs_name": "Gleyber Torres",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 650402,
     "mlb_primary_position": "2B",
     "name": "Gleyber Torres",
@@ -6759,7 +6759,7 @@
     "years_simple": "FC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 32,
     "bats": "L",
     "bbref_id": "woodrbr01",
@@ -6769,7 +6769,7 @@
     "fangraphs_name": "Brandon Woodruff",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 605540,
     "mlb_primary_position": "P",
     "name": "Brandon Woodruff",
@@ -7310,7 +7310,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "mayoco01",
@@ -7321,7 +7321,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 691723,
     "mlb_primary_position": "1B",
     "name": "Coby Mayo",
@@ -21342,7 +21342,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "smithdo02",
@@ -21352,7 +21352,7 @@
     "fangraphs_name": "Dominic Smith",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 642086,
     "mlb_primary_position": "1B",
     "name": "Dominic Smith",
@@ -28627,7 +28627,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "sewalpa01",
@@ -28637,7 +28637,7 @@
     "fangraphs_name": "Paul Sewald",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 623149,
     "mlb_primary_position": "P",
     "name": "Paul Sewald",
@@ -30241,7 +30241,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 34,
     "bats": "L",
     "bbref_id": "okertst01",
@@ -30251,7 +30251,7 @@
     "fangraphs_name": "Steven Okert",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 595345,
     "mlb_primary_position": "P",
     "name": "Steven Okert",
@@ -32728,7 +32728,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "winnco01",
@@ -32738,7 +32738,7 @@
     "fangraphs_name": "Cole Winn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 668390,
     "mlb_primary_position": "P",
     "name": "Cole Winn",
@@ -44812,17 +44812,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 25,
     "bats": "L",
     "bbref_id": "gormano01",
     "birth_date": "2000-05-10",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22263",
     "fangraphs_name": "Nolan Gorman",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669357,
     "mlb_primary_position": "2B",
     "name": "Nolan Gorman",
@@ -108912,7 +108912,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "R",
     "bbref_id": "grifffo01",
@@ -108922,7 +108922,7 @@
     "fangraphs_name": "Foster Griffin",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 656492,
     "mlb_primary_position": "P",
     "name": "Foster Griffin",
