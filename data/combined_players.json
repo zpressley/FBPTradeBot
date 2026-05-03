@@ -901,17 +901,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 28,
     "bats": "R",
     "bbref_id": "steersp01",
     "birth_date": "1997-12-07",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26323",
     "fangraphs_name": "Spencer Steer",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "",
+    "manager": "Whiz Kids",
     "mlb_id": 668715,
     "mlb_primary_position": "1B",
     "name": "Spencer Steer",
@@ -924,7 +924,7 @@
     "upid": "3605",
     "weight": 185,
     "yahoo_id": "12688",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": null,
@@ -14643,7 +14643,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "gipsosa01",
@@ -14653,7 +14653,7 @@
     "fangraphs_name": "Sawyer Gipson-Long",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 687830,
     "mlb_primary_position": "P",
     "name": "Sawyer Gipson-Long",
@@ -40830,7 +40830,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "burkebr01",
@@ -40840,7 +40840,7 @@
     "fangraphs_name": "Brock Burke",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 656271,
     "mlb_primary_position": "P",
     "name": "Brock Burke",
@@ -44891,7 +44891,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "thomaal01",
@@ -44901,7 +44901,7 @@
     "fangraphs_name": "Alek Thomas",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 677950,
     "mlb_primary_position": "CF",
     "name": "Alek Thomas",
@@ -52632,7 +52632,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 28,
     "bats": "L",
     "bbref_id": "hamilda03",
@@ -52642,7 +52642,7 @@
     "fangraphs_name": "David Hamilton",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 666152,
     "mlb_primary_position": "2B",
     "name": "David Hamilton",
@@ -70350,7 +70350,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "birth_date": "2001-08-13",
@@ -70359,7 +70359,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 689254,
     "mlb_primary_position": "P",
     "name": "Mason Fluharty",

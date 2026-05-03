@@ -1,10 +1,10 @@
 {
   "WIZ": [
     {
-      "name": "Cal Raleigh",
-      "position": "C",
-      "team": "SEA",
-      "yahoo_id": "11531"
+      "name": "Salvador Perez",
+      "position": "C,1B",
+      "team": "KC",
+      "yahoo_id": "9015"
     },
     {
       "name": "Vladimir Guerrero Jr.",
@@ -43,10 +43,10 @@
       "yahoo_id": "10504"
     },
     {
-      "name": "George Springer",
+      "name": "Jung Hoo Lee",
       "position": "CF",
-      "team": "TOR",
-      "yahoo_id": "9339"
+      "team": "SF",
+      "yahoo_id": "63494"
     },
     {
       "name": "Daniel Schneemann",
@@ -55,16 +55,10 @@
       "yahoo_id": "61948"
     },
     {
-      "name": "Nico Hoerner",
-      "position": "2B",
-      "team": "CHC",
-      "yahoo_id": "11284"
-    },
-    {
-      "name": "Salvador Perez",
-      "position": "C,1B",
-      "team": "KC",
-      "yahoo_id": "9015"
+      "name": "Cal Raleigh",
+      "position": "C",
+      "team": "SEA",
+      "yahoo_id": "11531"
     },
     {
       "name": "Oneil Cruz",
@@ -73,22 +67,34 @@
       "yahoo_id": "11370"
     },
     {
-      "name": "Jung Hoo Lee",
+      "name": "George Springer",
       "position": "CF",
-      "team": "SF",
-      "yahoo_id": "63494"
+      "team": "TOR",
+      "yahoo_id": "9339"
     },
     {
-      "name": "Connor Prielipp",
+      "name": "Nico Hoerner",
+      "position": "2B",
+      "team": "CHC",
+      "yahoo_id": "11284"
+    },
+    {
+      "name": "Spencer Steer",
+      "position": "1B,OF",
+      "team": "CIN",
+      "yahoo_id": "12688"
+    },
+    {
+      "name": "Jes\u00fas Luzardo",
       "position": "SP",
-      "team": "MIN",
-      "yahoo_id": "60267"
+      "team": "PHI",
+      "yahoo_id": "10627"
     },
     {
-      "name": "Foster Griffin",
-      "position": "SP,RP",
-      "team": "WSH",
-      "yahoo_id": "10489"
+      "name": "Jalen Beeks",
+      "position": "RP",
+      "team": "TEX",
+      "yahoo_id": "10850"
     },
     {
       "name": "Aroldis Chapman",
@@ -115,16 +121,16 @@
       "yahoo_id": "11479"
     },
     {
+      "name": "Foster Griffin",
+      "position": "SP,RP",
+      "team": "WSH",
+      "yahoo_id": "10489"
+    },
+    {
       "name": "MacKenzie Gore",
       "position": "SP",
       "team": "TEX",
       "yahoo_id": "10940"
-    },
-    {
-      "name": "Jalen Beeks",
-      "position": "RP",
-      "team": "TEX",
-      "yahoo_id": "10850"
     },
     {
       "name": "Michael Soroka",
@@ -137,12 +143,6 @@
       "position": "SP",
       "team": "PHI",
       "yahoo_id": "11706"
-    },
-    {
-      "name": "Jes\u00fas Luzardo",
-      "position": "SP",
-      "team": "PHI",
-      "yahoo_id": "10627"
     },
     {
       "name": "Taj Bradley",
@@ -177,16 +177,16 @@
   ],
   "DRO": [
     {
+      "name": "Agust\u00edn Ram\u00edrez",
+      "position": "C",
+      "team": "MIA",
+      "yahoo_id": "61818"
+    },
+    {
       "name": "Ben Rice",
       "position": "C,1B",
       "team": "NYY",
       "yahoo_id": "62137"
-    },
-    {
-      "name": "Jac Caglianone",
-      "position": "1B,OF",
-      "team": "KC",
-      "yahoo_id": "64312"
     },
     {
       "name": "Chase Meidroth",
@@ -219,16 +219,22 @@
       "yahoo_id": "10626"
     },
     {
+      "name": "Jac Caglianone",
+      "position": "1B,OF",
+      "team": "KC",
+      "yahoo_id": "64312"
+    },
+    {
+      "name": "Vinnie Pasquantino",
+      "position": "1B",
+      "team": "KC",
+      "yahoo_id": "12449"
+    },
+    {
       "name": "Cam Smith",
       "position": "OF",
       "team": "HOU",
       "yahoo_id": "64330"
-    },
-    {
-      "name": "Agust\u00edn Ram\u00edrez",
-      "position": "C",
-      "team": "MIA",
-      "yahoo_id": "61818"
     },
     {
       "name": "Dominic Canzone",
@@ -243,34 +249,16 @@
       "yahoo_id": "64858"
     },
     {
-      "name": "Vinnie Pasquantino",
-      "position": "1B",
-      "team": "KC",
-      "yahoo_id": "12449"
-    },
-    {
       "name": "Royce Lewis",
       "position": "3B",
       "team": "MIN",
       "yahoo_id": "10916"
     },
     {
-      "name": "DL Hall",
-      "position": "SP,RP",
-      "team": "MIL",
-      "yahoo_id": "10848"
-    },
-    {
-      "name": "Brock Burke",
-      "position": "RP",
-      "team": "CIN",
-      "yahoo_id": "11241"
-    },
-    {
-      "name": "Tanner Scott",
-      "position": "RP",
-      "team": "LAD",
-      "yahoo_id": "10432"
+      "name": "Spencer Arrighetti",
+      "position": "SP",
+      "team": "HOU",
+      "yahoo_id": "60188"
     },
     {
       "name": "Trevor Megill",
@@ -279,28 +267,40 @@
       "yahoo_id": "11717"
     },
     {
-      "name": "Kyle Harrison",
-      "position": "SP,RP",
-      "team": "MIL",
-      "yahoo_id": "12175"
-    },
-    {
       "name": "Landen Roupp",
       "position": "SP",
       "team": "SF",
       "yahoo_id": "60650"
     },
     {
-      "name": "Mike Burrows",
-      "position": "SP,RP",
-      "team": "HOU",
-      "yahoo_id": "12519"
-    },
-    {
       "name": "Mason Montgomery",
       "position": "RP",
       "team": "PIT",
       "yahoo_id": "60412"
+    },
+    {
+      "name": "Kyle Harrison",
+      "position": "SP,RP",
+      "team": "MIL",
+      "yahoo_id": "12175"
+    },
+    {
+      "name": "Tanner Scott",
+      "position": "RP",
+      "team": "LAD",
+      "yahoo_id": "10432"
+    },
+    {
+      "name": "DL Hall",
+      "position": "SP,RP",
+      "team": "MIL",
+      "yahoo_id": "10848"
+    },
+    {
+      "name": "Mike Burrows",
+      "position": "SP,RP",
+      "team": "HOU",
+      "yahoo_id": "12519"
     },
     {
       "name": "Bryce Elder",
@@ -319,12 +319,6 @@
       "position": "SP",
       "team": "CHC",
       "yahoo_id": "10903"
-    },
-    {
-      "name": "Spencer Arrighetti",
-      "position": "SP",
-      "team": "HOU",
-      "yahoo_id": "60188"
     },
     {
       "name": "Davis Martin",
@@ -407,12 +401,6 @@
       "yahoo_id": "12026"
     },
     {
-      "name": "Alek Thomas",
-      "position": "CF",
-      "team": "AZ",
-      "yahoo_id": "11267"
-    },
-    {
       "name": "Mois\u00e9s Ballesteros",
       "position": "C",
       "team": "CHC",
@@ -435,6 +423,12 @@
       "position": "1B",
       "team": "SF",
       "yahoo_id": "10235"
+    },
+    {
+      "name": "David Hamilton",
+      "position": "2B,3B,SS",
+      "team": "MIL",
+      "yahoo_id": "12732"
     },
     {
       "name": "Zack Wheeler",
@@ -825,10 +819,10 @@
       "yahoo_id": "10234"
     },
     {
-      "name": "Emerson Hancock",
-      "position": "SP,RP",
-      "team": "SEA",
-      "yahoo_id": "11988"
+      "name": "Clay Holmes",
+      "position": "SP",
+      "team": "NYM",
+      "yahoo_id": "10569"
     },
     {
       "name": "Ryan Walker",
@@ -849,6 +843,18 @@
       "yahoo_id": "63485"
     },
     {
+      "name": "Spencer Strider",
+      "position": "SP",
+      "team": "ATL",
+      "yahoo_id": "12281"
+    },
+    {
+      "name": "Tyler Kinley",
+      "position": "RP",
+      "team": "ATL",
+      "yahoo_id": "10985"
+    },
+    {
       "name": "Jason Adam",
       "position": "RP",
       "team": "SD",
@@ -861,16 +867,10 @@
       "yahoo_id": "62461"
     },
     {
-      "name": "Tyler Kinley",
-      "position": "RP",
-      "team": "ATL",
-      "yahoo_id": "10985"
-    },
-    {
-      "name": "Mason Fluharty",
-      "position": "RP",
-      "team": "TOR",
-      "yahoo_id": "61987"
+      "name": "Emerson Hancock",
+      "position": "SP,RP",
+      "team": "SEA",
+      "yahoo_id": "11988"
     },
     {
       "name": "Bailey Ober",
@@ -891,22 +891,10 @@
       "yahoo_id": "11381"
     },
     {
-      "name": "Clay Holmes",
-      "position": "SP",
-      "team": "NYM",
-      "yahoo_id": "10569"
-    },
-    {
       "name": "Jhoan Duran",
       "position": "RP",
       "team": "PHI",
       "yahoo_id": "11495"
-    },
-    {
-      "name": "Spencer Strider",
-      "position": "SP",
-      "team": "ATL",
-      "yahoo_id": "12281"
     },
     {
       "name": "Tatsuya Imai",
@@ -971,10 +959,10 @@
       "yahoo_id": "12731"
     },
     {
-      "name": "James Wood",
+      "name": "Carlos Cortes",
       "position": "OF",
-      "team": "WSH",
-      "yahoo_id": "12521"
+      "team": "ATH",
+      "yahoo_id": "12488"
     },
     {
       "name": "Nathan Church",
@@ -983,10 +971,10 @@
       "yahoo_id": "61887"
     },
     {
-      "name": "Carlos Cortes",
+      "name": "James Wood",
       "position": "OF",
-      "team": "ATH",
-      "yahoo_id": "12488"
+      "team": "WSH",
+      "yahoo_id": "12521"
     },
     {
       "name": "Pete Alonso",
@@ -1147,6 +1135,12 @@
       "yahoo_id": "9319"
     },
     {
+      "name": "Byron Buxton",
+      "position": "CF",
+      "team": "MIN",
+      "yahoo_id": "9590"
+    },
+    {
       "name": "Randy Arozarena",
       "position": "CF",
       "team": "SEA",
@@ -1157,12 +1151,6 @@
       "position": "2B,OF",
       "team": "SD",
       "yahoo_id": "10639"
-    },
-    {
-      "name": "Byron Buxton",
-      "position": "CF",
-      "team": "MIN",
-      "yahoo_id": "9590"
     },
     {
       "name": "Shohei Ohtani (Batter)",
@@ -1201,16 +1189,34 @@
       "yahoo_id": "12025"
     },
     {
+      "name": "Andr\u00e9s Mu\u00f1oz",
+      "position": "RP",
+      "team": "SEA",
+      "yahoo_id": "11526"
+    },
+    {
+      "name": "Alex Vesia",
+      "position": "RP",
+      "team": "LAD",
+      "yahoo_id": "11920"
+    },
+    {
+      "name": "Tony Santillan",
+      "position": "RP",
+      "team": "CIN",
+      "yahoo_id": "10864"
+    },
+    {
       "name": "Tarik Skubal",
       "position": "SP",
       "team": "DET",
       "yahoo_id": "11763"
     },
     {
-      "name": "Jacob deGrom",
+      "name": "Jos\u00e9 Soriano",
       "position": "SP",
-      "team": "TEX",
-      "yahoo_id": "9701"
+      "team": "LAA",
+      "yahoo_id": "11327"
     },
     {
       "name": "Shohei Ohtani (Pitcher)",
@@ -1219,10 +1225,10 @@
       "yahoo_id": "1000002"
     },
     {
-      "name": "Jos\u00e9 Soriano",
+      "name": "Jacob deGrom",
       "position": "SP",
-      "team": "LAA",
-      "yahoo_id": "11327"
+      "team": "TEX",
+      "yahoo_id": "9701"
     },
     {
       "name": "Shane McClanahan",
@@ -1241,24 +1247,6 @@
       "position": "RP",
       "team": "BAL",
       "yahoo_id": "11453"
-    },
-    {
-      "name": "Alex Vesia",
-      "position": "RP",
-      "team": "LAD",
-      "yahoo_id": "11920"
-    },
-    {
-      "name": "Tony Santillan",
-      "position": "RP",
-      "team": "CIN",
-      "yahoo_id": "10864"
-    },
-    {
-      "name": "Andr\u00e9s Mu\u00f1oz",
-      "position": "RP",
-      "team": "SEA",
-      "yahoo_id": "11526"
     },
     {
       "name": "Cade Cavalli",
@@ -1353,6 +1341,12 @@
       "yahoo_id": "11722"
     },
     {
+      "name": "Brayan Rocchio",
+      "position": "2B,SS",
+      "team": "CLE",
+      "yahoo_id": "11448"
+    },
+    {
       "name": "Ryan Jeffers",
       "position": "C",
       "team": "MIN",
@@ -1363,12 +1357,6 @@
       "position": "1B,2B,3B",
       "team": "DET",
       "yahoo_id": "12430"
-    },
-    {
-      "name": "Brayan Rocchio",
-      "position": "2B,SS",
-      "team": "CLE",
-      "yahoo_id": "11448"
     },
     {
       "name": "Daulton Varsho",
@@ -1389,10 +1377,10 @@
       "yahoo_id": "12667"
     },
     {
-      "name": "Dylan Cease",
+      "name": "Parker Messick",
       "position": "SP",
-      "team": "TOR",
-      "yahoo_id": "10438"
+      "team": "CLE",
+      "yahoo_id": "60042"
     },
     {
       "name": "Aaron Ashby",
@@ -1425,6 +1413,12 @@
       "yahoo_id": "11889"
     },
     {
+      "name": "Dylan Cease",
+      "position": "SP",
+      "team": "TOR",
+      "yahoo_id": "10438"
+    },
+    {
       "name": "Emmet Sheehan",
       "position": "SP",
       "team": "LAD",
@@ -1453,12 +1447,6 @@
       "position": "SP",
       "team": "TEX",
       "yahoo_id": "12561"
-    },
-    {
-      "name": "Parker Messick",
-      "position": "SP",
-      "team": "CLE",
-      "yahoo_id": "60042"
     },
     {
       "name": "Daniel Palencia",
@@ -1577,6 +1565,24 @@
       "yahoo_id": "60016"
     },
     {
+      "name": "Kyle Bradish",
+      "position": "SP",
+      "team": "BAL",
+      "yahoo_id": "12345"
+    },
+    {
+      "name": "Ryne Nelson",
+      "position": "SP,RP",
+      "team": "AZ",
+      "yahoo_id": "12356"
+    },
+    {
+      "name": "David Bednar",
+      "position": "RP",
+      "team": "NYY",
+      "yahoo_id": "11645"
+    },
+    {
       "name": "Cole Ragans",
       "position": "SP",
       "team": "KC",
@@ -1601,18 +1607,6 @@
       "yahoo_id": "66156"
     },
     {
-      "name": "David Bednar",
-      "position": "RP",
-      "team": "NYY",
-      "yahoo_id": "11645"
-    },
-    {
-      "name": "Kyle Bradish",
-      "position": "SP",
-      "team": "BAL",
-      "yahoo_id": "12345"
-    },
-    {
       "name": "Eury P\u00e9rez",
       "position": "SP",
       "team": "MIA",
@@ -1623,12 +1617,6 @@
       "position": "SP",
       "team": "TEX",
       "yahoo_id": "9007"
-    },
-    {
-      "name": "Ryne Nelson",
-      "position": "SP,RP",
-      "team": "AZ",
-      "yahoo_id": "12356"
     },
     {
       "name": "Andrew Vaughn",
@@ -1857,10 +1845,10 @@
       "yahoo_id": "9605"
     },
     {
-      "name": "Xavier Edwards",
-      "position": "2B,SS",
-      "team": "MIA",
-      "yahoo_id": "11375"
+      "name": "Brice Turang",
+      "position": "2B",
+      "team": "MIL",
+      "yahoo_id": "11343"
     },
     {
       "name": "Kazuma Okamoto",
@@ -1875,6 +1863,12 @@
       "yahoo_id": "10056"
     },
     {
+      "name": "Mickey Moniak",
+      "position": "CF",
+      "team": "COL",
+      "yahoo_id": "10557"
+    },
+    {
       "name": "Pete Crow-Armstrong",
       "position": "CF",
       "team": "CHC",
@@ -1887,16 +1881,16 @@
       "yahoo_id": "12550"
     },
     {
-      "name": "Mickey Moniak",
-      "position": "CF",
-      "team": "COL",
-      "yahoo_id": "10557"
+      "name": "Liam Hicks",
+      "position": "C,1B",
+      "team": "MIA",
+      "yahoo_id": "63648"
     },
     {
-      "name": "Brice Turang",
-      "position": "2B",
-      "team": "MIL",
-      "yahoo_id": "11343"
+      "name": "Xavier Edwards",
+      "position": "2B,SS",
+      "team": "MIA",
+      "yahoo_id": "11375"
     },
     {
       "name": "Kyle Stowers",
@@ -1911,46 +1905,16 @@
       "yahoo_id": "11325"
     },
     {
-      "name": "Liam Hicks",
-      "position": "C,1B",
-      "team": "MIA",
-      "yahoo_id": "63648"
-    },
-    {
       "name": "Austin Riley",
       "position": "3B",
       "team": "ATL",
       "yahoo_id": "10420"
     },
     {
-      "name": "Joey Cantillo",
+      "name": "Reid Detmers",
       "position": "SP,RP",
-      "team": "CLE",
-      "yahoo_id": "11823"
-    },
-    {
-      "name": "Devin Williams",
-      "position": "RP",
-      "team": "NYM",
-      "yahoo_id": "11628"
-    },
-    {
-      "name": "Garrett Whitlock",
-      "position": "RP",
-      "team": "BOS",
-      "yahoo_id": "11358"
-    },
-    {
-      "name": "Louis Varland",
-      "position": "RP",
-      "team": "TOR",
-      "yahoo_id": "12695"
-    },
-    {
-      "name": "Gregory Soto",
-      "position": "RP",
-      "team": "PIT",
-      "yahoo_id": "10882"
+      "team": "LAA",
+      "yahoo_id": "11926"
     },
     {
       "name": "Justin Sterner",
@@ -1959,16 +1923,10 @@
       "yahoo_id": "63720"
     },
     {
-      "name": "Paul Skenes",
-      "position": "SP",
+      "name": "Gregory Soto",
+      "position": "RP",
       "team": "PIT",
-      "yahoo_id": "62972"
-    },
-    {
-      "name": "Tyler Glasnow",
-      "position": "SP",
-      "team": "LAD",
-      "yahoo_id": "9616"
+      "yahoo_id": "10882"
     },
     {
       "name": "Connelly Early",
@@ -1983,16 +1941,40 @@
       "yahoo_id": "12015"
     },
     {
-      "name": "Reid Detmers",
-      "position": "SP,RP",
-      "team": "LAA",
-      "yahoo_id": "11926"
+      "name": "Devin Williams",
+      "position": "RP",
+      "team": "NYM",
+      "yahoo_id": "11628"
     },
     {
-      "name": "Rhett Lowder",
+      "name": "Louis Varland",
+      "position": "RP",
+      "team": "TOR",
+      "yahoo_id": "12695"
+    },
+    {
+      "name": "Garrett Whitlock",
+      "position": "RP",
+      "team": "BOS",
+      "yahoo_id": "11358"
+    },
+    {
+      "name": "Joey Cantillo",
+      "position": "SP,RP",
+      "team": "CLE",
+      "yahoo_id": "11823"
+    },
+    {
+      "name": "Paul Skenes",
       "position": "SP",
-      "team": "CIN",
-      "yahoo_id": "62977"
+      "team": "PIT",
+      "yahoo_id": "62972"
+    },
+    {
+      "name": "Tyler Glasnow",
+      "position": "SP",
+      "team": "LAD",
+      "yahoo_id": "9616"
     },
     {
       "name": "Trevor Rogers",
@@ -2051,12 +2033,6 @@
       "yahoo_id": "11760"
     },
     {
-      "name": "Tyler Soderstrom",
-      "position": "1B,OF",
-      "team": "ATH",
-      "yahoo_id": "12005"
-    },
-    {
       "name": "Seiya Suzuki",
       "position": "OF",
       "team": "CHC",
@@ -2069,10 +2045,10 @@
       "yahoo_id": "12024"
     },
     {
-      "name": "Adolis Garc\u00eda",
-      "position": "OF",
-      "team": "PHI",
-      "yahoo_id": "11127"
+      "name": "Chase DeLauter",
+      "position": "CF",
+      "team": "CLE",
+      "yahoo_id": "60138"
     },
     {
       "name": "Colson Montgomery",
@@ -2081,10 +2057,16 @@
       "yahoo_id": "12413"
     },
     {
-      "name": "Chase DeLauter",
-      "position": "CF",
-      "team": "CLE",
-      "yahoo_id": "60138"
+      "name": "Adolis Garc\u00eda",
+      "position": "OF",
+      "team": "PHI",
+      "yahoo_id": "11127"
+    },
+    {
+      "name": "Tyler Soderstrom",
+      "position": "1B,OF",
+      "team": "ATH",
+      "yahoo_id": "12005"
     },
     {
       "name": "Dalton Rushing",
@@ -2099,22 +2081,10 @@
       "yahoo_id": "62973"
     },
     {
-      "name": "Ryan Weathers",
+      "name": "Trey Yesavage",
       "position": "SP",
-      "team": "NYY",
-      "yahoo_id": "11379"
-    },
-    {
-      "name": "Gabe Speier",
-      "position": "RP",
-      "team": "SEA",
-      "yahoo_id": "11653"
-    },
-    {
-      "name": "Caleb Kilian",
-      "position": "RP",
-      "team": "SF",
-      "yahoo_id": "12387"
+      "team": "TOR",
+      "yahoo_id": "64320"
     },
     {
       "name": "Tyler Phillips",
@@ -2123,22 +2093,34 @@
       "yahoo_id": "11400"
     },
     {
+      "name": "Caleb Kilian",
+      "position": "RP",
+      "team": "SF",
+      "yahoo_id": "12387"
+    },
+    {
       "name": "Eduard Bazardo",
       "position": "RP",
       "team": "SEA",
       "yahoo_id": "12092"
     },
     {
+      "name": "Kris Bubic",
+      "position": "SP",
+      "team": "KC",
+      "yahoo_id": "11319"
+    },
+    {
+      "name": "Gabe Speier",
+      "position": "RP",
+      "team": "SEA",
+      "yahoo_id": "11653"
+    },
+    {
       "name": "Andrew Painter",
       "position": "SP",
       "team": "PHI",
       "yahoo_id": "60592"
-    },
-    {
-      "name": "Trey Yesavage",
-      "position": "SP",
-      "team": "TOR",
-      "yahoo_id": "64320"
     },
     {
       "name": "Luis Severino",
@@ -2159,10 +2141,10 @@
       "yahoo_id": "12046"
     },
     {
-      "name": "Kris Bubic",
+      "name": "Ryan Weathers",
       "position": "SP",
-      "team": "KC",
-      "yahoo_id": "11319"
+      "team": "NYY",
+      "yahoo_id": "11379"
     },
     {
       "name": "Nick Martinez",
@@ -2199,12 +2181,6 @@
       "position": "SP,RP",
       "team": "DET",
       "yahoo_id": "12422"
-    },
-    {
-      "name": "Sawyer Gipson-Long",
-      "position": "SP,RP",
-      "team": "DET",
-      "yahoo_id": "62054"
     }
   ]
 }
