@@ -5806,7 +5806,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5816,7 +5816,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -9545,7 +9545,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9555,7 +9555,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -12280,7 +12280,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 38,
     "bats": "S",
     "bbref_id": "janseke01",
@@ -12290,7 +12290,7 @@
     "fangraphs_name": "Kenley Jansen",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 445276,
     "mlb_primary_position": "P",
     "name": "Kenley Jansen",
@@ -12899,7 +12899,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 27,
     "bats": "R",
     "bbref_id": "diazya02",
@@ -12909,7 +12909,7 @@
     "fangraphs_name": "Yainer Diaz",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 673237,
     "mlb_primary_position": "C",
     "name": "Yainer Diaz",
@@ -13649,17 +13649,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 28,
     "bats": "L",
     "bbref_id": "marshbr02",
     "birth_date": "1997-12-18",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20202",
     "fangraphs_name": "Brandon Marsh",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "Btwn2Jackies",
     "mlb_id": 669016,
     "mlb_primary_position": "CF",
     "name": "Brandon Marsh",
@@ -13672,7 +13672,7 @@
     "upid": "2175",
     "weight": 215,
     "yahoo_id": "10499",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "WAR",
