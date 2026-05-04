@@ -144,10 +144,10 @@
       "win_pct": 0.646,
       "opponent": "DMN",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -160,7 +160,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -172,8 +172,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "75-40-25",
-      "overall_live_win_pct": 0.625,
+      "overall_live_record": "75-41-24",
+      "overall_live_win_pct": 0.621,
       "live_rank": 1
     },
     {
@@ -183,11 +183,11 @@
       "record": "61-53-6",
       "win_pct": 0.533,
       "opponent": "HAM",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -200,7 +200,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -212,8 +212,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "61-53-26",
-      "overall_live_win_pct": 0.529,
+      "overall_live_record": "62-53-25",
+      "overall_live_win_pct": 0.532,
       "live_rank": 3
     },
     {
@@ -264,10 +264,10 @@
       "win_pct": 0.638,
       "opponent": "JEP",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -292,8 +292,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "74-41-25",
-      "overall_live_win_pct": 0.618,
+      "overall_live_record": "74-42-24",
+      "overall_live_win_pct": 0.614,
       "live_rank": 2
     },
     {
@@ -423,11 +423,11 @@
       "record": "54-58-8",
       "win_pct": 0.483,
       "opponent": "DRO",
-      "score": "1",
+      "score": "0",
       "opponent_score": "0",
-      "ties": "19",
-      "live_record": "1-0-19",
-      "live_win_pct": 0.525,
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -452,8 +452,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "55-58-27",
-      "overall_live_win_pct": 0.489,
+      "overall_live_record": "54-58-28",
+      "overall_live_win_pct": 0.486,
       "live_rank": 8
     },
     {
@@ -503,11 +503,11 @@
       "record": "46-64-10",
       "win_pct": 0.425,
       "opponent": "LFB",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -520,7 +520,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -532,8 +532,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "46-64-30",
-      "overall_live_win_pct": 0.436,
+      "overall_live_record": "47-64-29",
+      "overall_live_win_pct": 0.439,
       "live_rank": 10
     },
     {
@@ -584,10 +584,10 @@
       "win_pct": 0.333,
       "opponent": "RV",
       "score": "0",
-      "opponent_score": "1",
-      "ties": "19",
-      "live_record": "0-1-19",
-      "live_win_pct": 0.475,
+      "opponent_score": "0",
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -600,7 +600,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -612,8 +612,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "36-77-27",
-      "overall_live_win_pct": 0.354,
+      "overall_live_record": "36-76-28",
+      "overall_live_win_pct": 0.357,
       "live_rank": 12
     }
   ],
@@ -695,7 +695,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -711,7 +711,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "1",
+        "score": "0",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -875,7 +875,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -891,7 +891,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -904,7 +904,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -922,7 +922,7 @@
       "team1": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -935,7 +935,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-04T20:08:10.599172+00:00"
+  "refreshed_at": "2026-05-04T20:59:55.177901+00:00"
 }
