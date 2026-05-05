@@ -3221,5 +3221,26 @@
       "amount": 10,
       "source": "auction_resolve_retroactive"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_contract_purchase_1777949435",
+    "timestamp": "2026-05-05T02:50:35.754051Z",
+    "team": "WIZ",
+    "amount": -15,
+    "balance_before": 105,
+    "balance_after": 90,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Mike Sirota DC \u2192 BC",
+    "related_player": {
+      "upid": "7605",
+      "name": "Mike Sirota"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

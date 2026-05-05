@@ -65921,5 +65921,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Send Down"
+  },
+  {
+    "id": "2026-2026-05-04T22:50:35.756343-04:00-UPID_7605-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "WIZ",
+    "timestamp": "2026-05-04T22:50:35.756343-04:00",
+    "upid": "7605",
+    "player_name": "Mike Sirota",
+    "team": "LAD",
+    "pos": "OF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 BC"
   }
 ]
