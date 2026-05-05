@@ -5080,7 +5080,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "walkery01",
@@ -5090,7 +5090,7 @@
     "fangraphs_name": "Ryan Walker",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 676254,
     "mlb_primary_position": "P",
     "name": "Ryan Walker",
@@ -5860,7 +5860,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "pepiory01",
@@ -5870,7 +5870,7 @@
     "fangraphs_name": "Ryan Pepiot",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 686752,
     "mlb_primary_position": "P",
     "name": "Ryan Pepiot",
@@ -6759,7 +6759,7 @@
     "years_simple": "FC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 32,
     "bats": "L",
     "bbref_id": "woodrbr01",
@@ -6769,7 +6769,7 @@
     "fangraphs_name": "Brandon Woodruff",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 605540,
     "mlb_primary_position": "P",
     "name": "Brandon Woodruff",
@@ -12720,7 +12720,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "halldl01",
@@ -12730,7 +12730,7 @@
     "fangraphs_name": "DL Hall",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 669084,
     "mlb_primary_position": "P",
     "name": "DL Hall",
@@ -17961,7 +17961,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "gimenan01",
@@ -17971,7 +17971,7 @@
     "fangraphs_name": "Andres Gimenez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 665926,
     "mlb_primary_position": "2B",
     "name": "Andr\u00e9s Gim\u00e9nez",
@@ -19184,17 +19184,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 37,
     "bats": "L",
     "bbref_id": "raleybr01",
     "birth_date": "1988-06-29",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "10061",
     "fangraphs_name": "Brooks Raley",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 548384,
     "mlb_primary_position": "P",
     "name": "Brooks Raley",
@@ -22390,7 +22390,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 31,
     "bats": "R",
     "bbref_id": "cleavga01",
@@ -22400,7 +22400,7 @@
     "fangraphs_name": "Garrett Cleavinger",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 664076,
     "mlb_primary_position": "P",
     "name": "Garrett Cleavinger",
@@ -24600,17 +24600,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "L",
     "bbref_id": "kingjo01",
     "birth_date": "1994-09-14",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22051",
     "fangraphs_name": "John King",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 667463,
     "mlb_primary_position": "P",
     "name": "John King",
@@ -25002,7 +25002,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 33,
     "bats": "R",
     "bbref_id": "solerjo01",
@@ -25012,7 +25012,7 @@
     "fangraphs_name": "Jorge Soler",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 624585,
     "mlb_primary_position": "RF",
     "name": "Jorge Soler",
@@ -32831,7 +32831,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32841,7 +32841,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -43662,7 +43662,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 30,
     "bats": "L",
     "bbref_id": "sousabe01",
@@ -43672,7 +43672,7 @@
     "fangraphs_name": "Bennett Sousa",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 656986,
     "mlb_primary_position": "P",
     "name": "Bennett Sousa",
@@ -52461,7 +52461,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "canzodo01",
@@ -52471,7 +52471,7 @@
     "fangraphs_name": "Dominic Canzone",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 686527,
     "mlb_primary_position": "RF",
     "name": "Dominic Canzone",

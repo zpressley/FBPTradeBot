@@ -2985,5 +2985,75 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-040526_1506-030": {
+    "trade_id": "TRADE-040526_1506-030",
+    "teams": [
+      "DRO",
+      "TBB"
+    ],
+    "initiator_team": "DRO",
+    "status": "withdrawn",
+    "created_at": "2026-05-04T19:06:58.577658Z",
+    "expires_at": "2026-05-18T19:06:58.577658Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "1887",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "7889",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3560",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "TBB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "A+ Sam Antonacci [CWS] [PC]",
+        "CF Kyle Stowers [MIA] [TC 2]",
+        "$15 WB via TBB"
+      ],
+      "TBB": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "SP Blake Snell [LAD] [VC 2]",
+        "SP Edward Cabrera [CHC] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-05-04T20:55:07.990358Z"
   }
 }
