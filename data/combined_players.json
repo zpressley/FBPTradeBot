@@ -664,7 +664,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "mclaima01",
@@ -674,7 +674,7 @@
     "fangraphs_name": "Matt McLain",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 680574,
     "mlb_primary_position": "2B",
     "name": "Matt McLain",
@@ -8957,7 +8957,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 28,
     "bats": "L",
     "bbref_id": "stottbr01",
@@ -8967,7 +8967,7 @@
     "fangraphs_name": "Bryson Stott",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 681082,
     "mlb_primary_position": "2B",
     "name": "Bryson Stott",
@@ -9467,7 +9467,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "correca01",
@@ -9477,7 +9477,7 @@
     "fangraphs_name": "Carlos Correa",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 621043,
     "mlb_primary_position": "SS",
     "name": "Carlos Correa",
@@ -16099,7 +16099,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "leeju01",
@@ -16109,7 +16109,7 @@
     "fangraphs_name": "Jung Hoo Lee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 808982,
     "mlb_primary_position": "CF",
     "name": "Jung Hoo Lee",
@@ -19059,7 +19059,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "garrebr01",
@@ -19069,7 +19069,7 @@
     "fangraphs_name": "Braxton Garrett",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 666129,
     "mlb_primary_position": "P",
     "name": "Braxton Garrett",
@@ -27539,7 +27539,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 30,
     "bats": "R",
     "bbref_id": "andujmi01",
@@ -27549,7 +27549,7 @@
     "fangraphs_name": "Miguel Andujar",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 609280,
     "mlb_primary_position": "LF",
     "name": "Miguel Andujar",
@@ -31269,7 +31269,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "kinlety01",
@@ -31279,7 +31279,7 @@
     "fangraphs_name": "Tyler Kinley",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 641755,
     "mlb_primary_position": "P",
     "name": "Tyler Kinley",
@@ -32295,7 +32295,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32305,7 +32305,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -32780,17 +32780,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "R",
     "bbref_id": "gelofza01",
     "birth_date": "1999-10-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29766",
     "fangraphs_name": "Zack Gelof",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 680869,
     "mlb_primary_position": "2B",
     "name": "Zack Gelof",
@@ -35932,17 +35932,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "R",
     "bbref_id": "ruizes01",
     "birth_date": "1999-02-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21780",
     "fangraphs_name": "Esteury Ruiz",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 665923,
     "mlb_primary_position": "LF",
     "name": "Esteury Ruiz",
@@ -112816,17 +112816,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "L",
     "bbref_id": "bledajj01",
     "birth_date": "1997-11-10",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "26368",
     "fangraphs_name": "JJ Bleday",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 668709,
     "mlb_primary_position": "CF",
     "name": "J.J. Bleday",
@@ -112838,7 +112838,7 @@
     "upid": "4425",
     "weight": 205,
     "yahoo_id": "11782",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
