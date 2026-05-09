@@ -240,7 +240,7 @@
         "TB": 41,
         "AVG": ".170",
         "OPS": ".517",
-        "APP": 12,
+        "APP": 13,
         "IP": "32.1",
         "ER": 11,
         "P_HR": 2,
@@ -344,10 +344,10 @@
       "win_pct": 0.504,
       "opponent": "SAD",
       "score": "8",
-      "opponent_score": "10",
-      "ties": "2",
-      "live_record": "8-10-2",
-      "live_win_pct": 0.45,
+      "opponent_score": "9",
+      "ties": "3",
+      "live_record": "8-9-3",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "48/172",
         "R": 22,
@@ -360,7 +360,7 @@
         "TB": 76,
         "AVG": ".279",
         "OPS": ".777",
-        "APP": 11,
+        "APP": 12,
         "IP": "41.0",
         "ER": 21,
         "P_HR": 3,
@@ -372,8 +372,8 @@
         "BB/9": "2.63",
         "QS": 3
       },
-      "overall_live_record": "65-66-9",
-      "overall_live_win_pct": 0.496,
+      "overall_live_record": "65-65-10",
+      "overall_live_win_pct": 0.5,
       "live_rank": 7
     },
     {
@@ -400,7 +400,7 @@
         "TB": 54,
         "AVG": ".224",
         "OPS": ".703",
-        "APP": 15,
+        "APP": 16,
         "IP": "33.2",
         "ER": 22,
         "P_HR": 7,
@@ -543,11 +543,11 @@
       "record": "46-68-6",
       "win_pct": 0.408,
       "opponent": "B2J",
-      "score": "10",
+      "score": "9",
       "opponent_score": "8",
-      "ties": "2",
-      "live_record": "10-8-2",
-      "live_win_pct": 0.55,
+      "ties": "3",
+      "live_record": "9-8-3",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "41/167",
         "R": 22,
@@ -572,8 +572,8 @@
         "BB/9": "3.21",
         "QS": 4
       },
-      "overall_live_record": "56-76-8",
-      "overall_live_win_pct": 0.429,
+      "overall_live_record": "55-76-9",
+      "overall_live_win_pct": 0.425,
       "live_rank": 11
     },
     {
@@ -635,7 +635,7 @@
           "TB": 41,
           "AVG": ".170",
           "OPS": ".517",
-          "APP": 12,
+          "APP": 13,
           "IP": "32.1",
           "ER": 11,
           "P_HR": 2,
@@ -755,7 +755,7 @@
           "TB": 76,
           "AVG": ".279",
           "OPS": ".777",
-          "APP": 11,
+          "APP": 12,
           "IP": "41.0",
           "ER": 21,
           "P_HR": 3,
@@ -771,7 +771,7 @@
       "team2": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "10",
+        "score": "9",
         "categories": {
           "H/AB": "41/167",
           "R": 22,
@@ -844,7 +844,7 @@
           "TB": 54,
           "AVG": ".224",
           "OPS": ".703",
-          "APP": 15,
+          "APP": 16,
           "IP": "33.2",
           "ER": 22,
           "P_HR": 7,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-09T17:54:09.546537+00:00"
+  "refreshed_at": "2026-05-09T18:50:14.313316+00:00"
 }
