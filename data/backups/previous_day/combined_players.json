@@ -1758,7 +1758,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "galleza01",
@@ -1768,7 +1768,7 @@
     "fangraphs_name": "Zac Gallen",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 668678,
     "mlb_primary_position": "P",
     "name": "Zac Gallen",
@@ -4210,7 +4210,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "R",
     "bbref_id": "sorokmi01",
@@ -4220,7 +4220,7 @@
     "fangraphs_name": "Michael Soroka",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 647336,
     "mlb_primary_position": "P",
     "name": "Michael Soroka",
@@ -8905,7 +8905,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "ucetaed01",
@@ -8915,7 +8915,7 @@
     "fangraphs_name": "Edwin Uceta",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 670955,
     "mlb_primary_position": "P",
     "name": "Edwin Uceta",
@@ -11251,7 +11251,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "butlela01",
@@ -11261,7 +11261,7 @@
     "fangraphs_name": "Lawrence Butler",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 671732,
     "mlb_primary_position": "RF",
     "name": "Lawrence Butler",
@@ -12151,7 +12151,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "arenano01",
@@ -12161,7 +12161,7 @@
     "fangraphs_name": "Nolan Arenado",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 571448,
     "mlb_primary_position": "3B",
     "name": "Nolan Arenado",
@@ -22766,17 +22766,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 29,
     "bats": "R",
     "bbref_id": "cannigr01",
     "birth_date": "1996-05-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19867",
     "fangraphs_name": "Griffin Canning",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 656288,
     "mlb_primary_position": "P",
     "name": "Griffin Canning",
@@ -26033,7 +26033,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "ginkeke01",
@@ -26043,7 +26043,7 @@
     "fangraphs_name": "Kevin Ginkel",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 656464,
     "mlb_primary_position": "P",
     "name": "Kevin Ginkel",
@@ -29872,17 +29872,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
     "birth_date": "1999-12-18",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29878",
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -35932,7 +35932,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "ruizes01",
@@ -35942,7 +35942,7 @@
     "fangraphs_name": "Esteury Ruiz",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 665923,
     "mlb_primary_position": "LF",
     "name": "Esteury Ruiz",
