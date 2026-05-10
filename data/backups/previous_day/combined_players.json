@@ -1732,7 +1732,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "hernate01",
@@ -1742,7 +1742,7 @@
     "fangraphs_name": "Teoscar Hernandez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 606192,
     "mlb_primary_position": "RF",
     "name": "Teoscar Hern\u00e1ndez",
@@ -6944,7 +6944,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "finneky01",
@@ -6954,7 +6954,7 @@
     "fangraphs_name": "Kyle Finnegan",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 640448,
     "mlb_primary_position": "P",
     "name": "Kyle Finnegan",
@@ -9752,7 +9752,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "santito01",
@@ -9762,7 +9762,7 @@
     "fangraphs_name": "Tony Santillan",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 663574,
     "mlb_primary_position": "P",
     "name": "Tony Santillan",
@@ -12720,7 +12720,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "L",
     "bbref_id": "halldl01",
@@ -12730,7 +12730,7 @@
     "fangraphs_name": "DL Hall",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 669084,
     "mlb_primary_position": "P",
     "name": "DL Hall",
@@ -13702,7 +13702,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "R",
     "bbref_id": "scottch01",
@@ -13712,7 +13712,7 @@
     "fangraphs_name": "Christian Scott",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 681035,
     "mlb_primary_position": "P",
     "name": "Christian Scott",
@@ -14406,7 +14406,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 23,
     "bats": "R",
     "bbref_id": "winnma01",
@@ -14416,7 +14416,7 @@
     "fangraphs_name": "Masyn Winn",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 691026,
     "mlb_primary_position": "SS",
     "name": "Masyn Winn",
@@ -16099,7 +16099,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "L",
     "bbref_id": "leeju01",
@@ -16109,7 +16109,7 @@
     "fangraphs_name": "Jung Hoo Lee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 808982,
     "mlb_primary_position": "CF",
     "name": "Jung Hoo Lee",
@@ -23983,7 +23983,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 33,
     "bats": "L",
     "bbref_id": "mcneije01",
@@ -23993,7 +23993,7 @@
     "fangraphs_name": "Jeff McNeil",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 643446,
     "mlb_primary_position": "2B",
     "name": "Jeff McNeil",
@@ -40703,7 +40703,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 31,
     "bats": "R",
     "bbref_id": "bakerbr01",
@@ -40713,7 +40713,7 @@
     "fangraphs_name": "Bryan Baker",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 641329,
     "mlb_primary_position": "P",
     "name": "Bryan Baker",
