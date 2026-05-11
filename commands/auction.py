@@ -65,11 +65,50 @@ class Auction(commands.Cog):
         self._cb_close_week = None
         self._weekly_summary_week = None  # Saturday weekly summary guard
         self._resolved_week = None  # Sunday resolve guard
+        self._resolve_persist_warn_week = None  # guard for persistence failure warning
         self._last_summary_date = None  # YYYY-MM-DD in ET
         self._last_synced_phase = None  # track phase for website sync
 
         # Start background task that checks phase/time once per minute
         self.auction_tick.start()
+
+    def _commit_auction_files(
+        self,
+        file_paths: list[str],
+        message: str,
+        *,
+        wait: bool = False,
+        timeout_seconds: float = 30.0,
+    ) -> bool:
+        """Run auction commit callback with optional acknowledgement."""
+        if not _auction_commit_fn:
+            return False
+
+        try:
+            if wait:
+                try:
+                    result = _auction_commit_fn(
+                        file_paths,
+                        message,
+                        wait=True,
+                        timeout_seconds=timeout_seconds,
+                    )
+                except TypeError:
+                    _auction_commit_fn(file_paths, message)
+                    return True
+                return True if result is None else bool(result)
+
+            _auction_commit_fn(file_paths, message)
+            return True
+        except Exception as exc:
+            print(f"⚠️ Auction commit callback failed: {exc}")
+            return False
+
+    def _write_resolved_guard(self, week_key: str) -> None:
+        """Persist the weekly resolve guard locally and in memory."""
+        self._resolved_week = week_key
+        with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
+            json.dump({"resolved_week": week_key}, f)
 
     # ------------------------------------------------------------------
     # /auction status
@@ -231,7 +270,7 @@ class Auction(commands.Cog):
         # Skip the commit during the Sunday resolve window to avoid triggering
         # a Railway redeploy before the resolve guard lands.
         phase_val = phase.value
-        is_resolve_window = now.weekday() == 6 and now.hour == 10 and now.minute < 15
+        is_resolve_window = now.weekday() == 6 and now.hour >= 10
         if phase_val != self._last_synced_phase:
             try:
                 state = self.manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
@@ -294,60 +333,84 @@ class Auction(commands.Cog):
                 await self._send_weekly_summary()
                 self._weekly_summary_week = week_key
 
-        # Sunday 10:00am ET: resolve the week once (assign winners, charge WB).
-        # Narrow 15-minute window reduces Railway redeploy race exposure.
-        # If the bot misses this window, use the admin resolve-now API.
-        if now.weekday() == 6 and now.hour == 10 and now.minute < 15 and self._resolved_week != week_key:
+        # Sunday 10:00am+ ET: resolve the week once (assign winners, charge WB).
+        # Keep trying all Sunday after 10am so brief deploys/restarts don't miss
+        # the entire resolve.
+        if now.weekday() == 6 and now.hour >= 10 and self._resolved_week != week_key:
             try:
-                # Pre-resolve guard: write BEFORE resolution so any concurrent
-                # Railway deploy that reads this file will skip.
-                self._resolved_week = week_key
-                try:
-                    with open(_AUCTION_RESOLVED_STATE_FILE, "w") as f:
-                        json.dump({"resolved_week": week_key}, f)
-                except Exception:
-                    pass
 
                 result = self.manager.resolve_week(now=now)
                 status = result.get("status", "")
-                winners = result.get("winners", {})
-                if status == "resolved" and winners:
-                    # Single commit: guard + auction state + all data files.
-                    # Batching prevents partial commits where the guard lands
-                    # but the data doesn't (or vice versa).
-                    if _auction_commit_fn:
-                        _auction_commit_fn(
-                            [_AUCTION_RESOLVED_STATE_FILE,
-                             "data/auction_current.json",
-                             "data/combined_players.json",
-                             "data/wizbucks.json",
-                             "data/wizbucks_transactions.json",
-                             "data/player_log.json"],
-                            f"Auction resolved: week of {week_key}",
-                        )
-                    else:
-                        print("⚠️ _auction_commit_fn is None — resolve data not committed!")
+                winners = result.get("winners", {}) or {}
 
-                    # Post Discord announcement after commit is queued.
-                    channel = await self._get_auction_channel()
-                    if channel:
-                        lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
-                        for pid, info in winners.items():
-                            name = info.get("name", _resolve_prospect_name(pid))
-                            lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
-                        await channel.send("\n".join(lines))
-                    print(f"✅ Auction resolved: {len(winners)} winners")
+                if status in {"resolved", "already_resolved"}:
+                    commit_ok = self._commit_auction_files(
+                        [
+                            "data/auction_current.json",
+                            "data/combined_players.json",
+                            "data/wizbucks.json",
+                            "data/wizbucks_transactions.json",
+                            "data/player_log.json",
+                        ],
+                        f"Auction resolved: week of {week_key}",
+                        wait=True,
+                        timeout_seconds=60.0,
+                    )
+
+                    if commit_ok:
+                        self._resolve_persist_warn_week = None
+                        try:
+                            self._write_resolved_guard(week_key)
+                            self._commit_auction_files(
+                                [_AUCTION_RESOLVED_STATE_FILE],
+                                f"Auction resolve guard: week of {week_key}",
+                                wait=True,
+                                timeout_seconds=30.0,
+                            )
+                        except Exception as guard_exc:
+                            print(f"⚠️ Failed to persist auction resolve guard: {guard_exc}")
+
+                        if status == "resolved":
+                            channel = await self._get_auction_channel()
+                            if channel:
+                                if winners:
+                                    lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
+                                    for pid, info in winners.items():
+                                        name = info.get("name", _resolve_prospect_name(pid))
+                                        lines.append(
+                                            f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)"
+                                        )
+                                    await channel.send("\n".join(lines))
+                                else:
+                                    await channel.send("🏁 **Auction Resolved**\nNo winners recorded for this week.")
+                            print(f"✅ Auction resolved: {len(winners)} winners")
+                        else:
+                            print(f"ℹ️ Auction already resolved for week {week_key}; guard synced")
+                    else:
+                        if self._resolve_persist_warn_week != week_key:
+                            channel = await self._get_auction_channel()
+                            if channel:
+                                await channel.send(
+                                    "⚠️ **Auction Resolution Pending Persistence**\n"
+                                    "Resolution ran, but transactions are **not yet confirmed** because persistence failed. "
+                                    "The bot will retry automatically."
+                                )
+                            self._resolve_persist_warn_week = week_key
                 elif status == "no_bids":
+                    try:
+                        self._write_resolved_guard(week_key)
+                        self._commit_auction_files(
+                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
+                            f"Auction resolve guard: week of {week_key} [no bids]",
+                            wait=True,
+                            timeout_seconds=30.0,
+                        )
+                    except Exception as guard_exc:
+                        print(f"⚠️ Failed to persist no-bid resolve guard: {guard_exc}")
+                    self._resolve_persist_warn_week = None
                     print("Auction resolve: no bids this week")
                 elif status == "inactive":
                     pass
-                elif status == "already_resolved":
-                    print(f"ℹ️ Auction already resolved for week {week_key} — skipping")
-                    if _auction_commit_fn:
-                        _auction_commit_fn(
-                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
-                            f"Auction resolve guard: week of {week_key} [skip notify]",
-                        )
             except Exception as exc:
                 import traceback
                 print(f"⚠️ Auction resolve failed: {exc}")

@@ -3,7 +3,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from commands.lookup import all_players, fuzzy_lookup_all, extract_name
+from commands.lookup import fuzzy_lookup_all
 
 class PlayerLookup(commands.Cog):
     def __init__(self, bot):

@@ -12,7 +12,14 @@ def load_all_players():
     except FileNotFoundError:
         print("❌ combined_players.json not found")
         return []
+def _player_belongs_to_team(player, team_abbr):
+    team_norm = str(team_abbr or "").upper()
+    fbp_team = str(player.get("FBP_Team") or "").upper()
+    manager = str(player.get("manager") or "").upper()
+    return fbp_team == team_norm or manager == team_norm
 
+# Backward-compat snapshot for legacy imports. Prefer calling load_all_players()
+# in active command paths to avoid stale reads after data updates.
 all_players = load_all_players()
 
 def extract_name(line):
@@ -40,15 +47,16 @@ def fuzzy_lookup_all(name, threshold=0.7):
     """
     Returns a list of fuzzy-matched players from all_players
     """
+    players = load_all_players()
     submitted = name.lower()
-    player_names = [p["name"].lower() for p in all_players]
+    player_names = [p["name"].lower() for p in players if p.get("name")]
 
     matches = get_close_matches(submitted, player_names, n=5, cutoff=threshold)
     
     # Convert back to actual player objects
     matched_players = []
     for match in matches:
-        for player in all_players:
+        for player in players:
             if player["name"].lower() == match:
                 # Format the player for display
                 formatted_player = {
@@ -72,9 +80,10 @@ def format_player_display(player):
 
 def find_player_exact(name, team=None):
     """Find a player by exact name match, optionally filtered by team"""
-    for player in all_players:
+    players = load_all_players()
+    for player in players:
         if player["name"].lower() == name.lower():
-            if team is None or player.get("manager") == team:
+            if team is None or _player_belongs_to_team(player, team):
                 return {
                     "name": player["name"],
                     "formatted": format_player_display(player),
@@ -85,7 +94,8 @@ def find_player_exact(name, team=None):
 
 def get_team_roster(team_abbr):
     """Get all players for a specific team"""
-    team_players = [p for p in all_players if p.get("manager") == team_abbr]
+    players = load_all_players()
+    team_players = [p for p in players if _player_belongs_to_team(p, team_abbr)]
     return [
         {
             "name": p["name"],

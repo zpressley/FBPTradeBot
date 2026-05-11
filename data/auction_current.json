@@ -1,18 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-81d64bb526aa",
-      "bid_type": "OB",
-      "date": "2026-05-04",
-      "prospect_id": "3443",
-      "team": "DRO",
-      "timestamp": "2026-05-04T19:02:32.417010+00:00"
-    }
-  ],
-  "last_updated": "2026-05-06T20:03:18.844018+00:00",
+  "bids": [],
+  "last_updated": "2026-05-11T14:37:08.317694+00:00",
   "matches": [],
-  "phase": "cb_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "SAD",
@@ -27,6 +17,14 @@
     "DMN",
     "HAM"
   ],
+  "resolved_at": "2026-05-10T14:00:00+00:00",
+  "resolved_winners": {
+    "3443": {
+      "amount": 10,
+      "name": "Marcelo Mayer",
+      "team": "DRO"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

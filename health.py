@@ -133,6 +133,22 @@ _commit_queue_lock = threading.Lock()
 _commit_worker_thread = None
 _commit_worker_running = False
 
+def _new_commit_request(
+    file_paths: list[str],
+    message: str,
+    snapshots: dict[str, bytes],
+    *,
+    wait_event: threading.Event | None = None,
+    result_holder: dict[str, bool] | None = None,
+) -> dict:
+    return {
+        "files": list(file_paths or []),
+        "message": message,
+        "snapshots": snapshots,
+        "wait_event": wait_event,
+        "result_holder": result_holder,
+    }
+
 def _start_commit_worker():
     """Start background thread that processes commit queue."""
     global _commit_worker_thread, _commit_worker_running
@@ -166,7 +182,10 @@ def _commit_worker_loop():
         all_files = set()
         all_snapshots: dict[str, bytes] = {}
         messages = []
-        for files, msg, snapshots in pending:
+        for req in pending:
+            files = req.get("files") or []
+            msg = req.get("message") or ""
+            snapshots = req.get("snapshots") or {}
             all_files.update(files)
             all_snapshots.update(snapshots)
             messages.append(msg)
@@ -180,12 +199,23 @@ def _commit_worker_loop():
                 commit_msg += f"\n... and {len(messages) - 10} more"
         
         # Execute the commit with pre-saved snapshots
+        commit_ok = False
         try:
-            _execute_git_commit(list(all_files), commit_msg, file_snapshots=all_snapshots)
+            commit_ok = _execute_git_commit(list(all_files), commit_msg, file_snapshots=all_snapshots)
         except Exception as exc:
             print(f"⚠️ Batch commit failed: {exc}")
+            commit_ok = False
 
-def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: dict[str, bytes] | None = None) -> None:
+        for req in pending:
+            wait_event = req.get("wait_event")
+            if wait_event is None:
+                continue
+            result_holder = req.get("result_holder")
+            if isinstance(result_holder, dict):
+                result_holder["success"] = bool(commit_ok)
+            wait_event.set()
+
+def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: dict[str, bytes] | None = None) -> bool:
     """Execute a single git commit + push operation (called by worker thread).
 
     ``file_snapshots`` contains file contents captured at queue time so that
@@ -312,6 +342,7 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
         _run(["git", "checkout", "main"], check=False)
     except Exception:
         pass
+
 
     def _stage_and_commit() -> bool:
         """Return True if a commit was created."""
@@ -453,17 +484,20 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
     try:
         did_commit = _stage_and_commit()
         if not did_commit:
-            return
+            return True
 
         _push_with_retry()
         _log("GIT_BATCH_COMMIT_PUSH_OK")
+        return True
 
     except subprocess.CalledProcessError as exc:
         combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
         _log("GIT_OP_FAILED", {"code": exc.returncode, "output": combined[-2000:]})
+        return False
 
     except Exception as exc:
         _log("GIT_OP_FAILED", {"error": str(exc)})
+        return False
 
 ET = ZoneInfo("US/Eastern")
 PROSPECT_DRAFT_SEASON = 2026
@@ -1087,7 +1121,13 @@ def _schedule_bot_coro(coro) -> None:
         print(f"⚠️ Failed to schedule Discord coroutine: {exc}")
 
 
-def _commit_and_push(file_paths: list[str], message: str) -> None:
+def _commit_and_push(
+    file_paths: list[str],
+    message: str,
+    *,
+    wait: bool = False,
+    timeout_seconds: float = 20.0,
+) -> bool:
     """Queue a commit operation for batching.
 
     Instead of committing immediately, add to queue processed by background worker.
@@ -1108,8 +1148,22 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         except Exception:
             pass
 
+    wait_event: threading.Event | None = None
+    result_holder: dict[str, bool] | None = None
+    if wait:
+        wait_event = threading.Event()
+        result_holder = {"success": False}
+
+    req = _new_commit_request(
+        file_paths,
+        message,
+        snapshots,
+        wait_event=wait_event,
+        result_holder=result_holder,
+    )
+
     with _commit_queue_lock:
-        _commit_queue.append((file_paths, message, snapshots))
+        _commit_queue.append(req)
 
     # Render visibility: log enqueued operations so we can correlate later git failures.
     try:
@@ -1124,6 +1178,24 @@ def _commit_and_push(file_paths: list[str], message: str) -> None:
         )
     except Exception:
         pass
+
+    if not wait:
+        return True
+
+    if wait_event is None:
+        return False
+
+    if not wait_event.wait(timeout_seconds):
+        print(
+            "⚠️ Commit acknowledgement timed out",
+            {
+                "message": (message or "").splitlines()[0] if message else "",
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+        return False
+
+    return bool((result_holder or {}).get("success"))
 
 
 # Set commit functions at module level so API write operations work even
@@ -1414,14 +1486,14 @@ async def api_admin_auction_resolve_now(
     week_key = manager._monday_for_date(now.date()).isoformat()  # type: ignore[attr-defined]
     actor = ((payload.admin if payload else "admin") or "admin").strip()
     announce_discord = payload.announce_discord if payload is not None else True
+    persistence_confirmed = False
 
     with DATA_LOCK:
         result = manager.resolve_week(now=now)
         status = result.get("status", "")
         winners = result.get("winners", {}) or {}
-
-        if status == "resolved":
-            _commit_and_push(
+        if status in {"resolved", "already_resolved"}:
+            persistence_confirmed = _commit_and_push(
                 [
                     "data/combined_players.json",
                     "data/wizbucks.json",
@@ -1430,19 +1502,31 @@ async def api_admin_auction_resolve_now(
                     "data/player_log.json",
                 ],
                 f"Auction admin resolve-now: week of {week_key}",
+                wait=True,
+                timeout_seconds=60.0,
             )
+        elif status == "no_bids":
+            persistence_confirmed = True
 
     if announce_discord:
         if status == "resolved":
-            if winners:
-                lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
-                for pid, info in winners.items():
-                    name = info.get("name", _resolve_prospect_name(pid))
-                    lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
-                bot.loop.create_task(_send_auction_log_message("\n".join(lines)))
+            if persistence_confirmed:
+                if winners:
+                    lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
+                    for pid, info in winners.items():
+                        name = info.get("name", _resolve_prospect_name(pid))
+                        lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
+                    bot.loop.create_task(_send_auction_log_message("\n".join(lines)))
+                else:
+                    bot.loop.create_task(
+                        _send_auction_log_message("🏁 **Auction Resolved**\nNo winners recorded for this week.")
+                    )
             else:
                 bot.loop.create_task(
-                    _send_auction_log_message("🏁 **Auction Resolved**\nNo winners recorded for this week.")
+                    _send_auction_log_message(
+                        "⚠️ **Auction Resolution Pending Persistence**\n"
+                        "Resolution ran, but transactions are **not yet confirmed** because persistence failed."
+                    )
                 )
         elif status == "no_bids":
             bot.loop.create_task(_send_auction_log_message("🏁 **Auction Resolve (Manual)**\nNo bids to resolve this week."))
@@ -1453,7 +1537,8 @@ async def api_admin_auction_resolve_now(
             f"Admin: `{actor}`\n"
             f"Week: `{week_key}`\n"
             f"Status: `{status}`\n"
-            f"Winners: `{len(winners)}`"
+            f"Winners: `{len(winners)}`\n"
+            f"Persistence: `{'ok' if persistence_confirmed else 'pending'}`"
         )
     )
 
@@ -1462,6 +1547,7 @@ async def api_admin_auction_resolve_now(
         "status": status,
         "week_start": week_key,
         "winners": winners,
+        "persistence_confirmed": persistence_confirmed,
     }
 
 @app.post("/api/auction/match")
