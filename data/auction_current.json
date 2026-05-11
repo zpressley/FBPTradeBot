@@ -1,35 +1,37 @@
 {
-  "bids": [],
-  "last_updated": "2026-05-11T14:37:08.317694+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-fc2b43dbe094",
+      "bid_type": "OB",
+      "date": "2026-05-11",
+      "prospect_id": "5344",
+      "team": "DRO",
+      "timestamp": "2026-05-11T19:25:35.071187+00:00"
+    }
+  ],
+  "last_updated": "2026-05-11T19:25:35.071187+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "SAD",
     "JEP",
-    "CFL",
-    "RV",
     "WAR",
+    "RV",
     "B2J",
+    "CFL",
     "TBB",
     "LFB",
     "WIZ",
     "DMN",
     "HAM"
   ],
-  "resolved_at": "2026-05-10T14:00:00+00:00",
-  "resolved_winners": {
-    "3443": {
-      "amount": 10,
-      "name": "Marcelo Mayer",
-      "team": "DRO"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-05-04"
+  "week_start": "2026-05-11"
 }
