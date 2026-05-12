@@ -400,7 +400,7 @@
         "TB": 6,
         "AVG": ".200",
         "OPS": ".694",
-        "APP": 2,
+        "APP": 3,
         "IP": "5.1",
         "ER": 7,
         "P_HR": 2,
@@ -423,11 +423,11 @@
       "record": "61-70-9",
       "win_pct": 0.468,
       "opponent": "SAD",
-      "score": "2",
-      "opponent_score": "7",
+      "score": "1",
+      "opponent_score": "8",
       "ties": "11",
-      "live_record": "2-7-11",
-      "live_win_pct": 0.375,
+      "live_record": "1-8-11",
+      "live_win_pct": 0.325,
       "categories": {
         "H/AB": "5/22",
         "R": 2,
@@ -452,8 +452,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "63-77-20",
-      "overall_live_win_pct": 0.456,
+      "overall_live_record": "62-78-20",
+      "overall_live_win_pct": 0.45,
       "live_rank": 10
     },
     {
@@ -543,11 +543,11 @@
       "record": "58-72-10",
       "win_pct": 0.45,
       "opponent": "RV",
-      "score": "7",
-      "opponent_score": "2",
+      "score": "8",
+      "opponent_score": "1",
       "ties": "11",
-      "live_record": "7-2-11",
-      "live_win_pct": 0.625,
+      "live_record": "8-1-11",
+      "live_win_pct": 0.675,
       "categories": {
         "H/AB": "7/27",
         "R": 4,
@@ -560,7 +560,7 @@
         "TB": 11,
         "AVG": ".259",
         "OPS": ".718",
-        "APP": 0,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -572,8 +572,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "65-74-21",
-      "overall_live_win_pct": 0.472,
+      "overall_live_record": "66-73-21",
+      "overall_live_win_pct": 0.478,
       "live_rank": 9
     },
     {
@@ -755,7 +755,7 @@
           "TB": 6,
           "AVG": ".200",
           "OPS": ".694",
-          "APP": 2,
+          "APP": 3,
           "IP": "5.1",
           "ER": 7,
           "P_HR": 2,
@@ -862,7 +862,7 @@
       "team1": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "7",
+        "score": "8",
         "categories": {
           "H/AB": "7/27",
           "R": 4,
@@ -875,7 +875,7 @@
           "TB": 11,
           "AVG": ".259",
           "OPS": ".718",
-          "APP": 0,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -891,7 +891,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "2",
+        "score": "1",
         "categories": {
           "H/AB": "5/22",
           "R": 2,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-12T20:05:55.957725+00:00"
+  "refreshed_at": "2026-05-12T21:03:47.767316+00:00"
 }
