@@ -3117,5 +3117,74 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-120526_0818-032": {
+    "trade_id": "TRADE-120526_0818-032",
+    "teams": [
+      "WAR",
+      "DRO"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-05-12T12:18:28.170974Z",
+    "expires_at": "2026-05-26T12:18:28.170974Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3546",
+        "from_team": "DRO",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7112",
+        "from_team": "DRO",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "2492",
+        "from_team": "DRO",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "4604",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6565",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "4425",
+        "from_team": "WAR",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "SP Bryce Elder [ATL] [TC 1]",
+        "C Cooper Ingle [CLE] [DC]",
+        "RP Garrett Cleavinger [TB] [TC 1]"
+      ],
+      "DRO": [
+        "RP Orion Kerkering [PHI] [TC 1]",
+        "CF Wyatt Langford [TEX] [TC 2]",
+        "? J.J. Bleday [MIA] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
