@@ -11997,7 +11997,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 22,
     "bats": "R",
     "bbref_id": "smithca01",
@@ -12007,7 +12007,7 @@
     "fangraphs_name": "Cam Smith",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 701358,
     "mlb_primary_position": "RF",
     "name": "Cam Smith",
@@ -13184,17 +13184,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 27,
     "bats": "R",
     "bbref_id": "hurtky01",
     "birth_date": "1998-05-30",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27514",
     "fangraphs_name": "Kyle Hurt",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 669165,
     "mlb_primary_position": "P",
     "name": "Kyle Hurt",
@@ -13206,7 +13206,7 @@
     "upid": "6064",
     "weight": 240,
     "yahoo_id": "60237",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -15166,7 +15166,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 29,
     "bats": "R",
     "bbref_id": "bohmal01",
@@ -15176,7 +15176,7 @@
     "fangraphs_name": "Alec Bohm",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 664761,
     "mlb_primary_position": "3B",
     "name": "Alec Bohm",
@@ -15725,17 +15725,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 24,
     "bats": "R",
     "bbref_id": "kerkeor01",
     "birth_date": "2001-04-04",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "31776",
     "fangraphs_name": "Orion Kerkering",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "Weekend Warriors",
     "mlb_id": 689147,
     "mlb_primary_position": "P",
     "name": "Orion Kerkering",
@@ -15747,7 +15747,7 @@
     "upid": "4604",
     "weight": 204,
     "yahoo_id": "60329",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -22767,7 +22767,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "cannigr01",
@@ -22777,7 +22777,7 @@
     "fangraphs_name": "Griffin Canning",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 656288,
     "mlb_primary_position": "P",
     "name": "Griffin Canning",
@@ -22792,7 +22792,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 30,
     "bats": "R",
     "bbref_id": "kimha01",
@@ -22802,7 +22802,7 @@
     "fangraphs_name": "Ha-seong Kim",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 673490,
     "mlb_primary_position": "SS",
     "name": "Ha-Seong Kim",
@@ -26738,7 +26738,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "severlu01",
@@ -26748,7 +26748,7 @@
     "fangraphs_name": "Luis Severino",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 622663,
     "mlb_primary_position": "P",
     "name": "Luis Severino",
@@ -29873,7 +29873,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
@@ -29883,7 +29883,7 @@
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -30493,17 +30493,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 32,
     "bats": "R",
     "bbref_id": "antonte01",
     "birth_date": "1993-12-05",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "16233",
     "fangraphs_name": "Tejay Antone",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 622088,
     "mlb_primary_position": "P",
     "name": "Tejay Antone",
@@ -32527,17 +32527,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "R",
     "bbref_id": "duranez01",
     "birth_date": "1999-05-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "23733",
     "fangraphs_name": "Ezequiel Duran",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 677649,
     "mlb_primary_position": "SS",
     "name": "Ezequiel Duran",
@@ -44138,17 +44138,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 28,
     "bats": "L",
     "bbref_id": "mccarja02",
     "birth_date": "1997-07-30",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21622",
     "fangraphs_name": "Jake McCarthy",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 664983,
     "mlb_primary_position": "CF",
     "name": "Jake McCarthy",
