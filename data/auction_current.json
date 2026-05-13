@@ -44,9 +44,18 @@
       "prospect_id": "8444",
       "team": "RV",
       "timestamp": "2026-05-13T12:12:44.321157+00:00"
+    },
+    {
+      "amount": 15,
+      "bid_id": "bid-fb846603f3b0",
+      "bid_type": "CB",
+      "date": "2026-05-13",
+      "prospect_id": "3851",
+      "team": "TBB",
+      "timestamp": "2026-05-13T13:58:57.049180+00:00"
     }
   ],
-  "last_updated": "2026-05-13T12:12:44.321157+00:00",
+  "last_updated": "2026-05-13T13:58:57.049180+00:00",
   "matches": [],
   "phase": "cb_window",
   "priority_order": [
