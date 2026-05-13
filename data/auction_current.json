@@ -26,9 +26,18 @@
       "prospect_id": "3851",
       "team": "RV",
       "timestamp": "2026-05-11T22:56:01.906928+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-d313271ac092",
+      "bid_type": "OB",
+      "date": "2026-05-12",
+      "prospect_id": "8445",
+      "team": "WIZ",
+      "timestamp": "2026-05-13T00:57:51.411858+00:00"
     }
   ],
-  "last_updated": "2026-05-11T22:56:01.906928+00:00",
+  "last_updated": "2026-05-13T00:57:51.411858+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
