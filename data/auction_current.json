@@ -35,11 +35,20 @@
       "prospect_id": "8445",
       "team": "WIZ",
       "timestamp": "2026-05-13T00:57:51.411858+00:00"
+    },
+    {
+      "amount": 15,
+      "bid_id": "bid-6b1f65ff37a3",
+      "bid_type": "CB",
+      "date": "2026-05-13",
+      "prospect_id": "8444",
+      "team": "RV",
+      "timestamp": "2026-05-13T12:12:44.321157+00:00"
     }
   ],
-  "last_updated": "2026-05-13T00:57:51.411858+00:00",
+  "last_updated": "2026-05-13T12:12:44.321157+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "cb_window",
   "priority_order": [
     "DRO",
     "SAD",
