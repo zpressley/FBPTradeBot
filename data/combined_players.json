@@ -3897,7 +3897,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3907,7 +3907,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -15509,7 +15509,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15519,7 +15519,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -43664,7 +43664,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "sousabe01",
@@ -43674,7 +43674,7 @@
     "fangraphs_name": "Bennett Sousa",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 656986,
     "mlb_primary_position": "P",
     "name": "Bennett Sousa",
@@ -51383,7 +51383,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "cabaljo01",
@@ -51393,7 +51393,7 @@
     "fangraphs_name": "Jose Caballero",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 676609,
     "mlb_primary_position": "SS",
     "name": "Jos\u00e9 Caballero",
