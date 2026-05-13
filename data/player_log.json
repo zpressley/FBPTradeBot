@@ -69693,5 +69693,28 @@
     "years": "TC 1",
     "update_type": "Trade",
     "event": "TRADE-120526_0818-032: WAR->DRO"
+  },
+  {
+    "id": "2026-2026-05-12T20:50:54.807464-04:00-UPID_8445-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-05-12T20:50:54.807464-04:00",
+    "upid": "8445",
+    "player_name": "Nathan Flewelling",
+    "team": "TB",
+    "pos": "C",
+    "age": 19,
+    "level": "A+",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "",
+    "status": "",
+    "years": "",
+    "update_type": "Admin",
+    "event": "Player added to database by kylek_japisx"
   }
 ]
