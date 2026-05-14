@@ -12824,17 +12824,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 26,
     "bats": "R",
     "bbref_id": "brownbe02",
     "birth_date": "1999-09-09",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "23590",
     "fangraphs_name": "Ben Brown",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "",
+    "manager": "The Bluke Blokes",
     "mlb_id": 676962,
     "mlb_primary_position": "P",
     "name": "Ben Brown",
@@ -12846,7 +12846,7 @@
     "upid": "3586",
     "weight": 210,
     "yahoo_id": "12748",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -15270,7 +15270,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "jaxgr01",
@@ -15280,7 +15280,7 @@
     "fangraphs_name": "Griffin Jax",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 643377,
     "mlb_primary_position": "P",
     "name": "Griffin Jax",
@@ -15509,7 +15509,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15519,7 +15519,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -19060,7 +19060,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 28,
     "bats": "R",
     "bbref_id": "garrebr01",
@@ -19070,7 +19070,7 @@
     "fangraphs_name": "Braxton Garrett",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 666129,
     "mlb_primary_position": "P",
     "name": "Braxton Garrett",
@@ -41525,17 +41525,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "R",
     "bbref_id": "holdeco01",
     "birth_date": "1995-10-08",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22361",
     "fangraphs_name": "Colin Holderman",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 670059,
     "mlb_primary_position": "P",
     "name": "Colin Holderman",
@@ -49506,7 +49506,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
@@ -49516,7 +49516,7 @@
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -50624,17 +50624,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "S",
     "bbref_id": "gaspemi01",
     "birth_date": "1995-10-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "24759",
     "fangraphs_name": "Mickey Gasper",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 681508,
     "mlb_primary_position": "2B",
     "name": "Mickey Gasper",
@@ -95683,7 +95683,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "fishebr01",
@@ -95694,7 +95694,7 @@
     "fangraphs_name": "Braydon Fisher",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 680755,
     "mlb_primary_position": "P",
     "name": "Braydon Fisher",
