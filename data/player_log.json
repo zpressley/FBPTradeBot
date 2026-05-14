@@ -69992,5 +69992,23 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-05-14T05:19:58.552840-UPID_5033-Merge-Admin_Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-05-14T05:19:58.552840",
+    "upid": "5033",
+    "player_name": "Nasim Nunez",
+    "team": "WSH",
+    "owner": "",
+    "update_type": "Merge",
+    "event": "MERGED: Nasim Nu\u00f1ez (UPID 6680) merged into this record",
+    "changes": {},
+    "merged_from": {
+      "upid": "6680",
+      "name": "Nasim Nu\u00f1ez"
+    }
   }
 ]
