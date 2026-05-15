@@ -143,11 +143,11 @@
       "record": "83-51-6",
       "win_pct": 0.614,
       "opponent": "WIZ",
-      "score": "9",
+      "score": "10",
       "opponent_score": "9",
-      "ties": "2",
-      "live_record": "9-9-2",
-      "live_win_pct": 0.5,
+      "ties": "1",
+      "live_record": "10-9-1",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "24/109",
         "R": 18,
@@ -160,7 +160,7 @@
         "TB": 38,
         "AVG": ".220",
         "OPS": ".679",
-        "APP": 14,
+        "APP": 16,
         "IP": "27.0",
         "ER": 21,
         "P_HR": 5,
@@ -172,8 +172,8 @@
         "BB/9": "4.67",
         "QS": 2
       },
-      "overall_live_record": "92-60-8",
-      "overall_live_win_pct": 0.6,
+      "overall_live_record": "93-60-7",
+      "overall_live_win_pct": 0.603,
       "live_rank": 2
     },
     {
@@ -200,7 +200,7 @@
         "TB": 46,
         "AVG": ".269",
         "OPS": ".858",
-        "APP": 13,
+        "APP": 14,
         "IP": "36.0",
         "ER": 8,
         "P_HR": 2,
@@ -224,10 +224,10 @@
       "win_pct": 0.514,
       "opponent": "HAM",
       "score": "9",
-      "opponent_score": "9",
-      "ties": "2",
-      "live_record": "9-9-2",
-      "live_win_pct": 0.5,
+      "opponent_score": "10",
+      "ties": "1",
+      "live_record": "9-10-1",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "25/122",
         "R": 17,
@@ -252,8 +252,8 @@
         "BB/9": "6.27",
         "QS": 1
       },
-      "overall_live_record": "77-73-10",
-      "overall_live_win_pct": 0.512,
+      "overall_live_record": "77-74-9",
+      "overall_live_win_pct": 0.509,
       "live_rank": 5
     },
     {
@@ -651,7 +651,7 @@
       "team2": {
         "team": "HAM",
         "name": "Hammers",
-        "score": "9",
+        "score": "10",
         "categories": {
           "H/AB": "24/109",
           "R": 18,
@@ -664,7 +664,7 @@
           "TB": 38,
           "AVG": ".220",
           "OPS": ".679",
-          "APP": 14,
+          "APP": 16,
           "IP": "27.0",
           "ER": 21,
           "P_HR": 5,
@@ -844,7 +844,7 @@
           "TB": 46,
           "AVG": ".269",
           "OPS": ".858",
-          "APP": 13,
+          "APP": 14,
           "IP": "36.0",
           "ER": 8,
           "P_HR": 2,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-15T20:58:31.035785+00:00"
+  "refreshed_at": "2026-05-15T21:55:58.827189+00:00"
 }
