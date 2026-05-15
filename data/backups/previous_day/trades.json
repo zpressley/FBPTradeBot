@@ -3200,5 +3200,129 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-140526_1545-033": {
+    "trade_id": "TRADE-140526_1545-033",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-14T19:45:25.692419Z",
+    "expires_at": "2026-05-28T19:45:25.692419Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3489",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3444",
+        "from_team": "DRO",
+        "to_team": "RV"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Framber Valdez [DET] [VC 1]"
+      ],
+      "RV": [
+        "1B Vinnie Pasquantino [KC] [VC 2]",
+        "SP Daniel Espino [CLE] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-140526_1547-034": {
+    "trade_id": "TRADE-140526_1547-034",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-14T19:47:14.490563Z",
+    "expires_at": "2026-05-28T19:47:14.490563Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6565",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6910",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3489",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6573",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "RV"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Framber Valdez [DET] [VC 1]",
+        "C Kyle Teel [CWS] [PC]"
+      ],
+      "RV": [
+        "SP Edward Cabrera [CHC] [TC 2]",
+        "CF Wyatt Langford [TEX] [TC 2]",
+        "SP Jonah Tong [NYM] [PC]",
+        "1B Vinnie Pasquantino [KC] [VC 2]",
+        "OF Zyhir Hope [LAD] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
