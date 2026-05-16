@@ -1732,7 +1732,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 33,
     "bats": "R",
     "bbref_id": "hernate01",
@@ -1742,7 +1742,7 @@
     "fangraphs_name": "Teoscar Hernandez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 606192,
     "mlb_primary_position": "RF",
     "name": "Teoscar Hern\u00e1ndez",
@@ -7284,7 +7284,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "westbjo01",
@@ -7294,7 +7294,7 @@
     "fangraphs_name": "Jordan Westburg",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 676059,
     "mlb_primary_position": "3B",
     "name": "Jordan Westburg",
@@ -8905,7 +8905,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 28,
     "bats": "R",
     "bbref_id": "ucetaed01",
@@ -8915,7 +8915,7 @@
     "fangraphs_name": "Edwin Uceta",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 670955,
     "mlb_primary_position": "P",
     "name": "Edwin Uceta",
@@ -9545,7 +9545,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9555,7 +9555,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -12151,7 +12151,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 34,
     "bats": "R",
     "bbref_id": "arenano01",
@@ -12161,7 +12161,7 @@
     "fangraphs_name": "Nolan Arenado",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 571448,
     "mlb_primary_position": "3B",
     "name": "Nolan Arenado",
@@ -12280,7 +12280,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 38,
     "bats": "S",
     "bbref_id": "janseke01",
@@ -12290,7 +12290,7 @@
     "fangraphs_name": "Kenley Jansen",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 445276,
     "mlb_primary_position": "P",
     "name": "Kenley Jansen",
@@ -14012,7 +14012,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "seymoia01",
@@ -14022,7 +14022,7 @@
     "fangraphs_name": "Ian Seymour",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 693855,
     "mlb_primary_position": "P",
     "name": "Ian Seymour",
@@ -14324,17 +14324,17 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 31,
     "bats": "R",
     "bbref_id": "giolilu01",
     "birth_date": "1994-07-14",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "15474",
     "fangraphs_name": "Lucas Giolito",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 608337,
     "mlb_primary_position": "P",
     "name": "Lucas Giolito",
@@ -15325,7 +15325,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 30,
     "bats": "L",
     "bbref_id": "alvarjo03",
@@ -15335,7 +15335,7 @@
     "fangraphs_name": "Jose Alvarado",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 621237,
     "mlb_primary_position": "P",
     "name": "Jos\u00e9 Alvarado",
@@ -16865,7 +16865,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 32,
     "bats": "S",
     "bbref_id": "polanjo01",
@@ -16876,7 +16876,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 593871,
     "mlb_primary_position": "2B",
     "name": "Jorge Polanco",
@@ -26864,7 +26864,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 31,
     "bats": "L",
     "bbref_id": "raleylu01",
@@ -26874,7 +26874,7 @@
     "fangraphs_name": "Luke Raley",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 670042,
     "mlb_primary_position": "RF",
     "name": "Luke Raley",
@@ -31920,7 +31920,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "ramiryo01",
@@ -31930,7 +31930,7 @@
     "fangraphs_name": "Yohan Ramirez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 670990,
     "mlb_primary_position": "P",
     "name": "Yohan Ramirez",
@@ -32296,7 +32296,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32306,7 +32306,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -33221,17 +33221,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "L",
     "bbref_id": "shewmbr01",
     "birth_date": "1997-11-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25817",
     "fangraphs_name": "Braden Shewmake",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669699,
     "mlb_primary_position": "SS",
     "name": "Braden Shewmake",
@@ -49506,7 +49506,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
@@ -49516,7 +49516,7 @@
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -52634,7 +52634,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "hamilda03",
@@ -52644,7 +52644,7 @@
     "fangraphs_name": "David Hamilton",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 666152,
     "mlb_primary_position": "2B",
     "name": "David Hamilton",

@@ -3398,17 +3398,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "L",
     "bbref_id": "crawfjp01",
     "birth_date": "1995-01-11",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "15491",
     "fangraphs_name": "J.P. Crawford",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "",
+    "manager": "Hammers",
     "mlb_id": 641487,
     "mlb_primary_position": "SS",
     "name": "J.P. Crawford",
@@ -3421,7 +3421,7 @@
     "upid": "2566",
     "weight": 202,
     "yahoo_id": "9610",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -7126,7 +7126,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "alvarfr01",
@@ -7136,7 +7136,7 @@
     "fangraphs_name": "Francisco Alvarez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 682626,
     "mlb_primary_position": "C",
     "name": "Francisco Alvarez",
@@ -11251,7 +11251,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "butlela01",
@@ -11261,7 +11261,7 @@
     "fangraphs_name": "Lawrence Butler",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 671732,
     "mlb_primary_position": "RF",
     "name": "Lawrence Butler",
@@ -19060,7 +19060,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "garrebr01",
@@ -19070,7 +19070,7 @@
     "fangraphs_name": "Braxton Garrett",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 666129,
     "mlb_primary_position": "P",
     "name": "Braxton Garrett",
@@ -24601,7 +24601,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "kingjo01",
@@ -24611,7 +24611,7 @@
     "fangraphs_name": "John King",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 667463,
     "mlb_primary_position": "P",
     "name": "John King",
@@ -27386,17 +27386,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 37,
     "bats": "R",
     "bbref_id": "kellyme01",
     "birth_date": "1988-10-14",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "11156",
     "fangraphs_name": "Merrill Kelly",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 518876,
     "mlb_primary_position": "P",
     "name": "Merrill Kelly",
@@ -27409,7 +27409,7 @@
     "upid": "2967",
     "weight": 202,
     "yahoo_id": "11251",
-    "years_simple": "TC 2"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -97872,7 +97872,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "corteca01",
@@ -97883,7 +97883,7 @@
     "fangraphs_name": "Carlos Cortes",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 666126,
     "mlb_primary_position": "LF",
     "name": "Carlos Cortes",
@@ -111952,7 +111952,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "kimhy02",
@@ -111964,7 +111964,7 @@
     "fypd": false,
     "height": "5' 10\"",
     "level": "MLB",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 808975,
     "mlb_primary_position": "2B",
     "name": "Hyeseong Kim",
