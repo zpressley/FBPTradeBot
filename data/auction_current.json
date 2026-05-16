@@ -55,9 +55,17 @@
       "timestamp": "2026-05-13T13:58:57.049180+00:00"
     }
   ],
-  "last_updated": "2026-05-13T13:58:57.049180+00:00",
-  "matches": [],
-  "phase": "cb_window",
+  "last_updated": "2026-05-16T12:53:45.114565+00:00",
+  "matches": [
+    {
+      "decided_at": "2026-05-16T12:53:45.114565+00:00",
+      "decision": "match",
+      "prospect_id": "3851",
+      "source": "web",
+      "team": "RV"
+    }
+  ],
+  "phase": "ob_final",
   "priority_order": [
     "DRO",
     "SAD",
