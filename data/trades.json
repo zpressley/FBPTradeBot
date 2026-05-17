@@ -3367,5 +3367,88 @@
       "admin_review_message_id": null
     },
     "manager_approved_at": "2026-05-16T00:13:20.608581Z"
+  },
+  "TRADE-170526_1056-036": {
+    "trade_id": "TRADE-170526_1056-036",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-17T14:56:39.130492Z",
+    "expires_at": "2026-05-31T14:56:39.130492Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3489",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "5996",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6565",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6573",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3444",
+        "from_team": "DRO",
+        "to_team": "RV"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Framber Valdez [DET] [VC 1]",
+        "C Kyle Teel [CWS] [PC]"
+      ],
+      "RV": [
+        "1B Vinnie Pasquantino [KC] [VC 2]",
+        "OF Zyhir Hope [LAD] [BC]",
+        "SP Edward Cabrera [CHC] [TC 2]",
+        "C Agust\u00edn Ram\u00edrez [MIA] [?]",
+        "CF Wyatt Langford [TEX] [TC 2]",
+        "SP Daniel Espino [CLE] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
