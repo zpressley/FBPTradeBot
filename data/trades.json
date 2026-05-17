@@ -3450,5 +3450,46 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-170526_1612-037": {
+    "trade_id": "TRADE-170526_1612-037",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-17T20:12:19.243059Z",
+    "expires_at": "2026-05-31T20:12:19.243059Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3489",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "RV",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Framber Valdez [DET] [VC 1]"
+      ],
+      "RV": [
+        "1B Vinnie Pasquantino [KC] [VC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
