@@ -4081,17 +4081,17 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 30,
     "bats": "L",
     "bbref_id": "matsuyu01",
     "birth_date": "1995-10-30",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "33826",
     "fangraphs_name": "Yuki Matsui",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "",
+    "manager": "Country Fried Lamb",
     "mlb_id": 673513,
     "mlb_primary_position": "P",
     "name": "Yuki Matsui",
@@ -4103,7 +4103,7 @@
     "upid": "7281",
     "weight": 165,
     "yahoo_id": "63515",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "LFB",
@@ -12720,7 +12720,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "halldl01",
@@ -12730,7 +12730,7 @@
     "fangraphs_name": "DL Hall",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 669084,
     "mlb_primary_position": "P",
     "name": "DL Hall",
@@ -13570,7 +13570,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 30,
     "bats": "R",
     "bbref_id": "oberba01",
@@ -13580,7 +13580,7 @@
     "fangraphs_name": "Bailey Ober",
     "fypd": false,
     "height": "6' 9\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 641927,
     "mlb_primary_position": "P",
     "name": "Bailey Ober",
@@ -15402,7 +15402,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "strahma01",
@@ -15412,7 +15412,7 @@
     "fangraphs_name": "Matt Strahm",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 621381,
     "mlb_primary_position": "P",
     "name": "Matt Strahm",
