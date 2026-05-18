@@ -343,7 +343,22 @@ class Auction(commands.Cog):
                 status = result.get("status", "")
                 winners = result.get("winners", {}) or {}
 
-                if status in {"resolved", "already_resolved"}:
+                if status == "already_resolved":
+                    # Resolution already exists in auction state. Sync the local
+                    # weekly guard and avoid repeating persistence warnings for
+                    # this week on every restart/retry cycle.
+                    self._resolve_persist_warn_week = None
+                    try:
+                        self._write_resolved_guard(week_key)
+                        self._commit_auction_files(
+                            [_AUCTION_RESOLVED_STATE_FILE],
+                            f"Auction resolve guard sync: week of {week_key}",
+                            wait=False,
+                        )
+                    except Exception as guard_exc:
+                        print(f"⚠️ Failed to sync resolved-week guard: {guard_exc}")
+                    print(f"ℹ️ Auction already resolved for week {week_key}; guard synced")
+                elif status == "resolved":
                     commit_ok = self._commit_auction_files(
                         [
                             "data/auction_current.json",
@@ -384,8 +399,6 @@ class Auction(commands.Cog):
                                 else:
                                     await channel.send("🏁 **Auction Resolved**\nNo winners recorded for this week.")
                             print(f"✅ Auction resolved: {len(winners)} winners")
-                        else:
-                            print(f"ℹ️ Auction already resolved for week {week_key}; guard synced")
                     else:
                         if self._resolve_persist_warn_week != week_key:
                             channel = await self._get_auction_channel()
