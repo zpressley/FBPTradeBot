@@ -2717,6 +2717,8 @@
   {
     "team": "HAM",
     "amount": -10,
+    "balance_before": 110,
+    "balance_after": 100,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-03-30 to 2026-04-05: Bishop Letson",
     "timestamp": "2026-04-05T18:00:00+00:00",
@@ -2734,6 +2736,8 @@
   {
     "team": "DRO",
     "amount": -10,
+    "balance_before": 70,
+    "balance_after": 60,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-03-30 to 2026-04-05: T.J. Rumfield",
     "timestamp": "2026-04-05T18:00:00+00:00",
@@ -2804,6 +2808,8 @@
   {
     "team": "DRO",
     "amount": 20,
+    "balance_before": 30,
+    "balance_after": 50,
     "transaction_type": "auction_correction",
     "description": "Over-deduction correction: 2026-04-06 auction ran 3\u00d7 due to Railway redeploy bug",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2815,6 +2821,8 @@
   {
     "team": "DMN",
     "amount": -20,
+    "balance_before": 150,
+    "balance_after": 130,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-06 to 2026-04-12: Parker Messick",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2832,6 +2840,8 @@
   {
     "team": "HAM",
     "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-06 to 2026-04-12: Jhonny Level",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2849,6 +2859,8 @@
   {
     "team": "JEP",
     "amount": -25,
+    "balance_before": 140,
+    "balance_after": 115,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-06 to 2026-04-12: James Tibbs III",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2866,6 +2878,8 @@
   {
     "team": "DRO",
     "amount": -10,
+    "balance_before": 50,
+    "balance_after": 40,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-06 to 2026-04-12: Blaze Jordan",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2883,6 +2897,8 @@
   {
     "team": "WIZ",
     "amount": -10,
+    "balance_before": 125,
+    "balance_after": 115,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-06 to 2026-04-12: Connor Prielipp",
     "timestamp": "2026-04-12T18:00:00+00:00",
@@ -2921,6 +2937,8 @@
   {
     "team": "DMN",
     "amount": -15,
+    "balance_before": 130,
+    "balance_after": 115,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-13 to 2026-04-19: Luis Lara",
     "timestamp": "2026-04-19T18:00:00+00:00",
@@ -2938,6 +2956,8 @@
   {
     "team": "DRO",
     "amount": -10,
+    "balance_before": 40,
+    "balance_after": 30,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-13 to 2026-04-19: Rece Hinds",
     "timestamp": "2026-04-19T18:00:00+00:00",
@@ -2955,6 +2975,8 @@
   {
     "team": "WIZ",
     "amount": -10,
+    "balance_before": 115,
+    "balance_after": 105,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-13 to 2026-04-19: Anthony Eyanson",
     "timestamp": "2026-04-19T18:00:00+00:00",
@@ -2972,6 +2994,8 @@
   {
     "team": "CFL",
     "amount": -15,
+    "balance_before": 125,
+    "balance_after": 110,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-13 to 2026-04-19: Josiah Hartshorn",
     "timestamp": "2026-04-19T18:00:00+00:00",
@@ -2989,6 +3013,8 @@
   {
     "team": "HAM",
     "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-13 to 2026-04-19: Daniel Pierce",
     "timestamp": "2026-04-19T18:00:00+00:00",
@@ -3103,8 +3129,8 @@
     "timestamp": "2026-04-28T10:32:10.865688Z",
     "team": "CFL",
     "amount": -15,
-    "balance_before": 80,
-    "balance_after": 65,
+    "balance_before": 70,
+    "balance_after": 55,
     "transaction_type": "trade_wizbucks_debit",
     "description": "Trade TRADE-280426_0147-025: WizBucks sent to DRO",
     "related_player": null,
@@ -3207,8 +3233,8 @@
     "timestamp": "2026-04-26T14:00:00+00:00",
     "team": "CFL",
     "amount": -10,
-    "balance_before": 65,
-    "balance_after": 55,
+    "balance_before": 80,
+    "balance_after": 70,
     "transaction_type": "auction_winner",
     "description": "Auction 2026-04-20 to 2026-04-26: A.J. Ewing",
     "related_player": {
