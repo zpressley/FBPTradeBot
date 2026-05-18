@@ -1,71 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-fc2b43dbe094",
-      "bid_type": "OB",
-      "date": "2026-05-11",
-      "prospect_id": "5344",
-      "team": "DRO",
-      "timestamp": "2026-05-11T19:25:35.071187+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-48f2104334e3",
-      "bid_type": "OB",
-      "date": "2026-05-11",
-      "prospect_id": "8444",
-      "team": "HAM",
-      "timestamp": "2026-05-11T20:00:22.150943+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-e14378565461",
-      "bid_type": "OB",
-      "date": "2026-05-11",
-      "prospect_id": "3851",
-      "team": "RV",
-      "timestamp": "2026-05-11T22:56:01.906928+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-d313271ac092",
-      "bid_type": "OB",
-      "date": "2026-05-12",
-      "prospect_id": "8445",
-      "team": "WIZ",
-      "timestamp": "2026-05-13T00:57:51.411858+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-6b1f65ff37a3",
-      "bid_type": "CB",
-      "date": "2026-05-13",
-      "prospect_id": "8444",
-      "team": "RV",
-      "timestamp": "2026-05-13T12:12:44.321157+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-fb846603f3b0",
-      "bid_type": "CB",
-      "date": "2026-05-13",
-      "prospect_id": "3851",
-      "team": "TBB",
-      "timestamp": "2026-05-13T13:58:57.049180+00:00"
-    }
-  ],
-  "last_updated": "2026-05-16T12:53:45.114565+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-05-16T12:53:45.114565+00:00",
-      "decision": "match",
-      "prospect_id": "3851",
-      "source": "web",
-      "team": "RV"
-    }
-  ],
-  "phase": "ob_final",
+  "bids": [],
+  "last_updated": "2026-05-18T18:03:02.459608+00:00",
+  "matches": [],
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "SAD",
@@ -80,6 +17,29 @@
     "DMN",
     "HAM"
   ],
+  "resolved_at": "2026-05-18T18:03:02.346558+00:00",
+  "resolved_winners": {
+    "3851": {
+      "amount": 15,
+      "name": "Henry Bolte",
+      "team": "RV"
+    },
+    "5344": {
+      "amount": 10,
+      "name": "Jesus Rodriguez",
+      "team": "DRO"
+    },
+    "8444": {
+      "amount": 15,
+      "name": "Eric Hartman",
+      "team": "RV"
+    },
+    "8445": {
+      "amount": 10,
+      "name": "Nathan Flewelling",
+      "team": "WIZ"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

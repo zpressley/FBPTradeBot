@@ -3322,5 +3322,85 @@
       "amount": 10,
       "source": "auction_resolve_backfill_rebase"
     }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1779127382",
+    "timestamp": "2026-05-18T18:03:02.347091Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 40,
+    "balance_after": 30,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-11 to 2026-05-17: Jesus Rodriguez",
+    "related_player": {
+      "upid": "5344",
+      "name": "Jesus Rodriguez"
+    },
+    "metadata": {
+      "week_start": "2026-05-11",
+      "prospect_id": "5344",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_RV_auction_winner_1779127382",
+    "timestamp": "2026-05-18T18:03:02.351234Z",
+    "team": "RV",
+    "amount": -15,
+    "balance_before": 145,
+    "balance_after": 130,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-11 to 2026-05-17: Eric Hartman",
+    "related_player": {
+      "upid": "8444",
+      "name": "Eric Hartman"
+    },
+    "metadata": {
+      "week_start": "2026-05-11",
+      "prospect_id": "8444",
+      "amount": 15,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_RV_auction_winner_1779127382",
+    "timestamp": "2026-05-18T18:03:02.354175Z",
+    "team": "RV",
+    "amount": -15,
+    "balance_before": 130,
+    "balance_after": 115,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-11 to 2026-05-17: Henry Bolte",
+    "related_player": {
+      "upid": "3851",
+      "name": "Henry Bolte"
+    },
+    "metadata": {
+      "week_start": "2026-05-11",
+      "prospect_id": "3851",
+      "amount": 15,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1779127382",
+    "timestamp": "2026-05-18T18:03:02.357324Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-11 to 2026-05-17: Nathan Flewelling",
+    "related_player": {
+      "upid": "8445",
+      "name": "Nathan Flewelling"
+    },
+    "metadata": {
+      "week_start": "2026-05-11",
+      "prospect_id": "8445",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
