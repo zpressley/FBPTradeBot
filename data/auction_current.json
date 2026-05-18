@@ -1,50 +1,37 @@
 {
-  "bids": [],
-  "last_updated": "2026-05-18T18:03:02.459608+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-9b8c98d87f42",
+      "bid_type": "OB",
+      "date": "2026-05-18",
+      "prospect_id": "7924",
+      "team": "DRO",
+      "timestamp": "2026-05-18T19:12:35.815209+00:00"
+    }
+  ],
+  "last_updated": "2026-05-18T19:12:35.815209+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
-    "SAD",
     "JEP",
-    "WAR",
     "RV",
     "B2J",
-    "CFL",
-    "TBB",
-    "LFB",
+    "WAR",
+    "SAD",
     "WIZ",
+    "TBB",
+    "HAM",
     "DMN",
-    "HAM"
+    "CFL",
+    "LFB"
   ],
-  "resolved_at": "2026-05-18T18:03:02.346558+00:00",
-  "resolved_winners": {
-    "3851": {
-      "amount": 15,
-      "name": "Henry Bolte",
-      "team": "RV"
-    },
-    "5344": {
-      "amount": 10,
-      "name": "Jesus Rodriguez",
-      "team": "DRO"
-    },
-    "8444": {
-      "amount": 15,
-      "name": "Eric Hartman",
-      "team": "RV"
-    },
-    "8445": {
-      "amount": 10,
-      "name": "Nathan Flewelling",
-      "team": "WIZ"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-05-11"
+  "week_start": "2026-05-18"
 }
