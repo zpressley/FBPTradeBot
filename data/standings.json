@@ -304,10 +304,10 @@
       "win_pct": 0.531,
       "opponent": "RV",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -332,8 +332,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "82-72-26",
-      "overall_live_win_pct": 0.528,
+      "overall_live_record": "82-73-25",
+      "overall_live_win_pct": 0.525,
       "live_rank": 3
     },
     {
@@ -400,7 +400,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -503,11 +503,11 @@
       "record": "67-82-11",
       "win_pct": 0.453,
       "opponent": "TBB",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -520,7 +520,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 1,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -532,8 +532,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "67-82-31",
-      "overall_live_win_pct": 0.458,
+      "overall_live_record": "68-82-30",
+      "overall_live_win_pct": 0.461,
       "live_rank": 10
     },
     {
@@ -875,7 +875,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -922,7 +922,7 @@
       "team1": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -935,7 +935,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 1,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-18T20:56:14.921266+00:00"
+  "refreshed_at": "2026-05-18T21:52:32.392108+00:00"
 }
