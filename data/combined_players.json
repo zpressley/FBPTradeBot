@@ -567,17 +567,17 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 29,
     "bats": "L",
     "bbref_id": "sheetga01",
     "birth_date": "1996-04-23",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19901",
     "fangraphs_name": "Gavin Sheets",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "",
+    "manager": "The Damn Yankees",
     "mlb_id": 657757,
     "mlb_primary_position": "LF",
     "name": "Gavin Sheets",
@@ -590,7 +590,7 @@
     "upid": "2501",
     "weight": 235,
     "yahoo_id": "10879",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "DRO",
@@ -9061,7 +9061,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
     "bbref_id": "martiju01",
@@ -9071,7 +9071,7 @@
     "fangraphs_name": "Justin Martinez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 679885,
     "mlb_primary_position": "P",
     "name": "Justin Martinez",
@@ -10468,7 +10468,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "shawma01",
@@ -10479,7 +10479,7 @@
     "fypd": false,
     "height": "5' 10\"",
     "level": "MLB",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 807713,
     "mlb_primary_position": "3B",
     "name": "Matt Shaw",
@@ -16459,7 +16459,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "storytr01",
@@ -16470,7 +16470,7 @@
     "fypd": false,
     "height": "6' 1\"",
     "level": "MLB",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 596115,
     "mlb_primary_position": "SS",
     "name": "Trevor Story",
@@ -21694,7 +21694,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "bazared01",
@@ -21704,7 +21704,7 @@
     "fangraphs_name": "Eduard Bazardo",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 660825,
     "mlb_primary_position": "P",
     "name": "Eduard Bazardo",
@@ -22792,7 +22792,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "kimha01",
@@ -22802,7 +22802,7 @@
     "fangraphs_name": "Ha-seong Kim",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 673490,
     "mlb_primary_position": "SS",
     "name": "Ha-Seong Kim",
@@ -30493,7 +30493,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "antonte01",
@@ -30503,7 +30503,7 @@
     "fangraphs_name": "Tejay Antone",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 622088,
     "mlb_primary_position": "P",
     "name": "Tejay Antone",
@@ -32832,7 +32832,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32842,7 +32842,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -41672,7 +41672,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41682,7 +41682,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
