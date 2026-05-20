@@ -144,10 +144,10 @@
       "win_pct": 0.606,
       "opponent": "DMN",
       "score": "14",
-      "opponent_score": "5",
-      "ties": "1",
-      "live_record": "14-5-1",
-      "live_win_pct": 0.725,
+      "opponent_score": "6",
+      "ties": "0",
+      "live_record": "14-6-0",
+      "live_win_pct": 0.7,
       "categories": {
         "H/AB": "23/70",
         "R": 13,
@@ -172,8 +172,8 @@
         "BB/9": "1.88",
         "QS": 0
       },
-      "overall_live_record": "108-65-7",
-      "overall_live_win_pct": 0.619,
+      "overall_live_record": "108-66-6",
+      "overall_live_win_pct": 0.617,
       "live_rank": 1
     },
     {
@@ -223,11 +223,11 @@
       "record": "79-73-8",
       "win_pct": 0.519,
       "opponent": "LFB",
-      "score": "5",
+      "score": "6",
       "opponent_score": "14",
-      "ties": "1",
-      "live_record": "5-14-1",
-      "live_win_pct": 0.275,
+      "ties": "0",
+      "live_record": "6-14-0",
+      "live_win_pct": 0.3,
       "categories": {
         "H/AB": "15/62",
         "R": 14,
@@ -240,7 +240,7 @@
         "TB": 33,
         "AVG": ".242",
         "OPS": ".879",
-        "APP": 7,
+        "APP": 8,
         "IP": "25.1",
         "ER": 10,
         "P_HR": 3,
@@ -252,9 +252,9 @@
         "BB/9": "3.91",
         "QS": 1
       },
-      "overall_live_record": "84-87-9",
-      "overall_live_win_pct": 0.492,
-      "live_rank": 7
+      "overall_live_record": "85-87-8",
+      "overall_live_win_pct": 0.494,
+      "live_rank": 6
     },
     {
       "rank": 4,
@@ -374,7 +374,7 @@
       },
       "overall_live_record": "84-86-10",
       "overall_live_win_pct": 0.494,
-      "live_rank": 6
+      "live_rank": 7
     },
     {
       "rank": 7,
@@ -831,7 +831,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "5",
+        "score": "6",
         "categories": {
           "H/AB": "15/62",
           "R": 14,
@@ -844,7 +844,7 @@
           "TB": 33,
           "AVG": ".242",
           "OPS": ".879",
-          "APP": 7,
+          "APP": 8,
           "IP": "25.1",
           "ER": 10,
           "P_HR": 3,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-20T16:00:50.460692+00:00"
+  "refreshed_at": "2026-05-20T17:00:50.372366+00:00"
 }
