@@ -3428,5 +3428,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1779252294",
+    "timestamp": "2026-05-20T04:44:54.735882Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 60,
+    "balance_after": 55,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Ralphy Velazquez DC \u2192 PC",
+    "related_player": {
+      "upid": "6617",
+      "name": "Ralphy Velazquez"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

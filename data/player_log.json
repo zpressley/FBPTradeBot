@@ -72609,5 +72609,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-05-20T00:44:54.738573-04:00-UPID_6617-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "LFB",
+    "timestamp": "2026-05-20T00:44:54.738573-04:00",
+    "upid": "6617",
+    "player_name": "Ralphy Velazquez",
+    "team": "CLE",
+    "pos": "1B",
+    "age": 20,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
