@@ -56,6 +56,11 @@ from api_trade import router as trade_router, set_trade_bot_reference, set_trade
 from api_settings import router as settings_router, set_settings_commit_fn
 from api_notes import router as notes_router, set_notes_commit_fn
 from api_upid import router as upid_router, set_upid_commit_fn
+from api_manager_players import (
+    router as manager_players_router,
+    set_manager_players_bot_reference,
+    set_manager_players_commit_fn,
+)
 from commands.auction import set_auction_commit_fn
 from data_lock import DATA_LOCK
 
@@ -621,6 +626,12 @@ async def on_ready():
         set_trade_commit_fn(_commit_and_push)
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for trade API: {exc}")
+    # Allow manager player API to send Discord approval cards + logs
+    try:
+        set_manager_players_bot_reference(bot)
+        set_manager_players_commit_fn(_commit_and_push)
+    except Exception as exc:
+        print(f"⚠️ Failed to set bot reference for manager player API: {exc}")
 
 
     # Allow settings API to commit/push team_colors.json updates
@@ -735,6 +746,8 @@ app.include_router(settings_router)
 app.include_router(notes_router)
 # UPID database management router
 app.include_router(upid_router)
+# Manager player add/edit router
+app.include_router(manager_players_router)
 
 
 # Health check
@@ -1224,6 +1237,10 @@ except Exception:
 
 try:
     set_buyin_commit_fn(_commit_and_push)
+except Exception:
+    pass
+try:
+    set_manager_players_commit_fn(_commit_and_push)
 except Exception:
     pass
 
