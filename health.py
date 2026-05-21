@@ -622,6 +622,7 @@ async def on_ready():
     except Exception as exc:
         print(f"⚠️ Failed to set bot reference for trade API: {exc}")
 
+
     # Allow settings API to commit/push team_colors.json updates
     try:
         set_settings_commit_fn(_commit_and_push)
@@ -1230,6 +1231,7 @@ try:
     set_upid_commit_fn(_commit_and_push)
 except Exception:
     pass
+
 
 try:
     set_board_commit_fn(_commit_and_push)
@@ -2601,11 +2603,13 @@ async def _post_roster_sync_batched_messages() -> bool:
                 had_queued = bool(
                     messages.get("batched")
                     or messages.get("batched_prospect")
+                    or messages.get("batched_nri")
                     or messages.get("batched_free_agency")
                 )
                 if had_queued:
                     messages["batched"] = []
                     messages["batched_prospect"] = []
+                    messages["batched_nri"] = []
                     messages["batched_free_agency"] = []
                     with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
                         json.dump(messages, f, indent=2)
@@ -2623,11 +2627,13 @@ async def _post_roster_sync_batched_messages() -> bool:
             had_queued = bool(
                 messages.get("batched")
                 or messages.get("batched_prospect")
+                or messages.get("batched_nri")
                 or messages.get("batched_free_agency")
             )
             if had_queued:
                 messages["batched"] = []
                 messages["batched_prospect"] = []
+                messages["batched_nri"] = []
                 messages["batched_free_agency"] = []
                 messages["last_posted_date"] = date_key
                 with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
@@ -2642,6 +2648,7 @@ async def _post_roster_sync_batched_messages() -> bool:
         # Split batched messages into prospect moves vs free agency.
         # New keys are preferred; fall back to legacy "batched" key.
         prospect_msgs = messages.get("batched_prospect", [])
+        nri_msgs = messages.get("batched_nri", [])
         fa_msgs = messages.get("batched_free_agency", [])
         legacy = messages.get("batched", [])
 
@@ -2652,18 +2659,23 @@ async def _post_roster_sync_batched_messages() -> bool:
             else:
                 fa_msgs.append(msg)
 
-        if not prospect_msgs and not fa_msgs:
+        if not prospect_msgs and not nri_msgs and not fa_msgs:
             return True
 
         date_str = datetime.now(tz=ET).strftime('%B %d, %Y')
         posted = 0
 
-        if prospect_msgs:
+        if prospect_msgs or nri_msgs:
             ch = bot.get_channel(PROSPECT_MOVES_CHANNEL_ID)
             if ch:
                 header = f"📋 **Prospect Moves — {date_str}**\n"
-                await ch.send(header + "\n".join(prospect_msgs))
-                posted += len(prospect_msgs)
+                sections = []
+                if prospect_msgs:
+                    sections.append("\n".join(prospect_msgs))
+                if nri_msgs:
+                    sections.append("**Non-Roster Invite**\n" + "\n".join(nri_msgs))
+                await ch.send(header + "\n\n".join(sections))
+                posted += len(prospect_msgs) + len(nri_msgs)
             else:
                 print("⚠️ Prospect moves channel not found")
 
@@ -2679,6 +2691,7 @@ async def _post_roster_sync_batched_messages() -> bool:
         # Clear all batched queues and persist posted date.
         messages["batched"] = []
         messages["batched_prospect"] = []
+        messages["batched_nri"] = []
         messages["batched_free_agency"] = []
         messages["last_posted_date"] = date_key
         with open(ROSTER_SYNC_MESSAGES_FILE, "w", encoding="utf-8") as f:
@@ -2698,6 +2711,7 @@ class RosterSyncPostRequest(BaseModel):
     immediate: list[str] = []
     batched: list[str] = []
     batched_prospect: list[str] = []
+    batched_nri: list[str] = []
     batched_free_agency: list[str] = []
     post_batched_now: bool = True
 
@@ -2729,6 +2743,7 @@ async def api_roster_sync_post(
                 "immediate": list(payload.immediate or []),
                 "batched": list(payload.batched or []),
                 "batched_prospect": list(payload.batched_prospect or []),
+                "batched_nri": list(payload.batched_nri or []),
                 "batched_free_agency": list(payload.batched_free_agency or []),
             }
             last_posted_date = (existing_payload or {}).get("last_posted_date")

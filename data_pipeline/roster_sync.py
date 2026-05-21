@@ -238,6 +238,8 @@ class RosterSyncResult:
         self.prospect_alerts: List[Dict] = []  # immediate alerts
         self.call_ups: List[Dict] = []         # batched at 9 AM
         self.send_downs: List[Dict] = []       # batched at 9 AM
+        self.non_roster_invites: List[Dict] = []  # batched at 9 AM
+        self.non_roster_drops: List[Dict] = []    # batched at 9 AM
         self.unmatched: List[Dict] = []        # Yahoo players we couldn't match
         self.trade_guard_skips: List[Dict] = []  # Yahoo changes suppressed by recent approved trades
         self.mutated_files: List[str] = []
@@ -454,20 +456,81 @@ def run_sync(
                 contract = (rec.get("contract_type") or "").strip()
                 owner_fbp = (rec.get("FBP_Team") or "").strip()
                 owner_name = (rec.get("manager") or "").strip()
+                nri_team = str(rec.get("NRI") or "").strip().upper()
+
+                # If ownership is now set, clear any stale Non-Roster Invite marker.
+                if (owner_fbp or owner_name) and nri_team:
+                    rec["NRI"] = ""
 
                 alert: Optional[Dict] = None
 
                 if not owner_fbp and not owner_name:
-                    # Case 2: Unowned prospect
-                    alert = {
-                        "severity": "error",
-                        "emoji": "🚨",
-                        "message": (
-                            f"🚨 {full_name} rostered {_hub_link(name, upid)} "
-                            f"who is unowned. Player must go through auction. Drop required."
-                        ),
-                        "event": "Unowned Prospect Alert",
-                    }
+                    # Case 2: Unowned prospect tracked as Non-Roster Invite (NRI).
+                    # Emit invite/drop updates only for state changes:
+                    # - new Yahoo pickup of an unowned player
+                    # - invite-team switch
+                    # Existing already-rostered unowned players are seeded
+                    # silently into NRI so they don't generate backfill noise.
+                    was_on_yahoo = upid in prev_yahoo_farm.get(fbp_team, set())
+
+                    if not nri_team:
+                        rec["NRI"] = fbp_team
+                        if not is_first_run and not was_on_yahoo:
+                            result.non_roster_invites.append({
+                                "name": name,
+                                "upid": upid,
+                                "team": fbp_team,
+                                "full_name": full_name,
+                                "mlb_team": rec.get("team", ""),
+                                "position": rec.get("position", ""),
+                            })
+                            _append_player_log_entry(
+                                player_log, rec,
+                                season=SEASON,
+                                source="yahoo_roster_sync",
+                                update_type="Roster",
+                                event="Non-Roster Invite",
+                                admin="roster_sync",
+                            )
+                        continue
+
+                    if nri_team != fbp_team:
+                        _, prev_full_name = _team_labels(teams_cfg, nri_team)
+                        result.non_roster_drops.append({
+                            "name": name,
+                            "upid": upid,
+                            "team": nri_team,
+                            "full_name": prev_full_name,
+                            "mlb_team": rec.get("team", ""),
+                            "position": rec.get("position", ""),
+                        })
+                        _append_player_log_entry(
+                            player_log, rec,
+                            season=SEASON,
+                            source="yahoo_roster_sync",
+                            update_type="Roster",
+                            event="Non-Roster Invite Drop",
+                            admin="roster_sync",
+                        )
+
+                        rec["NRI"] = fbp_team
+                        result.non_roster_invites.append({
+                            "name": name,
+                            "upid": upid,
+                            "team": fbp_team,
+                            "full_name": full_name,
+                            "mlb_team": rec.get("team", ""),
+                            "position": rec.get("position", ""),
+                        })
+                        _append_player_log_entry(
+                            player_log, rec,
+                            season=SEASON,
+                            source="yahoo_roster_sync",
+                            update_type="Roster",
+                            event="Non-Roster Invite",
+                            admin="roster_sync",
+                        )
+                    continue
                 elif owner_fbp != fbp_team:
                     # Case 3: Owned by another manager
                     _, other_name = _team_labels(teams_cfg, owner_fbp)
@@ -619,6 +682,58 @@ def run_sync(
                         event="Send Down",
                         admin="roster_sync",
                     )
+    # ---------------------------------------------------------------
+    # Phase 2b: Detect Non-Roster Invite (NRI) drops
+    # ---------------------------------------------------------------
+    for p in combined:
+        upid = str(p.get("upid") or "").strip()
+        if not upid:
+            continue
+
+        if (p.get("player_type") or "").strip() != "Farm":
+            continue
+
+        owner_fbp = (p.get("FBP_Team") or "").strip()
+        owner_name = (p.get("manager") or "").strip()
+        nri_team = str(p.get("NRI") or "").strip().upper()
+        if not nri_team:
+            continue
+
+        # If ownership exists now, just clear stale NRI and move on.
+        if owner_fbp or owner_name:
+            p["NRI"] = ""
+            continue
+
+        if nri_team not in yahoo_data:
+            continue
+
+        yahoo_id = str(p.get("yahoo_id") or "").strip()
+        on_yahoo_for_nri = (
+            upid in yahoo_rostered_upids.get(nri_team, set())
+            or yahoo_id in yahoo_rostered_yids.get(nri_team, set())
+        )
+        if on_yahoo_for_nri:
+            continue
+
+        name = (p.get("name") or "").strip()
+        _, full_name = _team_labels(teams_cfg, nri_team)
+        p["NRI"] = ""
+        result.non_roster_drops.append({
+            "name": name,
+            "upid": upid,
+            "team": nri_team,
+            "full_name": full_name,
+            "mlb_team": p.get("team", ""),
+            "position": p.get("position", ""),
+        })
+        _append_player_log_entry(
+            player_log, p,
+            season=SEASON,
+            source="yahoo_roster_sync",
+            update_type="Roster",
+            event="Non-Roster Invite Drop",
+            admin="roster_sync",
+        )
 
     # ---------------------------------------------------------------
     # Phase 3: Persist
@@ -661,6 +776,8 @@ def run_sync(
     print(f"   Prospect alerts:   {len(result.prospect_alerts)}")
     print(f"   Call ups:          {len(result.call_ups)}")
     print(f"   Send downs:        {len(result.send_downs)}")
+    print(f"   NRI invites:       {len(result.non_roster_invites)}")
+    print(f"   NRI drops:         {len(result.non_roster_drops)}")
     print(f"   Unmatched:         {len(result.unmatched)}")
     print(f"   Trade-guard skips: {len(result.trade_guard_skips)}")
     if result.unmatched:
@@ -683,6 +800,7 @@ def _save_messages(result: RosterSyncResult) -> None:
         "generated_at": datetime.now(tz=ET).isoformat(),
         "immediate": [],            # post right away (prospect alerts)
         "batched_prospect": [],     # post at 9 AM → Prospect Moves channel
+        "batched_nri": [],          # post at 9 AM → Prospect Moves channel
         "batched_free_agency": [],  # post at 9 AM → Free Agency channel
     }
     if last_posted_date:
@@ -729,11 +847,30 @@ def _save_messages(result: RosterSyncResult) -> None:
             f"{sd['mlb_team']} {sd['position']}"
         )
 
+    # Non-roster invite transitions → Prospect Moves channel
+    for nri in result.non_roster_invites:
+        team = nri.get("mlb_team") or "N/A"
+        pos = nri.get("position") or "N/A"
+        messages["batched_nri"].append(
+            f"{nri['full_name']} invites {nri['name']} {team} {pos}"
+        )
+
+    for nri in result.non_roster_drops:
+        team = nri.get("mlb_team") or "N/A"
+        pos = nri.get("position") or "N/A"
+        messages["batched_nri"].append(
+            f"{nri['full_name']} drops {nri['name']} {team} {pos}"
+        )
+
     _save_json(MESSAGES_FILE, messages)
     bp = len(messages["batched_prospect"])
+    bn = len(messages["batched_nri"])
     bf = len(messages["batched_free_agency"])
     imm = len(messages["immediate"])
-    print(f"   Messages queued:   {imm + bp + bf} ({imm} immediate, {bp} prospect, {bf} free agency)")
+    print(
+        f"   Messages queued:   {imm + bp + bn + bf} "
+        f"({imm} immediate, {bp} prospect, {bn} NRI, {bf} free agency)"
+    )
 
 
 # ---------------------------------------------------------------------------
