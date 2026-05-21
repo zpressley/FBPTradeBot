@@ -1,0 +1,46 @@
+{
+  "requests": {
+    "PAR-20260521202328-WAR-E81720": {
+      "request_id": "PAR-20260521202328-WAR-E81720",
+      "status": "pending",
+      "submitted_at": "2026-05-21T20:23:28.787247+00:00",
+      "manager_team": "WAR",
+      "proof_url": "https://www.baseball-reference.com/register/player.fcgi?id=viraho000car",
+      "player_data": {
+        "name": "Carlos Virahonda",
+        "team": "AZ",
+        "position": "C",
+        "player_type": "Farm",
+        "proof_url": "https://www.baseball-reference.com/register/player.fcgi?id=viraho000car",
+        "alt_names": [],
+        "age": 20,
+        "mlb_id": 808024,
+        "weight": 180,
+        "bats": "R",
+        "throws": "R",
+        "birth_date": "2005-12-13",
+        "debut_date": null,
+        "debuted": false,
+        "height": "5' 11''",
+        "mlb_primary_position": "C",
+        "yahoo_id": "8560"
+      },
+      "duplicate_matches": [],
+      "enrichment": {
+        "mlb_id": 808024,
+        "birth_date": "2005-12-13",
+        "bats": "R",
+        "throws": "R",
+        "position": "C",
+        "mlb_primary_position": "C",
+        "age": 20
+      },
+      "review": {},
+      "discord": {
+        "channel_id": "875594022033436683",
+        "message_id": "1507116644265099437",
+        "posted_at": "2026-05-21T20:23:28.996576+00:00"
+      }
+    }
+  }
+}
