@@ -3629,5 +3629,60 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-210526_1430-040": {
+    "trade_id": "TRADE-210526_1430-040",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "pending",
+    "created_at": "2026-05-21T18:30:53.109156Z",
+    "expires_at": "2026-06-04T18:30:53.109156Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4022",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7979",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3440",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR"
+    ],
+    "receives": {
+      "WAR": [
+        "SP Hunter Greene [CIN] [Keeper Contract]",
+        "SP Anthony Eyanson [BOS] [PC]"
+      ],
+      "WIZ": [
+        "OF Jordan Walker [STL] [TC 1]",
+        "$15 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
