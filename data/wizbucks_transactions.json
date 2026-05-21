@@ -3449,5 +3449,37 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_2026-05-21_trade_TRADE-210526_1430-040_WAR_debit_15",
+    "timestamp": "2026-05-21T18:48:52.333383Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 75,
+    "balance_after": 60,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-210526_1430-040: WizBucks sent to WIZ",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-210526_1430-040",
+      "counterparty": "WIZ",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-21_trade_TRADE-210526_1430-040_WIZ_credit_15",
+    "timestamp": "2026-05-21T18:48:52.333383Z",
+    "team": "WIZ",
+    "amount": 15,
+    "balance_before": 80,
+    "balance_after": 95,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-210526_1430-040: WizBucks received from WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-210526_1430-040",
+      "counterparty": "WAR",
+      "source": "trade_portal"
+    }
   }
 ]

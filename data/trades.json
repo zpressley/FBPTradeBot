@@ -3637,7 +3637,7 @@
       "WIZ"
     ],
     "initiator_team": "WAR",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-05-21T18:30:53.109156Z",
     "expires_at": "2026-06-04T18:30:53.109156Z",
     "transfers": [
@@ -3686,6 +3686,18 @@
       "admin_review_message_id": "1507092754973589625",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-05-21T18:48:33.142888Z"
+    "manager_approved_at": "2026-05-21T18:48:33.142888Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-05-21T18:48:52.309396Z",
+    "data_applied_at": "2026-05-21T18:48:52.333383Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
