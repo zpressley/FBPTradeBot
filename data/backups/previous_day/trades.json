@@ -3505,5 +3505,129 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-200526_1528-038": {
+    "trade_id": "TRADE-200526_1528-038",
+    "teams": [
+      "DRO",
+      "SAD"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-20T19:28:14.811007Z",
+    "expires_at": "2026-06-03T19:28:14.811007Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3730",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "4567",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "8443",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6752",
+        "from_team": "SAD",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "RP Grant Taylor [CWS] [PC]"
+      ],
+      "SAD": [
+        "RP Mason Montgomery [TB] [TC R]",
+        "SP Landen Roupp [SF] [TC 1]",
+        "RP Ryan Lambert [FA] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-200526_1532-039": {
+    "trade_id": "TRADE-200526_1532-039",
+    "teams": [
+      "DRO",
+      "SAD"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-20T19:32:23.339887Z",
+    "expires_at": "2026-06-03T19:32:23.339887Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3730",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6752",
+        "from_team": "SAD",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "2780",
+        "from_team": "SAD",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3930",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "RP Grant Taylor [CWS] [PC]",
+        "CF Joshua Baez [STL] [DC]"
+      ],
+      "SAD": [
+        "RP Mason Montgomery [TB] [TC R]",
+        "OF Zyhir Hope [LAD] [BC]",
+        "SP Edward Cabrera [CHC] [TC 2]",
+        "SP Brandon Sproat [NYM] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
