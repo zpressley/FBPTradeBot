@@ -229,17 +229,17 @@
       "live_record": "5-14-1",
       "live_win_pct": 0.275,
       "categories": {
-        "H/AB": "24/113",
+        "H/AB": "24/114",
         "R": 15,
         "H": 24,
         "HR": 5,
         "RBI": 13,
         "SB": 3,
         "BB": 11,
-        "K": 38,
+        "K": 39,
         "TB": 51,
-        "AVG": ".212",
-        "OPS": ".739",
+        "AVG": ".211",
+        "OPS": ".733",
         "APP": 11,
         "IP": "45.0",
         "ER": 16,
@@ -343,11 +343,11 @@
       "record": "78-74-8",
       "win_pct": 0.513,
       "opponent": "DRO",
-      "score": "7",
-      "opponent_score": "13",
+      "score": "9",
+      "opponent_score": "11",
       "ties": "0",
-      "live_record": "7-13-0",
-      "live_win_pct": 0.35,
+      "live_record": "9-11-0",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "30/109",
         "R": 17,
@@ -372,8 +372,8 @@
         "BB/9": "3.04",
         "QS": 3
       },
-      "overall_live_record": "85-87-8",
-      "overall_live_win_pct": 0.494,
+      "overall_live_record": "87-85-8",
+      "overall_live_win_pct": 0.506,
       "live_rank": 4
     },
     {
@@ -583,11 +583,11 @@
       "record": "60-91-9",
       "win_pct": 0.403,
       "opponent": "WIZ",
-      "score": "13",
-      "opponent_score": "7",
+      "score": "11",
+      "opponent_score": "9",
       "ties": "0",
-      "live_record": "13-7-0",
-      "live_win_pct": 0.65,
+      "live_record": "11-9-0",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "35/114",
         "R": 22,
@@ -601,19 +601,19 @@
         "AVG": ".307",
         "OPS": "1.039",
         "APP": 11,
-        "IP": "21.0",
+        "IP": "22.0",
         "ER": 7,
         "P_HR": 0,
         "P_K": 23,
-        "P_TB": 25,
-        "ERA": "3.00",
-        "K/9": "9.86",
-        "H/9": "7.71",
-        "BB/9": "2.57",
+        "P_TB": 26,
+        "ERA": "2.86",
+        "K/9": "9.41",
+        "H/9": "7.77",
+        "BB/9": "2.45",
         "QS": 2
       },
-      "overall_live_record": "73-98-9",
-      "overall_live_win_pct": 0.431,
+      "overall_live_record": "71-100-9",
+      "overall_live_win_pct": 0.419,
       "live_rank": 12
     }
   ],
@@ -622,7 +622,7 @@
       "team1": {
         "team": "WIZ",
         "name": "Whiz Kids",
-        "score": "7",
+        "score": "9",
         "categories": {
           "H/AB": "30/109",
           "R": 17,
@@ -651,7 +651,7 @@
       "team2": {
         "team": "DRO",
         "name": "Andromedans",
-        "score": "13",
+        "score": "11",
         "categories": {
           "H/AB": "35/114",
           "R": 22,
@@ -665,15 +665,15 @@
           "AVG": ".307",
           "OPS": "1.039",
           "APP": 11,
-          "IP": "21.0",
+          "IP": "22.0",
           "ER": 7,
           "P_HR": 0,
           "P_K": 23,
-          "P_TB": 25,
-          "ERA": "3.00",
-          "K/9": "9.86",
-          "H/9": "7.71",
-          "BB/9": "2.57",
+          "P_TB": 26,
+          "ERA": "2.86",
+          "K/9": "9.41",
+          "H/9": "7.77",
+          "BB/9": "2.45",
           "QS": 2
         }
       }
@@ -833,17 +833,17 @@
         "name": "The Damn Yankees",
         "score": "5",
         "categories": {
-          "H/AB": "24/113",
+          "H/AB": "24/114",
           "R": 15,
           "H": 24,
           "HR": 5,
           "RBI": 13,
           "SB": 3,
           "BB": 11,
-          "K": 38,
+          "K": 39,
           "TB": 51,
-          "AVG": ".212",
-          "OPS": ".739",
+          "AVG": ".211",
+          "OPS": ".733",
           "APP": 11,
           "IP": "45.0",
           "ER": 16,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-21T19:45:46.071637+00:00"
+  "refreshed_at": "2026-05-21T20:00:54.074416+00:00"
 }
