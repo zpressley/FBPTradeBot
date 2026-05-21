@@ -2,7 +2,7 @@
   "requests": {
     "PAR-20260521202328-WAR-E81720": {
       "request_id": "PAR-20260521202328-WAR-E81720",
-      "status": "pending",
+      "status": "approved",
       "submitted_at": "2026-05-21T20:23:28.787247+00:00",
       "manager_team": "WAR",
       "proof_url": "https://www.baseball-reference.com/register/player.fcgi?id=viraho000car",
@@ -35,7 +35,14 @@
         "mlb_primary_position": "C",
         "age": 20
       },
-      "review": {},
+      "review": {
+        "reviewed_by": "WAR",
+        "reviewed_at": "2026-05-21T20:23:57.104651+00:00",
+        "approved_player": {
+          "upid": "8446",
+          "name": "Carlos Virahonda"
+        }
+      },
       "discord": {
         "channel_id": "875594022033436683",
         "message_id": "1507116644265099437",

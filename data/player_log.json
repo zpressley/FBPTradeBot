@@ -73506,5 +73506,28 @@
     "years": "TC 1",
     "update_type": "Trade",
     "event": "TRADE-210526_1430-040: WAR->WIZ"
+  },
+  {
+    "id": "2026-2026-05-21T16:23:57.067389-04:00-UPID_8446-Manager Add-Manager Add Request",
+    "season": 2026,
+    "source": "Manager Add Request",
+    "admin": "WAR",
+    "timestamp": "2026-05-21T16:23:57.067389-04:00",
+    "upid": "8446",
+    "player_name": "Carlos Virahonda",
+    "team": "AZ",
+    "pos": "C",
+    "age": 20,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "",
+    "status": "",
+    "years": "",
+    "update_type": "Manager Add",
+    "event": "Player added via manager request approved by WAR"
   }
 ]
