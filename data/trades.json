@@ -3637,7 +3637,7 @@
       "WIZ"
     ],
     "initiator_team": "WAR",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-05-21T18:30:53.109156Z",
     "expires_at": "2026-06-04T18:30:53.109156Z",
     "transfers": [
@@ -3667,7 +3667,8 @@
       }
     ],
     "acceptances": [
-      "WAR"
+      "WAR",
+      "WIZ"
     ],
     "receives": {
       "WAR": [
@@ -3682,7 +3683,9 @@
     "discord": {
       "thread_id": null,
       "thread_url": null,
-      "admin_review_message_id": null
-    }
+      "admin_review_message_id": "1507092754973589625",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-05-21T18:48:33.142888Z"
   }
 }
