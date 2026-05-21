@@ -642,6 +642,31 @@ def attach_discord_thread(trade_id: str, thread_id: str, thread_url: str) -> dic
     return rec
 
 
+def attach_admin_review_message(trade_id: str, message_id: str, channel_id: str | None = None) -> dict:
+    """Persist the Discord admin-review message reference for a trade."""
+    with _trades_lock():
+        trades = _load_trades()
+        rec = trades.get(trade_id)
+        if not rec:
+            raise HTTPException(status_code=404, detail="Trade not found")
+
+        rec.setdefault("discord", {})
+        rec["discord"]["admin_review_message_id"] = str(message_id)
+        if channel_id:
+            rec["discord"]["admin_review_channel_id"] = str(channel_id)
+
+        trades[trade_id] = rec
+        _save_trades(trades)
+
+    try:
+        _maybe_commit(f"Trade admin review message attached: {trade_id}", file_paths=[TRADES_PATH])
+    except Exception as e:
+        # Metadata attachment commit failure is non-fatal to trade lifecycle
+        print(f"⚠️ Trade admin review message attachment commit failed: {e}")
+
+    return rec
+
+
 def get_trade(trade_id: str) -> dict:
     trades = _load_trades()
     rec = trades.get(trade_id)

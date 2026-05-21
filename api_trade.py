@@ -4,7 +4,9 @@ import asyncio
 import os
 import threading
 import time
+from datetime import datetime
 from typing import Optional, TypeVar
+from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel
@@ -259,6 +261,125 @@ async def _dm_trade_parties(trade: dict, content: str) -> None:
     _schedule_on_bot_loop(_send(), "dm_trade_parties")
 
 
+def _default_admin_review_channel_id() -> int:
+    raw = os.getenv("TRADE_ADMIN_REVIEW_CHANNEL_ID", "875594022033436683")
+    try:
+        return int(raw)
+    except Exception:
+        return 875594022033436683
+
+
+def _decision_timestamp_et() -> str:
+    try:
+        return datetime.now(tz=ZoneInfo("US/Eastern")).strftime("%m/%d/%Y %I:%M %p ET")
+    except Exception:
+        return datetime.utcnow().strftime("%m/%d/%Y %I:%M %p UTC")
+
+
+async def _update_admin_review_message_card(
+    trade: dict,
+    admin_team: str,
+    *,
+    approved: bool,
+    reason: str | None = None,
+) -> bool:
+    """Best-effort: append admin decision and disable buttons on review card."""
+    discord_meta = trade.get("discord") or {}
+    message_id_raw = discord_meta.get("admin_review_message_id")
+    if not message_id_raw:
+        return False
+
+    try:
+        message_id = int(str(message_id_raw))
+    except Exception:
+        return False
+
+    channel_id_raw = discord_meta.get("admin_review_channel_id")
+    try:
+        channel_id = int(str(channel_id_raw)) if channel_id_raw else _default_admin_review_channel_id()
+    except Exception:
+        channel_id = _default_admin_review_channel_id()
+
+    async def _edit_message() -> bool:
+        guild = _select_guild()
+        if not guild:
+            return False
+
+        channel = guild.get_channel(channel_id)
+        if channel is None:
+            try:
+                channel = await guild.fetch_channel(channel_id)
+            except Exception as exc:
+                print(
+                    "⚠️ Could not resolve admin review channel for update",
+                    {"trade_id": trade.get("trade_id"), "channel_id": channel_id, "error": str(exc)},
+                )
+                return False
+
+        fetch_message = getattr(channel, "fetch_message", None)
+        if fetch_message is None:
+            return False
+
+        try:
+            message = await fetch_message(message_id)
+        except Exception as exc:
+            print(
+                "⚠️ Could not fetch admin review message",
+                {"trade_id": trade.get("trade_id"), "message_id": message_id, "error": str(exc)},
+            )
+            return False
+
+        original = message.content or ""
+        if (
+            "✅ **APPROVED**" in original
+            or "❌ **REJECTED**" in original
+            or "❌ **AUTO-WITHDRAWN**" in original
+        ):
+            return True
+
+        ts = _decision_timestamp_et()
+        if approved:
+            decision_line = f"✅ **APPROVED** by {admin_team} (website) — {ts}"
+        else:
+            decision_line = f"❌ **REJECTED** by {admin_team} (website) — {ts}"
+            if reason:
+                decision_line += f"\nReason: {reason}"
+
+        disabled_view = None
+        try:
+            from commands.trade_logic import AdminReviewView
+
+            disabled_view = AdminReviewView()
+            for item in disabled_view.children:
+                item.disabled = True
+        except Exception as exc:
+            print(f"⚠️ Failed to build disabled admin review view: {exc}")
+
+        try:
+            await message.edit(content=original + f"\n\n{decision_line}", view=disabled_view)
+        except Exception as exc:
+            print(
+                "⚠️ Could not edit admin review message",
+                {"trade_id": trade.get("trade_id"), "message_id": message_id, "error": str(exc)},
+            )
+            return False
+
+        return True
+
+    try:
+        return await _await_on_bot_loop(
+            _edit_message(),
+            "update_admin_review_message_card",
+            timeout_s=15.0,
+        )
+    except Exception as exc:
+        print(
+            "⚠️ Failed scheduling admin review message update",
+            {"trade_id": trade.get("trade_id"), "error": str(exc)},
+        )
+        return False
+
+
 
 
 @router.post("/submit")
@@ -499,6 +620,12 @@ async def admin_approve_trade(
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
 
+    # Best-effort: update admin review card to show who approved.
+    try:
+        await _update_admin_review_message_card(trade, manager_team, approved=True)
+    except Exception:
+        pass
+
     # Best-effort: post to #trades channel if bot is connected
     try:
         if _bot_ref is not None and _bot_ref.is_ready():
@@ -521,6 +648,11 @@ async def admin_approve_trade(
             _schedule_on_bot_loop(_post(), "admin_approve_post_trade")
     except Exception:
         pass
+
+    await _dm_trade_parties(
+        trade,
+        f"✅ **Trade {payload.trade_id} approved by admin {manager_team} via website.**",
+    )
 
     _log(
         "✅ TRADE_ADMIN_APPROVE_OK",
@@ -546,6 +678,22 @@ async def admin_reject_trade(
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
+    # Best-effort: update admin review card to show who rejected.
+    try:
+        await _update_admin_review_message_card(
+            trade,
+            manager_team,
+            approved=False,
+            reason=payload.reason,
+        )
+    except Exception:
+        pass
+
+    await _dm_trade_parties(
+        trade,
+        f"❌ **Trade {payload.trade_id} rejected by admin {manager_team} via website.**\nReason: {payload.reason}",
+    )
 
     _log(
         "✅ TRADE_ADMIN_REJECT_OK",

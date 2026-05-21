@@ -3123,11 +3123,14 @@ DISCORD_DISABLED = os.getenv("DISCORD_DISABLED", "").strip().lower() in ("1", "t
 # Discord reconnect delay (seconds). Default is 61 minutes.
 # Can be overridden on Render via DISCORD_RETRY_SECONDS.
 DISCORD_RETRY_SECONDS = int(os.getenv("DISCORD_RETRY_SECONDS", "3660"))
+# Retry delay for non-rate-limit startup failures (network blips, transient DNS, etc).
+DISCORD_STARTUP_RETRY_SECONDS = int(os.getenv("DISCORD_STARTUP_RETRY_SECONDS", "120"))
 
 async def start_bot():
-    """Start Discord bot with retry on rate limit.
+    """Start Discord bot with resilient retries.
 
-    Never crashes on rate-limit — retries indefinitely so the API stays up.
+    Retries on both rate-limit and transient startup failures so the API
+    process stays up instead of exiting.
     """
     if DISCORD_DISABLED:
         print("⚠️ DISCORD_DISABLED=1 — skipping Discord connection. API-only mode.")
@@ -3206,21 +3209,26 @@ async def start_bot():
             )
 
             if is_rate_limit:
-                # Best-effort: close the underlying aiohttp session to avoid
-                # "Unclosed client session" warnings when retrying.
-                try:
-                    await bot.http.close()
-                except Exception as close_exc:
-                    print(f"⚠️ Failed to close Discord HTTP session: {close_exc}")
 
                 delay = max(60, DISCORD_RETRY_SECONDS)
                 mins = delay // 60
                 print(f"⚠️ Rate limited by Discord (attempt {attempt}). Retrying in {mins}min...")
-                await asyncio.sleep(delay)
-                continue
+            else:
+                delay = max(15, DISCORD_STARTUP_RETRY_SECONDS)
+                print(
+                    f"⚠️ Discord startup failed (attempt {attempt}). "
+                    f"API remains online; retrying in {delay}s..."
+                )
 
-            # Non-rate-limit errors are fatal
-            raise
+            # Best-effort: close the underlying aiohttp session to avoid
+            # "Unclosed client session" warnings when retrying.
+            try:
+                await bot.http.close()
+            except Exception as close_exc:
+                print(f"⚠️ Failed to close Discord HTTP session: {close_exc}")
+
+            await asyncio.sleep(delay)
+            continue
 
 def run_server():
     """Run FastAPI server (blocking)"""

@@ -364,7 +364,19 @@ async def send_to_admin_review(guild, trade_data):
     msg += "\n" + format_trade_review(trade_data)
 
     view = AdminReviewView()
-    await admin_channel.send(content=msg, view=view)
+    sent = await admin_channel.send(content=msg, view=view)
+
+    # Persist message reference so API-based admin actions can update this card.
+    if trade_id:
+        try:
+            from trade import trade_store
+            trade_store.attach_admin_review_message(
+                trade_id=trade_id,
+                message_id=str(sent.id),
+                channel_id=str(admin_channel.id),
+            )
+        except Exception as exc:
+            print(f"⚠️ Failed to attach admin review message for {trade_id}: {exc}")
 
 
 async def post_approved_trade(guild, trade_data):

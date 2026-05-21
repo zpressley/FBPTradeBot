@@ -432,8 +432,9 @@ class Auction(commands.Cog):
         # Hour-long window prevents missed updates after brief restarts.
         if now.weekday() in (1, 2, 3, 4) and now.hour == 9:
             if self._last_summary_date != date_key:
-                await self._send_daily_summary()
-                self._last_summary_date = date_key
+                sent_or_already_done = await self._send_daily_summary()
+                if sent_or_already_done:
+                    self._last_summary_date = date_key
 
     # ------------------------------------------------------------------
     # Alert helpers
@@ -492,17 +493,41 @@ class Auction(commands.Cog):
         )
         await channel.send(msg)
 
-    async def _send_daily_summary(self) -> None:
+    async def _daily_summary_already_posted_today(
+        self,
+        channel: discord.TextChannel,
+        date_key: str,
+    ) -> bool:
+        """Check recent history to prevent duplicate daily summaries after restarts."""
+        try:
+            me = self.bot.user
+            async for msg in channel.history(limit=100):
+                if me and msg.author.id != me.id:
+                    continue
+                if not (msg.content or "").startswith("📊 Daily Auction Summary"):
+                    continue
+                if msg.created_at.astimezone(ET).date().isoformat() == date_key:
+                    return True
+        except Exception as exc:
+            print(f"⚠️ Failed checking daily summary history: {exc}")
+        return False
+
+    async def _send_daily_summary(self) -> bool:
         """Post a daily auction summary similar to legacy Apps Script."""
 
         channel = await self._get_auction_channel()
         if not channel:
-            return
+            return False
 
         # Load current auction state
         from datetime import datetime
 
         now = datetime.now(tz=ET)
+        date_key = now.date().isoformat()
+
+        if await self._daily_summary_already_posted_today(channel, date_key):
+            print(f"ℹ️ Daily auction summary already posted for {date_key}; skipping duplicate send")
+            return True
         state = self.manager._load_or_initialize_auction(now)  # type: ignore[attr-defined]
         bids = state.get("bids", [])
 
@@ -511,7 +536,7 @@ class Auction(commands.Cog):
                 "📊 Daily Auction Summary\n\nNo active bids yet this week.\n\n"
                 f"🔗 Auction Board: {AUCTION_BOARD_URL}"
             )
-            return
+            return True
 
         # Group bids by prospect and identify OB + high CB
         by_prospect: dict[str, list[dict]] = {}
@@ -545,6 +570,7 @@ class Auction(commands.Cog):
 
         msg = "\n".join(lines).rstrip()
         await channel.send(msg)
+        return True
 
 
     async def _send_weekly_summary(self) -> None:
