@@ -73529,5 +73529,28 @@
     "years": "",
     "update_type": "Manager Add",
     "event": "Player added via manager request approved by WAR"
+  },
+  {
+    "id": "2026-2026-05-22T07:51:17.495404-04:00-UPID_3951-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "SAD",
+    "timestamp": "2026-05-22T07:51:17.495404-04:00",
+    "upid": "3951",
+    "player_name": "Sal Stewart",
+    "team": "CIN",
+    "pos": "1B",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 240,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
