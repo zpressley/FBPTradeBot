@@ -3513,7 +3513,7 @@
       "SAD"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-05-20T19:28:14.811007Z",
     "expires_at": "2026-06-03T19:28:14.811007Z",
     "transfers": [
@@ -3559,7 +3559,8 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-05-22T02:51:04.227784Z"
   },
   "TRADE-200526_1532-039": {
     "trade_id": "TRADE-200526_1532-039",
@@ -3622,6 +3623,145 @@
         "OF Zyhir Hope [LAD] [BC]",
         "SP Edward Cabrera [CHC] [TC 2]",
         "SP Brandon Sproat [NYM] [PC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-210526_1430-040": {
+    "trade_id": "TRADE-210526_1430-040",
+    "teams": [
+      "WAR",
+      "WIZ"
+    ],
+    "initiator_team": "WAR",
+    "status": "approved",
+    "created_at": "2026-05-21T18:30:53.109156Z",
+    "expires_at": "2026-06-04T18:30:53.109156Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4022",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7979",
+        "from_team": "WIZ",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3440",
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WAR",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WAR",
+      "WIZ"
+    ],
+    "receives": {
+      "WAR": [
+        "SP Hunter Greene [CIN] [Keeper Contract]",
+        "SP Anthony Eyanson [BOS] [PC]"
+      ],
+      "WIZ": [
+        "OF Jordan Walker [STL] [TC 1]",
+        "$15 WB via WAR"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1507092754973589625",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-05-21T18:48:33.142888Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-05-21T18:48:52.309396Z",
+    "data_applied_at": "2026-05-21T18:48:52.333383Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-210526_2250-041": {
+    "trade_id": "TRADE-210526_2250-041",
+    "teams": [
+      "DRO",
+      "SAD"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-05-22T02:50:41.424046Z",
+    "expires_at": "2026-06-05T02:50:41.424046Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "4567",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "3444",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6752",
+        "from_team": "SAD",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6583",
+        "from_team": "SAD",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "RP Grant Taylor [CWS] [PC]",
+        "SS Cooper Pratt [MIL] [DC]"
+      ],
+      "SAD": [
+        "OF Zyhir Hope [LAD] [BC]",
+        "SP Landen Roupp [SF] [TC 1]",
+        "SP Daniel Espino [CLE] [PC]",
+        "RP Edwin D\u00edaz [LAD] [VC 2]"
       ]
     },
     "discord": {
