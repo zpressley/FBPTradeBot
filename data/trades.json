@@ -3208,7 +3208,7 @@
       "RV"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-05-14T19:45:25.692419Z",
     "expires_at": "2026-05-28T19:45:25.692419Z",
     "transfers": [
@@ -3247,7 +3247,8 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-05-23T08:00:14.274024Z"
   },
   "TRADE-140526_1547-034": {
     "trade_id": "TRADE-140526_1547-034",
@@ -3256,7 +3257,7 @@
       "RV"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-05-14T19:47:14.490563Z",
     "expires_at": "2026-05-28T19:47:14.490563Z",
     "transfers": [
@@ -3323,7 +3324,8 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-05-23T08:00:10.961808Z"
   },
   "TRADE-150526_2004-035": {
     "trade_id": "TRADE-150526_2004-035",
