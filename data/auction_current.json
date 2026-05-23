@@ -64,7 +64,7 @@
       "timestamp": "2026-05-21T05:19:30.143839+00:00"
     }
   ],
-  "last_updated": "2026-05-23T13:18:40.591216+00:00",
+  "last_updated": "2026-05-23T13:41:34.164324+00:00",
   "matches": [
     {
       "decided_at": "2026-05-23T13:18:40.591216+00:00",
@@ -72,6 +72,13 @@
       "prospect_id": "7893",
       "source": "web",
       "team": "SAD"
+    },
+    {
+      "decided_at": "2026-05-23T13:41:34.164324+00:00",
+      "decision": "forfeit",
+      "prospect_id": "6988",
+      "source": "web",
+      "team": "LFB"
     }
   ],
   "phase": "ob_final",
