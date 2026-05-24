@@ -489,7 +489,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "maydu01",
@@ -499,7 +499,7 @@
     "fangraphs_name": "Dustin May",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669160,
     "mlb_primary_position": "P",
     "name": "Dustin May",
@@ -3816,7 +3816,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 28,
     "bats": "L",
     "bbref_id": "kwanst01",
@@ -3826,7 +3826,7 @@
     "fangraphs_name": "Steven Kwan",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 680757,
     "mlb_primary_position": "LF",
     "name": "Steven Kwan",
@@ -4106,7 +4106,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 33,
     "bats": "R",
     "bbref_id": "bogaexa01",
@@ -4116,7 +4116,7 @@
     "fangraphs_name": "Xander Bogaerts",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 593428,
     "mlb_primary_position": "SS",
     "name": "Xander Bogaerts",
@@ -16714,7 +16714,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16724,7 +16724,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -24077,17 +24077,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 28,
     "bats": "L",
     "bbref_id": "sanchje02",
     "birth_date": "1997-10-07",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19913",
     "fangraphs_name": "Jesus Sanchez",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 660821,
     "mlb_primary_position": "RF",
     "name": "Jes\u00fas S\u00e1nchez",
@@ -25884,17 +25884,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 27,
     "bats": "S",
     "bbref_id": "ruizke01",
     "birth_date": "1998-07-20",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19610",
     "fangraphs_name": "Keibert Ruiz",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 660688,
     "mlb_primary_position": "C",
     "name": "Keibert Ruiz",
@@ -33396,7 +33396,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 23,
     "bats": "R",
     "bbref_id": "smithaj01",
@@ -33406,7 +33406,7 @@
     "fangraphs_name": "AJ Smith-Shawver",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 700363,
     "mlb_primary_position": "P",
     "name": "AJ Smith-Shawver",
@@ -41133,7 +41133,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 32,
     "bats": "L",
     "bbref_id": "beeksja02",
@@ -41143,7 +41143,7 @@
     "fangraphs_name": "Jalen Beeks",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656222,
     "mlb_primary_position": "P",
     "name": "Jalen Beeks",
