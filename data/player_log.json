@@ -74380,5 +74380,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Send Down"
+  },
+  {
+    "id": "2026-2026-05-25T15:04:13.843147-04:00-UPID_8447-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-05-25T15:04:13.843147-04:00",
+    "upid": "8447",
+    "player_name": "Rikuu Nishida",
+    "team": "CHW",
+    "pos": "2B",
+    "age": 25,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "",
+    "status": "",
+    "years": "P",
+    "update_type": "Admin",
+    "event": "Player added to database by _dunnce"
   }
 ]
