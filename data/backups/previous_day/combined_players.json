@@ -1577,7 +1577,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "flaheja01",
@@ -1587,7 +1587,7 @@
     "fangraphs_name": "Jack Flaherty",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 656427,
     "mlb_primary_position": "P",
     "name": "Jack Flaherty",
@@ -39713,7 +39713,8 @@
     "upid": "3949",
     "weight": 190,
     "yahoo_id": "60397",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "JEP"
   },
   {
     "FBP_Team": "",
@@ -40782,7 +40783,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "dominse01",
@@ -40792,7 +40793,7 @@
     "fangraphs_name": "Seranthony Dominguez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 622554,
     "mlb_primary_position": "P",
     "name": "Seranthony Dom\u00ednguez",
@@ -69866,7 +69867,8 @@
     "team": "MIA",
     "upid": "7135",
     "yahoo_id": "10514",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "CFL"
   },
   {
     "FBP_Team": "",
@@ -71114,7 +71116,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "mejiaju01",
@@ -71126,7 +71128,7 @@
     "fangraphs_name": "Juan Mejia",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 675848,
     "mlb_primary_position": "P",
     "name": "Juan Mejia",
@@ -95688,7 +95690,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 25,
     "bats": "R",
     "bbref_id": "fishebr01",
@@ -95699,7 +95701,7 @@
     "fangraphs_name": "Braydon Fisher",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 680755,
     "mlb_primary_position": "P",
     "name": "Braydon Fisher",

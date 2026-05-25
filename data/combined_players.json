@@ -1732,7 +1732,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 33,
     "bats": "R",
     "bbref_id": "hernate01",
@@ -1742,7 +1742,7 @@
     "fangraphs_name": "Teoscar Hernandez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 606192,
     "mlb_primary_position": "RF",
     "name": "Teoscar Hern\u00e1ndez",
@@ -2722,7 +2722,8 @@
     "upid": "6988",
     "weight": 225,
     "yahoo_id": "63601",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "DMN"
   },
   {
     "FBP_Team": "B2J",
@@ -4262,7 +4263,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 38,
     "bats": "R",
     "bbref_id": "goldspa01",
@@ -4272,7 +4273,7 @@
     "fangraphs_name": "Paul Goldschmidt",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 502671,
     "mlb_primary_position": "1B",
     "name": "Paul Goldschmidt",
@@ -13809,7 +13810,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 24,
     "bats": "L",
     "bbref_id": "rushida01",
@@ -13822,7 +13823,7 @@
     "fypd": false,
     "height": "5' 11\"",
     "level": "MLB",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 687221,
     "mlb_primary_position": "C",
     "name": "Dalton Rushing",
@@ -23118,7 +23119,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 34,
     "bats": "S",
     "bbref_id": "vargail01",
@@ -23128,7 +23129,7 @@
     "fangraphs_name": "Ildemaro Vargas",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 545121,
     "mlb_primary_position": "2B",
     "name": "Ildemaro Vargas",
@@ -24175,7 +24176,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24185,7 +24186,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -28117,7 +28118,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 35,
     "bats": "L",
     "bbref_id": "martini01",
@@ -28127,7 +28128,7 @@
     "fangraphs_name": "Nick Martinez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 607259,
     "mlb_primary_position": "P",
     "name": "Nick Martinez",
@@ -44846,7 +44847,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "latzja01",
@@ -44856,7 +44857,7 @@
     "fangraphs_name": "Jacob Latz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 656641,
     "mlb_primary_position": "P",
     "name": "Jacob Latz",
@@ -50628,7 +50629,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "S",
     "bbref_id": "gaspemi01",
@@ -50638,7 +50639,7 @@
     "fangraphs_name": "Mickey Gasper",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 681508,
     "mlb_primary_position": "2B",
     "name": "Mickey Gasper",
