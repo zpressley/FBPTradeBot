@@ -1,87 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-9b8c98d87f42",
-      "bid_type": "OB",
-      "date": "2026-05-18",
-      "prospect_id": "7924",
-      "team": "DRO",
-      "timestamp": "2026-05-18T19:12:35.815209+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-c2f83dfc994d",
-      "bid_type": "OB",
-      "date": "2026-05-18",
-      "prospect_id": "7893",
-      "team": "SAD",
-      "timestamp": "2026-05-18T22:08:28.189926+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-c04e823775ab",
-      "bid_type": "OB",
-      "date": "2026-05-18",
-      "prospect_id": "7962",
-      "team": "B2J",
-      "timestamp": "2026-05-18T23:36:24.728039+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-34d61686ada8",
-      "bid_type": "OB",
-      "date": "2026-05-19",
-      "prospect_id": "6988",
-      "team": "LFB",
-      "timestamp": "2026-05-20T03:46:47.622222+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-5ccedbfd3562",
-      "bid_type": "CB",
-      "date": "2026-05-20",
-      "prospect_id": "6988",
-      "team": "DRO",
-      "timestamp": "2026-05-20T07:30:56.425441+00:00"
-    },
-    {
-      "amount": 20,
-      "bid_id": "bid-38ca6b56701d",
-      "bid_type": "CB",
-      "date": "2026-05-20",
-      "prospect_id": "6988",
-      "team": "DMN",
-      "timestamp": "2026-05-20T12:43:24.969365+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-31986fad252b",
-      "bid_type": "CB",
-      "date": "2026-05-21",
-      "prospect_id": "7893",
-      "team": "WAR",
-      "timestamp": "2026-05-21T05:19:30.143839+00:00"
-    }
-  ],
-  "last_updated": "2026-05-23T13:41:34.164324+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-05-23T13:18:40.591216+00:00",
-      "decision": "match",
-      "prospect_id": "7893",
-      "source": "web",
-      "team": "SAD"
-    },
-    {
-      "decided_at": "2026-05-23T13:41:34.164324+00:00",
-      "decision": "forfeit",
-      "prospect_id": "6988",
-      "source": "web",
-      "team": "LFB"
-    }
-  ],
-  "phase": "ob_final",
+  "bids": [],
+  "last_updated": "2026-05-25T05:44:40.241529+00:00",
+  "matches": [],
+  "phase": "off_week",
   "priority_order": [
     "DRO",
     "JEP",
@@ -102,5 +23,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-05-18"
+  "week_start": "2026-05-25"
 }
