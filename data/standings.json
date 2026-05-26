@@ -224,10 +224,10 @@
       "win_pct": 0.503,
       "opponent": "DMN",
       "score": "10",
-      "opponent_score": "9",
-      "ties": "1",
-      "live_record": "10-9-1",
-      "live_win_pct": 0.525,
+      "opponent_score": "8",
+      "ties": "2",
+      "live_record": "10-8-2",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "6/32",
         "R": 3,
@@ -240,7 +240,7 @@
         "TB": 16,
         "AVG": ".188",
         "OPS": ".797",
-        "APP": 3,
+        "APP": 4,
         "IP": "1.1",
         "ER": 3,
         "P_HR": 0,
@@ -252,8 +252,8 @@
         "BB/9": "6.75",
         "QS": 0
       },
-      "overall_live_record": "95-93-12",
-      "overall_live_win_pct": 0.505,
+      "overall_live_record": "95-92-13",
+      "overall_live_win_pct": 0.507,
       "live_rank": 5
     },
     {
@@ -383,11 +383,11 @@
       "record": "83-88-9",
       "win_pct": 0.486,
       "opponent": "B2J",
-      "score": "9",
+      "score": "8",
       "opponent_score": "10",
-      "ties": "1",
-      "live_record": "9-10-1",
-      "live_win_pct": 0.475,
+      "ties": "2",
+      "live_record": "8-10-2",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "7/32",
         "R": 2,
@@ -412,8 +412,8 @@
         "BB/9": "2.57",
         "QS": 2
       },
-      "overall_live_record": "92-98-10",
-      "overall_live_win_pct": 0.485,
+      "overall_live_record": "91-98-11",
+      "overall_live_win_pct": 0.482,
       "live_rank": 6
     },
     {
@@ -520,7 +520,7 @@
         "TB": 13,
         "AVG": ".257",
         "OPS": ".737",
-        "APP": 2,
+        "APP": 3,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -755,7 +755,7 @@
           "TB": 16,
           "AVG": ".188",
           "OPS": ".797",
-          "APP": 3,
+          "APP": 4,
           "IP": "1.1",
           "ER": 3,
           "P_HR": 0,
@@ -771,7 +771,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "9",
+        "score": "8",
         "categories": {
           "H/AB": "7/32",
           "R": 2,
@@ -935,7 +935,7 @@
           "TB": 13,
           "AVG": ".257",
           "OPS": ".737",
-          "APP": 2,
+          "APP": 3,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-26T20:50:21.559040+00:00"
+  "refreshed_at": "2026-05-26T21:47:51.738653+00:00"
 }
