@@ -200,7 +200,7 @@
         "TB": 12,
         "AVG": ".194",
         "OPS": ".673",
-        "APP": 2,
+        "APP": 3,
         "IP": "13.0",
         "ER": 2,
         "P_HR": 0,
@@ -224,10 +224,10 @@
       "win_pct": 0.503,
       "opponent": "DMN",
       "score": "10",
-      "opponent_score": "9",
-      "ties": "1",
-      "live_record": "10-9-1",
-      "live_win_pct": 0.525,
+      "opponent_score": "8",
+      "ties": "2",
+      "live_record": "10-8-2",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "6/32",
         "R": 3,
@@ -240,7 +240,7 @@
         "TB": 16,
         "AVG": ".188",
         "OPS": ".797",
-        "APP": 2,
+        "APP": 3,
         "IP": "1.1",
         "ER": 3,
         "P_HR": 0,
@@ -252,8 +252,8 @@
         "BB/9": "6.75",
         "QS": 0
       },
-      "overall_live_record": "95-93-12",
-      "overall_live_win_pct": 0.505,
+      "overall_live_record": "95-92-13",
+      "overall_live_win_pct": 0.507,
       "live_rank": 5
     },
     {
@@ -280,7 +280,7 @@
         "TB": 27,
         "AVG": ".297",
         "OPS": "1.063",
-        "APP": 4,
+        "APP": 5,
         "IP": "12.2",
         "ER": 2,
         "P_HR": 1,
@@ -360,7 +360,7 @@
         "TB": 16,
         "AVG": ".278",
         "OPS": ".760",
-        "APP": 4,
+        "APP": 5,
         "IP": "10.2",
         "ER": 8,
         "P_HR": 3,
@@ -383,11 +383,11 @@
       "record": "83-88-9",
       "win_pct": 0.486,
       "opponent": "B2J",
-      "score": "9",
+      "score": "8",
       "opponent_score": "10",
-      "ties": "1",
-      "live_record": "9-10-1",
-      "live_win_pct": 0.475,
+      "ties": "2",
+      "live_record": "8-10-2",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "7/32",
         "R": 2,
@@ -412,8 +412,8 @@
         "BB/9": "2.57",
         "QS": 2
       },
-      "overall_live_record": "92-98-10",
-      "overall_live_win_pct": 0.485,
+      "overall_live_record": "91-98-11",
+      "overall_live_win_pct": 0.482,
       "live_rank": 6
     },
     {
@@ -440,7 +440,7 @@
         "TB": 7,
         "AVG": ".167",
         "OPS": ".405",
-        "APP": 4,
+        "APP": 5,
         "IP": "10.0",
         "ER": 1,
         "P_HR": 1,
@@ -463,11 +463,11 @@
       "record": "80-92-8",
       "win_pct": 0.467,
       "opponent": "RV",
-      "score": "8",
+      "score": "7",
       "opponent_score": "9",
-      "ties": "3",
-      "live_record": "8-9-3",
-      "live_win_pct": 0.475,
+      "ties": "4",
+      "live_record": "7-9-4",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "3/28",
         "R": 4,
@@ -492,8 +492,8 @@
         "BB/9": "2.70",
         "QS": 0
       },
-      "overall_live_record": "88-101-11",
-      "overall_live_win_pct": 0.468,
+      "overall_live_record": "87-101-12",
+      "overall_live_win_pct": 0.465,
       "live_rank": 10
     },
     {
@@ -504,10 +504,10 @@
       "win_pct": 0.461,
       "opponent": "WAR",
       "score": "9",
-      "opponent_score": "8",
-      "ties": "3",
-      "live_record": "9-8-3",
-      "live_win_pct": 0.525,
+      "opponent_score": "7",
+      "ties": "4",
+      "live_record": "9-7-4",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "9/35",
         "R": 2,
@@ -520,7 +520,7 @@
         "TB": 13,
         "AVG": ".257",
         "OPS": ".737",
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -532,9 +532,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "86-99-15",
-      "overall_live_win_pct": 0.468,
-      "live_rank": 9
+      "overall_live_record": "86-98-16",
+      "overall_live_win_pct": 0.47,
+      "live_rank": 8
     },
     {
       "rank": 11,
@@ -574,7 +574,7 @@
       },
       "overall_live_record": "84-97-19",
       "overall_live_win_pct": 0.468,
-      "live_rank": 8
+      "live_rank": 9
     },
     {
       "rank": 12,
@@ -635,7 +635,7 @@
           "TB": 12,
           "AVG": ".194",
           "OPS": ".673",
-          "APP": 2,
+          "APP": 3,
           "IP": "13.0",
           "ER": 2,
           "P_HR": 0,
@@ -664,7 +664,7 @@
           "TB": 16,
           "AVG": ".278",
           "OPS": ".760",
-          "APP": 4,
+          "APP": 5,
           "IP": "10.2",
           "ER": 8,
           "P_HR": 3,
@@ -724,7 +724,7 @@
           "TB": 27,
           "AVG": ".297",
           "OPS": "1.063",
-          "APP": 4,
+          "APP": 5,
           "IP": "12.2",
           "ER": 2,
           "P_HR": 1,
@@ -755,7 +755,7 @@
           "TB": 16,
           "AVG": ".188",
           "OPS": ".797",
-          "APP": 2,
+          "APP": 3,
           "IP": "1.1",
           "ER": 3,
           "P_HR": 0,
@@ -771,7 +771,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "9",
+        "score": "8",
         "categories": {
           "H/AB": "7/32",
           "R": 2,
@@ -815,7 +815,7 @@
           "TB": 7,
           "AVG": ".167",
           "OPS": ".405",
-          "APP": 4,
+          "APP": 5,
           "IP": "10.0",
           "ER": 1,
           "P_HR": 1,
@@ -935,7 +935,7 @@
           "TB": 13,
           "AVG": ".257",
           "OPS": ".737",
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -951,7 +951,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "8",
+        "score": "7",
         "categories": {
           "H/AB": "3/28",
           "R": 4,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-05-26T18:52:40.887863+00:00"
+  "refreshed_at": "2026-05-26T19:51:27.981308+00:00"
 }
