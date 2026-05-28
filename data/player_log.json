@@ -75139,5 +75139,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 PC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-05-28T12:34:27.450914-04:00-UPID_7568-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "RV",
+    "timestamp": "2026-05-28T12:34:27.450914-04:00",
+    "upid": "7568",
+    "player_name": "Cam Schlittler",
+    "team": "NYY",
+    "pos": "SP",
+    "age": 25,
+    "level": "",
+    "team_rank": null,
+    "rank": 132,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
