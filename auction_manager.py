@@ -205,13 +205,34 @@ class AuctionManager:
             if ob_team == normalized_team:
                 return {"success": False, "error": "Originating manager cannot place challenge bids on their own OB."}
 
-            # Minimum raise of +$5
-            current_high = self._get_current_high_bid_amount(bids, prospect["upid"])
+            # Minimum raise of +$5, OR same-amount priority match for lower-seeded team.
+            current_high = self._get_current_high_bid_amount(bids, str(prospect["upid"]))
             if amount < current_high + 5:
-                return {
-                    "success": False,
-                    "error": f"Challenge bids must be at least $5 above current high (${current_high}).",
-                }
+                if amount == current_high:
+                    # Priority match: allowed only if bidder has strictly higher priority
+                    # (worse standing = lower priority_index) than the current high bidder.
+                    current_high_team = self._get_current_high_bidder_team(bids, str(prospect["upid"]))
+                    priority_order: List[str] = state.get("priority_order") or []
+                    p_idx = {t: i for i, t in enumerate(priority_order)}
+                    bidder_priority = p_idx.get(normalized_team, 999)
+                    high_priority = p_idx.get(current_high_team or "", 999)
+                    if bidder_priority >= high_priority:
+                        return {
+                            "success": False,
+                            "error": (
+                                f"To priority-match at ${current_high}, you need worse standings "
+                                f"(higher CB priority) than the current high bidder ({current_high_team})."
+                            ),
+                        }
+                    # else: priority match is allowed — fall through to place bid
+                else:
+                    return {
+                        "success": False,
+                        "error": (
+                            f"Challenge bids must be at least $5 above the current high (${current_high}), "
+                            f"or match at ${current_high} exactly if you have higher CB priority (worse standings)."
+                        ),
+                    }
 
             # Friday spoiler-bid rule: on Friday, a team can only raise an
             # existing CB they already placed earlier in the week. New teams
@@ -1153,6 +1174,19 @@ class AuctionManager:
                 if amt > high:
                     high = amt
         return high
+
+    @staticmethod
+    def _get_current_high_bidder_team(bids: List[Dict[str, Any]], prospect_id: str) -> Optional[str]:
+        """Return the team that holds the current highest bid for a prospect."""
+        high = 0
+        high_team: Optional[str] = None
+        for b in bids:
+            if b["prospect_id"] == str(prospect_id):
+                amt = int(b["amount"])
+                if amt > high:
+                    high = amt
+                    high_team = b["team"]
+        return high_team
 
     @staticmethod
     def _get_committed_wb_for_team(bids: List[Dict[str, Any]], team: str) -> int:
