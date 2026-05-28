@@ -2070,7 +2070,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 30,
     "bats": "R",
     "bbref_id": "adamewi01",
@@ -2080,7 +2080,7 @@
     "fangraphs_name": "Willy Adames",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 642715,
     "mlb_primary_position": "SS",
     "name": "Willy Adames",
@@ -12696,17 +12696,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 25,
     "bats": "R",
     "bbref_id": "meadcu01",
     "birth_date": "2000-10-26",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "23986",
     "fangraphs_name": "Curtis Mead",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "",
+    "manager": "Btwn2Jackies",
     "mlb_id": 678554,
     "mlb_primary_position": "1B",
     "name": "Curtis Mead",
@@ -12718,7 +12718,7 @@
     "upid": "3491",
     "weight": 225,
     "yahoo_id": "12558",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -30996,7 +30996,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "rogertr01",
@@ -31006,7 +31006,7 @@
     "fangraphs_name": "Trevor Rogers",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 669432,
     "mlb_primary_position": "P",
     "name": "Trevor Rogers",
@@ -51891,17 +51891,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 26,
     "bats": "R",
     "bbref_id": "youngja03",
     "birth_date": "1999-07-27",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29931",
     "fangraphs_name": "Jacob Young",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 696285,
     "mlb_primary_position": "CF",
     "name": "Jacob Young",
