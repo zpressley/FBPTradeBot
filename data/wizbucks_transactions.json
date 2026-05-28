@@ -3502,5 +3502,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_RV_contract_purchase_1779986045",
+    "timestamp": "2026-05-28T16:34:05.412036Z",
+    "team": "RV",
+    "amount": -10,
+    "balance_before": 115,
+    "balance_after": 105,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Chase Burns PC \u2192 BC",
+    "related_player": {
+      "upid": "7602",
+      "name": "Chase Burns"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

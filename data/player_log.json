@@ -75116,5 +75116,28 @@
     "years": "TC 2",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-05-28T12:34:05.415784-04:00-UPID_7602-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "RV",
+    "timestamp": "2026-05-28T12:34:05.415784-04:00",
+    "upid": "7602",
+    "player_name": "Chase Burns",
+    "team": "CIN",
+    "pos": "SP,RP",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 120,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
