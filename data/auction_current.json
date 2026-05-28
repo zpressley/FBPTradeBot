@@ -35,9 +35,18 @@
       "prospect_id": "8447",
       "team": "DMN",
       "timestamp": "2026-05-28T13:03:42.140192+00:00"
+    },
+    {
+      "amount": 25,
+      "bid_id": "bid-9d1aa9881b94",
+      "bid_type": "CB",
+      "date": "2026-05-28",
+      "prospect_id": "8447",
+      "team": "WAR",
+      "timestamp": "2026-05-28T19:33:52.031230+00:00"
     }
   ],
-  "last_updated": "2026-05-28T13:03:42.140192+00:00",
+  "last_updated": "2026-05-28T19:33:52.031230+00:00",
   "matches": [],
   "phase": "cb_window",
   "priority_order": [
