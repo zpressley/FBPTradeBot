@@ -15,19 +15,24 @@ jobs:
   update-data:
     runs-on: ubuntu-latest
     env:
+      TRADE_BOT_PUSH_TOKEN: ${{ secrets.FBP_TRADE_BOT_PUSH_TOKEN }}
       FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
       BOT_API_URL: ${{ secrets.BOT_API_URL }}
       BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
+      GITHUB_TOKEN: ${{ github.token }}
       EMAIL_DIGEST_DATA_DIR: email-digest/data
       FBP_HUB_DATA_DIR: fbp-hub/data
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
 
     - name: Checkout email-digest repository
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: zpressley/email-digest
         path: email-digest
@@ -35,14 +40,14 @@ jobs:
 
     - name: Checkout fbp-hub repository
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: "zpressley/fbp-hub"
         path: fbp-hub
         token: ${{ env.FBP_HUB_PUSH_TOKEN }}
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.10"
     
@@ -74,7 +79,7 @@ jobs:
         with open(path, "r", encoding="utf-8") as f:
             payload = json.load(f)
         
-        has_updates = any(payload.get(k) for k in ("immediate", "batched", "batched_prospect", "batched_free_agency"))
+        has_updates = any(payload.get(k) for k in ("immediate", "batched", "batched_prospect", "batched_nri", "batched_free_agency"))
         if not has_updates:
             print("No roster-sync updates queued — skipping Discord post.")
             raise SystemExit(0)
@@ -95,6 +100,18 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        PUSH_TOKEN="${TRADE_BOT_PUSH_TOKEN:-}"
+        if [ -z "$PUSH_TOKEN" ]; then
+          PUSH_TOKEN="${GITHUB_TOKEN:-}"
+        fi
+        if [ -z "$PUSH_TOKEN" ]; then
+          PUSH_TOKEN="${FBP_HUB_PUSH_TOKEN:-}"
+        fi
+        if [ -n "$PUSH_TOKEN" ]; then
+          git remote set-url origin "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        else
+          echo "⚠️ No push token found in TRADE_BOT_PUSH_TOKEN, GITHUB_TOKEN, or FBP_HUB_PUSH_TOKEN."
+        fi
         # Stage data/ and token.json (token_manager auto-refreshes expired tokens).
         # Exclude transient message queues — they're consumed by the bot, not version-controlled.
         git add data/ token.json
@@ -119,7 +136,7 @@ jobs:
         fi
 
         git commit -m "🔄 Daily data update - $(date)"
-        git push
+        git push origin HEAD:${GITHUB_REF_NAME}
 
     - name: Commit email-digest baseline snapshots
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
