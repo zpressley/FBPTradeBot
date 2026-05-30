@@ -55,9 +55,17 @@
       "timestamp": "2026-05-28T19:47:09.153854+00:00"
     }
   ],
-  "last_updated": "2026-05-28T19:47:09.153854+00:00",
-  "matches": [],
-  "phase": "cb_window",
+  "last_updated": "2026-05-30T13:02:10.658001+00:00",
+  "matches": [
+    {
+      "decided_at": "2026-05-30T13:02:10.658001+00:00",
+      "decision": "match",
+      "prospect_id": "8448",
+      "source": "web",
+      "team": "WAR"
+    }
+  ],
+  "phase": "ob_final",
   "priority_order": [
     "DRO",
     "JEP",
