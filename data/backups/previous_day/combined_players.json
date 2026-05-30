@@ -10938,7 +10938,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 32,
     "bats": "R",
     "bbref_id": "weavelu01",
@@ -10948,7 +10948,7 @@
     "fangraphs_name": "Luke Weaver",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 596133,
     "mlb_primary_position": "P",
     "name": "Luke Weaver",
@@ -11574,7 +11574,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "bazsh01",
@@ -11584,7 +11584,7 @@
     "fangraphs_name": "Shane Baz",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 669358,
     "mlb_primary_position": "P",
     "name": "Shane Baz",
@@ -32298,7 +32298,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32308,7 +32308,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -66958,14 +66958,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "bbref_id": "perkija01",
     "birth_date": "12/26/1999",
     "contract_type": "Keeper Contract",
     "fangraphs_id": "31468",
     "fangraphs_name": "Jack Perkins",
     "fypd": false,
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": "678022",
     "mlb_primary_position": "SP",
     "name": "Jack Perkins",
