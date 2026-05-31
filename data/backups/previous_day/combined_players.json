@@ -12281,7 +12281,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 38,
     "bats": "S",
     "bbref_id": "janseke01",
@@ -12291,7 +12291,7 @@
     "fangraphs_name": "Kenley Jansen",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 445276,
     "mlb_primary_position": "P",
     "name": "Kenley Jansen",
@@ -22695,7 +22695,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "ashcrgr01",
@@ -22705,7 +22705,7 @@
     "fangraphs_name": "Graham Ashcraft",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 668933,
     "mlb_primary_position": "P",
     "name": "Graham Ashcraft",
@@ -23119,7 +23119,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 34,
     "bats": "S",
     "bbref_id": "vargail01",
@@ -23129,7 +23129,7 @@
     "fangraphs_name": "Ildemaro Vargas",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 545121,
     "mlb_primary_position": "2B",
     "name": "Ildemaro Vargas",
@@ -23380,17 +23380,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 32,
     "bats": "R",
     "bbref_id": "webbja01",
     "birth_date": "1993-08-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19274",
     "fangraphs_name": "Jacob Webb",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 657097,
     "mlb_primary_position": "P",
     "name": "Jacob Webb",
@@ -24603,7 +24603,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "L",
     "bbref_id": "kingjo01",
@@ -24613,7 +24613,7 @@
     "fangraphs_name": "John King",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 667463,
     "mlb_primary_position": "P",
     "name": "John King",
@@ -29583,7 +29583,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "thompry01",
@@ -29593,7 +29593,7 @@
     "fangraphs_name": "Ryan Thompson",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 657044,
     "mlb_primary_position": "P",
     "name": "Ryan Thompson",
@@ -36469,19 +36469,19 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "gomezyo01",
     "birth_date": "1999-10-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "22872",
     "fangraphs_name": "Yoendrys Gomez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 672782,
     "mlb_primary_position": "P",
     "name": "Yoendrys G\u00f3mez",
@@ -43813,17 +43813,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 27,
     "bats": "L",
     "bbref_id": "nardian01",
     "birth_date": "1998-08-18",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25942",
     "fangraphs_name": "Andrew Nardi",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 677053,
     "mlb_primary_position": "P",
     "name": "Andrew Nardi",
@@ -51388,7 +51388,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 29,
     "bats": "R",
     "bbref_id": "cabaljo01",
@@ -51398,7 +51398,7 @@
     "fangraphs_name": "Jose Caballero",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 676609,
     "mlb_primary_position": "SS",
     "name": "Jos\u00e9 Caballero",
@@ -51962,7 +51962,8 @@
     "upid": "5433",
     "weight": 205,
     "yahoo_id": "62982",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "DMN"
   },
   {
     "FBP_Team": "",
@@ -66909,17 +66910,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 27,
     "bats": "R",
     "bbref_id": "dunnbl01",
     "birth_date": "1998-09-05",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29487",
     "fangraphs_name": "Blake Dunn",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 694362,
     "mlb_primary_position": "LF",
     "name": "Blake Dunn",
