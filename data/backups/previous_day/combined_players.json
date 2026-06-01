@@ -745,7 +745,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "frelisa01",
@@ -755,7 +755,7 @@
     "fangraphs_name": "Sal Frelick",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 686217,
     "mlb_primary_position": "RF",
     "name": "Sal Frelick",
@@ -5527,17 +5527,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 30,
     "bats": "R",
     "bbref_id": "kineris01",
     "birth_date": "1995-03-23",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "16512",
     "fangraphs_name": "Isiah Kiner-Falefa",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 643396,
     "mlb_primary_position": "SS",
     "name": "Isiah Kiner-Falefa",
@@ -8906,7 +8906,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "ucetaed01",
@@ -8916,7 +8916,7 @@
     "fangraphs_name": "Edwin Uceta",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 670955,
     "mlb_primary_position": "P",
     "name": "Edwin Uceta",
@@ -14325,7 +14325,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "giolilu01",
@@ -14335,7 +14335,7 @@
     "fangraphs_name": "Lucas Giolito",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 608337,
     "mlb_primary_position": "P",
     "name": "Lucas Giolito",
@@ -16102,7 +16102,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 27,
     "bats": "L",
     "bbref_id": "leeju01",
@@ -16112,7 +16112,7 @@
     "fangraphs_name": "Jung Hoo Lee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 808982,
     "mlb_primary_position": "CF",
     "name": "Jung Hoo Lee",
@@ -16867,7 +16867,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 32,
     "bats": "S",
     "bbref_id": "polanjo01",
@@ -16878,7 +16878,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 593871,
     "mlb_primary_position": "2B",
     "name": "Jorge Polanco",
@@ -27388,7 +27388,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 37,
     "bats": "R",
     "bbref_id": "kellyme01",
@@ -27398,7 +27398,7 @@
     "fangraphs_name": "Merrill Kelly",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 518876,
     "mlb_primary_position": "P",
     "name": "Merrill Kelly",
@@ -29875,7 +29875,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
@@ -29885,7 +29885,7 @@
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -32352,7 +32352,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "priesqu01",
@@ -32362,7 +32362,7 @@
     "fangraphs_name": "Quinn Priester",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 682990,
     "mlb_primary_position": "P",
     "name": "Quinn Priester",
@@ -43813,7 +43813,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "nardian01",
@@ -43823,7 +43823,7 @@
     "fangraphs_name": "Andrew Nardi",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 677053,
     "mlb_primary_position": "P",
     "name": "Andrew Nardi",
@@ -44193,17 +44193,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 27,
     "bats": "L",
     "bbref_id": "dodddy01",
     "birth_date": "1998-06-06",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29928",
     "fangraphs_name": "Dylan Dodd",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 689266,
     "mlb_primary_position": "P",
     "name": "Dylan Dodd",
@@ -95693,7 +95693,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "fishebr01",
@@ -95704,7 +95704,7 @@
     "fangraphs_name": "Braydon Fisher",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 680755,
     "mlb_primary_position": "P",
     "name": "Braydon Fisher",

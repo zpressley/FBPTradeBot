@@ -3898,7 +3898,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3908,7 +3908,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -11041,17 +11041,17 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "WAR",
     "age": 25,
     "bats": "L",
     "bbref_id": "cowseco01",
     "birth_date": "2000-03-20",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29591",
     "fangraphs_name": "Colton Cowser",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 681297,
     "mlb_primary_position": "LF",
     "name": "Colton Cowser",
@@ -12411,7 +12411,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "hoffmje02",
@@ -12421,7 +12421,7 @@
     "fangraphs_name": "Jeff Hoffman",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 656546,
     "mlb_primary_position": "P",
     "name": "Jeff Hoffman",
@@ -23119,7 +23119,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 34,
     "bats": "S",
     "bbref_id": "vargail01",
@@ -23129,7 +23129,7 @@
     "fangraphs_name": "Ildemaro Vargas",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 545121,
     "mlb_primary_position": "2B",
     "name": "Ildemaro Vargas",
@@ -29825,7 +29825,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 33,
     "bats": "R",
     "bbref_id": "barlosc01",
@@ -29835,7 +29835,7 @@
     "fangraphs_name": "Scott Barlow",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 605130,
     "mlb_primary_position": "P",
     "name": "Scott Barlow",
@@ -29875,7 +29875,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
@@ -29885,7 +29885,7 @@
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -32247,7 +32247,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "batybr01",
@@ -32257,7 +32257,7 @@
     "fangraphs_name": "Brett Baty",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 683146,
     "mlb_primary_position": "3B",
     "name": "Brett Baty",
@@ -42668,17 +42668,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "bbref_id": "alexabl01",
     "birth_date": "1999-06-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "23789",
     "fangraphs_name": "Blaze Alexander",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 677942,
     "mlb_primary_position": "SS",
     "name": "Blaze Alexander",
@@ -49511,7 +49511,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
@@ -49521,7 +49521,7 @@
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -49584,7 +49584,8 @@
     "upid": "4792",
     "weight": 180,
     "yahoo_id": "60421",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "JEP"
   },
   {
     "FBP_Team": "",
@@ -51388,7 +51389,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "cabaljo01",
@@ -51398,7 +51399,7 @@
     "fangraphs_name": "Jose Caballero",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 676609,
     "mlb_primary_position": "SS",
     "name": "Jos\u00e9 Caballero",
@@ -81448,7 +81449,7 @@
     "weight": 225,
     "yahoo_id": "66156",
     "years_simple": "P",
-    "NRI": "DRO"
+    "NRI": ""
   },
   {
     "FBP_Team": "",
