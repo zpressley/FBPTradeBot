@@ -17,9 +17,18 @@
       "prospect_id": "6050",
       "team": "HAM",
       "timestamp": "2026-06-01T19:19:39.888660+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-e3caaa1d5de1",
+      "bid_type": "OB",
+      "date": "2026-06-01",
+      "prospect_id": "7054",
+      "team": "DRO",
+      "timestamp": "2026-06-01T20:06:54.189048+00:00"
     }
   ],
-  "last_updated": "2026-06-01T19:19:39.888660+00:00",
+  "last_updated": "2026-06-01T20:06:54.189048+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
