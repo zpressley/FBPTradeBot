@@ -1,83 +1,20 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-abbf73c4486b",
-      "bid_type": "OB",
-      "date": "2026-05-25",
-      "prospect_id": "7978",
-      "team": "HAM",
-      "timestamp": "2026-05-25T19:02:10.973827+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-59ddff856c8e",
-      "bid_type": "OB",
-      "date": "2026-05-25",
-      "prospect_id": "8447",
-      "team": "DRO",
-      "timestamp": "2026-05-25T19:10:47.130556+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-ec43a2e3f65a",
-      "bid_type": "OB",
-      "date": "2026-05-25",
-      "prospect_id": "8448",
-      "team": "WAR",
-      "timestamp": "2026-05-25T19:14:37.402088+00:00"
-    },
-    {
-      "amount": 25,
-      "bid_id": "bid-c50eadac9cc8",
-      "bid_type": "CB",
-      "date": "2026-05-28",
-      "prospect_id": "8447",
-      "team": "DMN",
-      "timestamp": "2026-05-28T13:03:42.140192+00:00"
-    },
-    {
-      "amount": 25,
-      "bid_id": "bid-9d1aa9881b94",
-      "bid_type": "CB",
-      "date": "2026-05-28",
-      "prospect_id": "8447",
-      "team": "WAR",
-      "timestamp": "2026-05-28T19:33:52.031230+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-1fd03e6f14ec",
-      "bid_type": "CB",
-      "date": "2026-05-28",
-      "prospect_id": "8448",
-      "team": "DMN",
-      "timestamp": "2026-05-28T19:47:09.153854+00:00"
-    }
-  ],
-  "last_updated": "2026-05-30T13:02:10.658001+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-05-30T13:02:10.658001+00:00",
-      "decision": "match",
-      "prospect_id": "8448",
-      "source": "web",
-      "team": "WAR"
-    }
-  ],
-  "phase": "ob_final",
+  "bids": [],
+  "last_updated": "2026-06-01T16:02:47.584513+00:00",
+  "matches": [],
+  "phase": "off_week",
   "priority_order": [
     "DRO",
-    "JEP",
-    "RV",
-    "B2J",
+    "CFL",
     "WAR",
+    "RV",
+    "JEP",
     "SAD",
-    "WIZ",
+    "B2J",
     "TBB",
     "HAM",
     "DMN",
-    "CFL",
+    "WIZ",
     "LFB"
   ],
   "schedule_meta": {
@@ -86,5 +23,5 @@
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-05-25"
+  "week_start": "2026-06-01"
 }
