@@ -26,9 +26,18 @@
       "prospect_id": "7054",
       "team": "DRO",
       "timestamp": "2026-06-01T20:06:54.189048+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-e8ab3d02a502",
+      "bid_type": "OB",
+      "date": "2026-06-02",
+      "prospect_id": "8080",
+      "team": "WAR",
+      "timestamp": "2026-06-02T14:44:08.771866+00:00"
     }
   ],
-  "last_updated": "2026-06-01T20:06:54.189048+00:00",
+  "last_updated": "2026-06-02T14:44:08.771866+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
