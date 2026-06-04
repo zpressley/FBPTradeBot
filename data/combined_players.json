@@ -19589,7 +19589,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "kellyca02",
@@ -19599,7 +19599,7 @@
     "fangraphs_name": "Carson Kelly",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 608348,
     "mlb_primary_position": "C",
     "name": "Carson Kelly",
@@ -51561,14 +51561,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "R",
     "birth_date": "1996-04-18",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 640902,
     "mlb_primary_position": "C",
     "name": "Jhonny Pereda",

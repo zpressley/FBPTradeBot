@@ -23429,7 +23429,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "bauerja01",
@@ -23439,7 +23439,7 @@
     "fangraphs_name": "Jake Bauers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 641343,
     "mlb_primary_position": "1B",
     "name": "Jake Bauers",
@@ -24979,17 +24979,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 30,
     "bats": "R",
     "bbref_id": "mateojo01",
     "birth_date": "1995-06-23",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "17273",
     "fangraphs_name": "Jorge Mateo",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 622761,
     "mlb_primary_position": "SS",
     "name": "Jorge Mateo",
@@ -37176,17 +37176,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 25,
     "bats": "S",
     "bbref_id": "rodrien01",
     "birth_date": "2000-05-26",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25332",
     "fangraphs_name": "Endy Rodriguez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 682848,
     "mlb_primary_position": "1B",
     "name": "Endy Rodriguez",
@@ -38310,19 +38310,19 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "hernahe01",
     "birth_date": "1999-12-16",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "24878",
     "fangraphs_name": "Heriberto Hernandez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "",
+    "manager": "Weekend Warriors",
     "mlb_id": 681715,
     "mlb_primary_position": "LF",
     "name": "Heriberto Hernandez",
@@ -44143,7 +44143,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "L",
     "bbref_id": "mccarja02",
@@ -44153,7 +44153,7 @@
     "fangraphs_name": "Jake McCarthy",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 664983,
     "mlb_primary_position": "CF",
     "name": "Jake McCarthy",
@@ -46015,7 +46015,8 @@
     "upid": "4443",
     "weight": 210,
     "yahoo_id": "60223",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "SAD"
   },
   {
     "FBP_Team": "WAR",
@@ -60241,7 +60242,7 @@
     "weight": 180,
     "yahoo_id": "65029",
     "years_simple": "P",
-    "NRI": "WAR"
+    "NRI": ""
   },
   {
     "FBP_Team": "",
@@ -66911,7 +66912,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "dunnbl01",
@@ -66921,7 +66922,7 @@
     "fangraphs_name": "Blake Dunn",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 694362,
     "mlb_primary_position": "LF",
     "name": "Blake Dunn",
@@ -97883,7 +97884,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "corteca01",
@@ -97894,7 +97895,7 @@
     "fangraphs_name": "Carlos Cortes",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 666126,
     "mlb_primary_position": "LF",
     "name": "Carlos Cortes",
