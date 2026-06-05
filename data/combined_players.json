@@ -664,7 +664,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "mclaima01",
@@ -674,7 +674,7 @@
     "fangraphs_name": "Matt McLain",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 680574,
     "mlb_primary_position": "2B",
     "name": "Matt McLain",
@@ -1966,7 +1966,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1976,7 +1976,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -15377,7 +15377,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 28,
     "bats": "L",
     "bbref_id": "nootbla01",
@@ -15387,7 +15387,7 @@
     "fangraphs_name": "Lars Nootbaar",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 663457,
     "mlb_primary_position": "LF",
     "name": "Lars Nootbaar",
@@ -15511,7 +15511,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15521,7 +15521,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -23429,7 +23429,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 30,
     "bats": "L",
     "bbref_id": "bauerja01",
@@ -23439,7 +23439,7 @@
     "fangraphs_name": "Jake Bauers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 641343,
     "mlb_primary_position": "1B",
     "name": "Jake Bauers",
@@ -40208,17 +40208,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 30,
     "bats": "R",
     "bbref_id": "warreau01",
     "birth_date": "1996-02-05",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "24937",
     "fangraphs_name": "Austin Warren",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 681810,
     "mlb_primary_position": "P",
     "name": "Austin Warren",
@@ -46016,7 +46016,7 @@
     "weight": 210,
     "yahoo_id": "60223",
     "years_simple": "P",
-    "NRI": "SAD"
+    "NRI": ""
   },
   {
     "FBP_Team": "WAR",
@@ -48835,14 +48835,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "L",
     "birth_date": "1999-01-07",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 675660,
     "mlb_primary_position": "P",
     "name": "Shane Drohan",
