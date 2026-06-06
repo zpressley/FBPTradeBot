@@ -55,9 +55,17 @@
       "timestamp": "2026-06-03T18:00:31.430319+00:00"
     }
   ],
-  "last_updated": "2026-06-03T18:00:31.430319+00:00",
-  "matches": [],
-  "phase": "cb_window",
+  "last_updated": "2026-06-06T14:44:56.650463+00:00",
+  "matches": [
+    {
+      "decided_at": "2026-06-06T14:44:56.650463+00:00",
+      "decision": "match",
+      "prospect_id": "5433",
+      "source": "web",
+      "team": "DMN"
+    }
+  ],
+  "phase": "ob_final",
   "priority_order": [
     "DRO",
     "CFL",
