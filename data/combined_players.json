@@ -489,7 +489,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "maydu01",
@@ -499,7 +499,7 @@
     "fangraphs_name": "Dustin May",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669160,
     "mlb_primary_position": "P",
     "name": "Dustin May",
@@ -3399,7 +3399,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "crawfjp01",
@@ -3409,7 +3409,7 @@
     "fangraphs_name": "J.P. Crawford",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 641487,
     "mlb_primary_position": "SS",
     "name": "J.P. Crawford",
@@ -4469,7 +4469,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 32,
     "bats": "R",
     "bbref_id": "chapmma01",
@@ -4479,7 +4479,7 @@
     "fangraphs_name": "Matt Chapman",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 656305,
     "mlb_primary_position": "3B",
     "name": "Matt Chapman",
@@ -15326,7 +15326,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "alvarjo03",
@@ -15336,7 +15336,7 @@
     "fangraphs_name": "Jose Alvarado",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 621237,
     "mlb_primary_position": "P",
     "name": "Jos\u00e9 Alvarado",
@@ -17537,7 +17537,8 @@
     "upid": "2017",
     "weight": 170,
     "yahoo_id": "12535",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "WAR"
   },
   {
     "FBP_Team": "",
@@ -24979,7 +24980,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "mateojo01",
@@ -24989,7 +24990,7 @@
     "fangraphs_name": "Jorge Mateo",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 622761,
     "mlb_primary_position": "SS",
     "name": "Jorge Mateo",
@@ -25885,7 +25886,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "S",
     "bbref_id": "ruizke01",
@@ -25895,7 +25896,7 @@
     "fangraphs_name": "Keibert Ruiz",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 660688,
     "mlb_primary_position": "C",
     "name": "Keibert Ruiz",
@@ -27542,7 +27543,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "andujmi01",
@@ -27552,7 +27553,7 @@
     "fangraphs_name": "Miguel Andujar",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 609280,
     "mlb_primary_position": "LF",
     "name": "Miguel Andujar",
@@ -28956,7 +28957,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "laurera01",
@@ -28966,7 +28967,7 @@
     "fangraphs_name": "Ramon Laureano",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 657656,
     "mlb_primary_position": "RF",
     "name": "Ram\u00f3n Laureano",
@@ -30246,7 +30247,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 34,
     "bats": "L",
     "bbref_id": "okertst01",
@@ -30256,7 +30257,7 @@
     "fangraphs_name": "Steven Okert",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 595345,
     "mlb_primary_position": "P",
     "name": "Steven Okert",
@@ -42668,7 +42669,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "alexabl01",
@@ -42678,7 +42679,7 @@
     "fangraphs_name": "Blaze Alexander",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 677942,
     "mlb_primary_position": "SS",
     "name": "Blaze Alexander",
@@ -44847,7 +44848,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 29,
     "bats": "R",
     "bbref_id": "latzja01",
@@ -44857,7 +44858,7 @@
     "fangraphs_name": "Jacob Latz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 656641,
     "mlb_primary_position": "P",
     "name": "Jacob Latz",
@@ -48622,7 +48623,8 @@
     "upid": "4649",
     "weight": 201,
     "yahoo_id": "60389",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "JEP"
   },
   {
     "FBP_Team": "",
@@ -50391,7 +50393,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "L",
     "bbref_id": "camerno01",
@@ -50402,7 +50404,7 @@
     "fypd": false,
     "height": "6' 3\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 702070,
     "mlb_primary_position": "P",
     "name": "Noah Cameron",
@@ -51893,7 +51895,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "youngja03",
@@ -51903,7 +51905,7 @@
     "fangraphs_name": "Jacob Young",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 696285,
     "mlb_primary_position": "CF",
     "name": "Jacob Young",
@@ -77417,7 +77419,8 @@
     "upid": "7713",
     "weight": 235,
     "yahoo_id": "64030",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "WAR"
   },
   {
     "FBP_Team": "",
