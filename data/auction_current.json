@@ -8,9 +8,18 @@
       "prospect_id": "8013",
       "team": "DMN",
       "timestamp": "2026-06-08T19:30:29.306171+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-7e49b9f73e7d",
+      "bid_type": "OB",
+      "date": "2026-06-08",
+      "prospect_id": "3676",
+      "team": "B2J",
+      "timestamp": "2026-06-08T20:26:52.559117+00:00"
     }
   ],
-  "last_updated": "2026-06-08T19:30:29.306171+00:00",
+  "last_updated": "2026-06-08T20:26:52.559117+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
