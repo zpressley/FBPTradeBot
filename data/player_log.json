@@ -77416,5 +77416,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Call Up"
+  },
+  {
+    "id": "2026-2026-06-08T13:54:01.790832-04:00-UPID_7962-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-06-08T13:54:01.790832-04:00",
+    "upid": "7962",
+    "player_name": "Gage Wood",
+    "team": "PHI",
+    "pos": "SP",
+    "age": 22,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Btwn2Jackies",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
