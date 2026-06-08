@@ -77393,5 +77393,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-06-08T10:05:49.544330-04:00-UPID_3445-Roster-yahoo_roster_sync",
+    "season": 2026,
+    "source": "yahoo_roster_sync",
+    "admin": "roster_sync",
+    "timestamp": "2026-06-08T10:05:49.544330-04:00",
+    "upid": "3445",
+    "player_name": "Jordan Lawlar",
+    "team": "AZ",
+    "pos": "3B",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 396,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Roster",
+    "event": "Call Up"
   }
 ]
