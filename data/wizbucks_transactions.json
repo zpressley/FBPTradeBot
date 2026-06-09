@@ -3544,5 +3544,225 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_2026-05-18_DRO_7924_auction_backfill",
+    "timestamp": "2026-05-24T18:01:00Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 30,
+    "balance_after": 20,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-18 to 2026-05-24: Anthony Nunez",
+    "related_player": {
+      "upid": "7924",
+      "name": "Anthony Nunez"
+    },
+    "metadata": {
+      "week_start": "2026-05-18",
+      "prospect_id": "7924",
+      "amount": 10,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-18_B2J_7962_auction_backfill",
+    "timestamp": "2026-05-24T18:02:00Z",
+    "team": "B2J",
+    "amount": -10,
+    "balance_before": 115,
+    "balance_after": 105,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-18 to 2026-05-24: Gage Wood",
+    "related_player": {
+      "upid": "7962",
+      "name": "Gage Wood"
+    },
+    "metadata": {
+      "week_start": "2026-05-18",
+      "prospect_id": "7962",
+      "amount": 10,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-18_SAD_7893_auction_backfill",
+    "timestamp": "2026-05-24T18:03:00Z",
+    "team": "SAD",
+    "amount": -15,
+    "balance_before": 90,
+    "balance_after": 75,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-18 to 2026-05-24: Justin Gonzales",
+    "related_player": {
+      "upid": "7893",
+      "name": "Justin Gonzales"
+    },
+    "metadata": {
+      "week_start": "2026-05-18",
+      "prospect_id": "7893",
+      "amount": 15,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-18_DMN_6988_auction_backfill",
+    "timestamp": "2026-05-24T18:04:00Z",
+    "team": "DMN",
+    "amount": -20,
+    "balance_before": 90,
+    "balance_after": 70,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-18 to 2026-05-24: Zebby Matthews",
+    "related_player": {
+      "upid": "6988",
+      "name": "Zebby Matthews"
+    },
+    "metadata": {
+      "week_start": "2026-05-18",
+      "prospect_id": "6988",
+      "amount": 20,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-25_HAM_7978_auction_backfill",
+    "timestamp": "2026-05-31T18:05:00Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 65,
+    "balance_after": 55,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-25 to 2026-05-31: Tate Southisene",
+    "related_player": {
+      "upid": "7978",
+      "name": "Tate Southisene"
+    },
+    "metadata": {
+      "week_start": "2026-05-25",
+      "prospect_id": "7978",
+      "amount": 10,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-25_WAR_8448_auction_backfill",
+    "timestamp": "2026-05-31T18:06:00Z",
+    "team": "WAR",
+    "amount": -15,
+    "balance_before": 60,
+    "balance_after": 45,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-25 to 2026-05-31: Devin Fitz-gerald",
+    "related_player": {
+      "upid": "8448",
+      "name": "Devin Fitz-gerald"
+    },
+    "metadata": {
+      "week_start": "2026-05-25",
+      "prospect_id": "8448",
+      "amount": 15,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-05-25_WAR_8447_auction_backfill",
+    "timestamp": "2026-05-31T18:07:00Z",
+    "team": "WAR",
+    "amount": -25,
+    "balance_before": 45,
+    "balance_after": 20,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-05-25 to 2026-05-31: Rikuu Nishida",
+    "related_player": {
+      "upid": "8447",
+      "name": "Rikuu Nishida"
+    },
+    "metadata": {
+      "week_start": "2026-05-25",
+      "prospect_id": "8447",
+      "amount": 25,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-06-01_DRO_7054_auction_backfill",
+    "timestamp": "2026-06-07T18:08:00Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 20,
+    "balance_after": 10,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-01 to 2026-06-07: Jonah Cox",
+    "related_player": {
+      "upid": "7054",
+      "name": "Jonah Cox"
+    },
+    "metadata": {
+      "week_start": "2026-06-01",
+      "prospect_id": "7054",
+      "amount": 10,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-06-01_WAR_8080_auction_backfill",
+    "timestamp": "2026-06-07T18:09:00Z",
+    "team": "WAR",
+    "amount": -10,
+    "balance_before": 20,
+    "balance_after": 10,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-01 to 2026-06-07: Murf Gray",
+    "related_player": {
+      "upid": "8080",
+      "name": "Murf Gray"
+    },
+    "metadata": {
+      "week_start": "2026-06-01",
+      "prospect_id": "8080",
+      "amount": 10,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-06-01_DMN_5433_auction_backfill",
+    "timestamp": "2026-06-07T18:10:00Z",
+    "team": "DMN",
+    "amount": -20,
+    "balance_before": 70,
+    "balance_after": 50,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-01 to 2026-06-07: Jacob Gonzalez",
+    "related_player": {
+      "upid": "5433",
+      "name": "Jacob Gonzalez"
+    },
+    "metadata": {
+      "week_start": "2026-06-01",
+      "prospect_id": "5433",
+      "amount": 20,
+      "source": "auction_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_2026-06-01_TBB_6050_auction_backfill",
+    "timestamp": "2026-06-07T18:11:00Z",
+    "team": "TBB",
+    "amount": -25,
+    "balance_before": 115,
+    "balance_after": 90,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-01 to 2026-06-07: Karson Milbrandt",
+    "related_player": {
+      "upid": "6050",
+      "name": "Karson Milbrandt"
+    },
+    "metadata": {
+      "week_start": "2026-06-01",
+      "prospect_id": "6050",
+      "amount": 25,
+      "source": "auction_backfill"
+    }
   }
 ]
