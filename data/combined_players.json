@@ -357,7 +357,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 36,
     "bats": "R",
     "bbref_id": "springe01",
@@ -367,7 +367,7 @@
     "fangraphs_name": "George Springer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 543807,
     "mlb_primary_position": "RF",
     "name": "George Springer",
@@ -567,7 +567,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "sheetga01",
@@ -577,7 +577,7 @@
     "fangraphs_name": "Gavin Sheets",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 657757,
     "mlb_primary_position": "LF",
     "name": "Gavin Sheets",
@@ -664,7 +664,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "mclaima01",
@@ -674,7 +674,7 @@
     "fangraphs_name": "Matt McLain",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 680574,
     "mlb_primary_position": "2B",
     "name": "Matt McLain",
@@ -3817,7 +3817,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "kwanst01",
@@ -3827,7 +3827,7 @@
     "fangraphs_name": "Steven Kwan",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 680757,
     "mlb_primary_position": "LF",
     "name": "Steven Kwan",
@@ -5807,7 +5807,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5817,7 +5817,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -9062,7 +9062,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
     "bbref_id": "martiju01",
@@ -9072,7 +9072,7 @@
     "fangraphs_name": "Justin Martinez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 679885,
     "mlb_primary_position": "P",
     "name": "Justin Martinez",
@@ -9546,7 +9546,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9556,7 +9556,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -13810,12 +13810,12 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 24,
     "bats": "L",
     "bbref_id": "rushida01",
     "birth_date": "2001-02-21",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "debut_date": "05/15/2025",
     "debuted": true,
     "fangraphs_id": "31382",
@@ -13823,7 +13823,7 @@
     "fypd": false,
     "height": "5' 11\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 687221,
     "mlb_primary_position": "C",
     "name": "Dalton Rushing",
@@ -16152,7 +16152,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "yohocr01",
@@ -16162,7 +16162,7 @@
     "fangraphs_name": "Craig Yoho",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 684974,
     "mlb_primary_position": "P",
     "name": "Craig Yoho",
@@ -22317,7 +22317,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "speiega01",
@@ -22327,7 +22327,7 @@
     "fangraphs_name": "Gabe Speier",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 642100,
     "mlb_primary_position": "P",
     "name": "Gabe Speier",
@@ -32835,7 +32835,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32845,7 +32845,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -36085,7 +36085,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "martiau01",
@@ -36095,7 +36095,7 @@
     "fangraphs_name": "Austin Martin",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 668885,
     "mlb_primary_position": "CF",
     "name": "Austin Martin",
@@ -36749,7 +36749,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36759,7 +36759,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -42669,7 +42669,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 26,
     "bats": "R",
     "bbref_id": "alexabl01",
@@ -42679,7 +42679,7 @@
     "fangraphs_name": "Blaze Alexander",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 677942,
     "mlb_primary_position": "SS",
     "name": "Blaze Alexander",
@@ -48624,7 +48624,7 @@
     "weight": 201,
     "yahoo_id": "60389",
     "years_simple": "P",
-    "NRI": "JEP"
+    "NRI": ""
   },
   {
     "FBP_Team": "",
@@ -52474,7 +52474,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 28,
     "bats": "L",
     "bbref_id": "canzodo01",
@@ -52484,7 +52484,7 @@
     "fangraphs_name": "Dominic Canzone",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 686527,
     "mlb_primary_position": "RF",
     "name": "Dominic Canzone",

@@ -82498,12 +82498,12 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 22,
     "bats": "R",
     "bbref_id": "woodga01",
     "birth_date": "12/15/2003",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3045536",
@@ -82511,18 +82511,19 @@
     "fypd": true,
     "fypd_rank": 46,
     "height_weight": "6' 0\" / 205 lbs",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": "805906",
     "mlb_primary_position": "SP",
     "name": "Gage Wood",
     "player_type": "Farm",
     "position": "SP",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "PHI",
     "throws": "R",
     "upid": "7962",
     "yahoo_id": "65886",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "CFL",
