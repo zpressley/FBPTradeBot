@@ -200,7 +200,7 @@
         "TB": 8,
         "AVG": ".333",
         "OPS": "1.051",
-        "APP": 4,
+        "APP": 5,
         "IP": "8.0",
         "ER": 5,
         "P_HR": 2,
@@ -263,11 +263,11 @@
       "record": "125-84-11",
       "win_pct": 0.593,
       "opponent": "TBB",
-      "score": "9",
+      "score": "8",
       "opponent_score": "10",
-      "ties": "1",
-      "live_record": "9-10-1",
-      "live_win_pct": 0.475,
+      "ties": "2",
+      "live_record": "8-10-2",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "3/22",
         "R": 1,
@@ -292,8 +292,8 @@
         "BB/9": "3.86",
         "QS": 0
       },
-      "overall_live_record": "134-94-12",
-      "overall_live_win_pct": 0.583,
+      "overall_live_record": "133-94-13",
+      "overall_live_win_pct": 0.581,
       "live_rank": 2
     },
     {
@@ -304,10 +304,10 @@
       "win_pct": 0.536,
       "opponent": "HAM",
       "score": "10",
-      "opponent_score": "9",
-      "ties": "1",
-      "live_record": "10-9-1",
-      "live_win_pct": 0.525,
+      "opponent_score": "8",
+      "ties": "2",
+      "live_record": "10-8-2",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "1/15",
         "R": 3,
@@ -320,7 +320,7 @@
         "TB": 4,
         "AVG": ".067",
         "OPS": ".443",
-        "APP": 3,
+        "APP": 4,
         "IP": "5.0",
         "ER": 2,
         "P_HR": 1,
@@ -332,8 +332,8 @@
         "BB/9": "7.20",
         "QS": 0
       },
-      "overall_live_record": "124-107-9",
-      "overall_live_win_pct": 0.535,
+      "overall_live_record": "124-106-10",
+      "overall_live_win_pct": 0.537,
       "live_rank": 3
     },
     {
@@ -360,7 +360,7 @@
         "TB": 20,
         "AVG": ".375",
         "OPS": "1.087",
-        "APP": 3,
+        "APP": 4,
         "IP": "4.1",
         "ER": 0,
         "P_HR": 0,
@@ -844,7 +844,7 @@
           "TB": 20,
           "AVG": ".375",
           "OPS": "1.087",
-          "APP": 3,
+          "APP": 4,
           "IP": "4.1",
           "ER": 0,
           "P_HR": 0,
@@ -862,7 +862,7 @@
       "team1": {
         "team": "HAM",
         "name": "Hammers",
-        "score": "9",
+        "score": "8",
         "categories": {
           "H/AB": "3/22",
           "R": 1,
@@ -904,7 +904,7 @@
           "TB": 4,
           "AVG": ".067",
           "OPS": ".443",
-          "APP": 3,
+          "APP": 4,
           "IP": "5.0",
           "ER": 2,
           "P_HR": 1,
@@ -935,7 +935,7 @@
           "TB": 8,
           "AVG": ".333",
           "OPS": "1.051",
-          "APP": 4,
+          "APP": 5,
           "IP": "8.0",
           "ER": 5,
           "P_HR": 2,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-09T20:02:20.104128+00:00"
+  "refreshed_at": "2026-06-09T21:02:20.105317+00:00"
 }
