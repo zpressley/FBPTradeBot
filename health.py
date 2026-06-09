@@ -489,7 +489,16 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
     try:
         did_commit = _stage_and_commit()
         if not did_commit:
-            return True
+            # Important: a prior batch may have created local commits that
+            # still need to be pushed. Treat push failure as a real failure.
+            try:
+                _run(push_cmd)
+                _log("GIT_PUSH_OK", {"reason": "no-new-commit"})
+                return True
+            except subprocess.CalledProcessError as exc:
+                combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
+                _log("GIT_PUSH_FAILED", {"code": exc.returncode, "output": combined[-2000:]})
+                return False
 
         _push_with_retry()
         _log("GIT_BATCH_COMMIT_PUSH_OK")
