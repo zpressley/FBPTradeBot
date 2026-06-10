@@ -12,6 +12,14 @@ AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel
 AUCTION_BOARD_URL = "https://zpressley.github.io/fbp-hub/auction.html"
 PLAYER_PROFILE_BASE_URL = "https://zpressley.github.io/fbp-hub/player-profile.html"
 _AUCTION_RESOLVED_STATE_FILE = "data/auction_resolved_state.json"
+_PERSIST_WARNING_HEADER = "⚠️ **Auction Resolution Pending Persistence**"
+_PERSIST_RECOVERY_HEADER = "✅ **Auction Persistence Recovered — Transactions Applied**"
+_RESOLVED_SUCCESS_HEADER = "🏁 **Auction Resolved — Transactions Applied**"
+_PERSIST_WARNING_MEME_CAPTION = "THE AUCTION BOT WILL PERSIST"
+_PERSIST_SUCCESS_MEME_CAPTION = "THE AUCTION BOT WILL NOT PERSIST."
+_PERSIST_WARNING_MEME_URL = os.getenv("AUCTION_PERSIST_WARNING_MEME_URL", "").strip()
+_PERSIST_SUCCESS_MEME_URL = os.getenv("AUCTION_PERSIST_SUCCESS_MEME_URL", "").strip()
+_RESOLVE_RETRY_DELAYS_SECONDS = (60, 120, 300, 600, 900)
 
 # Module-level commit function, set by health.py on_ready
 _auction_commit_fn = None
@@ -67,6 +75,10 @@ class Auction(commands.Cog):
         self._weekly_summary_week = None  # Saturday weekly summary guard
         self._resolved_week = None  # Sunday resolve guard
         self._resolve_persist_warn_week = None  # guard for persistence failure warning
+        self._resolve_recovered_week = None  # guard for persistence recovery message
+        self._resolve_retry_week = None  # week key for retry backoff state
+        self._resolve_retry_attempts = 0  # backoff attempt counter for Sunday resolve retries
+        self._resolve_next_retry_at = None  # ET datetime for next allowed retry
         self._last_summary_date = None  # YYYY-MM-DD in ET
         self._last_synced_phase = None  # track phase for website sync
 
@@ -118,6 +130,72 @@ class Auction(commands.Cog):
                 os.remove(_AUCTION_RESOLVED_STATE_FILE)
         except Exception:
             pass
+
+    def _resolve_retry_delay_seconds(self) -> int:
+        """Return retry delay for the current Sunday persistence attempt."""
+        idx = min(self._resolve_retry_attempts, len(_RESOLVE_RETRY_DELAYS_SECONDS) - 1)
+        return _RESOLVE_RETRY_DELAYS_SECONDS[idx]
+
+    async def _has_weekly_notice(
+        self,
+        channel: discord.TextChannel,
+        *,
+        header: str,
+        week_key: str,
+        limit: int = 120,
+    ) -> bool:
+        """Check recent channel history for a bot notice tied to this week."""
+        try:
+            me = self.bot.user
+            async for msg in channel.history(limit=limit):
+                if me and msg.author.id != me.id:
+                    continue
+                content = msg.content or ""
+                if header in content and f"Week: `{week_key}`" in content:
+                    return True
+        except Exception as exc:
+            print(f"⚠️ Failed checking weekly notice history: {exc}")
+        return False
+
+    @staticmethod
+    def _append_meme_block(lines: list[str], caption: str, meme_url: str) -> list[str]:
+        """Append meme caption + URL (when configured) to a notice payload."""
+        lines.extend(["", f"🖼️ **{caption}**"])
+        if meme_url:
+            lines.append(meme_url)
+        return lines
+
+    def _build_persistence_failure_notice(self, week_key: str, retry_seconds: int) -> str:
+        lines = [
+            _PERSIST_WARNING_HEADER,
+            f"Week: `{week_key}`",
+            "",
+            "Resolution ran, but transactions are **not yet confirmed** because persistence failed.",
+            f"The bot will retry automatically in about **{max(1, retry_seconds // 60)} minute(s)**.",
+        ]
+        self._append_meme_block(lines, _PERSIST_WARNING_MEME_CAPTION, _PERSIST_WARNING_MEME_URL)
+        return "\n".join(lines)
+
+    def _build_resolved_success_notice(
+        self,
+        *,
+        week_key: str,
+        winners: dict[str, dict],
+        recovered: bool,
+    ) -> str:
+        lines = [
+            _PERSIST_RECOVERY_HEADER if recovered else _RESOLVED_SUCCESS_HEADER,
+            f"Week: `{week_key}`",
+            "",
+        ]
+        if winners:
+            for pid, info in winners.items():
+                name = info.get("name", _resolve_prospect_name(pid))
+                lines.append(f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)")
+        else:
+            lines.append("No winners recorded for this week.")
+        self._append_meme_block(lines, _PERSIST_SUCCESS_MEME_CAPTION, _PERSIST_SUCCESS_MEME_URL)
+        return "\n".join(lines)
 
     # ------------------------------------------------------------------
     # /auction status
@@ -270,7 +348,7 @@ class Auction(commands.Cog):
         only sent once per relevant day/week.
         """
 
-        from datetime import datetime
+        from datetime import datetime, timedelta
 
         now = datetime.now(tz=ET)
         phase = self.manager.get_current_phase(now)
@@ -303,6 +381,12 @@ class Auction(commands.Cog):
         week_start = self.manager._monday_for_date(now.date())  # type: ignore[attr-defined]
         week_key = week_start.isoformat()
         date_key = now.date().isoformat()
+        if self._resolve_retry_week != week_key:
+            self._resolve_retry_week = week_key
+            self._resolve_retry_attempts = 0
+            self._resolve_next_retry_at = None
+            self._resolve_persist_warn_week = None
+            self._resolve_recovered_week = None
 
         # Hydrate _resolved_week from disk on first tick after restart so
         # Railway redeploys don't reset the Sunday resolve guard.
@@ -346,11 +430,25 @@ class Auction(commands.Cog):
         # Keep trying all Sunday after 10am so brief deploys/restarts don't miss
         # the entire resolve.
         if now.weekday() == 6 and now.hour >= 10 and self._resolved_week != week_key:
+            if self._resolve_next_retry_at and now < self._resolve_next_retry_at:
+                return
             try:
 
                 result = self.manager.resolve_week(now=now)
                 status = result.get("status", "")
                 winners = result.get("winners", {}) or {}
+                channel = await self._get_auction_channel()
+                warning_seen_in_history = False
+                if channel:
+                    warning_seen_in_history = await self._has_weekly_notice(
+                        channel,
+                        header=_PERSIST_WARNING_HEADER,
+                        week_key=week_key,
+                    )
+                had_persistence_warning = (
+                    self._resolve_persist_warn_week == week_key
+                    or warning_seen_in_history
+                )
 
                 if status in {"resolved", "already_resolved"}:
                     commit_ok = self._commit_auction_files(
@@ -367,7 +465,8 @@ class Auction(commands.Cog):
                     )
 
                     if commit_ok:
-                        self._resolve_persist_warn_week = None
+                        self._resolve_retry_attempts = 0
+                        self._resolve_next_retry_at = None
                         guard_ok = False
                         try:
                             self._write_resolved_guard(week_key)
@@ -385,32 +484,71 @@ class Auction(commands.Cog):
                         else:
                             self._clear_resolved_guard()
                             print("⚠️ Failed to persist auction resolve guard commit")
+                        if channel and status == "resolved":
+                            success_header = (
+                                _PERSIST_RECOVERY_HEADER if had_persistence_warning else _RESOLVED_SUCCESS_HEADER
+                            )
+                            already_announced = await self._has_weekly_notice(
+                                channel,
+                                header=success_header,
+                                week_key=week_key,
+                            )
+                            if not already_announced:
+                                await channel.send(
+                                    self._build_resolved_success_notice(
+                                        week_key=week_key,
+                                        winners=winners,
+                                        recovered=had_persistence_warning,
+                                    )
+                                )
+                            if had_persistence_warning:
+                                self._resolve_recovered_week = week_key
+                        elif channel and had_persistence_warning:
+                            already_recovered = (
+                                self._resolve_recovered_week == week_key
+                                or await self._has_weekly_notice(
+                                    channel,
+                                    header=_PERSIST_RECOVERY_HEADER,
+                                    week_key=week_key,
+                                )
+                            )
+                            if not already_recovered:
+                                await channel.send(
+                                    self._build_resolved_success_notice(
+                                        week_key=week_key,
+                                        winners=winners,
+                                        recovered=True,
+                                    )
+                                )
+                            self._resolve_recovered_week = week_key
+
+                        if had_persistence_warning:
+                            self._resolve_persist_warn_week = None
 
                         if status == "resolved":
-                            channel = await self._get_auction_channel()
-                            if channel:
-                                if winners:
-                                    lines = ["🏁 **Auction Resolved — Transactions Applied**", ""]
-                                    for pid, info in winners.items():
-                                        name = info.get("name", _resolve_prospect_name(pid))
-                                        lines.append(
-                                            f"✅ **{info['team']}** → {_player_profile_link(pid, name)} (${info['amount']} WB)"
-                                        )
-                                    await channel.send("\n".join(lines))
-                                else:
-                                    await channel.send("🏁 **Auction Resolved**\nNo winners recorded for this week.")
                             print(f"✅ Auction resolved: {len(winners)} winners")
                         else:
                             print(f"ℹ️ Auction already resolved for week {week_key}; persistence confirmed")
                     else:
                         self._clear_resolved_guard()
-                        if self._resolve_persist_warn_week != week_key:
-                            channel = await self._get_auction_channel()
-                            if channel:
+                        retry_seconds = self._resolve_retry_delay_seconds()
+                        self._resolve_retry_attempts += 1
+                        self._resolve_next_retry_at = now + timedelta(seconds=retry_seconds)
+                        if channel:
+                            already_warned = (
+                                self._resolve_persist_warn_week == week_key
+                                or await self._has_weekly_notice(
+                                    channel,
+                                    header=_PERSIST_WARNING_HEADER,
+                                    week_key=week_key,
+                                )
+                            )
+                            if not already_warned:
                                 await channel.send(
-                                    "⚠️ **Auction Resolution Pending Persistence**\n"
-                                    "Resolution ran, but transactions are **not yet confirmed** because persistence failed. "
-                                    "The bot will retry automatically."
+                                    self._build_persistence_failure_notice(
+                                        week_key,
+                                        retry_seconds,
+                                    )
                                 )
                         self._resolve_persist_warn_week = week_key
                 elif status == "no_bids":
@@ -432,6 +570,9 @@ class Auction(commands.Cog):
                         self._clear_resolved_guard()
                         print("⚠️ Failed to persist no-bid resolve guard commit")
                     self._resolve_persist_warn_week = None
+                    self._resolve_recovered_week = None
+                    self._resolve_retry_attempts = 0
+                    self._resolve_next_retry_at = None
                     print("Auction resolve: no bids this week")
                 elif status == "inactive":
                     pass
