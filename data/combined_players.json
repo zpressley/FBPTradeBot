@@ -5528,7 +5528,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "kineris01",
@@ -5538,7 +5538,7 @@
     "fangraphs_name": "Isiah Kiner-Falefa",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 643396,
     "mlb_primary_position": "SS",
     "name": "Isiah Kiner-Falefa",
@@ -16868,7 +16868,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 32,
     "bats": "S",
     "bbref_id": "polanjo01",
@@ -16879,7 +16879,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 593871,
     "mlb_primary_position": "2B",
     "name": "Jorge Polanco",
@@ -17518,7 +17518,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "WAR",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-12-30",
@@ -42259,17 +42259,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 29,
     "bats": "L",
     "bbref_id": "clemeko01",
     "birth_date": "1996-05-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20572",
     "fangraphs_name": "Kody Clemens",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 665019,
     "mlb_primary_position": "2B",
     "name": "Kody Clemens",
@@ -77403,7 +77403,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "WAR",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-05-27",

@@ -357,7 +357,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 36,
     "bats": "R",
     "bbref_id": "springe01",
@@ -367,7 +367,7 @@
     "fangraphs_name": "George Springer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 543807,
     "mlb_primary_position": "RF",
     "name": "George Springer",
@@ -567,7 +567,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "sheetga01",
@@ -577,7 +577,7 @@
     "fangraphs_name": "Gavin Sheets",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 657757,
     "mlb_primary_position": "LF",
     "name": "Gavin Sheets",
@@ -664,7 +664,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "mclaima01",
@@ -674,7 +674,7 @@
     "fangraphs_name": "Matt McLain",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 680574,
     "mlb_primary_position": "2B",
     "name": "Matt McLain",
@@ -2696,12 +2696,13 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
+    "NRI": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "matthze01",
     "birth_date": "2000-05-22",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": "08/13/2024",
     "debuted": true,
     "fangraphs_id": "31827",
@@ -2709,10 +2710,11 @@
     "fypd": false,
     "height": "6' 5\"",
     "level": "MLB",
-    "manager": "",
+    "manager": "The Damn Yankees",
     "mlb_id": 805673,
     "mlb_primary_position": "P",
     "name": "Zebby Matthews",
+    "owner": "DMN",
     "player_type": "Farm",
     "position": "SP",
     "rank": 321,
@@ -2722,8 +2724,7 @@
     "upid": "6988",
     "weight": 225,
     "yahoo_id": "63601",
-    "years_simple": "P",
-    "NRI": "DMN"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "B2J",
@@ -3817,7 +3818,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "kwanst01",
@@ -3827,7 +3828,7 @@
     "fangraphs_name": "Steven Kwan",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 680757,
     "mlb_primary_position": "LF",
     "name": "Steven Kwan",
@@ -5807,7 +5808,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5817,7 +5818,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -9062,7 +9063,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
     "bbref_id": "martiju01",
@@ -9072,7 +9073,7 @@
     "fangraphs_name": "Justin Martinez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 679885,
     "mlb_primary_position": "P",
     "name": "Justin Martinez",
@@ -9546,7 +9547,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9556,7 +9557,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -13810,12 +13811,12 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 24,
     "bats": "L",
     "bbref_id": "rushida01",
     "birth_date": "2001-02-21",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "debut_date": "05/15/2025",
     "debuted": true,
     "fangraphs_id": "31382",
@@ -13823,7 +13824,7 @@
     "fypd": false,
     "height": "5' 11\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 687221,
     "mlb_primary_position": "C",
     "name": "Dalton Rushing",
@@ -13922,7 +13923,7 @@
     "bats": "R",
     "bbref_id": "ariasfr01",
     "birth_date": "2005-11-19",
-    "contract_type": "Development Cont.",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3021845",
@@ -15430,6 +15431,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "CFL",
     "age": 25,
     "bats": "L",
     "bbref_id": "mcgremi01",
@@ -15455,8 +15457,7 @@
     "upid": "2979",
     "weight": 220,
     "yahoo_id": "12549",
-    "years_simple": "P",
-    "NRI": "CFL"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "WIZ",
@@ -16152,7 +16153,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "yohocr01",
@@ -16162,7 +16163,7 @@
     "fangraphs_name": "Craig Yoho",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 684974,
     "mlb_primary_position": "P",
     "name": "Craig Yoho",
@@ -17517,6 +17518,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "WAR",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-12-30",
@@ -17537,8 +17539,7 @@
     "upid": "2017",
     "weight": 170,
     "yahoo_id": "12535",
-    "years_simple": "P",
-    "NRI": "WAR"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -22317,7 +22318,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "speiega01",
@@ -22327,7 +22328,7 @@
     "fangraphs_name": "Gabe Speier",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 642100,
     "mlb_primary_position": "P",
     "name": "Gabe Speier",
@@ -32835,7 +32836,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32845,7 +32846,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -36085,7 +36086,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "martiau01",
@@ -36095,7 +36096,7 @@
     "fangraphs_name": "Austin Martin",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 668885,
     "mlb_primary_position": "CF",
     "name": "Austin Martin",
@@ -36749,7 +36750,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36759,7 +36760,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -37514,6 +37515,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "RV",
     "age": 25,
     "bats": "S",
     "birth_date": "2000-10-02",
@@ -37534,8 +37536,7 @@
     "upid": "3798",
     "weight": 225,
     "yahoo_id": "12530",
-    "years_simple": "P",
-    "NRI": "RV"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -39695,6 +39696,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 24,
     "bats": "L",
     "birth_date": "2001-07-17",
@@ -39715,8 +39717,7 @@
     "upid": "3949",
     "weight": 190,
     "yahoo_id": "60397",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -42669,7 +42670,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 26,
     "bats": "R",
     "bbref_id": "alexabl01",
@@ -42679,7 +42680,7 @@
     "fangraphs_name": "Blaze Alexander",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 677942,
     "mlb_primary_position": "SS",
     "name": "Blaze Alexander",
@@ -45996,6 +45997,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 22,
     "bats": "R",
     "birth_date": "2004-01-25",
@@ -46016,8 +46018,7 @@
     "upid": "4443",
     "weight": 210,
     "yahoo_id": "60223",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "WAR",
@@ -48600,6 +48601,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "mcdontr01",
@@ -48623,8 +48625,7 @@
     "upid": "4649",
     "weight": 201,
     "yahoo_id": "60389",
-    "years_simple": "P",
-    "NRI": "JEP"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -49567,6 +49568,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "JEP",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-02-29",
@@ -49587,8 +49589,7 @@
     "upid": "4792",
     "weight": 180,
     "yahoo_id": "60421",
-    "years_simple": "P",
-    "NRI": "JEP"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -51945,19 +51946,21 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
+    "NRI": "",
     "age": 23,
     "bats": "L",
     "birth_date": "2002-05-30",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "The Damn Yankees",
     "mlb_id": 694378,
     "mlb_primary_position": "SS",
     "name": "Jacob Gonzalez",
+    "owner": "DMN",
     "player_type": "Farm",
     "position": "2B,SS",
     "status": "[7] P",
@@ -51966,8 +51969,7 @@
     "upid": "5433",
     "weight": 205,
     "yahoo_id": "62982",
-    "years_simple": "P",
-    "NRI": "DMN"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -52474,7 +52476,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 28,
     "bats": "L",
     "bbref_id": "canzodo01",
@@ -52484,7 +52486,7 @@
     "fangraphs_name": "Dominic Canzone",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 686527,
     "mlb_primary_position": "RF",
     "name": "Dominic Canzone",
@@ -54609,19 +54611,20 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 21,
     "bats": "R",
     "birth_date": "2004-04-21",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "The Bluke Blokes",
     "mlb_id": 703596,
     "mlb_primary_position": "P",
     "name": "Karson Milbrandt",
+    "owner": "TBB",
     "player_type": "Farm",
     "position": "SP",
     "status": "[7] P",
@@ -60223,6 +60226,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-07-26",
@@ -60243,8 +60247,7 @@
     "upid": "6639",
     "weight": 180,
     "yahoo_id": "65029",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -68317,19 +68320,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
     "birth_date": "2001-08-04",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "",
+    "manager": "Andromedans",
     "mlb_id": 813841,
     "mlb_primary_position": "CF",
     "name": "Jonah Cox",
+    "owner": "DRO",
     "player_type": "Farm",
     "position": "CF",
     "status": "[7] P",
@@ -69861,6 +69865,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "CFL",
     "contract_type": "",
     "debut_date": null,
     "debuted": false,
@@ -69874,8 +69879,7 @@
     "team": "MIA",
     "upid": "7135",
     "yahoo_id": "10514",
-    "years_simple": "P",
-    "NRI": "CFL"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -77399,6 +77403,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "WAR",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-05-27",
@@ -77419,8 +77424,7 @@
     "upid": "7713",
     "weight": 235,
     "yahoo_id": "64030",
-    "years_simple": "P",
-    "NRI": "WAR"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -81431,19 +81435,21 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
+    "NRI": "",
     "age": 24,
     "bats": "S",
     "birth_date": "2001-07-10",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "Andromedans",
     "mlb_id": 689296,
     "mlb_primary_position": "P",
     "name": "Anthony Nunez",
+    "owner": "DRO",
     "player_type": "Farm",
     "position": "RP",
     "status": "[7] P",
@@ -81452,8 +81458,7 @@
     "upid": "7924",
     "weight": 225,
     "yahoo_id": "66156",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -82511,10 +82516,12 @@
     "fypd": true,
     "fypd_rank": 46,
     "height_weight": "6' 0\" / 205 lbs",
+    "level": "MLB",
     "manager": "Btwn2Jackies",
     "mlb_id": "805906",
     "mlb_primary_position": "SP",
     "name": "Gage Wood",
+    "owner": "B2J",
     "player_type": "Farm",
     "position": "SP",
     "status": "[9] P",
@@ -82522,8 +82529,7 @@
     "throws": "R",
     "upid": "7962",
     "yahoo_id": "65886",
-    "years_simple": "P",
-    "level": "MLB"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "CFL",
@@ -82883,19 +82889,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 19,
     "bats": "R",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 78,
     "height_weight": "5' 11\" / 180 lbs",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": null,
     "mlb_primary_position": "SS",
     "name": "Tate Southisene",
+    "owner": "HAM",
     "player_type": "Farm",
     "position": "SS",
     "status": "[7] P",
@@ -85167,19 +85174,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 22,
     "bats": "R",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 209,
     "height_weight": "6' 4\" / 230 lbs",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": null,
     "mlb_primary_position": "3B",
     "name": "Murf Gray",
+    "owner": "WAR",
     "player_type": "Farm",
     "position": "3B",
     "status": "[7] P",
@@ -122253,6 +122261,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "SAD",
     "age": null,
     "bats": null,
     "birth_date": null,
@@ -122271,8 +122280,7 @@
     "upid": "6516",
     "weight": null,
     "yahoo_id": "11384",
-    "years_simple": "",
-    "NRI": "SAD"
+    "years_simple": ""
   },
   {
     "FBP_Team": "",
@@ -122747,17 +122755,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": null,
     "bats": null,
     "birth_date": null,
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "fypd": false,
     "height": null,
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": null,
     "mlb_primary_position": "OF",
     "name": "Justin Gonzales",
+    "owner": "SAD",
     "player_type": "Farm",
     "position": "OF",
     "status": "P",
@@ -152977,65 +152986,69 @@
     "years_simple": ""
   },
   {
-    "upid": "8446",
-    "name": "Carlos Virahonda",
-    "team": "AZ",
-    "position": "C",
-    "age": 20,
-    "manager": "",
     "FBP_Team": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "years_simple": "",
-    "yahoo_id": "8560",
-    "mlb_id": 808024,
+    "age": 20,
+    "bats": "R",
     "birth_date": "2005-12-13",
+    "contract_type": "",
     "debut_date": null,
     "debuted": false,
-    "bats": "R",
-    "throws": "R",
+    "fypd": false,
     "height": "5' 11''",
-    "weight": 180,
+    "level": "",
+    "manager": "",
+    "mlb_id": 808024,
     "mlb_primary_position": "C",
-    "fypd": false,
-    "level": ""
-  },
-  {
-    "upid": "8447",
-    "name": "Rikuu Nishida",
-    "team": "CHW",
-    "position": "2B",
-    "age": 25,
-    "manager": "",
+    "name": "Carlos Virahonda",
     "player_type": "Farm",
-    "contract_type": "",
-    "years_simple": "P",
-    "yahoo_id": null,
-    "mlb_id": "807747",
-    "birth_date": "2001-05-06",
-    "debut_date": null,
-    "bats": "L",
+    "position": "C",
+    "team": "AZ",
     "throws": "R",
-    "fypd": false,
-    "level": "MLB"
+    "upid": "8446",
+    "weight": 180,
+    "yahoo_id": "8560",
+    "years_simple": ""
   },
   {
-    "upid": "8448",
-    "name": "Devin Fitz-gerald",
-    "team": "WSH",
-    "position": "SS",
-    "age": 20,
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "years_simple": "",
-    "yahoo_id": "64549",
-    "mlb_id": null,
-    "birth_date": null,
+    "FBP_Team": "WAR",
+    "age": 25,
+    "bats": "L",
+    "birth_date": "2001-05-06",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
-    "bats": null,
-    "throws": null,
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "manager": "Weekend Warriors",
+    "mlb_id": "807747",
+    "name": "Rikuu Nishida",
+    "owner": "WAR",
+    "player_type": "Farm",
+    "position": "2B",
+    "team": "CHW",
+    "throws": "R",
+    "upid": "8447",
+    "yahoo_id": null,
+    "years_simple": "P"
+  },
+  {
+    "FBP_Team": "WAR",
+    "age": 20,
+    "bats": null,
+    "birth_date": null,
+    "contract_type": "Purchased Contract",
+    "debut_date": null,
+    "fypd": false,
+    "level": "MLB",
+    "manager": "Weekend Warriors",
+    "mlb_id": null,
+    "name": "Devin Fitz-gerald",
+    "owner": "WAR",
+    "player_type": "Farm",
+    "position": "SS",
+    "team": "WSH",
+    "throws": null,
+    "upid": "8448",
+    "yahoo_id": "64549",
+    "years_simple": ""
   }
 ]
