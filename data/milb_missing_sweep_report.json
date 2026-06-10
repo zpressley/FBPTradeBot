@@ -1,0 +1,1757 @@
+{
+  "season": 2026,
+  "active_milb_players": 1510,
+  "missing_candidates": 248,
+  "processed_candidates": 248,
+  "skipped_ambiguous_upid": 0,
+  "skipped_internal_duplicate_name": 0,
+  "created_upids": 247,
+  "reused_upids": 1,
+  "added_combined_rows": 247,
+  "updated_existing_combined_rows": 1,
+  "yahoo_matched": 23,
+  "yahoo_unmatched": 225,
+  "yahoo_ambiguous": 0,
+  "combined_upid_duplicates_after": 2,
+  "processed_rows": [
+    {
+      "name": "Philip Abner",
+      "upid": "8449",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "63171",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Andrew Alvarez",
+      "upid": "8450",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "63960",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Aidan Anderson",
+      "upid": "8451",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ben Anderson",
+      "upid": "8452",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Anderson",
+      "upid": "8453",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tanner Andrews",
+      "upid": "8454",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Johnny Ascanio",
+      "upid": "8455",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jose Astudillo",
+      "upid": "8456",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Morris Austin",
+      "upid": "8457",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nicandro Aybar",
+      "upid": "8458",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kyle Backhus",
+      "upid": "8459",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "60553",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Trent Baker",
+      "upid": "8460",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Scott Bandura",
+      "upid": "8461",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Gabriel Barbosa",
+      "upid": "8462",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Andrew Bash",
+      "upid": "8463",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Collin Baumgartner",
+      "upid": "8464",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jarod Bayless",
+      "upid": "8465",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jace Beck",
+      "upid": "8466",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Colton Becker",
+      "upid": "8467",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Luke Bell",
+      "upid": "8468",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Derek Berg",
+      "upid": "8469",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Osvaldo Berrios",
+      "upid": "8470",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "John Michael Bertrand",
+      "upid": "8471",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Wilian Bormie",
+      "upid": "8472",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ethan Bosacker",
+      "upid": "8473",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kaleb Bowman",
+      "upid": "8474",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jeremiah Boyd",
+      "upid": "8475",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Raul Brito",
+      "upid": "8476",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Bryan Broecker",
+      "upid": "8477",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jeisson Cabrera",
+      "upid": "8478",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Fernando Caldera",
+      "upid": "8479",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Carey",
+      "upid": "8480",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Parker Carlson",
+      "upid": "8481",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Alex Carrillo",
+      "upid": "8482",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "65995",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Ricky Castro",
+      "upid": "8483",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Drew Cavanaugh",
+      "upid": "8484",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brendan Cellucci",
+      "upid": "8485",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Parker Chavers",
+      "upid": "8486",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Will Childers",
+      "upid": "8487",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brady Choban",
+      "upid": "8488",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Miguel Cienfuegos",
+      "upid": "8489",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Cimillo",
+      "upid": "8490",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chris Clark",
+      "upid": "8491",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Adisyn Coffey",
+      "upid": "8492",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Harrison Cohen",
+      "upid": "8493",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "64022",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Gavin Collyer",
+      "upid": "8494",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Bryce Conley",
+      "upid": "8495",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Caden Connor",
+      "upid": "8496",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Riley Cooper",
+      "upid": "8497",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Joe Corbett",
+      "upid": "8498",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Riley Cornelio",
+      "upid": "8499",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66380",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Yovanny Cruz",
+      "upid": "8500",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jonny Cuevas",
+      "upid": "8501",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jake Curtis",
+      "upid": "8502",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Davila",
+      "upid": "8503",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tyler Davis",
+      "upid": "8504",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Duncan Davitt",
+      "upid": "8505",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66161",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Enmanuel De Jesus",
+      "upid": "8506",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Derek Diamond",
+      "upid": "8507",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dustin Dickerson",
+      "upid": "8508",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Wilber Dotel",
+      "upid": "8509",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66381",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Edinson Duran",
+      "upid": "8510",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kenten Egbert",
+      "upid": "8511",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jose Espada",
+      "upid": "8512",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "62403",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Trey Faltine",
+      "upid": "8513",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Cade Feeney",
+      "upid": "8514",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Drake Fellows",
+      "upid": "8515",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Cade Fergus",
+      "upid": "8516",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dylan File",
+      "upid": "8517",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ryan Fitzgerald",
+      "upid": "8518",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "60890",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Brian Fitzpatrick",
+      "upid": "8519",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Stu Flesland III",
+      "upid": "8520",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Michael Flynn",
+      "upid": "8521",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Cameron Foster",
+      "upid": "8522",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "61295",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Jose Franco",
+      "upid": "8523",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66372",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Zach Franklin",
+      "upid": "8524",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ryan Galanie",
+      "upid": "8525",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Pat Gallagher",
+      "upid": "8526",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Alec Gamboa",
+      "upid": "8527",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Julian Garcia",
+      "upid": "8528",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Garcia",
+      "upid": "8529",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nate Garkow",
+      "upid": "8530",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Thomas Gavello",
+      "upid": "8531",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jordan Geber",
+      "upid": "8532",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Harry Genth",
+      "upid": "8533",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Paul Gervase",
+      "upid": "8534",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "63919",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Cade Gibson",
+      "upid": "8535",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "61279",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Phillip Glasser",
+      "upid": "8536",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ben Gobbel",
+      "upid": "8537",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ofreidy Gómez",
+      "upid": "8538",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Riley Gowens",
+      "upid": "8539",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Peyton Gray",
+      "upid": "8540",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "63965",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Mason Green",
+      "upid": "8541",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Payton Green",
+      "upid": "8542",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tyron Guerrero",
+      "upid": "8543",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Colby Halter",
+      "upid": "8544",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dan Hammer",
+      "upid": "8545",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ty Hanchey",
+      "upid": "8546",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Bradley Hanner",
+      "upid": "8547",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Houston Harding",
+      "upid": "8548",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Daniel Harper",
+      "upid": "8549",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Devereaux Harrison",
+      "upid": "8550",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dakota Hawkins",
+      "upid": "8551",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Josh Hejka",
+      "upid": "8552",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Josh Hendrickson",
+      "upid": "8553",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Christian Herberholz",
+      "upid": "8554",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jake Higginbotham",
+      "upid": "8555",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Turner Hill",
+      "upid": "8556",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Blake Holub",
+      "upid": "8557",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kaden Hopson",
+      "upid": "8558",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Hull",
+      "upid": "8559",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Sean Hunley",
+      "upid": "8560",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Matt Jachec",
+      "upid": "8561",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Fisher Jameson",
+      "upid": "8562",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jim Jarvis",
+      "upid": "8563",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Jasiak",
+      "upid": "8564",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chase Jessee",
+      "upid": "8565",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brandon Johnson",
+      "upid": "8566",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Jones",
+      "upid": "8567",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Stephen Jones",
+      "upid": "8568",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chris Kachmar",
+      "upid": "8569",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brian Keller",
+      "upid": "8570",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kyle Keller",
+      "upid": "8571",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jackson Kelley",
+      "upid": "8572",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Antwone Kelly",
+      "upid": "8573",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66534",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Brett Kerry",
+      "upid": "8574",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chuck King",
+      "upid": "8575",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nolan Kingham",
+      "upid": "8576",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Antonio Knowles",
+      "upid": "8577",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tate Kuehner",
+      "upid": "8578",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Trevor Kuncl",
+      "upid": "8579",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Henry Kusiak",
+      "upid": "8580",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ty Langenberg",
+      "upid": "8581",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Conor Larkin",
+      "upid": "8582",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Adam Laskey",
+      "upid": "8583",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Hudson Leach",
+      "upid": "8584",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Zack Lee",
+      "upid": "8585",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dayne Leonard",
+      "upid": "8586",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tatem Levins",
+      "upid": "8587",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Little",
+      "upid": "8588",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Gavin Logan",
+      "upid": "8589",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Seth Lonsway",
+      "upid": "8590",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jared Lyons",
+      "upid": "8591",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Johan Macias",
+      "upid": "8592",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Christian MacLeod",
+      "upid": "8593",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Andrew Magno",
+      "upid": "8594",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Rorik Maltrud",
+      "upid": "8595",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Joey Mancini",
+      "upid": "8596",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Mark Manfredi",
+      "upid": "8597",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chazz Martinez",
+      "upid": "8598",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ernesto Martinez Jr.",
+      "upid": "6679",
+      "action": "reused_upid_updated_existing",
+      "name_mismatch_repaired": true,
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Izaak Martinez",
+      "upid": "8599",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Sean Matson",
+      "upid": "8600",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ben McCabe",
+      "upid": "8601",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "T.J. McCants",
+      "upid": "8602",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ryan McCarty",
+      "upid": "8603",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brandon McPherson",
+      "upid": "8604",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Antonio Menendez",
+      "upid": "8605",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Logan Mercado",
+      "upid": "8606",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Juan Montero",
+      "upid": "8607",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brody Moore",
+      "upid": "8608",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Gerson Moreno",
+      "upid": "8609",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Zach Morgan",
+      "upid": "8610",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Gabe Mosser",
+      "upid": "8611",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ismael Munguia",
+      "upid": "8612",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brandon Neeck",
+      "upid": "8613",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dominic Niman",
+      "upid": "8614",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Gerald Ogando",
+      "upid": "8615",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Wyatt Olds",
+      "upid": "8616",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Johnny Olmstead",
+      "upid": "8617",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Shane Panzini",
+      "upid": "8618",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Mike Paredes",
+      "upid": "8619",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Duncan Pastore",
+      "upid": "8620",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Zach Peek",
+      "upid": "8621",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Joel Peguero",
+      "upid": "8622",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "63735",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Carlos Peña",
+      "upid": "8623",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Andrew Pérez",
+      "upid": "8624",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Steven Pérez",
+      "upid": "8625",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nate Peterson",
+      "upid": "8626",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dylan Phillips",
+      "upid": "8627",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nicolo Pinazzi",
+      "upid": "8628",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Dominic Pitelli",
+      "upid": "8629",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chase Plymell",
+      "upid": "8630",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Austin Pope",
+      "upid": "8631",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Holden Powell",
+      "upid": "8632",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Collin Price",
+      "upid": "8633",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Joshua Quezada",
+      "upid": "8634",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Ralston",
+      "upid": "8635",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Taylor Rashi",
+      "upid": "8636",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Adam Retzbach",
+      "upid": "8637",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Hancel Rincon",
+      "upid": "8638",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Kevin Rivas",
+      "upid": "8639",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Yaqui Rivera",
+      "upid": "8640",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Grant Rogers",
+      "upid": "8641",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Anderdson Rojas",
+      "upid": "8642",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Shawn Ross",
+      "upid": "8643",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Houston Roth",
+      "upid": "8644",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ethan Routzahn",
+      "upid": "8645",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Aaron Rozek",
+      "upid": "8646",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tommy Sacco Jr.",
+      "upid": "8647",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Fernando Sanchez",
+      "upid": "8648",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Nick Sando",
+      "upid": "8649",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Michael Sansone",
+      "upid": "8650",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tony Santa Maria",
+      "upid": "8651",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tyler Santana",
+      "upid": "8652",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Frankie Scalzo Jr.",
+      "upid": "8653",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Garrett Schoenle",
+      "upid": "8654",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Paxton Schultz",
+      "upid": "8655",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "65397",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Ben Sears",
+      "upid": "8656",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brett Sears",
+      "upid": "8657",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Matt Seelinger",
+      "upid": "8658",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "TJ Shook",
+      "upid": "8659",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Ben Simon",
+      "upid": "8660",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Sinclair",
+      "upid": "8661",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Carson Skipper",
+      "upid": "8662",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Hayden Snelsire",
+      "upid": "8663",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Chase Solesky",
+      "upid": "8664",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Drew Sommers",
+      "upid": "8665",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "65281",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Jared Southard",
+      "upid": "8666",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brett Squires",
+      "upid": "8667",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Cole Stasio",
+      "upid": "8668",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Alex Stone",
+      "upid": "8669",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Luke Taggart",
+      "upid": "8670",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "John Taylor",
+      "upid": "8671",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brandt Thompson",
+      "upid": "8672",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Andrew Thurman",
+      "upid": "8673",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Francisco Toledo",
+      "upid": "8674",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Erik Tolman",
+      "upid": "8675",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Lenny Torres Jr.",
+      "upid": "8676",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tevin Tucker",
+      "upid": "8677",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Matt Turner",
+      "upid": "8678",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Tyler Uberstine",
+      "upid": "8679",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "66385",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Jesus Valdez",
+      "upid": "8680",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Bryson Van Sickle",
+      "upid": "8681",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Logan VanWey",
+      "upid": "8682",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "62570",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Colton Vincent",
+      "upid": "8683",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Mason Vinyard",
+      "upid": "8684",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jake Walkinshaw",
+      "upid": "8685",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Andrew Walling",
+      "upid": "8686",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Je'Von Ward",
+      "upid": "8687",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Troy Watson",
+      "upid": "8688",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Jack Weisenburger",
+      "upid": "8689",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Brandon White",
+      "upid": "8690",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Josh White",
+      "upid": "8691",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "65694",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Trace Willhoite",
+      "upid": "8692",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Cade Winquest",
+      "upid": "8693",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "64220",
+      "yahoo_method": "exact_name"
+    },
+    {
+      "name": "Jack Young",
+      "upid": "8694",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    },
+    {
+      "name": "Taylor Young",
+      "upid": "8695",
+      "action": "new_upid_new_combined",
+      "yahoo_id": "",
+      "yahoo_method": "not_found"
+    }
+  ],
+  "skipped_details": [],
+  "generated_at_utc": "2026-06-10T15:49:07.243959+00:00"
+}
