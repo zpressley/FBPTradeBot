@@ -3764,5 +3764,26 @@
       "amount": 25,
       "source": "auction_backfill"
     }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1781094277",
+    "timestamp": "2026-06-10T12:24:37.060902Z",
+    "team": "WAR",
+    "amount": -5,
+    "balance_before": 10,
+    "balance_after": 5,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Franklin Arias DC \u2192 PC",
+    "related_player": {
+      "upid": "7130",
+      "name": "Franklin Arias"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
