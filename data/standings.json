@@ -344,10 +344,10 @@
       "win_pct": 0.495,
       "opponent": "CFL",
       "score": "6",
-      "opponent_score": "14",
-      "ties": "0",
-      "live_record": "6-14-0",
-      "live_win_pct": 0.3,
+      "opponent_score": "13",
+      "ties": "1",
+      "live_record": "6-13-1",
+      "live_win_pct": 0.325,
       "categories": {
         "H/AB": "30/101",
         "R": 19,
@@ -360,7 +360,7 @@
         "TB": 55,
         "AVG": ".297",
         "OPS": ".934",
-        "APP": 7,
+        "APP": 8,
         "IP": "20.2",
         "ER": 16,
         "P_HR": 4,
@@ -372,8 +372,8 @@
         "BB/9": "2.18",
         "QS": 0
       },
-      "overall_live_record": "109-119-12",
-      "overall_live_win_pct": 0.479,
+      "overall_live_record": "109-118-13",
+      "overall_live_win_pct": 0.481,
       "live_rank": 8
     },
     {
@@ -400,15 +400,15 @@
         "TB": 42,
         "AVG": ".255",
         "OPS": ".785",
-        "APP": 10,
+        "APP": 11,
         "IP": "23.1",
         "ER": 5,
         "P_HR": 1,
         "P_K": 20,
-        "P_TB": 27,
+        "P_TB": 29,
         "ERA": "1.93",
         "K/9": "7.71",
-        "H/9": "7.33",
+        "H/9": "8.10",
         "BB/9": "1.93",
         "QS": 1
       },
@@ -503,11 +503,11 @@
       "record": "98-114-8",
       "win_pct": 0.464,
       "opponent": "SAD",
-      "score": "14",
+      "score": "13",
       "opponent_score": "6",
-      "ties": "0",
-      "live_record": "14-6-0",
-      "live_win_pct": 0.7,
+      "ties": "1",
+      "live_record": "13-6-1",
+      "live_win_pct": 0.675,
       "categories": {
         "H/AB": "36/92",
         "R": 14,
@@ -532,8 +532,8 @@
         "BB/9": "2.21",
         "QS": 2
       },
-      "overall_live_record": "112-120-8",
-      "overall_live_win_pct": 0.483,
+      "overall_live_record": "111-120-9",
+      "overall_live_win_pct": 0.481,
       "live_rank": 7
     },
     {
@@ -755,15 +755,15 @@
           "TB": 42,
           "AVG": ".255",
           "OPS": ".785",
-          "APP": 10,
+          "APP": 11,
           "IP": "23.1",
           "ER": 5,
           "P_HR": 1,
           "P_K": 20,
-          "P_TB": 27,
+          "P_TB": 29,
           "ERA": "1.93",
           "K/9": "7.71",
-          "H/9": "7.33",
+          "H/9": "8.10",
           "BB/9": "1.93",
           "QS": 1
         }
@@ -802,7 +802,7 @@
       "team1": {
         "team": "CFL",
         "name": "Country Fried Lamb",
-        "score": "14",
+        "score": "13",
         "categories": {
           "H/AB": "36/92",
           "R": 14,
@@ -844,7 +844,7 @@
           "TB": 55,
           "AVG": ".297",
           "OPS": ".934",
-          "APP": 7,
+          "APP": 8,
           "IP": "20.2",
           "ER": 16,
           "P_HR": 4,
@@ -978,6 +978,5 @@
         }
       }
     }
-  ],
-  "refreshed_at": "2026-06-11T04:00:43.497900+00:00"
+  ]
 }
