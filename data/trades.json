@@ -3772,5 +3772,67 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-100626_2208-042": {
+    "trade_id": "TRADE-100626_2208-042",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-06-11T02:08:44.947655Z",
+    "expires_at": "2026-06-25T02:08:44.947655Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2483",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "4567",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6573",
+        "from_team": "RV",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "C Kyle Teel [CWS] [PC]"
+      ],
+      "RV": [
+        "SS Francisco Lindor [NYM] [FC 1]",
+        "OF Zyhir Hope [LAD] [BC]",
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "SP Landen Roupp [SF] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
