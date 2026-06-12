@@ -144,10 +144,10 @@
       "win_pct": 0.627,
       "opponent": "DRO",
       "score": "13",
-      "opponent_score": "6",
-      "ties": "1",
-      "live_record": "13-6-1",
-      "live_win_pct": 0.675,
+      "opponent_score": "7",
+      "ties": "0",
+      "live_record": "13-7-0",
+      "live_win_pct": 0.65,
       "categories": {
         "H/AB": "38/130",
         "R": 22,
@@ -172,8 +172,8 @@
         "BB/9": "3.50",
         "QS": 1
       },
-      "overall_live_record": "147-84-9",
-      "overall_live_win_pct": 0.631,
+      "overall_live_record": "147-85-8",
+      "overall_live_win_pct": 0.629,
       "live_rank": 1
     },
     {
@@ -280,7 +280,7 @@
         "TB": 46,
         "AVG": ".258",
         "OPS": ".722",
-        "APP": 14,
+        "APP": 15,
         "IP": "28.0",
         "ER": 6,
         "P_HR": 1,
@@ -400,7 +400,7 @@
         "TB": 50,
         "AVG": ".243",
         "OPS": ".778",
-        "APP": 12,
+        "APP": 13,
         "IP": "29.1",
         "ER": 7,
         "P_HR": 1,
@@ -480,7 +480,7 @@
         "TB": 61,
         "AVG": ".306",
         "OPS": "1.008",
-        "APP": 9,
+        "APP": 11,
         "IP": "25.2",
         "ER": 17,
         "P_HR": 6,
@@ -583,11 +583,11 @@
       "record": "78-131-11",
       "win_pct": 0.38,
       "opponent": "LFB",
-      "score": "6",
+      "score": "7",
       "opponent_score": "13",
-      "ties": "1",
-      "live_record": "6-13-1",
-      "live_win_pct": 0.325,
+      "ties": "0",
+      "live_record": "7-13-0",
+      "live_win_pct": 0.35,
       "categories": {
         "H/AB": "25/120",
         "R": 17,
@@ -600,7 +600,7 @@
         "TB": 46,
         "AVG": ".208",
         "OPS": ".685",
-        "APP": 12,
+        "APP": 13,
         "IP": "36.2",
         "ER": 24,
         "P_HR": 7,
@@ -612,8 +612,8 @@
         "BB/9": "3.19",
         "QS": 2
       },
-      "overall_live_record": "84-144-12",
-      "overall_live_win_pct": 0.375,
+      "overall_live_record": "85-144-11",
+      "overall_live_win_pct": 0.377,
       "live_rank": 12
     }
   ],
@@ -664,7 +664,7 @@
           "TB": 61,
           "AVG": ".306",
           "OPS": "1.008",
-          "APP": 9,
+          "APP": 11,
           "IP": "25.2",
           "ER": 17,
           "P_HR": 6,
@@ -682,7 +682,7 @@
       "team1": {
         "team": "DRO",
         "name": "Andromedans",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "25/120",
           "R": 17,
@@ -695,7 +695,7 @@
           "TB": 46,
           "AVG": ".208",
           "OPS": ".685",
-          "APP": 12,
+          "APP": 13,
           "IP": "36.2",
           "ER": 24,
           "P_HR": 7,
@@ -755,7 +755,7 @@
           "TB": 50,
           "AVG": ".243",
           "OPS": ".778",
-          "APP": 12,
+          "APP": 13,
           "IP": "29.1",
           "ER": 7,
           "P_HR": 1,
@@ -875,7 +875,7 @@
           "TB": 46,
           "AVG": ".258",
           "OPS": ".722",
-          "APP": 14,
+          "APP": 15,
           "IP": "28.0",
           "ER": 6,
           "P_HR": 1,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-12T19:53:53.681594+00:00"
+  "refreshed_at": "2026-06-12T20:49:41.628282+00:00"
 }
