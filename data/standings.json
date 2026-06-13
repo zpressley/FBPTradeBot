@@ -224,10 +224,10 @@
       "win_pct": 0.498,
       "opponent": "JEP",
       "score": "10",
-      "opponent_score": "8",
-      "ties": "2",
-      "live_record": "10-8-2",
-      "live_win_pct": 0.55,
+      "opponent_score": "9",
+      "ties": "1",
+      "live_record": "10-9-1",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "34/152",
         "R": 21,
@@ -252,8 +252,8 @@
         "BB/9": "3.15",
         "QS": 3
       },
-      "overall_live_record": "115-114-11",
-      "overall_live_win_pct": 0.502,
+      "overall_live_record": "115-115-10",
+      "overall_live_win_pct": 0.5,
       "live_rank": 5
     },
     {
@@ -463,11 +463,11 @@
       "record": "97-108-15",
       "win_pct": 0.475,
       "opponent": "WIZ",
-      "score": "8",
+      "score": "9",
       "opponent_score": "10",
-      "ties": "2",
-      "live_record": "8-10-2",
-      "live_win_pct": 0.45,
+      "ties": "1",
+      "live_record": "9-10-1",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "38/122",
         "R": 31,
@@ -480,7 +480,7 @@
         "TB": 80,
         "AVG": ".311",
         "OPS": "1.059",
-        "APP": 14,
+        "APP": 15,
         "IP": "40.1",
         "ER": 28,
         "P_HR": 8,
@@ -492,8 +492,8 @@
         "BB/9": "3.57",
         "QS": 1
       },
-      "overall_live_record": "105-118-17",
-      "overall_live_win_pct": 0.473,
+      "overall_live_record": "106-118-16",
+      "overall_live_win_pct": 0.475,
       "live_rank": 9
     },
     {
@@ -520,7 +520,7 @@
         "TB": 66,
         "AVG": ".301",
         "OPS": ".814",
-        "APP": 10,
+        "APP": 11,
         "IP": "25.2",
         "ER": 9,
         "P_HR": 3,
@@ -651,7 +651,7 @@
       "team2": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "8",
+        "score": "9",
         "categories": {
           "H/AB": "38/122",
           "R": 31,
@@ -664,7 +664,7 @@
           "TB": 80,
           "AVG": ".311",
           "OPS": "1.059",
-          "APP": 14,
+          "APP": 15,
           "IP": "40.1",
           "ER": 28,
           "P_HR": 8,
@@ -815,7 +815,7 @@
           "TB": 66,
           "AVG": ".301",
           "OPS": ".814",
-          "APP": 10,
+          "APP": 11,
           "IP": "25.2",
           "ER": 9,
           "P_HR": 3,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-13T16:57:45.073318+00:00"
+  "refreshed_at": "2026-06-13T17:53:42.109941+00:00"
 }
