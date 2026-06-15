@@ -383,11 +383,11 @@
       "record": "113-117-10",
       "win_pct": 0.492,
       "opponent": "RV",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -400,7 +400,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 1,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -412,8 +412,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "113-117-30",
-      "overall_live_win_pct": 0.492,
+      "overall_live_record": "114-117-29",
+      "overall_live_win_pct": 0.494,
       "live_rank": 7
     },
     {
@@ -544,10 +544,10 @@
       "win_pct": 0.458,
       "opponent": "WIZ",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -572,8 +572,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "100-120-40",
-      "overall_live_win_pct": 0.462,
+      "overall_live_record": "100-121-39",
+      "overall_live_win_pct": 0.46,
       "live_rank": 11
     },
     {
@@ -622,7 +622,7 @@
       "team1": {
         "team": "WIZ",
         "name": "Whiz Kids",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -635,7 +635,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 1,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-15T19:59:36.141634+00:00"
+  "refreshed_at": "2026-06-15T20:56:47.382496+00:00"
 }
