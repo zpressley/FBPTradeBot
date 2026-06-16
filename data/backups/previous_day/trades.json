@@ -3780,7 +3780,7 @@
       "RV"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-06-11T02:08:44.947655Z",
     "expires_at": "2026-06-25T02:08:44.947655Z",
     "transfers": [
@@ -3833,6 +3833,139 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
+    },
+    "processed_at": "2026-06-16T06:29:16.295658Z"
+  },
+  "TRADE-150626_2307-043": {
+    "trade_id": "TRADE-150626_2307-043",
+    "teams": [
+      "DRO",
+      "TBB"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-06-16T03:07:30.519316Z",
+    "expires_at": "2026-06-30T03:07:30.519316Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "4594",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3265",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 20,
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6853",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "5160",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Connelly Early [BOS] [BC]",
+        "C,1B Liam Hicks [FA] [TC 1]",
+        "$20 WB via TBB"
+      ],
+      "TBB": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "SP Spencer Arrighetti [HOU] [TC 1]",
+        "RP Tanner Scott [LAD] [Keeper Contract]",
+        "SP Framber Valdez [DET] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-160626_0229-044": {
+    "trade_id": "TRADE-160626_0229-044",
+    "teams": [
+      "CFL",
+      "DRO"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-06-16T06:29:28.674670Z",
+    "expires_at": "2026-06-30T06:29:28.674670Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3895",
+        "from_team": "CFL",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1928",
+        "from_team": "DRO",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "DRO"
+    ],
+    "receives": {
+      "CFL": [
+        "SS Bo Bichette [NYM] [VC 2]"
+      ],
+      "DRO": [
+        "OF Justin Crawford [PHI] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1516328947531517963",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-06-16T06:29:53.027002Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-06-16T10:39:15.378462Z",
+    "data_applied_at": "2026-06-16T10:39:15.445555Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
     }
   }
 }
