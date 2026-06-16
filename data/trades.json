@@ -3834,5 +3834,81 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-150626_2307-043": {
+    "trade_id": "TRADE-150626_2307-043",
+    "teams": [
+      "DRO",
+      "TBB"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-06-16T03:07:30.519316Z",
+    "expires_at": "2026-06-30T03:07:30.519316Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "4594",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "3265",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "player",
+        "upid": "1946",
+        "from_team": "DRO",
+        "to_team": "TBB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 20,
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6853",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "5160",
+        "from_team": "TBB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "SP Connelly Early [BOS] [BC]",
+        "C,1B Liam Hicks [FA] [TC 1]",
+        "$20 WB via TBB"
+      ],
+      "TBB": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "SP Spencer Arrighetti [HOU] [TC 1]",
+        "RP Tanner Scott [LAD] [Keeper Contract]",
+        "SP Framber Valdez [DET] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
