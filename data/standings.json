@@ -503,11 +503,11 @@
       "record": "104-122-14",
       "win_pct": 0.463,
       "opponent": "DRO",
-      "score": "9",
+      "score": "8",
       "opponent_score": "11",
-      "ties": "0",
-      "live_record": "9-11-0",
-      "live_win_pct": 0.45,
+      "ties": "1",
+      "live_record": "8-11-1",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "8/27",
         "R": 4,
@@ -532,8 +532,8 @@
         "BB/9": "2.31",
         "QS": 1
       },
-      "overall_live_record": "113-133-14",
-      "overall_live_win_pct": 0.462,
+      "overall_live_record": "112-133-15",
+      "overall_live_win_pct": 0.46,
       "live_rank": 10
     },
     {
@@ -584,10 +584,10 @@
       "win_pct": 0.373,
       "opponent": "WAR",
       "score": "11",
-      "opponent_score": "9",
-      "ties": "0",
-      "live_record": "11-9-0",
-      "live_win_pct": 0.55,
+      "opponent_score": "8",
+      "ties": "1",
+      "live_record": "11-8-1",
+      "live_win_pct": 0.575,
       "categories": {
         "H/AB": "5/23",
         "R": 5,
@@ -600,7 +600,7 @@
         "TB": 10,
         "AVG": ".217",
         "OPS": ".822",
-        "APP": 2,
+        "APP": 3,
         "IP": "1.0",
         "ER": 0,
         "P_HR": 0,
@@ -612,8 +612,8 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "overall_live_record": "94-153-13",
-      "overall_live_win_pct": 0.387,
+      "overall_live_record": "94-152-14",
+      "overall_live_win_pct": 0.388,
       "live_rank": 12
     }
   ],
@@ -695,7 +695,7 @@
           "TB": 10,
           "AVG": ".217",
           "OPS": ".822",
-          "APP": 2,
+          "APP": 3,
           "IP": "1.0",
           "ER": 0,
           "P_HR": 0,
@@ -711,7 +711,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "9",
+        "score": "8",
         "categories": {
           "H/AB": "8/27",
           "R": 4,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-16T18:48:34.654978+00:00"
+  "refreshed_at": "2026-06-16T19:04:18.225672+00:00"
 }
