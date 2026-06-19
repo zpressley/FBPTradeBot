@@ -357,7 +357,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 36,
     "bats": "R",
     "bbref_id": "springe01",
@@ -367,7 +367,7 @@
     "fangraphs_name": "George Springer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 543807,
     "mlb_primary_position": "RF",
     "name": "George Springer",
@@ -8545,7 +8545,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "morenga01",
@@ -8555,7 +8555,7 @@
     "fangraphs_name": "Gabriel Moreno",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 672515,
     "mlb_primary_position": "C",
     "name": "Gabriel Moreno",
@@ -12953,7 +12953,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 27,
     "bats": "L",
     "bbref_id": "mitchga01",
@@ -12963,7 +12963,7 @@
     "fangraphs_name": "Garrett Mitchell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 669003,
     "mlb_primary_position": "CF",
     "name": "Garrett Mitchell",
@@ -15168,7 +15168,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 29,
     "bats": "R",
     "bbref_id": "bohmal01",
@@ -15178,7 +15178,7 @@
     "fangraphs_name": "Alec Bohm",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 664761,
     "mlb_primary_position": "3B",
     "name": "Alec Bohm",
@@ -32503,7 +32503,8 @@
     "upid": "3481",
     "weight": 178,
     "yahoo_id": "12467",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "RV"
   },
   {
     "FBP_Team": "",
@@ -47242,7 +47243,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "R",
     "bbref_id": "rouppla01",
@@ -47252,7 +47253,7 @@
     "fangraphs_name": "Landen Roupp",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 694738,
     "mlb_primary_position": "P",
     "name": "Landen Roupp",
@@ -66682,14 +66683,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "birth_date": "1994-05-16",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 7\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656848,
     "mlb_primary_position": "P",
     "name": "Michael Petersen",
@@ -112828,7 +112829,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 28,
     "bats": "L",
     "bbref_id": "bledajj01",
@@ -112838,7 +112839,7 @@
     "fangraphs_name": "JJ Bleday",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 668709,
     "mlb_primary_position": "CF",
     "name": "J.J. Bleday",
