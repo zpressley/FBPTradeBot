@@ -718,7 +718,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "R",
     "bbref_id": "cavalca01",
@@ -729,7 +729,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 676917,
     "mlb_primary_position": "P",
     "name": "Cade Cavalli",
@@ -6709,7 +6709,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "torregl01",
@@ -6719,7 +6719,7 @@
     "fangraphs_name": "Gleyber Torres",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 650402,
     "mlb_primary_position": "2B",
     "name": "Gleyber Torres",
@@ -18425,7 +18425,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "senzaan01",
@@ -18435,7 +18435,7 @@
     "fangraphs_name": "Antonio Senzatela",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 622608,
     "mlb_primary_position": "P",
     "name": "Antonio Senzatela",
@@ -24605,7 +24605,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "L",
     "bbref_id": "kingjo01",
@@ -24615,7 +24615,7 @@
     "fangraphs_name": "John King",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 667463,
     "mlb_primary_position": "P",
     "name": "John King",
@@ -30572,7 +30572,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "hillti01",
@@ -30582,7 +30582,7 @@
     "fangraphs_name": "Tim Hill",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 657612,
     "mlb_primary_position": "P",
     "name": "Tim Hill",
@@ -48603,7 +48603,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "CFL",
     "age": 24,
     "bats": "R",
     "bbref_id": "mcdontr01",
@@ -50561,7 +50561,8 @@
     "upid": "5033",
     "weight": 165,
     "yahoo_id": "11785",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "WIZ"
   },
   {
     "FBP_Team": "",
@@ -108498,7 +108499,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "birth_date": "1997-04-23",
@@ -108506,7 +108507,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 681895,
     "mlb_primary_position": "P",
     "name": "Evan Sisk",
