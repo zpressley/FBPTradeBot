@@ -745,7 +745,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "frelisa01",
@@ -755,7 +755,7 @@
     "fangraphs_name": "Sal Frelick",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 686217,
     "mlb_primary_position": "RF",
     "name": "Sal Frelick",
@@ -3899,7 +3899,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3909,7 +3909,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -43699,17 +43699,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 31,
     "bats": "R",
     "bbref_id": "canoye01",
     "birth_date": "1994-03-09",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25911",
     "fangraphs_name": "Yennier Cano",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 666974,
     "mlb_primary_position": "P",
     "name": "Yennier Cano",
@@ -69875,7 +69875,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "CFL",
+    "NRI": "",
     "contract_type": "",
     "debut_date": null,
     "debuted": false,
@@ -97906,7 +97906,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "corteca01",
@@ -97917,7 +97917,7 @@
     "fangraphs_name": "Carlos Cortes",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 666126,
     "mlb_primary_position": "LF",
     "name": "Carlos Cortes",

@@ -745,7 +745,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 25,
     "bats": "L",
     "bbref_id": "frelisa01",
@@ -755,7 +755,7 @@
     "fangraphs_name": "Sal Frelick",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 686217,
     "mlb_primary_position": "RF",
     "name": "Sal Frelick",
@@ -8545,7 +8545,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 25,
     "bats": "R",
     "bbref_id": "morenga01",
@@ -8555,7 +8555,7 @@
     "fangraphs_name": "Gabriel Moreno",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 672515,
     "mlb_primary_position": "C",
     "name": "Gabriel Moreno",
@@ -15460,7 +15460,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "hoernni01",
@@ -15470,7 +15470,7 @@
     "fangraphs_name": "Nico Hoerner",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 663538,
     "mlb_primary_position": "2B",
     "name": "Nico Hoerner",
@@ -17841,17 +17841,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 30,
     "bats": "R",
     "bbref_id": "langeal01",
     "birth_date": "1995-10-02",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19883",
     "fangraphs_name": "Alex Lange",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 656638,
     "mlb_primary_position": "P",
     "name": "Alex Lange",
@@ -28120,7 +28120,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 35,
     "bats": "L",
     "bbref_id": "martini01",
@@ -28130,7 +28130,7 @@
     "fangraphs_name": "Nick Martinez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 607259,
     "mlb_primary_position": "P",
     "name": "Nick Martinez",
@@ -31500,7 +31500,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 32,
     "bats": "S",
     "bbref_id": "caratvi01",
@@ -31510,7 +31510,7 @@
     "fangraphs_name": "Victor Caratini",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 605170,
     "mlb_primary_position": "C",
     "name": "Victor Caratini",
@@ -33025,7 +33025,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "nelsory01",
@@ -33035,7 +33035,7 @@
     "fangraphs_name": "Ryne Nelson",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 669194,
     "mlb_primary_position": "P",
     "name": "Ryne Nelson",
@@ -36752,7 +36752,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36762,7 +36762,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -45999,7 +45999,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "WAR",
+    "NRI": "",
     "age": 22,
     "bats": "R",
     "birth_date": "2004-01-25",
@@ -48603,7 +48603,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "CFL",
+    "NRI": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "mcdontr01",
