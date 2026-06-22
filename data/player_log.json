@@ -80889,5 +80889,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Non-Roster Invite Drop"
+  },
+  {
+    "id": "2026-2026-06-22T10:17:26.173901-04:00-UPID_7977-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-06-22T10:17:26.173901-04:00",
+    "upid": "7977",
+    "player_name": "Riley Quick",
+    "team": "MIN",
+    "pos": "SP",
+    "age": 21,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Admin",
+    "event": ""
   }
 ]

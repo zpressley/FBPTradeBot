@@ -82876,27 +82876,28 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 21,
     "bats": "R",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 76,
     "height_weight": "6' 6\" / 255 lbs",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": null,
     "mlb_primary_position": "SP",
     "name": "Riley Quick",
     "player_type": "Farm",
     "position": "SP",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "MIN",
     "throws": "R",
     "upid": "7977",
     "yahoo_id": "65754",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "HAM",
