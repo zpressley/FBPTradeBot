@@ -183,11 +183,11 @@
       "record": "134-114-12",
       "win_pct": 0.538,
       "opponent": "JEP",
-      "score": "1",
+      "score": "0",
       "opponent_score": "0",
-      "ties": "19",
-      "live_record": "1-0-19",
-      "live_win_pct": 0.525,
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -212,8 +212,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "135-114-31",
-      "overall_live_win_pct": 0.537,
+      "overall_live_record": "134-114-32",
+      "overall_live_win_pct": 0.536,
       "live_rank": 3
     },
     {
@@ -424,10 +424,10 @@
       "win_pct": 0.473,
       "opponent": "DMN",
       "score": "0",
-      "opponent_score": "1",
-      "ties": "19",
-      "live_record": "0-1-19",
-      "live_win_pct": 0.475,
+      "opponent_score": "0",
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -440,7 +440,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 1,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -452,8 +452,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "114-129-37",
-      "overall_live_win_pct": 0.473,
+      "overall_live_record": "114-128-38",
+      "overall_live_win_pct": 0.475,
       "live_rank": 8
     },
     {
@@ -875,7 +875,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 1,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -891,7 +891,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "1",
+        "score": "0",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-22T21:49:24.176624+00:00"
+  "refreshed_at": "2026-06-22T22:05:17.349204+00:00"
 }
