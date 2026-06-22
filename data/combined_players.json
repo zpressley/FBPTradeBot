@@ -83684,26 +83684,27 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 21,
     "bats": "R",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 130,
     "height_weight": "6' 8\" / 200 lbs",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": null,
     "name": "Joseph Dzierwa",
     "player_type": "Farm",
     "position": "LHP",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "BAL",
     "throws": "L",
     "upid": "8013",
     "yahoo_id": "",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "",
