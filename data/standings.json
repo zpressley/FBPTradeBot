@@ -144,10 +144,10 @@
       "win_pct": 0.606,
       "opponent": "WAR",
       "score": "6",
-      "opponent_score": "10",
-      "ties": "4",
-      "live_record": "6-10-4",
-      "live_win_pct": 0.4,
+      "opponent_score": "9",
+      "ties": "5",
+      "live_record": "6-9-5",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "6/31",
         "R": 2,
@@ -160,7 +160,7 @@
         "TB": 13,
         "AVG": ".194",
         "OPS": ".684",
-        "APP": 1,
+        "APP": 2,
         "IP": "1.0",
         "ER": 1,
         "P_HR": 1,
@@ -172,8 +172,8 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "overall_live_record": "157-106-17",
-      "overall_live_win_pct": 0.591,
+      "overall_live_record": "157-105-18",
+      "overall_live_win_pct": 0.593,
       "live_rank": 2
     },
     {
@@ -240,7 +240,7 @@
         "TB": 10,
         "AVG": ".258",
         "OPS": ".637",
-        "APP": 2,
+        "APP": 3,
         "IP": "7.1",
         "ER": 4,
         "P_HR": 1,
@@ -440,7 +440,7 @@
         "TB": 6,
         "AVG": ".185",
         "OPS": ".503",
-        "APP": 3,
+        "APP": 4,
         "IP": "6.0",
         "ER": 1,
         "P_HR": 1,
@@ -463,11 +463,11 @@
       "record": "115-130-15",
       "win_pct": 0.471,
       "opponent": "LFB",
-      "score": "10",
+      "score": "9",
       "opponent_score": "6",
-      "ties": "4",
-      "live_record": "10-6-4",
-      "live_win_pct": 0.6,
+      "ties": "5",
+      "live_record": "9-6-5",
+      "live_win_pct": 0.575,
       "categories": {
         "H/AB": "4/22",
         "R": 4,
@@ -492,8 +492,8 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "overall_live_record": "125-136-19",
-      "overall_live_win_pct": 0.48,
+      "overall_live_record": "124-136-20",
+      "overall_live_win_pct": 0.479,
       "live_rank": 8
     },
     {
@@ -504,10 +504,10 @@
       "win_pct": 0.463,
       "opponent": "RV",
       "score": "7",
-      "opponent_score": "9",
-      "ties": "4",
-      "live_record": "7-9-4",
-      "live_win_pct": 0.45,
+      "opponent_score": "8",
+      "ties": "5",
+      "live_record": "7-8-5",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "4/21",
         "R": 2,
@@ -520,7 +520,7 @@
         "TB": 7,
         "AVG": ".190",
         "OPS": ".524",
-        "APP": 3,
+        "APP": 4,
         "IP": "3.0",
         "ER": 1,
         "P_HR": 1,
@@ -532,8 +532,8 @@
         "BB/9": "6.00",
         "QS": 0
       },
-      "overall_live_record": "123-144-13",
-      "overall_live_win_pct": 0.463,
+      "overall_live_record": "123-143-14",
+      "overall_live_win_pct": 0.464,
       "live_rank": 9
     },
     {
@@ -543,11 +543,11 @@
       "record": "100-138-22",
       "win_pct": 0.427,
       "opponent": "CFL",
-      "score": "9",
+      "score": "8",
       "opponent_score": "7",
-      "ties": "4",
-      "live_record": "9-7-4",
-      "live_win_pct": 0.55,
+      "ties": "5",
+      "live_record": "8-7-5",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "6/21",
         "R": 2,
@@ -572,8 +572,8 @@
         "BB/9": "1.42",
         "QS": 0
       },
-      "overall_live_record": "109-145-26",
-      "overall_live_win_pct": 0.436,
+      "overall_live_record": "108-145-27",
+      "overall_live_win_pct": 0.434,
       "live_rank": 11
     },
     {
@@ -635,7 +635,7 @@
           "TB": 10,
           "AVG": ".258",
           "OPS": ".637",
-          "APP": 2,
+          "APP": 3,
           "IP": "7.1",
           "ER": 4,
           "P_HR": 1,
@@ -815,7 +815,7 @@
           "TB": 7,
           "AVG": ".190",
           "OPS": ".524",
-          "APP": 3,
+          "APP": 4,
           "IP": "3.0",
           "ER": 1,
           "P_HR": 1,
@@ -831,7 +831,7 @@
       "team2": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "9",
+        "score": "8",
         "categories": {
           "H/AB": "6/21",
           "R": 2,
@@ -875,7 +875,7 @@
           "TB": 6,
           "AVG": ".185",
           "OPS": ".503",
-          "APP": 3,
+          "APP": 4,
           "IP": "6.0",
           "ER": 1,
           "P_HR": 1,
@@ -935,7 +935,7 @@
           "TB": 13,
           "AVG": ".194",
           "OPS": ".684",
-          "APP": 1,
+          "APP": 2,
           "IP": "1.0",
           "ER": 1,
           "P_HR": 1,
@@ -951,7 +951,7 @@
       "team2": {
         "team": "WAR",
         "name": "Weekend Warriors",
-        "score": "10",
+        "score": "9",
         "categories": {
           "H/AB": "4/22",
           "R": 4,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-23T18:55:18.420614+00:00"
+  "refreshed_at": "2026-06-23T19:37:12.337171+00:00"
 }
