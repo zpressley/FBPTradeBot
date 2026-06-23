@@ -3853,5 +3853,22 @@
       "admin": "_dunnce",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_CFL_admin_adjustment_1782233293",
+    "timestamp": "2026-06-23T16:48:13.505632Z",
+    "team": "CFL",
+    "amount": 15,
+    "balance_before": 55,
+    "balance_after": 70,
+    "transaction_type": "admin_adjustment",
+    "description": "5/17/26 Trade w/ LFB for Blake Snell. WB did not update.",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "_dunnce",
+      "source": "admin_portal"
+    }
   }
 ]
