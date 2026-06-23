@@ -81717,5 +81717,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-06-23T12:23:25.333792-04:00-UPID_3540-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-06-23T12:23:25.333792-04:00",
+    "upid": "3540",
+    "player_name": "Deyvison De Los Santos",
+    "team": "MIA",
+    "pos": "1B,3B",
+    "age": 22,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Bluke Blokes",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
