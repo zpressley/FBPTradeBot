@@ -3785,5 +3785,22 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_admin_adjustment_1782231590",
+    "timestamp": "2026-06-23T16:19:50.022837Z",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 115,
+    "balance_after": 105,
+    "transaction_type": "admin_adjustment",
+    "description": "Juan Brito graduation penalty",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "_dunnce",
+      "source": "admin_portal"
+    }
   }
 ]
