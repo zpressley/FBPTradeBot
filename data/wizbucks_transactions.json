@@ -3870,5 +3870,26 @@
       "admin": "_dunnce",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_SAD_contract_purchase_1782233398",
+    "timestamp": "2026-06-23T16:49:58.335466Z",
+    "team": "SAD",
+    "amount": -5,
+    "balance_before": 65,
+    "balance_after": 60,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Joshua Baez DC \u2192 PC",
+    "related_player": {
+      "upid": "2780",
+      "name": "Joshua Baez"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
