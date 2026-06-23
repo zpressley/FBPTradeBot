@@ -11793,7 +11793,7 @@
     "bats": "R",
     "bbref_id": "prattco01",
     "birth_date": "2004-08-18",
-    "contract_type": "Development Cont.",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3022867",
@@ -11806,13 +11806,14 @@
     "name": "Cooper Pratt",
     "player_type": "Farm",
     "position": "SS",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "MIL",
     "throws": "R",
     "upid": "6583",
     "weight": 206,
     "yahoo_id": "63000",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "RV",
