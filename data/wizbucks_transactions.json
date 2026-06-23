@@ -3836,5 +3836,22 @@
       "admin": "_dunnce",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_TBB_admin_adjustment_1782231657",
+    "timestamp": "2026-06-23T16:20:57.653057Z",
+    "team": "TBB",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "admin_adjustment",
+    "description": "Deyvison De Los Santos graduation penalty (DC)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "_dunnce",
+      "source": "admin_portal"
+    }
   }
 ]
