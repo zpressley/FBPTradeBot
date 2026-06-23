@@ -14280,7 +14280,7 @@
     "bats": "S",
     "bbref_id": "britoju02",
     "birth_date": "2001-09-24",
-    "contract_type": "Development Cont.",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3009808",
@@ -14293,13 +14293,14 @@
     "name": "Juan Brito",
     "player_type": "Farm",
     "position": "1B,2B",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "CLE",
     "throws": "R",
     "upid": "4151",
     "weight": 202,
     "yahoo_id": "12734",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "WAR",
