@@ -3843,7 +3843,7 @@
       "TBB"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "withdrawn",
     "created_at": "2026-06-16T03:07:30.519316Z",
     "expires_at": "2026-06-30T03:07:30.519316Z",
     "transfers": [
@@ -3910,7 +3910,8 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-06-23T19:36:28.051494Z"
   },
   "TRADE-160626_0229-044": {
     "trade_id": "TRADE-160626_0229-044",
