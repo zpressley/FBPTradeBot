@@ -3891,5 +3891,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_SAD_contract_purchase_1782233652",
+    "timestamp": "2026-06-23T16:54:12.747529Z",
+    "team": "SAD",
+    "amount": -10,
+    "balance_before": 60,
+    "balance_after": 50,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Grant Taylor PC \u2192 BC",
+    "related_player": {
+      "upid": "6752",
+      "name": "Grant Taylor"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

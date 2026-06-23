@@ -81832,5 +81832,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-06-23T12:54:12.750013-04:00-UPID_6752-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "SAD",
+    "timestamp": "2026-06-23T12:54:12.750013-04:00",
+    "upid": "6752",
+    "player_name": "Grant Taylor",
+    "team": "CWS",
+    "pos": "RP",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": 363,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
