@@ -3912,5 +3912,85 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1782237251",
+    "timestamp": "2026-06-23T17:54:11.402711Z",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 50,
+    "balance_after": 40,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-08 to 2026-06-14: Joseph Dzierwa",
+    "related_player": {
+      "upid": "8013",
+      "name": "Joseph Dzierwa"
+    },
+    "metadata": {
+      "week_start": "2026-06-08",
+      "prospect_id": "8013",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_B2J_auction_winner_1782237251",
+    "timestamp": "2026-06-23T17:54:11.406755Z",
+    "team": "B2J",
+    "amount": -10,
+    "balance_before": 105,
+    "balance_after": 95,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-08 to 2026-06-14: Denzer Guzman",
+    "related_player": {
+      "upid": "3676",
+      "name": "Denzer Guzman"
+    },
+    "metadata": {
+      "week_start": "2026-06-08",
+      "prospect_id": "3676",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_HAM_auction_winner_1782237251",
+    "timestamp": "2026-06-23T17:54:11.559098Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 55,
+    "balance_after": 45,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-15 to 2026-06-21: Riley Quick",
+    "related_player": {
+      "upid": "7977",
+      "name": "Riley Quick"
+    },
+    "metadata": {
+      "week_start": "2026-06-15",
+      "prospect_id": "7977",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1782237251",
+    "timestamp": "2026-06-23T17:54:11.562646Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 10,
+    "balance_after": 0,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-15 to 2026-06-21: Juneiker Caceres",
+    "related_player": {
+      "upid": "7750",
+      "name": "Juneiker Caceres"
+    },
+    "metadata": {
+      "week_start": "2026-06-15",
+      "prospect_id": "7750",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
