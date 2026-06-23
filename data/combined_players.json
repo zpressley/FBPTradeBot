@@ -5730,7 +5730,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 32,
     "bats": "R",
     "bbref_id": "fairbpe01",
@@ -5740,7 +5740,7 @@
     "fangraphs_name": "Pete Fairbanks",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 664126,
     "mlb_primary_position": "P",
     "name": "Pete Fairbanks",
@@ -5808,7 +5808,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5818,7 +5818,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -9417,7 +9417,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 34,
     "bats": "R",
     "bbref_id": "realmjt01",
@@ -9427,7 +9427,7 @@
     "fangraphs_name": "J.T. Realmuto",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 592663,
     "mlb_primary_position": "C",
     "name": "J.T. Realmuto",
@@ -12697,7 +12697,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "meadcu01",
@@ -12707,7 +12707,7 @@
     "fangraphs_name": "Curtis Mead",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 678554,
     "mlb_primary_position": "1B",
     "name": "Curtis Mead",
@@ -13811,7 +13811,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 24,
     "bats": "L",
     "bbref_id": "rushida01",
@@ -13824,7 +13824,7 @@
     "fypd": false,
     "height": "5' 11\"",
     "level": "MLB",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 687221,
     "mlb_primary_position": "C",
     "name": "Dalton Rushing",
@@ -17966,7 +17966,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 27,
     "bats": "L",
     "bbref_id": "gimenan01",
@@ -17976,7 +17976,7 @@
     "fangraphs_name": "Andres Gimenez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 665926,
     "mlb_primary_position": "2B",
     "name": "Andr\u00e9s Gim\u00e9nez",
@@ -27390,7 +27390,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 37,
     "bats": "R",
     "bbref_id": "kellyme01",
@@ -27400,7 +27400,7 @@
     "fangraphs_name": "Merrill Kelly",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 518876,
     "mlb_primary_position": "P",
     "name": "Merrill Kelly",
@@ -28120,7 +28120,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 35,
     "bats": "L",
     "bbref_id": "martini01",
@@ -28130,7 +28130,7 @@
     "fangraphs_name": "Nick Martinez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 607259,
     "mlb_primary_position": "P",
     "name": "Nick Martinez",
@@ -49518,7 +49518,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
@@ -49528,7 +49528,7 @@
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -53307,17 +53307,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 25,
     "bats": "R",
     "bbref_id": "durbica01",
     "birth_date": "2000-02-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29646",
     "fangraphs_name": "Caleb Durbin",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 702332,
     "mlb_primary_position": "3B",
     "name": "Caleb Durbin",
@@ -53330,7 +53330,7 @@
     "upid": "5829",
     "weight": 183,
     "yahoo_id": "61788",
-    "years_simple": "TC 2"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",

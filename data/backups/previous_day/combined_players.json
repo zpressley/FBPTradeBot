@@ -1136,7 +1136,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "arrigsp01",
@@ -1146,7 +1146,7 @@
     "fangraphs_name": "Spencer Arrighetti",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 681293,
     "mlb_primary_position": "P",
     "name": "Spencer Arrighetti",
@@ -8600,7 +8600,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 25,
     "bats": "R",
     "bbref_id": "leiteja01",
@@ -8610,7 +8610,7 @@
     "fangraphs_name": "Jack Leiter",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 683004,
     "mlb_primary_position": "P",
     "name": "Jack Leiter",
@@ -11094,17 +11094,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 26,
     "bats": "R",
     "bbref_id": "ohopplo01",
     "birth_date": "2000-02-09",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "24729",
     "fangraphs_name": "Logan O'Hoppe",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "The Bluke Blokes",
     "mlb_id": 681351,
     "mlb_primary_position": "C",
     "name": "Logan O'Hoppe",
@@ -11117,7 +11117,7 @@
     "upid": "3519",
     "weight": 185,
     "yahoo_id": "12011",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "RV",
@@ -15460,7 +15460,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "R",
     "bbref_id": "hoernni01",
@@ -15470,7 +15470,7 @@
     "fangraphs_name": "Nico Hoerner",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 663538,
     "mlb_primary_position": "2B",
     "name": "Nico Hoerner",
@@ -15512,7 +15512,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15522,7 +15522,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -17841,7 +17841,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "langeal01",
@@ -17851,7 +17851,7 @@
     "fangraphs_name": "Alex Lange",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 656638,
     "mlb_primary_position": "P",
     "name": "Alex Lange",
@@ -21399,14 +21399,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 31,
     "bats": "L",
     "birth_date": "1994-05-25",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 622268,
     "mlb_primary_position": "2B",
     "name": "Donovan Walton",
@@ -24080,7 +24080,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "sanchje02",
@@ -24090,7 +24090,7 @@
     "fangraphs_name": "Jesus Sanchez",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 660821,
     "mlb_primary_position": "RF",
     "name": "Jes\u00fas S\u00e1nchez",
@@ -34620,17 +34620,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 27,
     "bats": "R",
     "bbref_id": "taylosa01",
     "birth_date": "1998-07-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22274",
     "fangraphs_name": "Samad Taylor",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669392,
     "mlb_primary_position": "2B",
     "name": "Samad Taylor",
@@ -36753,7 +36753,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36763,7 +36763,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -42623,17 +42623,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 36,
     "bats": "R",
     "bbref_id": "brazohu01",
     "birth_date": "1989-10-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "6107",
     "fangraphs_name": "Huascar Brazoban",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 623211,
     "mlb_primary_position": "P",
     "name": "Huascar Brazoban",
@@ -44148,7 +44148,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 28,
     "bats": "L",
     "bbref_id": "mccarja02",
@@ -44158,7 +44158,7 @@
     "fangraphs_name": "Jake McCarthy",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 664983,
     "mlb_primary_position": "CF",
     "name": "Jake McCarthy",
@@ -49571,7 +49571,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "JEP",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-02-29",
@@ -57341,7 +57341,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "patrich01",
@@ -57351,7 +57351,7 @@
     "fangraphs_name": "Chad Patrick",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 694477,
     "mlb_primary_position": "P",
     "name": "Chad Patrick",
@@ -70551,7 +70551,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "kolekst01",
@@ -70561,7 +70561,7 @@
     "fangraphs_name": "Stephen Kolek",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 663568,
     "mlb_primary_position": "P",
     "name": "Stephen Kolek",
@@ -108501,7 +108501,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "L",
     "birth_date": "1997-04-23",
@@ -108509,7 +108509,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 681895,
     "mlb_primary_position": "P",
     "name": "Evan Sisk",
