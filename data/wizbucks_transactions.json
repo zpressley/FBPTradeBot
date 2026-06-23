@@ -3802,5 +3802,22 @@
       "admin": "_dunnce",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_JEP_admin_adjustment_1782231610",
+    "timestamp": "2026-06-23T16:20:10.503269Z",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 105,
+    "balance_after": 95,
+    "transaction_type": "admin_adjustment",
+    "description": "Edgar Quero graduation penalty (DC)",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "_dunnce",
+      "source": "admin_portal"
+    }
   }
 ]
