@@ -4134,5 +4134,53 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-240626_1721-047": {
+    "trade_id": "TRADE-240626_1721-047",
+    "teams": [
+      "DRO",
+      "LFB"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-06-24T21:21:10.952380Z",
+    "expires_at": "2026-07-08T21:21:10.952380Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2483",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "7968",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3460",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "3B Andrew Fischer [MIL] [DC]",
+        "2B,SS Nick Gonzales [PIT] [TC 1]"
+      ],
+      "LFB": [
+        "SS Francisco Lindor [NYM] [FC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
