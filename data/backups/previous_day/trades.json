@@ -4044,5 +4044,158 @@
       "thread_url": null,
       "admin_review_message_id": null
     }
+  },
+  "TRADE-240626_1600-046": {
+    "trade_id": "TRADE-240626_1600-046",
+    "teams": [
+      "DRO",
+      "RV"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-06-24T20:00:57.514083Z",
+    "expires_at": "2026-07-08T20:00:57.514083Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7635",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3895",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3444",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3451",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3852",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "4077",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "5996",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6573",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "RV",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "C Kyle Teel [CWS] [PC]",
+        "$15 WB via RV"
+      ],
+      "RV": [
+        "OF Zyhir Hope [LAD] [BC]",
+        "OF Justin Crawford [PHI] [BC]",
+        "SP Daniel Espino [CLE] [PC]",
+        "3B,OF Noelvi Marte [CIN] [VC 1]",
+        "CF Roman Anthony [BOS] [BC]",
+        "SP Edward Cabrera [CHC] [TC 2]",
+        "C Agust\u00edn Ram\u00edrez [MIA] [?]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-240626_1721-047": {
+    "trade_id": "TRADE-240626_1721-047",
+    "teams": [
+      "DRO",
+      "LFB"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-06-24T21:21:10.952380Z",
+    "expires_at": "2026-07-08T21:21:10.952380Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2483",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "7968",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3460",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "LFB"
+    ],
+    "receives": {
+      "DRO": [
+        "3B Andrew Fischer [MIL] [DC]",
+        "2B,SS Nick Gonzales [PIT] [TC 1]"
+      ],
+      "LFB": [
+        "SS Francisco Lindor [NYM] [FC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1519452556571578559",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-06-24T21:21:59.461647Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-06-24T22:35:34.594436Z",
+    "data_applied_at": "2026-06-24T22:35:34.648466Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
