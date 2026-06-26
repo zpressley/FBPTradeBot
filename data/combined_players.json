@@ -357,7 +357,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 36,
     "bats": "R",
     "bbref_id": "springe01",
@@ -367,7 +367,7 @@
     "fangraphs_name": "George Springer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 543807,
     "mlb_primary_position": "RF",
     "name": "George Springer",
@@ -1136,7 +1136,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "arrigsp01",
@@ -1146,7 +1146,7 @@
     "fangraphs_name": "Spencer Arrighetti",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 681293,
     "mlb_primary_position": "P",
     "name": "Spencer Arrighetti",
@@ -8312,7 +8312,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 34,
     "bats": "L",
     "bbref_id": "rayro02",
@@ -8322,7 +8322,7 @@
     "fangraphs_name": "Robbie Ray",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 592662,
     "mlb_primary_position": "P",
     "name": "Robbie Ray",
@@ -27072,7 +27072,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 34,
     "bats": "L",
     "bbref_id": "perezma02",
@@ -27082,7 +27082,7 @@
     "fangraphs_name": "Martin Perez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 527048,
     "mlb_primary_position": "P",
     "name": "Mart\u00edn P\u00e9rez",
@@ -44203,7 +44203,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "dodddy01",
@@ -44213,7 +44213,7 @@
     "fangraphs_name": "Dylan Dodd",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 689266,
     "mlb_primary_position": "P",
     "name": "Dylan Dodd",
@@ -46005,7 +46005,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "JEP",
     "age": 22,
     "bats": "R",
     "birth_date": "2004-01-25",
@@ -55756,7 +55756,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "alvarel01",
@@ -55768,7 +55768,7 @@
     "fangraphs_name": "Elvis Alvarado",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 665660,
     "mlb_primary_position": "P",
     "name": "Elvis Alvarado",

@@ -901,7 +901,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "steersp01",
@@ -911,7 +911,7 @@
     "fangraphs_name": "Spencer Steer",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 668715,
     "mlb_primary_position": "1B",
     "name": "Spencer Steer",
@@ -5808,7 +5808,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5818,7 +5818,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -9171,7 +9171,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 23,
     "bats": "L",
     "bbref_id": "schanno01",
@@ -9181,7 +9181,7 @@
     "fangraphs_name": "Nolan Schanuel",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 694384,
     "mlb_primary_position": "1B",
     "name": "Nolan Schanuel",
@@ -11043,7 +11043,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "cowseco01",
@@ -11053,7 +11053,7 @@
     "fangraphs_name": "Colton Cowser",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 681297,
     "mlb_primary_position": "LF",
     "name": "Colton Cowser",
@@ -16720,7 +16720,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16730,7 +16730,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -25344,7 +25344,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 33,
     "bats": "S",
     "bbref_id": "belljo02",
@@ -25354,7 +25354,7 @@
     "fangraphs_name": "Josh Bell",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 605137,
     "mlb_primary_position": "1B",
     "name": "Josh Bell",
@@ -31002,17 +31002,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 28,
     "bats": "L",
     "bbref_id": "rogertr01",
     "birth_date": "1997-11-13",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "22286",
     "fangraphs_name": "Trevor Rogers",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 669432,
     "mlb_primary_position": "P",
     "name": "Trevor Rogers",
@@ -31025,7 +31025,7 @@
     "upid": "3321",
     "weight": 217,
     "yahoo_id": "10909",
-    "years_simple": "TC 2"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -32487,7 +32487,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "RV",
+    "NRI": "",
     "age": 22,
     "bats": "L",
     "birth_date": "2003-04-16",
@@ -34128,7 +34128,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "HAM",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-06-22",
@@ -34939,17 +34939,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 27,
     "bats": "R",
     "bbref_id": "loftini01",
     "birth_date": "1998-09-25",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27630",
     "fangraphs_name": "Nick Loftin",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 679845,
     "mlb_primary_position": "LF",
     "name": "Nick Loftin",
