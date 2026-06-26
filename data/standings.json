@@ -143,11 +143,11 @@
       "record": "151-96-13",
       "win_pct": 0.606,
       "opponent": "WAR",
-      "score": "11",
+      "score": "12",
       "opponent_score": "7",
-      "ties": "2",
-      "live_record": "11-7-2",
-      "live_win_pct": 0.6,
+      "ties": "1",
+      "live_record": "12-7-1",
+      "live_win_pct": 0.625,
       "categories": {
         "H/AB": "31/130",
         "R": 19,
@@ -160,7 +160,7 @@
         "TB": 56,
         "AVG": ".238",
         "OPS": ".727",
-        "APP": 11,
+        "APP": 12,
         "IP": "41.2",
         "ER": 25,
         "P_HR": 13,
@@ -172,8 +172,8 @@
         "BB/9": "1.73",
         "QS": 3
       },
-      "overall_live_record": "162-103-15",
-      "overall_live_win_pct": 0.605,
+      "overall_live_record": "163-103-14",
+      "overall_live_win_pct": 0.607,
       "live_rank": 1
     },
     {
@@ -320,7 +320,7 @@
         "TB": 49,
         "AVG": ".242",
         "OPS": ".691",
-        "APP": 11,
+        "APP": 12,
         "IP": "36.2",
         "ER": 17,
         "P_HR": 4,
@@ -400,7 +400,7 @@
         "TB": 65,
         "AVG": ".295",
         "OPS": ".898",
-        "APP": 10,
+        "APP": 11,
         "IP": "23.0",
         "ER": 16,
         "P_HR": 6,
@@ -464,10 +464,10 @@
       "win_pct": 0.471,
       "opponent": "LFB",
       "score": "7",
-      "opponent_score": "11",
-      "ties": "2",
-      "live_record": "7-11-2",
-      "live_win_pct": 0.4,
+      "opponent_score": "12",
+      "ties": "1",
+      "live_record": "7-12-1",
+      "live_win_pct": 0.375,
       "categories": {
         "H/AB": "27/115",
         "R": 13,
@@ -492,8 +492,8 @@
         "BB/9": "3.86",
         "QS": 1
       },
-      "overall_live_record": "122-141-17",
-      "overall_live_win_pct": 0.466,
+      "overall_live_record": "122-142-16",
+      "overall_live_win_pct": 0.464,
       "live_rank": 9
     },
     {
@@ -724,7 +724,7 @@
           "TB": 49,
           "AVG": ".242",
           "OPS": ".691",
-          "APP": 11,
+          "APP": 12,
           "IP": "36.2",
           "ER": 17,
           "P_HR": 4,
@@ -755,7 +755,7 @@
           "TB": 65,
           "AVG": ".295",
           "OPS": ".898",
-          "APP": 10,
+          "APP": 11,
           "IP": "23.0",
           "ER": 16,
           "P_HR": 6,
@@ -922,7 +922,7 @@
       "team1": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "11",
+        "score": "12",
         "categories": {
           "H/AB": "31/130",
           "R": 19,
@@ -935,7 +935,7 @@
           "TB": 56,
           "AVG": ".238",
           "OPS": ".727",
-          "APP": 11,
+          "APP": 12,
           "IP": "41.2",
           "ER": 25,
           "P_HR": 13,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-06-26T19:48:09.180951+00:00"
+  "refreshed_at": "2026-06-26T20:04:05.225244+00:00"
 }
