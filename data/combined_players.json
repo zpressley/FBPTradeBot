@@ -718,7 +718,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 27,
     "bats": "R",
     "bbref_id": "cavalca01",
@@ -729,7 +729,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 676917,
     "mlb_primary_position": "P",
     "name": "Cade Cavalli",
@@ -1136,7 +1136,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "arrigsp01",
@@ -1146,7 +1146,7 @@
     "fangraphs_name": "Spencer Arrighetti",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 681293,
     "mlb_primary_position": "P",
     "name": "Spencer Arrighetti",
@@ -2953,7 +2953,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 29,
     "bats": "R",
     "bbref_id": "singebr01",
@@ -2963,7 +2963,7 @@
     "fangraphs_name": "Brady Singer",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 663903,
     "mlb_primary_position": "P",
     "name": "Brady Singer",
@@ -3899,7 +3899,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3909,7 +3909,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -5370,7 +5370,8 @@
     "upid": "7699",
     "weight": 210,
     "yahoo_id": "64361",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "HAM"
   },
   {
     "FBP_Team": "",
@@ -12415,7 +12416,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 33,
     "bats": "R",
     "bbref_id": "hoffmje02",
@@ -12425,7 +12426,7 @@
     "fangraphs_name": "Jeff Hoffman",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 656546,
     "mlb_primary_position": "P",
     "name": "Jeff Hoffman",
@@ -13708,7 +13709,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "scottch01",
@@ -13718,7 +13719,7 @@
     "fangraphs_name": "Christian Scott",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 681035,
     "mlb_primary_position": "P",
     "name": "Christian Scott",
@@ -17203,17 +17204,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "CFL",
     "age": 32,
     "bats": "L",
     "bbref_id": "minteaj01",
     "birth_date": "1993-09-02",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "18655",
     "fangraphs_name": "A.J. Minter",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 621345,
     "mlb_primary_position": "P",
     "name": "A.J. Minter",
@@ -21728,7 +21729,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 32,
     "bats": "L",
     "bbref_id": "rodried05",
@@ -21738,7 +21739,7 @@
     "fangraphs_name": "Eduardo Rodriguez",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 593958,
     "mlb_primary_position": "P",
     "name": "Eduardo Rodriguez",
@@ -32537,7 +32538,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "duranez01",
@@ -32547,7 +32548,7 @@
     "fangraphs_name": "Ezequiel Duran",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 677649,
     "mlb_primary_position": "SS",
     "name": "Ezequiel Duran",
@@ -36609,7 +36610,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "vasqura02",
@@ -36619,7 +36620,7 @@
     "fangraphs_name": "Randy Vasquez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 681190,
     "mlb_primary_position": "P",
     "name": "Randy Vasquez",
@@ -112841,7 +112842,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "bledajj01",
@@ -112851,7 +112852,7 @@
     "fangraphs_name": "JJ Bleday",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 668709,
     "mlb_primary_position": "CF",
     "name": "J.J. Bleday",
