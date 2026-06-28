@@ -4470,7 +4470,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "chapmma01",
@@ -4480,7 +4480,7 @@
     "fangraphs_name": "Matt Chapman",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 656305,
     "mlb_primary_position": "3B",
     "name": "Matt Chapman",
@@ -5371,7 +5371,7 @@
     "weight": 210,
     "yahoo_id": "64361",
     "years_simple": "P",
-    "NRI": "HAM"
+    "NRI": ""
   },
   {
     "FBP_Team": "",
@@ -11097,7 +11097,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "ohopplo01",
@@ -11107,7 +11107,7 @@
     "fangraphs_name": "Logan O'Hoppe",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 681351,
     "mlb_primary_position": "C",
     "name": "Logan O'Hoppe",
@@ -12906,7 +12906,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 27,
     "bats": "R",
     "bbref_id": "diazya02",
@@ -12916,7 +12916,7 @@
     "fangraphs_name": "Yainer Diaz",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 673237,
     "mlb_primary_position": "C",
     "name": "Yainer Diaz",
@@ -15629,7 +15629,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 29,
     "bats": "R",
     "bbref_id": "schmicl01",
@@ -15639,7 +15639,7 @@
     "fangraphs_name": "Clarke Schmidt",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 657376,
     "mlb_primary_position": "P",
     "name": "Clarke Schmidt",
@@ -46007,7 +46007,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "JEP",
+    "NRI": "",
     "age": 22,
     "bats": "R",
     "birth_date": "2004-01-25",
@@ -92625,17 +92625,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 30,
     "bats": "L",
     "bbref_id": "kayan01",
     "birth_date": "1995-03-21",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20387",
     "fangraphs_name": "Anthony Kay",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 641743,
     "mlb_primary_position": "P",
     "name": "Anthony Kay",
@@ -92648,7 +92648,7 @@
     "upid": "2105",
     "weight": 225,
     "yahoo_id": "10538",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -131815,18 +131815,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 29,
     "bats": "R",
     "bbref_id": "eatonna01",
     "birth_date": "1996-12-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fangraphs_id": "25055",
     "fangraphs_name": "Nate Eaton",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 681987,
     "mlb_primary_position": "3B",
     "name": "Nate Eaton",
