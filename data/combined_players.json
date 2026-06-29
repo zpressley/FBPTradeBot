@@ -489,7 +489,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "maydu01",
@@ -499,7 +499,7 @@
     "fangraphs_name": "Dustin May",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 669160,
     "mlb_primary_position": "P",
     "name": "Dustin May",
@@ -12701,7 +12701,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 25,
     "bats": "R",
     "bbref_id": "meadcu01",
@@ -12711,7 +12711,7 @@
     "fangraphs_name": "Curtis Mead",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 678554,
     "mlb_primary_position": "1B",
     "name": "Curtis Mead",
@@ -15330,7 +15330,8 @@
     "upid": "2674",
     "weight": 210,
     "yahoo_id": "12470",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "HAM"
   },
   {
     "FBP_Team": "",
@@ -15518,7 +15519,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "volpean01",
@@ -15528,7 +15529,7 @@
     "fangraphs_name": "Anthony Volpe",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 683011,
     "mlb_primary_position": "SS",
     "name": "Anthony Volpe",
@@ -16722,7 +16723,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16732,7 +16733,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -18197,7 +18198,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "vaughan01",
@@ -18207,7 +18208,7 @@
     "fangraphs_name": "Andrew Vaughn",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 683734,
     "mlb_primary_position": "1B",
     "name": "Andrew Vaughn",
@@ -29883,7 +29884,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
@@ -29893,7 +29894,7 @@
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -42269,7 +42270,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "clemeko01",
@@ -42279,7 +42280,7 @@
     "fangraphs_name": "Kody Clemens",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 665019,
     "mlb_primary_position": "2B",
     "name": "Kody Clemens",
@@ -48848,14 +48849,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "birth_date": "1999-01-07",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 675660,
     "mlb_primary_position": "P",
     "name": "Shane Drohan",
@@ -92625,7 +92626,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "kayan01",
@@ -92635,7 +92636,7 @@
     "fangraphs_name": "Anthony Kay",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 641743,
     "mlb_primary_position": "P",
     "name": "Anthony Kay",
@@ -92761,15 +92762,15 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "L",
     "birth_date": "1999-06-20",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 678011,
     "mlb_primary_position": "2B",
     "name": "Anthony Seigler",
