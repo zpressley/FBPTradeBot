@@ -8,9 +8,18 @@
       "prospect_id": "6574",
       "team": "JEP",
       "timestamp": "2026-06-30T13:19:04.078376+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-593c87b15b8d",
+      "bid_type": "OB",
+      "date": "2026-06-30",
+      "prospect_id": "4579",
+      "team": "DMN",
+      "timestamp": "2026-06-30T16:57:07.418601+00:00"
     }
   ],
-  "last_updated": "2026-06-30T13:19:04.078376+00:00",
+  "last_updated": "2026-06-30T16:57:07.418601+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
