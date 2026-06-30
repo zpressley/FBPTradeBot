@@ -3992,5 +3992,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_CFL_contract_purchase_1782863896",
+    "timestamp": "2026-06-30T23:58:16.918204Z",
+    "team": "CFL",
+    "amount": -10,
+    "balance_before": 70,
+    "balance_after": 60,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: A.J. Ewing PC \u2192 BC",
+    "related_player": {
+      "upid": "7284",
+      "name": "A.J. Ewing"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
