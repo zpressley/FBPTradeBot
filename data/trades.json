@@ -4199,5 +4199,74 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-300626_2226-048": {
+    "trade_id": "TRADE-300626_2226-048",
+    "teams": [
+      "WIZ",
+      "CFL"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-01T02:26:12.930979Z",
+    "expires_at": "2026-07-15T02:26:12.930979Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2588",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "4361",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7964",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7796",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "1882",
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "2767",
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "3B Alex Bregman [CHC] [VC 2]",
+        "1B Josh Naylor [SEA] [VC 2]"
+      ],
+      "CFL": [
+        "1B Jake Burger [TEX] [TC 1]",
+        "2B,3B,SS,OF Maikel Garcia [KC] [TC 2]",
+        "SS Xavier Neyens [HOU] [BC]",
+        "SP Kevin Defrank [MIA] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
