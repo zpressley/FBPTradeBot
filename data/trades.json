@@ -4207,7 +4207,7 @@
       "CFL"
     ],
     "initiator_team": "WIZ",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-01T02:26:12.930979Z",
     "expires_at": "2026-07-15T02:26:12.930979Z",
     "transfers": [
@@ -4270,6 +4270,18 @@
       "admin_review_message_id": "1521703678443257866",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-01T02:27:08.754182Z"
+    "manager_approved_at": "2026-07-01T02:27:08.754182Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-01T02:27:21.262052Z",
+    "data_applied_at": "2026-07-01T02:27:21.287549Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 6,
+      "player_log_entries": 6,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
