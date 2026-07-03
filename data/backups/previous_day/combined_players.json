@@ -1966,7 +1966,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1976,7 +1976,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -4032,7 +4032,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "buehlwa01",
@@ -4042,7 +4042,7 @@
     "fangraphs_name": "Walker Buehler",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 621111,
     "mlb_primary_position": "P",
     "name": "Walker Buehler",
@@ -4470,7 +4470,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "chapmma01",
@@ -4480,7 +4480,7 @@
     "fangraphs_name": "Matt Chapman",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656305,
     "mlb_primary_position": "3B",
     "name": "Matt Chapman",
@@ -15467,7 +15467,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "hoernni01",
@@ -15477,7 +15477,7 @@
     "fangraphs_name": "Nico Hoerner",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 663538,
     "mlb_primary_position": "2B",
     "name": "Nico Hoerner",
@@ -16723,7 +16723,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16733,7 +16733,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -21406,14 +21406,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "birth_date": "1994-05-25",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 622268,
     "mlb_primary_position": "2B",
     "name": "Donovan Walton",
@@ -31507,7 +31507,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 32,
     "bats": "S",
     "bbref_id": "caratvi01",
@@ -31517,7 +31517,7 @@
     "fangraphs_name": "Victor Caratini",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 605170,
     "mlb_primary_position": "C",
     "name": "Victor Caratini",

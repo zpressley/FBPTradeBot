@@ -745,7 +745,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 25,
     "bats": "L",
     "bbref_id": "frelisa01",
@@ -755,7 +755,7 @@
     "fangraphs_name": "Sal Frelick",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 686217,
     "mlb_primary_position": "RF",
     "name": "Sal Frelick",
@@ -9420,7 +9420,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "realmjt01",
@@ -9430,7 +9430,7 @@
     "fangraphs_name": "J.T. Realmuto",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 592663,
     "mlb_primary_position": "C",
     "name": "J.T. Realmuto",
@@ -10234,7 +10234,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "raganco01",
@@ -10244,7 +10244,7 @@
     "fangraphs_name": "Cole Ragans",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 666142,
     "mlb_primary_position": "P",
     "name": "Cole Ragans",
@@ -22753,7 +22753,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "sotogr01",
@@ -22763,7 +22763,7 @@
     "fangraphs_name": "Gregory Soto",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 642397,
     "mlb_primary_position": "P",
     "name": "Gregory Soto",
@@ -26875,7 +26875,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "raleylu01",
@@ -26885,7 +26885,7 @@
     "fangraphs_name": "Luke Raley",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 670042,
     "mlb_primary_position": "RF",
     "name": "Luke Raley",
@@ -51675,7 +51675,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 23,
     "bats": "R",
     "bbref_id": "sanojja01",
@@ -51685,7 +51685,7 @@
     "fangraphs_name": "Javier Sanoja",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 691594,
     "mlb_primary_position": "2B",
     "name": "Javier Sanoja",
@@ -66986,14 +66986,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "bbref_id": "perkija01",
     "birth_date": "12/26/1999",
     "contract_type": "Keeper Contract",
     "fangraphs_id": "31468",
     "fangraphs_name": "Jack Perkins",
     "fypd": false,
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": "678022",
     "mlb_primary_position": "SP",
     "name": "Jack Perkins",
@@ -155144,7 +155144,8 @@
     "upid": "8540",
     "weight": 235,
     "yahoo_id": "63965",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "TBB"
   },
   {
     "FBP_Team": "",
