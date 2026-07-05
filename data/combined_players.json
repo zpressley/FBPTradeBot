@@ -68061,7 +68061,8 @@
     "upid": "7037",
     "weight": 220,
     "yahoo_id": "62831",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "JEP"
   },
   {
     "FBP_Team": "",
@@ -152751,7 +152752,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "imaita01",
@@ -152762,7 +152763,7 @@
     "fangraphs_name": "Tatsuya Imai",
     "fypd": false,
     "level": "MLB",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": "837227",
     "name": "Tatsuya Imai",
     "player_type": "MLB",

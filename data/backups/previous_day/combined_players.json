@@ -1577,7 +1577,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 30,
     "bats": "R",
     "bbref_id": "flaheja01",
@@ -1587,7 +1587,7 @@
     "fangraphs_name": "Jack Flaherty",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 656427,
     "mlb_primary_position": "P",
     "name": "Jack Flaherty",
@@ -3899,7 +3899,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3909,7 +3909,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -11421,7 +11421,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "rockeku01",
@@ -11431,7 +11431,7 @@
     "fangraphs_name": "Kumar Rocker",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 677958,
     "mlb_primary_position": "P",
     "name": "Kumar Rocker",
@@ -14019,7 +14019,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 27,
     "bats": "L",
     "bbref_id": "seymoia01",
@@ -14029,7 +14029,7 @@
     "fangraphs_name": "Ian Seymour",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 693855,
     "mlb_primary_position": "P",
     "name": "Ian Seymour",
@@ -46009,7 +46009,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "WIZ",
     "age": 22,
     "bats": "R",
     "birth_date": "2004-01-25",
@@ -49527,7 +49527,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "johnstr02",
@@ -49537,7 +49537,7 @@
     "fangraphs_name": "Troy Johnston",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 687859,
     "mlb_primary_position": "OF",
     "name": "Troy Johnston",
@@ -63722,17 +63722,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "R",
     "bbref_id": "youngbr01",
     "birth_date": "1998-08-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27819",
     "fangraphs_name": "Brandon Young",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 687064,
     "mlb_primary_position": "P",
     "name": "Brandon Young",
@@ -66986,14 +66986,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "bbref_id": "perkija01",
     "birth_date": "12/26/1999",
     "contract_type": "Keeper Contract",
     "fangraphs_id": "31468",
     "fangraphs_name": "Jack Perkins",
     "fypd": false,
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": "678022",
     "mlb_primary_position": "SP",
     "name": "Jack Perkins",
@@ -92764,7 +92764,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "birth_date": "1999-06-20",
@@ -92772,7 +92772,7 @@
     "debuted": true,
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 678011,
     "mlb_primary_position": "2B",
     "name": "Anthony Seigler",
