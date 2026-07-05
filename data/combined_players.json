@@ -1215,7 +1215,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "L",
     "bbref_id": "ricebe01",
@@ -1225,7 +1225,7 @@
     "fangraphs_name": "Ben Rice",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": "Hammers",
     "mlb_id": 700250,
     "mlb_primary_position": "1B",
     "name": "Ben Rice",
@@ -4418,7 +4418,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "DRO",
     "age": 22,
     "bats": "L",
     "bbref_id": "merrija01",
@@ -4428,7 +4428,7 @@
     "fangraphs_name": "Jackson Merrill",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Hammers",
+    "manager": "Andromedans",
     "mlb_id": 701538,
     "mlb_primary_position": "CF",
     "name": "Jackson Merrill",
@@ -5345,6 +5345,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 23,
     "bats": "R",
     "bbref_id": "moorech03",
@@ -5370,8 +5371,7 @@
     "upid": "7699",
     "weight": 210,
     "yahoo_id": "64361",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -6502,6 +6502,7 @@
     "fangraphs_name": "Dylan Crews",
     "fypd": false,
     "height": "6' 0\"",
+    "level": "MLB",
     "manager": "not much of a donkey",
     "mlb_id": 686611,
     "mlb_primary_position": "RF",
@@ -6515,8 +6516,7 @@
     "upid": "6562",
     "weight": 203,
     "yahoo_id": "62971",
-    "years_simple": "TC 1",
-    "level": "MLB"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "B2J",
@@ -15305,6 +15305,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 23,
     "bats": "L",
     "bbref_id": "mackjo01",
@@ -15330,8 +15331,7 @@
     "upid": "2674",
     "weight": 210,
     "yahoo_id": "12470",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -37632,7 +37632,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "hancoem01",
@@ -37642,7 +37642,7 @@
     "fangraphs_name": "Emerson Hancock",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Hammers",
+    "manager": "Andromedans",
     "mlb_id": 676106,
     "mlb_primary_position": "P",
     "name": "Emerson Hancock",
@@ -39527,6 +39527,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "HAM",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-12-02",
@@ -39547,8 +39548,7 @@
     "upid": "3933",
     "weight": 234,
     "yahoo_id": "60541",
-    "years_simple": "P",
-    "NRI": "HAM"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -47462,22 +47462,23 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 22,
     "bats": "L",
     "bbref_id": "brattmi01",
     "birth_date": "2003-07-03",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3017719",
     "fangraphs_name": "Mitch Bratt",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "",
+    "manager": "The Damn Yankees",
     "mlb_id": 683352,
     "mlb_primary_position": "P",
     "name": "Mitch Bratt",
+    "owner": "DMN",
     "player_type": "Farm",
     "position": "SP",
     "status": "[7] P",
@@ -59279,19 +59280,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 24,
     "bats": "R",
     "birth_date": "2001-10-09",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 691002,
     "mlb_primary_position": "1B",
     "name": "Yohandy Morales",
+    "owner": "JEP",
     "player_type": "Farm",
     "position": "1B,3B",
     "status": "[7] P",
@@ -68036,6 +68038,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "JEP",
     "age": 23,
     "bats": "R",
     "bbref_id": "karroky01",
@@ -68061,8 +68064,7 @@
     "upid": "7037",
     "weight": 220,
     "yahoo_id": "62831",
-    "years_simple": "P",
-    "NRI": "JEP"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -74614,7 +74616,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "DRO",
     "age": 19,
     "bats": "R",
     "birth_date": "2006-08-24",
@@ -74623,7 +74625,7 @@
     "debuted": false,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": "Andromedans",
     "mlb_id": 826723,
     "mlb_primary_position": "SS",
     "name": "Ronny Cruz",
@@ -76344,7 +76346,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "DRO",
     "age": 22,
     "bats": "R",
     "birth_date": "2003-05-09",
@@ -76353,7 +76355,7 @@
     "debuted": false,
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": "Andromedans",
     "mlb_id": 702607,
     "mlb_primary_position": "OF",
     "name": "Dakota Jordan",
@@ -77962,6 +77964,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "HAM",
     "age": 23,
     "bats": "R",
     "birth_date": "2003-01-31",
@@ -77982,8 +77985,7 @@
     "upid": "7745",
     "weight": 205,
     "yahoo_id": "64435",
-    "years_simple": "P",
-    "NRI": "HAM"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -155125,6 +155127,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "TBB",
     "age": 31,
     "bats": "R",
     "birth_date": "1995-06-02",
@@ -155145,8 +155148,7 @@
     "upid": "8540",
     "weight": 235,
     "yahoo_id": "63965",
-    "years_simple": "P",
-    "NRI": "TBB"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
