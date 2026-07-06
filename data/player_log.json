@@ -85558,5 +85558,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 PC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-07-06T15:53:24.442585-04:00-UPID_7304-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "HAM",
+    "timestamp": "2026-07-06T15:53:24.442585-04:00",
+    "upid": "7304",
+    "player_name": "Didier Fuentes",
+    "team": "ATL",
+    "pos": "SP",
+    "age": 20,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Blue Chip Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
