@@ -4555,5 +4555,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-060726_1927-053": {
+    "trade_id": "TRADE-060726_1927-053",
+    "teams": [
+      "WIZ",
+      "DRO"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-06T23:27:56.865419Z",
+    "expires_at": "2026-07-20T23:27:56.865419Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7146",
+        "from_team": "WIZ",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3319",
+        "from_team": "DRO",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "RP Trevor Megill [MIL] [TC 1]"
+      ],
+      "DRO": [
+        "C Eduardo Tait [PHI] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
