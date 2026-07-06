@@ -4220,5 +4220,37 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-06_trade_TRADE-060726_1757-052_LFB_debit_10",
+    "timestamp": "2026-07-06T23:20:04.591953Z",
+    "team": "LFB",
+    "amount": -10,
+    "balance_before": 15,
+    "balance_after": 5,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-060726_1757-052: WizBucks sent to DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-060726_1757-052",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-06_trade_TRADE-060726_1757-052_DRO_credit_10",
+    "timestamp": "2026-07-06T23:20:04.591953Z",
+    "team": "DRO",
+    "amount": 10,
+    "balance_before": 0,
+    "balance_after": 10,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-060726_1757-052: WizBucks received from LFB",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-060726_1757-052",
+      "counterparty": "LFB",
+      "source": "trade_portal"
+    }
   }
 ]
