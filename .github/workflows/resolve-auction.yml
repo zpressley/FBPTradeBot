@@ -1,0 +1,63 @@
+name: Resolve Weekly Auction
+
+# Dedicated, isolated auction resolver. This is intentionally separate from
+# daily-update.yml so a failure in the data pipeline can never skip auction
+# resolution. Runs after the Sunday 10am ET match/forfeit deadline.
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    # Sunday 14:30 UTC (~10:30am EDT), just after the 10am ET match/forfeit deadline.
+    - cron: "30 14 * * 0"
+  # Allow manual runs (safe: resolve_week is idempotent via resolved_at).
+  workflow_dispatch:
+
+jobs:
+  resolve-auction:
+    runs-on: ubuntu-latest
+    env:
+      TRADE_BOT_PUSH_TOKEN: ${{ secrets.FBP_TRADE_BOT_PUSH_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install timezone data
+        run: python3 -m pip install --upgrade pip tzdata
+
+      - name: Resolve current auction week
+        run: python3 scripts/resolve_auction.py
+
+      - name: Commit and push if auction data changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          PUSH_TOKEN="${TRADE_BOT_PUSH_TOKEN:-}"
+          if [ -z "$PUSH_TOKEN" ]; then
+            PUSH_TOKEN="${GITHUB_TOKEN:-}"
+          fi
+          if [ -n "$PUSH_TOKEN" ]; then
+            git remote set-url origin "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          else
+            echo "⚠️ No push token available."
+          fi
+          git add data/combined_players.json data/wizbucks.json \
+                  data/wizbucks_transactions.json data/auction_current.json \
+                  data/player_log.json
+          if git diff --cached --quiet; then
+            echo "No auction changes to commit (already resolved or no bids)."
+            exit 0
+          fi
+          git commit -m "🏁 Resolve weekly auction (dedicated workflow) - $(date)"
+          git push origin HEAD:${GITHUB_REF_NAME}

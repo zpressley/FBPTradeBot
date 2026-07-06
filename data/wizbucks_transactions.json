@@ -4034,5 +4034,65 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1783363321",
+    "timestamp": "2026-06-28T14:00:00+00:00",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 40,
+    "balance_after": 30,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-22 to 2026-06-28: Parks Harber",
+    "related_player": {
+      "upid": "8355",
+      "name": "Parks Harber"
+    },
+    "metadata": {
+      "week_start": "2026-06-22",
+      "prospect_id": "8355",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_auction_winner_1783363321",
+    "timestamp": "2026-07-05T14:00:00+00:00",
+    "team": "JEP",
+    "amount": -10,
+    "balance_before": 95,
+    "balance_after": 85,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-29 to 2026-07-05: Yohandy Morales",
+    "related_player": {
+      "upid": "6574",
+      "name": "Yohandy Morales"
+    },
+    "metadata": {
+      "week_start": "2026-06-29",
+      "prospect_id": "6574",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1783363321",
+    "timestamp": "2026-07-05T14:00:00+00:00",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 30,
+    "balance_after": 20,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-06-29 to 2026-07-05: Mitch Bratt",
+    "related_player": {
+      "upid": "4579",
+      "name": "Mitch Bratt"
+    },
+    "metadata": {
+      "week_start": "2026-06-29",
+      "prospect_id": "4579",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
   }
 ]

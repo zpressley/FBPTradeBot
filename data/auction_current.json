@@ -1,27 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-36001e227bea",
-      "bid_type": "OB",
-      "date": "2026-06-30",
-      "prospect_id": "6574",
-      "team": "JEP",
-      "timestamp": "2026-06-30T13:19:04.078376+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-593c87b15b8d",
-      "bid_type": "OB",
-      "date": "2026-06-30",
-      "prospect_id": "4579",
-      "team": "DMN",
-      "timestamp": "2026-06-30T16:57:07.418601+00:00"
-    }
-  ],
-  "last_updated": "2026-06-30T16:57:07.418601+00:00",
+  "bids": [],
+  "last_updated": "2026-07-05T14:00:00+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -36,6 +17,19 @@
     "DMN",
     "LFB"
   ],
+  "resolved_at": "2026-07-05T14:00:00+00:00",
+  "resolved_winners": {
+    "4579": {
+      "amount": 10,
+      "name": "Mitch Bratt",
+      "team": "DMN"
+    },
+    "6574": {
+      "amount": 10,
+      "name": "Yohandy Morales",
+      "team": "JEP"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

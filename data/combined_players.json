@@ -150965,17 +150965,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 24,
     "bats": "R",
     "birth_date": "2001-09-25",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 692238,
     "mlb_primary_position": "3B",
     "name": "Parks Harber",
+    "owner": "DMN",
     "player_type": "Farm",
     "position": "",
     "status": "P",
@@ -155196,6 +155197,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "SAD",
     "age": 35,
     "bats": "R",
     "birth_date": "1991-01-09",
@@ -155216,8 +155218,7 @@
     "upid": "8543",
     "weight": 225,
     "yahoo_id": "",
-    "years_simple": "P",
-    "NRI": "SAD"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",

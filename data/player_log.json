@@ -85420,5 +85420,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-06-28T14:00:00+00:00-UPID_8355-Auction-retrofix-wk0622",
+    "season": 2026,
+    "source": "Auction Resolve",
+    "admin": "bot",
+    "timestamp": "2026-06-28T14:00:00+00:00",
+    "upid": "8355",
+    "player_name": "Parks Harber",
+    "team": "3B",
+    "pos": "",
+    "age": 24,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "DMN",
+    "contract": "Purchased Contract",
+    "status": "P",
+    "years": "P",
+    "update_type": "Auction",
+    "event": "Auction 2026-06-22 to 2026-06-28"
   }
 ]
