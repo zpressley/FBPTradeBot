@@ -1,40 +1,37 @@
 {
-  "bids": [],
-  "last_updated": "2026-07-05T14:00:00+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-49ac5d0b8ebb",
+      "bid_type": "OB",
+      "date": "2026-07-06",
+      "prospect_id": "7922",
+      "team": "RV",
+      "timestamp": "2026-07-06T19:01:37.339011+00:00"
+    }
+  ],
+  "last_updated": "2026-07-06T19:01:37.339011+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "RV",
-    "JEP",
-    "WAR",
     "CFL",
+    "WAR",
+    "JEP",
     "B2J",
     "TBB",
     "WIZ",
     "HAM",
-    "SAD",
     "DMN",
+    "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-07-05T14:00:00+00:00",
-  "resolved_winners": {
-    "4579": {
-      "amount": 10,
-      "name": "Mitch Bratt",
-      "team": "DMN"
-    },
-    "6574": {
-      "amount": 10,
-      "name": "Yohandy Morales",
-      "team": "JEP"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-06-29"
+  "week_start": "2026-07-06"
 }
