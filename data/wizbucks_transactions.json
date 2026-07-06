@@ -4094,5 +4094,26 @@
       "amount": 10,
       "source": "auction_resolve_backfill"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1783366671",
+    "timestamp": "2026-07-06T19:37:51.202159Z",
+    "team": "LFB",
+    "amount": -10,
+    "balance_before": 55,
+    "balance_after": 45,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Alfredo Duno PC \u2192 BC",
+    "related_player": {
+      "upid": "6140",
+      "name": "Alfredo Duno"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

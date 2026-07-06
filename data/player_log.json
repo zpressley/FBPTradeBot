@@ -85443,5 +85443,28 @@
     "years": "P",
     "update_type": "Auction",
     "event": "Auction 2026-06-22 to 2026-06-28"
+  },
+  {
+    "id": "2026-2026-07-06T15:37:51.204902-04:00-UPID_6140-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "LFB",
+    "timestamp": "2026-07-06T15:37:51.204902-04:00",
+    "upid": "6140",
+    "player_name": "Alfredo Duno",
+    "team": "CIN",
+    "pos": "C",
+    "age": 20,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "La Flama Blanca",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
