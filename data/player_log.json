@@ -85535,5 +85535,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 PC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-07-06T15:50:54.054197-04:00-UPID_7690-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "HAM",
+    "timestamp": "2026-07-06T15:50:54.054197-04:00",
+    "upid": "7690",
+    "player_name": "Kaelen Culpepper",
+    "team": "MIN",
+    "pos": "SS",
+    "age": 23,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Hammers",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
