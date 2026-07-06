@@ -4115,5 +4115,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_LFB_contract_purchase_1783366690",
+    "timestamp": "2026-07-06T19:38:10.156729Z",
+    "team": "LFB",
+    "amount": -10,
+    "balance_before": 45,
+    "balance_after": 35,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Ryan Sloan PC \u2192 BC",
+    "related_player": {
+      "upid": "7710",
+      "name": "Ryan Sloan"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
