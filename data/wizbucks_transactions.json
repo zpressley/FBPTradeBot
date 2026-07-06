@@ -4013,5 +4013,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_RV_contract_purchase_1783341285",
+    "timestamp": "2026-07-06T12:34:45.062264Z",
+    "team": "RV",
+    "amount": -5,
+    "balance_before": 95,
+    "balance_after": 90,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Owen Murphy DC \u2192 PC",
+    "related_player": {
+      "upid": "3920",
+      "name": "Owen Murphy"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

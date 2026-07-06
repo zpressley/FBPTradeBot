@@ -85259,5 +85259,28 @@
     "years": "TC 2",
     "update_type": "Trade",
     "event": "TRADE-050726_1803-049: DRO->HAM"
+  },
+  {
+    "id": "2026-2026-07-06T08:34:45.064844-04:00-UPID_3920-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "RV",
+    "timestamp": "2026-07-06T08:34:45.064844-04:00",
+    "upid": "3920",
+    "player_name": "Owen Murphy",
+    "team": "ATL",
+    "pos": "SP",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
