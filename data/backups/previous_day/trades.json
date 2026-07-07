@@ -4360,5 +4360,256 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-060726_1243-050": {
+    "trade_id": "TRADE-060726_1243-050",
+    "teams": [
+      "WIZ",
+      "CFL"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-06T16:43:56.625473Z",
+    "expires_at": "2026-07-20T16:43:56.625473Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1883",
+        "from_team": "WIZ",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7951",
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "6566",
+        "from_team": "CFL",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "SS Steele Hall [CIN] [BC]",
+        "CF Max Clark [DET] [BC]"
+      ],
+      "CFL": [
+        "CF Cody Bellinger [NYY] [VC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-060726_1741-051": {
+    "trade_id": "TRADE-060726_1741-051",
+    "teams": [
+      "DRO",
+      "LFB"
+    ],
+    "initiator_team": "DRO",
+    "status": "withdrawn",
+    "created_at": "2026-07-06T21:41:18.099835Z",
+    "expires_at": "2026-07-20T21:41:18.099835Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3499",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6725",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "4026",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "C Harry Ford [SEA] [PC]",
+        "SP Jaxon Wiggins [CHC] [PC]",
+        "$10 WB via LFB"
+      ],
+      "LFB": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "RP F\u00e9lix Bautista [BAL] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "processed_at": "2026-07-06T21:56:03.911487Z"
+  },
+  "TRADE-060726_1757-052": {
+    "trade_id": "TRADE-060726_1757-052",
+    "teams": [
+      "DRO",
+      "LFB"
+    ],
+    "initiator_team": "DRO",
+    "status": "approved",
+    "created_at": "2026-07-06T21:57:08.092346Z",
+    "expires_at": "2026-07-20T21:57:08.092346Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2437",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3265",
+        "from_team": "DRO",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3499",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6725",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "LFB",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1980",
+        "from_team": "LFB",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO",
+      "LFB"
+    ],
+    "receives": {
+      "DRO": [
+        "C Harry Ford [SEA] [PC]",
+        "SP Jaxon Wiggins [CHC] [PC]",
+        "OF Teoscar Hern\u00e1ndez [LAD] [TC 1]",
+        "$10 WB via LFB"
+      ],
+      "LFB": [
+        "RP Edwin D\u00edaz [LAD] [VC 2]",
+        "RP Tanner Scott [LAD] [Keeper Contract]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1523813251454996641",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-06T22:09:49.992438Z",
+    "admin_decision_by": "SAD",
+    "processed_at": "2026-07-06T23:20:04.527758Z",
+    "data_applied_at": "2026-07-06T23:20:04.591953Z",
+    "data_applied_by": "SAD",
+    "data_applied_summary": {
+      "player_moves": 5,
+      "player_log_entries": 5,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-060726_1927-053": {
+    "trade_id": "TRADE-060726_1927-053",
+    "teams": [
+      "WIZ",
+      "DRO"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-07-06T23:27:56.865419Z",
+    "expires_at": "2026-07-20T23:27:56.865419Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7146",
+        "from_team": "WIZ",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3319",
+        "from_team": "DRO",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "DRO"
+    ],
+    "receives": {
+      "WIZ": [
+        "RP Trevor Megill [MIL] [TC 1]"
+      ],
+      "DRO": [
+        "C Eduardo Tait [PHI] [DC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1523833077573484588",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-06T23:28:37.072829Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-06T23:31:18.297926Z",
+    "data_applied_at": "2026-07-06T23:31:18.323741Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
