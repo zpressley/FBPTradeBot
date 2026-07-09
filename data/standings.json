@@ -343,11 +343,11 @@
       "record": "149-139-12",
       "win_pct": 0.517,
       "opponent": "CFL",
-      "score": "13",
+      "score": "14",
       "opponent_score": "3",
-      "ties": "4",
-      "live_record": "13-3-4",
-      "live_win_pct": 0.75,
+      "ties": "3",
+      "live_record": "14-3-3",
+      "live_win_pct": 0.775,
       "categories": {
         "H/AB": "29/101",
         "R": 17,
@@ -360,7 +360,7 @@
         "TB": 59,
         "AVG": ".287",
         "OPS": ".923",
-        "APP": 11,
+        "APP": 12,
         "IP": "27.2",
         "ER": 7,
         "P_HR": 3,
@@ -372,8 +372,8 @@
         "BB/9": "2.93",
         "QS": 2
       },
-      "overall_live_record": "162-142-16",
-      "overall_live_win_pct": 0.531,
+      "overall_live_record": "163-142-15",
+      "overall_live_win_pct": 0.533,
       "live_rank": 4
     },
     {
@@ -504,10 +504,10 @@
       "win_pct": 0.46,
       "opponent": "TBB",
       "score": "3",
-      "opponent_score": "13",
-      "ties": "4",
-      "live_record": "3-13-4",
-      "live_win_pct": 0.25,
+      "opponent_score": "14",
+      "ties": "3",
+      "live_record": "3-14-3",
+      "live_win_pct": 0.225,
       "categories": {
         "H/AB": "30/140",
         "R": 14,
@@ -532,8 +532,8 @@
         "BB/9": "2.17",
         "QS": 2
       },
-      "overall_live_record": "136-170-14",
-      "overall_live_win_pct": 0.447,
+      "overall_live_record": "136-171-13",
+      "overall_live_win_pct": 0.445,
       "live_rank": 10
     },
     {
@@ -831,7 +831,7 @@
       "team2": {
         "team": "TBB",
         "name": "The Bluke Blokes",
-        "score": "13",
+        "score": "14",
         "categories": {
           "H/AB": "29/101",
           "R": 17,
@@ -844,7 +844,7 @@
           "TB": 59,
           "AVG": ".287",
           "OPS": ".923",
-          "APP": 11,
+          "APP": 12,
           "IP": "27.2",
           "ER": 7,
           "P_HR": 3,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-07-09T20:56:30.064920+00:00"
+  "refreshed_at": "2026-07-09T21:53:15.147157+00:00"
 }
