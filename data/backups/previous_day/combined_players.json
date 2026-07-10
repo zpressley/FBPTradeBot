@@ -745,7 +745,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "frelisa01",
@@ -755,7 +755,7 @@
     "fangraphs_name": "Sal Frelick",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 686217,
     "mlb_primary_position": "RF",
     "name": "Sal Frelick",
@@ -2175,7 +2175,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 23,
     "bats": "S",
     "bbref_id": "dominja01",
@@ -2185,7 +2185,7 @@
     "fangraphs_name": "Jasson Dominguez",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 691176,
     "mlb_primary_position": "LF",
     "name": "Jasson Dom\u00ednguez",
@@ -3818,7 +3818,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 28,
     "bats": "L",
     "bbref_id": "kwanst01",
@@ -3828,7 +3828,7 @@
     "fangraphs_name": "Steven Kwan",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 680757,
     "mlb_primary_position": "LF",
     "name": "Steven Kwan",
@@ -14755,7 +14755,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "horwisp01",
@@ -14765,7 +14765,7 @@
     "fangraphs_name": "Spencer Horwitz",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 687462,
     "mlb_primary_position": "1B",
     "name": "Spencer Horwitz",
@@ -15467,7 +15467,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 28,
     "bats": "R",
     "bbref_id": "hoernni01",
@@ -15477,7 +15477,7 @@
     "fangraphs_name": "Nico Hoerner",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 663538,
     "mlb_primary_position": "2B",
     "name": "Nico Hoerner",
@@ -19598,7 +19598,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "R",
     "bbref_id": "kellyca02",
@@ -19608,7 +19608,7 @@
     "fangraphs_name": "Carson Kelly",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 608348,
     "mlb_primary_position": "C",
     "name": "Carson Kelly",
@@ -24185,7 +24185,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24195,7 +24195,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -41690,7 +41690,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41700,7 +41700,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
@@ -57873,7 +57873,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "kellyke02",
@@ -57883,7 +57883,7 @@
     "fangraphs_name": "Kevin Kelly",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 687330,
     "mlb_primary_position": "P",
     "name": "Kevin Kelly",
@@ -136662,7 +136662,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "birth_date": "1994-01-10",
@@ -136670,7 +136670,7 @@
     "debuted": true,
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 670329,
     "mlb_primary_position": "P",
     "name": "Rico Garcia",
@@ -144621,18 +144621,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "R",
     "bbref_id": "tolbety01",
     "birth_date": "1998-01-27",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fangraphs_id": "25779",
     "fangraphs_name": "Tyler Tolbert",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 686475,
     "mlb_primary_position": "2B",
     "name": "Tyler Tolbert",
