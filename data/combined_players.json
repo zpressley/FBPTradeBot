@@ -19598,7 +19598,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "kellyca02",
@@ -19608,7 +19608,7 @@
     "fangraphs_name": "Carson Kelly",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 608348,
     "mlb_primary_position": "C",
     "name": "Carson Kelly",
@@ -34053,7 +34053,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 29,
     "bats": "L",
     "bbref_id": "martida03",
@@ -34063,7 +34063,7 @@
     "fangraphs_name": "Davis Martin",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 663436,
     "mlb_primary_position": "P",
     "name": "Davis Martin",
@@ -37526,7 +37526,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "RV",
+    "NRI": "",
     "age": 25,
     "bats": "S",
     "birth_date": "2000-10-02",

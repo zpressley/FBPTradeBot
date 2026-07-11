@@ -1966,7 +1966,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1976,7 +1976,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -21705,7 +21705,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 30,
     "bats": "R",
     "bbref_id": "bazared01",
@@ -21715,7 +21715,7 @@
     "fangraphs_name": "Eduard Bazardo",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 660825,
     "mlb_primary_position": "P",
     "name": "Eduard Bazardo",
@@ -24612,7 +24612,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 31,
     "bats": "L",
     "bbref_id": "kingjo01",
@@ -24622,7 +24622,7 @@
     "fangraphs_name": "John King",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 667463,
     "mlb_primary_position": "P",
     "name": "John King",
@@ -28303,17 +28303,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 30,
     "bats": "L",
     "bbref_id": "lopezni01",
     "birth_date": "1995-03-13",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19339",
     "fangraphs_name": "Nicky Lopez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 670032,
     "mlb_primary_position": "3B",
     "name": "Nicky Lopez",
@@ -28717,7 +28717,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 28,
     "bats": "R",
     "bbref_id": "lambepe01",
@@ -28727,7 +28727,7 @@
     "fangraphs_name": "Peter Lambert",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 663567,
     "mlb_primary_position": "P",
     "name": "Peter Lambert",
@@ -34627,7 +34627,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "taylosa01",
@@ -34637,7 +34637,7 @@
     "fangraphs_name": "Samad Taylor",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669392,
     "mlb_primary_position": "2B",
     "name": "Samad Taylor",
