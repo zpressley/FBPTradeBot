@@ -13950,21 +13950,22 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
-    "contract_type": "Development Cont.",
+    "FBP_Team": "",
+    "contract_type": "",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
-    "manager": "Weekend Warriors",
+    "manager": "",
     "mlb_id": null,
     "name": "Gabriel Rincones",
     "player_type": "Farm",
     "position": "OF",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "PHI",
     "upid": "7236",
     "yahoo_id": "",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "MLB"
   },
   {
     "FBP_Team": "WAR",
