@@ -87421,5 +87421,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Send Down"
+  },
+  {
+    "id": "2026-2026-07-12T09:27:13.148011-04:00-UPID_3596-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "kylek_japisx",
+    "timestamp": "2026-07-12T09:27:13.148011-04:00",
+    "upid": "3596",
+    "player_name": "Hao-Yu Lee",
+    "team": "DET",
+    "pos": "2B,3B",
+    "age": 23,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Admin",
+    "event": ""
   }
 ]
