@@ -489,7 +489,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "R",
     "bbref_id": "maydu01",
@@ -499,7 +499,7 @@
     "fangraphs_name": "Dustin May",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 669160,
     "mlb_primary_position": "P",
     "name": "Dustin May",
@@ -10473,7 +10473,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 24,
     "bats": "R",
     "bbref_id": "shawma01",
@@ -10484,7 +10484,7 @@
     "fypd": false,
     "height": "5' 10\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 807713,
     "mlb_primary_position": "3B",
     "name": "Matt Shaw",
@@ -10890,7 +10890,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "suareeu01",
@@ -10900,7 +10900,7 @@
     "fangraphs_name": "Eugenio Suarez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 553993,
     "mlb_primary_position": "3B",
     "name": "Eugenio Su\u00e1rez",
@@ -13191,7 +13191,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "hurtky01",
@@ -13201,7 +13201,7 @@
     "fangraphs_name": "Kyle Hurt",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669165,
     "mlb_primary_position": "P",
     "name": "Kyle Hurt",
@@ -15545,7 +15545,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 25,
     "bats": "L",
     "bbref_id": "montgma01",
@@ -15558,7 +15558,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 682254,
     "mlb_primary_position": "P",
     "name": "Mason Montgomery",
@@ -16723,7 +16723,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16733,7 +16733,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -24185,7 +24185,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24195,7 +24195,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -34053,7 +34053,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "martida03",
@@ -34063,7 +34063,7 @@
     "fangraphs_name": "Davis Martin",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 663436,
     "mlb_primary_position": "P",
     "name": "Davis Martin",
@@ -36761,7 +36761,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36771,7 +36771,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -77426,7 +77426,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "JEP",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-05-27",
@@ -136662,7 +136662,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 32,
     "bats": "R",
     "birth_date": "1994-01-10",
@@ -136670,7 +136670,7 @@
     "debuted": true,
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 670329,
     "mlb_primary_position": "P",
     "name": "Rico Garcia",
