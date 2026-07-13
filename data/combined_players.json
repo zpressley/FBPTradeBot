@@ -1966,7 +1966,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1976,7 +1976,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -9550,7 +9550,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9560,7 +9560,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -19197,7 +19197,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 37,
     "bats": "L",
     "bbref_id": "raleybr01",
@@ -19207,7 +19207,7 @@
     "fangraphs_name": "Brooks Raley",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 548384,
     "mlb_primary_position": "P",
     "name": "Brooks Raley",
@@ -25895,7 +25895,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 27,
     "bats": "S",
     "bbref_id": "ruizke01",
@@ -25905,7 +25905,7 @@
     "fangraphs_name": "Keibert Ruiz",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 660688,
     "mlb_primary_position": "C",
     "name": "Keibert Ruiz",
@@ -31508,7 +31508,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 32,
     "bats": "S",
     "bbref_id": "caratvi01",
@@ -31518,7 +31518,7 @@
     "fangraphs_name": "Victor Caratini",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 605170,
     "mlb_primary_position": "C",
     "name": "Victor Caratini",
@@ -37077,7 +37077,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 27,
     "bats": "L",
     "bbref_id": "milleer01",
@@ -37087,7 +37087,7 @@
     "fangraphs_name": "Erik Miller",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 669062,
     "mlb_primary_position": "P",
     "name": "Erik Miller",
