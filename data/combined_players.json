@@ -12137,7 +12137,7 @@
     "age": 25,
     "bats": "L",
     "birth_date": "2000-10-04",
-    "contract_type": "Purchased Contract",
+    "contract_type": "",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
@@ -12148,13 +12148,14 @@
     "name": "Quinn Matthews",
     "player_type": "Farm",
     "position": "LHP",
-    "status": "[7] P",
+    "status": "[9] P",
     "team": "STL",
     "throws": "L",
     "upid": "7722",
     "weight": 188,
     "yahoo_id": "",
-    "years_simple": "P"
+    "years_simple": "P",
+    "level": "AAA"
   },
   {
     "FBP_Team": "",
