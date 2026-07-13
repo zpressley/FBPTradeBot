@@ -695,8 +695,12 @@ class DraftCommands(commands.Cog):
                         f"Make your pick now!"
                         f"{board_text}"
                     )
-                except:
-                    pass
+                except Exception as e:
+                    # Most commonly the user has DMs disabled — not worth
+                    # alarming over, but still worth a log line instead of
+                    # silently swallowing (could also be a real bug in the
+                    # board-suggestion logic above).
+                    print(f"⚠️ Failed to send draft-clock warning DM to user {user_id}: {e}")
     
     async def execute_autopick(self, channel):
         """Execute autopick when timer expires.
@@ -1055,8 +1059,11 @@ class DraftCommands(commands.Cog):
                 msg_id = self.draft_board_messages[current_round]
                 message = await self.draft_board_thread.fetch_message(msg_id)
                 await message.edit(content=content)
-            except:
-                # Message not found, create new one
+            except Exception as e:
+                # Most commonly the message was deleted, so we create a new
+                # one below — but log it in case it's something else (e.g.
+                # missing permissions) that will keep happening every round.
+                print(f"⚠️ Couldn't edit draft board message for round {current_round}, creating new one: {e}")
                 msg = await self.draft_board_thread.send(content)
                 self.draft_board_messages[current_round] = msg.id
         else:

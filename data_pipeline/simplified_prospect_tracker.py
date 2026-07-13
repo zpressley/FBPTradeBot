@@ -426,7 +426,8 @@ class SimplifiedProspectTracker:
             
             try:
                 worksheet = sheet.worksheet(SERVICE_TAB)
-            except:
+            except Exception as e:
+                print(f"⚠️ Worksheet '{SERVICE_TAB}' not found ({e}); creating it.")
                 worksheet = sheet.add_worksheet(title=SERVICE_TAB, rows=1000, cols=12)
             
             # Prepare headers

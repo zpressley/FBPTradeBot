@@ -645,7 +645,8 @@ async def announce_kap_submission_to_discord(result: KAPResult, bot) -> None:
     try:
         dt = datetime.fromisoformat(result.timestamp.replace('Z', '+00:00'))
         formatted_time = dt.strftime('%Y-%m-%d %H:%M:%S UTC')
-    except:
+    except Exception as e:
+        print(f"⚠️ kap_processor: couldn't format timestamp '{result.timestamp}': {e}")
         formatted_time = result.timestamp
     
     embed.set_footer(text=f"Total WB Spent: ${result.wb_spent} | Rollover to APA: ${rollover_to_apa} | {formatted_time}")
@@ -690,8 +691,8 @@ async def notify_il_tags_to_admin(submission: 'KAPSubmission', bot) -> None:
             week_1 = datetime.fromisoformat(season_dates['week_1_start'])
             eligible_date = week_1 + timedelta(weeks=5)
             eligible_date_str = eligible_date.strftime('%Y-%m-%d')
-        except:
-            pass
+        except Exception as e:
+            print(f"⚠️ kap_processor: couldn't compute IL eligible date from week_1_start='{season_dates.get('week_1_start')}': {e}")
     
     # Send notification for each IL tag
     for tier, upid in il_tags_used.items():

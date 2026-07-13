@@ -57,9 +57,19 @@ jobs:
         pip install -r requirements.txt
     
     - name: Run Smart Data Pipeline
+      id: pipeline
+      continue-on-error: true
       run: |
         # The smart pipeline automatically detects season phase
-        # and only runs necessary updates
+        # and only runs necessary updates.
+        # continue-on-error is intentional here: it lets later steps still
+        # commit/push whatever data DID update successfully. The final
+        # "Fail run if pipeline reported failures" step below is what
+        # actually surfaces this as a failed Actions run (and a GitHub
+        # failure-notification email) — smart_update_all.py now exits
+        # non-zero on any failed/errored/timed-out step instead of always
+        # exiting 0, which is how a broken Yahoo token went unnoticed for
+        # weeks previously.
         python3 data_pipeline/smart_update_all.py
 
     - name: Post roster sync Discord updates via bot API
@@ -160,7 +170,13 @@ jobs:
     - name: Copy data files to fbp-hub
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
       run: |
-        cp config/managers.json fbp-hub/data/managers.json
+        # NOTE: managers.json is intentionally NOT a plain `cp` — fbp-hub's
+        # config/managers.json holds hand/script-maintained WizBucks data
+        # that this repo's config/managers.json doesn't have. Use the
+        # additive merge script so identity fields (yahoo_team_id, role,
+        # standing, full_name) get backfilled without clobbering WizBucks.
+        # See scripts/sync_managers_to_hub.py for details.
+        python3 scripts/sync_managers_to_hub.py --hub-path fbp-hub
         for f in draft_order_2026.json trades.json standings.json combined_players.json \
                  wizbucks.json auction_current.json; do
           if [ -f "data/$f" ]; then
@@ -174,7 +190,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add -A data/
+        git add -A data/ config/managers.json
         git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 Update data from pipeline - $(date)" && git push)
 
     - name: Copy combined_players.json to email-digest
@@ -198,7 +214,7 @@ jobs:
         # Only run on Sundays (day 0)
         if [ "$(date +%u)" = "7" ]; then
           echo "Sunday detected — resolving auction..."
-          python3 scripts/resolve_auction.py
+          PYTHONPATH=. python3 scripts/resolve_auction.py
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add data/combined_players.json data/wizbucks.json data/wizbucks_transactions.json data/auction_current.json data/player_log.json
@@ -206,3 +222,12 @@ jobs:
         else
           echo "Not Sunday — skipping auction resolve."
         fi
+
+    - name: Fail run if pipeline reported failures
+      if: steps.pipeline.outcome == 'failure'
+      run: |
+        echo "🚨 Smart Data Pipeline reported one or more failed/errored/timed-out steps."
+        echo "See the 'Run Smart Data Pipeline' step output above for which script(s) failed."
+        echo "This step intentionally fails the run so GitHub sends a failure notification —"
+        echo "everything that could still be committed above already was."
+        exit 1

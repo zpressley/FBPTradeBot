@@ -61,6 +61,7 @@ from api_manager_players import (
     set_manager_players_bot_reference,
     set_manager_players_commit_fn,
 )
+from api_client_log import router as client_log_router
 from commands.auction import set_auction_commit_fn
 from data_lock import DATA_LOCK
 
@@ -757,6 +758,8 @@ app.include_router(notes_router)
 app.include_router(upid_router)
 # Manager player add/edit router
 app.include_router(manager_players_router)
+# Browser (fbp-hub) client-error logging — see api_client_log.py
+app.include_router(client_log_router)
 
 
 # Health check
@@ -2985,12 +2988,12 @@ async def api_kap_resend(
                 draft_order = json.load(f)
             
             for pick in draft_order:
-                if (pick.get('current_owner') == team and 
-                    pick.get('buyin_required') and 
+                if (pick.get('current_owner') == team and
+                    pick.get('buyin_required') and
                     pick.get('buyin_purchased')):
                     buyin_cost += pick.get('buyin_cost', 0)
-        except:
-            pass
+        except Exception as e:
+            print(f"⚠️ Failed to compute buy-in cost for {team}: {e}")
         
         total_spend = keeper_salary_cost + buyin_cost
         current_balance = wizbucks.get(team_name, 0)

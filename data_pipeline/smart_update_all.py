@@ -287,22 +287,23 @@ class SmartDataPipeline:
         """Run minimal updates for offseason"""
         print("\n❄️ OFFSEASON MODE - Minimal Updates")
         print("=" * 50)
-        
+
         # Only update:
         # 1. MLB bio data (trades, signings)
         # 2. Merge with bot keeper data (WizBucks already tracked by bot)
-        
+
         self.update_player_bio_data()
         # self.update_wizbucks()  # Legacy Sheets sync disabled; bot ledger is source of truth.
         self.merge_all_data()
-        
+
         print("✅ Offseason update complete")
-    
+        return all(status == "SUCCESS" for _, status, _ in self.results)
+
     def run_preseason_draft_mode(self):
         """Run updates during draft periods (PAD, PPD, Keeper Draft)"""
         print("\n📝 DRAFT MODE - Extended Updates")
         print("=" * 50)
-        
+
         # During drafts, need everything except Yahoo rosters. WizBucks
         # remain managed by the bot ledger, so we do not hit Google
         # Sheets here either.
@@ -310,28 +311,42 @@ class SmartDataPipeline:
         # self.update_wizbucks()  # Legacy Sheets sync disabled.
         self.update_prospect_data()
         self.merge_all_data()
-        
+
         print("✅ Draft mode update complete")
+        return all(status == "SUCCESS" for _, status, _ in self.results)
 
 
 def main():
-    """Main pipeline execution"""
+    """Main pipeline execution.
+
+    Returns a real process exit code: 0 only if every step that ran
+    reported SUCCESS. Previously this function never looked at the
+    success/failure of the pipeline it ran, so GitHub Actions reported
+    green even when every Yahoo fetch failed (e.g. an expired OAuth
+    token) — that's how the pipeline silently sat on stale data for
+    weeks without anyone noticing.
+    """
     # Rolling daily backup before any data mutations
     from data_pipeline.backup_data import run_daily
     run_daily()
 
     pipeline = SmartDataPipeline()
-    
+
     # Determine which update mode to use
     phase = pipeline.manager.current_phase
-    
+
     if phase == SeasonPhase.OFFSEASON_INITIAL:
-        pipeline.run_offseason_only()
+        success = pipeline.run_offseason_only()
     elif phase in [SeasonPhase.PAD, SeasonPhase.PPD, SeasonPhase.KEEPER_DRAFT]:
-        pipeline.run_preseason_draft_mode()
+        success = pipeline.run_preseason_draft_mode()
     else:
-        pipeline.run_full_pipeline()
+        success = pipeline.run_full_pipeline()
+
+    if not success:
+        print("\n🚨 Pipeline completed with one or more FAILED/ERROR/TIMEOUT steps.")
+
+    return 0 if success else 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

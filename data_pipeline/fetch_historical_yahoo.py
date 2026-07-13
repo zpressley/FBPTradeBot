@@ -164,8 +164,8 @@ def fetch_rosters_for_season(season, discover_managers=False):
                 description = root.find(".//{http://www.yahooapis.com/v1/base.rng}description")
                 if description is not None:
                     print(f"  📝 Yahoo says: {description.text}")
-            except:
-                pass
+            except Exception as e:
+                print(f"  ⚠️ Couldn't parse Yahoo's error response body: {e}")
             return None, []
         
         # Parse XML response

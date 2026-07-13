@@ -154,7 +154,10 @@ def fetch_all_players_batch(start=0, count=25, position_filter=None, *, _retry=F
             if percent_owned_elem is not None:
                 try:
                     percent_owned = int(percent_owned_elem.text)
-                except:
+                except (TypeError, ValueError):
+                    # Expected when Yahoo omits/blanks this field — not worth
+                    # logging per-player, but narrowed from bare `except:` so
+                    # it doesn't also swallow unrelated bugs.
                     pass
             
             # Parse stats
@@ -176,8 +179,8 @@ def fetch_all_players_batch(start=0, count=25, position_filter=None, *, _retry=F
                                 stat_value = float(stat_value)
                             else:
                                 stat_value = int(stat_value)
-                        except:
-                            pass  # Keep as string
+                        except (TypeError, ValueError):
+                            pass  # Keep as string — narrowed from bare `except:`
                         
                         stats[f"stat_{stat_id}"] = stat_value
             

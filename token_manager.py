@@ -6,16 +6,28 @@ under random/token_manager.py; that file is now effectively duplicated here
 so imports like `from token_manager import get_access_token` work everywhere.
 """
 
+import os
 import json
 import time
 import requests
 from requests.auth import HTTPBasicAuth
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Yahoo API credentials and OAuth config
 # (kept in sync with the original random/token_manager.py)
-CLIENT_ID = "dj0yJmk9TU9NVmVQQWFiVDRmJmQ9WVdrOWMycHRhMUpTZVRjbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTcy"
-CLIENT_SECRET = "f12120bc33df79a0e8beab79059564b9f9efcd21"
-REDIRECT_URI = "https://yahoo-oauth-hyodzutfi-zach-pressleys-projects.vercel.app/api/callback"
+# Pulled from environment variables (.env locally, Railway env vars in
+# production). The hardcoded values are a fallback only, so this change
+# can't break anything until YAHOO_CLIENT_ID/YAHOO_CLIENT_SECRET are set
+# everywhere and the fallback is removed.
+if not os.getenv("YAHOO_CLIENT_ID") or not os.getenv("YAHOO_CLIENT_SECRET"):
+    print("⚠️  YAHOO_CLIENT_ID/YAHOO_CLIENT_SECRET not set in environment — "
+          "falling back to hardcoded value in token_manager.py.")
+
+CLIENT_ID = os.getenv("YAHOO_CLIENT_ID") or "dj0yJmk9TU9NVmVQQWFiVDRmJmQ9WVdrOWMycHRhMUpTZVRjbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTcy"
+CLIENT_SECRET = os.getenv("YAHOO_CLIENT_SECRET") or "f12120bc33df79a0e8beab79059564b9f9efcd21"
+REDIRECT_URI = os.getenv("YAHOO_REDIRECT_URI") or "https://yahoo-oauth-hyodzutfi-zach-pressleys-projects.vercel.app/api/callback"
 
 # Yahoo API endpoints
 AUTH_URL = "https://api.login.yahoo.com/oauth2/request_auth"

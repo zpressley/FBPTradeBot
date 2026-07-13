@@ -40,7 +40,8 @@ def extract_name(line):
             return line.strip()
         
         return match.group(1).strip() if match else line.strip()
-    except:
+    except Exception as e:
+        print(f"⚠️ lookup.py: failed to parse roster line '{line}': {e}")
         return line.strip()
 
 def fuzzy_lookup_all(name, threshold=0.7):

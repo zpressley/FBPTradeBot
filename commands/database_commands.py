@@ -151,8 +151,8 @@ class DatabaseCommands(commands.Cog):
                 
                 msg += f"\n**Last Setup:**\n"
                 msg += f"  • {metadata.get('last_saved', 'Never')}\n"
-        except:
-            pass
+        except Exception as e:
+            print(f"⚠️ db_status: couldn't read data/database_tracker.json: {e}")
         
         await interaction.response.send_message(msg, ephemeral=True)
     

@@ -1,12 +1,22 @@
+import os
 import json
 import time
 import requests
 from requests.auth import HTTPBasicAuth
+from dotenv import load_dotenv
 
-# Yahoo API Credentials (Replace with your own)
-CLIENT_ID = "dj0yJmk9TU9NVmVQQWFiVDRmJmQ9WVdrOWMycHRhMUpTZVRjbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTcy"
-CLIENT_SECRET = "f12120bc33df79a0e8beab79059564b9f9efcd21"
-REDIRECT_URI = "https://yahoo-oauth-hyodzutfi-zach-pressleys-projects.vercel.app/api/callback"
+load_dotenv()
+
+# Yahoo API Credentials — pulled from environment variables (.env locally,
+# Railway env vars in production). Hardcoded values are a fallback only,
+# so this change can't break anything until the fallback is removed.
+if not os.getenv("YAHOO_CLIENT_ID") or not os.getenv("YAHOO_CLIENT_SECRET"):
+    print("⚠️  YAHOO_CLIENT_ID/YAHOO_CLIENT_SECRET not set in environment — "
+          "falling back to hardcoded value in data_pipeline/token_manager.py.")
+
+CLIENT_ID = os.getenv("YAHOO_CLIENT_ID") or "dj0yJmk9TU9NVmVQQWFiVDRmJmQ9WVdrOWMycHRhMUpTZVRjbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTcy"
+CLIENT_SECRET = os.getenv("YAHOO_CLIENT_SECRET") or "f12120bc33df79a0e8beab79059564b9f9efcd21"
+REDIRECT_URI = os.getenv("YAHOO_REDIRECT_URI") or "https://yahoo-oauth-hyodzutfi-zach-pressleys-projects.vercel.app/api/callback"
 
 # Yahoo API Endpoints
 AUTH_URL = "https://api.login.yahoo.com/oauth2/request_auth"
