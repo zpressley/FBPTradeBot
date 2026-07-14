@@ -4273,5 +4273,65 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_RV_auction_winner_1784052489",
+    "timestamp": "2026-07-12T14:00:00+00:00",
+    "team": "RV",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-07-06 to 2026-07-12: Christian Zazueta",
+    "related_player": {
+      "upid": "7922",
+      "name": "Christian Zazueta"
+    },
+    "metadata": {
+      "week_start": "2026-07-06",
+      "prospect_id": "7922",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_CFL_auction_winner_1784052489",
+    "timestamp": "2026-07-12T14:00:00+00:00",
+    "team": "CFL",
+    "amount": -10,
+    "balance_before": 60,
+    "balance_after": 50,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-07-06 to 2026-07-12: Nolan Perry",
+    "related_player": {
+      "upid": "7261",
+      "name": "Nolan Perry"
+    },
+    "metadata": {
+      "week_start": "2026-07-06",
+      "prospect_id": "7261",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1784052489",
+    "timestamp": "2026-07-12T14:00:00+00:00",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 20,
+    "balance_after": 10,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-07-06 to 2026-07-12: Abimelec Ortiz",
+    "related_player": {
+      "upid": "6007",
+      "name": "Abimelec Ortiz"
+    },
+    "metadata": {
+      "week_start": "2026-07-06",
+      "prospect_id": "6007",
+      "amount": 10,
+      "source": "auction_resolve_backfill"
+    }
   }
 ]

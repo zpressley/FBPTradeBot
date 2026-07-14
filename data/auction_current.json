@@ -1,36 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-49ac5d0b8ebb",
-      "bid_type": "OB",
-      "date": "2026-07-06",
-      "prospect_id": "7922",
-      "team": "RV",
-      "timestamp": "2026-07-06T19:01:37.339011+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-975254d921bd",
-      "bid_type": "OB",
-      "date": "2026-07-06",
-      "prospect_id": "7261",
-      "team": "CFL",
-      "timestamp": "2026-07-06T19:08:43.243881+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-189bc0a78192",
-      "bid_type": "OB",
-      "date": "2026-07-07",
-      "prospect_id": "6007",
-      "team": "DMN",
-      "timestamp": "2026-07-07T16:01:02.097158+00:00"
-    }
-  ],
-  "last_updated": "2026-07-07T16:01:02.097158+00:00",
+  "bids": [],
+  "last_updated": "2026-07-12T14:00:00+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -45,6 +17,24 @@
     "SAD",
     "LFB"
   ],
+  "resolved_at": "2026-07-12T14:00:00+00:00",
+  "resolved_winners": {
+    "6007": {
+      "amount": 10,
+      "name": "Abimelec Ortiz",
+      "team": "DMN"
+    },
+    "7261": {
+      "amount": 10,
+      "name": "Nolan Perry",
+      "team": "CFL"
+    },
+    "7922": {
+      "amount": 10,
+      "name": "Christian Zazueta",
+      "team": "RV"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
