@@ -1,3 +1,11 @@
+"""Yahoo OAuth token management — canonical implementation.
+
+This is the one real copy of this logic (consolidated July 2026 — see
+../token_manager.py, which is now a thin shim that re-exports everything
+from this file for scripts that import it from the repo root). Edit
+token handling here; the root-level shim should not need touching.
+"""
+
 import os
 import json
 import time

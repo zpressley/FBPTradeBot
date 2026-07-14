@@ -18,6 +18,7 @@ from fastapi import APIRouter, HTTPException, Request, Depends, Header
 from typing import Callable, Optional
 
 from data_lock import DATA_LOCK
+from kap.kap_processor import _YEARS_SIMPLE_TO_KEY, _KEY_TO_FIELDS
 
 router = APIRouter(prefix="/api/admin", tags=["admin-bulk"])
 
@@ -218,6 +219,18 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
                 p["player_type"] = "MLB"
                 p["years_simple"] = contract_tier
                 p["contract_type"] = "Keeper Contract"
+
+                # Keep `status` in sync with years_simple. This previously
+                # only set years_simple, leaving status stale (e.g. still
+                # "[7] P" after a player graduated to "TC R") — discovered
+                # July 2026 while manually graduating a batch of 37
+                # prospects, see GRADUATION_PLAN_2026_MIDSEASON.md.
+                advancement_key = _YEARS_SIMPLE_TO_KEY.get(contract_tier)
+                if advancement_key and advancement_key in _KEY_TO_FIELDS:
+                    _, status = _KEY_TO_FIELDS[advancement_key]
+                    p["status"] = status
+                else:
+                    print(f"⚠️ bulk_graduate: unrecognized contract_tier '{contract_tier}' for upid {p_upid} — status left unchanged.")
 
                 log_player_action(
                     player_rec=p,
