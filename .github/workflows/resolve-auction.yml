@@ -1,11 +1,22 @@
 name: Resolve Weekly Auction
 
-# Dedicated, isolated auction resolver. This is intentionally separate from
-# daily-update.yml so a failure in the data pipeline can never skip auction
-# resolution. Runs after the Sunday 10am ET match/forfeit deadline.
-
-permissions:
-  contents: write
+# Pings the live bot's own auction-resolution endpoint after the Sunday
+# 10am ET match/forfeit deadline, instead of resolving/committing here.
+#
+# This workflow used to run its own resolve_week() + git commit in this
+# GitHub-hosted checkout — a SEPARATE process from the live Railway bot's
+# auction_tick loop, racing it to `git push` the same files with no shared
+# lock. That race is what caused the season-long "Auction Resolution
+# Pending Persistence" bug (see AUCTION_RESOLUTION_RELIABILITY.md).
+#
+# Now there's exactly one process that ever resolves/writes/commits
+# auction data: the live bot. This workflow's only job is to make sure
+# that process actually gets triggered, via POST /api/admin/auction/resolve-now
+# (proxied through the Cloudflare Worker, which injects the bot's API key
+# server-side — no secret needed here). If the bot already resolved the
+# week itself (tick loop got there first), this call is a safe no-op
+# (resolve_week() is idempotent). If the bot is down, this fails loudly
+# instead of silently leaving the week unresolved.
 
 on:
   schedule:
@@ -17,47 +28,28 @@ on:
 jobs:
   resolve-auction:
     runs-on: ubuntu-latest
-    env:
-      TRADE_BOT_PUSH_TOKEN: ${{ secrets.FBP_TRADE_BOT_PUSH_TOKEN }}
-      GITHUB_TOKEN: ${{ github.token }}
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
-      - name: Install timezone data
-        run: python3 -m pip install --upgrade pip tzdata
-
-      - name: Resolve current auction week
-        run: python3 scripts/resolve_auction.py
-
-      - name: Commit and push if auction data changed
+      - name: Ping live bot to resolve current auction week
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          PUSH_TOKEN="${TRADE_BOT_PUSH_TOKEN:-}"
-          if [ -z "$PUSH_TOKEN" ]; then
-            PUSH_TOKEN="${GITHUB_TOKEN:-}"
+          set -e
+          response=$(curl -sS -w "\n%{http_code}" -X POST \
+            "https://fbp-auth.zpressley.workers.dev/api/admin/auction/resolve-now" \
+            -H "Content-Type: application/json" \
+            -d '{"admin": "GitHub Action (resolve-auction.yml)", "announce_discord": true}')
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          echo "HTTP $http_code"
+          echo "$body"
+
+          if [ "$http_code" != "200" ]; then
+            echo "::error::Bot did not respond successfully (HTTP $http_code) — it may be down or redeploying. Auction was NOT confirmed resolved this run."
+            exit 1
           fi
-          if [ -n "$PUSH_TOKEN" ]; then
-            git remote set-url origin "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          else
-            echo "⚠️ No push token available."
+
+          persistence_confirmed=$(echo "$body" | python3 -c "import json,sys; print(json.load(sys.stdin).get('persistence_confirmed', False))" 2>/dev/null || echo "unknown")
+          if [ "$persistence_confirmed" != "True" ]; then
+            echo "::error::Bot responded but persistence_confirmed was not true (got: $persistence_confirmed). Check the bot's admin log channel."
+            exit 1
           fi
-          git add data/combined_players.json data/wizbucks.json \
-                  data/wizbucks_transactions.json data/auction_current.json \
-                  data/player_log.json
-          if git diff --cached --quiet; then
-            echo "No auction changes to commit (already resolved or no bids)."
-            exit 0
-          fi
-          git commit -m "🏁 Resolve weekly auction (dedicated workflow) - $(date)"
-          git push origin HEAD:${GITHUB_REF_NAME}
+
+          echo "✅ Auction resolution confirmed persisted."

@@ -7,6 +7,7 @@ from discord import app_commands
 
 from auction_manager import AuctionManager, AuctionPhase, ET
 from commands.utils import DISCORD_ID_TO_TEAM, MANAGER_DISCORD_IDS
+from data_lock import DATA_LOCK
 
 AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel
 AUCTION_BOARD_URL = "https://zpressley.github.io/fbp-hub/auction.html"
@@ -434,7 +435,16 @@ class Auction(commands.Cog):
                 return
             try:
 
-                result = self.manager.resolve_week(now=now)
+                # Same read-modify-write cycle health.py's /api/admin/auction/resolve-now
+                # endpoint protects with DATA_LOCK — without it, this tick loop and a
+                # manual/admin-triggered resolve-now call could interleave and both
+                # believe they're the one resolving the week. resolve_week() itself
+                # sets state["resolved_at"] before returning, so locking just this
+                # call is enough to make that guard atomic; the git-commit calls below
+                # stay outside the lock so we never block the event loop across the
+                # Discord awaits that sit between resolving and persisting.
+                with DATA_LOCK:
+                    result = self.manager.resolve_week(now=now)
                 status = result.get("status", "")
                 winners = result.get("winners", {}) or {}
                 channel = await self._get_auction_channel()
@@ -451,31 +461,33 @@ class Auction(commands.Cog):
                 )
 
                 if status in {"resolved", "already_resolved"}:
-                    commit_ok = self._commit_auction_files(
-                        [
-                            "data/auction_current.json",
-                            "data/combined_players.json",
-                            "data/wizbucks.json",
-                            "data/wizbucks_transactions.json",
-                            "data/player_log.json",
-                        ],
-                        f"Auction resolved: week of {week_key}",
-                        wait=True,
-                        timeout_seconds=60.0,
-                    )
+                    with DATA_LOCK:
+                        commit_ok = self._commit_auction_files(
+                            [
+                                "data/auction_current.json",
+                                "data/combined_players.json",
+                                "data/wizbucks.json",
+                                "data/wizbucks_transactions.json",
+                                "data/player_log.json",
+                            ],
+                            f"Auction resolved: week of {week_key}",
+                            wait=True,
+                            timeout_seconds=60.0,
+                        )
 
                     if commit_ok:
                         self._resolve_retry_attempts = 0
                         self._resolve_next_retry_at = None
                         guard_ok = False
                         try:
-                            self._write_resolved_guard(week_key)
-                            guard_ok = self._commit_auction_files(
-                                [_AUCTION_RESOLVED_STATE_FILE],
-                                f"Auction resolve guard: week of {week_key}",
-                                wait=True,
-                                timeout_seconds=30.0,
-                            )
+                            with DATA_LOCK:
+                                self._write_resolved_guard(week_key)
+                                guard_ok = self._commit_auction_files(
+                                    [_AUCTION_RESOLVED_STATE_FILE],
+                                    f"Auction resolve guard: week of {week_key}",
+                                    wait=True,
+                                    timeout_seconds=30.0,
+                                )
                         except Exception as guard_exc:
                             print(f"⚠️ Failed to persist auction resolve guard: {guard_exc}")
 
@@ -554,13 +566,14 @@ class Auction(commands.Cog):
                 elif status == "no_bids":
                     guard_ok = False
                     try:
-                        self._write_resolved_guard(week_key)
-                        guard_ok = self._commit_auction_files(
-                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
-                            f"Auction resolve guard: week of {week_key} [no bids]",
-                            wait=True,
-                            timeout_seconds=30.0,
-                        )
+                        with DATA_LOCK:
+                            self._write_resolved_guard(week_key)
+                            guard_ok = self._commit_auction_files(
+                                [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
+                                f"Auction resolve guard: week of {week_key} [no bids]",
+                                wait=True,
+                                timeout_seconds=30.0,
+                            )
                     except Exception as guard_exc:
                         print(f"⚠️ Failed to persist no-bid resolve guard: {guard_exc}")
 

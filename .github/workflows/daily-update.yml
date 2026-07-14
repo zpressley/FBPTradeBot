@@ -208,20 +208,15 @@ jobs:
         git diff --staged --quiet || git commit -m "chore: sync combined_players.json from trade bot $(date +%Y-%m-%d)"
         git push
 
-    - name: Resolve weekly auction (Sundays only)
-      if: "${{ github.event_name == 'schedule' }}"
-      run: |
-        # Only run on Sundays (day 0)
-        if [ "$(date +%u)" = "7" ]; then
-          echo "Sunday detected — resolving auction..."
-          PYTHONPATH=. python3 scripts/resolve_auction.py
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add data/combined_players.json data/wizbucks.json data/wizbucks_transactions.json data/auction_current.json data/player_log.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🏁 Resolve weekly auction - $(date)" && git push)
-        else
-          echo "Not Sunday — skipping auction resolve."
-        fi
+    # NOTE: weekly auction resolution intentionally does NOT run here anymore.
+    # Until 2026-07-13 this step AND .github/workflows/resolve-auction.yml AND
+    # the live bot's own auction_tick loop (commands/auction.py) all
+    # independently tried to resolve_week() + git-commit the same files every
+    # Sunday, with no cross-process lock — that's what caused the recurring
+    # "Auction Resolution Pending Persistence" failures all season (see
+    # AUCTION_RESOLUTION_RELIABILITY.md). resolve-auction.yml is now the sole
+    # scheduled resolver, timed to run after the Sunday 10am ET match/forfeit
+    # deadline. Do not re-add an auction-resolve step here.
 
     - name: Fail run if pipeline reported failures
       if: steps.pipeline.outcome == 'failure'
