@@ -5,9 +5,21 @@ google_creds.json
 archive/
 scripts/archive/
 
+# Salesforce CLI artifacts (unrelated to this app, accidentally committed)
+.sfdx/
+
 # Local-only safety snapshots created during one-off data repairs
 /data/manual_backups/
 /data/Backups/
+
+# One-off pre-migration snapshot files (kept locally, not in git going forward)
+/data/*_before_milb_sweep_*.json
+/data/*_bak_graduation_fix.json
+/data/*_GP90_backup.json
+/data/*_backup.json
+/data/*_pre_bc_fix_backup.json
+/data/historical/**/*_bak_graduation_fix.csv
+/data/historical/**/*_GP90_backup.csv
 
 # Trade store lockfile (should never be committed)
 /data/trades.lock
