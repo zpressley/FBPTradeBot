@@ -283,6 +283,17 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
                 if old_contract != new_contract:
                     p["years_simple"] = new_contract
 
+                    # Keep `status` in sync with years_simple — same gap
+                    # found and fixed in bulk_graduate() (see there for
+                    # history). Without this, status can go stale relative
+                    # to the new contract tier.
+                    advancement_key = _YEARS_SIMPLE_TO_KEY.get(new_contract)
+                    if advancement_key and advancement_key in _KEY_TO_FIELDS:
+                        _, status = _KEY_TO_FIELDS[advancement_key]
+                        p["status"] = status
+                    else:
+                        print(f"⚠️ bulk_update_contracts: unrecognized new_contract '{new_contract}' for upid {p.get('upid')} — status left unchanged.")
+
                     log_player_action(
                         player_rec=p,
                         update_type="Admin",
