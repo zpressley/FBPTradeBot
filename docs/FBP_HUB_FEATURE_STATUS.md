@@ -1,6 +1,16 @@
 # FBP Hub Feature Status vs Original Plan
 
-_As of 2026-01-09_
+_As of 2026-01-09, with a July 2026 status update below_
+
+> **July 2026 update:** Several items below marked 🟡/❌ as of January have since
+> shipped and are confirmed live: the weekly auction portal (`auction.html`),
+> KAP self-service contract purchases (`kap.html`, `kap/kap_processor.py`),
+> PAD (`pad.html`), a web trade portal (`trade.html`, `api_trade.py`), a
+> commissioner admin panel (`admin.html`, `api_admin_bulk.py`), and a draft
+> picks page (`draft-picks.html`). Their specific sections below have been
+> updated inline and marked with this same note. Everything else in this doc
+> reflects January 2026 reality and has **not** been re-audited — treat
+> remaining 🟡/❌ items as "last known status," not verified-current-as-of-July.
 
 This document compares the original FBP Hub feature list (from the Claude plan) with what is actually implemented now across **fbp-hub** (website) and **fbp-trade-bot** (bot + data pipeline).
 
@@ -104,11 +114,7 @@ Status legend:
 
 ### Self-service transactions (graduations, DC slots)
 - **Planned status:** Partial
-- **Actual:** 🟡 **Partial**
-  - `transactions.html` + `js/transactions.js`:
-    - Authenticate manager (via existing auth system) and show eligible graduations and DC slot availability for their team.
-    - UI for “Graduate to R-4” and “Buy DC Slot” is present but currently only logs to console / shows toasts.
-  - No Cloudflare worker / bot integration yet to actually mutate rosters, contracts, or WizBucks – so it’s UI-only at this stage.
+- **Actual (July 2026 update):** ✅ **Complete** — `kap.html` + `kap/kap_processor.py` (backend) and `self_service/contract_purchase_processor.py` implement real contract-tier purchases (PC→BC, etc.) with WizBucks charges, fully wired through the Cloudflare Worker to `POST /api/manager/contract-purchase`, not UI-only anymore. (See `docs/KAP_BUYIN_INTEGRATION.md`.)
 
 ### 30-man roster compliance tracker
 - **Planned status:** Partial
@@ -118,8 +124,7 @@ Status legend:
 
 ### Trade submission (web alternative)
 - **Planned status:** Partial
-- **Actual:** ❌ **Not implemented**
-  - All trade flows are still Discord-first (`/trade`); there is no functioning web form or API endpoint for initiating trades.
+- **Actual (July 2026 update):** ✅ **Complete** — `trade.html` + `api_trade.py` + `trade/` implement a full web trade portal (propose/approve/execute), connected to the same Discord approval workflow. See `docs/archive/TRADE_TOOL_INTEGRATION.md` (the original build spec, now archived since the feature shipped).
 
 ---
 
@@ -137,9 +142,7 @@ Status legend:
 
 ### Draft pick tracker
 - **Planned status:** Not implemented
-- **Actual:** 🟡 **Partial**
-  - `fbp-hub/data/draft_picks.json` and a `draft-picks.html` page exist with a read-only view.
-  - `fbp-trade-bot` does not yet maintain draft-pick state as a first-class JSON in `data/`, and picks aren’t integrated into the Player Log or WizBucks system.
+- **Actual (July 2026 update):** ✅ **Complete** — `draft-picks.html` is live; picks are integrated into the trade portal (pick trading via `trade.html`) per `docs/KAP_DRAFT_PICK_CALCULATION.md`.
 
 ### Manager authentication (Discord OAuth)
 - **Planned status:** Not implemented
@@ -174,15 +177,13 @@ Status legend:
 
 These remain broadly **not implemented** beyond low-level scaffolding:
 
-- Weekly prospect auction portal – 🟡 **Partial (backend)**
-  - `auction_manager.py`, `/auction` and `/bid` commands, and FastAPI endpoints in `health.py` are implemented.
-  - The planned web portal UI is not yet in place.
+- Weekly prospect auction portal – ✅ **Complete (July 2026 update)** — `auction.html` provides the web portal UI on top of the already-implemented `auction_manager.py`/`/auction`/`/bid` backend.
 
 - Salary planning simulator – ❌
 - IL tag management – ❌ (no `il_tags.json` yet)
 - Year reduction tool (RaT) – ❌
 - Live draft mode – 🟡 (draft manager and Discord flows exist; no full web “live draft” UX).
-- Commissioner admin panel – ❌ (some admin commands exist but no consolidated web panel).
+- Commissioner admin panel – ✅ **Complete (July 2026 update)** — `admin.html` + `api_admin_bulk.py` (bulk graduate, bulk contract update, bulk release, player search/CSV export) is a consolidated web panel.
 
 ---
 

@@ -94,33 +94,27 @@ python data_pipeline/merge_players.py
 python data_pipeline/save_standings.py
 ```
 
-### Service-time daily pipeline
-The `service_time/daily_service_tracker.py` script orchestrates the fuller daily pipeline for prospect service-time tracking (Yahoo/Hub updates, roster events, service-day calculations, and merge back into `data/`).
-
-```bash
-source venv/bin/activate
-python service_time/daily_service_tracker.py
-```
-
-This wrapper will call the underlying `service_time/*.py` and `random/*.py` helpers referenced inside that script.
+### Service-time tracking (archived)
+The old service-time daily pipeline (`service_time/daily_service_tracker.py` and its helpers) has been retired to `archive/service_time/` — it's no longer part of the live pipeline. Service-day tracking now happens via `scripts/archive/count_service_days.py` and `scripts/archive/update_combined_with_service_days.py` (also archived; check whether these are still invoked by `data_pipeline/smart_update_all.py` before assuming they run).
 
 Important: several commands load JSON at import time (notably `commands/roster.py`), so after updating `data/*.json` you typically need to restart the bot process for changes to be reflected.
 
-Note: the Yahoo-related pipeline scripts import `token_manager` (e.g. `from token_manager import get_access_token`). In this repo, the implementation currently lives in `random/token_manager.py`, so running the pipeline may require fixing the import path (e.g., moving/duplicating the module or adjusting imports).
+Note: the canonical Yahoo OAuth implementation lives in `data_pipeline/token_manager.py` (previously duplicated three ways — here, `data_pipeline/`, and `random/` — consolidated July 2026). The root-level `token_manager.py` is a thin compatibility shim that re-exports from `data_pipeline/token_manager.py` for scripts that import it from the repo root.
 
 ### Lint / typecheck
 No linter/typechecker is configured in-repo (no Ruff/Black/Mypy config files).
 
 ### Tests
-No automated test runner is configured. The repo contains ad-hoc scripts under `random/`, `service_time/`, and the `tests/` directory that are used like manual tests.
+No automated test runner is configured. `tests/test_robust_parser.py` (CSV rank parser) and `scripts/test_auction.py` (full auction-week simulation against real `auction_manager`/`wb_ledger` modules) are the only real test-like scripts; a handful of other ad-hoc one-off scripts live in `scripts/archive/` (retired dev/debug utilities, not a test suite — e.g. the old `random/test_trade_logic.py`).
 
 Examples (run one at a time):
 ```bash
 source venv/bin/activate
-python random/test_trade_logic.py           # trade workflow checks
-python service_time/test_service-commands.py  # service command data sanity checks
 python tests/test_robust_parser.py          # CSV rank parser
+python scripts/test_auction.py              # full auction-week simulation
 ```
+
+Note: as of July 2026 there's no automated coverage for the trade, KAP, PAD, or buy-in modules — the money/roster-moving business logic — which is a known gap, not an oversight.
 
 ### One-off scripts
 For any future one-off or maintenance workflows (e.g., reading or manipulating data with standalone Python processes), prefer placing them under the `scripts/` directory.
@@ -172,13 +166,13 @@ The draft feature is split between Discord cogs and pure “state manager” cod
   - Also listens to messages in the draft channel (picks are typed as plain messages).
   - Uses persisted state and a timer task (autopick fallback).
 - `draft/draft_manager.py`: core draft state machine + persistence.
-  - Reads draft order from `data/draft_order_2025.json`.
-  - Persists per-draft state to `data/draft_state_{draft_type}_2025.json`.
+  - Reads draft order from `data/draft_order_2026.json`.
+  - Persists per-draft state to `data/draft_state_{draft_type}_2026.json`.
 - `commands/board.py` + `draft/board_manager.py`: manager draft boards.
-  - Stores per-team ordered target lists in `data/manager_boards_2025.json`.
+  - Stores per-team ordered target lists in `data/manager_boards_2026.json`.
   - Draft autopick prefers the team’s board (`BoardManager.get_next_available(...)`).
 - `draft/pick_validator.py`: rule validation logic (wired for use, but the Discord draft flow currently uses a lightweight confirmation flow).
-- Additional narrative documentation for the draft system lives in `DRAFT_SYSTEM_HANDOFF.md` and the `docs/` directory.
+- Additional narrative documentation for the draft system lives in `docs/archive/DRAFT_SYSTEM_HANDOFF.md` (historical, Dec 2024 snapshot) and the `docs/` directory.
 
 ### Prospect database & live pick tracking
 Historically this used a dedicated Discord database channel, but that flow is
@@ -200,22 +194,16 @@ The prospect auction flow centralizes business rules in `auction_manager.py` and
 The bot expects JSON files under `data/` to exist and match the schema produced by pipeline scripts.
 
 Most important files:
-- `data/combined_players.json`: merged roster view (Yahoo rosters + Google Sheet metadata). Used by trade/roster/player lookup.
-- `data/wizbucks.json`: Wiz Bucks balances from Google Sheets. Used by `/trade` validation.
+- `data/combined_players.json`: merged roster/contract/prospect view (Yahoo rosters + player metadata). Used by trade/roster/player lookup, KAP, and graduation logic.
+- `data/wizbucks.json`: WizBucks balances. As of the in-season bot ledger becoming the source of truth, this is rebuilt from `data/wizbucks_transactions.json` via `wb_ledger.py`, not pulled from Google Sheets — see `data/README.md`-equivalent doc `docs/WIZBUCKS_WALLET_SYSTEM.md`.
 - `data/standings.json`: standings snapshot used by `/standings`.
-- `data/draft_order_2025.json`, `data/draft_state_*_2025.json`, `data/manager_boards_2025.json`: draft system persistence.
+- `data/draft_order_2026.json`, `data/draft_state_*_2026.json`, `data/manager_boards_2026.json`: draft system persistence.
 - `data/service_stats.json`: service-days snapshot used by `/service`/`/prospects`/`/alerts`.
 
 ### Data pipeline
-Scripts in `data_pipeline/` populate the `data/` directory.
+Scripts in `data_pipeline/` populate the `data/` directory. `data_pipeline/smart_update_all.py` is the actual orchestrator that runs daily (via `.github/workflows/daily-update.yml`) — it picks a season-phase-aware execution path (see `docs/DATA_ORCHESTRATION.md`) rather than always running the same fixed sequence. The older `data_pipeline/update_all.py` still exists but is not what runs in production.
 
-High-level flow (see `data_pipeline/update_all.py`):
-1) Pull Yahoo rosters -> `data/yahoo_players.json`
-2) Pull Google Sheet “Player Data” -> `data/sheet_players.json`
-3) Pull Google Sheet Wiz Bucks -> `data/wizbucks.json`
-4) Merge Yahoo + sheet data -> `data/combined_players.json`
-5) Pull standings/scoreboard -> `data/standings.json`
+Notably, legacy Google Sheets-based WizBucks sync is disabled in-season — the bot's own transaction ledger (`wb_ledger.py` + `data/wizbucks_transactions.json`) is the source of truth, not a Sheets pull.
 
 Other directories:
-- `service_time/`: additional scripts for service-day tracking and Google Sheets updates.
-- `random/`: one-off utilities and experiments (includes a `token_manager.py` used by some scripts).
+- `archive/`, `scripts/archive/`: retired one-off scripts and the old service-time tracking system — not part of the live pipeline. If you're trying to find where old `random/` or `service_time/` scripts went, they're in `scripts/archive/` and `archive/service_time/` respectively (both directories were cleaned up and consolidated July 2026).

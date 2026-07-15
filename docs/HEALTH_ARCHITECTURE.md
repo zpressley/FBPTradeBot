@@ -10,13 +10,15 @@ Your `health.py` is the **single production entrypoint** that runs both:
    - Handles all Discord interactions
 
 2. **FastAPI Web Server** (background thread)
-   - Health check endpoints for Render monitoring
+   - Health check endpoints for Railway monitoring
    - Full API suite for website integration
    - API key authentication for security
 
 ---
 
 ## API Endpoints Available
+
+This list covers the original core APIs this doc was written around. `health.py` has since grown many more routers (`api_admin_bulk.py`, `api_buyin.py`, `api_trade.py`, `api_settings.py`, `api_client_log.py`, and more under `self_service/`) — check `health.py`'s `app.include_router(...)` calls for the full current surface.
 
 ### Health Checks (Public)
 - `GET /` - Basic health status
@@ -46,7 +48,7 @@ Header: X-API-Key: your_bot_api_key
 
 **Setup:**
 1. Generate secure key: `openssl rand -hex 32`
-2. Set in Render: `BOT_API_KEY=abc123...`
+2. Set in Railway: `BOT_API_KEY=abc123...`
 3. Set in Cloudflare Worker: Same key
 4. Worker includes key in all requests
 
@@ -128,7 +130,7 @@ GOOGLE_CREDS_JSON=...       # Required: Service account (minified JSON)
 YAHOO_TOKEN_JSON=...        # Required: Yahoo API token (minified JSON)
 
 # Server
-PORT=8000                   # Optional: Render sets this automatically
+PORT=8000                   # Optional: Railway sets this automatically
 ```
 
 ---
@@ -136,9 +138,9 @@ PORT=8000                   # Optional: Render sets this automatically
 ## Deployment Checklist
 
 - [ ] `health.py` is your start command: `python health.py`
-- [ ] All environment variables set in Render
+- [ ] All environment variables set in Railway
 - [ ] Health check path set to `/health`
-- [ ] Same `BOT_API_KEY` in both Render and Cloudflare Worker
+- [ ] Same `BOT_API_KEY` in both Railway and Cloudflare Worker
 - [ ] Bot has proper Discord permissions (admin/manage server)
 - [ ] GitHub repo connected for auto-deploy
 
@@ -202,14 +204,13 @@ PORT=8000                   # Optional: Render sets this automatically
 - Wait 2 minutes after deploy (Discord API can be slow)
 
 ### "API returns 401 Unauthorized"
-- Verify `BOT_API_KEY` is set in Render
+- Verify `BOT_API_KEY` is set in Railway
 - Verify Cloudflare Worker uses same key
 - Check header format: `X-API-Key` (capital K)
 
-### "Bot disconnects after 15 minutes"
-- Render free tier spins down
-- Solution 1: Upgrade to Starter plan ($7/month)
-- Solution 2: Use UptimeRobot to ping `/health` every 5 minutes
+### "Bot disconnects unexpectedly"
+- Check Railway's deployment logs for crashes/restarts rather than assuming a free-tier sleep issue (this section was written for Render's free-tier spin-down behavior, which doesn't apply the same way on Railway)
+- Remember every git push to `main` triggers a Railway redeploy — a burst of automated commits (hourly standings, daily pipeline) means frequent restarts by design, not a bug
 
 ### "Import errors on startup"
 - Ensure all dependencies in `requirements.txt`
@@ -223,15 +224,15 @@ PORT=8000                   # Optional: Render sets this automatically
 | Feature | bot.py | health.py |
 |---------|--------|-----------|
 | Purpose | Discord only | Discord + API server |
-| Deployment | Local testing | Production (Render) |
+| Deployment | Local testing | Production (Railway) |
 | Health checks | None | `/` and `/health` |
 | API endpoints | None | Full auction/draft/board APIs |
 | Authentication | None | API key required |
 | Threading | Single thread | Multi-threaded |
-| Render compatible | No | Yes (health checks) |
+| Railway compatible | No | Yes (health checks) |
 
 **Use bot.py for:** Local development, testing commands  
-**Use health.py for:** Production deployment on Render
+**Use health.py for:** Production deployment on Railway
 
 ---
 

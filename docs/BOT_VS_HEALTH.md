@@ -3,7 +3,7 @@
 ## TL;DR
 
 **Use `bot.py` for:** Local development and testing  
-**Use `health.py` for:** Production deployment on Render
+**Use `health.py` for:** Production deployment on Railway
 
 ---
 
@@ -12,11 +12,11 @@
 | Feature | bot.py | health.py |
 |---------|--------|-----------|
 | **Primary Purpose** | Discord bot only | Discord bot + Web API server |
-| **Deployment Target** | Local machine | Render (production) |
+| **Deployment Target** | Local machine | Railway (production) |
 | **Health Endpoints** | ❌ None | ✅ `/` and `/health` |
 | **API Endpoints** | ❌ None | ✅ Auction/Draft/Board APIs |
 | **Threading** | Single thread | Multi-threaded (bot + server) |
-| **Render Compatible** | ❌ No health checks | ✅ Full health monitoring |
+| **Railway Compatible** | ❌ No health checks | ✅ Full health monitoring |
 | **Website Integration** | ❌ Not possible | ✅ Complete API suite |
 | **Authentication** | ❌ None | ✅ API key protection |
 | **Auto-deploy Ready** | ❌ No | ✅ Yes |
@@ -67,7 +67,7 @@ python bot.py
 **NOT good for:**
 - ❌ Production deployment (no health checks)
 - ❌ Website integration (no API server)
-- ❌ Render deployment (needs health endpoint)
+- ❌ Railway deployment (needs health endpoint)
 - ❌ Monitoring (can't check if alive)
 
 ---
@@ -78,7 +78,7 @@ python bot.py
 
 **What it does:**
 ```python
-# Load from environment (Render secrets)
+# Load from environment (Railway environment variables)
 TOKEN = os.getenv("DISCORD_TOKEN")
 API_KEY = os.getenv("BOT_API_KEY")
 
@@ -112,12 +112,12 @@ async def get_draft_board(...): ...
 # - Discord bot in main thread
 ```
 
-**Usage on Render:**
+**Usage on Railway:**
 ```bash
 # Start command
 python health.py
 
-# Environment variables (set in Render dashboard)
+# Environment variables (set in Railway dashboard)
 DISCORD_TOKEN=...
 BOT_API_KEY=...
 GOOGLE_CREDS_JSON=...
@@ -125,7 +125,7 @@ YAHOO_TOKEN_JSON=...
 ```
 
 **Good for:**
-- ✅ Production deployment on Render
+- ✅ Production deployment on Railway
 - ✅ 24/7 operation with health monitoring
 - ✅ Website integration via API
 - ✅ Auction portal from website
@@ -197,9 +197,9 @@ python bot.py
 ### Scenario 2: Production Deployment
 **Use:** `health.py`
 ```bash
-# Deploy to Render
+# Deploy to Railway
 git push
-# Render auto-deploys
+# Railway auto-deploys
 # Bot runs 24/7
 ```
 
@@ -220,7 +220,7 @@ git push
 python bot.py
 
 # When working, deploy
-# Set up health.py on Render
+# Set up health.py on Railway
 ```
 
 ---
@@ -230,10 +230,10 @@ python bot.py
 **If you currently use bot.py locally:**
 
 1. Keep using `bot.py` for local testing ✅
-2. Deploy `health.py` to Render ✅
-3. Configure environment variables in Render
+2. Deploy `health.py` to Railway ✅
+3. Configure environment variables in Railway
 4. Keep local `google_creds.json` and `token.json` for bot.py
-5. Use minified JSON env vars for health.py on Render
+5. Use environment variables for health.py on Railway
 
 **Both can coexist!** They're designed for different environments.
 
@@ -245,8 +245,8 @@ python bot.py
 - Check: Do `google_creds.json` and `token.json` exist?
 - Check: Is `DISCORD_TOKEN` in `.env`?
 
-**Render health.py fails:**
-- Check: Are env vars set in Render dashboard?
+**Railway health.py fails:**
+- Check: Are env vars set in the Railway dashboard?
 - Check: Did you minify the JSON credentials?
 - Check: Is `PORT` set correctly (usually auto-set)?
 
@@ -264,7 +264,7 @@ python bot.py
 | Deploy to production | `health.py` |
 | Enable website features | `health.py` |
 | Debug quickly | `bot.py` |
-| Run 24/7 | `health.py` on Render |
+| Run 24/7 | `health.py` on Railway |
 | Integrate with web UI | `health.py` APIs |
 | Just use Discord | Either works! |
 
@@ -272,7 +272,7 @@ python bot.py
 
 ## What health.py Gives You (That bot.py Doesn't)
 
-1. **Health Monitoring** - Render knows bot is alive
+1. **Health Monitoring** - Railway knows bot is alive
 2. **API Server** - Website can interact with bot
 3. **Auction Integration** - Web portal works
 4. **Draft Board Editor** - Managers can use website
@@ -284,11 +284,10 @@ python bot.py
 
 ## Final Answer
 
-**For Render deployment with 100% uptime:**
+**For Railway deployment:**
 
-✅ Use `health.py` as your start command  
-✅ Set all environment variables  
-✅ Configure health check path to `/health`  
-✅ Upgrade to Starter plan OR use UptimeRobot  
+✅ `health.py` is already the configured start command (see `nixpacks.toml`)
+✅ Set all environment variables in Railway's dashboard
+✅ Railway redeploys automatically on every push to `main`
 
 **Your bot.py can stay for local testing - both are useful!**

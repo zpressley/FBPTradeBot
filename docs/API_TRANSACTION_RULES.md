@@ -11,7 +11,7 @@
 **The website (fbp-hub) is READ-ONLY.** It displays data from the bot repo (fbp-trade-bot) via GitHub Actions that sync files.
 
 **If an API endpoint doesn't commit to git:**
-1. Changes are only saved locally on the Render server
+1. Changes are only saved locally on the Railway server
 2. Next git pull overwrites the local changes → data lost
 3. Website never sees the changes (because they're not in git)
 4. User clicks button → sees success message → nothing actually happened
@@ -316,16 +316,16 @@ discord_msg = f"""➕ **New Player Added**
 
 ---
 
-## Rule 6: Render Server Logs Must Be Visible
+## Rule 6: Railway Server Logs Must Be Visible
 
-**All operations MUST be visible in Render logs:**
+**All operations MUST be visible in Railway logs:**
 
-1. **Use print statements** (they appear in Render console)
+1. **Use print statements** (they appear in the Railway console)
 2. **Include timestamps** for debugging
 3. **Log each step** of the operation
 4. **Log success AND failure**
 
-**Example Render log output:**
+**Example Railway log output:**
 ```
 🔄 Starting add-player transaction for Tatsuya Imai by WAR
   📝 Assigned UPID: 8436
@@ -557,5 +557,4 @@ if result.stdout.strip():
 ## Related Documents
 
 - `CRITICAL_RULES.md` - Wallet and balance handling rules
-- `docs/FILE_STRUCTURE_GUIDE.md` - Data file documentation
 - `docs/WIZBUCKS_WALLET_SYSTEM.md` - WizBucks transaction handling
