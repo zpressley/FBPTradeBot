@@ -91,10 +91,16 @@
       "yahoo_id": "64318"
     },
     {
-      "name": "Braxton Ashcraft",
+      "name": "Sean Burke",
       "position": "SP,RP",
-      "team": "PIT",
-      "yahoo_id": "11372"
+      "team": "CWS",
+      "yahoo_id": "12418"
+    },
+    {
+      "name": "Colin Holderman",
+      "position": "RP",
+      "team": "CLE",
+      "yahoo_id": "12616"
     },
     {
       "name": "Trevor Megill",
@@ -121,22 +127,16 @@
       "yahoo_id": "8616"
     },
     {
+      "name": "Braxton Ashcraft",
+      "position": "SP,RP",
+      "team": "PIT",
+      "yahoo_id": "11372"
+    },
+    {
       "name": "Cristopher S\u00e1nchez",
       "position": "SP",
       "team": "PHI",
       "yahoo_id": "11706"
-    },
-    {
-      "name": "Colin Holderman",
-      "position": "RP",
-      "team": "CLE",
-      "yahoo_id": "12616"
-    },
-    {
-      "name": "Sean Burke",
-      "position": "SP,RP",
-      "team": "CWS",
-      "yahoo_id": "12418"
     },
     {
       "name": "Jes\u00fas Luzardo",
@@ -315,22 +315,16 @@
       "yahoo_id": "63247"
     },
     {
-      "name": "Emerson Hancock",
-      "position": "SP,RP",
-      "team": "SEA",
-      "yahoo_id": "11988"
-    },
-    {
-      "name": "Angel Chivilli",
-      "position": "RP",
-      "team": "NYY",
-      "yahoo_id": "63478"
-    },
-    {
       "name": "Nick Martinez",
       "position": "SP,RP",
       "team": "TB",
       "yahoo_id": "9651"
+    },
+    {
+      "name": "Emerson Hancock",
+      "position": "SP,RP",
+      "team": "SEA",
+      "yahoo_id": "11988"
     },
     {
       "name": "Brandon Sproat",
@@ -361,6 +355,12 @@
       "position": "SP,RP",
       "team": "AZ",
       "yahoo_id": "60056"
+    },
+    {
+      "name": "Angel Chivilli",
+      "position": "RP",
+      "team": "NYY",
+      "yahoo_id": "63478"
     },
     {
       "name": "Kyle Harrison",
