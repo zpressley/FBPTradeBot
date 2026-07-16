@@ -149,7 +149,7 @@
       "live_record": "1-0-19",
       "live_win_pct": 0.525,
       "categories": {
-        "H/AB": "0/1",
+        "H/AB": "0/2",
         "R": 0,
         "H": 0,
         "HR": 0,
@@ -184,19 +184,19 @@
       "win_pct": 0.555,
       "opponent": "DMN",
       "score": "2",
-      "opponent_score": "0",
-      "ties": "18",
-      "live_record": "2-0-18",
-      "live_win_pct": 0.55,
+      "opponent_score": "1",
+      "ties": "17",
+      "live_record": "2-1-17",
+      "live_win_pct": 0.525,
       "categories": {
-        "H/AB": "0/1",
+        "H/AB": "0/2",
         "R": 0,
         "H": 0,
         "HR": 0,
         "RBI": 0,
         "SB": 0,
         "BB": 0,
-        "K": 0,
+        "K": 1,
         "TB": 0,
         "AVG": ".000",
         "OPS": ".000",
@@ -212,8 +212,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "172-135-33",
-      "overall_live_win_pct": 0.554,
+      "overall_live_record": "172-136-32",
+      "overall_live_win_pct": 0.553,
       "live_rank": 3
     },
     {
@@ -223,11 +223,11 @@
       "record": "160-146-14",
       "win_pct": 0.522,
       "opponent": "SAD",
-      "score": "0",
+      "score": "1",
       "opponent_score": "2",
-      "ties": "18",
-      "live_record": "0-2-18",
-      "live_win_pct": 0.45,
+      "ties": "17",
+      "live_record": "1-2-17",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -252,8 +252,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "160-148-32",
-      "overall_live_win_pct": 0.518,
+      "overall_live_record": "161-148-31",
+      "overall_live_win_pct": 0.519,
       "live_rank": 5
     },
     {
@@ -469,14 +469,14 @@
       "live_record": "2-1-17",
       "live_win_pct": 0.525,
       "categories": {
-        "H/AB": "0/3",
+        "H/AB": "0/4",
         "R": 0,
         "H": 0,
         "HR": 0,
         "RBI": 0,
         "SB": 0,
         "BB": 0,
-        "K": 2,
+        "K": 3,
         "TB": 0,
         "AVG": ".000",
         "OPS": ".000",
@@ -549,7 +549,7 @@
       "live_record": "5-0-15",
       "live_win_pct": 0.625,
       "categories": {
-        "H/AB": "1/1",
+        "H/AB": "1/2",
         "R": 0,
         "H": 1,
         "HR": 0,
@@ -558,8 +558,8 @@
         "BB": 0,
         "K": 0,
         "TB": 1,
-        "AVG": "1.000",
-        "OPS": "2.000",
+        "AVG": ".500",
+        "OPS": "1.000",
         "APP": 0,
         "IP": "0.0",
         "ER": 0,
@@ -653,7 +653,7 @@
         "name": "La Flama Blanca",
         "score": "1",
         "categories": {
-          "H/AB": "0/1",
+          "H/AB": "0/2",
           "R": 0,
           "H": 0,
           "HR": 0,
@@ -744,14 +744,14 @@
         "name": "Country Fried Lamb",
         "score": "2",
         "categories": {
-          "H/AB": "0/3",
+          "H/AB": "0/4",
           "R": 0,
           "H": 0,
           "HR": 0,
           "RBI": 0,
           "SB": 0,
           "BB": 0,
-          "K": 2,
+          "K": 3,
           "TB": 0,
           "AVG": ".000",
           "OPS": ".000",
@@ -862,7 +862,7 @@
       "team1": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -893,14 +893,14 @@
         "name": "not much of a donkey",
         "score": "2",
         "categories": {
-          "H/AB": "0/1",
+          "H/AB": "0/2",
           "R": 0,
           "H": 0,
           "HR": 0,
           "RBI": 0,
           "SB": 0,
           "BB": 0,
-          "K": 0,
+          "K": 1,
           "TB": 0,
           "AVG": ".000",
           "OPS": ".000",
@@ -924,7 +924,7 @@
         "name": "Rick Vaughn",
         "score": "5",
         "categories": {
-          "H/AB": "1/1",
+          "H/AB": "1/2",
           "R": 0,
           "H": 1,
           "HR": 0,
@@ -933,8 +933,8 @@
           "BB": 0,
           "K": 0,
           "TB": 1,
-          "AVG": "1.000",
-          "OPS": "2.000",
+          "AVG": ".500",
+          "OPS": "1.000",
           "APP": 0,
           "IP": "0.0",
           "ER": 0,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-07-16T22:49:47.593525+00:00"
+  "refreshed_at": "2026-07-16T23:10:15.808401+00:00"
 }
