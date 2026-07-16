@@ -4037,7 +4037,7 @@
     "bats": "R",
     "bbref_id": "buehlwa01",
     "birth_date": "1994-07-28",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19374",
     "fangraphs_name": "Walker Buehler",
     "fypd": false,
@@ -5322,7 +5322,7 @@
     "bats": "R",
     "bbref_id": "culpeka01",
     "birth_date": "2002-12-29",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3025360",
@@ -6508,13 +6508,13 @@
     "player_type": "MLB",
     "position": "CF",
     "rank": 193,
-    "status": "",
+    "status": "[5] TC1",
     "team": "WSH",
     "throws": "R",
     "upid": "6562",
     "weight": 203,
     "yahoo_id": "62971",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "B2J",
@@ -6978,7 +6978,7 @@
     "bats": "R",
     "bbref_id": "susanja01",
     "birth_date": "2004-03-23",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3018808",
@@ -7767,7 +7767,7 @@
     "bats": "R",
     "bbref_id": "dunoal01",
     "birth_date": "2006-01-07",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3021066",
@@ -7899,7 +7899,7 @@
     "bats": "L",
     "bbref_id": "velazra01",
     "birth_date": "2005-05-28",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3023013",
@@ -11370,7 +11370,7 @@
     "bats": "R",
     "bbref_id": "murphow01",
     "birth_date": "2003-09-27",
-    "contract_type": "Development Cont.",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3020330",
@@ -13164,12 +13164,12 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": null,
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "gaddihu01",
     "birth_date": "1998-04-09",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25636",
     "fangraphs_name": "Hunter Gaddis",
     "fypd": false,
@@ -16267,7 +16267,7 @@
     "bats": "R",
     "bbref_id": "sloanry01",
     "birth_date": "2006-01-29",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3067131",
@@ -27077,7 +27077,7 @@
     "bats": "L",
     "bbref_id": "perezma02",
     "birth_date": "1991-04-04",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "6902",
     "fangraphs_name": "Martin Perez",
     "fypd": false,
@@ -34535,7 +34535,7 @@
     "bats": "R",
     "bbref_id": "kreidry01",
     "birth_date": "1997-11-12",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25867",
     "fangraphs_name": "Ryan Kreidler",
     "fypd": false,
@@ -34944,7 +34944,7 @@
     "bats": "R",
     "bbref_id": "loftini01",
     "birth_date": "1998-09-25",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27630",
     "fangraphs_name": "Nick Loftin",
     "fypd": false,
@@ -39524,6 +39524,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "HAM",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-12-02",
@@ -39544,8 +39545,7 @@
     "upid": "3933",
     "weight": 234,
     "yahoo_id": "60541",
-    "years_simple": "P",
-    "NRI": "HAM"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -48874,7 +48874,7 @@
     "bats": "R",
     "bbref_id": "meltotr01",
     "birth_date": "2000-12-03",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "31807",
@@ -63725,7 +63725,7 @@
     "bats": "R",
     "bbref_id": "youngbr01",
     "birth_date": "1998-08-19",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "27819",
     "fangraphs_name": "Brandon Young",
     "fypd": false,
@@ -68034,6 +68034,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "JEP",
     "age": 23,
     "bats": "R",
     "bbref_id": "karroky01",
@@ -68059,8 +68060,7 @@
     "upid": "7037",
     "weight": 220,
     "yahoo_id": "62831",
-    "years_simple": "P",
-    "NRI": "JEP"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -72790,7 +72790,7 @@
     "bats": "L",
     "bbref_id": "ewingaj01",
     "birth_date": "2004-08-10",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3022963",
@@ -77961,6 +77961,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "HAM",
     "age": 23,
     "bats": "R",
     "birth_date": "2003-01-31",
@@ -77981,8 +77982,7 @@
     "upid": "7745",
     "weight": 205,
     "yahoo_id": "64435",
-    "years_simple": "P",
-    "NRI": "HAM"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -92634,7 +92634,7 @@
     "bats": "L",
     "bbref_id": "kayan01",
     "birth_date": "1995-03-21",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20387",
     "fangraphs_name": "Anthony Kay",
     "fypd": false,
@@ -92652,7 +92652,7 @@
     "upid": "2105",
     "weight": 225,
     "yahoo_id": "10538",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -92769,7 +92769,7 @@
     "age": 26,
     "bats": "L",
     "birth_date": "1999-06-20",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fypd": false,
     "height": "5' 10\"",
@@ -131824,7 +131824,7 @@
     "bats": "R",
     "bbref_id": "eatonna01",
     "birth_date": "1996-12-22",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fangraphs_id": "25055",
     "fangraphs_name": "Nate Eaton",
@@ -144619,18 +144619,18 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "R",
     "bbref_id": "tolbety01",
     "birth_date": "1998-01-27",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debuted": true,
     "fangraphs_id": "25779",
     "fangraphs_name": "Tyler Tolbert",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 686475,
     "mlb_primary_position": "2B",
     "name": "Tyler Tolbert",
@@ -155125,6 +155125,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "TBB",
     "age": 31,
     "bats": "R",
     "birth_date": "1995-06-02",
@@ -155145,8 +155146,7 @@
     "upid": "8540",
     "weight": 235,
     "yahoo_id": "63965",
-    "years_simple": "P",
-    "NRI": "TBB"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -155194,6 +155194,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "SAD",
     "age": 35,
     "bats": "R",
     "birth_date": "1991-01-09",
@@ -155214,8 +155215,7 @@
     "upid": "8543",
     "weight": 225,
     "yahoo_id": "",
-    "years_simple": "P",
-    "NRI": "SAD"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",

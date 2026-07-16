@@ -11732,7 +11732,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 24,
     "bats": "R",
     "bbref_id": "dollach01",
@@ -11745,7 +11745,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 801403,
     "mlb_primary_position": "P",
     "name": "Chase Dollander",
@@ -12491,7 +12491,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 32,
     "bats": "L",
     "bbref_id": "mcculla02",
@@ -12501,7 +12501,7 @@
     "fangraphs_name": "Lance McCullers Jr.",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 621121,
     "mlb_primary_position": "P",
     "name": "Lance McCullers Jr.",
@@ -144619,7 +144619,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "tolbety01",
@@ -144630,7 +144630,7 @@
     "fangraphs_name": "Tyler Tolbert",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 686475,
     "mlb_primary_position": "2B",
     "name": "Tyler Tolbert",

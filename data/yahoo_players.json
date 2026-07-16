@@ -577,10 +577,10 @@
       "yahoo_id": "11221"
     },
     {
-      "name": "Mauricio Dub\u00f3n",
-      "position": "2B,3B,SS,CF",
-      "team": "ATL",
-      "yahoo_id": "10524"
+      "name": "Bo Bichette",
+      "position": "3B,SS",
+      "team": "NYM",
+      "yahoo_id": "10766"
     },
     {
       "name": "Geraldo Perdomo",
@@ -589,10 +589,10 @@
       "yahoo_id": "11417"
     },
     {
-      "name": "Cody Bellinger",
-      "position": "CF",
-      "team": "NYY",
-      "yahoo_id": "10504"
+      "name": "A.J. Ewing",
+      "position": "2B,CF",
+      "team": "NYM",
+      "yahoo_id": "63129"
     },
     {
       "name": "Taylor Ward",
@@ -607,22 +607,22 @@
       "yahoo_id": "12582"
     },
     {
-      "name": "A.J. Ewing",
-      "position": "2B,CF",
-      "team": "NYM",
-      "yahoo_id": "63129"
+      "name": "Cody Bellinger",
+      "position": "CF",
+      "team": "NYY",
+      "yahoo_id": "10504"
+    },
+    {
+      "name": "Mauricio Dub\u00f3n",
+      "position": "2B,3B,SS,CF",
+      "team": "ATL",
+      "yahoo_id": "10524"
     },
     {
       "name": "Alejandro Kirk",
       "position": "C",
       "team": "TOR",
       "yahoo_id": "11853"
-    },
-    {
-      "name": "Bo Bichette",
-      "position": "3B,SS",
-      "team": "NYM",
-      "yahoo_id": "10766"
     },
     {
       "name": "Jung Hoo Lee",
@@ -649,6 +649,12 @@
       "yahoo_id": "12336"
     },
     {
+      "name": "A.J. Minter",
+      "position": "RP",
+      "team": "NYM",
+      "yahoo_id": "10794"
+    },
+    {
       "name": "Peter Lambert",
       "position": "SP",
       "team": "HOU",
@@ -665,12 +671,6 @@
       "position": "RP",
       "team": "KC",
       "yahoo_id": "11322"
-    },
-    {
-      "name": "A.J. Minter",
-      "position": "RP",
-      "team": "NYM",
-      "yahoo_id": "10794"
     },
     {
       "name": "Yuki Matsui",
@@ -1147,10 +1147,10 @@
       "yahoo_id": "11781"
     },
     {
-      "name": "Mookie Betts",
+      "name": "Francisco Lindor",
       "position": "SS",
-      "team": "LAD",
-      "yahoo_id": "9552"
+      "team": "NYM",
+      "yahoo_id": "9116"
     },
     {
       "name": "Randy Arozarena",
@@ -1177,10 +1177,10 @@
       "yahoo_id": "1000001"
     },
     {
-      "name": "Francisco Lindor",
+      "name": "Mookie Betts",
       "position": "SS",
-      "team": "NYM",
-      "yahoo_id": "9116"
+      "team": "LAD",
+      "yahoo_id": "9552"
     },
     {
       "name": "Josh Jung",
@@ -2035,6 +2035,12 @@
       "position": "SP",
       "team": "BOS",
       "yahoo_id": "63143"
+    },
+    {
+      "name": "Chase Dollander",
+      "position": "SP,RP",
+      "team": "COL",
+      "yahoo_id": "62975"
     }
   ],
   "WAR": [
@@ -2217,6 +2223,12 @@
       "position": "SP,RP",
       "team": "DET",
       "yahoo_id": "12422"
+    },
+    {
+      "name": "Lance McCullers Jr.",
+      "position": "SP",
+      "team": "MIL",
+      "yahoo_id": "9575"
     }
   ]
 }
