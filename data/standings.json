@@ -160,7 +160,7 @@
         "TB": 0,
         "AVG": ".000",
         "OPS": ".000",
-        "APP": 1,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -183,11 +183,11 @@
       "record": "170-135-15",
       "win_pct": 0.555,
       "opponent": "DMN",
-      "score": "7",
+      "score": "8",
       "opponent_score": "6",
-      "ties": "7",
-      "live_record": "7-6-7",
-      "live_win_pct": 0.525,
+      "ties": "6",
+      "live_record": "8-6-6",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "2/8",
         "R": 0,
@@ -200,7 +200,7 @@
         "TB": 3,
         "AVG": ".250",
         "OPS": ".625",
-        "APP": 2,
+        "APP": 3,
         "IP": "5.0",
         "ER": 7,
         "P_HR": 1,
@@ -212,8 +212,8 @@
         "BB/9": "1.80",
         "QS": 0
       },
-      "overall_live_record": "177-141-22",
-      "overall_live_win_pct": 0.553,
+      "overall_live_record": "178-141-21",
+      "overall_live_win_pct": 0.554,
       "live_rank": 3
     },
     {
@@ -224,10 +224,10 @@
       "win_pct": 0.522,
       "opponent": "SAD",
       "score": "6",
-      "opponent_score": "7",
-      "ties": "7",
-      "live_record": "6-7-7",
-      "live_win_pct": 0.475,
+      "opponent_score": "8",
+      "ties": "6",
+      "live_record": "6-8-6",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -252,8 +252,8 @@
         "BB/9": "9.00",
         "QS": 0
       },
-      "overall_live_record": "166-153-21",
-      "overall_live_win_pct": 0.519,
+      "overall_live_record": "166-154-20",
+      "overall_live_win_pct": 0.518,
       "live_rank": 5
     },
     {
@@ -664,7 +664,7 @@
           "TB": 0,
           "AVG": ".000",
           "OPS": ".000",
-          "APP": 1,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -891,7 +891,7 @@
       "team2": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "7",
+        "score": "8",
         "categories": {
           "H/AB": "2/8",
           "R": 0,
@@ -904,7 +904,7 @@
           "TB": 3,
           "AVG": ".250",
           "OPS": ".625",
-          "APP": 2,
+          "APP": 3,
           "IP": "5.0",
           "ER": 7,
           "P_HR": 1,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-07-17T21:54:34.397788+00:00"
+  "refreshed_at": "2026-07-17T22:50:25.136089+00:00"
 }
