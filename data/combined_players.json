@@ -28300,7 +28300,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "lopezni01",
@@ -28310,7 +28310,7 @@
     "fangraphs_name": "Nicky Lopez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 670032,
     "mlb_primary_position": "3B",
     "name": "Nicky Lopez",
@@ -32841,7 +32841,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32851,7 +32851,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -36758,7 +36758,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "ginnjt01",
@@ -36768,7 +36768,7 @@
     "fangraphs_name": "J.T. Ginn",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 669372,
     "mlb_primary_position": "P",
     "name": "J.T. Ginn",
@@ -42268,7 +42268,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "clemeko01",
@@ -42278,7 +42278,7 @@
     "fangraphs_name": "Kody Clemens",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 665019,
     "mlb_primary_position": "2B",
     "name": "Kody Clemens",
@@ -144619,7 +144619,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "R",
     "bbref_id": "tolbety01",
@@ -144630,7 +144630,7 @@
     "fangraphs_name": "Tyler Tolbert",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 686475,
     "mlb_primary_position": "2B",
     "name": "Tyler Tolbert",
