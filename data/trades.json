@@ -4619,7 +4619,7 @@
       "CFL"
     ],
     "initiator_team": "JEP",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-07-18T23:30:52.056976Z",
     "expires_at": "2026-08-01T23:30:52.056976Z",
     "transfers": [
@@ -4643,7 +4643,8 @@
       }
     ],
     "acceptances": [
-      "JEP"
+      "JEP",
+      "CFL"
     ],
     "receives": {
       "JEP": [
@@ -4657,7 +4658,9 @@
     "discord": {
       "thread_id": null,
       "thread_url": null,
-      "admin_review_message_id": null
-    }
+      "admin_review_message_id": "1528182450994417755",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-18T23:31:28.498822Z"
   }
 }
