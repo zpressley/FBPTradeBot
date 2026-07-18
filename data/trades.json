@@ -4611,5 +4611,53 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-180726_1930-054": {
+    "trade_id": "TRADE-180726_1930-054",
+    "teams": [
+      "JEP",
+      "CFL"
+    ],
+    "initiator_team": "JEP",
+    "status": "pending",
+    "created_at": "2026-07-18T23:30:52.056976Z",
+    "expires_at": "2026-08-01T23:30:52.056976Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2884",
+        "from_team": "CFL",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "7540",
+        "from_team": "JEP",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "7358",
+        "from_team": "JEP",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "JEP"
+    ],
+    "receives": {
+      "JEP": [
+        "SP Logan Webb [SF] [FC 1]"
+      ],
+      "CFL": [
+        "SP Roki Sasaki [LAD] [TC BC-1]",
+        "OF Theo Gillen [TB] [BC]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
