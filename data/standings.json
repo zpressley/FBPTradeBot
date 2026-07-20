@@ -240,7 +240,7 @@
         "TB": 36,
         "AVG": ".192",
         "OPS": ".650",
-        "APP": 9,
+        "APP": 11,
         "IP": "11.2",
         "ER": 3,
         "P_HR": 1,
@@ -320,7 +320,7 @@
         "TB": 32,
         "AVG": ".200",
         "OPS": ".616",
-        "APP": 10,
+        "APP": 11,
         "IP": "20.0",
         "ER": 1,
         "P_HR": 1,
@@ -344,10 +344,10 @@
       "win_pct": 0.523,
       "opponent": "RV",
       "score": "9",
-      "opponent_score": "8",
-      "ties": "3",
-      "live_record": "9-8-3",
-      "live_win_pct": 0.525,
+      "opponent_score": "9",
+      "ties": "2",
+      "live_record": "9-9-2",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "22/105",
         "R": 16,
@@ -372,8 +372,8 @@
         "BB/9": "3.28",
         "QS": 2
       },
-      "overall_live_record": "170-154-16",
-      "overall_live_win_pct": 0.524,
+      "overall_live_record": "170-155-15",
+      "overall_live_win_pct": 0.522,
       "live_rank": 4
     },
     {
@@ -520,7 +520,7 @@
         "TB": 37,
         "AVG": ".261",
         "OPS": ".763",
-        "APP": 8,
+        "APP": 9,
         "IP": "23.0",
         "ER": 12,
         "P_HR": 4,
@@ -543,11 +543,11 @@
       "record": "119-178-23",
       "win_pct": 0.408,
       "opponent": "TBB",
-      "score": "8",
+      "score": "9",
       "opponent_score": "9",
-      "ties": "3",
-      "live_record": "8-9-3",
-      "live_win_pct": 0.475,
+      "ties": "2",
+      "live_record": "9-9-2",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "21/109",
         "R": 13,
@@ -560,7 +560,7 @@
         "TB": 31,
         "AVG": ".193",
         "OPS": ".515",
-        "APP": 10,
+        "APP": 11,
         "IP": "23.0",
         "ER": 7,
         "P_HR": 3,
@@ -572,8 +572,8 @@
         "BB/9": "3.13",
         "QS": 2
       },
-      "overall_live_record": "127-187-26",
-      "overall_live_win_pct": 0.412,
+      "overall_live_record": "128-187-25",
+      "overall_live_win_pct": 0.413,
       "live_rank": 11
     },
     {
@@ -600,7 +600,7 @@
         "TB": 59,
         "AVG": ".309",
         "OPS": ".999",
-        "APP": 7,
+        "APP": 8,
         "IP": "16.2",
         "ER": 10,
         "P_HR": 4,
@@ -635,7 +635,7 @@
           "TB": 32,
           "AVG": ".200",
           "OPS": ".616",
-          "APP": 10,
+          "APP": 11,
           "IP": "20.0",
           "ER": 1,
           "P_HR": 1,
@@ -695,7 +695,7 @@
           "TB": 59,
           "AVG": ".309",
           "OPS": ".999",
-          "APP": 7,
+          "APP": 8,
           "IP": "16.2",
           "ER": 10,
           "P_HR": 4,
@@ -844,7 +844,7 @@
           "TB": 37,
           "AVG": ".261",
           "OPS": ".763",
-          "APP": 8,
+          "APP": 9,
           "IP": "23.0",
           "ER": 12,
           "P_HR": 4,
@@ -875,7 +875,7 @@
           "TB": 36,
           "AVG": ".192",
           "OPS": ".650",
-          "APP": 9,
+          "APP": 11,
           "IP": "11.2",
           "ER": 3,
           "P_HR": 1,
@@ -922,7 +922,7 @@
       "team1": {
         "team": "RV",
         "name": "Rick Vaughn",
-        "score": "8",
+        "score": "9",
         "categories": {
           "H/AB": "21/109",
           "R": 13,
@@ -935,7 +935,7 @@
           "TB": 31,
           "AVG": ".193",
           "OPS": ".515",
-          "APP": 10,
+          "APP": 11,
           "IP": "23.0",
           "ER": 7,
           "P_HR": 3,
@@ -979,5 +979,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-07-20T18:51:15.931721+00:00"
+  "refreshed_at": "2026-07-20T19:47:41.341481+00:00"
 }
