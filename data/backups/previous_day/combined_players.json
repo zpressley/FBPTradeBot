@@ -6762,7 +6762,7 @@
     "years_simple": "FC 2"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 32,
     "bats": "L",
     "bbref_id": "woodrbr01",
@@ -6772,7 +6772,7 @@
     "fangraphs_name": "Brandon Woodruff",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 605540,
     "mlb_primary_position": "P",
     "name": "Brandon Woodruff",
@@ -13707,7 +13707,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 26,
     "bats": "R",
     "bbref_id": "scottch01",
@@ -13717,7 +13717,7 @@
     "fangraphs_name": "Christian Scott",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 681035,
     "mlb_primary_position": "P",
     "name": "Christian Scott",
