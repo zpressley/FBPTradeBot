@@ -2696,7 +2696,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "NRI": "",
     "age": 25,
     "bats": "R",
@@ -2710,7 +2710,7 @@
     "fypd": false,
     "height": "6' 5\"",
     "level": "MLB",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 805673,
     "mlb_primary_position": "P",
     "name": "Zebby Matthews",
@@ -11551,7 +11551,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "pukaj01",
@@ -11561,7 +11561,7 @@
     "fangraphs_name": "A.J. Puk",
     "fypd": false,
     "height": "6' 7\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 640462,
     "mlb_primary_position": "P",
     "name": "A.J. Puk",
@@ -48847,14 +48847,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 27,
     "bats": "L",
     "birth_date": "1999-01-07",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 675660,
     "mlb_primary_position": "P",
     "name": "Shane Drohan",
