@@ -2661,7 +2661,7 @@
       "HAM"
     ],
     "initiator_team": "LFB",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-04-26T00:25:56.696990Z",
     "expires_at": "2026-05-10T00:25:56.696990Z",
     "transfers": [
@@ -2693,7 +2693,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-280426_0147-025": {
     "trade_id": "TRADE-280426_0147-025",
@@ -3588,7 +3590,7 @@
       "SAD"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-05-20T19:32:23.339887Z",
     "expires_at": "2026-06-03T19:32:23.339887Z",
     "transfers": [
@@ -3648,7 +3650,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-210526_1430-040": {
     "trade_id": "TRADE-210526_1430-040",
@@ -3727,7 +3731,7 @@
       "SAD"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-05-22T02:50:41.424046Z",
     "expires_at": "2026-06-05T02:50:41.424046Z",
     "transfers": [
@@ -3787,7 +3791,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-100626_2208-042": {
     "trade_id": "TRADE-100626_2208-042",
