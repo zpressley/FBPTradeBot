@@ -4768,5 +4768,88 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-220726_1955-056": {
+    "trade_id": "TRADE-220726_1955-056",
+    "teams": [
+      "DRO",
+      "JEP"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-07-22T23:55:45.434529Z",
+    "expires_at": "2026-08-05T23:55:45.434529Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1909",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "6599",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6720",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7674",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3038",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "3681",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "7646",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "JEP",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "1B Bryce Eldridge [SF] [BC]",
+        "2B Luke Keaschall [MIN] [TC BC-1]",
+        "SP Hagen Smith [CWS] [BC]",
+        "OF James Tibbs III [SF] [PC]",
+        "$15 WB via JEP"
+      ],
+      "JEP": [
+        "OF Juan Soto [NYM] [FC 2]",
+        "SP,RP Nick Martinez [CIN] [TC 1]",
+        "3B,OF Addison Barger [TOR] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
