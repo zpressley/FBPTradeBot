@@ -83580,5 +83580,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-07-22T02:00:59.489562Z-UPID_2624-Trade-TRADE-210726_2125-055",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "SAD",
+    "timestamp": "2026-07-22T02:00:59.489562Z",
+    "upid": "2624",
+    "player_name": "Jarren Duran",
+    "team": "BOS",
+    "pos": "CF",
+    "age": 29,
+    "level": "",
+    "team_rank": null,
+    "rank": 62,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Country Fried Lamb",
+    "contract": "Keeper Contract",
+    "status": "[3] VC1",
+    "years": "VC 1",
+    "update_type": "Trade",
+    "event": "TRADE-210726_2125-055: B2J->CFL"
   }
 ]
