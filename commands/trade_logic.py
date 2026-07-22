@@ -556,8 +556,29 @@ class AdminReviewView(View):
             return
 
         if status != "admin_review":
+            # Status doesn't match what this card implies (e.g. an acceptance
+            # that got recorded locally but whose git push was lost, then
+            # reverted on restart — see COMMIT_WORKER_GIVE_UP in logs). Make
+            # that visible on the card itself instead of only replying
+            # privately, so it doesn't look like the button silently did
+            # nothing.
+            for item in self.children:
+                item.disabled = True
             try:
-                await interaction.followup.send(f"⚠️ Trade is `{status}` — already processed.", ephemeral=True)
+                original = interaction.message.content or ""
+                await interaction.message.edit(
+                    content=original
+                    + f"\n\n⚠️ **STATUS MISMATCH** — this trade is now `{status}` in the system, not pending admin review. "
+                    "Buttons disabled; re-check the trade before taking further action.",
+                    view=self,
+                )
+            except Exception:
+                pass
+            try:
+                await interaction.followup.send(
+                    f"⚠️ Trade is `{status}` — already processed or no longer awaiting review.",
+                    ephemeral=True,
+                )
             except Exception:
                 pass
             return
@@ -656,7 +677,24 @@ class AdminReviewView(View):
             trade = trade_store.get_trade(trade_id)
             status = str(trade.get("status") or "")
             if status != "admin_review":
-                await interaction.response.send_message(f"⚠️ Trade is `{status}` — already processed.", ephemeral=True)
+                # Same status-mismatch handling as approve(): make it visible
+                # on the card, not just a private ephemeral reply.
+                for item in self.children:
+                    item.disabled = True
+                try:
+                    original = interaction.message.content or ""
+                    await interaction.message.edit(
+                        content=original
+                        + f"\n\n⚠️ **STATUS MISMATCH** — this trade is now `{status}` in the system, not pending admin review. "
+                        "Buttons disabled; re-check the trade before taking further action.",
+                        view=self,
+                    )
+                except Exception:
+                    pass
+                await interaction.response.send_message(
+                    f"⚠️ Trade is `{status}` — already processed or no longer awaiting review.",
+                    ephemeral=True,
+                )
                 return
             trade_data = _build_trade_data_from_store(trade_id)
         except Exception:

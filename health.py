@@ -204,13 +204,40 @@ def _commit_worker_loop():
             if len(messages) > 10:
                 commit_msg += f"\n... and {len(messages) - 10} more"
         
-        # Execute the commit with pre-saved snapshots
+        # Execute the commit with pre-saved snapshots. Retry a bounded number
+        # of times before giving up — a single transient git/network failure
+        # (which happens periodically on Railway) used to silently drop the
+        # whole batch, which is how trade acceptances got lost.
+        max_attempts = 3
+        retry_delay_seconds = 2.0
         commit_ok = False
-        try:
-            commit_ok = _execute_git_commit(list(all_files), commit_msg, file_snapshots=all_snapshots)
-        except Exception as exc:
-            print(f"⚠️ Batch commit failed: {exc}")
-            commit_ok = False
+        last_exc: Exception | None = None
+        for attempt in range(1, max_attempts + 1):
+            try:
+                commit_ok = _execute_git_commit(list(all_files), commit_msg, file_snapshots=all_snapshots)
+                last_exc = None
+                if commit_ok:
+                    if attempt > 1:
+                        print(f"✅ Batch commit succeeded on retry {attempt}/{max_attempts}")
+                    break
+                print(f"⚠️ Batch commit returned failure (attempt {attempt}/{max_attempts})")
+            except Exception as exc:
+                last_exc = exc
+                commit_ok = False
+                print(f"⚠️ Batch commit failed (attempt {attempt}/{max_attempts}): {exc}")
+            if attempt < max_attempts:
+                time.sleep(retry_delay_seconds)
+
+        if not commit_ok:
+            # Final, unrecoverable-for-now failure. Make this loud and
+            # specific in the logs since nothing else surfaces it — the
+            # requests waiting on wait_event will get a False result, but
+            # fire-and-forget callers (wait=False) will never know unless
+            # they read logs.
+            print(
+                f"🔥 COMMIT_WORKER_GIVE_UP after {max_attempts} attempts — "
+                f"messages lost from git: {messages} | last_error={last_exc}"
+            )
 
         for req in pending:
             wait_event = req.get("wait_event")
@@ -670,6 +697,11 @@ async def on_ready():
     if not standings_commit_tick.is_running():
         standings_commit_tick.start()
         print("   ✅ Standings commit task started (hourly, noon–1 AM ET)")
+
+    # Start hourly trade expiry sweep (flips stale trades to 'expired')
+    if not trade_expiry_sweep_tick.is_running():
+        trade_expiry_sweep_tick.start()
+        print("   ✅ Trade expiry sweep task started (hourly)")
 
     await bot.change_presence(
         activity=discord.Activity(
@@ -2515,6 +2547,26 @@ async def standings_commit_tick():
         pass
 
     print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
+
+
+# ---- Trade Expiry Sweep ----
+
+@tasks.loop(minutes=60)
+async def trade_expiry_sweep_tick():
+    """Hourly sweep to flip stale trades (past expires_at) to 'expired'.
+
+    See trade_store.expire_stale_trades() for why this exists — expires_at
+    previously only hid trades from views without ever changing their
+    status, so they accumulated silently forever.
+    """
+    try:
+        from trade import trade_store
+        result = trade_store.expire_stale_trades()
+        expired = result.get("expired") or []
+        if expired:
+            print(f"✅ Trade expiry sweep: expired {len(expired)} trade(s): {expired}")
+    except Exception as exc:
+        print(f"⚠️ Trade expiry sweep failed: {exc}")
 
 
 # ---- Roster Sync Message Posting ----

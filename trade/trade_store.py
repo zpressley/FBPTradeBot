@@ -87,25 +87,38 @@ def _trades_lock():
                     pass
 
 
-def _maybe_commit(message: str, file_paths: Optional[list[str]] = None) -> None:
+def _maybe_commit(message: str, file_paths: Optional[list[str]] = None, *, wait: bool = True, timeout_seconds: float = 20.0) -> None:
     """Commit and push trade files to git.
-    
+
     CRITICAL: Raises exception on failure - caller MUST handle rollback!
     This is no longer "maybe" - it's REQUIRED for data integrity.
+
+    By default this BLOCKS (wait=True) until the real git push has been
+    confirmed to succeed or fail. _commit_fn (health.py's _commit_and_push)
+    otherwise defaults to wait=False, which only queues the commit and
+    reports success immediately without confirming the push actually
+    happened — that gap previously allowed trade acceptances to be silently
+    lost if the process restarted before the background push completed.
     """
     if _commit_fn is None:
         error_msg = "Git commit system not initialized. Trade changes NOT committed to git."
         print(f"❌ {error_msg}")
         raise RuntimeError(error_msg)
-    
+
+    paths = file_paths or ["data/trades.json"]
     try:
-        paths = file_paths or ["data/trades.json"]
-        _commit_fn(paths, message)
-        print(f"✅ Trade committed to git: {message}")
+        result = _commit_fn(paths, message, wait=wait, timeout_seconds=timeout_seconds)
     except Exception as exc:
         error_msg = f"Trade git commit/push failed: {exc}"
         print(f"❌ {error_msg}")
         raise RuntimeError(error_msg) from exc
+
+    if wait and result is False:
+        error_msg = f"Trade git commit/push failed or timed out: {message}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg)
+
+    print(f"✅ Trade committed to git: {message}")
 
 
 @dataclass(frozen=True)
@@ -740,11 +753,62 @@ def list_history(team: str) -> List[dict]:
         if team not in teams:
             continue
         status = str(rec.get("status") or "")
-        if status in ("approved", "rejected", "withdrawn", "admin_rejected"):
+        if status in ("approved", "rejected", "withdrawn", "admin_rejected", "expired"):
             out.append(rec)
 
     out.sort(key=lambda r: r.get("processed_at") or r.get("created_at") or "", reverse=True)
     return out[:50]
+
+
+def expire_stale_trades() -> dict:
+    """Flip trades whose expires_at has passed from an active status to 'expired'.
+
+    Previously ``expires_at`` was only ever used to (a) hide stale trades from
+    list_queue/list_inbox and (b) gate the initiator's 12-active-trades cap —
+    the underlying trade record's ``status`` never actually transitioned, so
+    stale trades sat in ``pending``/``partial_accept``/``admin_review``
+    forever. This sweep gives them a real terminal status so they show up in
+    history instead of just silently disappearing from view.
+    """
+    now = _utc_now()
+    changed_ids: list[str] = []
+
+    with _trades_lock():
+        trades = _load_trades()
+        for trade_id, rec in trades.items():
+            status = str(rec.get("status") or "")
+            if status not in ("pending", "partial_accept", "admin_review"):
+                continue
+
+            expires_at = str(rec.get("expires_at") or "")
+            try:
+                exp = datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
+            except Exception:
+                continue
+            if exp > now:
+                continue
+
+            rec["status"] = "expired"
+            rec["processed_at"] = _iso(now)
+            rec["expired_from_status"] = status
+            changed_ids.append(trade_id)
+
+        if changed_ids:
+            _save_trades(trades)
+
+    if changed_ids:
+        preview = ", ".join(changed_ids[:10])
+        if len(changed_ids) > 10:
+            preview += f", ... (+{len(changed_ids) - 10} more)"
+        try:
+            _maybe_commit(
+                f"Trade expiry sweep: {len(changed_ids)} trade(s) expired ({preview})",
+                file_paths=[TRADES_PATH],
+            )
+        except Exception as e:
+            print(f"⚠️ Trade expiry sweep commit failed: {e}")
+
+    return {"expired": changed_ids}
 
 
 def _conflict_problems_for_trade(rec: dict) -> list[str]:
