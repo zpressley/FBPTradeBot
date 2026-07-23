@@ -2661,7 +2661,7 @@
       "HAM"
     ],
     "initiator_team": "LFB",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-04-26T00:25:56.696990Z",
     "expires_at": "2026-05-10T00:25:56.696990Z",
     "transfers": [
@@ -2693,7 +2693,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-280426_0147-025": {
     "trade_id": "TRADE-280426_0147-025",
@@ -3334,7 +3336,7 @@
       "LFB"
     ],
     "initiator_team": "CFL",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-05-16T00:04:25.954453Z",
     "expires_at": "2026-05-30T00:04:25.954453Z",
     "transfers": [
@@ -3368,7 +3370,23 @@
       "thread_url": null,
       "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-05-16T00:13:20.608581Z"
+    "manager_approved_at": "2026-05-16T00:13:20.608581Z",
+    "admin_decision_by": "ADMIN_BACKFILL",
+    "processed_at": "2026-07-22T17:50:32.287080Z",
+    "data_applied_at": "2026-07-22T17:50:32.287080Z",
+    "data_applied_by": "ADMIN_BACKFILL",
+    "data_applied_summary": {
+      "player_moves": 0,
+      "player_log_entries": 0,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": [
+        "Player leg (Snell, upid 1887) already resolved via Yahoo roster sync on 2026-05-20; not re-applied.",
+        "WizBucks leg already one-sided-resolved via manual admin_adjustment to CFL on 2026-06-23 (admin _dunnce, +$15, 'WB did not update'); LFB was never debited and is not debited by this backfill either, since LFB's balance has since dropped below $15 through unrelated activity.",
+        "Manually marked resolved 2026-07-22 after the fire-and-forget git-commit bug likely contributed to admin_approve never completing; see trade_store._maybe_commit fix."
+      ]
+    }
   },
   "TRADE-170526_1056-036": {
     "trade_id": "TRADE-170526_1056-036",
@@ -3572,7 +3590,7 @@
       "SAD"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-05-20T19:32:23.339887Z",
     "expires_at": "2026-06-03T19:32:23.339887Z",
     "transfers": [
@@ -3632,7 +3650,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-210526_1430-040": {
     "trade_id": "TRADE-210526_1430-040",
@@ -3711,7 +3731,7 @@
       "SAD"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "expired",
     "created_at": "2026-05-22T02:50:41.424046Z",
     "expires_at": "2026-06-05T02:50:41.424046Z",
     "transfers": [
@@ -3771,7 +3791,9 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "processed_at": "2026-07-22T21:09:09.397318Z",
+    "expired_from_status": "pending"
   },
   "TRADE-100626_2208-042": {
     "trade_id": "TRADE-100626_2208-042",
@@ -4368,7 +4390,7 @@
       "CFL"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "approved",
     "created_at": "2026-07-06T16:43:56.625473Z",
     "expires_at": "2026-07-20T16:43:56.625473Z",
     "transfers": [
@@ -4392,6 +4414,7 @@
       }
     ],
     "acceptances": [
+      "CFL",
       "WIZ"
     ],
     "receives": {
@@ -4407,6 +4430,21 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
+    },
+    "admin_decision_by": "ADMIN_BACKFILL",
+    "processed_at": "2026-07-22T17:49:54.004040Z",
+    "data_applied_at": "2026-07-22T17:49:54.004040Z",
+    "data_applied_by": "ADMIN_BACKFILL",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": [
+        "Bellinger (upid 1883) leg already resolved via Yahoo roster sync on 2026-07-08; not re-applied or re-logged by this backfill.",
+        "Manually backfilled 2026-07-22 after the fire-and-forget git-commit bug lost CFL's acceptance; see trade_store._maybe_commit fix."
+      ]
     }
   },
   "TRADE-060726_1741-051": {
@@ -4729,6 +4767,89 @@
       "wb_transfers": 1,
       "buyins_purchased": 0,
       "warnings": []
+    }
+  },
+  "TRADE-220726_1955-056": {
+    "trade_id": "TRADE-220726_1955-056",
+    "teams": [
+      "DRO",
+      "JEP"
+    ],
+    "initiator_team": "DRO",
+    "status": "pending",
+    "created_at": "2026-07-22T23:55:45.434529Z",
+    "expires_at": "2026-08-05T23:55:45.434529Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1909",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "6599",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6720",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "7674",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3038",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "3681",
+        "from_team": "DRO",
+        "to_team": "JEP"
+      },
+      {
+        "type": "player",
+        "upid": "7646",
+        "from_team": "JEP",
+        "to_team": "DRO"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "JEP",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "DRO"
+    ],
+    "receives": {
+      "DRO": [
+        "1B Bryce Eldridge [SF] [BC]",
+        "2B Luke Keaschall [MIN] [TC BC-1]",
+        "SP Hagen Smith [CWS] [BC]",
+        "OF James Tibbs III [SF] [PC]",
+        "$15 WB via JEP"
+      ],
+      "JEP": [
+        "OF Juan Soto [NYM] [FC 2]",
+        "SP,RP Nick Martinez [CIN] [TC 1]",
+        "3B,OF Addison Barger [TOR] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
     }
   }
 }
