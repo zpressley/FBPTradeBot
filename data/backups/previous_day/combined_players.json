@@ -14250,7 +14250,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "jungjo01",
@@ -14260,7 +14260,7 @@
     "fangraphs_name": "Josh Jung",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 673962,
     "mlb_primary_position": "3B",
     "name": "Josh Jung",
@@ -35917,7 +35917,8 @@
     "upid": "3704",
     "weight": 195,
     "yahoo_id": "60246",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "LFB"
   },
   {
     "FBP_Team": "",
