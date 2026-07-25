@@ -4908,7 +4908,7 @@
       "WAR"
     ],
     "initiator_team": "HAM",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-25T02:29:04.853320Z",
     "expires_at": "2026-08-08T02:29:04.853320Z",
     "transfers": [
@@ -4957,6 +4957,18 @@
       "admin_review_message_id": "1530407466322497566",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-25T02:52:52.322007Z"
+    "manager_approved_at": "2026-07-25T02:52:52.322007Z",
+    "admin_decision_by": "WAR",
+    "processed_at": "2026-07-25T02:53:36.039578Z",
+    "data_applied_at": "2026-07-25T02:53:36.070994Z",
+    "data_applied_by": "WAR",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
