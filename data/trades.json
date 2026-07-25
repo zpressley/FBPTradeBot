@@ -4970,5 +4970,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-250726_1004-059": {
+    "trade_id": "TRADE-250726_1004-059",
+    "teams": [
+      "SAD",
+      "RV"
+    ],
+    "initiator_team": "SAD",
+    "status": "pending",
+    "created_at": "2026-07-25T14:04:34.726208Z",
+    "expires_at": "2026-08-08T14:04:34.726208Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4462",
+        "from_team": "RV",
+        "to_team": "SAD"
+      },
+      {
+        "type": "player",
+        "upid": "6562",
+        "from_team": "SAD",
+        "to_team": "RV"
+      }
+    ],
+    "acceptances": [
+      "SAD"
+    ],
+    "receives": {
+      "SAD": [
+        "2B,CF Ceddanne Rafaela [BOS] [TC 2]"
+      ],
+      "RV": [
+        "CF Dylan Crews [WSH] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
