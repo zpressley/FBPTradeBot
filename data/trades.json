@@ -4900,5 +4900,60 @@
       "admin_review_message_id": null
     },
     "processed_at": "2026-07-23T23:29:34.925055Z"
+  },
+  "TRADE-240726_2229-058": {
+    "trade_id": "TRADE-240726_2229-058",
+    "teams": [
+      "HAM",
+      "WAR"
+    ],
+    "initiator_team": "HAM",
+    "status": "pending",
+    "created_at": "2026-07-25T02:29:04.853320Z",
+    "expires_at": "2026-08-08T02:29:04.853320Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7248",
+        "from_team": "HAM",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "7977",
+        "from_team": "HAM",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 5,
+        "from_team": "HAM",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "4291",
+        "from_team": "WAR",
+        "to_team": "HAM"
+      }
+    ],
+    "acceptances": [
+      "HAM"
+    ],
+    "receives": {
+      "HAM": [
+        "SS Jeremy Pe\u00f1a [HOU] [TC 2]"
+      ],
+      "WAR": [
+        "SS Jhonny Level [SF] [PC]",
+        "SP Riley Quick [MIN] [PC]",
+        "$5 WB via HAM"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
