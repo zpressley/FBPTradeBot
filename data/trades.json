@@ -4908,7 +4908,7 @@
       "WAR"
     ],
     "initiator_team": "HAM",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-07-25T02:29:04.853320Z",
     "expires_at": "2026-08-08T02:29:04.853320Z",
     "transfers": [
@@ -4938,7 +4938,8 @@
       }
     ],
     "acceptances": [
-      "HAM"
+      "HAM",
+      "WAR"
     ],
     "receives": {
       "HAM": [
@@ -4954,6 +4955,7 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-07-25T02:52:52.322007Z"
   }
 }
