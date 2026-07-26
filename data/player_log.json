@@ -84086,5 +84086,28 @@
     "years": "TC 1",
     "update_type": "Trade",
     "event": "TRADE-250726_1004-059: SAD->RV"
+  },
+  {
+    "id": "2026-2026-07-26T07:18:03.052195-04:00-UPID_2274-Roster-yahoo_roster_sync",
+    "season": 2026,
+    "source": "yahoo_roster_sync",
+    "admin": "roster_sync",
+    "timestamp": "2026-07-26T07:18:03.052195-04:00",
+    "upid": "2274",
+    "player_name": "Christian Walker",
+    "team": "HOU",
+    "pos": "1B",
+    "age": 34,
+    "level": "",
+    "team_rank": null,
+    "rank": 185,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Roster",
+    "event": "In Season Drop"
   }
 ]
