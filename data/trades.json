@@ -5089,7 +5089,7 @@
       "DMN"
     ],
     "initiator_team": "DRO",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-27T21:20:05.497041Z",
     "expires_at": "2026-08-10T21:20:05.497041Z",
     "transfers": [
@@ -5124,6 +5124,18 @@
       "admin_review_message_id": "1531411930160435260",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-27T21:24:13.751326Z"
+    "manager_approved_at": "2026-07-27T21:24:13.751326Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-27T21:52:24.093023Z",
+    "data_applied_at": "2026-07-27T21:52:24.137403Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
