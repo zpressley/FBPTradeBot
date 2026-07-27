@@ -5026,5 +5026,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-270726_1150-060": {
+    "trade_id": "TRADE-270726_1150-060",
+    "teams": [
+      "LFB",
+      "RV"
+    ],
+    "initiator_team": "LFB",
+    "status": "pending",
+    "created_at": "2026-07-27T15:50:03.497186Z",
+    "expires_at": "2026-08-10T15:50:03.497186Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3435",
+        "from_team": "RV",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3726",
+        "from_team": "LFB",
+        "to_team": "RV"
+      }
+    ],
+    "acceptances": [
+      "LFB"
+    ],
+    "receives": {
+      "LFB": [
+        "C Francisco Alvarez [NYM] [TC 1]"
+      ],
+      "RV": [
+        "RP Ronny Henriquez [FA] [Keeper Contract]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
