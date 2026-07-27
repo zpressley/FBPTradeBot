@@ -5089,7 +5089,7 @@
       "DMN"
     ],
     "initiator_team": "DRO",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-07-27T21:20:05.497041Z",
     "expires_at": "2026-08-10T21:20:05.497041Z",
     "transfers": [
@@ -5107,7 +5107,8 @@
       }
     ],
     "acceptances": [
-      "DRO"
+      "DRO",
+      "DMN"
     ],
     "receives": {
       "DRO": [
@@ -5121,6 +5122,7 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-07-27T21:24:13.751326Z"
   }
 }
