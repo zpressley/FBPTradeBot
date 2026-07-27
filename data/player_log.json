@@ -84247,5 +84247,28 @@
     "years": "P",
     "update_type": "Roster",
     "event": "Non-Roster Invite Drop"
+  },
+  {
+    "id": "2026-2026-07-27T09:40:07.130976-04:00-UPID_8319-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "DMN",
+    "timestamp": "2026-07-27T09:40:07.130976-04:00",
+    "upid": "8319",
+    "player_name": "Elmer Rodr\u00edguez",
+    "team": "RHP",
+    "pos": "NYY",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "The Damn Yankees",
+    "contract": "Purchased Contract",
+    "status": "P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]

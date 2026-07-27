@@ -4397,5 +4397,26 @@
       "counterparty": "HAM",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_DMN_contract_purchase_1785159607",
+    "timestamp": "2026-07-27T13:40:07.121806Z",
+    "team": "DMN",
+    "amount": -5,
+    "balance_before": 10,
+    "balance_after": 5,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Elmer Rodr\u00edguez DC \u2192 PC",
+    "related_player": {
+      "upid": "8319",
+      "name": "Elmer Rodr\u00edguez"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
