@@ -5145,7 +5145,7 @@
       "HAM"
     ],
     "initiator_team": "WIZ",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-28T00:28:38.116468Z",
     "expires_at": "2026-08-11T00:28:38.116468Z",
     "transfers": [
@@ -5187,6 +5187,18 @@
       "admin_review_message_id": "1531458661237653655",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-28T00:29:56.567188Z"
+    "manager_approved_at": "2026-07-28T00:29:56.567188Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-28T00:30:52.324308Z",
+    "data_applied_at": "2026-07-28T00:30:52.358508Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

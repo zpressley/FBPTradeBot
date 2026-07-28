@@ -4418,5 +4418,37 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-28_trade_TRADE-270726_2028-062_HAM_debit_10",
+    "timestamp": "2026-07-28T00:30:52.358508Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 20,
+    "balance_after": 10,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-270726_2028-062: WizBucks sent to WIZ",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-270726_2028-062",
+      "counterparty": "WIZ",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-28_trade_TRADE-270726_2028-062_WIZ_credit_10",
+    "timestamp": "2026-07-28T00:30:52.358508Z",
+    "team": "WIZ",
+    "amount": 10,
+    "balance_before": 95,
+    "balance_after": 105,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-270726_2028-062: WizBucks received from HAM",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-270726_2028-062",
+      "counterparty": "HAM",
+      "source": "trade_portal"
+    }
   }
 ]
