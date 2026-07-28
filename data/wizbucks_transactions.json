@@ -4450,5 +4450,37 @@
       "counterparty": "HAM",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-28_trade_TRADE-280726_1205-063_HAM_debit_10",
+    "timestamp": "2026-07-28T16:07:43.654990Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 10,
+    "balance_after": 0,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-280726_1205-063: WizBucks sent to WIZ",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-280726_1205-063",
+      "counterparty": "WIZ",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-28_trade_TRADE-280726_1205-063_WIZ_credit_10",
+    "timestamp": "2026-07-28T16:07:43.654990Z",
+    "team": "WIZ",
+    "amount": 10,
+    "balance_before": 105,
+    "balance_after": 115,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-280726_1205-063: WizBucks received from HAM",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-280726_1205-063",
+      "counterparty": "HAM",
+      "source": "trade_portal"
+    }
   }
 ]
