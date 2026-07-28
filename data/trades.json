@@ -5200,5 +5200,53 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-280726_1205-063": {
+    "trade_id": "TRADE-280726_1205-063",
+    "teams": [
+      "WIZ",
+      "HAM"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-28T16:05:30.116105Z",
+    "expires_at": "2026-08-11T16:05:30.116105Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1934",
+        "from_team": "WIZ",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "3473",
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "1B Michael Busch [CHC] [TC 2]",
+        "$10 WB via HAM"
+      ],
+      "HAM": [
+        "SP Carlos Rod\u00f3n [NYY] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
