@@ -5137,5 +5137,53 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-270726_2028-062": {
+    "trade_id": "TRADE-270726_2028-062",
+    "teams": [
+      "WIZ",
+      "HAM"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-28T00:28:38.116468Z",
+    "expires_at": "2026-08-11T00:28:38.116468Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1894",
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "player",
+        "upid": "1986",
+        "from_team": "WIZ",
+        "to_team": "HAM"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "3B Max Muncy [LAD] [TC 1]",
+        "$10 WB via HAM"
+      ],
+      "HAM": [
+        "1B Vladimir Guerrero Jr. [TOR] [FC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
