@@ -1,45 +1,37 @@
 {
-  "bids": [],
-  "last_updated": "2026-07-12T14:00:00+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-1f35de9b1cfe",
+      "bid_type": "OB",
+      "date": "2026-07-27",
+      "prospect_id": "8015",
+      "team": "WIZ",
+      "timestamp": "2026-07-28T00:07:53.335792+00:00"
+    }
+  ],
+  "last_updated": "2026-07-28T00:07:53.335792+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "RV",
-    "CFL",
     "WAR",
-    "JEP",
+    "CFL",
     "B2J",
-    "TBB",
+    "JEP",
     "WIZ",
+    "TBB",
     "HAM",
     "DMN",
     "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-07-12T14:00:00+00:00",
-  "resolved_winners": {
-    "6007": {
-      "amount": 10,
-      "name": "Abimelec Ortiz",
-      "team": "DMN"
-    },
-    "7261": {
-      "amount": 10,
-      "name": "Nolan Perry",
-      "team": "CFL"
-    },
-    "7922": {
-      "amount": 10,
-      "name": "Christian Zazueta",
-      "team": "RV"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-07-06"
+  "week_start": "2026-07-27"
 }
