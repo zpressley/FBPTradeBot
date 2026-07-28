@@ -5208,7 +5208,7 @@
       "HAM"
     ],
     "initiator_team": "WIZ",
-    "status": "pending",
+    "status": "admin_review",
     "created_at": "2026-07-28T16:05:30.116105Z",
     "expires_at": "2026-08-11T16:05:30.116105Z",
     "transfers": [
@@ -5232,7 +5232,8 @@
       }
     ],
     "acceptances": [
-      "WIZ"
+      "WIZ",
+      "HAM"
     ],
     "receives": {
       "WIZ": [
@@ -5247,6 +5248,7 @@
       "thread_id": null,
       "thread_url": null,
       "admin_review_message_id": null
-    }
+    },
+    "manager_approved_at": "2026-07-28T16:07:01.921680Z"
   }
 }
