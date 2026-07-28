@@ -5271,7 +5271,7 @@
       "RV"
     ],
     "initiator_team": "HAM",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-28T16:40:15.936197Z",
     "expires_at": "2026-08-11T16:40:15.936197Z",
     "transfers": [
@@ -5306,6 +5306,18 @@
       "admin_review_message_id": "1531703512780767292",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-28T16:42:52.925689Z"
+    "manager_approved_at": "2026-07-28T16:42:52.925689Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-28T16:52:25.622528Z",
+    "data_applied_at": "2026-07-28T16:52:25.682182Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
