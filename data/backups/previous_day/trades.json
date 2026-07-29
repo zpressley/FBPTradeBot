@@ -5200,5 +5200,124 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-280726_1205-063": {
+    "trade_id": "TRADE-280726_1205-063",
+    "teams": [
+      "WIZ",
+      "HAM"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-07-28T16:05:30.116105Z",
+    "expires_at": "2026-08-11T16:05:30.116105Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1934",
+        "from_team": "WIZ",
+        "to_team": "HAM"
+      },
+      {
+        "type": "player",
+        "upid": "3473",
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "HAM",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "HAM"
+    ],
+    "receives": {
+      "WIZ": [
+        "1B Michael Busch [CHC] [TC 2]",
+        "$10 WB via HAM"
+      ],
+      "HAM": [
+        "SP Carlos Rod\u00f3n [NYY] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1531694493500444743",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-28T16:07:01.921680Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-28T16:07:43.630225Z",
+    "data_applied_at": "2026-07-28T16:07:43.654990Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-280726_1240-064": {
+    "trade_id": "TRADE-280726_1240-064",
+    "teams": [
+      "HAM",
+      "RV"
+    ],
+    "initiator_team": "HAM",
+    "status": "approved",
+    "created_at": "2026-07-28T16:40:15.936197Z",
+    "expires_at": "2026-08-11T16:40:15.936197Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "1934",
+        "from_team": "HAM",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1977",
+        "from_team": "RV",
+        "to_team": "HAM"
+      }
+    ],
+    "acceptances": [
+      "HAM",
+      "RV"
+    ],
+    "receives": {
+      "HAM": [
+        "SP Sandy Alcantara [MIA] [VC 1]"
+      ],
+      "RV": [
+        "SP Carlos Rod\u00f3n [NYY] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1531703512780767292",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-28T16:42:52.925689Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-28T16:52:25.622528Z",
+    "data_applied_at": "2026-07-28T16:52:25.682182Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }
