@@ -5319,5 +5319,74 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-290726_1925-065": {
+    "trade_id": "TRADE-290726_1925-065",
+    "teams": [
+      "B2J",
+      "CFL"
+    ],
+    "initiator_team": "B2J",
+    "status": "pending",
+    "created_at": "2026-07-29T23:25:54.573470Z",
+    "expires_at": "2026-08-12T23:25:54.573470Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7942",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "7943",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "2801",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "1901",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "1915",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "B2J",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "B2J"
+    ],
+    "receives": {
+      "B2J": [
+        "SP Seth Hernandez [PIT] [BC]",
+        "SP Jamie Arnold [ATH] [BC]",
+        "SP Justin Steele [CHC] [TC 1]"
+      ],
+      "CFL": [
+        "SP Zack Wheeler [PHI] [VC 1]",
+        "1B Rafael Devers [SF] [VC 2]",
+        "$15 WB via B2J"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
