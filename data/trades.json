@@ -5327,7 +5327,7 @@
       "CFL"
     ],
     "initiator_team": "B2J",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-29T23:25:54.573470Z",
     "expires_at": "2026-08-12T23:25:54.573470Z",
     "transfers": [
@@ -5387,9 +5387,20 @@
     "discord": {
       "thread_id": null,
       "thread_url": null,
-      "admin_review_message_id": "1532167572433146030",
-      "admin_review_channel_id": "875594022033436683"
+      "admin_review_message_id": null
     },
-    "manager_approved_at": "2026-07-29T23:26:52.506420Z"
+    "manager_approved_at": "2026-07-29T23:26:52.506420Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-29T23:27:15.422936Z",
+    "data_applied_at": "2026-07-29T23:27:15.459208Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 5,
+      "player_log_entries": 5,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

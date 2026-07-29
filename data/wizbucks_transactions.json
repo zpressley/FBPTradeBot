@@ -4482,5 +4482,37 @@
       "counterparty": "HAM",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-29_trade_TRADE-290726_1925-065_B2J_debit_15",
+    "timestamp": "2026-07-29T23:27:15.459208Z",
+    "team": "B2J",
+    "amount": -15,
+    "balance_before": 105,
+    "balance_after": 90,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-290726_1925-065: WizBucks sent to CFL",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-290726_1925-065",
+      "counterparty": "CFL",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-29_trade_TRADE-290726_1925-065_CFL_credit_15",
+    "timestamp": "2026-07-29T23:27:15.459208Z",
+    "team": "CFL",
+    "amount": 15,
+    "balance_before": 40,
+    "balance_after": 55,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-290726_1925-065: WizBucks received from B2J",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-290726_1925-065",
+      "counterparty": "B2J",
+      "source": "trade_portal"
+    }
   }
 ]
