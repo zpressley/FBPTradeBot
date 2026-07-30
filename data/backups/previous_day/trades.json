@@ -5319,5 +5319,165 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-290726_1925-065": {
+    "trade_id": "TRADE-290726_1925-065",
+    "teams": [
+      "B2J",
+      "CFL"
+    ],
+    "initiator_team": "B2J",
+    "status": "approved",
+    "created_at": "2026-07-29T23:25:54.573470Z",
+    "expires_at": "2026-08-12T23:25:54.573470Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7942",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "7943",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "2801",
+        "from_team": "CFL",
+        "to_team": "B2J"
+      },
+      {
+        "type": "player",
+        "upid": "1901",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "1915",
+        "from_team": "B2J",
+        "to_team": "CFL"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "B2J",
+        "to_team": "CFL"
+      }
+    ],
+    "acceptances": [
+      "B2J",
+      "CFL"
+    ],
+    "receives": {
+      "B2J": [
+        "SP Seth Hernandez [PIT] [BC]",
+        "SP Jamie Arnold [ATH] [BC]",
+        "SP Justin Steele [CHC] [TC 1]"
+      ],
+      "CFL": [
+        "SP Zack Wheeler [PHI] [VC 1]",
+        "1B Rafael Devers [SF] [VC 2]",
+        "$15 WB via B2J"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    },
+    "manager_approved_at": "2026-07-29T23:26:52.506420Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-29T23:27:15.422936Z",
+    "data_applied_at": "2026-07-29T23:27:15.459208Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 5,
+      "player_log_entries": 5,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-290726_2137-066": {
+    "trade_id": "TRADE-290726_2137-066",
+    "teams": [
+      "RV",
+      "DRO"
+    ],
+    "initiator_team": "RV",
+    "status": "approved",
+    "created_at": "2026-07-30T01:37:44.155806Z",
+    "expires_at": "2026-08-13T01:37:44.155806Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4026",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3852",
+        "from_team": "DRO",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1949",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "6573",
+        "from_team": "RV",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "1953",
+        "from_team": "RV",
+        "to_team": "DRO"
+      }
+    ],
+    "acceptances": [
+      "RV",
+      "DRO"
+    ],
+    "receives": {
+      "RV": [
+        "RP F\u00e9lix Bautista [BAL] [TC 1]",
+        "CF Roman Anthony [BOS] [TC BC-1]"
+      ],
+      "DRO": [
+        "SP Freddy Peralta [NYM] [VC 2]",
+        "C Kyle Teel [CWS] [TC R]",
+        "SP Joe Musgrove [SD] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532200831619956959",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-30T01:39:01.821345Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T02:16:50.956783Z",
+    "data_applied_at": "2026-07-30T02:16:51.023329Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 5,
+      "player_log_entries": 5,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

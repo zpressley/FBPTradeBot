@@ -1059,7 +1059,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "RV",
     "age": 30,
     "bats": "R",
     "bbref_id": "bautife01",
@@ -1069,7 +1069,7 @@
     "fangraphs_name": "Felix Bautista",
     "fypd": false,
     "height": "6' 8\"",
-    "manager": "Andromedans",
+    "manager": "Rick Vaughn",
     "mlb_id": 642585,
     "mlb_primary_position": "P",
     "name": "F\u00e9lix Bautista",
@@ -1551,7 +1551,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "CFL",
     "age": 35,
     "bats": "L",
     "bbref_id": "wheelza01",
@@ -1561,7 +1561,7 @@
     "fangraphs_name": "Zack Wheeler",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Country Fried Lamb",
     "mlb_id": 554430,
     "mlb_primary_position": "P",
     "name": "Zack Wheeler",
@@ -1655,7 +1655,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "L",
     "bbref_id": "deverra01",
@@ -1665,7 +1665,7 @@
     "fangraphs_name": "Rafael Devers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Country Fried Lamb",
     "mlb_id": 646240,
     "mlb_primary_position": "DH",
     "name": "Rafael Devers",
@@ -8416,7 +8416,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "B2J",
     "age": 30,
     "bats": "L",
     "bbref_id": "steelju01",
@@ -8426,7 +8426,7 @@
     "fangraphs_name": "Justin Steele",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": "Btwn2Jackies",
     "mlb_id": 657006,
     "mlb_primary_position": "P",
     "name": "Justin Steele",
@@ -8755,7 +8755,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "RV",
     "age": 21,
     "bats": "L",
     "bbref_id": "anthoro01",
@@ -8767,7 +8767,7 @@
     "fangraphs_name": "Roman Anthony",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Andromedans",
+    "manager": "Rick Vaughn",
     "mlb_id": 701350,
     "mlb_primary_position": "RF",
     "name": "Roman Anthony",
@@ -10784,7 +10784,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 29,
     "bats": "R",
     "bbref_id": "peralfr01",
@@ -10794,7 +10794,7 @@
     "fangraphs_name": "Freddy Peralta",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 642547,
     "mlb_primary_position": "P",
     "name": "Freddy Peralta",
@@ -11761,7 +11761,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 23,
     "bats": "L",
     "bbref_id": "teelky01",
@@ -11773,7 +11773,7 @@
     "fangraphs_name": "Kyle Teel",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 691019,
     "mlb_primary_position": "C",
     "name": "Kyle Teel",
@@ -16846,7 +16846,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 33,
     "bats": "R",
     "bbref_id": "musgrjo01",
@@ -16856,7 +16856,7 @@
     "fangraphs_name": "Joe Musgrove",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 605397,
     "mlb_primary_position": "P",
     "name": "Joe Musgrove",
@@ -82024,7 +82024,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "B2J",
     "age": 19,
     "bats": "R",
     "bbref_id": "hernase01",
@@ -82037,7 +82037,7 @@
     "fypd": true,
     "fypd_rank": 4,
     "height_weight": "6' 4\" / 190 lbs",
-    "manager": "Country Fried Lamb",
+    "manager": "Btwn2Jackies",
     "mlb_id": "815825",
     "mlb_primary_position": "SP",
     "name": "Seth Hernandez",
@@ -82051,7 +82051,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "B2J",
     "age": 21,
     "bats": "R",
     "bbref_id": "arnolja01",
@@ -82066,7 +82066,7 @@
     "height": "6' 2\"",
     "height_weight": "6' 1\" / 188 lbs",
     "level": "A-",
-    "manager": "Country Fried Lamb",
+    "manager": "Btwn2Jackies",
     "mlb_id": 150374,
     "mlb_primary_position": "P",
     "name": "Jamie Arnold",
