@@ -5668,7 +5668,7 @@
       "WAR"
     ],
     "initiator_team": "LFB",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-30T21:05:33.587737Z",
     "expires_at": "2026-08-13T21:05:33.587737Z",
     "transfers": [
@@ -5738,7 +5738,19 @@
       "admin_review_message_id": "1532496738617786368",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-30T21:14:43.740005Z"
+    "manager_approved_at": "2026-07-30T21:14:43.740005Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T22:26:11.514215Z",
+    "data_applied_at": "2026-07-30T22:26:11.553428Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 6,
+      "player_log_entries": 6,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   },
   "TRADE-300726_1751-071": {
     "trade_id": "TRADE-300726_1751-071",

@@ -4546,5 +4546,37 @@
       "counterparty": "RV",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-30_trade_TRADE-300726_1705-070_LFB_debit_5",
+    "timestamp": "2026-07-30T22:26:11.553428Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 5,
+    "balance_after": 0,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-300726_1705-070: WizBucks sent to WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1705-070",
+      "counterparty": "WAR",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-30_trade_TRADE-300726_1705-070_WAR_credit_5",
+    "timestamp": "2026-07-30T22:26:11.553428Z",
+    "team": "WAR",
+    "amount": 5,
+    "balance_before": 10,
+    "balance_after": 15,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-300726_1705-070: WizBucks received from LFB",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1705-070",
+      "counterparty": "LFB",
+      "source": "trade_portal"
+    }
   }
 ]
