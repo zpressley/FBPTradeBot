@@ -136,15 +136,40 @@ def log_player_action(player_rec, update_type, event, admin, changes=None):
     return entry
 
 
-def _enqueue_commit(files: list[str], message: str) -> None:
-    """Queue a git commit via the centralised commit worker from health.py.
+def _enqueue_commit(files: list[str], message: str, *, wait: bool = True, timeout_seconds: float = 20.0) -> None:
+    """Commit and push admin data files to git.
 
-    Falls back to a warning if no commit function has been injected yet.
+    Defaults to blocking (wait=True) until the real git push is confirmed,
+    and raises if it fails or times out. Previously this always called
+    health.py's _commit_and_push with its wait=False default, which queues
+    the commit and reports success immediately without confirming the push
+    actually happened — the Discord "success" notification and the API's
+    "success" response both fired unconditionally before git had done
+    anything. If the container restarted before the queued push completed
+    (e.g. a Railway redeploy triggered by an unrelated push), the write was
+    live on disk for that one request but never made it into git, so it
+    silently vanished on the next deploy even though everyone had already
+    been told it succeeded. This is exactly the bug fixed for trades in
+    trade/trade_store.py:_maybe_commit — mirrored here.
     """
-    if _commit_fn is not None:
-        _commit_fn(files, message)
-    else:
-        print(f"⚠️ No commit function configured – skipping git commit: {message}")
+    if _commit_fn is None:
+        error_msg = "Git commit system not initialized. Admin change NOT committed to git."
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg)
+
+    try:
+        result = _commit_fn(files, message, wait=wait, timeout_seconds=timeout_seconds)
+    except Exception as exc:
+        error_msg = f"Admin git commit/push failed: {exc}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg) from exc
+
+    if wait and result is False:
+        error_msg = f"Admin git commit/push failed or timed out: {message}"
+        print(f"❌ {error_msg}")
+        raise RuntimeError(error_msg)
+
+    print(f"✅ Admin change committed to git: {message}")
 
 
 def sync_to_website(files, message):
@@ -241,11 +266,20 @@ async def bulk_graduate(request: Request, _=Depends(verify_api_key)):
                 updated.append({"name": p.get("name", "Unknown"), "tier": contract_tier})
 
         save_json(COMBINED_FILE, players)
-
         commit_msg = f"Admin bulk graduate: {len(updated)} players"
-        _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
-    # Commit + sync
+    # Commit outside DATA_LOCK so a slow/failed git push doesn't block other
+    # admin requests, matching trade_store.py's pattern. Raises on failure —
+    # data IS saved locally at this point, but the caller needs to know the
+    # commit didn't confirm so it doesn't show a false success.
+    try:
+        _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Players updated locally but git commit failed: {exc}. Changes may not persist through the next deploy. Please contact admin.",
+        )
+
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
     # Discord notification
@@ -304,7 +338,14 @@ async def bulk_update_contracts(request: Request, _=Depends(verify_api_key)):
 
         save_json(COMBINED_FILE, players)
         commit_msg = f"Admin bulk contract update: {len(updated)} players → {new_contract or '(none)'}"
+
+    try:
         _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Contracts updated locally but git commit failed: {exc}. Changes may not persist through the next deploy. Please contact admin.",
+        )
 
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
@@ -355,7 +396,14 @@ async def bulk_release(request: Request, _=Depends(verify_api_key)):
 
         save_json(COMBINED_FILE, players)
         commit_msg = f"Admin bulk release: {len(released)} players ({reason})"
+
+    try:
         _enqueue_commit([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Players released locally but git commit failed: {exc}. Changes may not persist through the next deploy. Please contact admin.",
+        )
 
     sync_to_website([COMBINED_FILE, PLAYER_LOG_FILE], commit_msg)
 
@@ -478,11 +526,27 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
             )
             print(f"  💾 Saved to player_log.json")
 
-            # Queue git commit while DATA_LOCK is still held so snapshot
-            # capture cannot miss this write during concurrent resets.
             commit_msg = f"Admin: Add player {player_data.get('name', '?')} (UPID: {next_upid})"
-            _enqueue_commit([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
 
+        # Commit OUTSIDE DATA_LOCK (matching bulk_graduate/bulk_update_contracts/
+        # bulk_release above) so a slow git push doesn't stall other admin
+        # requests. This now blocks until the push is actually confirmed and
+        # raises on failure — previously this queued the commit fire-and-forget
+        # and returned success immediately, so the Discord "New Player Added"
+        # message and the browser's success toast both fired unconditionally
+        # before git had done anything. If the container redeployed before the
+        # queued push landed, the new player was live on disk for that one
+        # request only and vanished on the next deploy, even though everyone
+        # had already been told it was added. (This is exactly what happened
+        # to Luis García Jr. / UPID 8696 on 2026-07-30 — see
+        # scripts/recover_lost_add_player_20260730.py for the recovery.)
+        try:
+            _enqueue_commit([COMBINED_FILE, UPID_DB_FILE, PLAYER_LOG_FILE], commit_msg)
+        except Exception as exc:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Player saved locally but git commit failed: {exc}. It will not persist through the next deploy unless this is retried. Please contact admin.",
+            )
 
         # --- Sync to website ---
         try:
