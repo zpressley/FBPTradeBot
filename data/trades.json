@@ -5821,5 +5821,46 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-300726_1843-072": {
+    "trade_id": "TRADE-300726_1843-072",
+    "teams": [
+      "WIZ",
+      "DRO"
+    ],
+    "initiator_team": "WIZ",
+    "status": "pending",
+    "created_at": "2026-07-30T22:43:31.556275Z",
+    "expires_at": "2026-08-13T22:43:31.556275Z",
+    "transfers": [
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WIZ",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3499",
+        "from_team": "DRO",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ"
+    ],
+    "receives": {
+      "WIZ": [
+        "C Harry Ford [SEA] [PC]"
+      ],
+      "DRO": [
+        "$15 WB via WIZ"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
