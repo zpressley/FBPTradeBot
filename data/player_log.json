@@ -85328,5 +85328,28 @@
     "years": "TC 1",
     "update_type": "Trade",
     "event": "TRADE-300726_1751-071: CFL->LFB"
+  },
+  {
+    "id": "2026-2026-07-30T19:55:24.727171-04:00-UPID_8697-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-07-30T19:55:24.727171-04:00",
+    "upid": "8697",
+    "player_name": "Luis Garcia Jr.",
+    "team": "WSH",
+    "pos": "1B",
+    "age": 26,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "WAR",
+    "contract": "Keeper Contract",
+    "status": "",
+    "years": "TC 1",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley"
   }
 ]
