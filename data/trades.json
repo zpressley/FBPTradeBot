@@ -5550,7 +5550,7 @@
       "DMN"
     ],
     "initiator_team": "RV",
-    "status": "admin_review",
+    "status": "approved",
     "created_at": "2026-07-30T20:01:08.083122Z",
     "expires_at": "2026-08-13T20:01:08.083122Z",
     "transfers": [
@@ -5592,7 +5592,19 @@
       "admin_review_message_id": "1532479874571436062",
       "admin_review_channel_id": "875594022033436683"
     },
-    "manager_approved_at": "2026-07-30T20:07:51.041473Z"
+    "manager_approved_at": "2026-07-30T20:07:51.041473Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T20:20:59.836830Z",
+    "data_applied_at": "2026-07-30T20:20:59.863933Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   },
   "TRADE-300726_1607-069": {
     "trade_id": "TRADE-300726_1607-069",
