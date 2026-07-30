@@ -5739,5 +5739,60 @@
       "admin_review_channel_id": "875594022033436683"
     },
     "manager_approved_at": "2026-07-30T21:14:43.740005Z"
+  },
+  "TRADE-300726_1751-071": {
+    "trade_id": "TRADE-300726_1751-071",
+    "teams": [
+      "CFL",
+      "LFB"
+    ],
+    "initiator_team": "CFL",
+    "status": "pending",
+    "created_at": "2026-07-30T21:51:40.009321Z",
+    "expires_at": "2026-08-13T21:51:40.009321Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7710",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "6075",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "4010",
+        "from_team": "CFL",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3277",
+        "from_team": "CFL",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "CFL"
+    ],
+    "receives": {
+      "CFL": [
+        "SP Ryan Sloan [SEA] [BC]",
+        "RP Edgardo Henriquez [LAD] [TC R]"
+      ],
+      "LFB": [
+        "SP George Kirby [SEA] [VC 2]",
+        "OF Taylor Ward [BAL] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
   }
 }
