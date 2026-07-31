@@ -85351,5 +85351,28 @@
     "years": "TC 1",
     "update_type": "Admin",
     "event": "Player added to database by zpressley"
+  },
+  {
+    "id": "2026-2026-07-31T00:23:48.420800Z-UPID_3499-Trade-TRADE-300726_1843-072",
+    "season": 2026,
+    "source": "trade_portal",
+    "admin": "WIZ",
+    "timestamp": "2026-07-31T00:23:48.420800Z",
+    "upid": "3499",
+    "player_name": "Harry Ford",
+    "team": "SEA",
+    "pos": "C",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": 471,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Trade",
+    "event": "TRADE-300726_1843-072: DRO->WIZ"
   }
 ]
