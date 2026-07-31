@@ -5681,14 +5681,14 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-05-16",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 671277,
     "mlb_primary_position": "2B",
     "name": "Luis Garc\u00eda",
@@ -158618,7 +158618,7 @@
     "team": "WSH",
     "position": "1B",
     "age": 26,
-    "manager": "WAR",
+    "manager": "Weekend Warriors",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "years_simple": "TC 1",
@@ -158629,6 +158629,7 @@
     "bats": "L",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "FBP_Team": "WAR"
   }
 ]
