@@ -8,10 +8,11 @@ fbp-hub has nothing pending right now.
 ## fbp-trade-bot
 
 Local main is a real merge commit (`2aa2862`) with two parents: your last
-push and origin/main's current tip (`e598ad0`), plus one more commit on top
-(`64dc74c`, a docs+script-only addition, see item 3 below). Local HEAD
-already contains every commit that's on origin/main -- this should push as
-a plain, non-force fast-forward-compatible push with no conflicts.
+push and origin/main's current tip (`e598ad0`), plus four more commits on
+top (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0` -- docs + data-cleanse
+fixes, see item 3 below). Local HEAD already contains every commit that's
+on origin/main -- this should push as a plain, non-force
+fast-forward-compatible push with no conflicts.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
@@ -21,7 +22,7 @@ Steps:
    than merging/rebasing again yourself -- ping Zach or come back to me).
 3. If unchanged: `git push origin main`. No merge/rebase needed -- it's
    already done, locally, and verified.
-4. Verify: `git log --oneline origin/main -1` should show `64dc74c`.
+4. Verify: `git log --oneline origin/main -1` should show `8f9e9f0`.
 
 **Do not force-push. Do not run `git rebase -X ours/-X theirs`. Do not
 resolve any conflicts yourself** -- if `git push` reports anything other
@@ -80,16 +81,12 @@ zero unexpected diffs among the other 6,807 players vs. origin/main's tip,
 player count unchanged (6,820), and `python3 -m py_compile` clean on every
 changed/new `.py` file.
 
-**3. Data cleanse report (commits `64dc74c`, `5510c93` -- docs + a
-read-only script only, no data files touched).**
-`scripts/data_cleanse_combined_players.py` scans `combined_players.json`
-for the failure patterns this session kept hitting (ID collisions, missing
-FBP_Team, duplicate rows, etc.) and
-`DATA_CLEANSE_COMBINED_PLAYERS_2026_08_02.md` writes up what it found:
-5 owned players with no UPID at all, 2 UPIDs with literal duplicate rows,
-and a handful of dormant "shadow" duplicates of owned players under a
-different name spelling. Nothing was changed -- diagnosis only, pending
-Zach's input on what to fix and in what order.
+**3. Data cleanse + two follow-up fixes (commits `64dc74c`, `5510c93`,
+`1ac570f`, `8f9e9f0`).** `scripts/data_cleanse_combined_players.py` scans
+`combined_players.json` for the failure patterns this session kept hitting
+(ID collisions, missing FBP_Team, duplicate rows, etc.);
+`DATA_CLEANSE_COMBINED_PLAYERS_2026_08_02.md` is the writeup, now updated
+to reflect what's fixed vs. still open.
 
 (`5510c93` corrects an initial mistake in the same report: a "27 owned
 players stuck in Farm status" finding that assumed graduation is driven by
@@ -98,6 +95,31 @@ having debuted. Zach corrected this -- graduation is rule-based (350 PA /
 against `data/graduation_eligible.json`'s properly-computed eligibility
 snapshot: zero actual backlog. That finding is retracted in the doc and the
 script's check was rewritten to use the real rule.)
+
+`1ac570f` fixes two of the cleanse's findings, both scoped and confirmed
+with Zach before applying:
+- **Duplicate array rows** (upid 5996, 3825): each had two objects sharing
+  one upid -- a full record and a sparse one carrying only
+  bbref_id/fangraphs_id/fangraphs_name under an accented name spelling.
+  Merged into one row each.
+- **6 no-UPID stub records** (Ivan Herrera, Josh Smith, Luis Robert Jr.,
+  Michael Harris II, Bobby Witt Jr. -- all owned; Jake Odorizzi --
+  unowned): traced to a single bulk-drop event on 2026-03-13 (all 5 owned
+  players dropped at the identical timestamp) followed by each being
+  re-added by the *same* manager who'd dropped them, where the re-add's
+  name-match failed and created a disconnected ownership stub instead of
+  re-linking to the original UPID. Fixed by transplanting FBP_Team/manager
+  onto the original rich record and deleting the stub -- contract terms
+  deliberately left unchanged (Zach's call: same-manager reclaim right
+  after a forced drop reads as a sync glitch, not a new pickup).
+
+Verified before committing: player count 6,820 -> 6,812 (exactly the 2
+merged duplicates + 6 removed stubs), JSON valid, zero unexpected diffs
+among the other 6,804 players.
+
+Still open, not fixed, no action needed from you: a couple more dormant
+shadow-duplicate players (Jonathon Long, Abimelec Ortiz) and some low
+priority cosmetic items -- all listed in the doc, none blocking.
 
 ## After pushing
 
