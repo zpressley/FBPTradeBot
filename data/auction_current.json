@@ -1,18 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-1f35de9b1cfe",
-      "bid_type": "OB",
-      "date": "2026-07-27",
-      "prospect_id": "8015",
-      "team": "WIZ",
-      "timestamp": "2026-07-28T00:07:53.335792+00:00"
-    }
-  ],
-  "last_updated": "2026-07-28T00:07:53.335792+00:00",
+  "bids": [],
+  "last_updated": "2026-08-02T14:00:52.981739+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -27,6 +17,14 @@
     "SAD",
     "LFB"
   ],
+  "resolved_at": "2026-08-02T14:00:52.749935+00:00",
+  "resolved_winners": {
+    "8015": {
+      "amount": 10,
+      "name": "Angeibel Gomez",
+      "team": "WIZ"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

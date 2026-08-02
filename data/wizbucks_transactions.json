@@ -4610,5 +4610,25 @@
       "counterparty": "WIZ",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1785679252",
+    "timestamp": "2026-08-02T14:00:52.753343Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-07-27 to 2026-08-02: Angeibel Gomez",
+    "related_player": {
+      "upid": "8015",
+      "name": "Angeibel Gomez"
+    },
+    "metadata": {
+      "week_start": "2026-07-27",
+      "prospect_id": "8015",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
