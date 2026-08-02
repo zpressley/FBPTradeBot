@@ -5684,19 +5684,19 @@
     "FBP_Team": "WAR",
     "age": 25,
     "bats": "L",
-    "birth_date": "2000-05-16",
+    "birth_date": null,
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 1\"",
     "manager": "Weekend Warriors",
-    "mlb_id": 671277,
-    "mlb_primary_position": "2B",
+    "mlb_id": null,
+    "mlb_primary_position": null,
     "name": "Luis García",
     "player_type": "MLB",
     "position": "RP",
     "rank": 271,
     "status": "[5] TC1",
-    "team": "LAA",
+    "team": "NYM",
     "throws": "R",
     "upid": "2899",
     "weight": 216,
@@ -7551,7 +7551,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "SAD",
     "age": 29,
     "bats": "R",
     "bbref_id": "ryanjo04",
@@ -7561,7 +7561,7 @@
     "fangraphs_name": "Joe Ryan",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": "not much of a donkey",
     "mlb_id": 657746,
     "mlb_primary_position": "P",
     "name": "Joe Ryan",
@@ -7997,7 +7997,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "HAM",
     "age": 19,
     "bats": "L",
     "bbref_id": "caminca01",
@@ -8009,7 +8009,7 @@
     "fangraphs_name": "Cam Caminiti",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": "Hammers",
     "mlb_id": 807284,
     "mlb_primary_position": "P",
     "name": "Cam Caminiti",
@@ -11789,7 +11789,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "B2J",
     "age": 21,
     "bats": "R",
     "bbref_id": "prattco01",
@@ -11802,7 +11802,7 @@
     "fypd": false,
     "height": "6' 3\"",
     "level": "MLB",
-    "manager": "not much of a donkey",
+    "manager": "Btwn2Jackies",
     "mlb_id": 806198,
     "mlb_primary_position": "SS",
     "name": "Cooper Pratt",
@@ -15434,13 +15434,13 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
-    "NRI": "CFL",
+    "FBP_Team": "B2J",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "mcgremi01",
     "birth_date": "2000-07-08",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "debut_date": "07/31/2024",
     "debuted": true,
     "fangraphs_id": "29869",
@@ -15448,20 +15448,20 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": "",
+    "manager": "Btwn2Jackies",
     "mlb_id": 700241,
     "mlb_primary_position": "P",
     "name": "Michael McGreevy",
     "player_type": "Farm",
     "position": "SP",
     "rank": 477,
-    "status": "[9] P",
+    "status": "[5] TC1",
     "team": "STL",
     "throws": "R",
     "upid": "2979",
     "weight": 220,
     "yahoo_id": "12549",
-    "years_simple": "P"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "CFL",
@@ -26690,9 +26690,9 @@
     "player_type": "MLB",
     "position": "RP",
     "status": "[5] TC1",
-    "team": "LAA",
+    "team": "NYM",
     "upid": "2898",
-    "yahoo_id": "9455",
+    "yahoo_id": "",
     "years_simple": "TC 1"
   },
   {
@@ -47252,7 +47252,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "B2J",
     "age": 27,
     "bats": "R",
     "bbref_id": "rouppla01",
@@ -47262,7 +47262,7 @@
     "fangraphs_name": "Landen Roupp",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": "Btwn2Jackies",
     "mlb_id": 694738,
     "mlb_primary_position": "P",
     "name": "Landen Roupp",
@@ -82262,7 +82262,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "WAR",
     "age": 18,
     "bats": "R",
     "bbref_id": "hallst01",
@@ -82275,7 +82275,7 @@
     "fypd": true,
     "fypd_rank": 19,
     "height_weight": "6' 0\" / 180 lbs",
-    "manager": "Whiz Kids",
+    "manager": "Weekend Warriors",
     "mlb_id": "829162",
     "mlb_primary_position": "SS",
     "name": "Steele Hall",
@@ -82313,7 +82313,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "WAR",
     "age": 19,
     "bats": "L",
     "contract_type": "Development Cont.",
@@ -82322,7 +82322,7 @@
     "fypd": true,
     "fypd_rank": 31,
     "height_weight": "5' 10\" / 182 lbs",
-    "manager": "Whiz Kids",
+    "manager": "Weekend Warriors",
     "mlb_id": null,
     "mlb_primary_position": "SS",
     "name": "Kayson Cunningham",
@@ -126648,7 +126648,7 @@
     "throws": null,
     "upid": "3767",
     "weight": null,
-    "yahoo_id": "9455",
+    "yahoo_id": "",
     "years_simple": ""
   },
   {
@@ -158599,17 +158599,19 @@
     "team": "WSH",
     "position": "1B",
     "age": 26,
-    "manager": "WAR",
+    "manager": "Whiz Kids",
     "player_type": "MLB",
     "contract_type": "Keeper Contract",
     "years_simple": "TC 1",
     "yahoo_id": null,
-    "mlb_id": "671277",
+    "mlb_id": 671277,
     "birth_date": "2000-05-16",
     "debut_date": "2020-08-14",
     "bats": "L",
     "throws": "R",
     "fypd": false,
-    "level": "MLB"
+    "level": "MLB",
+    "FBP_Team": "WIZ",
+    "status": "[5] TC1"
   }
 ]
