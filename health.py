@@ -208,7 +208,16 @@ def _commit_worker_loop():
         # of times before giving up — a single transient git/network failure
         # (which happens periodically on Railway) used to silently drop the
         # whole batch, which is how trade acceptances got lost.
-        max_attempts = 3
+        #
+        # Note: _execute_git_commit's own push step (_push_with_retry) now
+        # loops its own rejected-push recovery internally (up to 5 attempts)
+        # since that's the far more common failure mode here — this repo
+        # has multiple independent writers (this worker, the daily GitHub
+        # Action, occasional direct pushes) racing to push to the same
+        # main branch. Kept this outer retry at 2 (not higher) so the two
+        # layers can't compound into an excessively long wait for callers
+        # that block on wait=True (e.g. the auction resolve flow).
+        max_attempts = 2
         retry_delay_seconds = 2.0
         commit_ok = False
         last_exc: Exception | None = None
@@ -400,54 +409,78 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
 
         return True
 
+    def _is_retryable_push_error(exc: subprocess.CalledProcessError) -> tuple[bool, str]:
+        combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
+        retryable = any(
+            s in combined.lower()
+            for s in [
+                "fetch first",
+                "non-fast-forward",
+                "updates were rejected",
+                "rejected",
+            ]
+        )
+        return retryable, combined
+
     def _push_with_retry(saved_files: dict[str, bytes] | None = None) -> None:
+        """Push, recovering from a rejected (non-fast-forward) push by
+        fetching + hard-resetting to the new remote tip and reapplying.
+
+        This repo has multiple independent writers pushing to the same
+        main branch (this worker, the daily GitHub Action pipeline, and
+        occasionally a human/agent pushing local commits directly) — none
+        of them coordinate beyond "fetch immediately before pushing", so a
+        rejected push is an expected, recurring event rather than a rare
+        edge case. A single recovery attempt only wins the race if nothing
+        else pushes again in the (short but non-zero) window between the
+        reset and the retry push; under heavier concurrent write activity
+        that single attempt can itself lose the race, which is what
+        previously surfaced as "persistence failed, will retry" to callers
+        that wait on this (e.g. the Sunday auction resolve) even though
+        the underlying operation was one more attempt away from success.
+        Looping the recovery (instead of trying it once) resolves that
+        within this single call far more often, instead of pushing the
+        retry out to the caller's own, much slower, retry cadence.
+        """
         try:
             _run(push_cmd)
             _log("GIT_PUSH_OK")
             return
         except subprocess.CalledProcessError as exc:
-            combined = _redact(((exc.stdout or "") + "\n" + (exc.stderr or "")).strip())
-            retryable = any(
-                s in combined.lower()
-                for s in [
-                    "fetch first",
-                    "non-fast-forward",
-                    "updates were rejected",
-                    "rejected",
-                ]
-            )
-
+            retryable, combined = _is_retryable_push_error(exc)
             if not retryable:
                 _log("GIT_PUSH_FAILED", {"code": exc.returncode, "output": combined[-2000:]})
                 raise
+            _log("GIT_PUSH_RETRY", {"reason": "non-fast-forward", "attempt": 1, "output": combined[-1200:]})
 
-            _log("GIT_PUSH_RETRY", {"reason": "non-fast-forward", "output": combined[-1200:]})
+        # Conflict-resistant retry, looped: a rejected push here almost
+        # always means another writer landed a commit on main between our
+        # last fetch and our push attempt. Each iteration:
+        # - Snapshots ALL data/*.json files (not just this batch's files)
+        #   so concurrent writes from other endpoints are preserved
+        # - Fetches remote main and hard-resets local main to it
+        # - Restores ALL data files from the fresh snapshot, then
+        #   overwrites with this batch's own intended changes
+        # - Commits + attempts to push again
+        #
+        # IMPORTANT: Hold DATA_LOCK during the reset+restore+commit so no
+        # API endpoint reads stale (post-reset, pre-restore) data from disk.
+        if saved_files is None:
+            # Prefer queue-time snapshots; fall back to current disk.
+            saved_files = dict(file_snapshots or {})
+            for p in existing_paths:
+                if p in saved_files:
+                    continue
+                try:
+                    full = os.path.join(repo_root, p)
+                    with open(full, "rb") as f:
+                        saved_files[p] = f.read()
+                except Exception:
+                    continue
 
-            # Conflict-resistant retry:
-            # - Snapshot ALL data/*.json files (not just this batch's files)
-            #   so that concurrent writes from other endpoints are preserved
-            # - Fetch remote main
-            # - Hard reset local main to FETCH_HEAD
-            # - Restore ALL data files from snapshot
-            # - Overwrite with batch-specific snapshots (most recent versions)
-            # - Commit + push
-            #
-            # IMPORTANT: Hold DATA_LOCK during the reset+restore+commit so
-            # that no API endpoint reads stale (post-reset, pre-restore)
-            # data from disk.
-            if saved_files is None:
-                # Prefer queue-time snapshots; fall back to current disk.
-                saved_files = dict(file_snapshots or {})
-                for p in existing_paths:
-                    if p in saved_files:
-                        continue
-                    try:
-                        full = os.path.join(repo_root, p)
-                        with open(full, "rb") as f:
-                            saved_files[p] = f.read()
-                    except Exception:
-                        continue
-
+        max_reset_retries = 5
+        last_exc: subprocess.CalledProcessError | None = None
+        for attempt in range(1, max_reset_retries + 1):
             with DATA_LOCK:
                 # Snapshot ALL data JSON files before reset so concurrent
                 # writes from other endpoints are not lost.
@@ -462,7 +495,7 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
                                 full_data_snapshot[rel] = fh.read()
                         except Exception:
                             pass
-                _log("GIT_FULL_DATA_SNAPSHOT", {"file_count": len(full_data_snapshot)})
+                _log("GIT_FULL_DATA_SNAPSHOT", {"file_count": len(full_data_snapshot), "attempt": attempt})
 
                 # Best-effort cleanup of any interrupted operations
                 subprocess.run(["git", "rebase", "--abort"], cwd=repo_root, capture_output=True, text=True)
@@ -505,14 +538,34 @@ def _execute_git_commit(file_paths: list[str], message: str, *, file_snapshots: 
 
                 staged = _run(["git", "diff", "--cached", "--name-only"], check=False)
                 if not (staged.stdout or "").strip():
-                    _log("GIT_NOOP", {"reason": "retry produced no staged changes"})
+                    _log("GIT_NOOP", {"reason": "retry produced no staged changes", "attempt": attempt})
                     return
 
                 _run(["git", "commit", "-m", message])
 
             # Push outside the lock (network I/O can be slow)
-            _run(push_cmd)
-            _log("GIT_PUSH_OK", {"after": "hard-reset-reapply"})
+            try:
+                _run(push_cmd)
+                _log("GIT_PUSH_OK", {"after": "hard-reset-reapply", "attempt": attempt})
+                return
+            except subprocess.CalledProcessError as exc:
+                retryable, combined = _is_retryable_push_error(exc)
+                last_exc = exc
+                if not retryable:
+                    _log("GIT_PUSH_FAILED", {"code": exc.returncode, "output": combined[-2000:], "attempt": attempt})
+                    raise
+                _log(
+                    "GIT_PUSH_RETRY",
+                    {"reason": "non-fast-forward", "attempt": attempt + 1, "output": combined[-1200:]},
+                )
+                time.sleep(min(1.0 * attempt, 5.0))
+
+        # Exhausted all reset-and-retry attempts — surface the last error
+        # so the caller (and its own, much slower, retry cadence) takes
+        # over from here.
+        _log("GIT_PUSH_RETRY_EXHAUSTED", {"attempts": max_reset_retries})
+        if last_exc is not None:
+            raise last_exc
 
     try:
         did_commit = _stage_and_commit()

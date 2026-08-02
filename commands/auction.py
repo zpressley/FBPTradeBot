@@ -461,19 +461,36 @@ class Auction(commands.Cog):
                 )
 
                 if status in {"resolved", "already_resolved"}:
-                    with DATA_LOCK:
-                        commit_ok = self._commit_auction_files(
-                            [
-                                "data/auction_current.json",
-                                "data/combined_players.json",
-                                "data/wizbucks.json",
-                                "data/wizbucks_transactions.json",
-                                "data/player_log.json",
-                            ],
-                            f"Auction resolved: week of {week_key}",
-                            wait=True,
-                            timeout_seconds=60.0,
-                        )
+                    # IMPORTANT: this commit call must NOT be made while holding
+                    # DATA_LOCK. It blocks (wait=True) waiting for the background
+                    # commit-worker thread to finish — and if that push gets
+                    # rejected (another writer landed a commit on main first,
+                    # which happens routinely: the daily GitHub Action, occasional
+                    # direct pushes, etc.), the worker's own recovery path needs
+                    # to acquire DATA_LOCK to do its fetch+reset+restore+recommit.
+                    # Holding the lock here while waiting for that same worker
+                    # to finish is a cross-thread deadlock: the worker can never
+                    # get the lock, so it can never finish, so this wait always
+                    # times out — which is exactly what "persistence failed,
+                    # will retry" was actually caused by. This is the one thing
+                    # that made auction resolve behave differently from every
+                    # other write path (trades, admin add-player, etc.), which
+                    # all already release their lock before calling a blocking
+                    # commit function — see trade/trade_store.py's accept_trade
+                    # (save under the lock, _maybe_commit after releasing it)
+                    # and api_admin_bulk.py's add_player for the same pattern.
+                    commit_ok = self._commit_auction_files(
+                        [
+                            "data/auction_current.json",
+                            "data/combined_players.json",
+                            "data/wizbucks.json",
+                            "data/wizbucks_transactions.json",
+                            "data/player_log.json",
+                        ],
+                        f"Auction resolved: week of {week_key}",
+                        wait=True,
+                        timeout_seconds=90.0,
+                    )
 
                     if commit_ok:
                         self._resolve_retry_attempts = 0
@@ -482,12 +499,13 @@ class Auction(commands.Cog):
                         try:
                             with DATA_LOCK:
                                 self._write_resolved_guard(week_key)
-                                guard_ok = self._commit_auction_files(
-                                    [_AUCTION_RESOLVED_STATE_FILE],
-                                    f"Auction resolve guard: week of {week_key}",
-                                    wait=True,
-                                    timeout_seconds=30.0,
-                                )
+                            # Same reasoning as above: commit outside DATA_LOCK.
+                            guard_ok = self._commit_auction_files(
+                                [_AUCTION_RESOLVED_STATE_FILE],
+                                f"Auction resolve guard: week of {week_key}",
+                                wait=True,
+                                timeout_seconds=30.0,
+                            )
                         except Exception as guard_exc:
                             print(f"⚠️ Failed to persist auction resolve guard: {guard_exc}")
 
@@ -568,12 +586,14 @@ class Auction(commands.Cog):
                     try:
                         with DATA_LOCK:
                             self._write_resolved_guard(week_key)
-                            guard_ok = self._commit_auction_files(
-                                [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
-                                f"Auction resolve guard: week of {week_key} [no bids]",
-                                wait=True,
-                                timeout_seconds=30.0,
-                            )
+                        # Commit outside DATA_LOCK — see the detailed comment on
+                        # the "resolved"/"already_resolved" branch above for why.
+                        guard_ok = self._commit_auction_files(
+                            [_AUCTION_RESOLVED_STATE_FILE, "data/auction_current.json"],
+                            f"Auction resolve guard: week of {week_key} [no bids]",
+                            wait=True,
+                            timeout_seconds=30.0,
+                        )
                     except Exception as guard_exc:
                         print(f"⚠️ Failed to persist no-bid resolve guard: {guard_exc}")
 
