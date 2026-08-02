@@ -5479,5 +5479,403 @@
       "buyins_purchased": 0,
       "warnings": []
     }
+  },
+  "TRADE-300726_1402-067": {
+    "trade_id": "TRADE-300726_1402-067",
+    "teams": [
+      "SAD",
+      "RV"
+    ],
+    "initiator_team": "SAD",
+    "status": "approved",
+    "created_at": "2026-07-30T18:02:07.417353Z",
+    "expires_at": "2026-08-13T18:02:07.417353Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "4286",
+        "from_team": "SAD",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "1888",
+        "from_team": "RV",
+        "to_team": "SAD"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 10,
+        "from_team": "RV",
+        "to_team": "SAD"
+      }
+    ],
+    "acceptances": [
+      "SAD",
+      "RV"
+    ],
+    "receives": {
+      "SAD": [
+        "SP Gerrit Cole [NYY] [TC 2]",
+        "$10 WB via RV"
+      ],
+      "RV": [
+        "SP Bryan Woo [SEA] [VC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532449098945396947",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-30T18:05:33.853748Z",
+    "admin_decision_by": "SAD",
+    "processed_at": "2026-07-30T18:05:54.158312Z",
+    "data_applied_at": "2026-07-30T18:05:54.206918Z",
+    "data_applied_by": "SAD",
+    "data_applied_summary": {
+      "player_moves": 2,
+      "player_log_entries": 2,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-300726_1601-068": {
+    "trade_id": "TRADE-300726_1601-068",
+    "teams": [
+      "RV",
+      "DMN"
+    ],
+    "initiator_team": "RV",
+    "status": "approved",
+    "created_at": "2026-07-30T20:01:08.083122Z",
+    "expires_at": "2026-08-13T20:01:08.083122Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "6602",
+        "from_team": "DMN",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "6568",
+        "from_team": "DMN",
+        "to_team": "RV"
+      },
+      {
+        "type": "player",
+        "upid": "3612",
+        "from_team": "RV",
+        "to_team": "DMN"
+      }
+    ],
+    "acceptances": [
+      "RV",
+      "DMN"
+    ],
+    "receives": {
+      "RV": [
+        "C Blake Mitchell [KC] [DC]",
+        "OF Walker Jenkins [MIN] [BC]"
+      ],
+      "DMN": [
+        "SP Andrew Abbott [CIN] [TC 2]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532479874571436062",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-30T20:07:51.041473Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T20:20:59.836830Z",
+    "data_applied_at": "2026-07-30T20:20:59.863933Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 3,
+      "player_log_entries": 3,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-300726_1607-069": {
+    "trade_id": "TRADE-300726_1607-069",
+    "teams": [
+      "LFB",
+      "WAR"
+    ],
+    "initiator_team": "LFB",
+    "status": "pending",
+    "created_at": "2026-07-30T20:07:07.913327Z",
+    "expires_at": "2026-08-13T20:07:07.913327Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "3462",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3384",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3381",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "4022",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "LFB"
+    ],
+    "receives": {
+      "LFB": [
+        "C William Contreras [MIL] [VC 2]",
+        "SP Hunter Greene [CIN] [Keeper Contract]"
+      ],
+      "WAR": [
+        "C Shea Langeliers [ATH] [TC 2]",
+        "1B Willson Contreras [BOS] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": null
+    }
+  },
+  "TRADE-300726_1705-070": {
+    "trade_id": "TRADE-300726_1705-070",
+    "teams": [
+      "LFB",
+      "WAR"
+    ],
+    "initiator_team": "LFB",
+    "status": "approved",
+    "created_at": "2026-07-30T21:05:33.587737Z",
+    "expires_at": "2026-08-13T21:05:33.587737Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "2450",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3462",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "6617",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "wizbucks",
+        "amount": 5,
+        "from_team": "LFB",
+        "to_team": "WAR"
+      },
+      {
+        "type": "player",
+        "upid": "3381",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "4315",
+        "from_team": "WAR",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3435",
+        "from_team": "LFB",
+        "to_team": "WAR"
+      }
+    ],
+    "acceptances": [
+      "LFB",
+      "WAR"
+    ],
+    "receives": {
+      "LFB": [
+        "C William Contreras [MIL] [VC 2]",
+        "CF Riley Greene [DET] [VC 1]"
+      ],
+      "WAR": [
+        "CF Emmanuel Rodriguez [MIN] [PC]",
+        "C Shea Langeliers [ATH] [TC 2]",
+        "1B Ralphy Velazquez [CLE] [BC]",
+        "C Francisco Alvarez [NYM] [TC 1]",
+        "$5 WB via LFB"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532496738617786368",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-30T21:14:43.740005Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T22:26:11.514215Z",
+    "data_applied_at": "2026-07-30T22:26:11.553428Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 6,
+      "player_log_entries": 6,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-300726_1751-071": {
+    "trade_id": "TRADE-300726_1751-071",
+    "teams": [
+      "CFL",
+      "LFB"
+    ],
+    "initiator_team": "CFL",
+    "status": "approved",
+    "created_at": "2026-07-30T21:51:40.009321Z",
+    "expires_at": "2026-08-13T21:51:40.009321Z",
+    "transfers": [
+      {
+        "type": "player",
+        "upid": "7710",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "6075",
+        "from_team": "LFB",
+        "to_team": "CFL"
+      },
+      {
+        "type": "player",
+        "upid": "4010",
+        "from_team": "CFL",
+        "to_team": "LFB"
+      },
+      {
+        "type": "player",
+        "upid": "3277",
+        "from_team": "CFL",
+        "to_team": "LFB"
+      }
+    ],
+    "acceptances": [
+      "CFL",
+      "LFB"
+    ],
+    "receives": {
+      "CFL": [
+        "SP Ryan Sloan [SEA] [BC]",
+        "RP Edgardo Henriquez [LAD] [TC R]"
+      ],
+      "LFB": [
+        "SP George Kirby [SEA] [VC 2]",
+        "OF Taylor Ward [BAL] [TC 1]"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532506631235965118",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-30T21:54:11.077169Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-30T22:26:30.166653Z",
+    "data_applied_at": "2026-07-30T22:26:30.192068Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 4,
+      "player_log_entries": 4,
+      "pick_moves": 0,
+      "wb_transfers": 0,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
+  },
+  "TRADE-300726_1843-072": {
+    "trade_id": "TRADE-300726_1843-072",
+    "teams": [
+      "WIZ",
+      "DRO"
+    ],
+    "initiator_team": "WIZ",
+    "status": "approved",
+    "created_at": "2026-07-30T22:43:31.556275Z",
+    "expires_at": "2026-08-13T22:43:31.556275Z",
+    "transfers": [
+      {
+        "type": "wizbucks",
+        "amount": 15,
+        "from_team": "WIZ",
+        "to_team": "DRO"
+      },
+      {
+        "type": "player",
+        "upid": "3499",
+        "from_team": "DRO",
+        "to_team": "WIZ"
+      }
+    ],
+    "acceptances": [
+      "WIZ",
+      "DRO"
+    ],
+    "receives": {
+      "WIZ": [
+        "C Harry Ford [SEA] [PC]"
+      ],
+      "DRO": [
+        "$15 WB via WIZ"
+      ]
+    },
+    "discord": {
+      "thread_id": null,
+      "thread_url": null,
+      "admin_review_message_id": "1532541537978683544",
+      "admin_review_channel_id": "875594022033436683"
+    },
+    "manager_approved_at": "2026-07-31T00:12:52.307990Z",
+    "admin_decision_by": "WIZ",
+    "processed_at": "2026-07-31T00:23:48.367160Z",
+    "data_applied_at": "2026-07-31T00:23:48.420800Z",
+    "data_applied_by": "WIZ",
+    "data_applied_summary": {
+      "player_moves": 1,
+      "player_log_entries": 1,
+      "pick_moves": 0,
+      "wb_transfers": 1,
+      "buyins_purchased": 0,
+      "warnings": []
+    }
   }
 }

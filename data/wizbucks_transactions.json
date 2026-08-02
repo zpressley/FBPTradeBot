@@ -4546,5 +4546,89 @@
       "counterparty": "RV",
       "source": "trade_portal"
     }
+  },
+  {
+    "txn_id": "wb_2026-07-30_trade_TRADE-300726_1705-070_LFB_debit_5",
+    "timestamp": "2026-07-30T22:26:11.553428Z",
+    "team": "LFB",
+    "amount": -5,
+    "balance_before": 5,
+    "balance_after": 0,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-300726_1705-070: WizBucks sent to WAR",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1705-070",
+      "counterparty": "WAR",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-30_trade_TRADE-300726_1705-070_WAR_credit_5",
+    "timestamp": "2026-07-30T22:26:11.553428Z",
+    "team": "WAR",
+    "amount": 5,
+    "balance_before": 10,
+    "balance_after": 15,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-300726_1705-070: WizBucks received from LFB",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1705-070",
+      "counterparty": "LFB",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-31_trade_TRADE-300726_1843-072_WIZ_debit_15",
+    "timestamp": "2026-07-31T00:23:48.420800Z",
+    "team": "WIZ",
+    "amount": -15,
+    "balance_before": 115,
+    "balance_after": 100,
+    "transaction_type": "trade_wizbucks_debit",
+    "description": "Trade TRADE-300726_1843-072: WizBucks sent to DRO",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1843-072",
+      "counterparty": "DRO",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_2026-07-31_trade_TRADE-300726_1843-072_DRO_credit_15",
+    "timestamp": "2026-07-31T00:23:48.420800Z",
+    "team": "DRO",
+    "amount": 15,
+    "balance_before": 10,
+    "balance_after": 25,
+    "transaction_type": "trade_wizbucks_credit",
+    "description": "Trade TRADE-300726_1843-072: WizBucks received from WIZ",
+    "related_player": null,
+    "metadata": {
+      "trade_id": "TRADE-300726_1843-072",
+      "counterparty": "WIZ",
+      "source": "trade_portal"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1785679252",
+    "timestamp": "2026-08-02T14:00:52.753343Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-07-27 to 2026-08-02: Angeibel Gomez",
+    "related_player": {
+      "upid": "8015",
+      "name": "Angeibel Gomez"
+    },
+    "metadata": {
+      "week_start": "2026-07-27",
+      "prospect_id": "8015",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
