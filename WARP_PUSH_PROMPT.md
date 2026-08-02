@@ -80,16 +80,24 @@ zero unexpected diffs among the other 6,807 players vs. origin/main's tip,
 player count unchanged (6,820), and `python3 -m py_compile` clean on every
 changed/new `.py` file.
 
-**3. Data cleanse report (commit `64dc74c`, docs + a read-only script
-only -- no data files touched).** `scripts/data_cleanse_combined_players.py`
-scans `combined_players.json` for the failure patterns this session kept
-hitting (ID collisions, missing FBP_Team, duplicate rows, etc.) and
+**3. Data cleanse report (commits `64dc74c`, `5510c93` -- docs + a
+read-only script only, no data files touched).**
+`scripts/data_cleanse_combined_players.py` scans `combined_players.json`
+for the failure patterns this session kept hitting (ID collisions, missing
+FBP_Team, duplicate rows, etc.) and
 `DATA_CLEANSE_COMBINED_PLAYERS_2026_08_02.md` writes up what it found:
-5 owned players with no UPID at all, 27 owned players still stuck at
-`player_type: "Farm"` despite having debuted, 2 UPIDs with literal
-duplicate rows, and a handful of dormant "shadow" duplicates of owned
-players under a different name spelling. Nothing was changed -- diagnosis
-only, pending Zach's input on what to fix and in what order.
+5 owned players with no UPID at all, 2 UPIDs with literal duplicate rows,
+and a handful of dormant "shadow" duplicates of owned players under a
+different name spelling. Nothing was changed -- diagnosis only, pending
+Zach's input on what to fix and in what order.
+
+(`5510c93` corrects an initial mistake in the same report: a "27 owned
+players stuck in Farm status" finding that assumed graduation is driven by
+having debuted. Zach corrected this -- graduation is rule-based (350 PA /
+100 IP-30 G / age 26+, per the FBP Constitution), not debut-based. Verified
+against `data/graduation_eligible.json`'s properly-computed eligibility
+snapshot: zero actual backlog. That finding is retracted in the doc and the
+script's check was rewritten to use the real rule.)
 
 ## After pushing
 
