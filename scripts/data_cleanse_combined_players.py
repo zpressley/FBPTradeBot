@@ -210,24 +210,44 @@ def main():
         print(f"  upid={p.get('upid'):>6}  {p.get('name','?'):25} status={p.get('status')!r} (majority for this combo: {expected!r})")
 
     # ---------------------------------------------------------------
-    # F. Graduation gap: debuted MLB players still marked Farm
+    # F. Graduation backlog: players who ARE eligible per the real FBP
+    # Prospect Limits rule (350 PA, 100 IP/30 G, or age 26+ -- see FBP
+    # Constitution Article 2 Section 05) but are still player_type=Farm.
+    #
+    # IMPORTANT: player_type is driven by graduation eligibility, NOT by
+    # whether a player has debuted. A player can debut and correctly stay
+    # a Farm/prospect-contract asset for a full season or more until they
+    # actually cross one of the real thresholds. An earlier version of
+    # this check flagged "debuted but still Farm" as a bug -- that was
+    # wrong and got corrected 2026-08-02 (see DATA_CLEANSE_COMBINED_PLAYERS
+    # _2026_08_02.md, section 2). This version cross-references the
+    # properly-computed data/graduation_eligible.json snapshot instead of
+    # guessing from debut_date, so it only flags players who actually meet
+    # the real rule.
     # ---------------------------------------------------------------
     print()
     print("=" * 78)
-    print("F. GRADUATION GAP (debuted but still player_type=Farm)")
+    print("F. GRADUATION BACKLOG (eligible per graduation_eligible.json, still Farm)")
     print("=" * 78)
 
-    debuted_still_farm = []
-    for p in players:
-        if p.get("player_type") != "Farm":
-            continue
-        debuted_flag = p.get("debuted")
-        debut_date = p.get("debut_date")
-        if debuted_flag is True or (debut_date not in (None, "")):
-            debuted_still_farm.append(p)
-    print(f"player_type=Farm but debuted=True or has a debut_date: {len(debuted_still_farm)}")
-    for p in debuted_still_farm[:30]:
-        print(f"  upid={p.get('upid'):>6}  {p.get('name','?'):25} debut_date={p.get('debut_date')!r} debuted={p.get('debuted')!r} FBP_Team={p.get('FBP_Team')!r}")
+    grad_backlog = []
+    try:
+        grad_eligible = json.load(open("data/graduation_eligible.json", encoding="utf-8"))
+        by_name = defaultdict(list)
+        for p in players:
+            by_name[p.get("name")].append(p)
+        for name, info in grad_eligible.items():
+            for p in by_name.get(name, []):
+                if p.get("player_type") == "Farm":
+                    grad_backlog.append((p, info))
+        snapshot_note = f"(snapshot has {len(grad_eligible)} flagged-eligible players, as of its own last-computed date -- re-run the pipeline for a fresh snapshot if it's old)"
+    except FileNotFoundError:
+        grad_eligible = None
+        snapshot_note = "(data/graduation_eligible.json not found -- skipped; this check needs that snapshot to mean anything)"
+
+    print(f"Players flagged eligible in graduation_eligible.json but still player_type=Farm: {len(grad_backlog)} {snapshot_note}")
+    for p, info in grad_backlog[:30]:
+        print(f"  upid={p.get('upid'):>6}  {p.get('name','?'):25} FBP_Team={p.get('FBP_Team')!r} reason={info.get('reason')} details={info.get('details')!r}")
 
     # ---------------------------------------------------------------
     # G. upid_database.json cross-check
@@ -266,7 +286,7 @@ def main():
     print(f"years_simple set, contract_type blank:                  {len(years_no_contract)}")
     print(f"status disagrees w/ contract/years majority:            {len(outlier_records)}")
     print(f"Possible duplicate-person groups (name+team+position):  {len(ntp_dupes)}")
-    print(f"Debuted-but-still-Farm (graduation gap):                {len(debuted_still_farm)}")
+    print(f"Graduation-eligible (per snapshot) but still Farm:       {len(grad_backlog)}")
     print(f"upid_database.json team mismatch:                       {len(team_mismatch)}")
 
 

@@ -12,7 +12,7 @@ report from two days ago proposed exactly this).
 | # | Issue | Count | Owned players affected | Priority |
 |---|---|---|---|---|
 | 1 | Rostered players with **no UPID at all** | 6 records | 5 | **High** |
-| 2 | Debuted MLB players stuck at `player_type: "Farm"` | 177 | 27 | **High** |
+| 2 | ~~Debuted MLB players stuck at `player_type: "Farm"`~~ — **retracted, not a bug** | — | — | — |
 | 3 | Literal duplicate rows sharing one UPID | 2 pairs | 1 pair (both owned, same team) | Medium |
 | 4 | "Shadow" duplicate of an owned player under a different name spelling | ~5 | 5 | Medium |
 | 5 | `FBP_Team`/`manager` name inconsistencies | 3 | 3 | Low |
@@ -57,31 +57,36 @@ is actually treating as "the" owned one — same investigative pattern as the
 Garcia 8696/8697 fix), then retire or merge the duplicate. Worth doing
 carefully, one at a time, rather than in bulk.
 
-## 2. Debuted MLB players stuck in Farm status — High priority
+## 2. "Debuted but still Farm" — retracted, this was not a bug
 
-177 players have `player_type: "Farm"` despite having debuted in the majors
-(`debuted: true` and/or a real `debut_date`). This is the exact pattern
-McGreevy hit, but McGreevy was one of 177, not an isolated case. **27 of the
-177 are on live rosters right now**, spread across 9 teams:
+**Correction (Zach, 2026-08-02): player_type is driven by graduation, not by
+whether a player has debuted.** The original version of this section flagged
+177 players (27 owned) as a "graduation gap" purely because they'd appeared
+in an MLB game while still `player_type: "Farm"`. That premise was wrong.
 
-DRO (Nick Yorke, Ryan Ritter, C.J. Kayfus, Andrew Walters, Jonah Tong, Rece
-Hinds), RV (Jordan Lawlar, Kristian Campbell), B2J (Moises Ballesteros, Luis
-Morales, Denzer Guzman), HAM (Hunter Barco, Logan Henderson, Hurston
-Waldrep, Jhostynxon Garcia), JEP (Owen Caissie, Carson Whisenhunt, Bryce
-Eldridge, Dylan Beavers), LFB (Zac Veen), WIZ (Harry Ford), TBB (Mick Abel),
-WAR (Jacob Melton, Chase DeLauter, Trey Yesavage), SAD (Troy Melton), plus
-McGreevy (B2J, already fixed).
+Per the FBP Constitution (Article 2, Section 05) and the actual graduation
+pipeline (`data_pipeline/graduate_prospects_2025.py`), a prospect only
+graduates once they exceed **FBP Prospect Limits** — 350 career PA, or 100
+IP / 30 pitching appearances, or turning 26 — evaluated most strictly at
+the in-season graduation deadline (MLB All-Star break). Simply debuting
+(even a brief call-up) doesn't come close to those thresholds, so a player
+can correctly stay a Farm/prospect-contract asset for a full season or more
+after their first MLB appearance. My check conflated "has debuted" with
+"graduation-eligible," which isn't the same thing.
 
-**Why this matters:** if graduation drives contract-type eligibility or
-keeper cost the way it did for McGreevy, these 27 managers are likely
-carrying the wrong contract terms on real roster spots right now. The other
-150 are unowned prospects who've debuted but nobody's rostered — lower
-urgency, but confirms Warp's suspicion that the graduation sweep is scoped
-to owned players only (or has some other gap), not a one-off miss.
+**Verified this is a non-issue:** `data/graduation_eligible.json` is an
+existing, properly-computed snapshot (per the real PA/IP/age rule, dated
+2026-01-12) of every player who *actually* met the graduation threshold at
+that point — 203 players. Cross-checked all 203 against current
+`combined_players.json`: **every single one has already been correctly
+graduated to `player_type: "MLB"`. Zero still sitting in Farm.** McGreevy's
+contract fix earlier this session was unrelated to graduation eligibility
+(he doesn't appear in the 203) — his `player_type` staying "Farm" was
+correct, not a leftover bug, and shouldn't be changed.
 
-**Recommended fix:** worth Zach's sign-off on scope (matches the open item
-in `TRADE_DATA_ISSUES_ROOT_CAUSE_FIXES_2026_07_31.md`), but the 27 owned
-ones are a clear, bounded, high-value batch to fix first.
+No action needed here. Apologies for the bad steer in the original report —
+leaving this section in place with the correction rather than deleting it,
+so the reasoning is visible if this comes up again.
 
 ## 3. Literal duplicate rows sharing one UPID — Medium priority
 
