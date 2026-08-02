@@ -8,9 +8,10 @@ fbp-hub has nothing pending right now.
 ## fbp-trade-bot
 
 Local main is a real merge commit (`2aa2862`) with two parents: your last
-push and origin/main's current tip (`e598ad0`). Local HEAD already contains
-every commit that's on origin/main -- this should push as a plain,
-non-force fast-forward-compatible push with no conflicts.
+push and origin/main's current tip (`e598ad0`), plus one more commit on top
+(`64dc74c`, a docs+script-only addition, see item 3 below). Local HEAD
+already contains every commit that's on origin/main -- this should push as
+a plain, non-force fast-forward-compatible push with no conflicts.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
@@ -20,7 +21,7 @@ Steps:
    than merging/rebasing again yourself -- ping Zach or come back to me).
 3. If unchanged: `git push origin main`. No merge/rebase needed -- it's
    already done, locally, and verified.
-4. Verify: `git log --oneline origin/main -1` should show `2aa2862`.
+4. Verify: `git log --oneline origin/main -1` should show `64dc74c`.
 
 **Do not force-push. Do not run `git rebase -X ours/-X theirs`. Do not
 resolve any conflicts yourself** -- if `git push` reports anything other
@@ -78,6 +79,17 @@ files, all ~13 touched player records checked against expected values,
 zero unexpected diffs among the other 6,807 players vs. origin/main's tip,
 player count unchanged (6,820), and `python3 -m py_compile` clean on every
 changed/new `.py` file.
+
+**3. Data cleanse report (commit `64dc74c`, docs + a read-only script
+only -- no data files touched).** `scripts/data_cleanse_combined_players.py`
+scans `combined_players.json` for the failure patterns this session kept
+hitting (ID collisions, missing FBP_Team, duplicate rows, etc.) and
+`DATA_CLEANSE_COMBINED_PLAYERS_2026_08_02.md` writes up what it found:
+5 owned players with no UPID at all, 27 owned players still stuck at
+`player_type: "Farm"` despite having debuted, 2 UPIDs with literal
+duplicate rows, and a handful of dormant "shadow" duplicates of owned
+players under a different name spelling. Nothing was changed -- diagnosis
+only, pending Zach's input on what to fix and in what order.
 
 ## After pushing
 
