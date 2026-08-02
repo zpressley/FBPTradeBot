@@ -11,9 +11,9 @@ report from two days ago proposed exactly this).
 
 | # | Issue | Count | Owned players affected | Priority |
 |---|---|---|---|---|
-| 1 | Rostered players with **no UPID at all** | 6 records | 5 | **High** |
+| 1 | Rostered players with **no UPID at all** | 6 records | 5 | ~~High~~ **Fixed 2026-08-02** |
 | 2 | ~~Debuted MLB players stuck at `player_type: "Farm"`~~ — **retracted, not a bug** | — | — | — |
-| 3 | Literal duplicate rows sharing one UPID | 2 pairs | 1 pair (both owned, same team) | Medium |
+| 3 | Literal duplicate rows sharing one UPID | 2 pairs | 1 pair (both owned, same team) | ~~Medium~~ **Fixed 2026-08-02** |
 | 4 | "Shadow" duplicate of an owned player under a different name spelling | ~5 | 5 | Medium |
 | 5 | `FBP_Team`/`manager` name inconsistencies | 3 | 3 | Low |
 | 6 | Owned players missing `contract_type` | 15 | 15 | Low |
@@ -28,9 +28,9 @@ the same real player — the ownership layer is otherwise clean.
 
 ---
 
-## 1. Rostered players with no UPID at all — High priority
+## 1. Rostered players with no UPID at all — Fixed 2026-08-02
 
-Six records have `"upid": ""` (blank). Five of them are actively owned:
+Six records had `"upid": ""` (blank). Five were actively owned:
 
 | Name | Team | Owner | yahoo_id |
 |---|---|---|---|
@@ -41,21 +41,26 @@ Six records have `"upid": ""` (blank). Five of them are actively owned:
 | Bobby Witt Jr. | KC | DMN (The Damn Yankees) | 11771 |
 | Jake Odorizzi | TB | *(unowned)* | 9310 |
 
-**Why this matters:** every trade, player-log entry, and lookup in this
-codebase is keyed by UPID. A rostered player with no UPID can't be traded
-through the normal portal (no ID to reference), and any code that builds a
-`upid -> player` dict (which is most of it) silently drops or collides on
-these. Each of the 5 owned ones also has a normal, fully-populated duplicate
-row elsewhere under a slightly different name spelling (see #4 below) — e.g.
-Ivan Herrera (blank upid, owned) vs. **upid 3513, "Iván Herrera"** (unowned).
-The blank-upid row appears to be the one actually carrying current
-ownership, which is backwards from every other player in the file.
+**Root cause, confirmed via player_log.json:** all 5 owned players were
+dropped by their respective managers at the *identical* timestamp
+(2026-03-13T10:42:53, microseconds apart — one automated batch event, not
+five manager decisions), then re-added by the **same manager who'd just
+dropped them**. The re-add's Yahoo-name match failed against the existing
+rich UPID record (Ivan vs Iván, missing Jr./II suffixes) and created a
+disconnected, ownership-only stub instead of re-linking to the original
+UPID. `upid_database.json`'s name index already resolved every one of
+these names to the correct original UPID, so only the roster-sync's own
+matching missed it — this wasn't a duplicate-identity problem the way
+Garcia was, just a failed re-link.
 
-**Recommended fix:** for each of the 5, assign the correct UPID (very likely
-the sibling record's UPID, after confirming which row Yahoo/the roster sync
-is actually treating as "the" owned one — same investigative pattern as the
-Garcia 8696/8697 fix), then retire or merge the duplicate. Worth doing
-carefully, one at a time, rather than in bulk.
+**Fix applied** (`scripts/fix_duplicate_rows_and_upid_stubs_2026_08_02.py`):
+transplanted `FBP_Team`/`manager` from each stub onto the original rich
+UPID record, then deleted the stub. Zach's call: kept each record's
+existing `contract_type`/`status`/`years_simple` as-is rather than
+resetting — the same manager reclaiming the same player right after a
+forced drop reads as a sync glitch, not a new pickup. Odorizzi (unowned
+both sides) just had his `team` field updated to current (TEX → TB).
+Verified: player count 6,820 → 6,812, zero unexpected diffs elsewhere.
 
 ## 2. "Debuted but still Farm" — retracted, this was not a bug
 
@@ -88,7 +93,7 @@ No action needed here. Apologies for the bad steer in the original report —
 leaving this section in place with the correction rather than deleting it,
 so the reasoning is visible if this comes up again.
 
-## 3. Literal duplicate rows sharing one UPID — Medium priority
+## 3. Literal duplicate rows sharing one UPID — Fixed 2026-08-02
 
 Two UPIDs each have **two full array entries**, not just a naming quirk:
 
@@ -99,30 +104,38 @@ Two UPIDs each have **two full array entries**, not just a naming quirk:
   "Randy Rodríguez" (fangraphs/bbref IDs, blank contract/status) — both SF,
   both unowned.
 
-Looks like an enrichment pass (the one that adds `fangraphs_id`/`bbref_id`)
-created a second row instead of updating the existing one, keyed by a
-name-lookup that didn't recognize the accented spelling as the same person.
+`scripts/enrich_sfbb_ids.py` (the only code that touches
+`bbref_id`/`fangraphs_id`/`fangraphs_name`) turned out not to be the direct
+cause — it only fills blanks on an already-matched existing record and
+never appends a new one. But its own upid/mlb_id-keyed lookup dicts
+silently collapse a pre-existing duplicate to whichever row comes last, so
+once these duplicates existed (origin unconfirmed — git history on this
+frequently-reformatted file didn't cleanly pin it down), that script only
+ever "saw" and enriched one side, entrenching the split rather than fixing
+or causing it.
 
-**Why this matters:** any `{upid: player}` dict built from this file (which
-is how most of this codebase reads player data) silently keeps whichever of
-the two comes later in the array and drops the other — meaning one of these
-two records' data (the fuller one, in both cases observed) may already be
-invisible to parts of the app.
+**Why this mattered:** any `{upid: player}` dict built from this file
+(which is how most of this codebase reads player data) silently keeps
+whichever of the two comes later in the array and drops the other —
+meaning one of these two records' data (the fuller one, in both cases
+observed) was already invisible to parts of the app.
 
-**Recommended fix:** merge each pair into one row (keep the fuller record's
-fields, add the fangraphs_id/bbref_id from the sparse one), delete the
-duplicate.
+**Fix applied** (`scripts/fix_duplicate_rows_and_upid_stubs_2026_08_02.py`):
+merged each pair into one row (kept the fuller record's fields, copied over
+the `bbref_id`/`fangraphs_id`/`fangraphs_name` fields from the sparse one),
+deleted the duplicate.
 
 ## 4. Shadow duplicates of owned players, different name spelling — Medium
 
-Beyond the 5 blank-upid cases in #1, at least a few more owned players have
-an inactive "shadow" twin under a slightly different name format (missing
-accent, missing Jr./II suffix, or punctuation), same real person confirmed
-by shared `yahoo_id`/`mlb_id`:
+At least a couple more owned players have an inactive "shadow" twin under a
+slightly different name format (missing accent, punctuation, etc.), same
+real person confirmed by shared `yahoo_id`/`mlb_id`, **not yet fixed**:
 
 - Jonathon Long (CHC, owned DMN, upid 7743) vs. unowned duplicate upid 7351
-- Bobby Witt (KC, blank upid, owned DMN) vs. unowned "Bobby Witt Jr." dup
 - Abimelec Ortiz (TEX, owned DMN, upid 6007) vs. unowned duplicate upid 8404
+
+(Bobby Witt's shadow pair was actually the blank-upid stub pattern from #1,
+not this one — fixed as part of that batch, not still open here.)
 
 These don't currently cause a live conflict (the shadow side is always
 unowned), but they're exactly the shape of bug that turned into the Garcia
