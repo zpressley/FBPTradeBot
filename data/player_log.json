@@ -86110,5 +86110,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-08-03T16:57:29.889086-04:00-UPID_8047-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "CFL",
+    "timestamp": "2026-08-03T16:57:29.889086-04:00",
+    "upid": "8047",
+    "player_name": "Josiah Hartshorn",
+    "team": "",
+    "pos": "OF",
+    "age": 18,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Country Fried Lamb",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
