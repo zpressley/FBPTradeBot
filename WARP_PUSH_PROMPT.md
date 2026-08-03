@@ -7,12 +7,12 @@ token.json.
 ## fbp-trade-bot
 
 Local main is a real merge commit (`2aa2862`) with two parents: your last
-push and origin/main's current tip (`e598ad0`), plus five more commits on
-top (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0`, `435d9ea` -- docs,
-data-cleanse fixes, and the new Team Planner API, see items 3 and 4 below).
-Local HEAD already contains every commit that's on origin/main -- this
-should push as a plain, non-force fast-forward-compatible push with no
-conflicts.
+push and origin/main's current tip (`e598ad0`), plus six more commits on
+top (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0`, `435d9ea`, `d7d6715` --
+docs, data-cleanse fixes, the new Team Planner API, and the PTDA WizBucks
+allotment, see items 3-5 below). Local HEAD already contains every commit
+that's on origin/main -- this should push as a plain, non-force
+fast-forward-compatible push with no conflicts.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
@@ -22,7 +22,7 @@ Steps:
    than merging/rebasing again yourself -- ping Zach or come back to me).
 3. If unchanged: `git push origin main`. No merge/rebase needed -- it's
    already done, locally, and verified.
-4. Verify: `git log --oneline origin/main -1` should show `435d9ea`.
+4. Verify: `git log --oneline origin/main -1` should show `d7d6715`.
 
 **Do not force-push. Do not run `git rebase -X ours/-X theirs`. Do not
 resolve any conflicts yourself** -- if `git push` reports anything other
@@ -149,6 +149,25 @@ before this ships. Not changed here -- his call on timing.
 additive only (new import, new router include, new commit-fn wiring in a
 try/except matching the existing pattern for every other router) --
 nothing existing was touched.
+
+**5. 2026 Post-Trade Deadline Allotment (PTDA)** (`data/wizbucks.json`,
+`data/wizbucks_transactions.json`, `scripts/apply_ptda_2026_08_02.py`,
+commit `d7d6715`). Per FBP Constitution Article I Sec 02 (Installment 4 --
+PTDA, based on current bracket), credited all 12 teams per bracket tier
+Zach gave: Championship ($15) LFB/SAD/DMN/HAM, Consolation ($25)
+WIZ/TBB/JEP/B2J, Elimination ($35) CFL/WAR/RV/DRO. Recorded as
+`transaction_type: "admin_adjustment"` ledger entries (Zach's instruction),
+matching the existing admin_adjustment schema exactly.
+
+Script is guarded (validates the 12 bracket assignments exactly match
+wizbucks.json's team set before writing anything) and idempotent (skips
+any team that already has a PTDA-marked admin_adjustment entry, so a
+re-run is safe). Verified before committing: both files valid JSON, all 12
+new balances = old + tier amount, diff on the transactions file is a pure
+append (12 new entries, zero existing entries altered) -- confirmed the
+file's real on-disk convention is escaped-unicode
+(`ensure_ascii=True`) empirically against HEAD before writing, so no
+spurious reformatting of the other 254 entries.
 
 ## fbp-hub
 
