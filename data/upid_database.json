@@ -68201,6 +68201,14 @@
       "pos": "1B",
       "alt_names": [],
       "approved_dupes": "TRUE"
+    },
+    "8697": {
+      "upid": "8697",
+      "name": "Ramon Marquez",
+      "team": "SF",
+      "pos": "SP",
+      "alt_names": [],
+      "approved_dupes": "FALSE"
     }
   },
   "name_index": {
@@ -96749,6 +96757,9 @@
     ],
     "taylor young": [
       "8695"
+    ],
+    "ramon marquez": [
+      "8697"
     ]
   }
 }

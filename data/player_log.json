@@ -86018,5 +86018,28 @@
     "years": "",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-08-03T15:07:32.361803-04:00-UPID_8697-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "zpressley",
+    "timestamp": "2026-08-03T15:07:32.361803-04:00",
+    "upid": "8697",
+    "player_name": "Ramon Marquez",
+    "team": "SF",
+    "pos": "SP",
+    "age": 20,
+    "level": "A",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "",
+    "contract": "",
+    "status": "",
+    "years": "P",
+    "update_type": "Admin",
+    "event": "Player added to database by zpressley"
   }
 ]
