@@ -1,6 +1,6 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 19:44 UTC.** Rewritten after every new batch of
+**Last updated: 2026-08-03 20:06 UTC.** Rewritten after every new batch of
 local commits -- the "ahead of origin" counts/hashes below are accurate as
 of this timestamp. If it's more than a day or two old, don't trust the
 hashes -- re-run `git log --oneline origin/main -3` yourself first. Local
@@ -130,11 +130,74 @@ origin/main as of this push prompt -- nothing else pending from those.
 ## After pushing
 
 **fbp-trade-bot:** Railway will redeploy. Data-only + one new module, no
-existing runtime behavior changed -- low risk. Worth a quick look at
-`/api/admin/enrich-player` (or just the admin add-player modal end to
-end) with a real MLB ID to confirm the live lookup actually resolves --
-this couldn't be tested from the sandbox that built it.
+existing runtime behavior changed -- low risk.
 
 **fbp-hub:** confirm the admin Add Player modal shows the new "Identify
 the Player" section, and that the players-page Add Player button now
 shows the trimmed form (Name/MLB ID/Yahoo ID/Proof URL only).
+
+## Verifying the ID lookup actually works (do this once, post-deploy)
+
+The whole point of this push is a live MLB Stats API call, and it could
+only be built against a **mocked** response in the sandbox that wrote it
+-- outbound HTTPS is proxy-blocked there, the same restriction that
+blocks git push/fetch from that sandbox. So the mapping/parsing logic is
+unit-tested, but the real end-to-end call has never actually run. Please
+run at least Test 1 and Test 2 below once this is live; 3 and 4 are
+optional extra confidence.
+
+Test subject throughout: **Mike Trout, MLB ID `545361`** -- already in
+`combined_players.json` (owned by Whiz Kids), which makes him useful for
+checking the new duplicate-detection too, not just the lookup itself.
+
+**Test 1 -- raw MLB API sanity check (no auth needed, run from anywhere
+with real internet access):**
+```
+curl -s "https://statsapi.mlb.com/api/v1/people/545361?hydrate=currentTeam" | python3 -m json.tool
+```
+Expect a `people` array with one entry: `fullName: "Mike Trout"`,
+`currentTeam.abbreviation: "LAA"`, `primaryPosition.abbreviation: "CF"`,
+plus `birthDate`/`mlbDebutDate`/`batSide.code`/`pitchHand.code`/
+`currentAge`. If this fails, or any of those field names have changed,
+`mlb_lookup.py`'s `_shape_person()` needs updating to match -- that
+function's mapping was written from this exact shape as documented
+elsewhere in the codebase, never confirmed live.
+
+**Test 2 -- through the actual admin UI (no secrets needed, just be
+logged in as admin):**
+1. Admin portal → Add Player → type `545361` into the new MLB ID field
+   → click "Look Up Player".
+2. Expect: Name auto-fills to "Mike Trout", Team to LAA, Position to CF,
+   Age/Bats/Throws/Birth Date/Debut Date all populate.
+3. Expect ALSO: the duplicate warning banner should appear immediately,
+   showing Mike Trout's existing UPID with "Matched on: MLB ID" -- this
+   is the new ID-based duplicate check firing correctly (he's already in
+   the database under this exact mlb_id).
+4. Click Cancel, not Submit -- this is meant to be a read-only check, no
+   need to leave behind a test record.
+
+**Test 3 (optional) -- direct endpoint call, if `BOT_API_KEY`/the
+Railway app URL are handy:**
+```
+curl -s -X POST "$BOT_API_URL/api/admin/enrich-player" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $BOT_API_KEY" \
+  -d '{"mlb_id": "545361"}' | python3 -m json.tool
+```
+Expect the same data as Test 1, reshaped to this app's field names
+(`team`, `position`, `age`, `bats`, `throws`, `birth_date`, `debut_date`,
+`mlb_id`, `name`). Zero side effects either way -- this endpoint never
+writes anything, it only reads and returns.
+
+**Test 4 (optional, has a real side effect -- posts to Discord) --
+manager add-player-request path, to check the Proof-URL-optional change
+and ID-based dup surfacing on the review card:**
+1. As any manager on the players page: Add Player → any name → MLB ID
+   `545361` → leave Proof URL blank → submit.
+2. Expect: submission succeeds (pre-this-push, it would've been blocked
+   with "Proof URL is required").
+3. Check the admin Discord review channel: the request card should show
+   `Enrichment: MLB ID 545361` and a duplicate match on Mike Trout's UPID
+   with `[matched: mlb_id]`.
+4. **Reject the request afterward** to keep the review queue clean --
+   this was just a test, not a real add.
