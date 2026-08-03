@@ -1,6 +1,6 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 17:05 UTC.** Rewritten after every new batch of
+**Last updated: 2026-08-03 17:20 UTC.** Rewritten after every new batch of
 local commits -- the "ahead of origin" counts/hashes below are accurate as
 of this timestamp. If it's more than a day or two old, don't trust the
 hashes -- re-run `git log --oneline origin/main -3` yourself first. (Note
@@ -18,8 +18,9 @@ token.json.
 
 ## fbp-trade-bot
 
-Local main is **1 commit ahead** of origin/main (`106e017`): `9ab7a0d` --
-plain fast-forward, no merge needed, no conflicts possible.
+Local main is **3 commits ahead** of origin/main (`106e017`): `9ab7a0d`,
+`e7e4470`, `e3be5da` -- plain fast-forward, no merge needed, no conflicts
+possible.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
@@ -27,22 +28,26 @@ Steps:
    (if it's moved forward since this was written, stop and flag it rather
    than merging/rebasing yourself).
 3. If unchanged: `git push origin main`.
-4. Verify: `git log --oneline origin/main -1` should show `9ab7a0d`.
+4. Verify: `git log --oneline origin/main -1` should match
+   `git log --oneline HEAD -1` run right before the push (i.e. local and
+   origin end up identical) -- don't rely on a hardcoded hash here, this
+   doc's own update commit lands on top of everything below it.
 
 **Do not force-push. Do not resolve any conflicts yourself** -- if
 `git push` reports anything other than a clean push, stop and flag it.
 
 ### What's in this push
 
-**Fix blank years_simple on 8 round-4+ keeper-draft picks** (commit
-`9ab7a0d`). `draft/draft_manager.py`'s keeper-draft pick handler only sets
-`years_simple` for rounds 1-3 (hard-coded "VC 1"); rounds 4+ have no
-equivalent branch, so it was left blank on 8 players from the 2026-03-08
-keeper draft. With `years_simple` blank, fbp-hub's rosters page and
-Discord's `/trade`, `/lookup`, `/roster` commands all fell back to
-displaying the literal `contract_type` string ("Keeper Contract") instead
-of a real contract code -- Zach spotted this from a rosters-page
-screenshot (Lars Nootbaar showing "Keeper Contract" instead of "TC 1").
+**1. Fix blank years_simple on 8 round-4+ keeper-draft picks** (commit
+`9ab7a0d`, doc-only follow-up `e7e4470`). `draft/draft_manager.py`'s
+keeper-draft pick handler only set `years_simple` for rounds 1-3
+(hard-coded "VC 1"); rounds 4+ had no equivalent branch, so it was left
+blank on 8 players from the 2026-03-08 keeper draft. With `years_simple`
+blank, fbp-hub's rosters page and Discord's `/trade`, `/lookup`, `/roster`
+commands all fell back to displaying the literal `contract_type` string
+("Keeper Contract") instead of a real contract code -- Zach spotted this
+from a rosters-page screenshot (Lars Nootbaar showing "Keeper Contract"
+instead of "TC 1").
 
 Per Zach's ruling: a keeper-draft pick is a TC 1, full stop, regardless of
 pre-draft tier (resolves two cases -- Hunter Greene, Luke Weaver -- that
@@ -54,11 +59,29 @@ Verified: JSON valid, player count unchanged (6,812), diff touches exactly
 these 8 records' `years_simple`/`status` fields, zero unexpected diffs
 elsewhere.
 
+**2. Fix the `draft_manager.py` gap at the source** (commit `e3be5da`).
+Added the missing round-4+ branch (`years_simple = "TC 1"`) so future
+keeper drafts can't reproduce the bug above. Also now sets `status`
+alongside `years_simple` in both the round<=3 and round 4+ branches
+("VC 1" -> "[3] VC1", "TC 1" -> "[5] TC1", matching the dominant real
+pairing for each tier) -- previously `status` was left blank here
+regardless of round, which only didn't matter because `years_simple` wins
+the frontend's display fallback; closed both so the same class of gap
+can't resurface elsewhere. For symmetry, the two undo paths
+(`_clear_pick_from_rosters`, `reset_to_pick_one`) now also clear `status`
+alongside `years_simple`/`contract_type`, so undoing a pick doesn't leave
+a stale status behind.
+
+Verified: `py_compile` clean. Functionally tested against an isolated
+temp copy of the data (not the real files) by calling
+`_apply_pick_to_rosters` directly for a synthetic round-5 pick (correctly
+produced `years_simple="TC 1"`, `status="[5] TC1"`) and a round-2 pick
+(unchanged behavior: `years_simple="VC 1"`, `status="[3] VC1"`, confirming
+no regression), then ran `_clear_pick_from_rosters` on the round-5 pick to
+confirm the rollback clears `status` too. This only touches
+`draft/draft_manager.py` -- no data files changed in this commit.
+
 **Still flagged, not fixed, no action needed from you:**
-- `draft_manager.py`'s round-4+ gap itself is NOT patched -- the next
-  keeper draft will reproduce this same bug on any round-4+ pick unless
-  someone adds the missing `else: years_simple = "TC 1"` branch. Zach
-  hasn't given the go-ahead yet.
 - `api_team_planner.py`'s save endpoint still has the fire-and-forget
   commit issue noted when it shipped (no `wait=True`, swallows commit
   failures with only a print).
