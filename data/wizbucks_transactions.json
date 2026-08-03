@@ -4630,5 +4630,209 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_LFB_admin_adjustment_1785767596",
+    "timestamp": "2026-08-03T14:33:16.900837Z",
+    "team": "LFB",
+    "amount": 15,
+    "balance_before": 0,
+    "balance_after": 15,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_SAD_admin_adjustment_1785767597",
+    "timestamp": "2026-08-03T14:33:16.900853Z",
+    "team": "SAD",
+    "amount": 15,
+    "balance_before": 50,
+    "balance_after": 65,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_DMN_admin_adjustment_1785767598",
+    "timestamp": "2026-08-03T14:33:16.900856Z",
+    "team": "DMN",
+    "amount": 15,
+    "balance_before": 5,
+    "balance_after": 20,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_HAM_admin_adjustment_1785767599",
+    "timestamp": "2026-08-03T14:33:16.900859Z",
+    "team": "HAM",
+    "amount": 15,
+    "balance_before": 0,
+    "balance_after": 15,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Championship bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_admin_adjustment_1785767600",
+    "timestamp": "2026-08-03T14:33:16.900863Z",
+    "team": "WIZ",
+    "amount": 25,
+    "balance_before": 90,
+    "balance_after": 115,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_TBB_admin_adjustment_1785767601",
+    "timestamp": "2026-08-03T14:33:16.900866Z",
+    "team": "TBB",
+    "amount": 25,
+    "balance_before": 80,
+    "balance_after": 105,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_JEP_admin_adjustment_1785767602",
+    "timestamp": "2026-08-03T14:33:16.900868Z",
+    "team": "JEP",
+    "amount": 25,
+    "balance_before": 85,
+    "balance_after": 110,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_B2J_admin_adjustment_1785767603",
+    "timestamp": "2026-08-03T14:33:16.900870Z",
+    "team": "B2J",
+    "amount": 25,
+    "balance_before": 90,
+    "balance_after": 115,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Consolation bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_CFL_admin_adjustment_1785767604",
+    "timestamp": "2026-08-03T14:33:16.900872Z",
+    "team": "CFL",
+    "amount": 35,
+    "balance_before": 55,
+    "balance_after": 90,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_WAR_admin_adjustment_1785767605",
+    "timestamp": "2026-08-03T14:33:16.900875Z",
+    "team": "WAR",
+    "amount": 35,
+    "balance_before": 15,
+    "balance_after": 50,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_RV_admin_adjustment_1785767606",
+    "timestamp": "2026-08-03T14:33:16.900877Z",
+    "team": "RV",
+    "amount": 35,
+    "balance_before": 70,
+    "balance_after": 105,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_admin_adjustment_1785767607",
+    "timestamp": "2026-08-03T14:33:16.900879Z",
+    "team": "DRO",
+    "amount": 35,
+    "balance_before": 25,
+    "balance_after": 60,
+    "transaction_type": "admin_adjustment",
+    "description": "Post-Trade Deadline Allotment (PTDA) - Elimination bracket",
+    "related_player": null,
+    "metadata": {
+      "season": 2026,
+      "installment": "admin",
+      "admin": "zpressley",
+      "source": "admin_portal"
+    }
   }
 ]
