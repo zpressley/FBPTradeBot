@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 from commands.lookup import fuzzy_lookup_all
+from commands.utils import mlb_headshot_url
 
 class PlayerLookup(commands.Cog):
     def __init__(self, bot):
@@ -18,10 +19,15 @@ class PlayerLookup(commands.Cog):
 
         if matches_90 and len(matches_90) == 1:
             match = matches_90[0]
-            msg = f"🔍 **Result for:** `{name}`\n\n"
-            msg += f"**{match['formatted']}**\n"
-            msg += f"🔹 Owned by: `{match['manager']}`"
-            await interaction.response.send_message(msg, ephemeral=True)
+            embed = discord.Embed(
+                title=f"🔍 Result for: {name}",
+                description=f"**{match['formatted']}**\n🔹 Owned by: `{match['manager']}`",
+                color=discord.Color.red()
+            )
+            thumb = mlb_headshot_url(match.get('mlb_id'))
+            if thumb:
+                embed.set_thumbnail(url=thumb)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             return
 
         if matches_90 and len(matches_90) > 1:
@@ -33,12 +39,18 @@ class PlayerLookup(commands.Cog):
 
         if matches_80:
             match = matches_80[0]
-            msg = f"🔍 **Closest match to:** `{name}`\n\n"
-            msg += f"**{match['formatted']}**\n"
-            msg += f"🔹 Owned by: `{match['manager']}`\n"
+            description = f"**{match['formatted']}**\n🔹 Owned by: `{match['manager']}`"
             if match['name'].lower() != name.lower():
-                msg += f"⚠️ Did you mean: **{match['formatted']}**?"
-            await interaction.response.send_message(msg, ephemeral=True)
+                description += f"\n⚠️ Did you mean: **{match['formatted']}**?"
+            embed = discord.Embed(
+                title=f"🔍 Closest match to: {name}",
+                description=description,
+                color=discord.Color.red()
+            )
+            thumb = mlb_headshot_url(match.get('mlb_id'))
+            if thumb:
+                embed.set_thumbnail(url=thumb)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             return
 
         # Nothing close found

@@ -23,6 +23,16 @@ def mention_manager(team_label):
     manager_id = MANAGER_DISCORD_IDS.get(team_label)
     return f"<@{manager_id}>" if manager_id else f"`{team_label}`"
 
+# MLB headshot image, keyed by mlb_id (same CDN/pattern used on fbp-hub)
+def mlb_headshot_url(mlb_id, size=180):
+    if not mlb_id:
+        return None
+    return (
+        f"https://img.mlbstatic.com/mlb-photos/image/upload/"
+        f"w_{size},q_auto:best,d_people:generic:headshot:67:current.png/"
+        f"v1/people/{mlb_id}/headshot/67/current"
+    )
+
 # Used for timestamping trades with submission and processing day
 def get_trade_dates():
     now = datetime.datetime.now()

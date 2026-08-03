@@ -64,7 +64,8 @@ def fuzzy_lookup_all(name, threshold=0.7):
                     "name": player["name"],
                     "formatted": format_player_display(player),
                     "manager": player.get("manager", "Unknown"),
-                    "player_type": player.get("player_type", "Unknown")
+                    "player_type": player.get("player_type", "Unknown"),
+                    "mlb_id": player.get("mlb_id")
                 }
                 matched_players.append(formatted_player)
                 break
@@ -89,7 +90,8 @@ def find_player_exact(name, team=None):
                     "name": player["name"],
                     "formatted": format_player_display(player),
                     "manager": player.get("manager", "Unknown"),
-                    "player_type": player.get("player_type", "Unknown")
+                    "player_type": player.get("player_type", "Unknown"),
+                    "mlb_id": player.get("mlb_id")
                 }
     return None
 
