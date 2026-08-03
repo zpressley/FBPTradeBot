@@ -1,8 +1,18 @@
 {
-  "bids": [],
-  "last_updated": "2026-08-03T16:43:29.878466+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-7f3008e91865",
+      "bid_type": "OB",
+      "date": "2026-08-03",
+      "prospect_id": "8697",
+      "team": "WAR",
+      "timestamp": "2026-08-03T19:11:28.977559+00:00"
+    }
+  ],
+  "last_updated": "2026-08-03T19:11:28.977559+00:00",
   "matches": [],
-  "phase": "off_week",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "RV",
