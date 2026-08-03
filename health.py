@@ -757,6 +757,11 @@ async def on_ready():
         trade_expiry_sweep_tick.start()
         print("   ✅ Trade expiry sweep task started (hourly)")
 
+    # Start Friday/Saturday IP min reminder DMs
+    if not ip_min_reminder_tick.is_running():
+        ip_min_reminder_tick.start()
+        print("   ✅ IP min reminder task started (Fri/Sat 9 AM ET)")
+
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -2607,6 +2612,146 @@ async def standings_commit_tick():
         pass
 
     print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
+
+
+# ---- IP Min Reminder (Friday / Saturday DM heads-up) ----
+
+IP_MIN_WEEKLY_THRESHOLD = 35
+IP_MIN_SATURDAY_REMAINING_THRESHOLD = 6
+_IP_MIN_REMINDER_STATE_FILE = "data/ip_min_reminder_state.json"
+
+_ip_min_reminder_state: dict | None = None
+
+
+def _load_ip_min_reminder_state() -> dict:
+    global _ip_min_reminder_state
+    if _ip_min_reminder_state is None:
+        try:
+            with open(_IP_MIN_REMINDER_STATE_FILE, "r", encoding="utf-8") as f:
+                _ip_min_reminder_state = json.load(f)
+        except Exception:
+            _ip_min_reminder_state = {}
+    return _ip_min_reminder_state
+
+
+def _save_ip_min_reminder_state(state: dict) -> None:
+    global _ip_min_reminder_state
+    _ip_min_reminder_state = state
+    try:
+        os.makedirs("data", exist_ok=True)
+        with open(_IP_MIN_REMINDER_STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2)
+        _commit_and_push([_IP_MIN_REMINDER_STATE_FILE], "IP min reminder state update")
+    except Exception as exc:
+        print(f"⚠️ Failed to persist IP min reminder state: {exc}")
+
+
+def _load_managers_for_ip_reminder() -> dict:
+    try:
+        with open("config/managers.json", "r", encoding="utf-8") as f:
+            return json.load(f).get("teams", {})
+    except Exception as exc:
+        print(f"⚠️ Failed to load managers.json for IP min reminder: {exc}")
+        return {}
+
+
+def _current_week_ip(team_abbr: str) -> float | None:
+    """This week's live innings-pitched-so-far for a team, from data/standings.json."""
+    try:
+        with open("data/standings.json", "r", encoding="utf-8") as f:
+            standings_data = json.load(f)
+        for row in standings_data.get("standings", []):
+            if row.get("team") == team_abbr:
+                ip_raw = (row.get("categories") or {}).get("IP")
+                if ip_raw is None:
+                    return None
+                return float(ip_raw)
+    except Exception as exc:
+        print(f"⚠️ Failed to read standings.json for IP min reminder: {exc}")
+    return None
+
+
+@tasks.loop(minutes=1)
+async def ip_min_reminder_tick():
+    """DM managers at risk of missing the weekly IP minimum, Fri + Sat at 9 AM ET.
+
+    Friday 9 AM ET: standings_refresh_tick only runs noon-1 AM ET, so this
+    snapshot is frozen from the prior night -- i.e. IP through Thursday's
+    games. Projects that pace (IP so far / days elapsed, extrapolated to a
+    full 7-day week) and DMs the manager if it's short of
+    IP_MIN_WEEKLY_THRESHOLD.
+
+    Saturday 9 AM ET: same idea using IP through Friday's games. DMs the
+    manager if they still need IP_MIN_SATURDAY_REMAINING_THRESHOLD+ innings
+    to reach the weekly minimum, since Sunday is the last day to close it.
+
+    Assumes a Monday-Sunday fantasy week (matches config/season_dates.json's
+    weekly WEEK_START cadence). This is a simple pace heuristic, not
+    schedule-aware (doesn't know off-days or probable starters) -- per
+    Zach's spec this is intentionally the "simple" version.
+
+    NOTE on the Saturday rule: reading "threshold of 6+ IP on Saturday" as
+    *innings still needed* (35 - IP-so-far), not innings thrown ON Saturday
+    specifically. Flag it if that's not what was meant -- one-line change.
+    """
+    now = datetime.now(tz=ET)
+    if not (now.hour == 9 and now.minute == 0):
+        return
+    if now.weekday() not in (4, 5):  # Friday=4, Saturday=5
+        return
+
+    date_key = now.date().isoformat()
+    state = _load_ip_min_reminder_state()
+    state_key = "last_friday_sent" if now.weekday() == 4 else "last_saturday_sent"
+    if state.get(state_key) == date_key:
+        return  # already sent today (survives restarts via the state file)
+
+    managers = _load_managers_for_ip_reminder()
+    if not managers:
+        return
+
+    is_friday = now.weekday() == 4
+    days_elapsed = 4 if is_friday else 5  # completed Mon-Thu / Mon-Fri
+
+    for abbr, info in managers.items():
+        discord_id = info.get("discord_id")
+        if not discord_id:
+            continue
+        ip = _current_week_ip(abbr)
+        if ip is None:
+            continue
+
+        detail = None
+        if is_friday:
+            projected = (ip / days_elapsed) * 7 if days_elapsed else 0.0
+            if projected < IP_MIN_WEEKLY_THRESHOLD:
+                detail = (
+                    f"You're at **{ip:.1f} IP** through Thursday. At that pace you're "
+                    f"projected to finish around **{projected:.1f} IP** — short of the "
+                    f"{IP_MIN_WEEKLY_THRESHOLD} IP weekly minimum. Might be worth "
+                    f"streaming a starter this weekend."
+                )
+        else:
+            remaining = IP_MIN_WEEKLY_THRESHOLD - ip
+            if remaining >= IP_MIN_SATURDAY_REMAINING_THRESHOLD:
+                detail = (
+                    f"You're at **{ip:.1f} IP** through Friday — you still need "
+                    f"**{remaining:.1f} IP** to hit the {IP_MIN_WEEKLY_THRESHOLD} IP "
+                    f"weekly minimum, and Sunday's your last day to get there."
+                )
+
+        if not detail:
+            continue
+
+        try:
+            user = await bot.fetch_user(int(discord_id))
+            await user.send(f"⚠️ **IP Min heads-up ({abbr})**\n{detail}")
+            print(f"✅ IP min reminder sent to {abbr}")
+        except Exception as exc:
+            print(f"⚠️ Failed to DM {abbr} for IP min reminder: {exc}")
+
+    state[state_key] = date_key
+    _save_ip_min_reminder_state(state)
 
 
 # ---- Trade Expiry Sweep ----
