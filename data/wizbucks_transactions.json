@@ -4834,5 +4834,26 @@
       "admin": "zpressley",
       "source": "admin_portal"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_contract_purchase_1785789141",
+    "timestamp": "2026-08-03T20:32:21.609561Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 115,
+    "balance_after": 105,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Nathan Flewelling PC \u2192 BC",
+    "related_player": {
+      "upid": "8445",
+      "name": "Nathan Flewelling"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

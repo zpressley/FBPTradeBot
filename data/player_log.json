@@ -86064,5 +86064,28 @@
     "years": "",
     "update_type": "Admin",
     "event": "Player added to database by kylek_japisx"
+  },
+  {
+    "id": "2026-2026-08-03T16:32:21.612843-04:00-UPID_8445-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "WIZ",
+    "timestamp": "2026-08-03T16:32:21.612843-04:00",
+    "upid": "8445",
+    "player_name": "Nathan Flewelling",
+    "team": "TB",
+    "pos": "C",
+    "age": 19,
+    "level": "A+",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Whiz Kids",
+    "contract": "Blue Chip Contract",
+    "status": "",
+    "years": "",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
