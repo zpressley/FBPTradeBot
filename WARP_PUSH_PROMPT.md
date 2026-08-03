@@ -1,14 +1,14 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 17:47 UTC.** Rewritten after every new batch of
+**Last updated: 2026-08-03 19:44 UTC.** Rewritten after every new batch of
 local commits -- the "ahead of origin" counts/hashes below are accurate as
 of this timestamp. If it's more than a day or two old, don't trust the
-hashes -- re-run `git log --oneline origin/main -3` yourself first. (Note
-for whoever's pushing: local history in this repo has been rebased onto
-origin more than once this week as pushes landed out-of-band, so old
-commit hashes mentioned in chat/docs may no longer exist even though the
-content is already live -- always check origin/main's actual tip, not a
-remembered hash.)
+hashes -- re-run `git log --oneline origin/main -3` yourself first. Local
+history in both repos has been rebased onto origin more than once this
+week as pushes landed out-of-band (from Zach directly, or another agent
+with real push access), so old commit hashes mentioned in chat/docs may no
+longer exist even though the content is already live -- always check
+origin/main's actual tip, not a remembered hash.
 
 Push pending commits in fbp-trade-bot AND fbp-hub. Both repos have already
 been reconciled with their origins (see below) -- this task is ONLY to push
@@ -18,13 +18,12 @@ token.json.
 
 ## fbp-trade-bot
 
-Local main is **6 commits ahead** of origin/main (`106e017`): `9ab7a0d`,
-`e7e4470`, `e3be5da`, `b441d4b`, `77e66b6`, `00d2e1d` -- plain
-fast-forward, no merge needed, no conflicts possible.
+Local main is **1 commit ahead** of origin/main (`ce73895`): `bb47107` --
+plain fast-forward, no merge needed, no conflicts possible.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `106e017`
+2. `git log --oneline origin/main -3` -- confirm it's still at `ce73895`
    (if it's moved forward since this was written, stop and flag it rather
    than merging/rebasing yourself).
 3. If unchanged: `git push origin main`.
@@ -36,109 +35,106 @@ Steps:
 
 ### What's in this push
 
-**1. Fix blank years_simple on 8 round-4+ keeper-draft picks + fix the
-gap at the source** (`9ab7a0d`, doc follow-up `e7e4470`, source fix
-`e3be5da`, doc follow-up `b441d4b`). `draft/draft_manager.py`'s
-keeper-draft pick handler only ever set `years_simple` for rounds 1-3
-(hard-coded "VC 1"); round 4+ had no branch, so it stayed blank on 8
-players from the 2026-03-08 draft, which made fbp-hub's rosters page and
-Discord's `/trade`/`/lookup`/`/roster` fall back to showing the literal
-`contract_type` string ("Keeper Contract") instead of a real code --
-Zach caught this from a rosters-page screenshot. Backfilled the 8 records
-to `years_simple="TC 1"` / `status="[5] TC1"` (Zach's ruling: a
-keeper-draft pick is a TC 1, full stop, regardless of pre-draft tier),
-then patched `draft_manager.py` itself (added the missing round 4+
-branch, plus now sets `status` in both branches, plus both undo paths
-clear `status` for symmetry) so future keeper drafts can't reproduce it.
-Verified via `py_compile` and a functional test against an isolated copy
-of the data (not the real files).
+**Add ID-first player lookup/enrichment (MLB ID / Yahoo ID)** (`bb47107`).
+Prompted by Ramon Marquez being added via the admin tool with the old
+name-only flow. New shared module `mlb_lookup.py`:
+`fetch_player_by_mlb_id()` is an exact `GET /people/{id}` call against the
+MLB Stats API -- unambiguous, unlike a name search, which can match the
+wrong same-named player or miss on an accent/suffix mismatch (the same
+failure mode behind the Luis Garcia Jr. duplicate mess earlier this
+session). `fetch_player_by_name()` is the pre-existing name-search
+fallback, moved here so it's no longer duplicated field-for-field across
+`api_admin_bulk.py` and `api_manager_players.py`. `enrich_player_data()`
+is the single entry point both files now call: prefers `mlb_id` when
+given, falls back to name search.
 
-**2. Add `division` field to `config/managers.json`** (`77e66b6`).
-Stanky's Grave (DMN/B2J/WAR/RV), Charlie Hustle (LFB/HAM/TBB/DRO),
-Colossus of Clout (SAD/WIZ/JEP/CFL) -- per Constitution Article 7,
-matched from Zach's standings screenshot. Companion to the fbp-hub
-standings commit below, which is what actually consumes this. Verified
-identical division values across both repos' copies for all 12 teams.
+No `yahoo_id` lookup: there's no proven single-ID JSON bio endpoint for
+Yahoo's Fantasy API in this codebase, and building one would mean invoking
+the OAuth token flow (which can rewrite `token.json`) just to test it. A
+`yahoo_id` is accepted and stored as a plain identifier, not
+auto-enriched -- worth revisiting later if wanted.
 
-**3. Add Friday/Saturday IP min reminder DM task** (`00d2e1d`). New
-scheduled task DMs managers at risk of missing the 35 IP/week minimum:
-Friday 9 AM ET projects full-week pace off IP through Thursday; Saturday
-9 AM ET flags anyone still 6+ IP short with only Sunday left. State
-persisted to `data/ip_min_reminder_state.json` (seeded `{}`) so a restart
-same-day doesn't double-send. Verified `py_compile` clean, confirmed all
-12 teams have `discord_id` set in managers.json.
+Companion to two fbp-hub commits below (admin tool + players-page Add
+Player, same feature, other half of it):
+- `POST /api/admin/enrich-player` now accepts an optional `mlb_id` and
+  prefers it over the name search.
+- `api_manager_players.py`'s manager add-player-request flow: enrichment
+  now passes `mlb_id` through; added `_find_duplicate_by_ids()` so a
+  request also gets checked against `combined_players.json` by
+  `mlb_id`/`yahoo_id`, not just by name (surfaced on the Discord review
+  card); **Proof URL is no longer unconditionally required** -- an MLB ID
+  or Yahoo ID now counts as proof on its own (Zach's call), Proof URL
+  still accepted/validated if given.
 
-**Still flagged, not fixed, no action needed from you:**
-- `api_team_planner.py`'s save endpoint still has the fire-and-forget
-  commit issue noted when it shipped (no `wait=True`, swallows commit
-  failures with only a print).
-- `ip_min_reminder_tick`'s state-file commit (item 3 above) has the same
-  gap -- doesn't pass `wait=True`, so a failed/delayed push wouldn't be
-  surfaced. Lower stakes than the other cases: the local write happens
-  before the commit is queued, so the only real exposure is a duplicate
-  DM if the container restarts same-day before the commit lands.
+Verified: `py_compile` clean on all 3 files. Live-testing against the real
+MLB Stats API isn't possible from this sandbox (outbound HTTPS is
+proxy-blocked here, same restriction that blocks git push/fetch) --
+instead unit-tested with a mocked response matching the exact schema
+already relied on elsewhere in this codebase: correct field mapping,
+correct short-circuit on a non-numeric ID (no HTTP call attempted),
+correct fallback to name search when an ID doesn't resolve.
 
 **Everything else** (PTDA WizBucks allotment, Discord headshot
-thumbnails, auction fix, trade backfills, data cleanse, Team Planner API)
-is already on origin/main as of this push prompt -- nothing else pending
-from those.
+thumbnails, draft_manager.py fix, division field, IP min reminder task,
+auction fix, trade backfills, data cleanse, Team Planner API) is already
+on origin/main as of this push prompt -- nothing else pending from those.
 
 ## fbp-hub
 
-Local main is **2 commits ahead** of origin/main (`7986690`): `9df945d`,
-`04f012b` -- plain fast-forward, no merge needed, no conflicts possible.
+Local main is **2 commits ahead** of origin/main (`6c995ac`): `bc4056f`,
+`48ce3df` -- plain fast-forward, no merge needed, no conflicts possible.
 
 Steps:
 1. `cd` into fbp-hub, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `7986690`.
+2. `git log --oneline origin/main -3` -- confirm it's still at `6c995ac`.
+   If it's moved forward (another agent/Zach has been pushing directly to
+   this repo too -- see the standings.html commit already at that tip),
+   same rule as fbp-trade-bot: should still fast-forward cleanly, but if
+   `git push` is rejected, stop and flag it rather than improvising a fix.
 3. `git push origin main`.
 4. Verify: `git log --oneline origin/main -1` should match
    `git log --oneline HEAD -1` run right before the push.
 
 ### What's in this push
 
-**1. Standings: divisions, IP min color scale, GB, Leaders toggle**
-(`9df945d`). Adds the same `division` field to this repo's
-`config/managers.json` copy (companion to the fbp-trade-bot commit
-above -- standings.html reads its own local copy) and wires up
-`standings.html`:
-- League/Divisional toggle, grouped by the real division field instead
-  of a placeholder.
-- Games Back column off the existing live win-pct/record data.
-- IP Min color scale: red <25, yellow 25-34, green 35+.
-- Leaders toggle (star button) bolds the league-wide best per category,
-  with ERA/ER/P_HR/H-per-9/BB-per-9/P_TB correctly treated as
-  lower-is-better -- confirmed these match `data/standings.json`'s actual
-  `display_name` strings (including the "/" in "H/9"/"BB/9") before
-  hardcoding, so the highlight can't silently no-op on a naming mismatch.
+**1. Admin add-player tool: ask for MLB/Yahoo ID first** (`bc4056f`).
+New "Identify the Player" section at the top of the Add Player modal
+(MLB ID + Yahoo ID). The existing "Auto-Fill from APIs" button (relabeled
+"Look Up Player") now prefers the MLB ID field when filled in, and also
+auto-fills the Name field itself from the result if it's empty (an add
+can now start from just an ID, with no name typed yet). Extended the
+existing name-only duplicate-check with a new ID-based one, wired to the
+MLB ID / Yahoo ID fields directly. The MLB ID/Yahoo ID inputs were moved
+up from Advanced Fields rather than duplicated -- same element IDs, so
+the submit handler's existing field reads are unaffected.
 
-Verified: JSON valid, division values match fbp-trade-bot's copy exactly
-for all 12 teams, all 3 inline `<script>` blocks in standings.html pass
-`node --check`.
+**2. Simplify players-page Add Player to name + MLB/Yahoo ID** (`48ce3df`).
+Per Zach: managers should just identify the player and let the system
+find/fill in the rest -- the add-player-request modal is trimmed to
+Name*, MLB ID, Yahoo ID, and Proof URL (no longer marked required in the
+UI -- an MLB/Yahoo ID counts on its own now, matching the backend change
+above). Team/position/age/bio fields are no longer asked for up front;
+the backend's enrichment step already fills those in automatically, and
+the existing edit-player flow covers anything left over.
 
-**2. Team Planner: BC Top 100 free-keep + 2027 allotment preview**
-(`04f012b`). A BC-tier prospect flagged "Top 100 on Nov 1" (T100 toggle,
-table + mobile card view) retains Blue-Chip for free at the next PAD per
-Constitution Article 4 Sec 04.4 -- zeroes its cost, shows a green
-FREE/FREE KEEP badge, drops out of the PAD spend total, persists with the
-plan. Separately, a "Potential 2027 allotment" block in the KAP-mode
-WizBucks section previews PAD+KAP by projected finish bracket
-(Championship/Consolation/Elimination) straight from the constitution's
-numbers (PAD base $100/$120/$140, KAP flat $375, Consolation +KAP bonus,
-Elimination +PAD bonus, Championship no WB bonus) -- informational only,
-same non-binding treatment as the existing draft-picks projection, also
-persists with the plan.
+Verified: `node --check` clean on both changed JS files. Grepped for
+every removed field's old element ID and confirmed zero remaining
+references. Confirmed the shared module's edit-player modal and
+player-profile.html (which only uses the edit half) are unaffected.
 
-Verified: `js/team-planner.js` passes `node --check`, bonus figures
-checked against the constitution directly.
+**Everything else** (headshot avatars, Team Planner base + draft-picks
+fix + BC Top 100/allotment preview, standings.html's division/GB/IP-color/
+Leaders-toggle/two-color-category-leaders work) is already on
+origin/main as of this push prompt -- nothing else pending from those.
 
 ## After pushing
 
-**fbp-trade-bot:** Railway will redeploy. This batch changes runtime
-behavior (draft pick logic, new scheduled DM task) as well as data --
-worth confirming the bot comes up clean, and a `/lookup` on one of the 8
-backfilled players (e.g. Lars Nootbaar) shows "TC 1" now.
+**fbp-trade-bot:** Railway will redeploy. Data-only + one new module, no
+existing runtime behavior changed -- low risk. Worth a quick look at
+`/api/admin/enrich-player` (or just the admin add-player modal end to
+end) with a real MLB ID to confirm the live lookup actually resolves --
+this couldn't be tested from the sandbox that built it.
 
-**fbp-hub:** confirm standings.html's new toggles/columns render, and
-Team Planner's T100 toggle + allotment preview show up in both the
-Prospect Plan and WizBucks sections (desktop + mobile).
+**fbp-hub:** confirm the admin Add Player modal shows the new "Identify
+the Player" section, and that the players-page Add Player button now
+shows the trimmed form (Name/MLB ID/Yahoo ID/Proof URL only).
