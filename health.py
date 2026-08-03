@@ -52,6 +52,7 @@ from api_admin_bulk import router as admin_bulk_router, set_bulk_bot_reference, 
 from api_draft_pool import router as draft_pool_router
 from api_draft_pick_request import router as draft_pick_router, set_bot_reference
 from api_buyin import router as buyin_router, set_buyin_bot_reference, set_buyin_commit_fn
+from api_team_planner import router as team_planner_router, set_team_planner_commit_fn
 from api_trade import router as trade_router, set_trade_bot_reference, set_trade_commit_fn
 from api_settings import router as settings_router, set_settings_commit_fn
 from api_notes import router as notes_router, set_notes_commit_fn
@@ -833,6 +834,8 @@ app.include_router(draft_pool_router)
 app.include_router(draft_pick_router)
 # Buy-in purchase/refund router
 app.include_router(buyin_router)
+# Team Planner save/load router (open roster planner, no login wall)
+app.include_router(team_planner_router)
 # Trade portal router
 app.include_router(trade_router)
 # Settings router (team colors)
@@ -1334,6 +1337,10 @@ except Exception:
 
 try:
     set_buyin_commit_fn(_commit_and_push)
+except Exception:
+    pass
+try:
+    set_team_planner_commit_fn(_commit_and_push)
 except Exception:
     pass
 try:
