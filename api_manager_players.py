@@ -10,12 +10,12 @@ from typing import Any, Callable, Dict, Optional
 from urllib.parse import urlparse
 
 import discord
-import requests
 from discord.ui import Button, View
 from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 
 from data_lock import DATA_LOCK
+from mlb_lookup import enrich_player_data as _mlb_enrich_player_data
 from pad.pad_processor import _append_player_log_entry
 from team_utils import load_managers_config, normalize_team_abbr
 
@@ -368,50 +368,50 @@ def _find_duplicate_upids(upid_db: dict, candidate_names: list[str]) -> list[dic
     return sorted(hits.values(), key=lambda r: int(r.get("upid", "0")) if str(r.get("upid", "")).isdigit() else 0)
 
 
-def _enrich_player_data(name: str, team_hint: Optional[str]) -> dict:
-    enriched: dict[str, Any] = {}
-    search_url = (
-        "https://statsapi.mlb.com/api/v1/people/search"
-        f"?names={requests.utils.quote(name)}&hydrate=currentTeam"
-    )
-    try:
-        resp = requests.get(search_url, timeout=10)
-    except Exception as exc:
-        print(f"⚠️ MLB API request failed while enriching player '{name}': {exc}")
-        return enriched
+def _enrich_player_data(name: str, team_hint: Optional[str], mlb_id: Optional[Any] = None) -> dict:
+    """Enrich from the MLB Stats API -- prefers an exact mlb_id lookup
+    when one is given (unambiguous, unlike a name search), falling back
+    to a name search otherwise. Thin wrapper around the shared
+    mlb_lookup module (previously this function had its own duplicate
+    copy of the name-search logic that api_admin_bulk.py's enrich_player
+    endpoint also carried; both now go through one implementation). See
+    mlb_lookup.py's module docstring for why yahoo_id isn't enriched the
+    same way."""
+    return _mlb_enrich_player_data(name=name, team_hint=team_hint, mlb_id=mlb_id)
 
-    if resp.status_code != 200:
-        return enriched
 
-    people = (resp.json() or {}).get("people", [])
-    if not isinstance(people, list) or not people:
-        return enriched
+def _find_duplicate_by_ids(players: list, mlb_id: Optional[Any], yahoo_id: Optional[str]) -> list[dict]:
+    """Check combined_players.json directly for an existing record
+    sharing the same mlb_id or yahoo_id. A far more reliable duplicate
+    signal than name matching, which has repeatedly missed real
+    duplicates in this system on accent/suffix mismatches (see e.g.
+    scripts/fix_garcia_jr_canonical_upid_2026_08_02.py) -- an exact ID
+    match can't have that problem."""
+    mlb_id_str = str(mlb_id or "").strip()
+    yahoo_id_str = _clean_text(yahoo_id)
+    if not mlb_id_str and not yahoo_id_str:
+        return []
 
-    best = None
-    for person in people:
-        if not isinstance(person, dict):
+    hits = []
+    for p in players:
+        if not isinstance(p, dict):
             continue
-        if team_hint:
-            current_team = ((person.get("currentTeam") or {}).get("abbreviation") or "").upper()
-            if current_team == team_hint.upper():
-                best = person
-                break
-        if best is None:
-            best = person
-
-    if not isinstance(best, dict):
-        return enriched
-
-    enriched["mlb_id"] = best.get("id")
-    enriched["birth_date"] = best.get("birthDate")
-    enriched["debut_date"] = best.get("mlbDebutDate")
-    enriched["bats"] = (best.get("batSide") or {}).get("code")
-    enriched["throws"] = (best.get("pitchHand") or {}).get("code")
-    enriched["position"] = (best.get("primaryPosition") or {}).get("abbreviation")
-    enriched["mlb_primary_position"] = (best.get("primaryPosition") or {}).get("abbreviation")
-    enriched["team"] = (best.get("currentTeam") or {}).get("abbreviation")
-    enriched["age"] = best.get("currentAge")
-    return {k: v for k, v in enriched.items() if v not in (None, "")}
+        matched_via = []
+        p_mlb = str(p.get("mlb_id") or "").strip()
+        if mlb_id_str and p_mlb and p_mlb == mlb_id_str:
+            matched_via.append("mlb_id")
+        p_yahoo = str(p.get("yahoo_id") or "").strip()
+        if yahoo_id_str and p_yahoo and p_yahoo == yahoo_id_str:
+            matched_via.append("yahoo_id")
+        if matched_via:
+            hits.append({
+                "upid": str(p.get("upid", "")),
+                "name": p.get("name", ""),
+                "team": p.get("team", ""),
+                "pos": p.get("position", ""),
+                "matched_via": matched_via,
+            })
+    return hits
 
 
 def _generate_request_id(existing: dict[str, dict], manager_team: str) -> str:
@@ -433,6 +433,7 @@ def _render_request_card(record: dict) -> str:
     if duplicates:
         duplicate_lines = [
             f"- UPID {d.get('upid')}: {d.get('name')} ({d.get('team')}/{d.get('pos')})"
+            + (f" [matched: {', '.join(d['matched_via'])}]" if d.get("matched_via") else "")
             for d in duplicates[:8]
         ]
         if len(duplicates) > 8:
@@ -522,9 +523,21 @@ def _normalize_add_player_data(raw_player_data: dict) -> dict:
         raise HTTPException(status_code=400, detail="Player name is required")
 
     proof_url = _clean_text(raw_player_data.get("proof_url"))
-    if not proof_url:
-        raise HTTPException(status_code=400, detail="Proof URL is required")
-    _validate_proof_url(proof_url)
+    has_mlb_id = bool(str(raw_player_data.get("mlb_id") or "").strip())
+    has_yahoo_id = bool(_clean_text(raw_player_data.get("yahoo_id")))
+    # Proof URL used to be required unconditionally. Now that add requests
+    # can be verified by an exact MLB/Yahoo ID instead, a resolvable ID is
+    # accepted as proof on its own -- Proof URL is still welcome but no
+    # longer blocks submission when an ID is present. If the ID turns out
+    # not to resolve, that's already surfaced to the reviewing admin via
+    # the "No enrichment match" note on the Discord review card.
+    if not proof_url and not has_mlb_id and not has_yahoo_id:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide an MLB ID, a Yahoo ID, or a Proof URL (baseball-reference.com, mlb.com, or fangraphs.com).",
+        )
+    if proof_url:
+        _validate_proof_url(proof_url)
 
     team = _clean_text(raw_player_data.get("team")).upper()
     position = _clean_text(raw_player_data.get("position")).upper()
@@ -955,7 +968,7 @@ async def manager_add_player_request(
 
     name = normalized.get("name", "")
     team_hint = normalized.get("team") or None
-    enrichment = _enrich_player_data(name, team_hint)
+    enrichment = _enrich_player_data(name, team_hint, mlb_id=normalized.get("mlb_id"))
     for field, value in enrichment.items():
         if field not in normalized or normalized.get(field) in (None, ""):
             normalized[field] = value
@@ -964,6 +977,21 @@ async def manager_add_player_request(
     with DATA_LOCK:
         upid_db = _ensure_upid_db(_load_json(UPID_DB_FILE, {"by_upid": {}, "name_index": {}}))
         duplicate_matches = _find_duplicate_upids(upid_db, candidate_names)
+        players_snapshot = _load_json(COMBINED_FILE, [])
+
+    # ID-based dup check runs after enrichment, so it also catches the case
+    # where the manager only typed a name and enrichment resolved the
+    # mlb_id for them -- not just when they typed the ID directly.
+    id_dupes = _find_duplicate_by_ids(
+        players_snapshot if isinstance(players_snapshot, list) else [],
+        normalized.get("mlb_id"),
+        normalized.get("yahoo_id"),
+    )
+    seen_upids = {d["upid"] for d in duplicate_matches}
+    for d in id_dupes:
+        if d["upid"] not in seen_upids:
+            duplicate_matches.append(d)
+            seen_upids.add(d["upid"])
 
     submitted_at = datetime.now(timezone.utc).isoformat()
 

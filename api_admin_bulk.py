@@ -19,6 +19,7 @@ from typing import Callable, Optional
 
 from data_lock import DATA_LOCK
 from kap.kap_processor import _YEARS_SIMPLE_TO_KEY, _KEY_TO_FIELDS
+from mlb_lookup import enrich_player_data
 
 router = APIRouter(prefix="/api/admin", tags=["admin-bulk"])
 
@@ -593,52 +594,23 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
 @router.post("/enrich-player")
 async def enrich_player(request: Request, _=Depends(verify_api_key)):
     """
-    Search MLB Stats API for a player by name, return bio data.
-    No Yahoo/Fangraphs for now — MLB API is free and reliable.
+    Look up a player's bio data from the MLB Stats API.
+
+    Prefers an exact ID lookup (GET /people/{mlb_id}) when `mlb_id` is
+    given -- unambiguous, unlike a name search, which can match the wrong
+    same-named player or miss on an accent/suffix mismatch. Falls back to
+    a name search (optionally narrowed by a team hint) when no mlb_id is
+    provided or it doesn't resolve. No Yahoo/Fangraphs for now — MLB API
+    is free and reliable; see mlb_lookup.py's module docstring for why
+    Yahoo isn't wired up the same way.
     """
     body = await request.json()
-    name = body.get("name", "").strip()
+    name = (body.get("name") or "").strip()
     team_hint = body.get("team")
+    mlb_id = str(body.get("mlb_id") or "").strip() or None
 
-    if not name:
-        raise HTTPException(status_code=400, detail="Name is required")
+    if not name and not mlb_id:
+        raise HTTPException(status_code=400, detail="Name or MLB ID is required")
 
-    enriched = {}
-
-    # --- MLB Stats API search ---
-    try:
-        search_url = f"https://statsapi.mlb.com/api/v1/people/search?names={requests.utils.quote(name)}&hydrate=currentTeam"
-        resp = requests.get(search_url, timeout=10)
-
-        if resp.status_code == 200:
-            people = resp.json().get("people", [])
-
-            # If team hint provided, prefer that match
-            best = None
-            for person in people:
-                if team_hint:
-                    current_team = person.get("currentTeam", {}).get("abbreviation", "")
-                    if current_team.upper() == team_hint.upper():
-                        best = person
-                        break
-
-                if not best:
-                    best = person  # Take first result as fallback
-
-            if best:
-                enriched["mlb_id"] = str(best.get("id", ""))
-                enriched["birth_date"] = best.get("birthDate")
-                enriched["debut_date"] = best.get("mlbDebutDate")
-                enriched["bats"] = best.get("batSide", {}).get("code")
-                enriched["throws"] = best.get("pitchHand", {}).get("code")
-                enriched["position"] = best.get("primaryPosition", {}).get("abbreviation")
-                enriched["team"] = best.get("currentTeam", {}).get("abbreviation")
-                enriched["age"] = best.get("currentAge")
-
-    except Exception as e:
-        print(f"⚠️ MLB API search error: {e}")
-
-    # Filter out None values
-    enriched = {k: v for k, v in enriched.items() if v is not None}
-
+    enriched = enrich_player_data(name=name or None, team_hint=team_hint, mlb_id=mlb_id)
     return enriched
