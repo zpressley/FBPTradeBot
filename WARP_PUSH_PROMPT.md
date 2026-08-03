@@ -1,18 +1,18 @@
-Push pending commits in fbp-trade-bot. Local main has already been merged with
-origin/main (see below) -- this task is ONLY to push the result. Do not
-re-run, re-generate, or "fix" anything; do not run any data pipeline,
-backfill, sync, or graduation scripts. Do not touch token.json.
-
-fbp-hub has nothing pending right now.
+Push pending commits in fbp-trade-bot AND fbp-hub. Both repos have already
+been reconciled with their origins (see below) -- this task is ONLY to push
+the results. Do not re-run, re-generate, or "fix" anything; do not run any
+data pipeline, backfill, sync, or graduation scripts. Do not touch
+token.json.
 
 ## fbp-trade-bot
 
 Local main is a real merge commit (`2aa2862`) with two parents: your last
-push and origin/main's current tip (`e598ad0`), plus four more commits on
-top (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0` -- docs + data-cleanse
-fixes, see item 3 below). Local HEAD already contains every commit that's
-on origin/main -- this should push as a plain, non-force
-fast-forward-compatible push with no conflicts.
+push and origin/main's current tip (`e598ad0`), plus five more commits on
+top (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0`, `435d9ea` -- docs,
+data-cleanse fixes, and the new Team Planner API, see items 3 and 4 below).
+Local HEAD already contains every commit that's on origin/main -- this
+should push as a plain, non-force fast-forward-compatible push with no
+conflicts.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
@@ -22,7 +22,7 @@ Steps:
    than merging/rebasing again yourself -- ping Zach or come back to me).
 3. If unchanged: `git push origin main`. No merge/rebase needed -- it's
    already done, locally, and verified.
-4. Verify: `git log --oneline origin/main -1` should show `8f9e9f0`.
+4. Verify: `git log --oneline origin/main -1` should show `435d9ea`.
 
 **Do not force-push. Do not run `git rebase -X ours/-X theirs`. Do not
 resolve any conflicts yourself** -- if `git push` reports anything other
@@ -121,10 +121,83 @@ Still open, not fixed, no action needed from you: a couple more dormant
 shadow-duplicate players (Jonathon Long, Abimelec Ortiz) and some low
 priority cosmetic items -- all listed in the doc, none blocking.
 
+**4. Team Planner save/load API** (`api_team_planner.py`, `health.py`,
+commit `435d9ea` -- companion to the fbp-hub Team Planner push below, same
+feature, other half of it). Two endpoints:
+- `GET /api/team-planner/{team}` -- fetch a team's saved plan(s)
+- `POST /api/team-planner/save` -- upsert one mode ('kap' or 'pad') of a
+  team's plan
+
+Gated only by the shared `X-API-Key` (the same key the Cloudflare Worker
+injects site-wide) -- no per-manager ownership check, by design (Team
+Planner has no login wall, matching Team Builder's existing access
+pattern; documented in fbp-hub's `docs/TRADE_PLANNER_PLAN.md` section 3.2).
+Any caller can save/load any team's plan. This is intentional, not a bug.
+
+**Flagging, not fixed:** the save endpoint calls its commit function
+directly without `wait=True`, and its failure handler only prints a
+warning rather than raising -- so a failed commit still returns
+`{"success": true}` to the caller. This is the same fire-and-forget defect
+class this session spent a lot of effort finding and fixing elsewhere
+(`trade_store.py`, `api_admin_bulk.py`, `commands/auction.py`): a saved
+plan could report success and then vanish if the container redeploys
+before the queued commit lands. Lower stakes than the other cases (a lost
+planning draft, not a lost trade or roster move), but worth Zach knowing
+before this ships. Not changed here -- his call on timing.
+
+`data/team_planner_plans.json` seeded as `{}`. `health.py` diff is
+additive only (new import, new router include, new commit-fn wiring in a
+try/except matching the existing pattern for every other router) --
+nothing existing was touched.
+
+## fbp-hub
+
+Local main is one commit (`99f10fd`) ahead of origin/main (`5fea0c2`) --
+plain fast-forward, no merge needed, no conflicts possible.
+
+Steps:
+1. `cd` into fbp-hub, `git fetch origin`.
+2. `git log --oneline origin/main -3` -- confirm it's still at `5fea0c2`.
+   If it's moved forward (auto-sync commits land here regularly), same
+   rule as fbp-trade-bot: plain fast-forward should still work since
+   nothing else touched these files, but if `git push` is rejected, stop
+   and flag it rather than force-pushing or improvising a resolution.
+3. `git push origin main`.
+4. Verify: `git log --oneline origin/main -1` should show `99f10fd`.
+
+### What's in this push
+
+**Team Planner, replacing Team Builder in navigation** (commit `99f10fd`).
+New page (`team-planner.html`, `css/team-planner.css`, `js/team-planner.js`)
+plus a design doc (`docs/TRADE_PLANNER_PLAN.md`). Two modes (KAP/PAD), no
+login wall by design, Save Plan persists cross-device via the new
+fbp-trade-bot endpoints above.
+
+Wired into all 4 places Team Builder previously appeared: the Front Office
+dropdown (20 pages + team-builder.html itself -- identical 2-line swap in
+each, verified via `git diff --numstat`: every one of the 20 plain pages is
+exactly 2 insertions/2 deletions), `js/main.js`'s nav-highlighting array +
+a new `initializePage()` case, `js/dashboard-tabs.js`'s quick-action tile,
+and a brand-new entry in `js/auth.js`'s post-login dropdown (Team Planner
+wasn't in that menu before -- new addition, not a swap). `team-builder.html`
+itself is untouched otherwise (title/header still say Team Builder) -- the
+page still exists and works, just isn't linked from anywhere anymore.
+
+Diff verified before committing: 24 files changed, 53 insertions / 44
+deletions total, matching exactly what was reviewed before commit -- no
+stray changes.
+
 ## After pushing
 
-Railway will redeploy fbp-trade-bot from the new main. This changes runtime
-behavior (the auction fix), not just data -- worth a quick look at the
-first few log lines after restart to confirm the bot comes up clean, and
-particularly worth watching the next Sunday auction resolve to confirm no
-more persistence-warning messages.
+**fbp-trade-bot:** Railway will redeploy from the new main. This changes
+runtime behavior (the auction fix, the new Team Planner endpoints), not
+just data -- worth a quick look at the first few log lines after restart
+to confirm the bot comes up clean, and particularly worth watching the
+next Sunday auction resolve to confirm no more persistence-warning
+messages.
+
+**fbp-hub:** this is a static site (GitHub Pages / Cloudflare) -- confirm
+the deploy picks up cleanly and `team-planner.html` actually loads once
+live, since it depends on the fbp-trade-bot endpoints above being deployed
+too. Push fbp-trade-bot first if doing these one at a time, so the API
+exists before the page that calls it goes live.
