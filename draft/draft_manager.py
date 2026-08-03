@@ -412,10 +412,31 @@ class DraftManager:
             player_rec["contract_type"] = contract_type
         else:
             # Keeper draft: all picks are Keeper Contracts.
-            # Rounds 1-3 start at VC 1.
+            # Rounds 1-3 start at VC 1; round 4+ picks are TC 1 (Zach's
+            # ruling, 2026-08-03: a keeper-draft pick is a TC 1, full stop,
+            # regardless of the player's pre-draft tier). This used to only
+            # handle the round<=3 case, leaving years_simple untouched (i.e.
+            # blank, since keeper-pool candidates go into the draft with it
+            # already cleared) for every round 4+ pick -- that gap caused 8
+            # players from the 2026-03-08 draft to display the literal
+            # contract_type string ("Keeper Contract") instead of a real
+            # code on fbp-hub and in Discord (fixed in
+            # scripts/fix_blank_years_simple_2026_08_03.py). `status` is set
+            # alongside years_simple in both branches now too, matching the
+            # format used everywhere else (confirmed against the dominant
+            # real pairing for each tier: "VC 1" -> "[3] VC1", "TC 1" ->
+            # "[5] TC1") -- previously left blank here regardless of round,
+            # which was harmless only because years_simple wins the
+            # frontend's display fallback when it's set; closing it for
+            # both branches so the same class of gap can't resurface if
+            # that fallback order ever changes.
             player_rec["contract_type"] = "Keeper Contract"
             if round_num <= 3:
                 player_rec["years_simple"] = "VC 1"
+                player_rec["status"] = "[3] VC1"
+            else:
+                player_rec["years_simple"] = "TC 1"
+                player_rec["status"] = "[5] TC1"
 
         _save_json(combined_path, combined_players)
         mutated.append(combined_path)
@@ -485,6 +506,7 @@ class DraftManager:
                 # Clear contract fields set during draft pick.
                 player_rec["contract_type"] = None
                 player_rec["years_simple"] = None
+                player_rec["status"] = None
 
             _save_json(combined_path, combined_players)
             mutated.append(combined_path)
@@ -547,6 +569,7 @@ class DraftManager:
                             rec["FBP_Team"] = ""
                             rec["contract_type"] = None
                             rec["years_simple"] = None
+                            rec["status"] = None
 
                 _save_json(combined_path, combined_players)
                 mutated.append(combined_path)
