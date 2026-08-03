@@ -1,6 +1,6 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 20:06 UTC.** Rewritten after every new batch of
+**Last updated: 2026-08-03 21:45 UTC.** Rewritten after every new batch of
 local commits -- the "ahead of origin" counts/hashes below are accurate as
 of this timestamp. If it's more than a day or two old, don't trust the
 hashes -- re-run `git log --oneline origin/main -3` yourself first. Local
@@ -18,12 +18,12 @@ token.json.
 
 ## fbp-trade-bot
 
-Local main is **1 commit ahead** of origin/main (`ce73895`): `bb47107` --
-plain fast-forward, no merge needed, no conflicts possible.
+Local main is **2 commits ahead** of origin/main (`ae714f8`): `6e449c5`,
+`5acf83b` -- plain fast-forward, no merge needed, no conflicts possible.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `ce73895`
+2. `git log --oneline origin/main -3` -- confirm it's still at `ae714f8`
    (if it's moved forward since this was written, stop and flag it rather
    than merging/rebasing yourself).
 3. If unchanged: `git push origin main`.
@@ -35,54 +35,56 @@ Steps:
 
 ### What's in this push
 
-**Add ID-first player lookup/enrichment (MLB ID / Yahoo ID)** (`bb47107`).
-Prompted by Ramon Marquez being added via the admin tool with the old
-name-only flow. New shared module `mlb_lookup.py`:
-`fetch_player_by_mlb_id()` is an exact `GET /people/{id}` call against the
-MLB Stats API -- unambiguous, unlike a name search, which can match the
-wrong same-named player or miss on an accent/suffix mismatch (the same
-failure mode behind the Luis Garcia Jr. duplicate mess earlier this
-session). `fetch_player_by_name()` is the pre-existing name-search
-fallback, moved here so it's no longer duplicated field-for-field across
-`api_admin_bulk.py` and `api_manager_players.py`. `enrich_player_data()`
-is the single entry point both files now call: prefers `mlb_id` when
-given, falls back to name search.
+**Fix a live UPID collision + its root cause (`6e449c5`, `5acf83b`).**
+Zach added a new prospect, Ramon Marquez, through the admin Add Player
+tool on 2026-08-03. He was assigned UPID 8697 -- already held by Luis
+Garcia Jr. -- so `combined_players.json` ended up with two different
+players sharing one UPID. Any lookup that builds a `{upid: player}` map
+from that file silently keeps whichever row comes later and drops the
+other, which is almost certainly why the live site announced the one
+open auction bid on this UPID as being on Luis Garcia Jr. instead of the
+prospect it was actually meant for.
 
-No `yahoo_id` lookup: there's no proven single-ID JSON bio endpoint for
-Yahoo's Fantasy API in this codebase, and building one would mean invoking
-the OAuth token flow (which can rewrite `token.json`) just to test it. A
-`yahoo_id` is accepted and stored as a plain identifier, not
-auto-enriched -- worth revisiting later if wanted.
+Root cause (`6e449c5`): three separate places generated "the next free
+UPID" by scanning only `upid_database.json`'s `by_upid` dict -- never
+checking the UPIDs actually present in `combined_players.json`.
+`upid_database.json` had drifted out of sync (missing a `by_upid` entry
+for 8697 even though Luis Garcia Jr. already held it), so none of the
+three saw a collision coming. Added one shared, correctly-guarded
+`api_upid.get_next_free_upid()` that checks both files; `add_player()`
+(`api_admin_bulk.py`), the manager add-player-request approval path
+(`api_manager_players.py`), and `api_upid.py`'s own record-creation
+endpoint all now call it instead of their own copy of the old logic.
 
-Companion to two fbp-hub commits below (admin tool + players-page Add
-Player, same feature, other half of it):
-- `POST /api/admin/enrich-player` now accepts an optional `mlb_id` and
-  prefers it over the name search.
-- `api_manager_players.py`'s manager add-player-request flow: enrichment
-  now passes `mlb_id` through; added `_find_duplicate_by_ids()` so a
-  request also gets checked against `combined_players.json` by
-  `mlb_id`/`yahoo_id`, not just by name (surfaced on the Discord review
-  card); **Proof URL is no longer unconditionally required** -- an MLB ID
-  or Yahoo ID now counts as proof on its own (Zach's call), Proof URL
-  still accepted/validated if given.
+Live-data fix (`5acf83b`, `scripts/fix_upid_8697_collision_2026_08_03.py`,
+already run against this repo's data -- re-running it is a safe no-op,
+it checks current state before touching anything): Ramon Marquez moved
+to UPID 8698 (confirmed free); `upid_database.json` restored to describe
+Luis Garcia Jr. under 8697 and Marquez under 8698; the one open auction
+bid's `prospect_id` repointed from 8697 to 8698 (the auction is still in
+the unresolved "ob_window" phase, so nothing had actually changed
+ownership yet -- this was a clean fix); one new correction entry appended
+to `player_log.json`. Luis Garcia Jr.'s own player record was never
+altered, only the identity-index entry that had been overwritten out
+from under him.
 
-Verified: `py_compile` clean on all 3 files. Live-testing against the real
-MLB Stats API isn't possible from this sandbox (outbound HTTPS is
-proxy-blocked here, same restriction that blocks git push/fetch) --
-instead unit-tested with a mocked response matching the exact schema
-already relied on elsewhere in this codebase: correct field mapping,
-correct short-circuit on a non-numeric ID (no HTTP call attempted),
-correct fallback to name search when an ID doesn't resolve.
+**Not fixed by this push, flagging for awareness:** the Discord message
+the live bot already posted describing this bid as being on Luis Garcia
+Jr. -- there's no stored log of bot messages to correct/retract from
+here; if that needs cleaning up, it's a manual Discord action only
+Zach/Warp can take.
 
 **Everything else** (PTDA WizBucks allotment, Discord headshot
 thumbnails, draft_manager.py fix, division field, IP min reminder task,
-auction fix, trade backfills, data cleanse, Team Planner API) is already
-on origin/main as of this push prompt -- nothing else pending from those.
+auction fix, trade backfills, data cleanse, Team Planner API, ID-first
+player lookup/enrichment) is already on origin/main as of this push
+prompt -- nothing else pending from those.
 
 ## fbp-hub
 
 Local main is **2 commits ahead** of origin/main (`6c995ac`): `bc4056f`,
 `48ce3df` -- plain fast-forward, no merge needed, no conflicts possible.
+(Unchanged since the last push prompt -- no new fbp-hub work this round.)
 
 Steps:
 1. `cd` into fbp-hub, `git fetch origin`.
@@ -129,12 +131,25 @@ origin/main as of this push prompt -- nothing else pending from those.
 
 ## After pushing
 
-**fbp-trade-bot:** Railway will redeploy. Data-only + one new module, no
-existing runtime behavior changed -- low risk.
+**fbp-trade-bot:** Railway will redeploy. Data-only + a shared-helper
+refactor of code already live in production behind the same endpoints --
+low risk, but see the one-line spot-check below.
 
 **fbp-hub:** confirm the admin Add Player modal shows the new "Identify
 the Player" section, and that the players-page Add Player button now
 shows the trimmed form (Name/MLB ID/Yahoo ID/Proof URL only).
+
+## Spot-check after this deploy (UPID collision fix)
+
+Add a brand-new player through the admin tool (a throwaway, e.g. any
+random minor-leaguer by MLB ID) and confirm the UPID it's assigned
+doesn't already belong to someone else -- check the new player's UPID
+against `combined_players.json` (should appear exactly once) and against
+`upid_database.json`'s `by_upid` (should now include that UPID). Delete
+the throwaway afterward via the existing admin delete-player flow. This
+isn't expected to fail -- `get_next_free_upid()` is unit-tested against
+the exact collision scenario -- but this bug already happened once on
+live data, so a real add-and-check is worth the 2 minutes.
 
 ## Verifying the ID lookup actually works (do this once, post-deploy)
 
