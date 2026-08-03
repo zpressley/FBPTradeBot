@@ -14,6 +14,7 @@ from discord.ui import Button, View
 from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 
+from api_upid import get_next_free_upid
 from data_lock import DATA_LOCK
 from mlb_lookup import enrich_player_data as _mlb_enrich_player_data
 from pad.pad_processor import _append_player_log_entry
@@ -606,10 +607,11 @@ def _create_player_from_request_record(record: dict, admin_team: str) -> dict:
     upid_db = _ensure_upid_db(_load_json(UPID_DB_FILE, {"by_upid": {}, "name_index": {}}))
     by_upid = upid_db.get("by_upid", {})
 
-    existing_upids = [int(k) for k in by_upid.keys() if str(k).isdigit()]
-    next_upid = (max(existing_upids) + 1) if existing_upids else 1
-    while str(next_upid) in by_upid:
-        next_upid += 1
+    # Collision-safe against both upid_database.json AND
+    # combined_players.json -- see api_upid.get_next_free_upid()'s
+    # docstring for why both are checked (upid_database.json alone
+    # caused the 2026-08-03 Ramon Marquez / Luis Garcia Jr. collision).
+    next_upid = get_next_free_upid(upid_db, players)
 
     new_player = _build_new_player_record(player_data, next_upid)
     players.append(new_player)

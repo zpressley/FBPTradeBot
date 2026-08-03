@@ -19,6 +19,7 @@ from data_lock import DATA_LOCK
 router = APIRouter(prefix="/api/upid", tags=["upid"])
 
 UPID_DB_FILE = "data/upid_database.json"
+COMBINED_FILE = "data/combined_players.json"
 API_KEY = os.getenv("BOT_API_KEY", "")
 
 _commit_fn: Optional[Callable[[list[str], str], None]] = None
@@ -55,6 +56,41 @@ def _save_upid_db(data: dict) -> None:
     os.makedirs(os.path.dirname(UPID_DB_FILE), exist_ok=True)
     with open(UPID_DB_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+
+
+def _load_combined_players() -> list:
+    if not os.path.exists(COMBINED_FILE):
+        return []
+    with open(COMBINED_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data if isinstance(data, list) else []
+
+
+def get_next_free_upid(upid_db: dict, combined_players: Optional[list] = None) -> int:
+    """Compute the next UPID that's free in BOTH upid_database.json's
+    by_upid dict AND (if provided) the UPIDs actually present in
+    combined_players.json.
+
+    Root-cause fix for the 2026-08-03 Ramon Marquez / Luis Garcia Jr.
+    collision: upid_database.json's by_upid silently drifted out of sync
+    with combined_players.json (it was missing a by_upid entry for UPID
+    8697 even though Luis Garcia Jr. already held it in
+    combined_players.json), so a by_upid-only "next free UPID" check saw
+    no collision and handed the same UPID to a brand-new player. Every
+    call site that assigns a new UPID should go through this function
+    rather than re-deriving next_upid from by_upid alone.
+    """
+    by_upid = upid_db.get("by_upid", {}) if isinstance(upid_db, dict) else {}
+    taken = {int(k) for k in by_upid.keys() if str(k).isdigit()}
+    if combined_players:
+        taken |= {
+            int(p["upid"]) for p in combined_players
+            if isinstance(p, dict) and str(p.get("upid") or "").isdigit()
+        }
+    next_upid = (max(taken) + 1) if taken else 1
+    while next_upid in taken:
+        next_upid += 1
+    return next_upid
 
 
 def _enqueue_commit(message: str) -> None:
@@ -221,13 +257,11 @@ async def create_upid_record(
         upid_db = _load_upid_db()
         by_upid = upid_db.get("by_upid", {})
 
-        # Auto-assign next UPID (collision-safe)
-        if by_upid:
-            next_upid = max(int(k) for k in by_upid if k.isdigit()) + 1
-        else:
-            next_upid = 1
-        while str(next_upid) in by_upid:
-            next_upid += 1
+        # Auto-assign next UPID (collision-safe against both
+        # upid_database.json AND combined_players.json -- see
+        # get_next_free_upid()'s docstring for why both are needed)
+        combined_players = _load_combined_players()
+        next_upid = get_next_free_upid(upid_db, combined_players)
 
         rec = {
             "upid": next_upid,

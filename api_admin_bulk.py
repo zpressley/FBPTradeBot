@@ -20,6 +20,7 @@ from typing import Callable, Optional
 from data_lock import DATA_LOCK
 from kap.kap_processor import _YEARS_SIMPLE_TO_KEY, _KEY_TO_FIELDS
 from mlb_lookup import enrich_player_data
+from api_upid import get_next_free_upid
 
 router = APIRouter(prefix="/api/admin", tags=["admin-bulk"])
 
@@ -444,26 +445,25 @@ async def add_player(request: Request, _=Depends(verify_api_key)):
         print(f"🔄 Starting add-player for {player_data.get('name')} by {admin}")
 
         with DATA_LOCK:
-            # --- Generate UPID ---
+            # --- Generate UPID (collision-safe against both
+            # upid_database.json AND combined_players.json -- see
+            # api_upid.get_next_free_upid()'s docstring for why both are
+            # checked; upid_database.json alone caused the 2026-08-03
+            # Ramon Marquez / Luis Garcia Jr. UPID collision) ---
             upid_db = load_json(UPID_DB_FILE)
             if not upid_db or "by_upid" not in upid_db:
                 upid_db = {"by_upid": {}, "name_index": {}}
 
-            existing_upids = [int(u) for u in upid_db["by_upid"].keys() if u.isdigit()]
-            next_upid = (max(existing_upids) + 1) if existing_upids else 1
-            # Defensive: verify UPID is truly free (git reset --hard can
-            # revert upid_database.json, causing stale max reads).
-            while str(next_upid) in upid_db["by_upid"]:
-                next_upid += 1
+            players = load_json(COMBINED_FILE)
+            if not isinstance(players, list):
+                players = []
+
+            next_upid = get_next_free_upid(upid_db, players)
             player_data["upid"] = str(next_upid)
 
             print(f"  📝 Assigned UPID: {next_upid}")
 
             # --- Add to combined_players.json ---
-            players = load_json(COMBINED_FILE)
-            if not isinstance(players, list):
-                players = []
-
             # Coerce numeric fields
             raw_age = player_data.get("age")
             if raw_age is not None and str(raw_age).strip():
