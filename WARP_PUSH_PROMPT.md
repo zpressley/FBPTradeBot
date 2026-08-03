@@ -1,10 +1,14 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 16:35 UTC.** This gets rewritten after every new
-batch of local commits, so the "ahead of origin" commit lists below should
-always be current as of this timestamp. If it's more than a day or two old
-when you're reading it, treat the hashes as suspect and re-check
-`git log --oneline origin/main -3` yourself before pushing.
+**Last updated: 2026-08-03 17:05 UTC.** Rewritten after every new batch of
+local commits -- the "ahead of origin" counts/hashes below are accurate as
+of this timestamp. If it's more than a day or two old, don't trust the
+hashes -- re-run `git log --oneline origin/main -3` yourself first. (Note
+for whoever's pushing: local history in this repo has been rebased onto
+origin more than once this week as pushes landed out-of-band, so old
+commit hashes mentioned in chat/docs may no longer exist even though the
+content is already live -- always check origin/main's actual tip, not a
+remembered hash.)
 
 Push pending commits in fbp-trade-bot AND fbp-hub. Both repos have already
 been reconciled with their origins (see below) -- this task is ONLY to push
@@ -14,128 +18,64 @@ token.json.
 
 ## fbp-trade-bot
 
-Local main is **3 commits ahead** of origin/main (`c59de9c`): `d7d6715`,
-`e52ae43`, `6140dd8` -- plain fast-forward, no merge needed, no conflicts
-possible.
+Local main is **1 commit ahead** of origin/main (`106e017`): `9ab7a0d` --
+plain fast-forward, no merge needed, no conflicts possible.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `c59de9c`
+2. `git log --oneline origin/main -3` -- confirm it's still at `106e017`
    (if it's moved forward since this was written, stop and flag it rather
-   than merging/rebasing yourself -- ping Zach or come back to me).
+   than merging/rebasing yourself).
 3. If unchanged: `git push origin main`.
-4. Verify: `git log --oneline origin/main -1` should show `6140dd8`.
+4. Verify: `git log --oneline origin/main -1` should show `9ab7a0d`.
 
 **Do not force-push. Do not resolve any conflicts yourself** -- if
 `git push` reports anything other than a clean push, stop and flag it.
 
 ### What's in this push
 
-**1. 2026 Post-Trade Deadline Allotment (PTDA)** (`data/wizbucks.json`,
-`data/wizbucks_transactions.json`, `scripts/apply_ptda_2026_08_02.py`,
-commit `d7d6715`; doc-only follow-up `e52ae43`). Per FBP Constitution
-Article I Sec 02 (Installment 4 -- PTDA, based on current bracket),
-credited all 12 teams per the bracket tiers Zach gave: Championship ($15)
-LFB/SAD/DMN/HAM, Consolation ($25) WIZ/TBB/JEP/B2J, Elimination ($35)
-CFL/WAR/RV/DRO. Recorded as `transaction_type: "admin_adjustment"` ledger
-entries per Zach's instruction, matching the existing admin_adjustment
-schema exactly. Script is guarded (validates the 12 bracket assignments
-match wizbucks.json's team set) and idempotent (skips any team with an
-existing PTDA-marked entry, safe to re-run). Verified before committing:
-both files valid JSON, all 12 new balances = old + tier amount, diff on
-the transactions file is a pure append (12 new entries, zero existing
-entries altered -- matched the file's real on-disk convention,
-`ensure_ascii=True`/escaped-unicode, confirmed empirically against HEAD
-rather than assumed).
+**Fix blank years_simple on 8 round-4+ keeper-draft picks** (commit
+`9ab7a0d`). `draft/draft_manager.py`'s keeper-draft pick handler only sets
+`years_simple` for rounds 1-3 (hard-coded "VC 1"); rounds 4+ have no
+equivalent branch, so it was left blank on 8 players from the 2026-03-08
+keeper draft. With `years_simple` blank, fbp-hub's rosters page and
+Discord's `/trade`, `/lookup`, `/roster` commands all fell back to
+displaying the literal `contract_type` string ("Keeper Contract") instead
+of a real contract code -- Zach spotted this from a rosters-page
+screenshot (Lars Nootbaar showing "Keeper Contract" instead of "TC 1").
 
-**2. MLB headshot thumbnails in Discord `/player`** (`commands/lookup.py`,
-`commands/player.py`, `commands/utils.py`, commit `6140dd8`) -- companion
-to the fbp-hub avatar feature below, same CDN pattern. New
-`mlb_headshot_url()` helper in `commands/utils.py` builds an
-img.mlbstatic.com URL keyed off `mlb_id`. `/player` lookup replies switched
-from plain text to a `discord.Embed` with the headshot as a thumbnail, for
-both the single-match and closest-match cases; falls back to no thumbnail
-when a player has no `mlb_id`. Verified: `python3 -m py_compile` clean on
-all 3 changed files, diff reviewed against the commit.
+Per Zach's ruling: a keeper-draft pick is a TC 1, full stop, regardless of
+pre-draft tier (resolves two cases -- Hunter Greene, Luke Weaver -- that
+had an intervening drop/re-add making their prior tier ambiguous). Sets
+`years_simple="TC 1"` + `status="[5] TC1"` on upids 3170, 3265, 3840, 4022,
+2916, 3457, 2872, 3726 via `scripts/fix_blank_years_simple_2026_08_03.py`
+(guarded -- only touches a record still in the expected broken state).
+Verified: JSON valid, player count unchanged (6,812), diff touches exactly
+these 8 records' `years_simple`/`status` fields, zero unexpected diffs
+elsewhere.
 
-**Previously shipped, already on origin (for reference only, not part of
-this push):** auction persistence deadlock fix (`fe8096a`), 4 backfilled
-trades + Luis Garcia Jr. identity fix (`e2d1deb`, `6640b44`), data cleanse
-+ duplicate-row/stub fixes (`64dc74c`, `5510c93`, `1ac570f`, `8f9e9f0`),
-Team Planner save/load API (`435d9ea`). Full writeups for these live in
-git history if ever needed again -- trimmed from this doc since they're
-no longer actionable.
+**Still flagged, not fixed, no action needed from you:**
+- `draft_manager.py`'s round-4+ gap itself is NOT patched -- the next
+  keeper draft will reproduce this same bug on any round-4+ pick unless
+  someone adds the missing `else: years_simple = "TC 1"` branch. Zach
+  hasn't given the go-ahead yet.
+- `api_team_planner.py`'s save endpoint still has the fire-and-forget
+  commit issue noted when it shipped (no `wait=True`, swallows commit
+  failures with only a print).
 
-**Still flagged, not fixed, no action needed from you:** `api_team_planner.py`'s
-save endpoint still has the fire-and-forget commit issue noted when it
-shipped (calls its commit function without `wait=True`, swallows failures
-with only a print) -- Zach hasn't given the go-ahead to harden it yet.
+**Everything else** (PTDA WizBucks allotment, Discord headshot
+thumbnails, auction fix, trade backfills, data cleanse, Team Planner API)
+is already on origin/main as of this push prompt -- nothing else pending.
 
 ## fbp-hub
 
-Local main is **2 commits ahead** of origin/main (`08eb149`): `f069b69`,
-`29a083e` -- plain fast-forward, no merge needed, no conflicts possible.
-
-Steps:
-1. `cd` into fbp-hub, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `08eb149`.
-   If it's moved forward (auto-sync commits land here regularly), same
-   rule as fbp-trade-bot: should still fast-forward cleanly, but if
-   `git push` is rejected, stop and flag it rather than improvising a fix.
-3. `git push origin main`.
-4. Verify: `git log --oneline origin/main -1` should show `29a083e`.
-
-### What's in this push
-
-**1. Player headshot avatars** (commit `f069b69`) -- companion to the
-fbp-trade-bot Discord embed above; sourced from MLB's public headshot CDN
-using the `mlb_id` already in `combined_players.json`, no new data pipeline
-needed. Core: one reusable helper pair in `js/main.js`
-(`getPlayerPhotoUrl()` + `createPlayerAvatarHTML()`, plus
-`handlePlayerPhotoError()`) that builds the image URL and falls back to a
-local SVG silhouette if a player has no `mlb_id` or the photo fails to
-load; everything else calls this. Wired into: player profile page (full
-photo -- UI already existed, just wasn't connected to a real image
-source), player database (thumbnail per row + bigger photo in the
-slide-out detail panel), rosters (avatar next to every name, keeper and
-prospect tables both), trade builder (avatar on players added to a trade
-and in the player-picker modal). Coverage: 99.6% of MLB keepers have a
-usable ID, ~52% of prospects do -- everyone else shows the silhouette
-until MLB issues them one. Deliberately deferred: the dashboard's "My
-Roster" widget runs through a separate `lineup-builder.js` module,
-different enough to leave out for now -- helper's already built, quick
-add later if wanted. Verified: `node --check` clean on all 5 changed JS
-files (`main.js`, `player-profile.js`, `players.js`, `rosters.js`,
-`trade.js`).
-
-**2. Team Planner draft-picks fix + mobile-compact layout** (commit
-`29a083e`). The picks grid was reading `data/draft_order_2026.json`, which
-is the already-executed 2026 keeper draft built from 2025's final
-standings -- not usable for projecting 2027 picks, since next year's order
-is bracket-routed (championship/consolation/elimination), not
-reverse-standings, and can't be fully known until playoffs resolve. Now
-generates one placeholder pick per round (29 rounds), no order/pick-number
-shown, plus a "model trading this away" drop toggle and a simplified
-hypothetical add-pick picker (round + from-team). Also adds a mobile-only
-accordion/card-list view (Roster Plan, Draft Picks, WizBucks Adjustment,
-Prospect Plan, Draft Slots, plus a sticky summary bar reusing kap.js's
-existing sticky-bar/debounce pattern) so the page needs less scrolling on
-phones -- desktop keeps the original table layout, both share the same
-`TP_STATE` and calculation functions, split purely by CSS media query.
-Verified: `node --check` clean on `js/team-planner.js`.
-
-**Previously shipped, already on origin (for reference only):** Team
-Planner base build, replacing Team Builder in navigation (`08eb149`).
+**Nothing pending.** Local main and origin/main are identical
+(`7986690`) -- no push needed right now. (Headshot avatars and the Team
+Planner draft-picks/mobile-layout fix both already shipped.)
 
 ## After pushing
 
-**fbp-trade-bot:** Railway will redeploy from the new main. This changes
-Discord bot behavior (the `/player` embed), not just data -- worth a quick
-look at the first `/player` lookup after restart to confirm the thumbnail
-renders.
-
-**fbp-hub:** static site (GitHub Pages / Cloudflare) -- confirm the deploy
-picks up cleanly and headshots actually render on the players page, a
-roster page, and the trade builder once live. Team Planner's draft-picks
-tab and the mobile layout (resize below ~768px, or check on an actual
-phone) are also worth a quick look.
+**fbp-trade-bot:** Railway will redeploy from the new main. This is a
+data-only change (no code/runtime behavior touched) -- worth a quick look
+at the rosters page or a `/lookup` on one of the 8 players above (e.g.
+Lars Nootbaar) to confirm "TC 1" now shows instead of "Keeper Contract".
