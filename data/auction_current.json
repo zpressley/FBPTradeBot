@@ -17,9 +17,18 @@
       "prospect_id": "7970",
       "team": "CFL",
       "timestamp": "2026-08-03T20:58:32.298594+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-a340ee91c909",
+      "bid_type": "OB",
+      "date": "2026-08-03",
+      "prospect_id": "3262",
+      "team": "DRO",
+      "timestamp": "2026-08-03T22:24:13.724592+00:00"
     }
   ],
-  "last_updated": "2026-08-03T20:58:32.298594+00:00",
+  "last_updated": "2026-08-03T22:24:13.724592+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
