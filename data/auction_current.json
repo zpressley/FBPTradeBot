@@ -1,8 +1,8 @@
 {
   "bids": [],
-  "last_updated": "2026-08-02T14:00:52.981739+00:00",
+  "last_updated": "2026-08-03T16:43:29.878466+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "off_week",
   "priority_order": [
     "DRO",
     "RV",
@@ -17,19 +17,11 @@
     "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-08-02T14:00:52.749935+00:00",
-  "resolved_winners": {
-    "8015": {
-      "amount": 10,
-      "name": "Angeibel Gomez",
-      "team": "WIZ"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-07-27"
+  "week_start": "2026-08-03"
 }
