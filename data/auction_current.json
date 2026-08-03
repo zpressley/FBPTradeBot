@@ -8,9 +8,18 @@
       "prospect_id": "8697",
       "team": "WAR",
       "timestamp": "2026-08-03T19:11:28.977559+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-b5689d685ca4",
+      "bid_type": "OB",
+      "date": "2026-08-03",
+      "prospect_id": "7970",
+      "team": "CFL",
+      "timestamp": "2026-08-03T20:58:32.298594+00:00"
     }
   ],
-  "last_updated": "2026-08-03T19:11:28.977559+00:00",
+  "last_updated": "2026-08-03T20:58:32.298594+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
