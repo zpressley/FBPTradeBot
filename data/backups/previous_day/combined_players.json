@@ -979,7 +979,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "roberlu01",
@@ -989,7 +989,7 @@
     "fangraphs_name": "Luis Robert Jr.",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 673357,
     "mlb_primary_position": "CF",
     "name": "Luis Robert",
@@ -3733,13 +3733,13 @@
     "player_type": "MLB",
     "position": "RP",
     "rank": 137,
-    "status": "",
+    "status": "[5] TC1",
     "team": "BAL",
     "throws": "R",
     "upid": "3170",
     "weight": 235,
     "yahoo_id": "10946",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -3864,13 +3864,13 @@
     "player_type": "MLB",
     "position": "RP",
     "rank": 362,
-    "status": "",
+    "status": "[5] TC1",
     "team": "LAD",
     "throws": "L",
     "upid": "3265",
     "weight": 235,
     "yahoo_id": "10432",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "HAM",
@@ -6042,13 +6042,13 @@
     "player_type": "MLB",
     "position": "2B,SS",
     "rank": 170,
-    "status": "",
+    "status": "[5] TC1",
     "team": "MIA",
     "throws": "R",
     "upid": "3840",
     "weight": 175,
     "yahoo_id": "11375",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -7624,13 +7624,13 @@
     "player_type": "MLB",
     "position": "SP",
     "rank": 46,
-    "status": "",
+    "status": "[5] TC1",
     "team": "CIN",
     "throws": "R",
     "upid": "4022",
     "weight": 242,
     "yahoo_id": "10862",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "HAM",
@@ -10960,13 +10960,13 @@
     "player_type": "MLB",
     "position": "RP",
     "rank": 367,
-    "status": "",
+    "status": "[5] TC1",
     "team": "NYM",
     "throws": "R",
     "upid": "2916",
     "weight": 180,
     "yahoo_id": "10217",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -12638,13 +12638,13 @@
     "name": "Kyle Harrison",
     "player_type": "MLB",
     "position": "SP,RP",
-    "status": "",
+    "status": "[5] TC1",
     "team": "MIL",
     "throws": "L",
     "upid": "3457",
     "weight": 209,
     "yahoo_id": "12175",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -14227,7 +14227,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "smithjo11",
@@ -14237,7 +14237,7 @@
     "fangraphs_name": "Josh Smith",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669701,
     "mlb_primary_position": "SS",
     "name": "Josh H. Smith",
@@ -15402,13 +15402,13 @@
     "player_type": "MLB",
     "position": "CF",
     "rank": 408,
-    "status": "",
+    "status": "[5] TC1",
     "team": "STL",
     "throws": "R",
     "upid": "2872",
     "weight": 205,
     "yahoo_id": "12212",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -36272,7 +36272,7 @@
     "upid": "3726",
     "weight": 155,
     "yahoo_id": "12328",
-    "years_simple": null
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "TBB",
@@ -81323,7 +81323,7 @@
     "bats": "R",
     "bbref_id": "chourke01",
     "birth_date": "2007-10-01",
-    "contract_type": "Development Cont.",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3067545",
@@ -84445,7 +84445,7 @@
     "FBP_Team": "CFL",
     "age": 18,
     "bats": "S",
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
@@ -152883,7 +152883,7 @@
     "age": 19,
     "bats": null,
     "birth_date": null,
-    "contract_type": "Purchased Contract",
+    "contract_type": "Blue Chip Contract",
     "debut_date": null,
     "fypd": false,
     "level": "A+",
@@ -158520,5 +158520,43 @@
     "yahoo_id": "10964",
     "years_simple": "TC 1",
     "status": "[5] TC1"
+  },
+  {
+    "upid": "8698",
+    "name": "Ramon Marquez",
+    "team": "SF",
+    "position": "SP",
+    "age": 20,
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "years_simple": "P",
+    "yahoo_id": "66433",
+    "mlb_id": "827408",
+    "birth_date": null,
+    "debut_date": null,
+    "bats": null,
+    "throws": null,
+    "fypd": false,
+    "level": "A"
+  },
+  {
+    "upid": "8698",
+    "name": "Boston Smith",
+    "team": "SEA",
+    "position": "C, OF",
+    "age": 23,
+    "manager": "",
+    "player_type": "Farm",
+    "contract_type": "",
+    "years_simple": "",
+    "yahoo_id": null,
+    "mlb_id": null,
+    "birth_date": "2002-11-28",
+    "debut_date": null,
+    "bats": "L",
+    "throws": "R",
+    "fypd": false,
+    "level": "AA"
   }
 ]
