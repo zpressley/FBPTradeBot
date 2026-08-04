@@ -26,9 +26,20 @@
       "prospect_id": "3262",
       "team": "DRO",
       "timestamp": "2026-08-03T22:24:13.724592+00:00"
+    },
+    {
+      "admin": "zpressley",
+      "amount": 10,
+      "bid_id": "bid-5a37c240c975",
+      "bid_type": "OB",
+      "date": "2026-08-04",
+      "prospect_id": "8699",
+      "source": "admin",
+      "team": "WIZ",
+      "timestamp": "2026-08-04T17:15:31.198878+00:00"
     }
   ],
-  "last_updated": "2026-08-03T22:24:13.724592+00:00",
+  "last_updated": "2026-08-04T17:15:31.198878+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
