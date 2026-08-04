@@ -15,6 +15,8 @@ router = APIRouter(prefix="/api/settings", tags=["settings"])
 
 API_KEY = os.getenv("BOT_API_KEY", "")
 TEAM_COLORS_PATH = "data/team_colors.json"
+SITE_THEME_PATH = "data/site_theme.json"
+VALID_THEMES = {"red-gold", "diamond-dusk", "turf-green", "ballpark-cream", "steel-cyan"}
 
 _commit_fn = None
 
@@ -94,6 +96,10 @@ class TeamColorsPayload(BaseModel):
     accent3: Optional[str] = None
 
 
+class SiteThemePayload(BaseModel):
+    theme: str
+
+
 @router.post("/team-colors")
 async def set_team_colors(
     payload: TeamColorsPayload,
@@ -150,3 +156,57 @@ async def set_team_colors(
         )
 
     return {"success": True, "team": manager_team, "colors": colors}
+
+
+@router.post("/site-theme")
+async def set_site_theme(
+    payload: SiteThemePayload,
+    _: bool = Depends(verify_key),
+    manager_team: str = Depends(require_manager_team),
+):
+    theme = str(payload.theme or "").strip()
+    if theme not in VALID_THEMES:
+        raise HTTPException(status_code=400, detail=f"Invalid theme (expected one of {sorted(VALID_THEMES)})")
+
+    # Load original data for rollback
+    original_data = _load_json(SITE_THEME_PATH, {}) or {}
+    if not isinstance(original_data, dict):
+        original_data = {}
+
+    # Make a copy and update it
+    data = dict(original_data)
+    data[manager_team] = theme
+
+    # Save changes
+    _save_json(SITE_THEME_PATH, data)
+    print(f"💾 Saved site theme for {manager_team}: {theme}")
+
+    # CRITICAL: Commit to git (not optional!)
+    try:
+        if _commit_fn is None:
+            # Rollback and fail
+            _save_json(SITE_THEME_PATH, original_data)
+            print("❌ Git commit system not initialized, rolled back")
+            raise HTTPException(
+                status_code=500,
+                detail="Git commit system not initialized. Theme NOT saved. Please contact admin."
+            )
+
+        _commit_fn([SITE_THEME_PATH], f"Site theme: {manager_team} -> {theme}")
+        print(f"✅ Site theme committed to git for {manager_team}")
+
+    except HTTPException:
+        raise  # Re-raise formatted errors
+    except Exception as exc:
+        # Rollback on failure
+        print(f"❌ Git commit failed: {exc}")
+        print("🔄 Rolling back site theme...")
+        _save_json(SITE_THEME_PATH, original_data)
+        print("✅ Rollback complete")
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to save site theme: {exc}. Changes NOT saved. Please try again."
+        )
+
+    return {"success": True, "team": manager_team, "theme": theme}
