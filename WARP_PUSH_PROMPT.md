@@ -1,6 +1,6 @@
 # Push Prompt — fbp-trade-bot & fbp-hub
 
-**Last updated: 2026-08-03 21:45 UTC.** Rewritten after every new batch of
+**Last updated: 2026-08-04 16:05 UTC.** Rewritten after every new batch of
 local commits -- the "ahead of origin" counts/hashes below are accurate as
 of this timestamp. If it's more than a day or two old, don't trust the
 hashes -- re-run `git log --oneline origin/main -3` yourself first. Local
@@ -18,15 +18,31 @@ token.json.
 
 ## fbp-trade-bot
 
-Local main is **2 commits ahead** of origin/main (`ae714f8`): `6e449c5`,
-`5acf83b` -- plain fast-forward, no merge needed, no conflicts possible.
+**PLEASE PUSH THIS ONE ASAP -- more urgent than usual.** The root-cause
+UPID fix below (`06ba806`) has already caused a *second* live collision
+(Boston Smith / Ramon Marquez, fixed in `fb3eb76`) simply because it
+hadn't been deployed yet when Boston Smith was added through the still-
+unpatched production admin tool. Every player add between now and actual
+deploy is still exposed to the same bug a third time.
+
+Local main is **9 commits ahead** of the last-known origin/main tip
+(`ae714f8`): `d2fa90c`, `a32abae`, `e529128`, `3a1d8bd`, `c5aa42b`,
+`06ba806`, `c34bc1f`, `425942c`, `fb3eb76`. The first 5 of those
+(`d2fa90c` through `c5aa42b`) are normal app activity (a player add, 3
+contract purchases, an auction bid) that most likely already reached
+origin some other way (Railway pushing its own commits directly) --
+they showed up in this local history via a rebase/reconciliation, not
+because this sandbox made them. Don't be alarmed if `git log --oneline
+origin/main -3` shows origin already sitting on one of those, or even
+ahead of them -- as long as this local HEAD (`fb3eb76`) is a *descendant*
+of wherever origin/main actually is, `git push` will still fast-forward
+cleanly. Only stop and flag it if `git push` is rejected outright.
 
 Steps:
 1. `cd` into fbp-trade-bot, `git fetch origin`.
-2. `git log --oneline origin/main -3` -- confirm it's still at `ae714f8`
-   (if it's moved forward since this was written, stop and flag it rather
-   than merging/rebasing yourself).
-3. If unchanged: `git push origin main`.
+2. `git log --oneline origin/main -5` -- see where origin actually is
+   (don't assume it's still at `ae714f8`, see above).
+3. `git push origin main`.
 4. Verify: `git log --oneline origin/main -1` should match
    `git log --oneline HEAD -1` run right before the push.
 
@@ -73,6 +89,25 @@ the live bot already posted describing this bid as being on Luis Garcia
 Jr. -- there's no stored log of bot messages to correct/retract from
 here; if that needs cleaning up, it's a manual Discord action only
 Zach/Warp can take.
+
+**Fix a second, independent UPID collision: Boston Smith (`fb3eb76`).**
+Boston Smith was added through the admin tool at 2026-08-03 16:28 ET --
+genuinely fine at the time -- but the fix above reassigned Ramon Marquez
+onto Boston Smith's UPID (8698) an hour later without knowing Boston
+Smith had just taken it (see the urgent note at the top of this
+section -- this only happened because the root-cause code fix wasn't
+deployed yet). Same symptom as before: the website auction board and the
+Discord daily-summary bot resolved the collision in opposite directions,
+one showing each name for the same WAR bid.
+`scripts/fix_upid_8698_collision_2026_08_04.py` moved Boston Smith to
+UPID 8699 (checked free against combined_players.json directly this
+time, not just upid_database.json) and corrected `upid_database.json`'s
+name_index for both names. The open WAR bid's `prospect_id` (8698)
+didn't need to change -- it now correctly and uniquely means Ramon
+Marquez again. Ran a full duplicate-UPID sweep across all 6814
+combined_players.json rows afterward: zero collisions remain anywhere,
+including a direct check that Patrick Forbes (7970) and Tanner McDougal
+(3262) -- the other two players with open bids -- were already unique.
 
 **Everything else** (PTDA WizBucks allotment, Discord headshot
 thumbnails, draft_manager.py fix, division field, IP min reminder task,
