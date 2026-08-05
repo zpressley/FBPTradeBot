@@ -37,11 +37,20 @@
       "source": "admin",
       "team": "WIZ",
       "timestamp": "2026-08-04T17:15:31.198878+00:00"
+    },
+    {
+      "amount": 15,
+      "bid_id": "bid-8c77f80fb1b0",
+      "bid_type": "CB",
+      "date": "2026-08-05",
+      "prospect_id": "8699",
+      "team": "JEP",
+      "timestamp": "2026-08-05T18:03:51.856635+00:00"
     }
   ],
-  "last_updated": "2026-08-04T17:15:31.198878+00:00",
+  "last_updated": "2026-08-05T18:03:51.856635+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "cb_window",
   "priority_order": [
     "DRO",
     "RV",
