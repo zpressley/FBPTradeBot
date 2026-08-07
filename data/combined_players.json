@@ -13270,7 +13270,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 23,
     "bats": "R",
     "bbref_id": "lowderh01",
@@ -13282,7 +13282,7 @@
     "fangraphs_name": "Rhett Lowder",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 695076,
     "mlb_primary_position": "P",
     "name": "Rhett Lowder",
@@ -13295,7 +13295,8 @@
     "upid": "6577",
     "weight": 200,
     "yahoo_id": "62977",
-    "years_simple": "TC R"
+    "years_simple": "TC R",
+    "level": "MLB"
   },
   {
     "FBP_Team": "TBB",
