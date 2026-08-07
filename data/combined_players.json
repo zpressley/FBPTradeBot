@@ -3562,7 +3562,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "L",
     "bbref_id": "gorema01",
@@ -3572,7 +3572,7 @@
     "fangraphs_name": "MacKenzie Gore",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 669022,
     "mlb_primary_position": "P",
     "name": "MacKenzie Gore",
@@ -3585,7 +3585,8 @@
     "upid": "4040",
     "weight": 193,
     "yahoo_id": "10940",
-    "years_simple": "TC 2"
+    "years_simple": "TC 2",
+    "level": "MLB"
   },
   {
     "FBP_Team": "DRO",
