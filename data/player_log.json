@@ -86248,5 +86248,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "Wrong Owner Prospect Alert"
+  },
+  {
+    "id": "2026-2026-08-06T20:07:32.936951-04:00-UPID_2960-Admin-Admin Portal",
+    "season": 2026,
+    "source": "Admin Portal",
+    "admin": "_dunnce",
+    "timestamp": "2026-08-06T20:07:32.936951-04:00",
+    "upid": "2960",
+    "player_name": "Matthew Boyd",
+    "team": "CHC",
+    "pos": "SP",
+    "age": 35,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 202,
+    "eta": "",
+    "player_type": "MLB",
+    "owner": "Weekend Warriors",
+    "contract": "Keeper Contract",
+    "status": "[4] TC2",
+    "years": "TC 2",
+    "update_type": "Admin",
+    "event": ""
   }
 ]

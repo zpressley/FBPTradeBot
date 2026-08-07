@@ -1969,7 +1969,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1979,7 +1979,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -1992,7 +1992,8 @@
     "upid": "2960",
     "weight": 223,
     "yahoo_id": "10011",
-    "years_simple": "TC 2"
+    "years_simple": "TC 2",
+    "level": "MLB"
   },
   {
     "FBP_Team": "B2J",
