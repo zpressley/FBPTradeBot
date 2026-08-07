@@ -8316,7 +8316,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 34,
     "bats": "L",
     "bbref_id": "rayro02",
@@ -8326,7 +8326,7 @@
     "fangraphs_name": "Robbie Ray",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 592662,
     "mlb_primary_position": "P",
     "name": "Robbie Ray",
@@ -8339,7 +8339,8 @@
     "upid": "1973",
     "weight": 208,
     "yahoo_id": "9691",
-    "years_simple": "TC 2"
+    "years_simple": "TC 2",
+    "level": "MLB"
   },
   {
     "FBP_Team": "TBB",
