@@ -12,6 +12,12 @@ A Python Discord bot for an FBP fantasy league with:
 ## Rules
 ### Data Identity
 For fbp-trade-bot and fbp-hub repos make sure to always run player data through UPID first to ensure that there is a unique ID for players that connects it with all other players in the system.
+### External API Rate Limits (Yahoo especially)
+Any code that calls Yahoo's Fantasy Sports API (or any third-party API) must account for rate limits/throttling up front, not as an afterthought.
+- Yahoo blocks/throttles at the **app ID** level, not per-token or per-IP (confirmed via community reports of the same behavior: https://github.com/whatadewitt/yahoo-fantasy-sports-api/issues/81). A fresh OAuth token or a different network will NOT get around a block — if Yahoo is rejecting requests with "This application is not authorized to perform this action" (403) regardless of token freshness or origin, assume it's an app-level throttle/block, not a credential problem.
+- Any scheduled/looping task that calls Yahoo (or any external API) MUST implement failure backoff. Never retry on a fixed short interval indefinitely — repeated failures should widen the retry interval (e.g. 5 min -> 30 min -> 1 hr -> capped at several hours), not keep hammering at the same cadence forever.
+- Incident precedent (2026-08-07/08): `health.py`'s `standings_refresh_tick` retried every 5 min, 13h/day, with zero backoff, for 11 straight days after Yahoo started rejecting the app -- roughly 1,700+ failed calls. That pattern matches exactly what Yahoo's API policy says triggers throttling, and likely prolonged the outage rather than just failing harmlessly. See `_standings_backoff_interval_seconds` in `health.py` for the fix and don't remove/bypass it when touching that code.
+- When diagnosing a Yahoo 403/401 that doesn't resolve with a token refresh, check call volume/frequency before assuming it's purely a credentials or app-registration issue.
 ### Coding Guidelines (Karpathy Behavioral Rules)
 These guidelines apply to all code changes in this repo.
 #### 1. Think Before Coding

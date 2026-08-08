@@ -2523,6 +2523,55 @@ _standings_last_refresh: str | None = None
 _standings_last_commit_hour: str | None = None
 _STANDINGS_COMMIT_STATE_FILE = "data/standings_commit_state.json"
 
+# Failure backoff: added 2026-08-08 after an 11-day Yahoo API outage where
+# this tick had NO backoff and retried every 5 min, 13h/day (noon-1AM ET) --
+# ~150 failed calls/day, 1700+ over the outage -- against a Yahoo API that
+# explicitly throttles apps (by app ID, not per-token/per-IP) for excessive
+# short-burst usage. That retry-forever behavior is exactly the pattern
+# Yahoo's own policy flags, and it may have been actively prolonging the
+# block rather than harmlessly failing. Persisted to disk (not just an
+# in-memory counter) because Railway redeploys on every git push, which
+# would otherwise reset the failure count constantly.
+_STANDINGS_BACKOFF_STATE_FILE = "data/standings_refresh_backoff_state.json"
+_standings_backoff_state: dict | None = None
+
+
+def _load_standings_backoff_state() -> dict:
+    global _standings_backoff_state
+    if _standings_backoff_state is None:
+        try:
+            with open(_STANDINGS_BACKOFF_STATE_FILE, "r", encoding="utf-8") as f:
+                _standings_backoff_state = json.load(f)
+        except Exception:
+            _standings_backoff_state = {"consecutive_failures": 0, "last_attempt_at": None}
+    return _standings_backoff_state
+
+
+def _save_standings_backoff_state(state: dict) -> None:
+    global _standings_backoff_state
+    _standings_backoff_state = state
+    try:
+        os.makedirs("data", exist_ok=True)
+        with open(_STANDINGS_BACKOFF_STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2)
+        # Deliberately not committed to git -- this churns every few minutes
+        # while failing and nobody needs that in history.
+    except Exception as exc:
+        print(f"⚠️ Failed to persist standings refresh backoff state: {exc}")
+
+
+def _standings_backoff_interval_seconds(consecutive_failures: int) -> int:
+    """Minimum seconds between Yahoo fetch attempts once failures stack up.
+    A handful of transient blips still retry at the normal 5-min cadence;
+    sustained failure backs off hard instead of hammering the API."""
+    if consecutive_failures < 3:
+        return 0
+    if consecutive_failures < 6:
+        return 30 * 60       # 30 min
+    if consecutive_failures < 12:
+        return 60 * 60       # 1 hour
+    return 4 * 60 * 60       # 4 hours, capped
+
 
 @tasks.loop(minutes=5)
 async def standings_refresh_tick():
@@ -2531,6 +2580,10 @@ async def standings_refresh_tick():
     Active window: noon – 1:00 AM ET (covers all MLB game times).
     Uses a disk-persisted timestamp to enforce the 15-min interval even
     across bot restarts (Railway redeploys after every git push).
+
+    Backs off on sustained failure (see _standings_backoff_interval_seconds)
+    instead of retrying every 5 min forever -- see the block comment above
+    _STANDINGS_BACKOFF_STATE_FILE for why that matters.
     """
     global _standings_last_refresh
     now = datetime.now(tz=ET)
@@ -2549,7 +2602,7 @@ async def standings_refresh_tick():
         except Exception:
             _standings_last_refresh = ""
 
-    # Enforce 15-minute minimum gap
+    # Enforce 15-minute minimum gap (based on last *successful* refresh)
     if _standings_last_refresh:
         try:
             last = datetime.fromisoformat(_standings_last_refresh.replace("Z", "+00:00"))
@@ -2558,6 +2611,22 @@ async def standings_refresh_tick():
                 return
         except Exception:
             pass
+
+    # Failure backoff gate (based on last *attempt*, success or failure)
+    backoff_state = _load_standings_backoff_state()
+    consecutive_failures = backoff_state.get("consecutive_failures", 0)
+    last_attempt_at = backoff_state.get("last_attempt_at")
+    required_gap = _standings_backoff_interval_seconds(consecutive_failures)
+    if required_gap and last_attempt_at:
+        try:
+            last_attempt = datetime.fromisoformat(last_attempt_at)
+            since_last_attempt = (datetime.now(tz=timezone.utc) - last_attempt).total_seconds()
+            if since_last_attempt < required_gap:
+                return
+        except Exception:
+            pass
+
+    backoff_state["last_attempt_at"] = datetime.now(tz=timezone.utc).isoformat()
 
     try:
         from data_pipeline.save_standings import fetch_and_save_standings
@@ -2571,10 +2640,18 @@ async def standings_refresh_tick():
             json.dump(data, f, indent=2)
 
         _standings_last_refresh = data["refreshed_at"]
+        backoff_state["consecutive_failures"] = 0
+        _save_standings_backoff_state(backoff_state)
 
         print(f"✅ Standings refreshed at {now.strftime('%I:%M %p ET')} (commit deferred to hourly tick)")
     except Exception as exc:
-        print(f"⚠️ Standings refresh failed: {exc}")
+        backoff_state["consecutive_failures"] = consecutive_failures + 1
+        _save_standings_backoff_state(backoff_state)
+        next_gap = _standings_backoff_interval_seconds(backoff_state["consecutive_failures"])
+        print(
+            f"⚠️ Standings refresh failed ({backoff_state['consecutive_failures']} consecutive): {exc} "
+            f"-- next attempt in {next_gap // 60 if next_gap else 5} min"
+        )
 
 
 @tasks.loop(minutes=5)
@@ -2682,9 +2759,12 @@ async def _alert_standings_stale(age_desc: str) -> None:
         if channel is None:
             channel = await bot.fetch_channel(STANDINGS_STALE_ALERT_CHANNEL_ID)
         await channel.send(
-            f"⚠️ **Standings data is stale ({age_desc})** — `data/standings.json` needs a "
-            f"refresh. Check the Yahoo pipeline (daily GitHub Action + live "
-            f"standings_refresh_tick)."
+            f"⚠️ **Standings data is stale ({age_desc})** — `data/standings.json` hasn't "
+            f"updated. This is almost always a Yahoo API problem (app-level block/rate "
+            f"limit, or an access/auth issue), **not** something a manual refresh fixes on "
+            f"its own -- retrying repeatedly can make an app-level throttle worse. Check "
+            f"Railway logs for `Standings refresh failed` to see the actual error before "
+            f"re-running anything, and see developer.yahoo.com/apps for app status."
         )
         state["last_alert_at"] = datetime.now(tz=timezone.utc).isoformat()
         _save_standings_stale_alert_state(state)
