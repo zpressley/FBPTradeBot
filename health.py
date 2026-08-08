@@ -762,6 +762,11 @@ async def on_ready():
         ip_min_reminder_tick.start()
         print("   ✅ IP min reminder task started (Fri/Sat 9 AM ET)")
 
+    # Start standings staleness watch (pings admin channel any time of day)
+    if not standings_stale_watch_tick.is_running():
+        standings_stale_watch_tick.start()
+        print("   ✅ Standings staleness watch started (every 30 min)")
+
     await bot.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
@@ -2614,6 +2619,92 @@ async def standings_commit_tick():
     print(f"✅ Standings commit queued for {now.strftime('%I:00 %p ET')}")
 
 
+# ---- Standings staleness: shared threshold + admin-channel alert ----
+#
+# If data/standings.json hasn't been refreshed more recently than this, its
+# numbers can't be trusted (e.g. a dead Yahoo token freezes the file and every
+# team's IP reads as stale/zero). Added 2026-08-07/08 after an 11-day Yahoo
+# API outage (standings.json frozen since 2026-07-27, IP: 0.0 for every team)
+# went unnoticed until it caused a false "you're short on IP" DM to every
+# manager in the league. Shared by the IP min reminder guard below and the
+# standalone staleness watch (which pings the admin channel any time of day).
+STANDINGS_MAX_AGE_HOURS = 24
+STANDINGS_STALE_ALERT_CHANNEL_ID = 875594022033436683
+STANDINGS_STALE_ALERT_MIN_INTERVAL_HOURS = 6  # don't re-alert more often than this
+_STANDINGS_STALE_ALERT_STATE_FILE = "data/standings_stale_alert_state.json"
+
+_standings_stale_alert_state: dict | None = None
+
+
+def _load_standings_stale_alert_state() -> dict:
+    global _standings_stale_alert_state
+    if _standings_stale_alert_state is None:
+        try:
+            with open(_STANDINGS_STALE_ALERT_STATE_FILE, "r", encoding="utf-8") as f:
+                _standings_stale_alert_state = json.load(f)
+        except Exception:
+            _standings_stale_alert_state = {}
+    return _standings_stale_alert_state
+
+
+def _save_standings_stale_alert_state(state: dict) -> None:
+    global _standings_stale_alert_state
+    _standings_stale_alert_state = state
+    try:
+        os.makedirs("data", exist_ok=True)
+        with open(_STANDINGS_STALE_ALERT_STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2)
+        _commit_and_push([_STANDINGS_STALE_ALERT_STATE_FILE], "Standings stale-alert state update")
+    except Exception as exc:
+        print(f"⚠️ Failed to persist standings stale-alert state: {exc}")
+
+
+async def _alert_standings_stale(age_desc: str) -> None:
+    """Post a stale-standings warning to the admin channel.
+
+    Rate-limited to once per STANDINGS_STALE_ALERT_MIN_INTERVAL_HOURS so a
+    prolonged outage (like the Yahoo 403s) doesn't spam the channel every
+    time a caller notices the data is still stale.
+    """
+    state = _load_standings_stale_alert_state()
+    last_alert = state.get("last_alert_at")
+    if last_alert:
+        try:
+            last = datetime.fromisoformat(last_alert)
+            elapsed_hours = (datetime.now(tz=timezone.utc) - last).total_seconds() / 3600.0
+            if elapsed_hours < STANDINGS_STALE_ALERT_MIN_INTERVAL_HOURS:
+                return
+        except Exception:
+            pass
+
+    try:
+        channel = bot.get_channel(STANDINGS_STALE_ALERT_CHANNEL_ID)
+        if channel is None:
+            channel = await bot.fetch_channel(STANDINGS_STALE_ALERT_CHANNEL_ID)
+        await channel.send(
+            f"⚠️ **Standings data is stale ({age_desc})** — `data/standings.json` needs a "
+            f"refresh. Check the Yahoo pipeline (daily GitHub Action + live "
+            f"standings_refresh_tick)."
+        )
+        state["last_alert_at"] = datetime.now(tz=timezone.utc).isoformat()
+        _save_standings_stale_alert_state(state)
+        print(f"✅ Posted standings-stale alert to channel {STANDINGS_STALE_ALERT_CHANNEL_ID}")
+    except Exception as exc:
+        print(f"⚠️ Failed to post standings-stale alert to channel: {exc}")
+
+
+@tasks.loop(minutes=30)
+async def standings_stale_watch_tick():
+    """Check data/standings.json freshness every 30 min, all day (independent
+    of standings_refresh_tick's noon-1 AM fetch window), and ping the admin
+    channel via _alert_standings_stale() if it's gone stale. Added 2026-08-08."""
+    age_hours = _standings_staleness_hours()
+    if age_hours is not None and age_hours <= STANDINGS_MAX_AGE_HOURS:
+        return
+    age_desc = "unknown age (no refreshed_at)" if age_hours is None else f"{age_hours:.1f}h old"
+    await _alert_standings_stale(age_desc)
+
+
 # ---- IP Min Reminder (Friday / Saturday DM heads-up) ----
 
 IP_MIN_WEEKLY_THRESHOLD = 35
@@ -2655,6 +2746,23 @@ def _load_managers_for_ip_reminder() -> dict:
         return {}
 
 
+def _standings_staleness_hours() -> float | None:
+    """Hours since data/standings.json's `refreshed_at` timestamp, or None if
+    the file/timestamp is missing or unparseable (treated as stale by callers)."""
+    try:
+        with open("data/standings.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        refreshed_at = data.get("refreshed_at")
+        if not refreshed_at:
+            return None
+        last = datetime.fromisoformat(refreshed_at.replace("Z", "+00:00"))
+        now = datetime.now(tz=timezone.utc)
+        return (now - last.astimezone(timezone.utc)).total_seconds() / 3600.0
+    except Exception as exc:
+        print(f"⚠️ Failed to determine standings.json staleness for IP min reminder: {exc}")
+        return None
+
+
 def _current_week_ip(team_abbr: str) -> float | None:
     """This week's live innings-pitched-so-far for a team, from data/standings.json."""
     try:
@@ -2693,6 +2801,14 @@ async def ip_min_reminder_tick():
     NOTE on the Saturday rule: reading "threshold of 6+ IP on Saturday" as
     *innings still needed* (35 - IP-so-far), not innings thrown ON Saturday
     specifically. Flag it if that's not what was meant -- one-line change.
+
+    Staleness guard (added 2026-08-07, switched to channel alert 2026-08-08):
+    if data/standings.json's refreshed_at is missing or older than
+    STANDINGS_MAX_AGE_HOURS, this skips DMing managers entirely and instead
+    posts to the admin channel via _alert_standings_stale(). Added after a
+    dead Yahoo token froze standings.json for 11+ days (refreshed_at stuck on
+    2026-07-27, every team's IP category reading 0.0), which caused a false
+    "you're short on IP" DM to every manager in the league.
     """
     now = datetime.now(tz=ET)
     if not (now.hour == 9 and now.minute == 0):
@@ -2708,6 +2824,18 @@ async def ip_min_reminder_tick():
 
     managers = _load_managers_for_ip_reminder()
     if not managers:
+        return
+
+    staleness_hours = _standings_staleness_hours()
+    if staleness_hours is None or staleness_hours > STANDINGS_MAX_AGE_HOURS:
+        age_desc = "unknown age (no refreshed_at)" if staleness_hours is None else f"{staleness_hours:.1f}h old"
+        print(
+            f"⚠️ IP min reminder skipped: data/standings.json is stale ({age_desc}, "
+            f"max allowed {STANDINGS_MAX_AGE_HOURS}h) — not DMing managers."
+        )
+        await _alert_standings_stale(age_desc)
+        state[state_key] = date_key
+        _save_ip_min_reminder_state(state)
         return
 
     is_friday = now.weekday() == 4
