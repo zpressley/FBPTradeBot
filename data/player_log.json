@@ -86593,5 +86593,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "Wrong Owner Prospect Alert"
+  },
+  {
+    "id": "2026-2026-08-08T00:12:36.288124-04:00-UPID_2979-Roster-yahoo_roster_sync",
+    "season": 2026,
+    "source": "yahoo_roster_sync",
+    "admin": "roster_sync",
+    "timestamp": "2026-08-08T00:12:36.288124-04:00",
+    "upid": "2979",
+    "player_name": "Michael McGreevy",
+    "team": "STL",
+    "pos": "SP",
+    "age": 25,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": 477,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Btwn2Jackies",
+    "contract": "Keeper Contract",
+    "status": "[5] TC1",
+    "years": "TC 1",
+    "update_type": "Roster",
+    "event": "Wrong Owner Prospect Alert"
   }
 ]
