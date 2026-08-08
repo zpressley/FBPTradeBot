@@ -1,0 +1,60 @@
+name: Monthly Pipeline Top 100 Scrape
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    # Run at 6am UTC (~1-2am ET) on the 1st of each month
+    - cron: "0 6 1 * *"
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  scrape-top-100:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install Playwright
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install playwright
+        playwright install --with-deps chromium
+
+    - name: Run MLB Pipeline Top 100 scrape
+      # scrape_pipeline_top100.py exits non-zero if it finds too few
+      # players (site structure likely changed) instead of silently
+      # committing a bad snapshot -- let that fail the job.
+      run: python3 data_pipeline/scrape_pipeline_top100.py
+
+    - name: Commit and push snapshot if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        if [ -n "${GITHUB_TOKEN:-}" ]; then
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        fi
+
+        git add data/pipeline_snapshots/
+
+        if git diff --cached --quiet; then
+          echo "No new snapshot to commit."
+          exit 0
+        fi
+
+        git commit -m "📊 Monthly MLB Pipeline Top 100 snapshot - $(date +%F)"
+        git push origin HEAD:${GITHUB_REF_NAME}
