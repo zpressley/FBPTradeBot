@@ -1969,7 +1969,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1979,7 +1979,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -3562,7 +3562,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "gorema01",
@@ -3572,7 +3572,7 @@
     "fangraphs_name": "MacKenzie Gore",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 669022,
     "mlb_primary_position": "P",
     "name": "MacKenzie Gore",
@@ -8317,7 +8317,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 34,
     "bats": "L",
     "bbref_id": "rayro02",
@@ -8327,7 +8327,7 @@
     "fangraphs_name": "Robbie Ray",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 592662,
     "mlb_primary_position": "P",
     "name": "Robbie Ray",
@@ -13270,7 +13270,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 23,
     "bats": "R",
     "bbref_id": "lowderh01",
@@ -13282,7 +13282,7 @@
     "fangraphs_name": "Rhett Lowder",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 695076,
     "mlb_primary_position": "P",
     "name": "Rhett Lowder",
@@ -50416,7 +50416,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "camerno01",
@@ -50427,7 +50427,7 @@
     "fypd": false,
     "height": "6' 3\"",
     "level": "MLB",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 702070,
     "mlb_primary_position": "P",
     "name": "Noah Cameron",
