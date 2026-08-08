@@ -86639,5 +86639,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "Wrong Owner Prospect Alert"
+  },
+  {
+    "id": "2026-2026-08-08T10:06:34.017511-04:00-UPID_7199-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "CFL",
+    "timestamp": "2026-08-08T10:06:34.017511-04:00",
+    "upid": "7199",
+    "player_name": "Josue Brice\u00f1o",
+    "team": "DET",
+    "pos": "C,1B",
+    "age": 21,
+    "level": "AAA",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "CFL",
+    "contract": "Blue Chip Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 BC"
   }
 ]
