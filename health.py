@@ -762,10 +762,16 @@ async def on_ready():
         ip_min_reminder_tick.start()
         print("   ✅ IP min reminder task started (Fri/Sat 9 AM ET)")
 
-    # Start standings staleness watch (pings admin channel any time of day)
-    if not standings_stale_watch_tick.is_running():
-        standings_stale_watch_tick.start()
-        print("   ✅ Standings staleness watch started (every 30 min)")
+    # Standings staleness watch: DISABLED 2026-08-09 per Zach -- it re-alerted
+    # every 6h for a known, already-being-worked incident (Yahoo access
+    # application pending) with no way to snooze/ack, which is just noise
+    # once you know about it. Left in place (not deleted) in case it's worth
+    # reviving later with a "once per incident" or much longer interval
+    # instead of a fixed re-alert window. See _alert_standings_stale() and
+    # standings_stale_watch_tick() below.
+    # if not standings_stale_watch_tick.is_running():
+    #     standings_stale_watch_tick.start()
+    #     print("   ✅ Standings staleness watch started (every 30 min)")
 
     await bot.change_presence(
         activity=discord.Activity(
