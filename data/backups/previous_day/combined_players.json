@@ -1244,8 +1244,11 @@
     "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
+    "bbref_id": "ramirag01",
     "birth_date": "2001-09-10",
     "contract_type": "Keeper Contract",
+    "fangraphs_id": "26546",
+    "fangraphs_name": "Agustin Ramirez",
     "fypd": false,
     "height": "6' 1\"",
     "manager": "Andromedans",
@@ -1261,10 +1264,7 @@
     "upid": "5996",
     "weight": 210,
     "yahoo_id": "61818",
-    "years_simple": "TC 1",
-    "bbref_id": "ramirag01",
-    "fangraphs_id": "26546",
-    "fangraphs_name": "Agustin Ramirez"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "DRO",
@@ -1979,6 +1979,7 @@
     "fangraphs_name": "Matthew Boyd",
     "fypd": false,
     "height": "6' 3\"",
+    "level": "MLB",
     "manager": null,
     "mlb_id": 571510,
     "mlb_primary_position": "P",
@@ -1992,8 +1993,7 @@
     "upid": "2960",
     "weight": 223,
     "yahoo_id": "10011",
-    "years_simple": "TC 2",
-    "level": "MLB"
+    "years_simple": "TC 2"
   },
   {
     "FBP_Team": "B2J",
@@ -3572,6 +3572,7 @@
     "fangraphs_name": "MacKenzie Gore",
     "fypd": false,
     "height": "6' 2\"",
+    "level": "MLB",
     "manager": null,
     "mlb_id": 669022,
     "mlb_primary_position": "P",
@@ -3585,8 +3586,7 @@
     "upid": "4040",
     "weight": 193,
     "yahoo_id": "10940",
-    "years_simple": "TC 2",
-    "level": "MLB"
+    "years_simple": "TC 2"
   },
   {
     "FBP_Team": "DRO",
@@ -8327,6 +8327,7 @@
     "fangraphs_name": "Robbie Ray",
     "fypd": false,
     "height": "6' 2\"",
+    "level": "MLB",
     "manager": null,
     "mlb_id": 592662,
     "mlb_primary_position": "P",
@@ -8340,8 +8341,7 @@
     "upid": "1973",
     "weight": 208,
     "yahoo_id": "9691",
-    "years_simple": "TC 2",
-    "level": "MLB"
+    "years_simple": "TC 2"
   },
   {
     "FBP_Team": "TBB",
@@ -13282,6 +13282,7 @@
     "fangraphs_name": "Rhett Lowder",
     "fypd": false,
     "height": "6' 2\"",
+    "level": "MLB",
     "manager": null,
     "mlb_id": 695076,
     "mlb_primary_position": "P",
@@ -13295,8 +13296,7 @@
     "upid": "6577",
     "weight": 200,
     "yahoo_id": "62977",
-    "years_simple": "TC R",
-    "level": "MLB"
+    "years_simple": "TC R"
   },
   {
     "FBP_Team": "TBB",
@@ -30334,22 +30334,23 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 22,
     "bats": "R",
     "bbref_id": "mcdouta01",
     "birth_date": "2003-04-09",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fangraphs_id": "sa3017471",
     "fangraphs_name": "Tanner McDougal",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "",
+    "manager": "Andromedans",
     "mlb_id": 701780,
     "mlb_primary_position": "P",
     "name": "Tanner McDougal",
+    "owner": "DRO",
     "player_type": "Farm",
     "position": "SP",
     "status": "[7] P",
@@ -38009,10 +38010,13 @@
     "FBP_Team": "",
     "age": 26,
     "bats": "R",
+    "bbref_id": "rodrira02",
     "birth_date": "1999-09-05",
     "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
+    "fangraphs_id": "23974",
+    "fangraphs_name": "Randy Rodriguez",
     "fypd": false,
     "height": "6' 0\"",
     "manager": null,
@@ -38027,10 +38031,7 @@
     "upid": "3825",
     "weight": 195,
     "yahoo_id": "12305",
-    "years_simple": "TC 1",
-    "bbref_id": "rodrira02",
-    "fangraphs_id": "23974",
-    "fangraphs_name": "Randy Rodriguez"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "HAM",
@@ -46027,6 +46028,7 @@
     "debuted": false,
     "fypd": false,
     "height": "6' 0\"",
+    "level": "MLB",
     "manager": "Whiz Kids",
     "mlb_id": 700712,
     "mlb_primary_position": "P",
@@ -46039,8 +46041,7 @@
     "upid": "4443",
     "weight": 210,
     "yahoo_id": "60223",
-    "years_simple": "TC R",
-    "level": "MLB"
+    "years_simple": "TC R"
   },
   {
     "FBP_Team": "WAR",
@@ -82726,19 +82727,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 21,
     "bats": "R",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 62,
     "height_weight": "6' 3\" / 220 lbs",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": null,
     "mlb_primary_position": "SP",
     "name": "Patrick Forbes",
+    "owner": "CFL",
     "player_type": "Farm",
     "position": "SP",
     "status": "[7] P",
@@ -158485,6 +158487,7 @@
     "years_simple": "P"
   },
   {
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "birth_date": "2000-05-16",
@@ -158497,13 +158500,12 @@
     "name": "Luis Garc\u00eda Jr.",
     "player_type": "MLB",
     "position": "1B",
+    "status": "",
     "team": "WSH",
     "throws": "R",
     "upid": "8696",
     "yahoo_id": null,
-    "years_simple": "TC 1",
-    "FBP_Team": "",
-    "status": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "WIZ",
@@ -158519,49 +158521,53 @@
     "name": "Luis Garcia Jr.",
     "player_type": "MLB",
     "position": "1B",
+    "status": "[5] TC1",
     "team": "WSH",
     "throws": "R",
     "upid": "8697",
     "yahoo_id": "10964",
-    "years_simple": "TC 1",
-    "status": "[5] TC1"
+    "years_simple": "TC 1"
   },
   {
-    "upid": "8698",
-    "name": "Ramon Marquez",
-    "team": "SF",
-    "position": "SP",
+    "FBP_Team": "WAR",
     "age": 20,
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "years_simple": "P",
-    "yahoo_id": "66433",
-    "mlb_id": "827408",
-    "birth_date": null,
-    "debut_date": null,
     "bats": null,
-    "throws": null,
+    "birth_date": null,
+    "contract_type": "Purchased Contract",
+    "debut_date": null,
     "fypd": false,
-    "level": "A"
+    "level": "A",
+    "manager": "Weekend Warriors",
+    "mlb_id": "827408",
+    "name": "Ramon Marquez",
+    "owner": "WAR",
+    "player_type": "Farm",
+    "position": "SP",
+    "team": "SF",
+    "throws": null,
+    "upid": "8698",
+    "yahoo_id": "66433",
+    "years_simple": "P"
   },
   {
-    "upid": "8699",
-    "name": "Boston Smith",
-    "team": "SEA",
-    "position": "C, OF",
+    "FBP_Team": "WIZ",
     "age": 23,
-    "manager": "",
-    "player_type": "Farm",
-    "contract_type": "",
-    "years_simple": "",
-    "yahoo_id": null,
-    "mlb_id": null,
-    "birth_date": "2002-11-28",
-    "debut_date": null,
     "bats": "L",
-    "throws": "R",
+    "birth_date": "2002-11-28",
+    "contract_type": "Purchased Contract",
+    "debut_date": null,
     "fypd": false,
-    "level": "AA"
+    "level": "AA",
+    "manager": "Whiz Kids",
+    "mlb_id": null,
+    "name": "Boston Smith",
+    "owner": "WIZ",
+    "player_type": "Farm",
+    "position": "C, OF",
+    "team": "SEA",
+    "throws": "R",
+    "upid": "8699",
+    "yahoo_id": null,
+    "years_simple": ""
   }
 ]
