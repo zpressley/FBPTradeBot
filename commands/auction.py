@@ -9,7 +9,8 @@ from auction_manager import AuctionManager, AuctionPhase, ET
 from commands.utils import DISCORD_ID_TO_TEAM, MANAGER_DISCORD_IDS
 from data_lock import DATA_LOCK
 
-AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel
+AUCTION_CHANNEL_ID = 1351376690319851520  # dedicated auction channel, manager-facing
+ADMIN_LOG_CHANNEL_ID = 1079466810375688262  # admin-task-log -- ops visibility only, not managers
 AUCTION_BOARD_URL = "https://zpressley.github.io/fbp-hub/auction.html"
 PLAYER_PROFILE_BASE_URL = "https://zpressley.github.io/fbp-hub/player-profile.html"
 _AUCTION_RESOLVED_STATE_FILE = "data/auction_resolved_state.json"
@@ -21,6 +22,14 @@ _PERSIST_SUCCESS_MEME_CAPTION = "THE AUCTION BOT WILL NOT PERSIST."
 _PERSIST_WARNING_MEME_URL = os.getenv("AUCTION_PERSIST_WARNING_MEME_URL", "").strip()
 _PERSIST_SUCCESS_MEME_URL = os.getenv("AUCTION_PERSIST_SUCCESS_MEME_URL", "").strip()
 _RESOLVE_RETRY_DELAYS_SECONDS = (60, 120, 300, 600, 900)
+# A rejected git push (another writer landed a commit on `main` first -- this
+# repo has many independent writers: daily pipeline, trades, admin bids,
+# contract purchases, etc.) is routine and self-heals within a retry or two.
+# Added 2026-08-09: don't alert on the first failed attempt -- give the
+# retry/backoff schedule a chance to quietly succeed before saying anything
+# to anyone. If it's still failing after this many attempts, something is
+# actually wrong and worth a look.
+_PERSIST_ALERT_AFTER_ATTEMPTS = 2
 
 # Module-level commit function, set by health.py on_ready
 _auction_commit_fn = None
@@ -448,10 +457,11 @@ class Auction(commands.Cog):
                 status = result.get("status", "")
                 winners = result.get("winners", {}) or {}
                 channel = await self._get_auction_channel()
+                admin_channel = await self._get_admin_log_channel()
                 warning_seen_in_history = False
-                if channel:
+                if admin_channel:
                     warning_seen_in_history = await self._has_weekly_notice(
-                        channel,
+                        admin_channel,
                         header=_PERSIST_WARNING_HEADER,
                         week_key=week_key,
                     )
@@ -514,13 +524,15 @@ class Auction(commands.Cog):
                         else:
                             self._clear_resolved_guard()
                             print("⚠️ Failed to persist auction resolve guard commit")
+                        # Managers only ever see the plain success notice --
+                        # they were never shown a persistence warning (that's
+                        # admin-only now, see the failure branch below), so a
+                        # "Recovered" framing here would be confusing: recovered
+                        # from what, as far as they know? Nothing was wrong.
                         if channel and status == "resolved":
-                            success_header = (
-                                _PERSIST_RECOVERY_HEADER if had_persistence_warning else _RESOLVED_SUCCESS_HEADER
-                            )
                             already_announced = await self._has_weekly_notice(
                                 channel,
-                                header=success_header,
+                                header=_RESOLVED_SUCCESS_HEADER,
                                 week_key=week_key,
                             )
                             if not already_announced:
@@ -528,22 +540,23 @@ class Auction(commands.Cog):
                                     self._build_resolved_success_notice(
                                         week_key=week_key,
                                         winners=winners,
-                                        recovered=had_persistence_warning,
+                                        recovered=False,
                                     )
                                 )
-                            if had_persistence_warning:
-                                self._resolve_recovered_week = week_key
-                        elif channel and had_persistence_warning:
+
+                        # Close the loop on an earlier admin-channel warning,
+                        # in admin-task-log only.
+                        if had_persistence_warning and admin_channel:
                             already_recovered = (
                                 self._resolve_recovered_week == week_key
                                 or await self._has_weekly_notice(
-                                    channel,
+                                    admin_channel,
                                     header=_PERSIST_RECOVERY_HEADER,
                                     week_key=week_key,
                                 )
                             )
                             if not already_recovered:
-                                await channel.send(
+                                await admin_channel.send(
                                     self._build_resolved_success_notice(
                                         week_key=week_key,
                                         winners=winners,
@@ -564,23 +577,36 @@ class Auction(commands.Cog):
                         retry_seconds = self._resolve_retry_delay_seconds()
                         self._resolve_retry_attempts += 1
                         self._resolve_next_retry_at = now + timedelta(seconds=retry_seconds)
-                        if channel:
+                        # Rejected pushes from another writer landing a commit
+                        # first are routine in this repo and the retry/backoff
+                        # above almost always clears it within a couple minutes
+                        # -- don't say anything to managers at all (auction-portal
+                        # never gets this notice anymore), and don't even tell
+                        # admins until it's failed enough in a row to actually
+                        # be worth a look.
+                        if self._resolve_retry_attempts >= _PERSIST_ALERT_AFTER_ATTEMPTS and admin_channel:
                             already_warned = (
                                 self._resolve_persist_warn_week == week_key
                                 or await self._has_weekly_notice(
-                                    channel,
+                                    admin_channel,
                                     header=_PERSIST_WARNING_HEADER,
                                     week_key=week_key,
                                 )
                             )
                             if not already_warned:
-                                await channel.send(
+                                await admin_channel.send(
                                     self._build_persistence_failure_notice(
                                         week_key,
                                         retry_seconds,
                                     )
                                 )
-                        self._resolve_persist_warn_week = week_key
+                            # Only flip this once a warning has actually been
+                            # sent -- otherwise had_persistence_warning would
+                            # go true on the very first (silent, under-threshold)
+                            # retry, and a routine one-retry success would
+                            # wrongly trigger a "Recovered" message to admins
+                            # for a warning they were never shown.
+                            self._resolve_persist_warn_week = week_key
                 elif status == "no_bids":
                     guard_ok = False
                     try:
@@ -636,6 +662,21 @@ class Auction(commands.Cog):
         if isinstance(channel, discord.TextChannel):
             return channel
         print(f"⚠️ Auction channel {AUCTION_CHANNEL_ID} is not a text channel")
+        return None
+
+    async def _get_admin_log_channel(self) -> discord.TextChannel | None:
+        """admin-task-log -- for persistence warnings/recoveries. Managers
+        never need to see git plumbing retries; ops does."""
+        channel = self.bot.get_channel(ADMIN_LOG_CHANNEL_ID)
+        if channel is None:
+            try:
+                channel = await self.bot.fetch_channel(ADMIN_LOG_CHANNEL_ID)
+            except Exception as exc:
+                print(f"⚠️ Failed to resolve admin log channel {ADMIN_LOG_CHANNEL_ID}: {exc}")
+                return None
+        if isinstance(channel, discord.TextChannel):
+            return channel
+        print(f"⚠️ Admin log channel {ADMIN_LOG_CHANNEL_ID} is not a text channel")
         return None
 
     async def _send_ob_open_alert(self) -> None:
