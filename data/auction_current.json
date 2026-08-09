@@ -1,64 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-7f3008e91865",
-      "bid_type": "OB",
-      "date": "2026-08-03",
-      "prospect_id": "8698",
-      "team": "WAR",
-      "timestamp": "2026-08-03T19:11:28.977559+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-b5689d685ca4",
-      "bid_type": "OB",
-      "date": "2026-08-03",
-      "prospect_id": "7970",
-      "team": "CFL",
-      "timestamp": "2026-08-03T20:58:32.298594+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-a340ee91c909",
-      "bid_type": "OB",
-      "date": "2026-08-03",
-      "prospect_id": "3262",
-      "team": "DRO",
-      "timestamp": "2026-08-03T22:24:13.724592+00:00"
-    },
-    {
-      "admin": "zpressley",
-      "amount": 10,
-      "bid_id": "bid-5a37c240c975",
-      "bid_type": "OB",
-      "date": "2026-08-04",
-      "prospect_id": "8699",
-      "source": "admin",
-      "team": "WIZ",
-      "timestamp": "2026-08-04T17:15:31.198878+00:00"
-    },
-    {
-      "amount": 15,
-      "bid_id": "bid-8c77f80fb1b0",
-      "bid_type": "CB",
-      "date": "2026-08-05",
-      "prospect_id": "8699",
-      "team": "JEP",
-      "timestamp": "2026-08-05T18:03:51.856635+00:00"
-    }
-  ],
-  "last_updated": "2026-08-08T11:37:57.664403+00:00",
-  "matches": [
-    {
-      "decided_at": "2026-08-08T11:37:57.664403+00:00",
-      "decision": "match",
-      "prospect_id": "8699",
-      "source": "web",
-      "team": "WIZ"
-    }
-  ],
-  "phase": "ob_final",
+  "bids": [],
+  "last_updated": "2026-08-09T14:00:30.665357+00:00",
+  "matches": [],
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -73,6 +17,29 @@
     "SAD",
     "LFB"
   ],
+  "resolved_at": "2026-08-09T14:00:30.563066+00:00",
+  "resolved_winners": {
+    "3262": {
+      "amount": 10,
+      "name": "Tanner McDougal",
+      "team": "DRO"
+    },
+    "7970": {
+      "amount": 10,
+      "name": "Patrick Forbes",
+      "team": "CFL"
+    },
+    "8698": {
+      "amount": 10,
+      "name": "Ramon Marquez",
+      "team": "WAR"
+    },
+    "8699": {
+      "amount": 15,
+      "name": "Boston Smith",
+      "team": "WIZ"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

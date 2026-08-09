@@ -4918,5 +4918,85 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WAR_auction_winner_1786284030",
+    "timestamp": "2026-08-09T14:00:30.564877Z",
+    "team": "WAR",
+    "amount": -10,
+    "balance_before": 50,
+    "balance_after": 40,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-03 to 2026-08-09: Ramon Marquez",
+    "related_player": {
+      "upid": "8698",
+      "name": "Ramon Marquez"
+    },
+    "metadata": {
+      "week_start": "2026-08-03",
+      "prospect_id": "8698",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_CFL_auction_winner_1786284030",
+    "timestamp": "2026-08-09T14:00:30.569633Z",
+    "team": "CFL",
+    "amount": -10,
+    "balance_before": 65,
+    "balance_after": 55,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-03 to 2026-08-09: Patrick Forbes",
+    "related_player": {
+      "upid": "7970",
+      "name": "Patrick Forbes"
+    },
+    "metadata": {
+      "week_start": "2026-08-03",
+      "prospect_id": "7970",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1786284030",
+    "timestamp": "2026-08-09T14:00:30.572579Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 60,
+    "balance_after": 50,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-03 to 2026-08-09: Tanner McDougal",
+    "related_player": {
+      "upid": "3262",
+      "name": "Tanner McDougal"
+    },
+    "metadata": {
+      "week_start": "2026-08-03",
+      "prospect_id": "3262",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1786284030",
+    "timestamp": "2026-08-09T14:00:30.576389Z",
+    "team": "WIZ",
+    "amount": -15,
+    "balance_before": 90,
+    "balance_after": 75,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-03 to 2026-08-09: Boston Smith",
+    "related_player": {
+      "upid": "8699",
+      "name": "Boston Smith"
+    },
+    "metadata": {
+      "week_start": "2026-08-03",
+      "prospect_id": "8699",
+      "amount": 15,
+      "source": "auction_resolve"
+    }
   }
 ]
