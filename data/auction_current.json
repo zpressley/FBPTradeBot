@@ -8,9 +8,18 @@
       "prospect_id": "8088",
       "team": "HAM",
       "timestamp": "2026-08-10T19:00:57.582802+00:00"
+    },
+    {
+      "amount": 10,
+      "bid_id": "bid-0dd4953dfafc",
+      "bid_type": "OB",
+      "date": "2026-08-10",
+      "prospect_id": "3904",
+      "team": "DRO",
+      "timestamp": "2026-08-10T19:58:51.289841+00:00"
     }
   ],
-  "last_updated": "2026-08-10T19:00:57.582802+00:00",
+  "last_updated": "2026-08-10T19:58:51.289841+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
