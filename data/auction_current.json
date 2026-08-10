@@ -1,8 +1,8 @@
 {
   "bids": [],
-  "last_updated": "2026-08-09T14:00:30.665357+00:00",
+  "last_updated": "2026-08-10T16:02:47.377228+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "off_week",
   "priority_order": [
     "DRO",
     "RV",
@@ -17,34 +17,11 @@
     "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-08-09T14:00:30.563066+00:00",
-  "resolved_winners": {
-    "3262": {
-      "amount": 10,
-      "name": "Tanner McDougal",
-      "team": "DRO"
-    },
-    "7970": {
-      "amount": 10,
-      "name": "Patrick Forbes",
-      "team": "CFL"
-    },
-    "8698": {
-      "amount": 10,
-      "name": "Ramon Marquez",
-      "team": "WAR"
-    },
-    "8699": {
-      "amount": 15,
-      "name": "Boston Smith",
-      "team": "WIZ"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-08-03"
+  "week_start": "2026-08-10"
 }
