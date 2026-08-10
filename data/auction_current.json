@@ -1,6 +1,16 @@
 {
-  "bids": [],
-  "last_updated": "2026-08-10T19:00:17.397466+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-467281917d8d",
+      "bid_type": "OB",
+      "date": "2026-08-10",
+      "prospect_id": "8088",
+      "team": "HAM",
+      "timestamp": "2026-08-10T19:00:57.582802+00:00"
+    }
+  ],
+  "last_updated": "2026-08-10T19:00:57.582802+00:00",
   "matches": [],
   "phase": "ob_window",
   "priority_order": [
