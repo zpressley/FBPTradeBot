@@ -4010,7 +4010,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "bbref_id": "guerrvl01",
@@ -4021,7 +4021,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "Hammers",
+    "manager": "Whiz Kids",
     "mlb_id": 665489,
     "mlb_primary_position": "1B",
     "name": "Vladimir Guerrero Jr.",
@@ -15024,7 +15024,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "HAM",
     "age": 35,
     "bats": "L",
     "bbref_id": "muncyma01",
@@ -15034,7 +15034,7 @@
     "fangraphs_name": "Max Muncy",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Whiz Kids",
+    "manager": "Hammers",
     "mlb_id": 571970,
     "mlb_primary_position": "3B",
     "name": "Max Muncy",
@@ -32312,7 +32312,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32322,7 +32322,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "The Damn Yankees",
+    "manager": "Andromedans",
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -36252,7 +36252,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "LFB",
     "age": 25,
     "bats": "R",
     "bbref_id": "henriro01",
@@ -36264,7 +36264,7 @@
     "fangraphs_name": "Ronny Henriquez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Rick Vaughn",
+    "manager": "La Flama Blanca",
     "mlb_id": 678692,
     "mlb_primary_position": "P",
     "name": "Ronny Henriquez",
@@ -36463,17 +36463,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "DMN",
     "age": 26,
     "bats": "R",
     "bbref_id": "sheehem01",
     "birth_date": "1999-11-15",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29839",
     "fangraphs_name": "Emmet Sheehan",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Andromedans",
+    "manager": "The Damn Yankees",
     "mlb_id": 686218,
     "mlb_primary_position": "P",
     "name": "Emmet Sheehan",
@@ -36486,7 +36486,7 @@
     "upid": "3741",
     "weight": 220,
     "yahoo_id": "60238",
-    "years_simple": "TC 2"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "JEP",
