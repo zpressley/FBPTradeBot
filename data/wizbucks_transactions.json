@@ -4998,5 +4998,26 @@
       "amount": 15,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_WAR_contract_purchase_1786533194",
+    "timestamp": "2026-08-12T11:13:14.016432Z",
+    "team": "WAR",
+    "amount": -10,
+    "balance_before": 40,
+    "balance_after": 30,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Franklin Arias PC \u2192 BC",
+    "related_player": {
+      "upid": "7130",
+      "name": "Franklin Arias"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
