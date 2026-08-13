@@ -28,6 +28,35 @@
         "projected_bracket": null
       },
       "savedAt": 1786323073924
+    },
+    "pad": {
+      "plan": {
+        "keepers_dropped": [
+          "1910",
+          "1907",
+          "6097",
+          "6562",
+          "6592",
+          "3461",
+          "2489",
+          "3137",
+          "3992",
+          "4213"
+        ],
+        "keepers_added": [],
+        "il_tags": [],
+        "rat_applications": [],
+        "prospects_dropped": [],
+        "prospects_added": [],
+        "prospects_top100": [],
+        "picks_added": [],
+        "picks_dropped": [],
+        "wb_adjust": 0,
+        "dc_slots": 0,
+        "bc_slots": 0,
+        "projected_bracket": "elimination"
+      },
+      "savedAt": 1786582186194
     }
   }
 }
