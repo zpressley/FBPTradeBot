@@ -3254,7 +3254,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "CFL",
     "age": 28,
     "bats": "R",
     "bbref_id": "kirbyge01",
@@ -3264,7 +3264,7 @@
     "fangraphs_name": "George Kirby",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "La Flama Blanca",
+    "manager": "Country Fried Lamb",
     "mlb_id": 669923,
     "mlb_primary_position": "P",
     "name": "George Kirby",
@@ -5761,7 +5761,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "CFL",
     "age": 32,
     "bats": "R",
     "bbref_id": "wardta01",
@@ -5771,7 +5771,7 @@
     "fangraphs_name": "Taylor Ward",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "La Flama Blanca",
+    "manager": "Country Fried Lamb",
     "mlb_id": 621493,
     "mlb_primary_position": "LF",
     "name": "Taylor Ward",
@@ -7134,7 +7134,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "RV",
     "age": 24,
     "bats": "R",
     "bbref_id": "alvarfr01",
@@ -7144,7 +7144,7 @@
     "fangraphs_name": "Francisco Alvarez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Weekend Warriors",
+    "manager": "Rick Vaughn",
     "mlb_id": 682626,
     "mlb_primary_position": "C",
     "name": "Francisco Alvarez",
@@ -7186,7 +7186,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "LFB",
     "age": 28,
     "bats": "R",
     "bbref_id": "langesh01",
@@ -7196,7 +7196,7 @@
     "fangraphs_name": "Shea Langeliers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": "La Flama Blanca",
     "mlb_id": 669127,
     "mlb_primary_position": "C",
     "name": "Shea Langeliers",
@@ -7740,7 +7740,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "LFB",
     "age": 23,
     "bats": "R",
     "bbref_id": "henried01",
@@ -7752,7 +7752,7 @@
     "fangraphs_name": "Edgardo Henriquez",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Country Fried Lamb",
+    "manager": "La Flama Blanca",
     "mlb_id": 683618,
     "mlb_primary_position": "P",
     "name": "Edgardo Henriquez",
@@ -10291,7 +10291,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "R",
     "bbref_id": "woobr01",
@@ -10301,7 +10301,7 @@
     "fangraphs_name": "Bryan Woo",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Rick Vaughn",
+    "manager": "not much of a donkey",
     "mlb_id": 693433,
     "mlb_primary_position": "P",
     "name": "Bryan Woo",
@@ -10686,7 +10686,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "RV",
     "age": 35,
     "bats": "R",
     "bbref_id": "colege01",
@@ -10696,7 +10696,7 @@
     "fangraphs_name": "Gerrit Cole",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "not much of a donkey",
+    "manager": "Rick Vaughn",
     "mlb_id": 543037,
     "mlb_primary_position": "P",
     "name": "Gerrit Cole",
@@ -11153,17 +11153,17 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "RV",
     "age": 26,
     "bats": "L",
     "bbref_id": "abbotan01",
     "birth_date": "1999-06-01",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "29911",
     "fangraphs_name": "Andrew Abbott",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "The Damn Yankees",
+    "manager": "Rick Vaughn",
     "mlb_id": 671096,
     "mlb_primary_position": "P",
     "name": "Andrew Abbott",
@@ -11176,7 +11176,7 @@
     "upid": "3612",
     "weight": 192,
     "yahoo_id": "12395",
-    "years_simple": "TC 2"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": null,
@@ -14604,7 +14604,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "WAR",
     "age": 25,
     "bats": "L",
     "bbref_id": "greenri01",
@@ -14614,7 +14614,7 @@
     "fangraphs_name": "Riley Greene",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": "Weekend Warriors",
     "mlb_id": 682985,
     "mlb_primary_position": "LF",
     "name": "Riley Greene",
@@ -14869,7 +14869,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "R",
     "bbref_id": "contrwi02",
@@ -14879,7 +14879,7 @@
     "fangraphs_name": "William Contreras",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": "Weekend Warriors",
     "mlb_id": 661388,
     "mlb_primary_position": "C",
     "name": "William Contreras",
