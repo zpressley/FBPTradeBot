@@ -5019,5 +5019,45 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_HAM_auction_winner_1786888819",
+    "timestamp": "2026-08-16T14:00:19.255820Z",
+    "team": "HAM",
+    "amount": -10,
+    "balance_before": 15,
+    "balance_after": 5,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-10 to 2026-08-16: Caden Hunter",
+    "related_player": {
+      "upid": "8088",
+      "name": "Caden Hunter"
+    },
+    "metadata": {
+      "week_start": "2026-08-10",
+      "prospect_id": "8088",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1786888819",
+    "timestamp": "2026-08-16T14:00:19.260256Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 50,
+    "balance_after": 40,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-10 to 2026-08-16: Drew Thorpe",
+    "related_player": {
+      "upid": "3904",
+      "name": "Drew Thorpe"
+    },
+    "metadata": {
+      "week_start": "2026-08-10",
+      "prospect_id": "3904",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
