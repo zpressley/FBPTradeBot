@@ -1,8 +1,18 @@
 {
-  "bids": [],
-  "last_updated": "2026-08-16T14:00:19.369741+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-a93a7d02de1d",
+      "bid_type": "OB",
+      "date": "2026-08-17",
+      "prospect_id": "4035",
+      "team": "DMN",
+      "timestamp": "2026-08-17T22:16:00.053457+00:00"
+    }
+  ],
+  "last_updated": "2026-08-17T22:16:00.053457+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "RV",
@@ -17,24 +27,11 @@
     "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-08-16T14:00:19.254450+00:00",
-  "resolved_winners": {
-    "3904": {
-      "amount": 10,
-      "name": "Drew Thorpe",
-      "team": "DRO"
-    },
-    "8088": {
-      "amount": 10,
-      "name": "Caden Hunter",
-      "team": "HAM"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-08-10"
+  "week_start": "2026-08-17"
 }
