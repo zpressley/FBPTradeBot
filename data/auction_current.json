@@ -1,27 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-a93a7d02de1d",
-      "bid_type": "OB",
-      "date": "2026-08-17",
-      "prospect_id": "4035",
-      "team": "DMN",
-      "timestamp": "2026-08-17T22:16:00.053457+00:00"
-    },
-    {
-      "amount": 10,
-      "bid_id": "bid-6fddd0a6b33e",
-      "bid_type": "OB",
-      "date": "2026-08-17",
-      "prospect_id": "7704",
-      "team": "DRO",
-      "timestamp": "2026-08-18T01:39:41.073024+00:00"
-    }
-  ],
-  "last_updated": "2026-08-18T01:39:41.073024+00:00",
+  "bids": [],
+  "last_updated": "2026-08-23T14:00:20.887686+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -36,6 +17,19 @@
     "SAD",
     "LFB"
   ],
+  "resolved_at": "2026-08-23T14:00:20.792169+00:00",
+  "resolved_winners": {
+    "4035": {
+      "amount": 10,
+      "name": "Matt Wilkinson",
+      "team": "DMN"
+    },
+    "7704": {
+      "amount": 10,
+      "name": "Tommy White",
+      "team": "DRO"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

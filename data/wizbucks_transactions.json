@@ -5080,5 +5080,45 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_DMN_auction_winner_1787493620",
+    "timestamp": "2026-08-23T14:00:20.792827Z",
+    "team": "DMN",
+    "amount": -10,
+    "balance_before": 20,
+    "balance_after": 10,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-17 to 2026-08-23: Matt Wilkinson",
+    "related_player": {
+      "upid": "4035",
+      "name": "Matt Wilkinson"
+    },
+    "metadata": {
+      "week_start": "2026-08-17",
+      "prospect_id": "4035",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
+  },
+  {
+    "txn_id": "wb_DRO_auction_winner_1787493620",
+    "timestamp": "2026-08-23T14:00:20.797581Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 40,
+    "balance_after": 30,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-17 to 2026-08-23: Tommy White",
+    "related_player": {
+      "upid": "7704",
+      "name": "Tommy White"
+    },
+    "metadata": {
+      "week_start": "2026-08-17",
+      "prospect_id": "7704",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
