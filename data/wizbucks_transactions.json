@@ -5120,5 +5120,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_TBB_contract_purchase_1787532321",
+    "timestamp": "2026-08-24T00:45:21.086250Z",
+    "team": "TBB",
+    "amount": -15,
+    "balance_before": 105,
+    "balance_after": 90,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: George Lombard Jr. DC \u2192 BC",
+    "related_player": {
+      "upid": "6604",
+      "name": "George Lombard Jr."
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
