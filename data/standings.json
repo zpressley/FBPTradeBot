@@ -142,7 +142,7 @@
       "team": "LFB",
       "record": "246-157-17",
       "win_pct": 0.606,
-      "opponent": "HAM",
+      "opponent": "WIZ",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -182,7 +182,7 @@
       "team": "WIZ",
       "record": "222-178-20",
       "win_pct": 0.552,
-      "opponent": "DMN",
+      "opponent": "LFB",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -222,7 +222,7 @@
       "team": "DMN",
       "record": "212-188-20",
       "win_pct": 0.529,
-      "opponent": "WIZ",
+      "opponent": "HAM",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -262,7 +262,7 @@
       "team": "HAM",
       "record": "243-154-23",
       "win_pct": 0.606,
-      "opponent": "LFB",
+      "opponent": "DMN",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -302,7 +302,7 @@
       "team": "SAD",
       "record": "222-179-19",
       "win_pct": 0.551,
-      "opponent": "JEP",
+      "opponent": "TBB",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -342,7 +342,7 @@
       "team": "TBB",
       "record": "207-195-18",
       "win_pct": 0.514,
-      "opponent": "B2J",
+      "opponent": "SAD",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -382,7 +382,7 @@
       "team": "B2J",
       "record": "202-196-22",
       "win_pct": 0.507,
-      "opponent": "TBB",
+      "opponent": "JEP",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -422,7 +422,7 @@
       "team": "JEP",
       "record": "195-199-26",
       "win_pct": 0.495,
-      "opponent": "SAD",
+      "opponent": "B2J",
       "score": "0",
       "opponent_score": "0",
       "ties": "20",
@@ -557,8 +557,8 @@
         }
       },
       "team2": {
-        "team": "DMN",
-        "name": "The Damn Yankees",
+        "team": "LFB",
+        "name": "La Flama Blanca",
         "score": "0",
         "categories": {
           "H/AB": "/",
@@ -617,8 +617,8 @@
         }
       },
       "team2": {
-        "team": "TBB",
-        "name": "The Bluke Blokes",
+        "team": "JEP",
+        "name": "Jepordizers",
         "score": "0",
         "categories": {
           "H/AB": "/",
@@ -677,8 +677,8 @@
         }
       },
       "team2": {
-        "team": "LFB",
-        "name": "La Flama Blanca",
+        "team": "DMN",
+        "name": "The Damn Yankees",
         "score": "0",
         "categories": {
           "H/AB": "/",
@@ -708,35 +708,6 @@
     },
     {
       "team1": {
-        "team": "JEP",
-        "name": "Jepordizers",
-        "score": "0",
-        "categories": {
-          "H/AB": "/",
-          "R": "",
-          "H": "",
-          "HR": "",
-          "RBI": "",
-          "SB": "",
-          "BB": "",
-          "K": "",
-          "TB": "",
-          "AVG": "",
-          "OPS": "",
-          "APP": "",
-          "IP": "",
-          "ER": "",
-          "P_HR": "",
-          "P_K": "",
-          "P_TB": "",
-          "ERA": "",
-          "K/9": "",
-          "H/9": "",
-          "BB/9": "",
-          "QS": ""
-        }
-      },
-      "team2": {
         "team": "SAD",
         "name": "not much of a donkey",
         "score": "0",
@@ -764,7 +735,37 @@
           "BB/9": "",
           "QS": ""
         }
+      },
+      "team2": {
+        "team": "TBB",
+        "name": "The Bluke Blokes",
+        "score": "0",
+        "categories": {
+          "H/AB": "/",
+          "R": "",
+          "H": "",
+          "HR": "",
+          "RBI": "",
+          "SB": "",
+          "BB": "",
+          "K": "",
+          "TB": "",
+          "AVG": "",
+          "OPS": "",
+          "APP": "",
+          "IP": "",
+          "ER": "",
+          "P_HR": "",
+          "P_K": "",
+          "P_TB": "",
+          "ERA": "",
+          "K/9": "",
+          "H/9": "",
+          "BB/9": "",
+          "QS": ""
+        }
       }
     }
-  ]
+  ],
+  "refreshed_at": "2026-08-24T16:02:23.838551+00:00"
 }
