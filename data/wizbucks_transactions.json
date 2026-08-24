@@ -5141,5 +5141,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_DRO_contract_purchase_1787614422",
+    "timestamp": "2026-08-24T23:33:42.157397Z",
+    "team": "DRO",
+    "amount": -10,
+    "balance_before": 30,
+    "balance_after": 20,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Juneiker Caceres PC \u2192 BC",
+    "related_player": {
+      "upid": "7750",
+      "name": "Juneiker Caceres"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
