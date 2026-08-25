@@ -3,7 +3,7 @@
 Backend for **Fantasy Baseball Pantheon (FBP)**, a Yahoo Fantasy Sports dynasty
 league. This repo is the Discord bot + API that runs the league's economy —
 keeper contracts, prospect auctions, trades, buy-ins, and the WizBucks
-in-league currency — and syncs data to the [fbp-hub](../fbp-hub) website.
+in-league currency — and syncs data to the [fbp-hub](https://github.com/zpressley/fbp-hub) website.
 
 ## What this is
 
@@ -13,7 +13,7 @@ A single Python process (`health.py`) that runs two things together:
   contract purchases), PAD, rosters, standings, and admin tools. Cogs live in
   `commands/`.
 - A **FastAPI server**, running in a background thread inside the same
-  process — the API that [fbp-hub](../fbp-hub) (the website) calls for
+  process — the API that [fbp-hub](https://github.com/zpressley/fbp-hub) (the website) calls for
   everything from viewing rosters to submitting a trade. Route handlers are
   split across `api_*.py` files at the repo root and included into `health.py`
   as routers.
@@ -84,4 +84,4 @@ the start command). Railway redeploys automatically on every push to `main`
   `docs/archive/` for point-in-time build/incident logs that are historical
   rather than living documentation.
 - `WARP.md` — a more detailed structural walkthrough of the codebase.
-- [`fbp-hub`](../fbp-hub) — the website this backend serves.
+- [`fbp-hub`]((https://github.com/zpressley/fbp-hub)) — the website this backend serves.
