@@ -143,11 +143,11 @@
       "record": "246-157-17",
       "win_pct": 0.606,
       "opponent": "WIZ",
-      "score": "6",
+      "score": "7",
       "opponent_score": "10",
-      "ties": "4",
-      "live_record": "6-10-4",
-      "live_win_pct": 0.4,
+      "ties": "3",
+      "live_record": "7-10-3",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "6/26",
         "R": 6,
@@ -160,7 +160,7 @@
         "TB": 7,
         "AVG": ".231",
         "OPS": ".681",
-        "APP": 2,
+        "APP": 3,
         "IP": "7.0",
         "ER": 2,
         "P_HR": 2,
@@ -172,8 +172,8 @@
         "BB/9": "1.29",
         "QS": 1
       },
-      "overall_live_record": "252-167-21",
-      "overall_live_win_pct": 0.597,
+      "overall_live_record": "253-167-20",
+      "overall_live_win_pct": 0.598,
       "live_rank": 2
     },
     {
@@ -184,10 +184,10 @@
       "win_pct": 0.552,
       "opponent": "LFB",
       "score": "10",
-      "opponent_score": "6",
-      "ties": "4",
-      "live_record": "10-6-4",
-      "live_win_pct": 0.6,
+      "opponent_score": "7",
+      "ties": "3",
+      "live_record": "10-7-3",
+      "live_win_pct": 0.575,
       "categories": {
         "H/AB": "11/34",
         "R": 5,
@@ -212,8 +212,8 @@
         "BB/9": "1.29",
         "QS": 1
       },
-      "overall_live_record": "232-184-24",
-      "overall_live_win_pct": 0.555,
+      "overall_live_record": "232-185-23",
+      "overall_live_win_pct": 0.553,
       "live_rank": 4
     },
     {
@@ -559,7 +559,7 @@
       "team2": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "6/26",
           "R": 6,
@@ -572,7 +572,7 @@
           "TB": 7,
           "AVG": ".231",
           "OPS": ".681",
-          "APP": 2,
+          "APP": 3,
           "IP": "7.0",
           "ER": 2,
           "P_HR": 2,
@@ -767,5 +767,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-08-25T20:02:24.185785+00:00"
+  "refreshed_at": "2026-08-25T21:02:23.740793+00:00"
 }
