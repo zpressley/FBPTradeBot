@@ -1,8 +1,18 @@
 {
-  "bids": [],
-  "last_updated": "2026-08-23T14:00:20.887686+00:00",
+  "bids": [
+    {
+      "amount": 10,
+      "bid_id": "bid-3bbefcf14279",
+      "bid_type": "OB",
+      "date": "2026-08-25",
+      "prospect_id": "6670",
+      "team": "WIZ",
+      "timestamp": "2026-08-25T13:10:21.700919+00:00"
+    }
+  ],
+  "last_updated": "2026-08-25T13:10:21.700919+00:00",
   "matches": [],
-  "phase": "processing",
+  "phase": "ob_window",
   "priority_order": [
     "DRO",
     "RV",
@@ -17,24 +27,11 @@
     "SAD",
     "LFB"
   ],
-  "resolved_at": "2026-08-23T14:00:20.792169+00:00",
-  "resolved_winners": {
-    "4035": {
-      "amount": 10,
-      "name": "Matt Wilkinson",
-      "team": "DMN"
-    },
-    "7704": {
-      "amount": 10,
-      "name": "Tommy White",
-      "team": "DRO"
-    }
-  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",
     "playoffs_start": "2026-09-07",
     "season_start": "2026-03-16"
   },
-  "week_start": "2026-08-17"
+  "week_start": "2026-08-24"
 }
