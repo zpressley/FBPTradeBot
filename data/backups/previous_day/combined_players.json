@@ -357,7 +357,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 36,
     "bats": "R",
     "bbref_id": "springe01",
@@ -367,7 +367,7 @@
     "fangraphs_name": "George Springer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 543807,
     "mlb_primary_position": "RF",
     "name": "George Springer",
@@ -383,7 +383,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 34,
     "bats": "R",
     "bbref_id": "manaese01",
@@ -393,7 +393,7 @@
     "fangraphs_name": "Sean Manaea",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 640455,
     "mlb_primary_position": "P",
     "name": "Sean Manaea",
@@ -463,7 +463,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "holmecl01",
@@ -473,7 +473,7 @@
     "fangraphs_name": "Clay Holmes",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 605280,
     "mlb_primary_position": "P",
     "name": "Clay Holmes",
@@ -515,7 +515,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "diazed04",
@@ -525,7 +525,7 @@
     "fangraphs_name": "Edwin Diaz",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 621242,
     "mlb_primary_position": "P",
     "name": "Edwin D\u00edaz",
@@ -901,7 +901,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 28,
     "bats": "R",
     "bbref_id": "steersp01",
@@ -911,7 +911,7 @@
     "fangraphs_name": "Spencer Steer",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 668715,
     "mlb_primary_position": "1B",
     "name": "Spencer Steer",
@@ -1059,7 +1059,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "RV",
     "age": 30,
     "bats": "R",
     "bbref_id": "bautife01",
@@ -1069,7 +1069,7 @@
     "fangraphs_name": "Felix Bautista",
     "fypd": false,
     "height": "6' 8\"",
-    "manager": "Andromedans",
+    "manager": "Rick Vaughn",
     "mlb_id": 642585,
     "mlb_primary_position": "P",
     "name": "F\u00e9lix Bautista",
@@ -1554,7 +1554,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "CFL",
     "age": 35,
     "bats": "L",
     "bbref_id": "wheelza01",
@@ -1564,7 +1564,7 @@
     "fangraphs_name": "Zack Wheeler",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Country Fried Lamb",
     "mlb_id": 554430,
     "mlb_primary_position": "P",
     "name": "Zack Wheeler",
@@ -1658,7 +1658,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "L",
     "bbref_id": "deverra01",
@@ -1668,7 +1668,7 @@
     "fangraphs_name": "Rafael Devers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Country Fried Lamb",
     "mlb_id": 646240,
     "mlb_primary_position": "DH",
     "name": "Rafael Devers",
@@ -1969,7 +1969,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 35,
     "bats": "L",
     "bbref_id": "boydma01",
@@ -1980,7 +1980,7 @@
     "fypd": false,
     "height": "6' 3\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 571510,
     "mlb_primary_position": "P",
     "name": "Matthew Boyd",
@@ -2418,7 +2418,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "LFB",
     "age": 34,
     "bats": "R",
     "bbref_id": "suarero01",
@@ -2428,7 +2428,7 @@
     "fangraphs_name": "Robert Suarez",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": "La Flama Blanca",
     "mlb_id": 663158,
     "mlb_primary_position": "P",
     "name": "Robert Suarez",
@@ -2957,7 +2957,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 29,
     "bats": "R",
     "bbref_id": "singebr01",
@@ -2967,7 +2967,7 @@
     "fangraphs_name": "Brady Singer",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 663903,
     "mlb_primary_position": "P",
     "name": "Brady Singer",
@@ -3151,7 +3151,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "kellemi01",
@@ -3161,7 +3161,7 @@
     "fangraphs_name": "Mitch Keller",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 656605,
     "mlb_primary_position": "P",
     "name": "Mitch Keller",
@@ -3254,7 +3254,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "LFB",
     "age": 28,
     "bats": "R",
     "bbref_id": "kirbyge01",
@@ -3264,7 +3264,7 @@
     "fangraphs_name": "George Kirby",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Country Fried Lamb",
+    "manager": "La Flama Blanca",
     "mlb_id": 669923,
     "mlb_primary_position": "P",
     "name": "George Kirby",
@@ -3328,7 +3328,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "ramoshe01",
@@ -3338,7 +3338,7 @@
     "fangraphs_name": "Heliot Ramos",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 671218,
     "mlb_primary_position": "LF",
     "name": "Heliot Ramos",
@@ -3378,7 +3378,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "S",
     "bbref_id": "happia01",
@@ -3388,7 +3388,7 @@
     "fangraphs_name": "Ian Happ",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 664023,
     "mlb_primary_position": "LF",
     "name": "Ian Happ",
@@ -3562,7 +3562,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 26,
     "bats": "L",
     "bbref_id": "gorema01",
@@ -3573,7 +3573,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 669022,
     "mlb_primary_position": "P",
     "name": "MacKenzie Gore",
@@ -3718,7 +3718,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "helslry01",
@@ -3728,7 +3728,7 @@
     "fangraphs_name": "Ryan Helsley",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 664854,
     "mlb_primary_position": "P",
     "name": "Ryan Helsley",
@@ -3984,17 +3984,17 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 29,
     "bats": "R",
     "bbref_id": "stephty01",
     "birth_date": "1996-08-16",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "17988",
     "fangraphs_name": "Tyler Stephenson",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 663886,
     "mlb_primary_position": "C",
     "name": "Tyler Stephenson",
@@ -4010,7 +4010,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "R",
     "bbref_id": "guerrvl01",
@@ -4021,7 +4021,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "Whiz Kids",
+    "manager": "Hammers",
     "mlb_id": 665489,
     "mlb_primary_position": "1B",
     "name": "Vladimir Guerrero Jr.",
@@ -4191,7 +4191,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "CFL",
     "age": 32,
     "bats": "R",
     "bbref_id": "valdefr01",
@@ -4201,7 +4201,7 @@
     "fangraphs_name": "Framber Valdez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Andromedans",
+    "manager": "Country Fried Lamb",
     "mlb_id": 664285,
     "mlb_primary_position": "P",
     "name": "Framber Valdez",
@@ -4269,7 +4269,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 38,
     "bats": "R",
     "bbref_id": "goldspa01",
@@ -4279,7 +4279,7 @@
     "fangraphs_name": "Paul Goldschmidt",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 502671,
     "mlb_primary_position": "1B",
     "name": "Paul Goldschmidt",
@@ -4553,7 +4553,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "WIZ",
     "age": 28,
     "bats": "L",
     "bbref_id": "buschmi02",
@@ -4563,7 +4563,7 @@
     "fangraphs_name": "MIchael Busch",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": "Whiz Kids",
     "mlb_id": 683737,
     "mlb_primary_position": "1B",
     "name": "Michael Busch",
@@ -5762,7 +5762,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "WAR",
     "age": 32,
     "bats": "R",
     "bbref_id": "wardta01",
@@ -5772,7 +5772,7 @@
     "fangraphs_name": "Taylor Ward",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Country Fried Lamb",
+    "manager": "Weekend Warriors",
     "mlb_id": 621493,
     "mlb_primary_position": "LF",
     "name": "Taylor Ward",
@@ -5814,7 +5814,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "lewisro02",
@@ -5824,7 +5824,7 @@
     "fangraphs_name": "Royce Lewis",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 668904,
     "mlb_primary_position": "3B",
     "name": "Royce Lewis",
@@ -5974,7 +5974,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "L",
     "bbref_id": "cantijo01",
@@ -5984,7 +5984,7 @@
     "fangraphs_name": "Joey Cantillo",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "The Bluke Blokes",
+    "manager": "Andromedans",
     "mlb_id": 676282,
     "mlb_primary_position": "P",
     "name": "Joey Cantillo",
@@ -6312,7 +6312,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "warrewi01",
@@ -6322,7 +6322,7 @@
     "fangraphs_name": "Will Warren",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 701542,
     "mlb_primary_position": "P",
     "name": "Will Warren",
@@ -6716,7 +6716,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 29,
     "bats": "R",
     "bbref_id": "torregl01",
@@ -6726,7 +6726,7 @@
     "fangraphs_name": "Gleyber Torres",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 650402,
     "mlb_primary_position": "2B",
     "name": "Gleyber Torres",
@@ -7135,7 +7135,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "alvarfr01",
@@ -7145,7 +7145,7 @@
     "fangraphs_name": "Francisco Alvarez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 682626,
     "mlb_primary_position": "C",
     "name": "Francisco Alvarez",
@@ -7161,7 +7161,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "rodrigr01",
@@ -7171,7 +7171,7 @@
     "fangraphs_name": "Grayson Rodriguez",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 680570,
     "mlb_primary_position": "P",
     "name": "Grayson Rodriguez",
@@ -7187,7 +7187,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "WAR",
     "age": 28,
     "bats": "R",
     "bbref_id": "langesh01",
@@ -7197,7 +7197,7 @@
     "fangraphs_name": "Shea Langeliers",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "La Flama Blanca",
+    "manager": "Weekend Warriors",
     "mlb_id": 669127,
     "mlb_primary_position": "C",
     "name": "Shea Langeliers",
@@ -7213,7 +7213,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "bradlta01",
@@ -7223,7 +7223,7 @@
     "fangraphs_name": "Taj Bradley",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 671737,
     "mlb_primary_position": "P",
     "name": "Taj Bradley",
@@ -7557,7 +7557,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "SAD",
     "age": 29,
     "bats": "R",
     "bbref_id": "ryanjo04",
@@ -7567,7 +7567,7 @@
     "fangraphs_name": "Joe Ryan",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Btwn2Jackies",
+    "manager": "not much of a donkey",
     "mlb_id": 657746,
     "mlb_primary_position": "P",
     "name": "Joe Ryan",
@@ -7714,19 +7714,19 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 26,
     "bats": "R",
     "bbref_id": "tawati01",
     "birth_date": "1999-04-07",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "29571",
     "fangraphs_name": "Tim Tawa",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 694374,
     "mlb_primary_position": "2B",
     "name": "Tim Tawa",
@@ -7741,7 +7741,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "CFL",
     "age": 23,
     "bats": "R",
     "bbref_id": "henried01",
@@ -7753,7 +7753,7 @@
     "fangraphs_name": "Edgardo Henriquez",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "La Flama Blanca",
+    "manager": "Country Fried Lamb",
     "mlb_id": 683618,
     "mlb_primary_position": "P",
     "name": "Edgardo Henriquez",
@@ -8318,7 +8318,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 34,
     "bats": "L",
     "bbref_id": "rayro02",
@@ -8329,7 +8329,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 592662,
     "mlb_primary_position": "P",
     "name": "Robbie Ray",
@@ -8423,7 +8423,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "B2J",
     "age": 30,
     "bats": "L",
     "bbref_id": "steelju01",
@@ -8433,7 +8433,7 @@
     "fangraphs_name": "Justin Steele",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Country Fried Lamb",
+    "manager": "Btwn2Jackies",
     "mlb_id": 657006,
     "mlb_primary_position": "P",
     "name": "Justin Steele",
@@ -8660,7 +8660,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "R",
     "bbref_id": "pfaadbr01",
@@ -8670,7 +8670,7 @@
     "fangraphs_name": "Brandon Pfaadt",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Andromedans",
+    "manager": "not much of a donkey",
     "mlb_id": 694297,
     "mlb_primary_position": "P",
     "name": "Brandon Pfaadt",
@@ -8686,7 +8686,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 24,
     "bats": "S",
     "bbref_id": "martian02",
@@ -8696,7 +8696,7 @@
     "fangraphs_name": "Angel Martinez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 682657,
     "mlb_primary_position": "CF",
     "name": "Angel Mart\u00ednez",
@@ -8762,7 +8762,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "RV",
     "age": 21,
     "bats": "L",
     "bbref_id": "anthoro01",
@@ -8774,7 +8774,7 @@
     "fangraphs_name": "Roman Anthony",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Andromedans",
+    "manager": "Rick Vaughn",
     "mlb_id": 701350,
     "mlb_primary_position": "RF",
     "name": "Roman Anthony",
@@ -8816,7 +8816,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "S",
     "bbref_id": "leebr02",
@@ -8826,7 +8826,7 @@
     "fangraphs_name": "Brooks Lee",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Jepordizers!",
+    "manager": "Andromedans",
     "mlb_id": 686797,
     "mlb_primary_position": "3B",
     "name": "Brooks Lee",
@@ -8967,7 +8967,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "L",
     "bbref_id": "stottbr01",
@@ -8977,7 +8977,7 @@
     "fangraphs_name": "Bryson Stott",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Whiz Kids",
+    "manager": "Jepordizers!",
     "mlb_id": 681082,
     "mlb_primary_position": "2B",
     "name": "Bryson Stott",
@@ -9071,7 +9071,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 24,
     "bats": "R",
     "bbref_id": "martiju01",
@@ -9081,7 +9081,7 @@
     "fangraphs_name": "Justin Martinez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 679885,
     "mlb_primary_position": "P",
     "name": "Justin Martinez",
@@ -9178,7 +9178,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 23,
     "bats": "L",
     "bbref_id": "schanno01",
@@ -9188,7 +9188,7 @@
     "fangraphs_name": "Nolan Schanuel",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 694384,
     "mlb_primary_position": "1B",
     "name": "Nolan Schanuel",
@@ -9425,7 +9425,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 34,
     "bats": "R",
     "bbref_id": "realmjt01",
@@ -9435,7 +9435,7 @@
     "fangraphs_name": "J.T. Realmuto",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 592663,
     "mlb_primary_position": "C",
     "name": "J.T. Realmuto",
@@ -9555,7 +9555,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 32,
     "bats": "R",
     "bbref_id": "nolaaa01",
@@ -9565,7 +9565,7 @@
     "fangraphs_name": "Aaron Nola",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 605400,
     "mlb_primary_position": "P",
     "name": "Aaron Nola",
@@ -10106,7 +10106,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "RV",
     "age": 25,
     "bats": "R",
     "bbref_id": "netoza01",
@@ -10116,7 +10116,7 @@
     "fangraphs_name": "Zach Neto",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "not much of a donkey",
+    "manager": "Rick Vaughn",
     "mlb_id": 687263,
     "mlb_primary_position": "SS",
     "name": "Zach Neto",
@@ -10213,7 +10213,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "bradiky01",
@@ -10223,7 +10223,7 @@
     "fangraphs_name": "Kyle Bradish",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 680694,
     "mlb_primary_position": "P",
     "name": "Kyle Bradish",
@@ -10292,7 +10292,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "RV",
     "age": 26,
     "bats": "R",
     "bbref_id": "woobr01",
@@ -10302,7 +10302,7 @@
     "fangraphs_name": "Bryan Woo",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": "Rick Vaughn",
     "mlb_id": 693433,
     "mlb_primary_position": "P",
     "name": "Bryan Woo",
@@ -10478,7 +10478,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 24,
     "bats": "R",
     "bbref_id": "shawma01",
@@ -10489,7 +10489,7 @@
     "fypd": false,
     "height": "5' 10\"",
     "level": "MLB",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 807713,
     "mlb_primary_position": "3B",
     "name": "Matt Shaw",
@@ -10687,7 +10687,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "SAD",
     "age": 35,
     "bats": "R",
     "bbref_id": "colege01",
@@ -10697,7 +10697,7 @@
     "fangraphs_name": "Gerrit Cole",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Rick Vaughn",
+    "manager": "not much of a donkey",
     "mlb_id": 543037,
     "mlb_primary_position": "P",
     "name": "Gerrit Cole",
@@ -10791,7 +10791,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 29,
     "bats": "R",
     "bbref_id": "peralfr01",
@@ -10801,7 +10801,7 @@
     "fangraphs_name": "Freddy Peralta",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 642547,
     "mlb_primary_position": "P",
     "name": "Freddy Peralta",
@@ -10895,7 +10895,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 34,
     "bats": "R",
     "bbref_id": "suareeu01",
@@ -10905,7 +10905,7 @@
     "fangraphs_name": "Eugenio Suarez",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 553993,
     "mlb_primary_position": "3B",
     "name": "Eugenio Su\u00e1rez",
@@ -10921,17 +10921,17 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 28,
     "bats": "S",
     "bbref_id": "rengilu01",
     "birth_date": "1997-02-26",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19858",
     "fangraphs_name": "Luis Rengifo",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "",
+    "manager": "Jepordizers!",
     "mlb_id": 650859,
     "mlb_primary_position": "3B",
     "name": "Luis Rengifo",
@@ -10944,10 +10944,10 @@
     "upid": "2906",
     "weight": 195,
     "yahoo_id": "11210",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 32,
     "bats": "R",
     "bbref_id": "weavelu01",
@@ -10957,7 +10957,7 @@
     "fangraphs_name": "Luke Weaver",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 596133,
     "mlb_primary_position": "P",
     "name": "Luke Weaver",
@@ -11154,7 +11154,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DMN",
     "age": 26,
     "bats": "L",
     "bbref_id": "abbotan01",
@@ -11164,7 +11164,7 @@
     "fangraphs_name": "Andrew Abbott",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": "The Damn Yankees",
     "mlb_id": 671096,
     "mlb_primary_position": "P",
     "name": "Andrew Abbott",
@@ -11261,7 +11261,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 25,
     "bats": "L",
     "bbref_id": "butlela01",
@@ -11271,7 +11271,7 @@
     "fangraphs_name": "Lawrence Butler",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 671732,
     "mlb_primary_position": "RF",
     "name": "Lawrence Butler",
@@ -11768,7 +11768,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 23,
     "bats": "L",
     "bbref_id": "teelky01",
@@ -11780,7 +11780,7 @@
     "fangraphs_name": "Kyle Teel",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 691019,
     "mlb_primary_position": "C",
     "name": "Kyle Teel",
@@ -12008,7 +12008,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "RV",
     "age": 22,
     "bats": "R",
     "bbref_id": "smithca01",
@@ -12018,7 +12018,7 @@
     "fangraphs_name": "Cam Smith",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Rick Vaughn",
     "mlb_id": 701358,
     "mlb_primary_position": "RF",
     "name": "Cam Smith",
@@ -12343,7 +12343,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "perezsa02",
@@ -12353,7 +12353,7 @@
     "fangraphs_name": "Salvador Perez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 521692,
     "mlb_primary_position": "C",
     "name": "Salvador Perez",
@@ -12369,7 +12369,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "TBB",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "willide03",
@@ -12379,7 +12379,7 @@
     "fangraphs_name": "Devin Williams",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Bluke Blokes",
+    "manager": null,
     "mlb_id": 642207,
     "mlb_primary_position": "P",
     "name": "Devin Williams",
@@ -12498,7 +12498,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 32,
     "bats": "L",
     "bbref_id": "mcculla02",
@@ -12508,7 +12508,7 @@
     "fangraphs_name": "Lance McCullers Jr.",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 621121,
     "mlb_primary_position": "P",
     "name": "Lance McCullers Jr.",
@@ -12810,7 +12810,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 25,
     "bats": "R",
     "bbref_id": "norbyco01",
@@ -12820,7 +12820,7 @@
     "fangraphs_name": "Connor Norby",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 681393,
     "mlb_primary_position": "3B",
     "name": "Connor Norby",
@@ -12937,7 +12937,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "ortizjo06",
@@ -12947,7 +12947,7 @@
     "fangraphs_name": "Joey Ortiz",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 687401,
     "mlb_primary_position": "SS",
     "name": "Joey Ortiz",
@@ -12963,7 +12963,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "mitchga01",
@@ -12973,7 +12973,7 @@
     "fangraphs_name": "Garrett Mitchell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 669003,
     "mlb_primary_position": "CF",
     "name": "Garrett Mitchell",
@@ -13119,7 +13119,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 25,
     "bats": "R",
     "bbref_id": "joycebe01",
@@ -13129,7 +13129,7 @@
     "fangraphs_name": "Ben Joyce",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 690829,
     "mlb_primary_position": "P",
     "name": "Ben Joyce",
@@ -13740,7 +13740,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "HAM",
     "age": 34,
     "bats": "L",
     "bbref_id": "yelicch01",
@@ -13750,7 +13750,7 @@
     "fangraphs_name": "Christian Yelich",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Hammers",
     "mlb_id": 592885,
     "mlb_primary_position": "LF",
     "name": "Christian Yelich",
@@ -14025,7 +14025,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "RV",
     "age": 27,
     "bats": "L",
     "bbref_id": "seymoia01",
@@ -14035,7 +14035,7 @@
     "fangraphs_name": "Ian Seymour",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": "Rick Vaughn",
     "mlb_id": 693855,
     "mlb_primary_position": "P",
     "name": "Ian Seymour",
@@ -14605,7 +14605,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "LFB",
     "age": 25,
     "bats": "L",
     "bbref_id": "greenri01",
@@ -14615,7 +14615,7 @@
     "fangraphs_name": "Riley Greene",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": "La Flama Blanca",
     "mlb_id": 682985,
     "mlb_primary_position": "LF",
     "name": "Riley Greene",
@@ -14871,7 +14871,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "LFB",
     "age": 28,
     "bats": "R",
     "bbref_id": "contrwi02",
@@ -14881,7 +14881,7 @@
     "fangraphs_name": "William Contreras",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Weekend Warriors",
+    "manager": "La Flama Blanca",
     "mlb_id": 661388,
     "mlb_primary_position": "C",
     "name": "William Contreras",
@@ -15026,7 +15026,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "WIZ",
     "age": 35,
     "bats": "L",
     "bbref_id": "muncyma01",
@@ -15036,7 +15036,7 @@
     "fangraphs_name": "Max Muncy",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Hammers",
+    "manager": "Whiz Kids",
     "mlb_id": 571970,
     "mlb_primary_position": "3B",
     "name": "Max Muncy",
@@ -15103,7 +15103,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "RV",
     "age": 33,
     "bats": "L",
     "bbref_id": "rodonca01",
@@ -15113,7 +15113,7 @@
     "fangraphs_name": "Carlos Rodon",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Whiz Kids",
+    "manager": "Rick Vaughn",
     "mlb_id": 607074,
     "mlb_primary_position": "P",
     "name": "Carlos Rod\u00f3n",
@@ -15129,7 +15129,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "HAM",
     "age": 30,
     "bats": "R",
     "bbref_id": "alcansa01",
@@ -15139,7 +15139,7 @@
     "fangraphs_name": "Sandy Alcantara",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Rick Vaughn",
+    "manager": "Hammers",
     "mlb_id": 645261,
     "mlb_primary_position": "P",
     "name": "Sandy Alcantara",
@@ -15181,7 +15181,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 29,
     "bats": "R",
     "bbref_id": "bohmal01",
@@ -15191,7 +15191,7 @@
     "fangraphs_name": "Alec Bohm",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 664761,
     "mlb_primary_position": "3B",
     "name": "Alec Bohm",
@@ -15207,7 +15207,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "CFL",
     "age": 31,
     "bats": "R",
     "bbref_id": "rookebr01",
@@ -15217,7 +15217,7 @@
     "fangraphs_name": "Brent Rooker",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Country Fried Lamb",
     "mlb_id": 667670,
     "mlb_primary_position": "RF",
     "name": "Brent Rooker",
@@ -15391,7 +15391,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "nootbla01",
@@ -15401,7 +15401,7 @@
     "fangraphs_name": "Lars Nootbaar",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 663457,
     "mlb_primary_position": "LF",
     "name": "Lars Nootbaar",
@@ -15636,7 +15636,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "schmicl01",
@@ -15646,7 +15646,7 @@
     "fangraphs_name": "Clarke Schmidt",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 657376,
     "mlb_primary_position": "P",
     "name": "Clarke Schmidt",
@@ -16166,7 +16166,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "yohocr01",
@@ -16176,7 +16176,7 @@
     "fangraphs_name": "Craig Yoho",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 684974,
     "mlb_primary_position": "P",
     "name": "Craig Yoho",
@@ -16371,7 +16371,8 @@
     "upid": "3527",
     "weight": 200,
     "yahoo_id": "12411",
-    "years_simple": "TC R"
+    "years_simple": "TC R",
+    "NRI": "DRO"
   },
   {
     "FBP_Team": "",
@@ -16729,7 +16730,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "swansda01",
@@ -16739,7 +16740,7 @@
     "fangraphs_name": "Dansby Swanson",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 621020,
     "mlb_primary_position": "SS",
     "name": "Dansby Swanson",
@@ -16855,7 +16856,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "DRO",
     "age": 33,
     "bats": "R",
     "bbref_id": "musgrjo01",
@@ -16865,7 +16866,7 @@
     "fangraphs_name": "Joe Musgrove",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Rick Vaughn",
+    "manager": "Andromedans",
     "mlb_id": 605397,
     "mlb_primary_position": "P",
     "name": "Joe Musgrove",
@@ -17135,17 +17136,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "R",
     "bbref_id": "francty01",
     "birth_date": "1994-07-13",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "17982",
     "fangraphs_name": "Ty France",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 664034,
     "mlb_primary_position": "1B",
     "name": "Ty France",
@@ -17160,7 +17161,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 31,
     "bats": "R",
     "bbref_id": "mahlety01",
@@ -17170,7 +17171,7 @@
     "fangraphs_name": "Tyler Mahle",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 641816,
     "mlb_primary_position": "P",
     "name": "Tyler Mahle",
@@ -18316,7 +18317,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "bendean01",
@@ -18326,7 +18327,7 @@
     "fangraphs_name": "Anthony Bender",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 669622,
     "mlb_primary_position": "P",
     "name": "Anthony Bender",
@@ -20655,7 +20656,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "lynchda02",
@@ -20665,7 +20666,7 @@
     "fangraphs_name": "Daniel Lynch",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 663738,
     "mlb_primary_position": "P",
     "name": "Daniel Lynch IV",
@@ -20876,7 +20877,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "varshda01",
@@ -20886,7 +20887,7 @@
     "fangraphs_name": "Daulton Varsho",
     "fypd": false,
     "height": "5' 8\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 662139,
     "mlb_primary_position": "CF",
     "name": "Daulton Varsho",
@@ -21711,7 +21712,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "bazared01",
@@ -21721,7 +21722,7 @@
     "fangraphs_name": "Eduard Bazardo",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 660825,
     "mlb_primary_position": "P",
     "name": "Eduard Bazardo",
@@ -22609,7 +22610,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "",
     "age": 36,
     "bats": "R",
     "bbref_id": "stantmi03",
@@ -22619,7 +22620,7 @@
     "fangraphs_name": "Giancarlo Stanton",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Btwn2Jackies",
+    "manager": null,
     "mlb_id": 519317,
     "mlb_primary_position": "DH",
     "name": "Giancarlo Stanton",
@@ -24191,7 +24192,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24201,7 +24202,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -25353,7 +25354,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 33,
     "bats": "S",
     "bbref_id": "belljo02",
@@ -25363,7 +25364,7 @@
     "fangraphs_name": "Josh Bell",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 605137,
     "mlb_primary_position": "1B",
     "name": "Josh Bell",
@@ -28133,7 +28134,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 35,
     "bats": "L",
     "bbref_id": "martini01",
@@ -28143,7 +28144,7 @@
     "fangraphs_name": "Nick Martinez",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 607259,
     "mlb_primary_position": "P",
     "name": "Nick Martinez",
@@ -29171,7 +29172,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "RV",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "obrieri01",
@@ -29181,7 +29182,7 @@
     "fangraphs_name": "Riley O'Brien",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Rick Vaughn",
+    "manager": null,
     "mlb_id": 676617,
     "mlb_primary_position": "P",
     "name": "Riley O'Brien",
@@ -30085,7 +30086,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "armstsh01",
@@ -30095,7 +30096,7 @@
     "fangraphs_name": "Shawn Armstrong",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 542888,
     "mlb_primary_position": "P",
     "name": "Shawn Armstrong",
@@ -30961,7 +30962,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "larnatr01",
@@ -30971,7 +30972,7 @@
     "fangraphs_name": "Trevor Larnach",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 663616,
     "mlb_primary_position": "RF",
     "name": "Trevor Larnach",
@@ -32062,7 +32063,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 30,
     "bats": "L",
     "bbref_id": "mckinza01",
@@ -32072,7 +32073,7 @@
     "fangraphs_name": "Zach McKinstry",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 656716,
     "mlb_primary_position": "3B",
     "name": "Zach McKinstry",
@@ -32314,7 +32315,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "DMN",
     "age": 26,
     "bats": "R",
     "bbref_id": "gonzani01",
@@ -32324,7 +32325,7 @@
     "fangraphs_name": "Nick Gonzales",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Andromedans",
+    "manager": "The Damn Yankees",
     "mlb_id": 693304,
     "mlb_primary_position": "2B",
     "name": "Nick Gonzales",
@@ -32546,7 +32547,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 26,
     "bats": "R",
     "bbref_id": "duranez01",
@@ -32556,7 +32557,7 @@
     "fangraphs_name": "Ezequiel Duran",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 677649,
     "mlb_primary_position": "SS",
     "name": "Ezequiel Duran",
@@ -32851,7 +32852,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 25,
     "bats": "S",
     "bbref_id": "rocchbr01",
@@ -32861,7 +32862,7 @@
     "fangraphs_name": "Brayan Rocchio",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 677587,
     "mlb_primary_position": "SS",
     "name": "Brayan Rocchio",
@@ -33215,7 +33216,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "elderbr01",
@@ -33225,7 +33226,7 @@
     "fangraphs_name": "Bryce Elder",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": "Jepordizers!",
     "mlb_id": 693821,
     "mlb_primary_position": "P",
     "name": "Bryce Elder",
@@ -33414,7 +33415,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 23,
     "bats": "R",
     "bbref_id": "smithaj01",
@@ -33424,7 +33425,7 @@
     "fangraphs_name": "AJ Smith-Shawver",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 700363,
     "mlb_primary_position": "P",
     "name": "AJ Smith-Shawver",
@@ -35380,7 +35381,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 26,
     "bats": "L",
     "bbref_id": "bargead01",
@@ -35390,7 +35391,7 @@
     "fangraphs_name": "Addison Barger",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 680718,
     "mlb_primary_position": "3B",
     "name": "Addison Barger",
@@ -36254,7 +36255,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "RV",
     "age": 25,
     "bats": "R",
     "bbref_id": "henriro01",
@@ -36266,7 +36267,7 @@
     "fangraphs_name": "Ronny Henriquez",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": "Rick Vaughn",
     "mlb_id": 678692,
     "mlb_primary_position": "P",
     "name": "Ronny Henriquez",
@@ -36465,7 +36466,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "R",
     "bbref_id": "sheehem01",
@@ -36475,7 +36476,7 @@
     "fangraphs_name": "Emmet Sheehan",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "The Damn Yankees",
+    "manager": "Andromedans",
     "mlb_id": 686218,
     "mlb_primary_position": "P",
     "name": "Emmet Sheehan",
@@ -40864,7 +40865,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WAR",
     "age": 29,
     "bats": "L",
     "bbref_id": "burkebr01",
@@ -40874,7 +40875,7 @@
     "fangraphs_name": "Brock Burke",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Weekend Warriors",
     "mlb_id": 656271,
     "mlb_primary_position": "P",
     "name": "Brock Burke",
@@ -41557,7 +41558,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "holdeco01",
@@ -41567,7 +41568,7 @@
     "fangraphs_name": "Colin Holderman",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 670059,
     "mlb_primary_position": "P",
     "name": "Colin Holderman",
@@ -41652,7 +41653,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "cabreed02",
@@ -41662,7 +41663,7 @@
     "fangraphs_name": "Edward Cabrera",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 665795,
     "mlb_primary_position": "P",
     "name": "Edward Cabrera",
@@ -41703,7 +41704,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "cruzfe01",
@@ -41713,7 +41714,7 @@
     "fangraphs_name": "Fernando Cruz",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 518585,
     "mlb_primary_position": "P",
     "name": "Fernando Cruz",
@@ -43722,7 +43723,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "CFL",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "canoye01",
@@ -43732,7 +43733,7 @@
     "fangraphs_name": "Yennier Cano",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": "Country Fried Lamb",
+    "manager": null,
     "mlb_id": 666974,
     "mlb_primary_position": "P",
     "name": "Yennier Cano",
@@ -44127,7 +44128,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "HAM",
     "age": 28,
     "bats": "R",
     "bbref_id": "penaje01",
@@ -44137,7 +44138,7 @@
     "fangraphs_name": "Jeremy Pena",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": "Hammers",
     "mlb_id": 665161,
     "mlb_primary_position": "SS",
     "name": "Jeremy Pe\u00f1a",
@@ -45147,17 +45148,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 30,
     "bats": "L",
     "bbref_id": "youngja02",
     "birth_date": "1995-07-09",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20404",
     "fangraphs_name": "Jared Young",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 676724,
     "mlb_primary_position": "LF",
     "name": "Jared Young",
@@ -46047,7 +46048,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "torkesp01",
@@ -46057,7 +46058,7 @@
     "fangraphs_name": "Spencer Torkelson",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 679529,
     "mlb_primary_position": "1B",
     "name": "Spencer Torkelson",
@@ -46437,17 +46438,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 28,
     "bats": "L",
     "bbref_id": "coningr01",
     "birth_date": "1997-07-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "21626",
     "fangraphs_name": "Griffin Conine",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 665052,
     "mlb_primary_position": "LF",
     "name": "Griffin Conine",
@@ -47267,7 +47268,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "B2J",
     "age": 27,
     "bats": "R",
     "bbref_id": "rouppla01",
@@ -47277,7 +47278,7 @@
     "fangraphs_name": "Landen Roupp",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": "Btwn2Jackies",
     "mlb_id": 694738,
     "mlb_primary_position": "P",
     "name": "Landen Roupp",
@@ -48864,14 +48865,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "birth_date": "1999-01-07",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 675660,
     "mlb_primary_position": "P",
     "name": "Shane Drohan",
@@ -50420,7 +50421,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DRO",
     "age": 26,
     "bats": "L",
     "bbref_id": "camerno01",
@@ -50431,7 +50432,7 @@
     "fypd": false,
     "height": "6' 3\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Andromedans",
     "mlb_id": 702070,
     "mlb_primary_position": "P",
     "name": "Noah Cameron",
@@ -50562,7 +50563,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "WIZ",
+    "NRI": "",
     "age": 25,
     "bats": "S",
     "bbref_id": "nunezna01",
@@ -51420,7 +51421,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "cabaljo01",
@@ -51430,7 +51431,7 @@
     "fangraphs_name": "Jose Caballero",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 676609,
     "mlb_primary_position": "SS",
     "name": "Jos\u00e9 Caballero",
@@ -51470,7 +51471,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "ferrejo01",
@@ -51480,7 +51481,7 @@
     "fangraphs_name": "Jose A. Ferrer",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 678606,
     "mlb_primary_position": "P",
     "name": "Jose A. Ferrer",
@@ -51689,7 +51690,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "B2J",
+    "FBP_Team": "JEP",
     "age": 23,
     "bats": "R",
     "bbref_id": "sanojja01",
@@ -51699,7 +51700,7 @@
     "fangraphs_name": "Javier Sanoja",
     "fypd": false,
     "height": "5' 7\"",
-    "manager": "Btwn2Jackies",
+    "manager": "Jepordizers!",
     "mlb_id": 691594,
     "mlb_primary_position": "2B",
     "name": "Javier Sanoja",
@@ -51779,7 +51780,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 29,
     "bats": "S",
     "bbref_id": "manguja01",
@@ -51789,7 +51790,7 @@
     "fangraphs_name": "Jake Mangum",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 663968,
     "mlb_primary_position": "LF",
     "name": "Jake Mangum",
@@ -51923,7 +51924,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "youngja03",
@@ -51933,7 +51934,7 @@
     "fangraphs_name": "Jacob Young",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 696285,
     "mlb_primary_position": "CF",
     "name": "Jacob Young",
@@ -52503,7 +52504,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "RV",
     "age": 28,
     "bats": "L",
     "bbref_id": "canzodo01",
@@ -52513,7 +52514,7 @@
     "fangraphs_name": "Dominic Canzone",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Andromedans",
+    "manager": "Rick Vaughn",
     "mlb_id": 686527,
     "mlb_primary_position": "RF",
     "name": "Dominic Canzone",
@@ -56328,17 +56329,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 33,
     "bats": "L",
     "bbref_id": "booseca01",
     "birth_date": "1992-05-04",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "16061",
     "fangraphs_name": "Cam Booser",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 592155,
     "mlb_primary_position": "P",
     "name": "Cam Booser",
@@ -57887,7 +57888,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 28,
     "bats": "R",
     "bbref_id": "kellyke02",
@@ -57897,7 +57898,7 @@
     "fangraphs_name": "Kevin Kelly",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 687330,
     "mlb_primary_position": "P",
     "name": "Kevin Kelly",
@@ -58010,16 +58011,16 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 26,
     "bats": "L",
     "birth_date": "2000-01-20",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "",
+    "manager": "Hammers",
     "mlb_id": 681320,
     "mlb_primary_position": "P",
     "name": "Nate Lavender",
@@ -58031,7 +58032,7 @@
     "upid": "6426",
     "weight": 215,
     "yahoo_id": "",
-    "years_simple": "P"
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -58289,7 +58290,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "R",
     "bbref_id": "dreyeja01",
@@ -58302,7 +58303,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 676263,
     "mlb_primary_position": "P",
     "name": "Jack Dreyer",
@@ -58749,7 +58750,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DRO",
+    "FBP_Team": "",
     "age": 23,
     "bats": "R",
     "birth_date": "2002-07-28",
@@ -58758,7 +58759,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Andromedans",
+    "manager": null,
     "mlb_id": 683409,
     "mlb_primary_position": "P",
     "name": "Angel Chivilli",
@@ -58869,7 +58870,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "birth_date": "1999-11-28",
@@ -58878,7 +58879,7 @@
     "debuted": true,
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 694361,
     "mlb_primary_position": "P",
     "name": "Will Klein",
@@ -59147,7 +59148,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 24,
     "bats": "L",
     "bbref_id": "marseja01",
@@ -59159,7 +59160,7 @@
     "fangraphs_name": "Jakob Marsee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 805300,
     "mlb_primary_position": "CF",
     "name": "Jakob Marsee",
@@ -59709,12 +59710,12 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 28,
     "bats": "R",
     "bbref_id": "sabroer01",
     "birth_date": "1997-10-31",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "debut_date": null,
     "debuted": true,
     "fangraphs_id": "24978",
@@ -59722,7 +59723,7 @@
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 681870,
     "mlb_primary_position": "P",
     "name": "Erik Sabrowski",
@@ -66709,14 +66710,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "birth_date": "1994-05-16",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 7\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656848,
     "mlb_primary_position": "P",
     "name": "Michael Petersen",
@@ -70277,18 +70278,18 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 27,
     "bats": "L",
     "bbref_id": "lopezja03",
     "birth_date": "1998-03-11",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25098",
     "fangraphs_name": "Jacob Lopez",
     "fypd": false,
     "height": "6' 4\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 682052,
     "mlb_primary_position": "P",
     "name": "Jacob Lopez",
@@ -79165,14 +79166,14 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "L",
     "birth_date": "1999-11-05",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 696519,
     "mlb_primary_position": "P",
     "name": "Samy Natera Jr.",
@@ -112851,7 +112852,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "",
     "age": 28,
     "bats": "L",
     "bbref_id": "bledajj01",
@@ -112861,7 +112862,7 @@
     "fangraphs_name": "JJ Bleday",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Weekend Warriors",
+    "manager": null,
     "mlb_id": 668709,
     "mlb_primary_position": "CF",
     "name": "J.J. Bleday",
@@ -152156,7 +152157,8 @@
     "upid": "8408",
     "weight": 232,
     "yahoo_id": "61775",
-    "years_simple": ""
+    "years_simple": "",
+    "NRI": "SAD"
   },
   {
     "FBP_Team": "",
@@ -155093,7 +155095,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "DRO",
     "age": 35,
     "bats": "R",
     "birth_date": "1991-01-09",
@@ -157822,7 +157824,8 @@
     "upid": "8665",
     "weight": 250,
     "yahoo_id": "65281",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "WIZ"
   },
   {
     "FBP_Team": "",
@@ -158512,7 +158515,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WAR",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "L",
     "birth_date": "2000-05-16",
@@ -158520,7 +158523,7 @@
     "debut_date": "2020-08-14",
     "fypd": false,
     "level": "MLB",
-    "manager": "Weekend Warriors",
+    "manager": "Whiz Kids",
     "mlb_id": "671277",
     "name": "Luis Garcia Jr.",
     "player_type": "MLB",

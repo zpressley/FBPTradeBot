@@ -3378,7 +3378,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "S",
     "bbref_id": "happia01",
@@ -3388,7 +3388,7 @@
     "fangraphs_name": "Ian Happ",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 664023,
     "mlb_primary_position": "LF",
     "name": "Ian Happ",
@@ -3904,7 +3904,7 @@
     "years_simple": "TC BC-1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 30,
     "bats": "S",
     "bbref_id": "edmanto01",
@@ -3914,7 +3914,7 @@
     "fangraphs_name": "Tommy Edman",
     "fypd": false,
     "height": "5' 9\"",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 669242,
     "mlb_primary_position": "2B",
     "name": "Tommy Edman",
@@ -4321,7 +4321,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "millebr04",
@@ -4331,7 +4331,7 @@
     "fangraphs_name": "Bryce Miller",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 682243,
     "mlb_primary_position": "P",
     "name": "Bryce Miller",
@@ -10213,7 +10213,7 @@
     "years_simple": "VC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 29,
     "bats": "R",
     "bbref_id": "bradiky01",
@@ -10223,7 +10223,7 @@
     "fangraphs_name": "Kyle Bradish",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 680694,
     "mlb_primary_position": "P",
     "name": "Kyle Bradish",
@@ -10265,7 +10265,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 27,
     "bats": "S",
     "bbref_id": "estraje01",
@@ -10276,7 +10276,7 @@
     "fypd": false,
     "height": "6' 1\"",
     "level": "MLB",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 669093,
     "mlb_primary_position": "P",
     "name": "Jeremiah Estrada",
@@ -24192,7 +24192,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24202,7 +24202,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -49371,7 +49371,8 @@
     "upid": "4740",
     "weight": 180,
     "yahoo_id": "",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "LFB"
   },
   {
     "FBP_Team": "",
@@ -50448,17 +50449,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "TBB",
     "age": 28,
     "bats": "S",
     "bbref_id": "sogarni01",
     "birth_date": "1997-09-09",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25483",
     "fangraphs_name": "Nick Sogard",
     "fypd": false,
     "height": "6' 1\"",
-    "manager": null,
+    "manager": "The Bluke Blokes",
     "mlb_id": 686765,
     "mlb_primary_position": "1B",
     "name": "Nick Sogard",
