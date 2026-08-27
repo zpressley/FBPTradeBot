@@ -45,12 +45,30 @@ def save_token(token_data):
     with open(TOKEN_FILE, "w") as file:
         json.dump(token_data, file, indent=4)
 
+# Refresh slightly early. A token with seconds left passes a bare expiry check
+# and then 401s the call that was already using it.
+TOKEN_EXPIRY_SKEW_SECONDS = 120
+
 def is_token_expired(token_data):
-    """Check if access token is expired"""
-    return time.time() > token_data["expires_at"]
+    """Check if access token is expired (or close enough it will die mid-call)"""
+    return time.time() > token_data.get("expires_at", 0) - TOKEN_EXPIRY_SKEW_SECONDS
+
+# Widening waits between retries of a *transient* refresh failure. Yahoo
+# throttles at the app-ID level (see WARP.md "External API Rate Limits"), so a
+# failing refresh must not hammer the token endpoint on a fixed interval.
+_REFRESH_RETRY_DELAYS = (5, 30, 120)
 
 def refresh_access_token():
-    """Refresh access token using refresh token"""
+    """Refresh access token using refresh token.
+
+    Merges Yahoo's response into the stored token instead of replacing it: Yahoo
+    does not always return refresh_token on a refresh, and a wholesale replace
+    then erases the only credential that can refresh again, turning a routine
+    refresh into a manual re-auth.
+
+    Transient failures (network, 429, 5xx) retry with widening backoff. Auth
+    failures fail fast, because retrying cannot fix them.
+    """
     token_data = get_stored_token()
     if not token_data or "refresh_token" not in token_data:
         print("No refresh token available. Re-authentication required.")
@@ -58,21 +76,66 @@ def refresh_access_token():
 
     refresh_token = token_data["refresh_token"]
 
-    response = requests.post(
-        TOKEN_URL,
-        auth=HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET),
-        data={"grant_type": "refresh_token", "refresh_token": refresh_token}
-    )
+    for attempt, delay in enumerate(_REFRESH_RETRY_DELAYS + (None,), start=1):
+        try:
+            response = requests.post(
+                TOKEN_URL,
+                auth=HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET),
+                data={"grant_type": "refresh_token", "refresh_token": refresh_token},
+                timeout=30,
+            )
+        except requests.RequestException as exc:
+            if delay is None:
+                print(f"❌ Token refresh failed after {attempt} attempts: {exc}")
+                return None
+            print(f"⚠️  Token refresh network error (attempt {attempt}): {exc} — retrying in {delay}s")
+            time.sleep(delay)
+            continue
 
-    if response.status_code == 200:
-        new_token_data = response.json()
-        new_token_data["expires_at"] = time.time() + new_token_data["expires_in"]
-        save_token(new_token_data)
-        print("🔄 Access token refreshed successfully!")
-        return new_token_data["access_token"]
-    else:
-        print(f"❌ Failed to refresh token: {response.text}")
-        return None
+        if response.status_code == 200:
+            payload = response.json()
+            # Merge, never replace — see docstring.
+            new_token_data = dict(token_data)
+            new_token_data.update(payload)
+            if not payload.get("refresh_token"):
+                print("ℹ️  Yahoo returned no refresh_token; keeping the existing one.")
+                new_token_data["refresh_token"] = refresh_token
+            new_token_data["expires_at"] = time.time() + payload.get("expires_in", 3600)
+            save_token(new_token_data)
+            print("🔄 Access token refreshed successfully!")
+            return new_token_data["access_token"]
+
+        # 403 = Yahoo rejecting the app itself, not the token. A fresh token
+        # cannot fix it and retrying deepens the throttle. See WARP.md.
+        if response.status_code == 403:
+            print(
+                "❌ Yahoo rejected the app (403). This is an app-level block/throttle, "
+                f"not a credential problem — check call volume and app status: {response.text}"
+            )
+            return None
+
+        # 400/401 = the grant itself is dead. Only re-auth fixes this.
+        if response.status_code in (400, 401):
+            print(
+                f"❌ Refresh token rejected ({response.status_code}). "
+                f"Re-authentication required: {response.text}"
+            )
+            return None
+
+        if delay is None:
+            print(
+                f"❌ Failed to refresh token after {attempt} attempts "
+                f"({response.status_code}): {response.text}"
+            )
+            return None
+
+        print(
+            f"⚠️  Token refresh failed ({response.status_code}, attempt {attempt}) "
+            f"— retrying in {delay}s"
+        )
+        time.sleep(delay)
+
+    return None
 
 def get_access_token():
     """Retrieve access token (refresh if expired)"""
