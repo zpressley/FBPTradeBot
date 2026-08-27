@@ -4,6 +4,9 @@
     "python": "3.12"
   },
   "deploy": {
-    "aptPackages": ["git"]
+    "startCommand": "python3 health.py",
+    "aptPackages": [
+      "git"
+    ]
   }
 }
