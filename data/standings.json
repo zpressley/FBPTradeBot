@@ -383,11 +383,11 @@
       "record": "202-196-22",
       "win_pct": 0.507,
       "opponent": "JEP",
-      "score": "4",
+      "score": "5",
       "opponent_score": "15",
-      "ties": "1",
-      "live_record": "4-15-1",
-      "live_win_pct": 0.225,
+      "ties": "0",
+      "live_record": "5-15-0",
+      "live_win_pct": 0.25,
       "categories": {
         "H/AB": "24/96",
         "R": 9,
@@ -400,7 +400,7 @@
         "TB": 33,
         "AVG": ".250",
         "OPS": ".668",
-        "APP": 11,
+        "APP": 12,
         "IP": "20.0",
         "ER": 13,
         "P_HR": 3,
@@ -412,8 +412,8 @@
         "BB/9": "4.50",
         "QS": 1
       },
-      "overall_live_record": "206-211-23",
-      "overall_live_win_pct": 0.494,
+      "overall_live_record": "207-211-22",
+      "overall_live_win_pct": 0.495,
       "live_rank": 8
     },
     {
@@ -424,10 +424,10 @@
       "win_pct": 0.495,
       "opponent": "B2J",
       "score": "15",
-      "opponent_score": "4",
-      "ties": "1",
-      "live_record": "15-4-1",
-      "live_win_pct": 0.775,
+      "opponent_score": "5",
+      "ties": "0",
+      "live_record": "15-5-0",
+      "live_win_pct": 0.75,
       "categories": {
         "H/AB": "26/112",
         "R": 16,
@@ -452,8 +452,8 @@
         "BB/9": "1.45",
         "QS": 2
       },
-      "overall_live_record": "210-203-27",
-      "overall_live_win_pct": 0.508,
+      "overall_live_record": "210-204-26",
+      "overall_live_win_pct": 0.507,
       "live_rank": 6
     },
     {
@@ -590,7 +590,7 @@
       "team1": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "4",
+        "score": "5",
         "categories": {
           "H/AB": "24/96",
           "R": 9,
@@ -603,7 +603,7 @@
           "TB": 33,
           "AVG": ".250",
           "OPS": ".668",
-          "APP": 11,
+          "APP": 12,
           "IP": "20.0",
           "ER": 13,
           "P_HR": 3,
@@ -767,5 +767,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-08-27T21:30:28.528063+00:00"
+  "refreshed_at": "2026-08-27T21:50:28.554497+00:00"
 }
