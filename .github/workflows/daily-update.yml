@@ -19,6 +19,13 @@ jobs:
       FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
       BOT_API_URL: ${{ secrets.BOT_API_URL }}
       BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
+      # Yahoo OAuth app credentials. Until these repo secrets are set,
+      # data_pipeline/token_manager.py falls back to values hardcoded in the
+      # file -- which are public, because this repo is public. Set the secrets,
+      # then delete that fallback. See SECURITY_YAHOO_CREDENTIALS.md.
+      YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+      YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+      YAHOO_REDIRECT_URI: ${{ secrets.YAHOO_REDIRECT_URI }}
       GITHUB_TOKEN: ${{ github.token }}
       EMAIL_DIGEST_DATA_DIR: email-digest/data
       FBP_HUB_DATA_DIR: fbp-hub/data
