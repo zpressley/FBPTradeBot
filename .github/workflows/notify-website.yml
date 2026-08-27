@@ -5,7 +5,6 @@ on:
     paths:
       - 'data/**'
       - '!data/standings.json'
-      - '!data/standings_commit_state.json'
       - '!data/auction_resolved_state.json'
     branches:
       - main
