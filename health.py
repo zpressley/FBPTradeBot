@@ -2687,7 +2687,10 @@ async def standings_commit_tick():
         return
 
     _commit_and_push(
-        ["data/standings.json"],
+        # Backoff state rides along so the failure counter survives the redeploy
+        # this very push triggers -- otherwise it resets hourly and can never
+        # reach the 1h/4h tiers. See _STANDINGS_BACKOFF_STATE_FILE.
+        ["data/standings.json", _STANDINGS_BACKOFF_STATE_FILE],
         f"Live standings hourly commit {now.strftime('%Y-%m-%d %H:00 ET')}",
     )
     _standings_last_commit_hour = hour_key
