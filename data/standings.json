@@ -384,10 +384,10 @@
       "win_pct": 0.507,
       "opponent": "JEP",
       "score": "4",
-      "opponent_score": "16",
-      "ties": "0",
-      "live_record": "4-16-0",
-      "live_win_pct": 0.2,
+      "opponent_score": "15",
+      "ties": "1",
+      "live_record": "4-15-1",
+      "live_win_pct": 0.225,
       "categories": {
         "H/AB": "24/96",
         "R": 9,
@@ -400,7 +400,7 @@
         "TB": 33,
         "AVG": ".250",
         "OPS": ".668",
-        "APP": 10,
+        "APP": 11,
         "IP": "20.0",
         "ER": 13,
         "P_HR": 3,
@@ -412,8 +412,8 @@
         "BB/9": "4.50",
         "QS": 1
       },
-      "overall_live_record": "206-212-22",
-      "overall_live_win_pct": 0.493,
+      "overall_live_record": "206-211-23",
+      "overall_live_win_pct": 0.494,
       "live_rank": 8
     },
     {
@@ -423,11 +423,11 @@
       "record": "195-199-26",
       "win_pct": 0.495,
       "opponent": "B2J",
-      "score": "16",
+      "score": "15",
       "opponent_score": "4",
-      "ties": "0",
-      "live_record": "16-4-0",
-      "live_win_pct": 0.8,
+      "ties": "1",
+      "live_record": "15-4-1",
+      "live_win_pct": 0.775,
       "categories": {
         "H/AB": "26/112",
         "R": 16,
@@ -452,8 +452,8 @@
         "BB/9": "1.45",
         "QS": 2
       },
-      "overall_live_record": "211-203-26",
-      "overall_live_win_pct": 0.509,
+      "overall_live_record": "210-203-27",
+      "overall_live_win_pct": 0.508,
       "live_rank": 6
     },
     {
@@ -603,7 +603,7 @@
           "TB": 33,
           "AVG": ".250",
           "OPS": ".668",
-          "APP": 10,
+          "APP": 11,
           "IP": "20.0",
           "ER": 13,
           "P_HR": 3,
@@ -619,7 +619,7 @@
       "team2": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "16",
+        "score": "15",
         "categories": {
           "H/AB": "26/112",
           "R": 16,
@@ -767,5 +767,5 @@
       }
     }
   ],
-  "refreshed_at": "2026-08-27T20:50:28.628771+00:00"
+  "refreshed_at": "2026-08-27T21:10:28.730861+00:00"
 }
