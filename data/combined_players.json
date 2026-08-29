@@ -4037,7 +4037,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 31,
     "bats": "R",
     "bbref_id": "buehlwa01",
@@ -4047,7 +4047,7 @@
     "fangraphs_name": "Walker Buehler",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 621111,
     "mlb_primary_position": "P",
     "name": "Walker Buehler",
@@ -7526,7 +7526,8 @@
     "upid": "3898",
     "weight": 195,
     "yahoo_id": "60183",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "JEP"
   },
   {
     "FBP_Team": "",
@@ -8711,7 +8712,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 24,
     "bats": "L",
     "bbref_id": "keithco01",
@@ -8721,7 +8722,7 @@
     "fangraphs_name": "Colt Keith",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 690993,
     "mlb_primary_position": "2B",
     "name": "Colt Keith",
@@ -11583,7 +11584,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "bazsh01",
@@ -11593,7 +11594,7 @@
     "fangraphs_name": "Shane Baz",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 669358,
     "mlb_primary_position": "P",
     "name": "Shane Baz",
@@ -12937,7 +12938,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 27,
     "bats": "R",
     "bbref_id": "ortizjo06",
@@ -12947,7 +12948,7 @@
     "fangraphs_name": "Joey Ortiz",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 687401,
     "mlb_primary_position": "SS",
     "name": "Joey Ortiz",
@@ -21028,7 +21029,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "peterda01",
@@ -21038,7 +21039,7 @@
     "fangraphs_name": "David Peterson",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656849,
     "mlb_primary_position": "P",
     "name": "David Peterson",
@@ -25354,7 +25355,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 33,
     "bats": "S",
     "bbref_id": "belljo02",
@@ -25364,7 +25365,7 @@
     "fangraphs_name": "Josh Bell",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 605137,
     "mlb_primary_position": "1B",
     "name": "Josh Bell",
@@ -38336,7 +38337,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 26,
     "bats": "R",
     "bbref_id": "hernahe01",
@@ -38348,7 +38349,7 @@
     "fangraphs_name": "Heriberto Hernandez",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 681715,
     "mlb_primary_position": "LF",
     "name": "Heriberto Hernandez",
