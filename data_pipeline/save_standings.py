@@ -79,6 +79,10 @@ def fetch_and_save_standings():
             "display_name": display,
             "name": stat["name"],
             "display_only": stat.get("is_only_display_stat", "0") == "1",
+            # Yahoo sort_order: "1" = higher is better, "0" = lower is better.
+            # Carried through so the hub marks category leaders from league
+            # scoring rules instead of a hand-maintained list of stat names.
+            "sort_order": stat.get("sort_order"),
         })
 
     # Playoff configuration. Already present in the settings response fetched
