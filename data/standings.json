@@ -9,133 +9,155 @@
       "stat_id": "60",
       "display_name": "H/AB",
       "name": "Hits / At Bats",
-      "display_only": true
+      "display_only": true,
+      "sort_order": "1"
     },
     {
       "stat_id": "7",
       "display_name": "R",
       "name": "Runs",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "8",
       "display_name": "H",
       "name": "Hits",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "12",
       "display_name": "HR",
       "name": "Home Runs",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "13",
       "display_name": "RBI",
       "name": "Runs Batted In",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "16",
       "display_name": "SB",
       "name": "Stolen Bases",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "18",
       "display_name": "BB",
       "name": "Walks",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "21",
       "display_name": "K",
       "name": "Strikeouts",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "23",
       "display_name": "TB",
       "name": "Total Bases",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "3",
       "display_name": "AVG",
       "name": "Batting Average",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "55",
       "display_name": "OPS",
       "name": "On-base + Slugging Percentage",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "24",
       "display_name": "APP",
       "name": "Pitching Appearances",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "50",
       "display_name": "IP",
       "name": "Innings Pitched",
-      "display_only": true
+      "display_only": true,
+      "sort_order": "1"
     },
     {
       "stat_id": "37",
       "display_name": "ER",
       "name": "Earned Runs",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "38",
       "display_name": "P_HR",
       "name": "Home Runs",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "42",
       "display_name": "P_K",
       "name": "Strikeouts",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "49",
       "display_name": "P_TB",
       "name": "Total Bases Allowed",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "26",
       "display_name": "ERA",
       "name": "Earned Run Average",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "57",
       "display_name": "K/9",
       "name": "Strikeouts per Nine Innings",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     },
     {
       "stat_id": "77",
       "display_name": "H/9",
       "name": "Hits Per Nine Innings",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "78",
       "display_name": "BB/9",
       "name": "Walks Per Nine Innings",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "0"
     },
     {
       "stat_id": "83",
       "display_name": "QS",
       "name": "Quality Starts",
-      "display_only": false
+      "display_only": false,
+      "sort_order": "1"
     }
   ],
   "standings": [
@@ -794,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-08-29T16:03:35.577874+00:00"
+  "refreshed_at": "2026-08-29T16:21:09.467467+00:00"
 }
