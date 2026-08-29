@@ -59,7 +59,8 @@ def fetch_and_save_standings():
 
     # ── 1. Stat category names ──
     settings_data = _api(f"league/{LEAGUE_KEY}/settings", token)
-    stat_cats = settings_data["fantasy_content"]["league"][1]["settings"][0]["stat_categories"]["stats"]
+    league_settings = settings_data["fantasy_content"]["league"][1]["settings"][0]
+    stat_cats = league_settings["stat_categories"]["stats"]
     stat_names = {}
     stat_list = []
     seen_display = set()
@@ -79,6 +80,17 @@ def fetch_and_save_standings():
             "name": stat["name"],
             "display_only": stat.get("is_only_display_stat", "0") == "1",
         })
+
+    # Playoff configuration. Already present in the settings response fetched
+    # above -- read here so brackets can be represented without a new API call.
+    def _as_int(value):
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
+    playoff_start_week = _as_int(league_settings.get("playoff_start_week"))
+    num_playoff_teams = _as_int(league_settings.get("num_playoff_teams"))
 
     # ── 2. Standings ──
     standings_data = _api(f"league/{LEAGUE_KEY}/standings", token)
@@ -144,6 +156,16 @@ def fetch_and_save_standings():
         matchups.append({
             "team1": sides[0],
             "team2": sides[1],
+            # Playoff metadata Yahoo returns on the matchup object itself. It was
+            # previously dropped on the floor, which left the Championship /
+            # Consolation split unrepresentable downstream. Yahoo sends "0"/"1"
+            # strings; .get() keeps regular-season weeks (no such keys) working.
+            "is_playoffs": m.get("is_playoffs") == "1",
+            "is_consolation": m.get("is_consolation") == "1",
+            "status": m.get("status"),
+            "week_start": m.get("week_start"),
+            "week_end": m.get("week_end"),
+            "winner_team_key": m.get("winner_team_key"),
         })
 
     # ── 4. Per-team matchup summary with ties ──
@@ -206,9 +228,19 @@ def fetch_and_save_standings():
         s["live_rank"] = i
 
     # ── 5. Save ──
+    week_num = _as_int(current_week)
+    playoff_round = (
+        week_num - playoff_start_week + 1
+        if playoff_start_week and week_num and week_num >= playoff_start_week
+        else None
+    )
+
     snapshot = {
         "date": datetime.today().strftime("%Y-%m-%d"),
         "week": current_week,
+        "playoff_start_week": playoff_start_week,
+        "num_playoff_teams": num_playoff_teams,
+        "playoff_round": playoff_round,
         "stat_categories": stat_list,
         "standings": standings,
         "matchups": matchups,
@@ -218,7 +250,15 @@ def fetch_and_save_standings():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, indent=2)
 
-    print(f"✅ Standings + live matchups saved ({len(standings)} teams, {len(matchups)} matchups, week {current_week})")
+    playoff_note = ""
+    if playoff_round:
+        champ = sum(1 for mu in matchups if mu["is_playoffs"] and not mu["is_consolation"])
+        cons = sum(1 for mu in matchups if mu["is_consolation"])
+        playoff_note = f" | playoff round {playoff_round}: {champ} championship, {cons} consolation"
+    print(
+        f"✅ Standings + live matchups saved ({len(standings)} teams, "
+        f"{len(matchups)} matchups, week {current_week}){playoff_note}"
+    )
 
 
 if __name__ == "__main__":
