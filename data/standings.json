@@ -1,6 +1,9 @@
 {
   "date": "2026-08-29",
   "week": 22,
+  "playoff_start_week": 22,
+  "num_playoff_teams": 4,
+  "playoff_round": 1,
   "stat_categories": [
     {
       "stat_id": "60",
@@ -200,7 +203,7 @@
         "TB": 65,
         "AVG": ".262",
         "OPS": ".768",
-        "APP": 14,
+        "APP": 15,
         "IP": "40.0",
         "ER": 11,
         "P_HR": 3,
@@ -383,11 +386,11 @@
       "record": "202-196-22",
       "win_pct": 0.507,
       "opponent": "JEP",
-      "score": "6",
+      "score": "7",
       "opponent_score": "12",
-      "ties": "2",
-      "live_record": "6-12-2",
-      "live_win_pct": 0.35,
+      "ties": "1",
+      "live_record": "7-12-1",
+      "live_win_pct": 0.375,
       "categories": {
         "H/AB": "37/149",
         "R": 15,
@@ -400,7 +403,7 @@
         "TB": 54,
         "AVG": ".248",
         "OPS": ".674",
-        "APP": 14,
+        "APP": 15,
         "IP": "36.0",
         "ER": 14,
         "P_HR": 4,
@@ -412,8 +415,8 @@
         "BB/9": "3.25",
         "QS": 2
       },
-      "overall_live_record": "208-208-24",
-      "overall_live_win_pct": 0.5,
+      "overall_live_record": "209-208-23",
+      "overall_live_win_pct": 0.501,
       "live_rank": 8
     },
     {
@@ -424,10 +427,10 @@
       "win_pct": 0.495,
       "opponent": "B2J",
       "score": "12",
-      "opponent_score": "6",
-      "ties": "2",
-      "live_record": "12-6-2",
-      "live_win_pct": 0.65,
+      "opponent_score": "7",
+      "ties": "1",
+      "live_record": "12-7-1",
+      "live_win_pct": 0.625,
       "categories": {
         "H/AB": "34/152",
         "R": 21,
@@ -452,8 +455,8 @@
         "BB/9": "1.66",
         "QS": 4
       },
-      "overall_live_record": "207-205-28",
-      "overall_live_win_pct": 0.502,
+      "overall_live_record": "207-206-27",
+      "overall_live_win_pct": 0.501,
       "live_rank": 7
     },
     {
@@ -543,7 +546,7 @@
           "TB": 65,
           "AVG": ".262",
           "OPS": ".768",
-          "APP": 14,
+          "APP": 15,
           "IP": "40.0",
           "ER": 11,
           "P_HR": 3,
@@ -584,13 +587,19 @@
           "BB/9": "3.35",
           "QS": 3
         }
-      }
+      },
+      "is_playoffs": true,
+      "is_consolation": false,
+      "status": "midevent",
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-30",
+      "winner_team_key": null
     },
     {
       "team1": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "37/149",
           "R": 15,
@@ -603,7 +612,7 @@
           "TB": 54,
           "AVG": ".248",
           "OPS": ".674",
-          "APP": 14,
+          "APP": 15,
           "IP": "36.0",
           "ER": 14,
           "P_HR": 4,
@@ -644,7 +653,13 @@
           "BB/9": "1.66",
           "QS": 4
         }
-      }
+      },
+      "is_playoffs": true,
+      "is_consolation": true,
+      "status": "midevent",
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-30",
+      "winner_team_key": null
     },
     {
       "team1": {
@@ -704,7 +719,13 @@
           "BB/9": "2.20",
           "QS": 5
         }
-      }
+      },
+      "is_playoffs": true,
+      "is_consolation": false,
+      "status": "midevent",
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-30",
+      "winner_team_key": null
     },
     {
       "team1": {
@@ -764,7 +785,14 @@
           "BB/9": "0.56",
           "QS": 2
         }
-      }
+      },
+      "is_playoffs": true,
+      "is_consolation": true,
+      "status": "midevent",
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-30",
+      "winner_team_key": null
     }
-  ]
+  ],
+  "refreshed_at": "2026-08-29T16:03:35.577874+00:00"
 }
