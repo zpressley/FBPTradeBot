@@ -168,11 +168,11 @@
       "record": "246-157-17",
       "win_pct": 0.606,
       "opponent": "WIZ",
-      "score": "6",
+      "score": "5",
       "opponent_score": "11",
-      "ties": "3",
-      "live_record": "6-11-3",
-      "live_win_pct": 0.375,
+      "ties": "4",
+      "live_record": "5-11-4",
+      "live_win_pct": 0.35,
       "categories": {
         "H/AB": "50/188",
         "R": 24,
@@ -197,8 +197,8 @@
         "BB/9": "3.84",
         "QS": 4
       },
-      "overall_live_record": "252-168-20",
-      "overall_live_win_pct": 0.595,
+      "overall_live_record": "251-168-21",
+      "overall_live_win_pct": 0.594,
       "live_rank": 2
     },
     {
@@ -209,10 +209,10 @@
       "win_pct": 0.552,
       "opponent": "LFB",
       "score": "11",
-      "opponent_score": "6",
-      "ties": "3",
-      "live_record": "11-6-3",
-      "live_win_pct": 0.625,
+      "opponent_score": "5",
+      "ties": "4",
+      "live_record": "11-5-4",
+      "live_win_pct": 0.65,
       "categories": {
         "H/AB": "52/186",
         "R": 24,
@@ -225,7 +225,7 @@
         "TB": 83,
         "AVG": ".280",
         "OPS": ".797",
-        "APP": 19,
+        "APP": 20,
         "IP": "61.0",
         "ER": 17,
         "P_HR": 6,
@@ -237,8 +237,8 @@
         "BB/9": "4.28",
         "QS": 4
       },
-      "overall_live_record": "233-184-23",
-      "overall_live_win_pct": 0.556,
+      "overall_live_record": "233-183-24",
+      "overall_live_win_pct": 0.557,
       "live_rank": 4
     },
     {
@@ -385,7 +385,7 @@
         "TB": 62,
         "AVG": ".200",
         "OPS": ".590",
-        "APP": 14,
+        "APP": 15,
         "IP": "37.2",
         "ER": 17,
         "P_HR": 6,
@@ -465,7 +465,7 @@
         "TB": 70,
         "AVG": ".220",
         "OPS": ".697",
-        "APP": 16,
+        "APP": 17,
         "IP": "40.1",
         "ER": 18,
         "P_HR": 3,
@@ -568,7 +568,7 @@
           "TB": 83,
           "AVG": ".280",
           "OPS": ".797",
-          "APP": 19,
+          "APP": 20,
           "IP": "61.0",
           "ER": 17,
           "P_HR": 6,
@@ -584,7 +584,7 @@
       "team2": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "6",
+        "score": "5",
         "categories": {
           "H/AB": "50/188",
           "R": 24,
@@ -663,7 +663,7 @@
           "TB": 70,
           "AVG": ".220",
           "OPS": ".697",
-          "APP": 16,
+          "APP": 17,
           "IP": "40.1",
           "ER": 18,
           "P_HR": 3,
@@ -795,7 +795,7 @@
           "TB": 62,
           "AVG": ".200",
           "OPS": ".590",
-          "APP": 14,
+          "APP": 15,
           "IP": "37.2",
           "ER": 17,
           "P_HR": 6,
@@ -815,5 +815,6 @@
       "week_end": "2026-08-30",
       "winner_team_key": null
     }
-  ]
+  ],
+  "refreshed_at": "2026-08-30T16:01:50.879475+00:00"
 }
