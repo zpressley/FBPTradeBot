@@ -4037,7 +4037,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 31,
     "bats": "R",
     "bbref_id": "buehlwa01",
@@ -4047,7 +4047,7 @@
     "fangraphs_name": "Walker Buehler",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 621111,
     "mlb_primary_position": "P",
     "name": "Walker Buehler",
@@ -8319,7 +8319,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 34,
     "bats": "L",
     "bbref_id": "rayro02",
@@ -8330,7 +8330,7 @@
     "fypd": false,
     "height": "6' 2\"",
     "level": "MLB",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 592662,
     "mlb_primary_position": "P",
     "name": "Robbie Ray",
@@ -12344,7 +12344,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 35,
     "bats": "R",
     "bbref_id": "perezsa02",
@@ -12354,7 +12354,7 @@
     "fangraphs_name": "Salvador Perez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 521692,
     "mlb_primary_position": "C",
     "name": "Salvador Perez",
@@ -29892,7 +29892,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 26,
     "bats": "R",
     "bbref_id": "burkese01",
@@ -29902,7 +29902,7 @@
     "fangraphs_name": "Sean Burke",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 680732,
     "mlb_primary_position": "P",
     "name": "Sean Burke",
@@ -50565,7 +50565,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "",
+    "NRI": "DMN",
     "age": 25,
     "bats": "S",
     "bbref_id": "nunezna01",
