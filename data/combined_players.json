@@ -7502,6 +7502,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "JEP",
     "age": 25,
     "bats": "L",
     "bbref_id": "gilbedr01",
@@ -7526,8 +7527,7 @@
     "upid": "3898",
     "weight": 195,
     "yahoo_id": "60183",
-    "years_simple": "P",
-    "NRI": "JEP"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -16349,6 +16349,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "DRO",
     "age": 22,
     "bats": "S",
     "bbref_id": "amadoad01",
@@ -16372,8 +16373,7 @@
     "upid": "3527",
     "weight": 200,
     "yahoo_id": "12411",
-    "years_simple": "TC R",
-    "NRI": "DRO"
+    "years_simple": "TC R"
   },
   {
     "FBP_Team": "",
@@ -49352,6 +49352,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-04-17",
@@ -49372,8 +49373,7 @@
     "upid": "4740",
     "weight": 180,
     "yahoo_id": "",
-    "years_simple": "P",
-    "NRI": ""
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",
@@ -60883,19 +60883,20 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 22,
     "bats": "S",
     "birth_date": "2004-02-08",
-    "contract_type": "",
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "",
+    "manager": "Whiz Kids",
     "mlb_id": 804858,
     "mlb_primary_position": "SS",
     "name": "Bryan Rincon",
+    "owner": "WIZ",
     "player_type": "Farm",
     "position": "SS",
     "status": "[7] P",
@@ -152140,6 +152141,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "",
     "age": 25,
     "bats": "R",
     "birth_date": "2000-11-07",
@@ -152159,8 +152161,7 @@
     "upid": "8408",
     "weight": 232,
     "yahoo_id": "61775",
-    "years_simple": "",
-    "NRI": ""
+    "years_simple": ""
   },
   {
     "FBP_Team": "",
@@ -157806,6 +157807,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "WIZ",
     "age": 25,
     "bats": "L",
     "birth_date": "2000-08-14",
@@ -157826,8 +157828,7 @@
     "upid": "8665",
     "weight": 250,
     "yahoo_id": "65281",
-    "years_simple": "P",
-    "NRI": "WIZ"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",

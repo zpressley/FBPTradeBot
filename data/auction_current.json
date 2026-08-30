@@ -1,18 +1,8 @@
 {
-  "bids": [
-    {
-      "amount": 10,
-      "bid_id": "bid-3bbefcf14279",
-      "bid_type": "OB",
-      "date": "2026-08-25",
-      "prospect_id": "6670",
-      "team": "WIZ",
-      "timestamp": "2026-08-25T13:10:21.700919+00:00"
-    }
-  ],
-  "last_updated": "2026-08-25T13:10:21.700919+00:00",
+  "bids": [],
+  "last_updated": "2026-08-30T16:05:47.872110+00:00",
   "matches": [],
-  "phase": "ob_window",
+  "phase": "processing",
   "priority_order": [
     "DRO",
     "RV",
@@ -27,6 +17,14 @@
     "SAD",
     "LFB"
   ],
+  "resolved_at": "2026-08-30T16:05:47.759586+00:00",
+  "resolved_winners": {
+    "6670": {
+      "amount": 10,
+      "name": "Bryan Rincon",
+      "team": "WIZ"
+    }
+  },
   "schedule_meta": {
     "all_star_break_start": "2026-07-13",
     "auction_restart": "2026-07-20",

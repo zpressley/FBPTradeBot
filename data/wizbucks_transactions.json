@@ -5183,5 +5183,25 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_auction_winner_1788105947",
+    "timestamp": "2026-08-30T16:05:47.760621Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 75,
+    "balance_after": 65,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-24 to 2026-08-30: Bryan Rincon",
+    "related_player": {
+      "upid": "6670",
+      "name": "Bryan Rincon"
+    },
+    "metadata": {
+      "week_start": "2026-08-24",
+      "prospect_id": "6670",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
