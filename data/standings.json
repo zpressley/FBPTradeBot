@@ -168,11 +168,11 @@
       "record": "246-157-17",
       "win_pct": 0.606,
       "opponent": "DMN",
-      "score": "0",
+      "score": "1",
       "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "ties": "19",
+      "live_record": "1-0-19",
+      "live_win_pct": 0.525,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -185,7 +185,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 1,
+        "APP": 2,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -197,8 +197,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "246-157-37",
-      "overall_live_win_pct": 0.601,
+      "overall_live_record": "247-157-36",
+      "overall_live_win_pct": 0.602,
       "live_rank": 1
     },
     {
@@ -249,10 +249,10 @@
       "win_pct": 0.529,
       "opponent": "LFB",
       "score": "0",
-      "opponent_score": "0",
-      "ties": "20",
-      "live_record": "0-0-20",
-      "live_win_pct": 0.5,
+      "opponent_score": "1",
+      "ties": "19",
+      "live_record": "0-1-19",
+      "live_win_pct": 0.475,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -277,8 +277,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "212-188-40",
-      "overall_live_win_pct": 0.527,
+      "overall_live_record": "212-189-39",
+      "overall_live_win_pct": 0.526,
       "live_rank": 5
     },
     {
@@ -753,7 +753,7 @@
       "team1": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "0",
+        "score": "1",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -766,7 +766,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 1,
+          "APP": 2,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-08-31T20:21:36.906040+00:00"
+  "refreshed_at": "2026-08-31T20:41:37.233695+00:00"
 }
