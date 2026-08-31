@@ -4010,7 +4010,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "HAM",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "guerrvl01",
@@ -4021,7 +4021,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": "Hammers",
+    "manager": null,
     "mlb_id": 665489,
     "mlb_primary_position": "1B",
     "name": "Vladimir Guerrero Jr.",
@@ -7213,7 +7213,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "SAD",
     "age": 24,
     "bats": "R",
     "bbref_id": "bradlta01",
@@ -7223,7 +7223,7 @@
     "fangraphs_name": "Taj Bradley",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "not much of a donkey",
     "mlb_id": 671737,
     "mlb_primary_position": "P",
     "name": "Taj Bradley",
@@ -21414,14 +21414,14 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 31,
     "bats": "L",
     "birth_date": "1994-05-25",
     "contract_type": "Keeper Contract",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 622268,
     "mlb_primary_position": "2B",
     "name": "Donovan Walton",
@@ -32802,7 +32802,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "gelofza01",
@@ -32812,7 +32812,7 @@
     "fangraphs_name": "Zack Gelof",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 680869,
     "mlb_primary_position": "2B",
     "name": "Zack Gelof",
@@ -51423,7 +51423,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "HAM",
     "age": 29,
     "bats": "R",
     "bbref_id": "cabaljo01",
@@ -51433,7 +51433,7 @@
     "fangraphs_name": "Jose Caballero",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Hammers",
     "mlb_id": 676609,
     "mlb_primary_position": "SS",
     "name": "Jos\u00e9 Caballero",
@@ -51926,7 +51926,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "youngja03",
@@ -51936,7 +51936,7 @@
     "fangraphs_name": "Jacob Young",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 696285,
     "mlb_primary_position": "CF",
     "name": "Jacob Young",
