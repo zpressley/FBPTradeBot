@@ -185,7 +185,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -239,7 +239,7 @@
       },
       "overall_live_record": "222-178-40",
       "overall_live_win_pct": 0.55,
-      "live_rank": 4
+      "live_rank": 3
     },
     {
       "rank": 3,
@@ -265,7 +265,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -328,11 +328,11 @@
       "record": "222-179-19",
       "win_pct": 0.551,
       "opponent": "JEP",
-      "score": "1",
+      "score": "0",
       "opponent_score": "0",
-      "ties": "19",
-      "live_record": "1-0-19",
-      "live_win_pct": 0.525,
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -357,9 +357,9 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "223-179-38",
-      "overall_live_win_pct": 0.55,
-      "live_rank": 3
+      "overall_live_record": "222-179-39",
+      "overall_live_win_pct": 0.549,
+      "live_rank": 4
     },
     {
       "rank": 6,
@@ -449,10 +449,10 @@
       "win_pct": 0.495,
       "opponent": "SAD",
       "score": "0",
-      "opponent_score": "1",
-      "ties": "19",
-      "live_record": "0-1-19",
-      "live_win_pct": 0.475,
+      "opponent_score": "0",
+      "ties": "20",
+      "live_record": "0-0-20",
+      "live_win_pct": 0.5,
       "categories": {
         "H/AB": "0/0",
         "R": 0,
@@ -465,7 +465,7 @@
         "TB": 0,
         "AVG": null,
         "OPS": null,
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -477,8 +477,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "195-200-45",
-      "overall_live_win_pct": 0.494,
+      "overall_live_record": "195-199-46",
+      "overall_live_win_pct": 0.495,
       "live_rank": 8
     },
     {
@@ -700,7 +700,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -716,7 +716,7 @@
       "team2": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "1",
+        "score": "0",
         "categories": {
           "H/AB": "0/0",
           "R": 0,
@@ -766,7 +766,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -795,7 +795,7 @@
           "TB": 0,
           "AVG": null,
           "OPS": null,
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-08-31T19:05:41.071105+00:00"
+  "refreshed_at": "2026-08-31T19:25:41.210577+00:00"
 }
