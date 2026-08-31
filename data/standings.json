@@ -329,10 +329,10 @@
       "win_pct": 0.551,
       "opponent": "TBB",
       "score": "13",
-      "opponent_score": "5",
-      "ties": "2",
-      "live_record": "13-5-2",
-      "live_win_pct": 0.7,
+      "opponent_score": "4",
+      "ties": "3",
+      "live_record": "13-4-3",
+      "live_win_pct": 0.725,
       "categories": {
         "H/AB": "68/236",
         "R": 36,
@@ -357,8 +357,8 @@
         "BB/9": "3.02",
         "QS": 3
       },
-      "overall_live_record": "235-184-21",
-      "overall_live_win_pct": 0.558,
+      "overall_live_record": "235-183-22",
+      "overall_live_win_pct": 0.559,
       "live_rank": 3
     },
     {
@@ -368,23 +368,23 @@
       "record": "207-195-18",
       "win_pct": 0.514,
       "opponent": "SAD",
-      "score": "5",
+      "score": "4",
       "opponent_score": "13",
-      "ties": "2",
-      "live_record": "5-13-2",
-      "live_win_pct": 0.3,
+      "ties": "3",
+      "live_record": "4-13-3",
+      "live_win_pct": 0.275,
       "categories": {
-        "H/AB": "44/210",
+        "H/AB": "44/211",
         "R": 18,
         "H": 44,
         "HR": 7,
         "RBI": 24,
         "SB": 2,
         "BB": 17,
-        "K": 52,
+        "K": 53,
         "TB": 75,
-        "AVG": ".210",
-        "OPS": ".625",
+        "AVG": ".209",
+        "OPS": ".622",
         "APP": 16,
         "IP": "45.2",
         "ER": 18,
@@ -397,8 +397,8 @@
         "BB/9": "0.79",
         "QS": 3
       },
-      "overall_live_record": "212-208-20",
-      "overall_live_win_pct": 0.505,
+      "overall_live_record": "211-208-21",
+      "overall_live_win_pct": 0.503,
       "live_rank": 6
     },
     {
@@ -782,19 +782,19 @@
       "team2": {
         "team": "TBB",
         "name": "The Bluke Blokes",
-        "score": "5",
+        "score": "4",
         "categories": {
-          "H/AB": "44/210",
+          "H/AB": "44/211",
           "R": 18,
           "H": 44,
           "HR": 7,
           "RBI": 24,
           "SB": 2,
           "BB": 17,
-          "K": 52,
+          "K": 53,
           "TB": 75,
-          "AVG": ".210",
-          "OPS": ".625",
+          "AVG": ".209",
+          "OPS": ".622",
           "APP": 16,
           "IP": "45.2",
           "ER": 18,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-08-31T01:56:50.702364+00:00"
+  "refreshed_at": "2026-08-31T02:16:50.654153+00:00"
 }
