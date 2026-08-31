@@ -329,22 +329,22 @@
       "win_pct": 0.551,
       "opponent": "TBB",
       "score": "13",
-      "opponent_score": "4",
-      "ties": "3",
-      "live_record": "13-4-3",
-      "live_win_pct": 0.725,
+      "opponent_score": "5",
+      "ties": "2",
+      "live_record": "13-5-2",
+      "live_win_pct": 0.7,
       "categories": {
-        "H/AB": "67/234",
-        "R": 35,
-        "H": 67,
-        "HR": 12,
-        "RBI": 35,
+        "H/AB": "68/236",
+        "R": 36,
+        "H": 68,
+        "HR": 13,
+        "RBI": 36,
         "SB": 6,
         "BB": 15,
-        "K": 52,
-        "TB": 112,
-        "AVG": ".286",
-        "OPS": ".815",
+        "K": 53,
+        "TB": 116,
+        "AVG": ".288",
+        "OPS": ".829",
         "APP": 16,
         "IP": "44.2",
         "ER": 20,
@@ -357,8 +357,8 @@
         "BB/9": "3.02",
         "QS": 3
       },
-      "overall_live_record": "235-183-22",
-      "overall_live_win_pct": 0.559,
+      "overall_live_record": "235-184-21",
+      "overall_live_win_pct": 0.558,
       "live_rank": 3
     },
     {
@@ -368,11 +368,11 @@
       "record": "207-195-18",
       "win_pct": 0.514,
       "opponent": "SAD",
-      "score": "4",
+      "score": "5",
       "opponent_score": "13",
-      "ties": "3",
-      "live_record": "4-13-3",
-      "live_win_pct": 0.275,
+      "ties": "2",
+      "live_record": "5-13-2",
+      "live_win_pct": 0.3,
       "categories": {
         "H/AB": "44/210",
         "R": 18,
@@ -397,8 +397,8 @@
         "BB/9": "0.79",
         "QS": 3
       },
-      "overall_live_record": "211-208-21",
-      "overall_live_win_pct": 0.503,
+      "overall_live_record": "212-208-20",
+      "overall_live_win_pct": 0.505,
       "live_rank": 6
     },
     {
@@ -755,17 +755,17 @@
         "name": "not much of a donkey",
         "score": "13",
         "categories": {
-          "H/AB": "67/234",
-          "R": 35,
-          "H": 67,
-          "HR": 12,
-          "RBI": 35,
+          "H/AB": "68/236",
+          "R": 36,
+          "H": 68,
+          "HR": 13,
+          "RBI": 36,
           "SB": 6,
           "BB": 15,
-          "K": 52,
-          "TB": 112,
-          "AVG": ".286",
-          "OPS": ".815",
+          "K": 53,
+          "TB": 116,
+          "AVG": ".288",
+          "OPS": ".829",
           "APP": 16,
           "IP": "44.2",
           "ER": 20,
@@ -782,7 +782,7 @@
       "team2": {
         "team": "TBB",
         "name": "The Bluke Blokes",
-        "score": "4",
+        "score": "5",
         "categories": {
           "H/AB": "44/210",
           "R": 18,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-08-31T01:36:50.835280+00:00"
+  "refreshed_at": "2026-08-31T01:56:50.702364+00:00"
 }
