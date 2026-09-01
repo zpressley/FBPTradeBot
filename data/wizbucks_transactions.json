@@ -5287,5 +5287,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_RV_contract_purchase_1788224317",
+    "timestamp": "2026-09-01T00:58:37.760101Z",
+    "team": "RV",
+    "amount": -5,
+    "balance_before": 105,
+    "balance_after": 100,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Ethan Salas DC \u2192 PC",
+    "related_player": {
+      "upid": "3720",
+      "name": "Ethan Salas"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

@@ -92297,5 +92297,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 PC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-08-31T20:58:37.762905-04:00-UPID_3720-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "RV",
+    "timestamp": "2026-08-31T20:58:37.762905-04:00",
+    "upid": "3720",
+    "player_name": "Ethan Salas",
+    "team": "SD",
+    "pos": "C",
+    "age": 19,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
