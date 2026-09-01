@@ -92251,5 +92251,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-08-31T20:23:40.980971-04:00-UPID_7954-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "JEP",
+    "timestamp": "2026-08-31T20:23:40.980971-04:00",
+    "upid": "7954",
+    "player_name": "Marek Houston",
+    "team": "MIN",
+    "pos": "SS",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]

@@ -5245,5 +5245,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1788222220",
+    "timestamp": "2026-09-01T00:23:40.976894Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 100,
+    "balance_after": 95,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Marek Houston DC \u2192 PC",
+    "related_player": {
+      "upid": "7954",
+      "name": "Marek Houston"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
