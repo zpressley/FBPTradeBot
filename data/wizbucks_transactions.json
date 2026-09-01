@@ -5329,5 +5329,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_B2J_contract_purchase_1788225869",
+    "timestamp": "2026-09-01T01:24:29.589061Z",
+    "team": "B2J",
+    "amount": -10,
+    "balance_before": 100,
+    "balance_after": 90,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Gage Wood PC \u2192 BC",
+    "related_player": {
+      "upid": "7962",
+      "name": "Gage Wood"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]

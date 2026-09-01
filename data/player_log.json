@@ -92343,5 +92343,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-08-31T21:24:29.592948-04:00-UPID_7962-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "B2J",
+    "timestamp": "2026-08-31T21:24:29.592948-04:00",
+    "upid": "7962",
+    "player_name": "Gage Wood",
+    "team": "PHI",
+    "pos": "SP",
+    "age": 22,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Btwn2Jackies",
+    "contract": "Blue Chip Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
