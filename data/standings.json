@@ -174,7 +174,7 @@
       "live_record": "4-13-3",
       "live_win_pct": 0.275,
       "categories": {
-        "H/AB": "11/35",
+        "H/AB": "11/36",
         "R": 6,
         "H": 11,
         "HR": 2,
@@ -183,8 +183,8 @@
         "BB": 3,
         "K": 8,
         "TB": 20,
-        "AVG": ".314",
-        "OPS": ".940",
+        "AVG": ".306",
+        "OPS": ".915",
         "APP": 3,
         "IP": "13.1",
         "ER": 6,
@@ -208,11 +208,11 @@
       "record": "222-178-20",
       "win_pct": 0.552,
       "opponent": "HAM",
-      "score": "8",
+      "score": "9",
       "opponent_score": "7",
-      "ties": "5",
-      "live_record": "8-7-5",
-      "live_win_pct": 0.525,
+      "ties": "4",
+      "live_record": "9-7-4",
+      "live_win_pct": 0.55,
       "categories": {
         "H/AB": "8/36",
         "R": 5,
@@ -225,7 +225,7 @@
         "TB": 20,
         "AVG": ".222",
         "OPS": ".799",
-        "APP": 2,
+        "APP": 3,
         "IP": "6.0",
         "ER": 1,
         "P_HR": 0,
@@ -237,8 +237,8 @@
         "BB/9": "3.00",
         "QS": 0
       },
-      "overall_live_record": "230-185-25",
-      "overall_live_win_pct": 0.551,
+      "overall_live_record": "231-185-24",
+      "overall_live_win_pct": 0.552,
       "live_rank": 4
     },
     {
@@ -289,10 +289,10 @@
       "win_pct": 0.606,
       "opponent": "WIZ",
       "score": "7",
-      "opponent_score": "8",
-      "ties": "5",
-      "live_record": "7-8-5",
-      "live_win_pct": 0.475,
+      "opponent_score": "9",
+      "ties": "4",
+      "live_record": "7-9-4",
+      "live_win_pct": 0.45,
       "categories": {
         "H/AB": "8/33",
         "R": 2,
@@ -317,8 +317,8 @@
         "BB/9": "0.00",
         "QS": 0
       },
-      "overall_live_record": "250-162-28",
-      "overall_live_win_pct": 0.6,
+      "overall_live_record": "250-163-27",
+      "overall_live_win_pct": 0.599,
       "live_rank": 1
     },
     {
@@ -555,7 +555,7 @@
       "team1": {
         "team": "WIZ",
         "name": "Whiz Kids",
-        "score": "8",
+        "score": "9",
         "categories": {
           "H/AB": "8/36",
           "R": 5,
@@ -568,7 +568,7 @@
           "TB": 20,
           "AVG": ".222",
           "OPS": ".799",
-          "APP": 2,
+          "APP": 3,
           "IP": "6.0",
           "ER": 1,
           "P_HR": 0,
@@ -755,7 +755,7 @@
         "name": "La Flama Blanca",
         "score": "4",
         "categories": {
-          "H/AB": "11/35",
+          "H/AB": "11/36",
           "R": 6,
           "H": 11,
           "HR": 2,
@@ -764,8 +764,8 @@
           "BB": 3,
           "K": 8,
           "TB": 20,
-          "AVG": ".314",
-          "OPS": ".940",
+          "AVG": ".306",
+          "OPS": ".915",
           "APP": 3,
           "IP": "13.1",
           "ER": 6,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-01T22:22:55.022768+00:00"
+  "refreshed_at": "2026-09-01T22:42:54.935240+00:00"
 }
