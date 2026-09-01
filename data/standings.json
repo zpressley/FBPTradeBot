@@ -369,10 +369,10 @@
       "win_pct": 0.514,
       "opponent": "B2J",
       "score": "0",
-      "opponent_score": "12",
-      "ties": "8",
-      "live_record": "0-12-8",
-      "live_win_pct": 0.2,
+      "opponent_score": "11",
+      "ties": "9",
+      "live_record": "0-11-9",
+      "live_win_pct": 0.225,
       "categories": {
         "H/AB": "7/28",
         "R": 3,
@@ -385,7 +385,7 @@
         "TB": 8,
         "AVG": ".250",
         "OPS": ".562",
-        "APP": 0,
+        "APP": 1,
         "IP": "0.0",
         "ER": 0,
         "P_HR": 0,
@@ -397,8 +397,8 @@
         "BB/9": null,
         "QS": 0
       },
-      "overall_live_record": "207-207-26",
-      "overall_live_win_pct": 0.5,
+      "overall_live_record": "207-206-27",
+      "overall_live_win_pct": 0.501,
       "live_rank": 7
     },
     {
@@ -408,11 +408,11 @@
       "record": "202-196-22",
       "win_pct": 0.507,
       "opponent": "TBB",
-      "score": "12",
+      "score": "11",
       "opponent_score": "0",
-      "ties": "8",
-      "live_record": "12-0-8",
-      "live_win_pct": 0.8,
+      "ties": "9",
+      "live_record": "11-0-9",
+      "live_win_pct": 0.775,
       "categories": {
         "H/AB": "9/28",
         "R": 3,
@@ -437,8 +437,8 @@
         "BB/9": "9.00",
         "QS": 0
       },
-      "overall_live_record": "214-196-30",
-      "overall_live_win_pct": 0.52,
+      "overall_live_record": "213-196-31",
+      "overall_live_win_pct": 0.519,
       "live_rank": 6
     },
     {
@@ -621,7 +621,7 @@
       "team1": {
         "team": "B2J",
         "name": "Btwn2Jackies",
-        "score": "12",
+        "score": "11",
         "categories": {
           "H/AB": "9/28",
           "R": 3,
@@ -663,7 +663,7 @@
           "TB": 8,
           "AVG": ".250",
           "OPS": ".562",
-          "APP": 0,
+          "APP": 1,
           "IP": "0.0",
           "ER": 0,
           "P_HR": 0,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-01T19:02:55.051625+00:00"
+  "refreshed_at": "2026-09-01T19:22:55.082749+00:00"
 }
