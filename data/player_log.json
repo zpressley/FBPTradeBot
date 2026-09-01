@@ -92320,5 +92320,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-08-31T21:22:29.883401-04:00-UPID_7622-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "B2J",
+    "timestamp": "2026-08-31T21:22:29.883401-04:00",
+    "upid": "7622",
+    "player_name": "Rainiel Rodriguez",
+    "team": "STL",
+    "pos": "C",
+    "age": 19,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Btwn2Jackies",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 BC"
   }
 ]

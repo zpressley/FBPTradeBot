@@ -5308,5 +5308,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_B2J_contract_purchase_1788225749",
+    "timestamp": "2026-09-01T01:22:29.879847Z",
+    "team": "B2J",
+    "amount": -15,
+    "balance_before": 115,
+    "balance_after": 100,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Rainiel Rodriguez DC \u2192 BC",
+    "related_player": {
+      "upid": "7622",
+      "name": "Rainiel Rodriguez"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 BC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
