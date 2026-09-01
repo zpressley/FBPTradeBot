@@ -92228,5 +92228,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-08-31T20:23:33.360042-04:00-UPID_3816-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "JEP",
+    "timestamp": "2026-08-31T20:23:33.360042-04:00",
+    "upid": "3816",
+    "player_name": "Michael Arroyo",
+    "team": "SEA",
+    "pos": "2B",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jeppie Torrs",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]

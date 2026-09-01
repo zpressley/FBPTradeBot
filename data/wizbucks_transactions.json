@@ -5224,5 +5224,26 @@
       "from_contract": "Development Cont.",
       "to_contract": "Purchased Contract"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1788222213",
+    "timestamp": "2026-09-01T00:23:33.356510Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 105,
+    "balance_after": 100,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Michael Arroyo DC \u2192 PC",
+    "related_player": {
+      "upid": "3816",
+      "name": "Michael Arroyo"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]
