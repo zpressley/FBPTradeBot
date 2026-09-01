@@ -5203,5 +5203,26 @@
       "amount": 10,
       "source": "auction_resolve"
     }
+  },
+  {
+    "txn_id": "wb_JEP_contract_purchase_1788222206",
+    "timestamp": "2026-09-01T00:23:26.434977Z",
+    "team": "JEP",
+    "amount": -5,
+    "balance_before": 110,
+    "balance_after": 105,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: George Klassen DC \u2192 PC",
+    "related_player": {
+      "upid": "6805",
+      "name": "George Klassen"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "DC \u2192 PC",
+      "from_contract": "Development Cont.",
+      "to_contract": "Purchased Contract"
+    }
   }
 ]

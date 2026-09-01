@@ -92205,5 +92205,28 @@
     "years": "TC 1",
     "update_type": "Roster",
     "event": "In Season Drop"
+  },
+  {
+    "id": "2026-2026-08-31T20:23:26.440397-04:00-UPID_6805-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "JEP",
+    "timestamp": "2026-08-31T20:23:26.440397-04:00",
+    "upid": "6805",
+    "player_name": "George Klassen",
+    "team": "LAA",
+    "pos": "SP",
+    "age": 24,
+    "level": "MLB",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Jepordizers!",
+    "contract": "Purchased Contract",
+    "status": "[9] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
