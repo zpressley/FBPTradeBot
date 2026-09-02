@@ -383,7 +383,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "SAD",
+    "FBP_Team": "",
     "age": 34,
     "bats": "R",
     "bbref_id": "manaese01",
@@ -393,7 +393,7 @@
     "fangraphs_name": "Sean Manaea",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": "not much of a donkey",
+    "manager": null,
     "mlb_id": 640455,
     "mlb_primary_position": "P",
     "name": "Sean Manaea",
@@ -6716,7 +6716,7 @@
     "years_simple": "VC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 29,
     "bats": "R",
     "bbref_id": "torregl01",
@@ -6726,7 +6726,7 @@
     "fangraphs_name": "Gleyber Torres",
     "fypd": false,
     "height": "5' 11\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 650402,
     "mlb_primary_position": "2B",
     "name": "Gleyber Torres",
@@ -16117,7 +16117,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 27,
     "bats": "L",
     "bbref_id": "leeju01",
@@ -16127,7 +16127,7 @@
     "fangraphs_name": "Jung Hoo Lee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 808982,
     "mlb_primary_position": "CF",
     "name": "Jung Hoo Lee",
@@ -16656,17 +16656,17 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 30,
     "bats": "L",
     "bbref_id": "quantca01",
     "birth_date": "1995-02-10",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "19312",
     "fangraphs_name": "Cal Quantrill",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 615698,
     "mlb_primary_position": "P",
     "name": "Cal Quantrill",
@@ -50664,7 +50664,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 30,
     "bats": "S",
     "bbref_id": "gaspemi01",
@@ -50674,7 +50674,7 @@
     "fangraphs_name": "Mickey Gasper",
     "fypd": false,
     "height": "5' 10\"",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": 681508,
     "mlb_primary_position": "2B",
     "name": "Mickey Gasper",
