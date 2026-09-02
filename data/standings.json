@@ -239,7 +239,7 @@
       },
       "overall_live_record": "233-187-20",
       "overall_live_win_pct": 0.552,
-      "live_rank": 4
+      "live_rank": 3
     },
     {
       "rank": 3,
@@ -260,11 +260,11 @@
         "HR": 4,
         "RBI": 13,
         "SB": 2,
-        "BB": 9,
+        "BB": 10,
         "K": 16,
         "TB": 33,
         "AVG": ".290",
-        "OPS": ".902",
+        "OPS": ".911",
         "APP": 4,
         "IP": "9.1",
         "ER": 0,
@@ -328,13 +328,13 @@
       "record": "222-179-19",
       "win_pct": 0.551,
       "opponent": "JEP",
-      "score": "11",
-      "opponent_score": "6",
+      "score": "10",
+      "opponent_score": "7",
       "ties": "3",
-      "live_record": "11-6-3",
-      "live_win_pct": 0.625,
+      "live_record": "10-7-3",
+      "live_win_pct": 0.575,
       "categories": {
-        "H/AB": "23/77",
+        "H/AB": "23/79",
         "R": 9,
         "H": 23,
         "HR": 1,
@@ -343,8 +343,8 @@
         "BB": 6,
         "K": 16,
         "TB": 31,
-        "AVG": ".299",
-        "OPS": ".744",
+        "AVG": ".291",
+        "OPS": ".726",
         "APP": 6,
         "IP": "19.2",
         "ER": 12,
@@ -357,9 +357,9 @@
         "BB/9": "2.29",
         "QS": 1
       },
-      "overall_live_record": "233-185-22",
-      "overall_live_win_pct": 0.555,
-      "live_rank": 3
+      "overall_live_record": "232-186-22",
+      "overall_live_win_pct": 0.552,
+      "live_rank": 4
     },
     {
       "rank": 6,
@@ -448,11 +448,11 @@
       "record": "195-199-26",
       "win_pct": 0.495,
       "opponent": "SAD",
-      "score": "6",
-      "opponent_score": "11",
+      "score": "7",
+      "opponent_score": "10",
       "ties": "3",
-      "live_record": "6-11-3",
-      "live_win_pct": 0.375,
+      "live_record": "7-10-3",
+      "live_win_pct": 0.425,
       "categories": {
         "H/AB": "21/72",
         "R": 10,
@@ -477,8 +477,8 @@
         "BB/9": "5.79",
         "QS": 0
       },
-      "overall_live_record": "201-210-29",
-      "overall_live_win_pct": 0.49,
+      "overall_live_record": "202-209-29",
+      "overall_live_win_pct": 0.492,
       "live_rank": 8
     },
     {
@@ -687,7 +687,7 @@
       "team1": {
         "team": "JEP",
         "name": "Jepordizers",
-        "score": "6",
+        "score": "7",
         "categories": {
           "H/AB": "21/72",
           "R": 10,
@@ -716,9 +716,9 @@
       "team2": {
         "team": "SAD",
         "name": "not much of a donkey",
-        "score": "11",
+        "score": "10",
         "categories": {
-          "H/AB": "23/77",
+          "H/AB": "23/79",
           "R": 9,
           "H": 23,
           "HR": 1,
@@ -727,8 +727,8 @@
           "BB": 6,
           "K": 16,
           "TB": 31,
-          "AVG": ".299",
-          "OPS": ".744",
+          "AVG": ".291",
+          "OPS": ".726",
           "APP": 6,
           "IP": "19.2",
           "ER": 12,
@@ -790,11 +790,11 @@
           "HR": 4,
           "RBI": 13,
           "SB": 2,
-          "BB": 9,
+          "BB": 10,
           "K": 16,
           "TB": 33,
           "AVG": ".290",
-          "OPS": ".902",
+          "OPS": ".911",
           "APP": 4,
           "IP": "9.1",
           "ER": 0,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-02T18:02:25.116799+00:00"
+  "refreshed_at": "2026-09-02T18:22:25.302973+00:00"
 }
