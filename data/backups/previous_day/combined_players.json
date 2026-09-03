@@ -4010,7 +4010,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "LFB",
     "age": 26,
     "bats": "R",
     "bbref_id": "guerrvl01",
@@ -4021,7 +4021,7 @@
     "fypd": false,
     "height": "6' 0\"",
     "level": "MLB",
-    "manager": null,
+    "manager": "La Flama Blanca",
     "mlb_id": 665489,
     "mlb_primary_position": "1B",
     "name": "Vladimir Guerrero Jr.",
@@ -7502,7 +7502,7 @@
   },
   {
     "FBP_Team": "",
-    "NRI": "JEP",
+    "NRI": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "gilbedr01",
@@ -11584,7 +11584,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "LFB",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "bazsh01",
@@ -11594,7 +11594,7 @@
     "fangraphs_name": "Shane Baz",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "La Flama Blanca",
+    "manager": null,
     "mlb_id": 669358,
     "mlb_primary_position": "P",
     "name": "Shane Baz",
@@ -11687,17 +11687,17 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 29,
     "bats": "L",
     "bbref_id": "herriti01",
     "birth_date": "1996-10-08",
-    "contract_type": "",
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "25139",
     "fangraphs_name": "Tim Herrin",
     "fypd": false,
     "height": "6' 6\"",
-    "manager": "",
+    "manager": "Whiz Kids",
     "mlb_id": 682120,
     "mlb_primary_position": "P",
     "name": "Tim Herrin",
@@ -11709,7 +11709,7 @@
     "upid": "6367",
     "weight": 230,
     "yahoo_id": "12733",
-    "years_simple": ""
+    "years_simple": "TC 1"
   },
   {
     "FBP_Team": "",
@@ -24193,7 +24193,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 26,
     "bats": "R",
     "bbref_id": "adelljo01",
@@ -24203,7 +24203,7 @@
     "fangraphs_name": "Jo Adell",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 666176,
     "mlb_primary_position": "CF",
     "name": "Jo Adell",
@@ -33217,7 +33217,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "elderbr01",
@@ -33227,7 +33227,7 @@
     "fangraphs_name": "Bryce Elder",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 693821,
     "mlb_primary_position": "P",
     "name": "Bryce Elder",
@@ -36493,7 +36493,7 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 26,
     "bats": "R",
     "bbref_id": "gomezyo01",
@@ -36505,7 +36505,7 @@
     "fangraphs_name": "Yoendrys Gomez",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 672782,
     "mlb_primary_position": "P",
     "name": "Yoendrys G\u00f3mez",
