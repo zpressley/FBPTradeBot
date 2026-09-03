@@ -168,11 +168,11 @@
       "record": "246-157-17",
       "win_pct": 0.606,
       "opponent": "DMN",
-      "score": "7",
+      "score": "8",
       "opponent_score": "12",
-      "ties": "1",
-      "live_record": "7-12-1",
-      "live_win_pct": 0.375,
+      "ties": "0",
+      "live_record": "8-12-0",
+      "live_win_pct": 0.4,
       "categories": {
         "H/AB": "34/112",
         "R": 24,
@@ -185,7 +185,7 @@
         "TB": 67,
         "AVG": ".304",
         "OPS": ".979",
-        "APP": 9,
+        "APP": 10,
         "IP": "21.2",
         "ER": 11,
         "P_HR": 3,
@@ -197,8 +197,8 @@
         "BB/9": "2.49",
         "QS": 1
       },
-      "overall_live_record": "253-169-18",
-      "overall_live_win_pct": 0.595,
+      "overall_live_record": "254-169-17",
+      "overall_live_win_pct": 0.597,
       "live_rank": 2
     },
     {
@@ -249,10 +249,10 @@
       "win_pct": 0.529,
       "opponent": "LFB",
       "score": "12",
-      "opponent_score": "7",
-      "ties": "1",
-      "live_record": "12-7-1",
-      "live_win_pct": 0.625,
+      "opponent_score": "8",
+      "ties": "0",
+      "live_record": "12-8-0",
+      "live_win_pct": 0.6,
       "categories": {
         "H/AB": "29/95",
         "R": 18,
@@ -277,8 +277,8 @@
         "BB/9": "3.38",
         "QS": 2
       },
-      "overall_live_record": "224-195-21",
-      "overall_live_win_pct": 0.533,
+      "overall_live_record": "224-196-20",
+      "overall_live_win_pct": 0.532,
       "live_rank": 5
     },
     {
@@ -753,7 +753,7 @@
       "team1": {
         "team": "LFB",
         "name": "La Flama Blanca",
-        "score": "7",
+        "score": "8",
         "categories": {
           "H/AB": "34/112",
           "R": 24,
@@ -766,7 +766,7 @@
           "TB": 67,
           "AVG": ".304",
           "OPS": ".979",
-          "APP": 9,
+          "APP": 10,
           "IP": "21.2",
           "ER": 11,
           "P_HR": 3,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-03T22:00:49.257274+00:00"
+  "refreshed_at": "2026-09-03T22:20:49.323388+00:00"
 }
