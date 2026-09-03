@@ -169,10 +169,10 @@
       "win_pct": 0.606,
       "opponent": "DMN",
       "score": "7",
-      "opponent_score": "13",
-      "ties": "0",
-      "live_record": "7-13-0",
-      "live_win_pct": 0.35,
+      "opponent_score": "12",
+      "ties": "1",
+      "live_record": "7-12-1",
+      "live_win_pct": 0.375,
       "categories": {
         "H/AB": "34/112",
         "R": 24,
@@ -185,7 +185,7 @@
         "TB": 67,
         "AVG": ".304",
         "OPS": ".979",
-        "APP": 8,
+        "APP": 9,
         "IP": "21.2",
         "ER": 11,
         "P_HR": 3,
@@ -197,8 +197,8 @@
         "BB/9": "2.49",
         "QS": 1
       },
-      "overall_live_record": "253-170-17",
-      "overall_live_win_pct": 0.594,
+      "overall_live_record": "253-169-18",
+      "overall_live_win_pct": 0.595,
       "live_rank": 2
     },
     {
@@ -248,11 +248,11 @@
       "record": "212-188-20",
       "win_pct": 0.529,
       "opponent": "LFB",
-      "score": "13",
+      "score": "12",
       "opponent_score": "7",
-      "ties": "0",
-      "live_record": "13-7-0",
-      "live_win_pct": 0.65,
+      "ties": "1",
+      "live_record": "12-7-1",
+      "live_win_pct": 0.625,
       "categories": {
         "H/AB": "29/95",
         "R": 18,
@@ -277,8 +277,8 @@
         "BB/9": "3.38",
         "QS": 2
       },
-      "overall_live_record": "225-195-20",
-      "overall_live_win_pct": 0.534,
+      "overall_live_record": "224-195-21",
+      "overall_live_win_pct": 0.533,
       "live_rank": 5
     },
     {
@@ -766,7 +766,7 @@
           "TB": 67,
           "AVG": ".304",
           "OPS": ".979",
-          "APP": 8,
+          "APP": 9,
           "IP": "21.2",
           "ER": 11,
           "P_HR": 3,
@@ -782,7 +782,7 @@
       "team2": {
         "team": "DMN",
         "name": "The Damn Yankees",
-        "score": "13",
+        "score": "12",
         "categories": {
           "H/AB": "29/95",
           "R": 18,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-03T21:00:49.161707+00:00"
+  "refreshed_at": "2026-09-03T21:20:49.354890+00:00"
 }
