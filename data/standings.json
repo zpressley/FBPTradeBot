@@ -209,10 +209,10 @@
       "win_pct": 0.552,
       "opponent": "HAM",
       "score": "14",
-      "opponent_score": "5",
-      "ties": "1",
-      "live_record": "14-5-1",
-      "live_win_pct": 0.725,
+      "opponent_score": "3",
+      "ties": "3",
+      "live_record": "14-3-3",
+      "live_win_pct": 0.775,
       "categories": {
         "H/AB": "36/135",
         "R": 21,
@@ -220,12 +220,12 @@
         "HR": 7,
         "RBI": 25,
         "SB": 4,
-        "BB": 9,
+        "BB": 10,
         "K": 30,
         "TB": 65,
         "AVG": ".267",
-        "OPS": ".799",
-        "APP": 10,
+        "OPS": ".803",
+        "APP": 11,
         "IP": "25.0",
         "ER": 7,
         "P_HR": 2,
@@ -237,8 +237,8 @@
         "BB/9": "2.16",
         "QS": 2
       },
-      "overall_live_record": "236-183-21",
-      "overall_live_win_pct": 0.56,
+      "overall_live_record": "236-181-23",
+      "overall_live_win_pct": 0.562,
       "live_rank": 3
     },
     {
@@ -288,11 +288,11 @@
       "record": "243-154-23",
       "win_pct": 0.606,
       "opponent": "WIZ",
-      "score": "5",
+      "score": "3",
       "opponent_score": "14",
-      "ties": "1",
-      "live_record": "5-14-1",
-      "live_win_pct": 0.275,
+      "ties": "3",
+      "live_record": "3-14-3",
+      "live_win_pct": 0.225,
       "categories": {
         "H/AB": "26/130",
         "R": 14,
@@ -317,8 +317,8 @@
         "BB/9": "0.67",
         "QS": 2
       },
-      "overall_live_record": "248-168-24",
-      "overall_live_win_pct": 0.591,
+      "overall_live_record": "246-168-26",
+      "overall_live_win_pct": 0.589,
       "live_rank": 2
     },
     {
@@ -563,12 +563,12 @@
           "HR": 7,
           "RBI": 25,
           "SB": 4,
-          "BB": 9,
+          "BB": 10,
           "K": 30,
           "TB": 65,
           "AVG": ".267",
-          "OPS": ".799",
-          "APP": 10,
+          "OPS": ".803",
+          "APP": 11,
           "IP": "25.0",
           "ER": 7,
           "P_HR": 2,
@@ -584,7 +584,7 @@
       "team2": {
         "team": "HAM",
         "name": "Hammers",
-        "score": "5",
+        "score": "3",
         "categories": {
           "H/AB": "26/130",
           "R": 14,
@@ -816,5 +816,5 @@
       "winner_team_key": null
     }
   ],
-  "refreshed_at": "2026-09-04T19:02:16.867764+00:00"
+  "refreshed_at": "2026-09-04T19:22:17.036128+00:00"
 }
