@@ -4037,7 +4037,7 @@
     "years_simple": "FC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 31,
     "bats": "R",
     "bbref_id": "buehlwa01",
@@ -4047,7 +4047,7 @@
     "fangraphs_name": "Walker Buehler",
     "fypd": false,
     "height": "6' 2\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 621111,
     "mlb_primary_position": "P",
     "name": "Walker Buehler",
@@ -16117,7 +16117,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "DMN",
+    "FBP_Team": "",
     "age": 27,
     "bats": "L",
     "bbref_id": "leeju01",
@@ -16127,7 +16127,7 @@
     "fangraphs_name": "Jung Hoo Lee",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "The Damn Yankees",
+    "manager": null,
     "mlb_id": 808982,
     "mlb_primary_position": "CF",
     "name": "Jung Hoo Lee",
@@ -16656,7 +16656,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "L",
     "bbref_id": "quantca01",
@@ -16666,7 +16666,7 @@
     "fangraphs_name": "Cal Quantrill",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 615698,
     "mlb_primary_position": "P",
     "name": "Cal Quantrill",
@@ -31415,17 +31415,17 @@
     "years_simple": "TC 1"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "DMN",
     "age": 31,
     "bats": "R",
     "bbref_id": "wellsty01",
     "birth_date": "1994-08-26",
-    "contract_type": null,
+    "contract_type": "Keeper Contract",
     "fangraphs_id": "20000",
     "fangraphs_name": "Tyler Wells",
     "fypd": false,
     "height": "6' 8\"",
-    "manager": null,
+    "manager": "The Damn Yankees",
     "mlb_id": 669330,
     "mlb_primary_position": "P",
     "name": "Tyler Wells",
@@ -58923,7 +58923,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 25,
     "bats": "L",
     "bbref_id": "wroblju01",
@@ -58936,7 +58936,7 @@
     "fypd": false,
     "height": "6' 1\"",
     "level": "MLB",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 680736,
     "mlb_primary_position": "P",
     "name": "Justin Wrobleski",
