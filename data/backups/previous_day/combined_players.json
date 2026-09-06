@@ -463,7 +463,7 @@
     "years_simple": "TC R"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "JEP",
     "age": 32,
     "bats": "R",
     "bbref_id": "holmecl01",
@@ -473,7 +473,7 @@
     "fangraphs_name": "Clay Holmes",
     "fypd": false,
     "height": "6' 5\"",
-    "manager": null,
+    "manager": "Jepordizers!",
     "mlb_id": 605280,
     "mlb_primary_position": "P",
     "name": "Clay Holmes",
@@ -6418,7 +6418,7 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "JEP",
+    "FBP_Team": "",
     "age": 29,
     "bats": "L",
     "bbref_id": "holmegr01",
@@ -6428,7 +6428,7 @@
     "fangraphs_name": "Grant Holmes",
     "fypd": false,
     "height": "6' 0\"",
-    "manager": "Jepordizers!",
+    "manager": null,
     "mlb_id": 656550,
     "mlb_primary_position": "P",
     "name": "Grant Holmes",
@@ -32472,7 +32472,7 @@
     "years_simple": "TC 2"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "WIZ",
     "age": 26,
     "bats": "L",
     "bbref_id": "liberma01",
@@ -32482,7 +32482,7 @@
     "fangraphs_name": "Matthew Liberatore",
     "fypd": false,
     "height": "6' 4\"",
-    "manager": null,
+    "manager": "Whiz Kids",
     "mlb_id": 669461,
     "mlb_primary_position": "P",
     "name": "Matthew Liberatore",
@@ -108955,7 +108955,7 @@
     "years_simple": ""
   },
   {
-    "FBP_Team": "WIZ",
+    "FBP_Team": "",
     "age": 30,
     "bats": "R",
     "bbref_id": "grifffo01",
@@ -108965,7 +108965,7 @@
     "fangraphs_name": "Foster Griffin",
     "fypd": false,
     "height": "6' 3\"",
-    "manager": "Whiz Kids",
+    "manager": null,
     "mlb_id": 656492,
     "mlb_primary_position": "P",
     "name": "Foster Griffin",
@@ -153027,7 +153027,8 @@
     "upid": "8450",
     "weight": 215,
     "yahoo_id": "63960",
-    "years_simple": "P"
+    "years_simple": "P",
+    "NRI": "HAM"
   },
   {
     "FBP_Team": "",
