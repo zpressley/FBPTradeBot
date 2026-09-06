@@ -83911,19 +83911,20 @@
     "years_simple": "P"
   },
   {
-    "FBP_Team": "",
+    "FBP_Team": "B2J",
     "age": 21,
     "bats": "L",
-    "contract_type": null,
+    "contract_type": "Purchased Contract",
     "debut_date": null,
     "debuted": false,
     "fypd": true,
     "fypd_rank": 143,
     "height_weight": "5' 8\" / 180 lbs",
-    "manager": null,
+    "manager": "Btwn2Jackies",
     "mlb_id": null,
     "mlb_primary_position": "OF",
     "name": "Kane Kepley",
+    "owner": "B2J",
     "player_type": "Farm",
     "position": "OF",
     "status": "[7] P",
@@ -153007,6 +153008,7 @@
   },
   {
     "FBP_Team": "",
+    "NRI": "HAM",
     "age": 26,
     "bats": "L",
     "birth_date": "1999-06-13",
@@ -153027,8 +153029,7 @@
     "upid": "8450",
     "weight": 215,
     "yahoo_id": "63960",
-    "years_simple": "P",
-    "NRI": "HAM"
+    "years_simple": "P"
   },
   {
     "FBP_Team": "",

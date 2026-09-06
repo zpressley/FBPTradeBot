@@ -5350,5 +5350,25 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_B2J_auction_winner_1788710912",
+    "timestamp": "2026-09-06T16:08:32.959362Z",
+    "team": "B2J",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "auction_winner",
+    "description": "Auction 2026-08-31 to 2026-09-06: Kane Kepley",
+    "related_player": {
+      "upid": "8023",
+      "name": "Kane Kepley"
+    },
+    "metadata": {
+      "week_start": "2026-08-31",
+      "prospect_id": "8023",
+      "amount": 10,
+      "source": "auction_resolve"
+    }
   }
 ]
