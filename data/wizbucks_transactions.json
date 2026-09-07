@@ -5391,5 +5391,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_RV_contract_purchase_1788786294",
+    "timestamp": "2026-09-07T13:04:54.684703Z",
+    "team": "RV",
+    "amount": -10,
+    "balance_before": 90,
+    "balance_after": 80,
+    "transaction_type": "contract_purchase",
+    "description": "Dashboard Self-Service: Eric Hartman PC \u2192 BC",
+    "related_player": {
+      "upid": "8444",
+      "name": "Eric Hartman"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Dashboard Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
