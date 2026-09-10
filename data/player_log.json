@@ -93539,5 +93539,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 PC \u2192 BC"
+  },
+  {
+    "id": "2026-2026-09-10T19:07:22.486992-04:00-UPID_6602-Purchase-Dashboard Self-Service",
+    "season": 2026,
+    "source": "Dashboard Self-Service",
+    "admin": "RV",
+    "timestamp": "2026-09-10T19:07:22.486992-04:00",
+    "upid": "6602",
+    "player_name": "Blake Mitchell",
+    "team": "KC",
+    "pos": "C",
+    "age": 21,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "Rick Vaughn",
+    "contract": "Purchased Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 DC \u2192 PC"
   }
 ]
