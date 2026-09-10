@@ -5433,5 +5433,26 @@
       "from_contract": "Purchased Contract",
       "to_contract": "Blue Chip Contract"
     }
+  },
+  {
+    "txn_id": "wb_WIZ_contract_purchase_1789071601",
+    "timestamp": "2026-09-10T20:20:01.967933Z",
+    "team": "WIZ",
+    "amount": -10,
+    "balance_before": 65,
+    "balance_after": 55,
+    "transaction_type": "contract_purchase",
+    "description": "Player Profile Self-Service: Braylon Doughty PC \u2192 BC",
+    "related_player": {
+      "upid": "7679",
+      "name": "Braylon Doughty"
+    },
+    "metadata": {
+      "season": 2026,
+      "source": "Player Profile Self-Service",
+      "upgrade": "PC \u2192 BC",
+      "from_contract": "Purchased Contract",
+      "to_contract": "Blue Chip Contract"
+    }
   }
 ]
