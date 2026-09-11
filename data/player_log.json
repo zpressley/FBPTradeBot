@@ -93562,5 +93562,28 @@
     "years": "P",
     "update_type": "Purchase",
     "event": "2026 DC \u2192 PC"
+  },
+  {
+    "id": "2026-2026-09-11T11:57:28.646608-04:00-UPID_2780-Purchase-Player Profile Self-Service",
+    "season": 2026,
+    "source": "Player Profile Self-Service",
+    "admin": "SAD",
+    "timestamp": "2026-09-11T11:57:28.646608-04:00",
+    "upid": "2780",
+    "player_name": "Joshua Baez",
+    "team": "STL",
+    "pos": "CF",
+    "age": 22,
+    "level": "",
+    "team_rank": null,
+    "rank": null,
+    "eta": "",
+    "player_type": "Farm",
+    "owner": "not much of a donkey",
+    "contract": "Blue Chip Contract",
+    "status": "[7] P",
+    "years": "P",
+    "update_type": "Purchase",
+    "event": "2026 PC \u2192 BC"
   }
 ]
