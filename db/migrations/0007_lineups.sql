@@ -12,8 +12,27 @@ create table league_settings (
 );
 insert into league_settings (key, value) values
   ('eligibility_games', '5'),   -- Spec 07: 5 games (or starts / relief appearances) earn a position
-  ('il_slots',          '5'),   -- Spec 07 Decisions: 5 IL and 2 NA spots, outside the 26
-  ('na_slots',          '2');
+  ('lineup_future_days', '7');  -- Spec 07: managers can set lineups up to 7 days ahead
+-- (the IL and NA limits, 5 and 2, live in roster_limits.il_max / na_max, Spec 03)
+
+-- MLB team abbreviations differ between sources (players.mlb_team, the schedule feed). Every team
+-- name either source may carry maps to one canonical abbreviation; lock and optimize resolve through it.
+create table mlb_team_aliases (
+  alias text primary key,
+  abbr  text not null
+);
+insert into mlb_team_aliases (alias, abbr)
+select a, a from unnest(array['ATH','AZ','ATL','BAL','BOS','CWS','CHC','CIN','CLE','COL','DET','HOU','KC','LAA',
+                              'LAD','MIA','MIL','MIN','NYM','NYY','PHI','PIT','SD','SEA','SF','STL','TB','TEX',
+                              'TOR','WSH']) a;
+insert into mlb_team_aliases (alias, abbr) values
+  ('OAK','ATH'), ('ARI','AZ'), ('WSN','WSH'), ('TBR','TB'), ('KCR','KC'),
+  ('SDP','SD'), ('SFG','SF'), ('CHW','CWS'), ('LA','LAD');
+
+-- The canonical abbreviation for any alias; text the table does not know passes through unchanged.
+create function mlb_abbr(t text) returns text language sql stable as $$
+  select coalesce((select abbr from mlb_team_aliases where alias = t), t)
+$$;
 
 -- ---------------------------------------------------------------- slot setup
 -- Position codes used by eligibility and slot 'accepts'. DH is an addition to the spec's list:

@@ -13,6 +13,9 @@ make_pick / make_picks are the only way a pick happens. Contracts are opened thr
 league.actions (assign_prospect_contract / assign_keeper_draft_pick), which also write the
 player_events row. Notifications are rows in the `notifications` outbox; nothing is sent from here.
 
+The picks table name lives in ONE constant, PICKS_TABLE. SQL in this module writes it as @picks and the
+helpers below fill it in, so the cutover rename (scripts/db/cutover_draft_rename.sql) is a one-line change here.
+
 Errors: DraftError (message safe to show a manager; .status is the HTTP status the API should use,
 403 for "not your turn").
 
@@ -21,6 +24,7 @@ Errors: DraftError (message safe to show a manager; .status is the HTTP status t
 
 from __future__ import annotations
 
+import logging
 from datetime import date, datetime, timedelta, timezone
 from fractions import Fraction
 
@@ -31,7 +35,13 @@ from psycopg.types.json import Jsonb
 from league import actions
 from league.actions import RuleError
 
-DEFAULT_CLOCK_SECONDS = {"prospect": 240, "keeper": 180}   # Prospect 4 min, Keeper 3 min (spec, changed 10/27)
+log = logging.getLogger(__name__)
+
+# The picks table (the spec's "draft_picks"). It is draft_picks_live until the cutover renames the Spec 01
+# mirror away; then change this ONE line to "draft_picks" (see scripts/db/cutover_draft_rename.sql).
+PICKS_TABLE = "draft_picks_live"
+# Clock lengths per draft type live in the draft_defaults table (db/migrations/0004_draft.sql), nowhere else.
+LOCAL_HOSTS = ("localhost", "127.0.0.1", "::1")
 WARNING_SECONDS = 60            # the 60-second warning
 HEARTBEAT_STALE_SECONDS = 15    # runner heartbeat older than this = the runner was down
 RESTART_MIN_SECONDS = 60        # after an outage the clock is at least this long
@@ -50,23 +60,31 @@ class DraftError(Exception):
         self.status = status
 
 
+class AwardsPaid(DraftError, RuleError):
+    """A correction was refused because the season's speed awards are already paid."""
+
+
 # ------------------------------------------------------------------ plumbing
+
+def _sql(sql):
+    return sql.replace("@picks", PICKS_TABLE)
+
 
 def _one(conn, sql, params=()):
     with conn.cursor(row_factory=dict_row) as cur:
-        cur.execute(sql, params)
+        cur.execute(_sql(sql), params)
         return cur.fetchone()
 
 
 def _all(conn, sql, params=()):
     with conn.cursor(row_factory=dict_row) as cur:
-        cur.execute(sql, params)
+        cur.execute(_sql(sql), params)
         return cur.fetchall()
 
 
 def _exec(conn, sql, params=()):
     with conn.cursor() as cur:
-        cur.execute(sql, params)
+        cur.execute(_sql(sql), params)
         return cur.rowcount
 
 
@@ -129,7 +147,7 @@ def _open_slots(conn, draft_id, exclude=None, limit=None):
     """Draftable slots with no pick, in the order they will be taken: makeup picks first (in the order
     they were voided), then by overall. `exclude` leaves out the slot that is on the clock."""
     sql = """select s.* from draft_slots s
-               left join draft_picks_live p on p.draft_id = s.draft_id and p.overall = s.overall
+               left join @picks p on p.draft_id = s.draft_id and p.overall = s.overall
               where s.draft_id = %s and s.skip_reason is null and p.overall is null
                 and s.overall is distinct from %s
               order by (s.makeup_seq is null), s.makeup_seq, s.overall"""
@@ -192,15 +210,37 @@ def slots_from_mirror(conn, draft, season):
     return slots
 
 
+def _db_host(conn):
+    return conn.info.host or ""
+
+
+def check_test_branch(conn):
+    """Test drafts only run on a test database: the league_settings row `branch` must be 'test', or the database
+    must be on this machine (127.0.0.1 / localhost / a unix socket). Raises DraftError otherwise."""
+    host = _db_host(conn)
+    if host in LOCAL_HOSTS or host.startswith("/"):
+        return
+    row = None
+    if _one(conn, "select to_regclass('league_settings') as t")["t"]:
+        row = _one(conn, "select value from league_settings where key = 'branch'")
+    if row is not None and row["value"] == "test":
+        return
+    raise DraftError("Test drafts only run on the test database branch (league_settings branch = 'test') or a local database. "
+                     f"This database is {host!r} and its branch is {row['value'] if row else 'not set'!s}.", 403)
+
+
 def create_draft(conn, draft_id, season, draft_type, slots, clock_seconds=None, is_test=False,
-                 forklift_seconds=10, starts_at=None):
+                 forklift_seconds=None, starts_at=None):
     """Create a draft in status 'setup' with its slots. `slots` is a list of dicts with round, pick_in_round,
-    original_team, team_abbr, round_type and optionally overall and skip_reason (see slots_from_mirror)."""
+    original_team, team_abbr, round_type and optionally overall and skip_reason (see slots_from_mirror).
+    clock_seconds / forklift_seconds left as None come from the draft_defaults table (a trigger fills them in).
+    An is_test draft is refused unless the database is a test branch or local (check_test_branch)."""
     if not slots:
         raise DraftError("A draft needs slots.")
-    if draft_type not in DEFAULT_CLOCK_SECONDS:
+    if draft_type not in ("prospect", "keeper"):
         raise DraftError("draft_type must be 'prospect' or 'keeper'.")
-    clock_seconds = clock_seconds or DEFAULT_CLOCK_SECONDS[draft_type]
+    if is_test:
+        check_test_branch(conn)
     with conn.transaction():
         _lock(conn, draft_id)
         try:
@@ -266,6 +306,15 @@ def preflight(conn, draft_id):
         if missing:
             n = _one(conn, "select count(*) as n from draft_pool(%s) pl where pl.eligible and pl.draft_rank is null", (draft_id,))["n"]
             problems.append(f"{n} eligible player(s) are missing from the ranking, e.g. " + ", ".join(m["name"] for m in missing) + ".")
+        # the FYPD rule for FYPD slots: autopick in rounds 1-2 can only take FYPD players, so the ranking must hold
+        # enough of them or the draft would pause at the first FYPD timeout
+        fypd_slots = _all(conn, "select round from draft_slots where draft_id = %s and round_type = 'fypd' and skip_reason is null", (draft_id,))
+        if d["draft_type"] == "prospect" and fypd_slots:
+            have = _one(conn, """select count(*) as n from draft_rankings k join draft_pool(%s, %s) pl on pl.upid = k.upid and pl.eligible
+                                  where k.draft_id = %s""", (draft_id, fypd_slots[0]["round"], draft_id))["n"]
+            if have < len(fypd_slots):
+                problems.append(f"The ranking has {have} FYPD-eligible player(s) for {len(fypd_slots)} FYPD pick(s) "
+                                "(rounds 1-2 only take FYPD players), so autopick would run out.")
     return problems
 
 
@@ -294,40 +343,75 @@ def start(conn, draft_id, actor, now=None, check=True):
         _notify_on_clock(conn, d, first[0], now)
 
 
-def pause(conn, draft_id, actor, reason=None, now=None):
+def pause(conn, draft_id, actor, reason=None, now=None, stale_seconds=HEARTBEAT_STALE_SECONDS, min_seconds=RESTART_MIN_SECONDS):
+    """Pause the clock. The time left is stored as it is, except that outage time is never held against a team:
+    if the runner's heartbeat is stale or under 1 second is left, at least min_seconds (60) is stored."""
     now = _now(now)
     with conn.transaction():
         _lock(conn, draft_id)
         d = _draft(conn, draft_id)
-        _pause(conn, d, actor, reason or "Paused by an admin", now)
+        _pause(conn, d, actor, reason or "Paused by an admin", now, stale_seconds=stale_seconds, min_seconds=min_seconds)
 
 
-def resume(conn, draft_id, actor, now=None):
+def resume(conn, draft_id, actor, now=None, min_seconds=RESTART_MIN_SECONDS):
     now = _now(now)
     with conn.transaction():
         _lock(conn, draft_id)
         d = _draft(conn, draft_id)
-        _resume(conn, d, actor, now)
+        _resume(conn, d, actor, now, min_seconds=min_seconds)
 
 
-def _pause(conn, d, actor, reason, now, remaining_ms=None, detail=None):
+def pause_if_runner_stale(conn, draft_id, now=None, stale_seconds=HEARTBEAT_STALE_SECONDS, min_seconds=RESTART_MIN_SECONDS):
+    """The process is up but the clock runner loop stopped (heartbeat older than stale_seconds): pause the draft
+    ("Draft clock paused, commissioner notified") and queue an admin_alert. Called by the API when it sees
+    state()['clock']['runner_stale']. The clock stored is at least min_seconds, so the outage is not held against
+    the team on the clock. Returns True if it paused, False if the draft is not live or the runner is fine."""
+    now = _now(now)
+    with conn.transaction():
+        _lock(conn, draft_id)
+        d = _draft(conn, draft_id)
+        clock = _clock(conn, draft_id)
+        if d["status"] != "live" or clock is None or not _heartbeat_stale(clock, now, stale_seconds):
+            return False
+        beat = clock["runner_heartbeat_at"]
+        _pause(conn, d, SYSTEM, "The clock runner stopped (no heartbeat)", now, detail={"auto": "runner_stale"},
+               stale_seconds=stale_seconds, min_seconds=min_seconds)
+        _alert(conn, draft_id, "Draft paused: the clock runner stopped ticking "
+                               f"(last heartbeat {beat.isoformat() if beat else 'never'}). Check the bot, then resume.", now)
+        return True
+
+
+def _heartbeat_stale(clock, now, stale_seconds):
+    return clock["runner_heartbeat_at"] is None or (now - clock["runner_heartbeat_at"]).total_seconds() > stale_seconds
+
+
+def _pause(conn, d, actor, reason, now, remaining_ms=None, detail=None, stale_seconds=HEARTBEAT_STALE_SECONDS,
+           min_seconds=RESTART_MIN_SECONDS):
     if d["status"] != "live":
         raise DraftError(f"Can't pause a draft that is {d['status']}.", 409)
     clock = _clock(conn, d["draft_id"])
+    detail = dict(detail or {})
     if remaining_ms is None:
         remaining_ms = max(0, int((clock["deadline_at"] - now).total_seconds() * 1000))
+        # Outage time must never become an autopick: if the runner was down (stale heartbeat) or the clock has
+        # just run out, the team keeps at least min_seconds when the draft resumes.
+        if (_heartbeat_stale(clock, now, stale_seconds) or remaining_ms < 1000) and remaining_ms < min_seconds * 1000:
+            detail["raised_from_ms"] = remaining_ms
+            remaining_ms = min_seconds * 1000
     _exec(conn, "update draft_clock set deadline_at = null, paused_remaining_ms = %s where draft_id = %s",
           (remaining_ms, d["draft_id"]))
     _exec(conn, "update drafts set status = 'paused' where draft_id = %s", (d["draft_id"],))
-    _event(conn, d["draft_id"], "pause", actor, {"reason": reason, "remaining_ms": remaining_ms, **(detail or {})}, now)
+    _event(conn, d["draft_id"], "pause", actor, {"reason": reason, "remaining_ms": remaining_ms, **detail}, now)
     _notify(conn, "draft_paused", d["draft_id"], {"reason": reason}, now)
 
 
-def _resume(conn, d, actor, now):
+def _resume(conn, d, actor, now, min_seconds=RESTART_MIN_SECONDS):
     if d["status"] != "paused":
         raise DraftError(f"Can't resume a draft that is {d['status']}.", 409)
     clock = _clock(conn, d["draft_id"])
     left = clock["paused_remaining_ms"] or 0
+    if left < 1000:         # never resume into an instant autopick
+        left = max(left, min_seconds * 1000)
     _exec(conn, """update draft_clock set deadline_at = %s, paused_remaining_ms = null, runner_heartbeat_at = %s
                     where draft_id = %s""", (now + timedelta(milliseconds=left), now, d["draft_id"]))
     _exec(conn, "update drafts set status = 'live' where draft_id = %s", (d["draft_id"],))
@@ -394,7 +478,7 @@ def clock_tick(conn, draft_id, now=None, stale_seconds=HEARTBEAT_STALE_SECONDS, 
         clock = _clock(conn, draft_id)
         if d["status"] not in ("live", "paused") or clock is None:
             return None
-        stale = clock["runner_heartbeat_at"] is None or (now - clock["runner_heartbeat_at"]).total_seconds() > stale_seconds
+        stale = _heartbeat_stale(clock, now, stale_seconds)
         _exec(conn, "update draft_clock set runner_heartbeat_at = %s where draft_id = %s", (now, draft_id))
         if d["status"] == "paused":
             return None
@@ -438,7 +522,25 @@ def _autopick_candidate(conn, d, slot, boards_only):
 
 
 def _timeout(conn, d, clock, now):
+    """The deadline passed. The whole autopick attempt runs in a savepoint: if it fails for ANY reason (a rule,
+    a bug, a database error) it is rolled back, the draft is paused and Zach is alerted. The runner never retries
+    a failing pick every second."""
     slot = _slot(conn, d["draft_id"], clock["on_clock_overall"])
+    team = slot["team_abbr"]
+    try:
+        with conn.transaction():
+            return _autopick_attempt(conn, d, slot, now)
+    except Exception as e:  # noqa: BLE001 - DraftError, or anything unexpected: pause and alert, never loop
+        if not isinstance(e, DraftError):
+            log.exception("autopick for %s at %s failed", team, _label(slot))
+        why = str(e) if isinstance(e, DraftError) else f"{type(e).__name__}: {e}"
+        _pause(conn, _draft(conn, d["draft_id"]), SYSTEM, f"Autopick failed for {team} at {_label(slot)}: {why}", now,
+               remaining_ms=d["clock_seconds"] * 1000)
+        _alert(conn, d["draft_id"], f"Draft paused: autopick failed for {team} at {_label(slot)}: {why}", now)
+        return "paused"
+
+
+def _autopick_attempt(conn, d, slot, now):
     team = slot["team_abbr"]
     forklift = _is_forklift(conn, d["draft_id"], team)
     upid = _autopick_candidate(conn, d, slot, boards_only=forklift)
@@ -457,15 +559,8 @@ def _timeout(conn, d, clock, now):
                                     "(no ranking uploaded, or it is used up). Upload a ranking or pick for them, then resume.", now)
         return "paused"
     source = "forklift" if forklift else "autopick"
-    try:
-        with conn.transaction():
-            picks = _do_picks(conn, d, team, [upid], source, SYSTEM, now)
-            _after_picks(conn, d["draft_id"], picks, now)
-    except DraftError as e:   # e.g. the team has no prepaid slot: stop and tell Zach instead of retrying every second
-        _pause(conn, _draft(conn, d["draft_id"]), SYSTEM, f"Autopick failed for {team} at {_label(slot)}: {e}", now,
-               remaining_ms=d["clock_seconds"] * 1000)
-        _alert(conn, d["draft_id"], f"Draft paused: autopick failed for {team} at {_label(slot)}: {e}", now)
-        return "paused"
+    picks = _do_picks(conn, d, team, [upid], source, SYSTEM, now)
+    _after_picks(conn, d["draft_id"], picks, now)
     return source
 
 
@@ -505,13 +600,15 @@ def _do_picks(conn, d, team, upids, source, actor, now):
             raise DraftError("Unknown player.", 404)
         if not pool["eligible"]:
             raise DraftError(pool["reason"], 409)
-        if source in ("autopick", "forklift") or _is_forklift(conn, d["draft_id"], slot["team_abbr"]):
+        if source == "admin":
+            used = None                     # an admin pick isn't timed: speed_rows leaves NULL out of the averages
+        elif source in ("autopick", "forklift") or _is_forklift(conn, d["draft_id"], slot["team_abbr"]):
             used = d["clock_seconds"]       # full clock, or forklift would win the speed awards every year
         else:
             left = max(0.0, (clock["deadline_at"] - now).total_seconds())
             used = min(d["clock_seconds"], max(0, round(d["clock_seconds"] - left)))
         tier = _sign_contract(conn, d, slot, upid, actor, now)
-        _exec(conn, """insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, made_at, seconds_used, contract_tier)
+        _exec(conn, """insert into @picks (draft_id, overall, upid, team_abbr, source, made_by, made_at, seconds_used, contract_tier)
                        values (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
               (d["draft_id"], slot["overall"], upid, slot["team_abbr"], source, actor, now, used, tier))
         actions._event(conn, upid, "draft_pick",
@@ -565,19 +662,34 @@ def make_picks(conn, draft_id, team, upids, source, actor, now=None):
 # ------------------------------------------------------------------ admin corrections
 
 def _reverse_contract(conn, d, pick, now):
-    """Close the contract a draft pick opened, free the prepaid prospect slot and the roster slot."""
-    actions._lock(conn, pick["team_abbr"])
-    c = _one(conn, "select * from contracts where upid = %s and valid_to is null for update", (pick["upid"],))
+    """Undo what a draft pick did to the roster: league.actions.reverse_draft_pick closes the contract, frees the
+    prepaid prospect slot and the roster slot. It refuses if the contract has changed since the pick."""
     name = _player_name(conn, pick["upid"])
-    if c is None or c["team_abbr"] != pick["team_abbr"] or c["acquired_via"] not in ("prospect_draft", "keeper_draft"):
-        raise DraftError(f"Can't change this pick: {name} no longer has the contract this pick gave "
-                         f"{pick['team_abbr']} (traded, upgraded or released since). Fix the contract first.", 409)
-    _exec(conn, "update contracts set valid_to = %s, end_reason = 'voided' where id = %s", (now, c["id"]))
-    _exec(conn, "delete from roster_slots where upid = %s", (pick["upid"],))
-    _exec(conn, "update prospect_draft_slots set filled_upid = null, filled_at = null where filled_upid = %s", (pick["upid"],))
-    actions._event(conn, pick["upid"], "draft_pick_reversed", f"{pick['team_abbr']}'s draft pick {pick['overall']} of "
-                   f"{d['draft_id']} was reversed; {name} is back in the pool.", team=pick["team_abbr"], season=d["season"],
-                   by=SYSTEM, ts=now, contract=pick["contract_tier"])
+    expected = ({"expected_prospect_type": pick["contract_tier"]} if d["draft_type"] == "prospect"
+                else {"expected_tier": pick["contract_tier"]})
+    try:
+        actions.reverse_draft_pick(conn, pick["upid"], pick["team_abbr"], created_by=SYSTEM, season=d["season"], now=now,
+                                   note=f"pick {pick['overall']} of {d['draft_id']}", **expected)
+    except RuleError as e:
+        raise DraftError(f"Can't change this pick: {e}. Fix the contract first.", 409) from e
+
+
+def _require_unpaid(conn, d):
+    """Corrections change who owns whom after the awards were computed from the picks: refuse once they are paid.
+    (Test drafts never pay, so they are never blocked.)"""
+    if d["is_test"]:
+        return
+    if _one(conn, "select 1 as x from wb_ledger where ref_type = 'draft_speed' and ref_id = %s limit 1", (str(d["season"]),)):
+        raise AwardsPaid(f"The {d['season']} speed awards are already paid, so this draft can't be corrected. "
+                         "An admin has to make the fix by hand.", 409)
+
+
+def _reopen(conn, d, now):
+    """A completed draft goes back to live. Its runner heartbeat is stale (nothing ticks a complete draft), so it is
+    reset to now: otherwise the next tick would think the runner was down and announce 'Draft resumed'."""
+    _exec(conn, "update drafts set status = 'live' where draft_id = %s", (d["draft_id"],))
+    _exec(conn, "update draft_clock set runner_heartbeat_at = %s where draft_id = %s", (now, d["draft_id"]))
+    return dict(d, status="live")
 
 
 def _need_reason(reason):
@@ -596,15 +708,15 @@ def undo_last_pick(conn, draft_id, actor, reason, now=None):
     with conn.transaction():
         _lock(conn, draft_id)
         d = _draft(conn, draft_id)
-        pick = _one(conn, "select * from draft_picks_live where draft_id = %s order by seq desc limit 1", (draft_id,))
+        _require_unpaid(conn, d)
+        pick = _one(conn, "select * from @picks where draft_id = %s order by seq desc limit 1", (draft_id,))
         if not pick:
             raise DraftError("There is no pick to undo.", 409)
         slot = _slot(conn, draft_id, pick["overall"])
         _reverse_contract(conn, d, pick, now)
-        _exec(conn, "delete from draft_picks_live where draft_id = %s and overall = %s", (draft_id, pick["overall"]))
+        _exec(conn, "delete from @picks where draft_id = %s and overall = %s", (draft_id, pick["overall"]))
         if d["status"] == "complete":
-            _exec(conn, "update drafts set status = 'live' where draft_id = %s", (draft_id,))
-            d = dict(d, status="live")
+            d = _reopen(conn, d, now)
         _put_on_clock(conn, d, slot, now)
         name = _player_name(conn, pick["upid"])
         msg = f"Pick {_label(slot)} ({name}, {pick['team_abbr']}) was undone: {reason}"
@@ -622,7 +734,8 @@ def swap_player(conn, draft_id, overall, new_upid, actor, reason, now=None):
     with conn.transaction():
         _lock(conn, draft_id)
         d = _draft(conn, draft_id)
-        pick = _one(conn, "select * from draft_picks_live where draft_id = %s and overall = %s", (draft_id, overall))
+        _require_unpaid(conn, d)
+        pick = _one(conn, "select * from @picks where draft_id = %s and overall = %s", (draft_id, overall))
         if not pick:
             raise DraftError(f"Pick {overall} has not been made.", 409)
         if pick["upid"] == new_upid:
@@ -635,7 +748,7 @@ def swap_player(conn, draft_id, overall, new_upid, actor, reason, now=None):
             raise DraftError(f"Can't swap in {pool['name']}: {pool['reason']}.", 409)
         _reverse_contract(conn, d, pick, now)
         tier = _sign_contract(conn, d, slot, new_upid, actor, now)
-        _exec(conn, "update draft_picks_live set upid = %s, contract_tier = %s where draft_id = %s and overall = %s",
+        _exec(conn, "update @picks set upid = %s, contract_tier = %s where draft_id = %s and overall = %s",
               (new_upid, tier, draft_id, overall))
         old_name = _player_name(conn, pick["upid"])
         msg = f"Pick {_label(slot)} ({pick['team_abbr']}) changed from {old_name} to {pool['name']}: {reason}"
@@ -652,17 +765,17 @@ def void_pick(conn, draft_id, overall, actor, reason, now=None):
     with conn.transaction():
         _lock(conn, draft_id)
         d = _draft(conn, draft_id)
-        pick = _one(conn, "select * from draft_picks_live where draft_id = %s and overall = %s", (draft_id, overall))
+        _require_unpaid(conn, d)
+        pick = _one(conn, "select * from @picks where draft_id = %s and overall = %s", (draft_id, overall))
         if not pick:
             raise DraftError(f"Pick {overall} has not been made.", 409)
         slot = _slot(conn, draft_id, overall)
         _reverse_contract(conn, d, pick, now)
-        _exec(conn, "delete from draft_picks_live where draft_id = %s and overall = %s", (draft_id, overall))
+        _exec(conn, "delete from @picks where draft_id = %s and overall = %s", (draft_id, overall))
         seq = _one(conn, "select coalesce(max(makeup_seq), 0) + 1 as n from draft_slots where draft_id = %s", (draft_id,))["n"]
         _exec(conn, "update draft_slots set makeup_seq = %s where draft_id = %s and overall = %s", (seq, draft_id, overall))
         if d["status"] == "complete":   # nothing is on the clock: the makeup pick goes straight on with a full clock
-            _exec(conn, "update drafts set status = 'live' where draft_id = %s", (draft_id,))
-            d = dict(d, status="live")
+            d = _reopen(conn, d, now)
             _put_on_clock(conn, d, slot, now)
             _notify_on_clock(conn, d, slot, now)
         name = _player_name(conn, pick["upid"])
@@ -966,7 +1079,7 @@ def state(conn, draft_id, now=None, team=None):
     rows = _all(conn, """select s.*, p.upid as pick_upid, pl.name as pick_name, p.team_abbr as pick_team, p.source as pick_source,
                                 p.made_by, p.made_at, p.seconds_used
                            from draft_slots s
-                           left join draft_picks_live p on p.draft_id = s.draft_id and p.overall = s.overall
+                           left join @picks p on p.draft_id = s.draft_id and p.overall = s.overall
                            left join players pl on pl.upid = p.upid
                           where s.draft_id = %s order by s.overall""", (draft_id,))
     # runs of back-to-back draftable picks by one team: 2 Time, 3 Time
@@ -1034,14 +1147,20 @@ def speed_rows(conn, season, is_test=False):
     """[(team, total seconds_used, picks)] across every draft of the season (test drafts only count with test drafts)."""
     return [(r["team_abbr"], int(r["s"]), r["n"]) for r in _all(
         conn, """select p.team_abbr, sum(p.seconds_used) as s, count(*) as n
-                   from draft_picks_live p join drafts d on d.draft_id = p.draft_id
+                   from @picks p join drafts d on d.draft_id = p.draft_id
                   where d.season = %s and d.is_test = %s and p.seconds_used is not null group by p.team_abbr""", (season, is_test))]
 
 
 def speed_standings(rows, amounts):
     """Pure rule. rows = [(team, total_seconds, picks)]; amounts = prize money for places 1..6.
     Fastest average first. Ties share the combined prize of the places they cover, split evenly and rounded
-    down to whole WizBucks (the ledger holds whole dollars). Returns [{team, picks, avg, place, amount}]."""
+    down to whole WizBucks (the ledger holds whole dollars). Returns [{team, picks, avg, place, amount}].
+
+    ROUNDING LEAVES MONEY UNPAID. The rule is unchanged (split evenly, whole dollars), but when the pool doesn't
+    divide evenly the remainder is never paid. Two teams tied for 6th share $5 and get $2 each: $1 is unpaid.
+    Two tied for 5th share $10 + $5 and get $7 each: $1 is unpaid. (Three tied for 1st share $75 = $25 each, exact.)
+    Zach decides whether the leftover dollar goes to someone, is dropped, or stays as it is. See the build report.
+    """
     ranked = sorted(((Fraction(s, n), t, n) for t, s, n in rows if n), key=lambda x: (x[0], x[1]))
     out, i = [], 0
     while i < len(ranked):
@@ -1095,3 +1214,46 @@ def _on_complete(conn, d, now):
         amounts = [r["amount"] for r in _all(conn, "select amount from draft_award_amounts where season = %s order by place", (d["season"],))]
         _notify(conn, "speed_awards", d["draft_id"], {"season": d["season"], "final": False,
                                                       "standings": speed_standings(speed_rows(conn, d["season"], False), amounts)}, now)
+
+
+# ------------------------------------------------------------------ importing the 2026 boards
+
+def import_boards_from_app_state(conn, season, draft_type="prospect", target_season=None):
+    """Load the 2026 managers' single big boards from the mirror (app_state key manager_boards_<season>:
+    {team: [upid, ...]}) into draft_boards as 'any' lists ("Existing boards import as Any pick"). Unknown teams and
+    unknown upids are skipped and reported; a list is cut to BOARD_MAX; a team that already has an 'any' list for
+    this (season, draft_type) is left alone. The boards land under target_season (default: the same season; pass 2027
+    to seed the 2027 draft rooms from the 2026 boards). 2026 had one board per manager, so it goes to one draft_type
+    ('prospect' unless told otherwise). Returns {'imported': {team: n}, 'unknown_upids': {team: [...]},
+    'unknown_teams': [...], 'skipped_existing': [...]}."""
+    row = _one(conn, "select value from app_state where key = %s", (f"manager_boards_{season}",))
+    if row is None:
+        raise DraftError(f"The mirror has no manager_boards_{season}.", 404)
+    target = target_season if target_season is not None else season
+    teams = {r["abbr"] for r in _all(conn, "select abbr from teams")}
+    out = {"imported": {}, "unknown_upids": {}, "unknown_teams": [], "skipped_existing": []}
+    with conn.transaction():
+        for team, upids in sorted((row["value"] or {}).items()):
+            if team not in teams or not isinstance(upids, list):
+                out["unknown_teams"].append(team)
+                continue
+            seen, ordered = set(), []
+            for u in upids:
+                u = str(u)
+                if u not in seen:
+                    seen.add(u)
+                    ordered.append(u)
+            known = {r["upid"] for r in _all(conn, "select upid from players where upid = any(%s)", (ordered,))}
+            bad = [u for u in ordered if u not in known]
+            good = [u for u in ordered if u in known][:BOARD_MAX]
+            if bad:
+                out["unknown_upids"][team] = bad
+            if _one(conn, "select 1 as x from draft_boards where season = %s and draft_type = %s and team_abbr = %s and slot_key = 'any' limit 1",
+                    (target, draft_type, team)):
+                out["skipped_existing"].append(team)
+                continue
+            for i, u in enumerate(good, start=1):
+                _exec(conn, "insert into draft_boards (season, draft_type, team_abbr, slot_key, position, upid) values (%s, %s, %s, 'any', %s, %s)",
+                      (target, draft_type, team, i, u))
+            out["imported"][team] = len(good)
+    return out

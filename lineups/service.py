@@ -6,6 +6,9 @@ mlb_roster_status. Every function takes a psycopg connection and opens its own
 take the same `team:<abbr>` advisory lock the league actions use, so a roster move and a lineup save
 for one team take turns.
 
+Settings: how many days ahead a lineup can be set is league_settings 'lineup_future_days' (7). MLB team
+abbreviations are resolved through mlb_team_aliases (SQL function mlb_abbr) wherever players meet games.
+
 Errors: LineupError (a RuleError; the message is safe to show a manager) and LineupConflict.
 Times are timestamptz; a lineup day is the ET calendar date.
 
@@ -24,7 +27,6 @@ from league import actions
 from league.actions import RuleError
 
 ET = ZoneInfo("America/New_York")
-FUTURE_DAYS = 7
 BATTER_POSITIONS = ("C", "1B", "2B", "3B", "SS", "CF", "OF", "DH")
 PITCHER_POSITIONS = ("SP", "RP")
 _MAP = {"LF": "OF", "RF": "OF", "OF": "OF", "CF": "CF", "C": "C", "1B": "1B", "2B": "2B", "3B": "3B", "SS": "SS",
@@ -243,23 +245,71 @@ def validate(conn, team, game_date, lineup):
 
 # ------------------------------------------------------------------ saving
 
+def _materialise(conn, team, game_date, now):
+    """A day with no rows gets the carried-forward copy as real rows (set_by 'carryover', version bumped),
+    so the locks have something to lock. Returns True when rows were written."""
+    cells = _copy_forward(conn, team, game_date)
+    if cells is None:
+        return False
+    _write_cells(conn, team, game_date, _slot_types(conn, game_date.year), cells, "carryover")
+    _bump(conn, team, game_date, now)
+    return True
+
+
+def _started(conn, upids, game_date, now):
+    """Which of these players have a game on game_date that has already started (and is not postponed)."""
+    return {r["upid"] for r in _all(conn, """
+        select distinct p.upid from players p join mlb_games g on g.game_date = %s
+           and mlb_abbr(p.mlb_team) in (mlb_abbr(g.home_team), mlb_abbr(g.away_team))
+           and g.status <> 'postponed' and g.start_time <= %s
+         where p.upid = any(%s)""", (game_date, now, list(upids)))}
+
+
 def save_lineup(conn, team, game_date, lineup, version, set_by, now):
     """Save a team's whole day in one transaction. `version` is the one the caller loaded
-    (get_lineup()['version']); if the lineup moved on since, raise LineupConflict(latest)."""
+    (get_lineup()['version']); if the lineup moved on since, raise LineupConflict(latest).
+
+    A day with no rows is first materialised from the carried-forward copy and the locks are run for it, so
+    a started game is locked even on a day nobody has saved. That bookkeeping is not a change the caller
+    could have missed: a caller who loaded the untouched day (version 0) still matches unless a lock
+    actually changed something. A conflict is raised after the transaction commits, so the lock bump the
+    client is told about exists."""
     _team_check(conn, team)
+    conflict = None
     with conn.transaction():
         _lock_team(conn, team)
         today = _today(now)
-        if game_date < today or game_date > today + timedelta(days=FUTURE_DAYS):
-            raise LineupError(f"Lineups can be set from today up to {FUTURE_DAYS} days ahead.")
+        future = int(_setting(conn, "lineup_future_days"))
+        if game_date < today or game_date > today + timedelta(days=future):
+            raise LineupError(f"Lineups can be set from today up to {future} days ahead.")
+        had_rows = bool(_one(conn, "select 1 as x from lineups where team_abbr = %s and game_date = %s limit 1",
+                             (team, game_date)))
+        base = _version(conn, team, game_date)
+        made = None if had_rows else (_materialise(conn, team, game_date, now) and _version(conn, team, game_date))
         lock_started_games(conn, now, team=team)   # so a game that just started is locked even if the job hasn't run
         latest = get_lineup(conn, team, game_date)
-        if latest["version"] != version:
-            raise LineupConflict(latest)
-        cells = validate(conn, team, game_date, lineup)
-        locked = {(s["slot_code"], s["slot_index"]): s["locked_at"] for s in latest["slots"] if s["locked_at"]}
-        _write_cells(conn, team, game_date, _slot_types(conn, game_date.year), cells, set_by, locked)
-        _bump(conn, team, game_date, now)
+        if had_rows or not made:
+            ok = latest["version"] == version
+        else:   # we materialised: fine if the caller saw the untouched day and nothing but our own write happened
+            ok = version == base and latest["version"] == made
+        if not ok:
+            conflict = latest
+        else:
+            cells = validate(conn, team, game_date, lineup)
+            by_code = {t["code"]: t for t in _slot_types(conn, game_date.year)}
+            was = {(s["slot_code"], s["slot_index"]): s["upid"] for s in latest["slots"]}
+            moved_in = [u for k, u in cells.items() if by_code[k[0]]["is_starting"] and was.get(k) != u]
+            started = _started(conn, moved_in, game_date, now) if moved_in else set()
+            if started:
+                names = {r["upid"]: r["name"] for r in _all(conn, "select upid, name from players where upid = any(%s)",
+                                                            (list(started),))}
+                raise LineupError([f"{names.get(u, u)}'s game has started; he can't be moved into a starting slot."
+                                   for u in sorted(started)])
+            locked = {(s["slot_code"], s["slot_index"]): s["locked_at"] for s in latest["slots"] if s["locked_at"]}
+            _write_cells(conn, team, game_date, _slot_types(conn, game_date.year), cells, set_by, locked)
+            _bump(conn, team, game_date, now)
+    if conflict is not None:
+        raise LineupConflict(get_lineup(conn, team, game_date))   # read after the commit
     return get_lineup(conn, team, game_date)
 
 
@@ -293,7 +343,7 @@ def lock_started_games(conn, now, team=None):
     clear it where the game is postponed. Bumps the version of every lineup it changes."""
     since = _today(now) - timedelta(days=1)
     game = """select 1 from players p join mlb_games g on g.game_date = l.game_date
-                and p.mlb_team in (g.home_team, g.away_team) and g.status <> 'postponed' and g.start_time <= %s
+                and mlb_abbr(p.mlb_team) in (mlb_abbr(g.home_team), mlb_abbr(g.away_team)) and g.status <> 'postponed' and g.start_time <= %s
                where p.upid = l.upid"""
     changed = set()
     for r in _all(conn, f"""update lineups l set locked_at = null
@@ -304,7 +354,8 @@ def lock_started_games(conn, now, team=None):
         with started as (
           select l.team_abbr, l.game_date, l.slot_code, l.slot_index, min(g.start_time) as st
             from lineups l join players p on p.upid = l.upid
-            join mlb_games g on g.game_date = l.game_date and p.mlb_team in (g.home_team, g.away_team)
+            join mlb_games g on g.game_date = l.game_date
+                            and mlb_abbr(p.mlb_team) in (mlb_abbr(g.home_team), mlb_abbr(g.away_team))
                             and g.status <> 'postponed' and g.start_time <= %s
            where l.game_date >= %s and (%s::text is null or l.team_abbr = %s)
            group by 1, 2, 3, 4)
@@ -342,20 +393,36 @@ def _is_pitcher_row(player) -> bool:
     return actions.classify(player["positions"], player.get("mlb_primary_position"))["pitcher"]
 
 
-def _primary_positions(player, mlb_primary) -> set:
+GENERIC_PITCHER = ("P", "RHP", "LHP")
+
+
+def _primary_positions(player, mlb_primary, totals=None) -> set:
     """A player's primary position(s) as eligibility codes. Pitcher rows only get SP / RP and batter
-    rows only get batter positions, so a two-way player's two rows never share a side."""
+    rows only get batter positions, so a two-way player's two rows never share a side.
+
+    A pitcher listed only as 'P' / 'RHP' / 'LHP' gets SP when his starts exceed his relief appearances and
+    RP otherwise (`totals` is refresh_eligibility's {(mlb_id, 'SP'|'RP'): count}); with no stats at all he gets
+    both, so a rookie pitcher can be placed in any pitching slot until he has a record."""
     pitcher = _is_pitcher_row(player)
-    out = set()
+    out, generic = set(), False
     for raw in (player["mlb_primary_position"], mlb_primary, player["positions"]):
         for tok in actions._tokens(raw):
             if tok in ("TWP", "UTIL", "UT", "U"):
                 tok = "SP" if pitcher else "DH"
+            if pitcher and tok in GENERIC_PITCHER:
+                generic = True
+                continue
             out.add(_MAP.get(tok, ""))
         out -= {""}
         out &= set(PITCHER_POSITIONS if pitcher else BATTER_POSITIONS)
         if out:
             return out
+    if generic:
+        starts = (totals or {}).get((player.get("mlb_id"), "SP"), 0)
+        relief = (totals or {}).get((player.get("mlb_id"), "RP"), 0)
+        if not starts and not relief:
+            return {"SP", "RP"}
+        return {"SP"} if starts > relief else {"RP"}
     return out
 
 
@@ -390,11 +457,11 @@ def refresh_eligibility(conn, season, fielding_rows, now, *, source="this_season
     added = 0
     with conn.transaction():
         with conn.cursor() as cur:
-            owned = _all(conn, """select p.upid, p.positions, p.mlb_primary_position, s.primary_position
+            owned = _all(conn, """select p.upid, p.positions, p.mlb_primary_position, p.mlb_id, s.primary_position
                                     from players p join contracts c on c.upid = p.upid and c.valid_to is null
                                     left join mlb_roster_status s on s.upid = p.upid""")
             for p in owned:
-                for pos in _primary_positions(p, p["primary_position"]):
+                for pos in _primary_positions(p, p["primary_position"], totals):
                     added += cur.execute("""insert into position_eligibility (upid, season, position, source)
                                             values (%s, %s, %s, 'primary') on conflict do nothing""",
                                          (p["upid"], season, pos)).rowcount
@@ -498,7 +565,8 @@ def _assign(cost):
 def optimize(conn, team, game_date):
     """A proposed lineup (list of slot dicts, nothing saved). Locked players stay where they are. For the rest:
     first start as many players with a game that day as possible, then fill every other starting slot,
-    then prefer better-ranked players (lower players.rank; unranked last). Whoever is left goes to the bench."""
+    then prefer better-ranked players (lower players.rank; unranked last). Ties on rank go to the lower upid,
+    so the same roster always gets the same proposal. Whoever is left goes to the bench."""
     types = _slot_types(conn, game_date.year)
     current = get_lineup(conn, team, game_date)
     cells = {(s["slot_code"], s["slot_index"]): s["upid"] for s in current["slots"] if s["locked_at"]}
@@ -506,9 +574,9 @@ def optimize(conn, team, game_date):
     players = [p for p in _all(conn, """
         select p.upid, p.name, p.rank,
                exists (select 1 from mlb_games g where g.game_date = %s and g.status <> 'postponed'
-                          and p.mlb_team in (g.home_team, g.away_team)) as has_game
+                          and mlb_abbr(p.mlb_team) in (mlb_abbr(g.home_team), mlb_abbr(g.away_team))) as has_game
           from players p where p.upid = any(%s)""", (game_date, list(_active_upids(conn, team) - fixed)))]
-    players.sort(key=lambda p: (p["rank"] is None, p["rank"] or 0, p["name"]))
+    players.sort(key=lambda p: (p["rank"] is None, p["rank"] or 0, p["upid"]))   # the tiebreak: rank, then upid
     elig = _eligibility(conn, game_date.year, game_date, [p["upid"] for p in players])
     by_code = {t["code"]: t for t in types}
 
@@ -535,15 +603,30 @@ def optimize(conn, team, game_date):
 
 # ------------------------------------------------------------------ roster moves from the team page
 
+def scrub_lineups(conn, team, upids, now):
+    """Take players off a team's saved lineups: today's rows that are not locked, and every future day.
+    A row locked for today stays (his game has started; the lock is the truth for today). Each changed
+    day gets its version bumped. Called by the league actions whenever a player leaves a team's active
+    slot (trade, release, move out of active, graduation); safe to call twice."""
+    with conn.transaction():
+        _lock_team(conn, team)
+        today = _today(now)
+        changed = {r["game_date"] for r in _all(conn, """
+            update lineups set upid = null, locked_at = null
+             where team_abbr = %s and upid = any(%s)
+               and (game_date > %s or (game_date = %s and locked_at is null))
+            returning game_date""", (team, list(upids), today, today))}
+        for d in sorted(changed):
+            _bump(conn, team, d, now)
+    return len(changed)
+
+
+actions.on_roster_change(scrub_lineups)
+
+
 def _drop_from_lineups(conn, team, upids, now):
-    """A player who left the active slot leaves today's and every future lineup."""
-    changed = set()
-    for r in _all(conn, """update lineups set upid = null, locked_at = null
-                            where team_abbr = %s and game_date >= %s and upid = any(%s)
-                            returning game_date""", (team, _today(now), list(upids))):
-        changed.add(r["game_date"])
-    for d in sorted(changed):
-        _bump(conn, team, d, now)
+    """Older name for scrub_lineups."""
+    return scrub_lineups(conn, team, upids, now)
 
 
 def _mlb_status(conn, upid):
@@ -554,29 +637,18 @@ def _mlb_status(conn, upid):
     return r["name"], r["status"]
 
 
-def _slot_room(conn, team, slot, setting):
-    n = _one(conn, """select count(*) as n from contracts c join roster_slots rs on rs.upid = c.upid and rs.slot = %s
-                       where c.team_abbr = %s and c.valid_to is null""", (slot, team))["n"]
-    if n >= int(_setting(conn, setting)):
-        raise LineupError(f"{team} already has {n} on {slot.upper()}.")
-
-
 def _move(conn, team, upid, slot, by, now):
-    r = actions.move_slot(conn, upid, slot, created_by=by, team=team, now=now)
-    if slot != "active":
-        _drop_from_lineups(conn, team, [upid], now)
-    return r
+    return actions.move_slot(conn, upid, slot, created_by=by, team=team, now=now)   # its hook scrubs the lineups
 
 
 def move_to_il(conn, team, upid, by, now):
-    """Only when MLB lists him on the IL (mlb_roster_status), and only while the team has an IL spot."""
+    """Only when MLB lists him on the IL (mlb_roster_status). The IL maximum is roster_limits.il_max, enforced by actions._set_slot."""
     with conn.transaction():
         _lock_team(conn, team)
         name, status = _mlb_status(conn, upid)
         if status != "il":
             raise LineupError(f"{name} can go on the IL only when MLB lists him on the IL"
                               + ("" if status else " (MLB status unknown)") + ".")
-        _slot_room(conn, team, "il", "il_slots")
         return _move(conn, team, upid, "il", by, now)
 
 
@@ -588,14 +660,22 @@ def move_to_na(conn, team, upid, by, now):
         if status != "minors":
             raise LineupError(f"{name} can go on NA only when he is not on an MLB active roster"
                               + ("" if status else " (MLB status unknown)") + ".")
-        _slot_room(conn, team, "na", "na_slots")
         return _move(conn, team, upid, "na", by, now)
 
 
 def activate(conn, team, upid, by, now):
-    """Back to active from IL or NA. Blocked, with the reason, if it would break a roster maximum (Spec 03)."""
+    """Back to active from IL or NA. Blocked, with the reason, if it would break a roster maximum (Spec 03).
+    A farm player isn't activated; he goes through actions.graduate."""
     with conn.transaction():
         _lock_team(conn, team)
+        cur = _one(conn, """select rs.slot, p.name from roster_slots rs join players p on p.upid = rs.upid
+                             join contracts c on c.upid = rs.upid and c.valid_to is null and c.team_abbr = %s
+                            where rs.upid = %s""", (team, upid))
+        if cur is None:
+            raise LineupError(f"{upid} is not on {team}.")
+        if cur["slot"] not in ("il", "na"):
+            where = {"active": "already active", "farm": "on the farm (farm players go through graduate)"}[cur["slot"]]
+            raise LineupError(f"{cur['name']} is {where}; only IL and NA players are activated.")
         return _move(conn, team, upid, "active", by, now)
 
 
@@ -608,5 +688,4 @@ def release(conn, team, upid, by, now, season=None):
         if twin and twin["twin"] and _one(conn, "select 1 as x from players where upid = %s", (twin["twin"],)):
             ids.append(twin["twin"])
         results = [actions.release(conn, u, created_by=by, team=team, season=season, now=now) for u in ids]
-        _drop_from_lineups(conn, team, ids, now)
         return {"released": ids, "message": " ".join(r["message"] for r in results)}

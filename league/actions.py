@@ -47,6 +47,29 @@ class RuleError(Exception):
     """A league rule stopped the action. The message is safe to show a manager."""
 
 
+# ------------------------------------------------------------------ roster-change hooks
+
+_ROSTER_HOOKS = []
+
+
+def on_roster_change(callback):
+    """Register callback(conn, team, upids, now), run inside the action's transaction whenever players
+    leave a team's active slot (trade, release, move out of active, graduation). lineups.service registers
+    its scrub_lineups here at import; league.actions never imports lineups at module level (that would be a cycle)."""
+    if callback not in _ROSTER_HOOKS:
+        _ROSTER_HOOKS.append(callback)
+    return callback
+
+
+def _roster_changed(conn, team, upids, ts):
+    try:
+        import lineups.service  # noqa: F401  late import: makes sure the lineup hook is registered
+    except ImportError:
+        pass
+    for cb in list(_ROSTER_HOOKS):
+        cb(conn, team, list(upids), ts)
+
+
 # ------------------------------------------------------------------ plumbing
 
 def _atomic(fn):
@@ -182,7 +205,19 @@ def _locked_contract(conn, upid, *, team=None, kind=None):
     return c
 
 
-def _set_slot(conn, upid, slot, ts):
+def _set_slot(conn, upid, slot, ts, season=None):
+    """Put a player in a roster slot. The only writer of roster_slots after the cutover, so the IL and NA
+    maximums (roster_limits.il_max / na_max, outside the 26) are enforced here for every path."""
+    if slot in ("il", "na"):
+        c = _one(conn, "select team_abbr from contracts where upid = %s and valid_to is null", (upid,))
+        lim = _limits(conn, _season(conn, season))
+        cap = lim[f"{slot}_max"]
+        if c:
+            n = _one(conn, """select count(*) as n from contracts c join roster_slots rs on rs.upid = c.upid and rs.slot = %s
+                               where c.team_abbr = %s and c.valid_to is null and c.upid <> %s""",
+                     (slot, c["team_abbr"], upid))["n"]
+            if n >= cap:
+                raise RuleError(f"{c['team_abbr']} already has {n} on {slot.upper()} (max {cap}).")
     _exec(
         conn,
         """insert into roster_slots (upid, slot, updated_at) values (%s, %s, %s)
@@ -279,11 +314,19 @@ def _tokens(positions):
     return {t.strip().upper() for t in (positions or "").replace("/", ",").split(",") if t.strip()}
 
 
-def classify(positions, primary=None) -> dict:
-    """pitcher / sp / swing (both SP and RP eligible) / catcher flags from players.positions."""
-    toks = _tokens(positions)
-    if not toks and primary:
-        toks = {primary.strip().upper()}
+def classify(positions, primary=None, eligibility=None) -> dict:
+    """pitcher / sp / swing (both SP and RP eligible) / catcher flags.
+
+    `eligibility` is the player's set of position_eligibility positions for the season (Spec 07: the roster
+    limits read the same table the lineup does). When it is empty or None the player has no eligibility rows
+    and the players.positions text is used instead: pre-cutover behaviour, before the nightly eligibility
+    job has filled the table."""
+    if eligibility:
+        toks = {t.upper() for t in eligibility}
+    else:
+        toks = _tokens(positions)
+        if not toks and primary:
+            toks = {primary.strip().upper()}
     pitcher = bool(toks & _PITCHER_TOKENS)
     return {
         "pitcher": pitcher,
@@ -300,8 +343,23 @@ def _limits(conn, season):
     return lim
 
 
-def _active_players(conn, team):
-    return _all(
+def _eligibility_sets(conn, upids, season):
+    """{upid: set of position_eligibility positions for the season}; a player with no rows is left out."""
+    out = {}
+    for r in _all(conn, "select upid, position from position_eligibility where season = %s and upid = any(%s)",
+                  (season, list(upids))):
+        out.setdefault(r["upid"], set()).add(r["position"])
+    return out
+
+
+def _with_eligibility(conn, players, season):
+    """Add an 'eligibility' set to each player dict (None when he has no rows: classify falls back to text)."""
+    elig = _eligibility_sets(conn, [p["upid"] for p in players], season)
+    return [{**p, "eligibility": elig.get(p["upid"])} for p in players]
+
+
+def _active_players(conn, team, season=None):
+    players = _all(
         conn,
         """select p.upid, p.name, p.positions, p.mlb_primary_position
              from contracts c
@@ -310,11 +368,12 @@ def _active_players(conn, team):
             where c.team_abbr = %s and c.valid_to is null""",
         (team,),
     )
+    return _with_eligibility(conn, players, _season(conn, season))
 
 
 def roster_violations(players, lim) -> list[dict]:
     """Compare a list of active players with a roster_limits row. Pure function."""
-    cl = [classify(p["positions"], p["mlb_primary_position"]) for p in players]
+    cl = [classify(p["positions"], p["mlb_primary_position"], p.get("eligibility")) for p in players]
     n = len(players)
     sp = sum(c["sp"] for c in cl)
     pitchers = sum(c["pitcher"] for c in cl)
@@ -339,9 +398,9 @@ def roster_violations(players, lim) -> list[dict]:
 def _check_can_activate(conn, team, upid, season):
     """Raise RuleError if putting `upid` in the active slot would break a roster maximum."""
     lim = _limits(conn, season)
-    current = [p for p in _active_players(conn, team) if p["upid"] != upid]
+    current = [p for p in _active_players(conn, team, season) if p["upid"] != upid]
     before = {v["rule"]: v["over"] for v in roster_violations(current, lim)}
-    new = _player(conn, upid)
+    new = _with_eligibility(conn, [_player(conn, upid)], season)[0]
     after = roster_violations(current + [new], lim)
     # catcher_min is a detection-only rule (you may need to add a catcher to fix it)
     bad = [v for v in after if v["rule"] != "catcher_min" and v["over"] > before.get(v["rule"], 0)]
@@ -361,7 +420,7 @@ def roster_check(conn, *, season=None, team=None, now=None):
     teams = [team] if team else [t["abbr"] for t in _all(conn, "select abbr from teams where active order by abbr")]
     found = []
     for abbr in teams:
-        for v in roster_violations(_active_players(conn, abbr), lim):
+        for v in roster_violations(_active_players(conn, abbr, season), lim):
             found.append({"team": abbr, **v, "penalty_amount": first})
     return {"violations": found, "message": f"{len(found)} roster violation(s) found; nothing charged until an admin confirms."}
 
@@ -586,7 +645,8 @@ def graduate(conn, upid, *, created_by, season=None, team=None, forced=False, sl
     _close_contract(conn, c["id"], "graduated", ts)
     cid = _open_contract(conn, upid=upid, team_abbr=c["team_abbr"], kind="keeper", tier=tier,
                          acquired_via="graduation", international_rookie=c["international_rookie"], valid_from=ts)
-    _set_slot(conn, upid, slot, ts)
+    _set_slot(conn, upid, slot, ts, season)
+    _roster_changed(conn, c["team_abbr"], [upid], ts)
     msg = f"{name} graduated from {c['prospect_type']} to a {tier} keeper contract ({slot} slot)."
     _event(conn, upid, "graduation", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=tier)
     return {"contract_id": cid, "tier": tier, "message": msg}
@@ -780,6 +840,7 @@ def release(conn, upid, *, created_by, season=None, team=None, reason="released"
     if c["kind"] == "keeper":
         _exec(conn, "update players set carried_tier = %s where upid = %s", (c["tier"], upid))
     _exec(conn, "delete from roster_slots where upid = %s", (upid,))
+    _roster_changed(conn, c["team_abbr"], [upid], ts)
     carried = f" He keeps his {c['tier']} tier." if c["kind"] == "keeper" else ""
     msg = f"{c['team_abbr']} {reason.replace('_', ' ')} {name}.{carried}"
     _event(conn, upid, reason, msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=c["tier"] or c["prospect_type"])
@@ -801,7 +862,7 @@ def acquire_free_agent(conn, upid, team, *, created_by, season=None, slot="activ
     if slot == "active":
         _check_can_activate(conn, team, upid, season)
     cid = _open_contract(conn, upid=upid, team_abbr=team, kind="keeper", tier=tier, acquired_via="free_agent", valid_from=ts)
-    _set_slot(conn, upid, slot, ts)
+    _set_slot(conn, upid, slot, ts, season)
     msg = f"{team} added {p['name']} as a free agent at {tier}."
     _event(conn, upid, "free_agent_add", msg, team=team, season=season, by=created_by, ts=ts, contract=tier)
     return {"contract_id": cid, "tier": tier, "message": msg}
@@ -819,7 +880,9 @@ def move_slot(conn, upid, slot, *, created_by, season=None, team=None, now=None)
         return {"slot": slot, "message": "already there"}
     if slot == "active":
         _check_can_activate(conn, c["team_abbr"], upid, season)
-    _set_slot(conn, upid, slot, ts)
+    _set_slot(conn, upid, slot, ts, season)
+    if cur and cur["slot"] == "active":
+        _roster_changed(conn, c["team_abbr"], [upid], ts)
     name = _player(conn, upid)["name"]
     msg = f"{name} moved to the {slot} slot."
     _event(conn, upid, "slot_move", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts)
@@ -846,6 +909,7 @@ def transfer(conn, upid, from_team, to_team, *, created_by, season=None, ref_id=
         il_tag_family=c["il_tag_family"], il_tag_team=c["il_tag_team"], il_ineligible_until=c["il_ineligible_until"],
         bc_decision=c["bc_decision"], bc_decision_season=c["bc_decision_season"], rat_count=c["rat_count"], international_rookie=c["international_rookie"],
         valid_from=ts)
+    _roster_changed(conn, from_team, [upid], ts)
     msg = f"{name} traded from {from_team} to {to_team}" + (f" ({ref_id})." if ref_id else ".")
     _event(conn, upid, "trade", msg, team=to_team, season=season, by=created_by, ts=ts, contract=c["tier"] or c["prospect_type"])
     return {"contract_id": cid, "message": msg}
@@ -1059,3 +1123,42 @@ def credit_installment(conn, season, installment, created_by="system"):
     if missing:
         raise RuleError(f"{installment} {season} needs a bracket on team_seasons for: {', '.join(missing)}")
     return {"teams": results, "message": f"{installment} {season}: credited {len(results)} team(s)."}
+
+
+# ------------------------------------------------------- reversing a draft pick (draft room corrections)
+
+@_atomic
+def reverse_draft_pick(conn, upid, team, *, created_by, expected_tier=None, expected_prospect_type=None, season=None,
+                       note=None, now=None):
+    """Undo a draft pick's contract (undo / swap / void in the draft room). Only a contract that is still exactly what
+    the draft gave: open, on `team`, acquired via prospect_draft or keeper_draft, no IL tag, no RAT, no BC decision,
+    and still the tier (keeper) or prospect type (prospect) the draft gave, passed in as expected_tier /
+    expected_prospect_type. Otherwise RuleError says why (an upgraded DC, a traded player...).
+    Closes the contract (end_reason 'voided'), deletes the roster slot, frees the prepaid prospect slot and writes a
+    player_events row."""
+    ts, season = _ts_season(conn, now, season)
+    if expected_tier is None and expected_prospect_type is None:
+        raise RuleError("reverse_draft_pick needs the tier or prospect type the draft gave")
+    name = _player(conn, upid)["name"]
+    c = _locked_contract(conn, upid, team=team)      # takes the team lock; RuleError if no open contract or another team
+    if c["acquired_via"] not in ("prospect_draft", "keeper_draft"):
+        raise RuleError(f"{name}'s contract came from {c['acquired_via']}, not a draft pick")
+    if c["il_tag"]:
+        raise RuleError(f"{name} has been IL-tagged since the draft")
+    if c["rat_count"]:
+        raise RuleError(f"{name} has a RAT on his contract since the draft")
+    if c["bc_decision"] is not None:
+        raise RuleError(f"{name} has a BC decision recorded ({c['bc_decision']})")
+    if expected_prospect_type is not None and c["prospect_type"] != expected_prospect_type:
+        raise RuleError(f"{name}'s contract is now {c['prospect_type'] or c['tier']}, not the {expected_prospect_type} the pick gave "
+                        "(upgraded or changed since the draft)")
+    if expected_tier is not None and c["tier"] != expected_tier:
+        raise RuleError(f"{name}'s contract is now {c['tier'] or c['prospect_type']}, not the {expected_tier} the pick gave "
+                        "(changed since the draft)")
+    _close_contract(conn, c["id"], "voided", ts)
+    _exec(conn, "delete from roster_slots where upid = %s", (upid,))
+    _exec(conn, "update prospect_draft_slots set filled_upid = null, filled_at = null where filled_upid = %s", (upid,))
+    msg = f"{team}'s draft pick ({note or 'draft'}) was reversed; {name} is back in the pool."
+    _event(conn, upid, "draft_pick_reversed", msg, team=team, season=season, by=created_by, ts=ts,
+           contract=c["tier"] or c["prospect_type"])
+    return {"contract_id": c["id"], "message": msg}

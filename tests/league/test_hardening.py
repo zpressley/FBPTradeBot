@@ -319,3 +319,78 @@ def test_round_1_2_pick_needs_an_open_bc_slot(conn):
     with pytest.raises(RuleError, match="no open BC draft slot"):
         A.assign_prospect_contract(conn, mk_player(conn, "nobc-extra"), "WIZ", acquired_via="prospect_draft",
                                    draft_round=2, created_by=BY, season=S)
+
+
+# ------------------------------------------------------- roster limits read position_eligibility
+
+def _elig(conn, upid, *positions):
+    for pos in positions:
+        conn.execute("insert into position_eligibility (upid, season, position, source) values (%s, %s, %s, 'primary')",
+                     (upid, S, pos))
+
+
+def _eight_starters(conn, team):
+    for i in range(8):
+        u = mk_keeper(conn, f"test-el-sp{i}", team, "TC-1")
+        conn.execute("update players set positions = 'SP', mlb_primary_position = 'SP' where upid = %s", (u,))
+        _elig(conn, u, "SP")
+
+
+def test_roster_limits_use_eligibility_rows_over_the_positions_text(conn):
+    _eight_starters(conn, "WAR")
+    # text says OF, eligibility says SP: he counts as the 9th SP and is blocked
+    sneaky = mk_keeper(conn, "test-el-of", "WAR", "TC-1", slot="il")
+    _elig(conn, sneaky, "SP")
+    with pytest.raises(RuleError, match="9 SP, max 8"):
+        A.move_slot(conn, sneaky, "active", created_by=BY, team="WAR", season=S)
+    # text says SP, eligibility says RP only: he is not an SP and fits
+    rp = mk_keeper(conn, "test-el-rp", "WAR", "TC-1", slot="il")
+    conn.execute("update players set positions = 'SP', mlb_primary_position = 'SP' where upid = %s", (rp,))
+    _elig(conn, rp, "RP")
+    A.move_slot(conn, rp, "active", created_by=BY, team="WAR", season=S)
+    assert {p["upid"]: p["eligibility"] for p in A._active_players(conn, "WAR")}[rp] == {"RP"}
+
+
+def test_roster_limits_fall_back_to_the_positions_text_without_eligibility_rows(conn):
+    """Pre-cutover behaviour: a player with no position_eligibility rows is classified by players.positions."""
+    _eight_starters(conn, "WAR")
+    fresh = mk_keeper(conn, "test-el-fb", "WAR", "TC-1", slot="il")
+    conn.execute("update players set positions = 'SP', mlb_primary_position = 'SP' where upid = %s", (fresh,))
+    with pytest.raises(RuleError, match="9 SP, max 8"):
+        A.move_slot(conn, fresh, "active", created_by=BY, team="WAR", season=S)
+    assert A.classify("SP,RP", "SP")["swing"] and A.classify("OF", "OF", {"SP", "RP"})["swing"]
+    assert not A.classify("SP,RP", "SP", {"RP"})["sp"]
+
+
+# ------------------------------------------------------- IL / NA limits live in roster_limits
+
+def test_il_and_na_maximums_are_enforced_on_every_path(conn):
+    lim = conn.execute("select il_max, na_max from roster_limits where season = %s", (S,)).fetchone()
+    assert lim == (5, 2)
+    assert conn.execute("select count(*) from league_settings where key in ('il_slots', 'na_slots')").fetchone()[0] == 0
+    for i in range(5):
+        mk_keeper(conn, f"test-il-{i}", "WAR", "TC-1", slot="il")
+    sixth = mk_keeper(conn, "test-il-6", "WAR", "TC-1")
+    with pytest.raises(RuleError, match="already has 5 on IL"):
+        A.move_slot(conn, sixth, "il", created_by=BY, team="WAR", season=S)
+    assert conn.execute("select slot from roster_slots where upid = %s", (sixth,)).fetchone()[0] == "active"
+    # free agent straight to IL
+    fa = mk_player(conn, "test-il-fa")
+    with pytest.raises(RuleError, match="5 on IL"):
+        A.acquire_free_agent(conn, fa, "WAR", created_by=BY, season=S, slot="il")
+    assert contract(conn, fa) is None
+    # NA: two fit, the third is refused through move_slot, a free-agent add and a graduation
+    for i in range(2):
+        mk_keeper(conn, f"test-na-{i}", "WAR", "TC-1", slot="na")
+    with pytest.raises(RuleError, match="already has 2 on NA"):
+        A.move_slot(conn, sixth, "na", created_by=BY, team="WAR", season=S)
+    with pytest.raises(RuleError, match="2 on NA"):
+        A.acquire_free_agent(conn, fa, "WAR", created_by=BY, season=S, slot="na")
+    prospect = mk_prospect(conn, "test-na-grad", "WAR", "PC")
+    with pytest.raises(RuleError, match="2 on NA"):
+        A.graduate(conn, prospect, created_by=BY, season=S, slot="na")
+    assert contract(conn, prospect)["kind"] == "prospect"          # the failed graduation rolled back whole
+    A.graduate(conn, prospect, created_by=BY, season=S, slot="active")
+    # another team's IL is its own count
+    other = mk_keeper(conn, "test-il-other", "WIZ", "TC-1")
+    A.move_slot(conn, other, "il", created_by=BY, team="WIZ", season=S)

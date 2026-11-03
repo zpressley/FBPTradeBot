@@ -29,6 +29,7 @@ from draft import service as ds  # noqa: E402
 from draft.service import DraftError  # noqa: E402
 from league import actions  # noqa: E402
 
+PICKS = ds.PICKS_TABLE
 BY = "draft-test"
 SEASON = 2027
 AWARD_SEASON = 2098
@@ -136,7 +137,7 @@ class World:
                                  (did,)).fetchone()
 
     def picks(self, did):
-        return self.conn.execute("select overall, upid, team_abbr, source, seconds_used, contract_tier from draft_picks_live "
+        return self.conn.execute(f"select overall, upid, team_abbr, source, seconds_used, contract_tier from {PICKS} "
                                  "where draft_id = %s order by overall", (did,)).fetchall()
 
     def status(self, did):
@@ -151,11 +152,11 @@ class World:
         c = self.conn
         like = "dt-%"
         newcomers = [r[0] for r in c.execute("select upid from players where mlb_id between 9990000 and 9999999")]
-        upids = set(self.used) | set(newcomers) | {r[0] for r in c.execute("select upid from draft_picks_live where draft_id like %s", (like,))}
+        upids = set(self.used) | set(newcomers) | {r[0] for r in c.execute(f"select upid from {PICKS} where draft_id like %s", (like,))}
         c.execute("delete from notifications where payload->>'draft_id' like %s or payload->>'draft_id' like 'season-%%'", (like,))
         c.execute("delete from draft_events where draft_id like %s", (like,))
         c.execute("delete from draft_add_requests where draft_id like %s", (like,))
-        c.execute("delete from draft_picks_live where draft_id like %s", (like,))
+        c.execute(f"delete from {PICKS} where draft_id like %s", (like,))
         c.execute("delete from draft_clock where draft_id like %s", (like,))
         c.execute("delete from draft_forklift where draft_id like %s", (like,))
         c.execute("delete from draft_rankings where draft_id like %s", (like,))
@@ -273,8 +274,8 @@ def test_pool_reasons_and_overrides(world):
     with pytest.raises(DraftError):
         ds.set_override(c, did, farm, "exclude", "  ", "zach")
     with pytest.raises(psycopg.errors.UniqueViolation):   # a player can only be drafted once, enforced by the database
-        c.execute("insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, contract_tier) values (%s,1,%s,'B2J','web','x','DC')", (did, farm))
-        c.execute("insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, contract_tier) values (%s,2,%s,'CFL','web','x','DC')", (did, farm))
+        c.execute(f"insert into {PICKS} (draft_id, overall, upid, team_abbr, source, made_by, contract_tier) values (%s,1,%s,'B2J','web','x','DC')", (did, farm))
+        c.execute(f"insert into {PICKS} (draft_id, overall, upid, team_abbr, source, made_by, contract_tier) values (%s,2,%s,'CFL','web','x','DC')", (did, farm))
 
 
 # -------------------------------------------------------------- 3, 4: turns and races
@@ -768,12 +769,12 @@ def test_13_speed_awards_paid_once_after_the_second_draft(world):
     prospect_secs = [200, 30, 40, 50, 60, 70, 80, 90]
     ups = [r[0] for r in c.execute("select upid from players order by upid::bigint limit 24")]
     for i, team in enumerate(t):
-        c.execute("insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
+        c.execute(f"insert into {PICKS} (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
                   "values (%s,%s,%s,%s,'web','x',%s,'DC')", (pd, i + 1, ups[i], team, prospect_secs[i]))
     c.execute("update drafts set status = 'complete' where draft_id = %s", (pd,))
     # a test draft in the same season, very fast for the last team: it must not count
     td = world.draft("aw-t", [t], draft_type="keeper", is_test=True, season=AWARD_SEASON, start=False)
-    c.execute("insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
+    c.execute(f"insert into {PICKS} (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
               "values (%s,8,%s,%s,'web','x',0,'VC-1')", (td, ups[8], t[7]))
     assert ds.pay_speed_awards(c, AWARD_SEASON, at(0)) == []                     # the Keeper Draft isn't complete: nothing pays
     # Keeper Draft: made through make_pick with controlled times; t[7] is a forklift team (full clock per pick)
@@ -812,8 +813,8 @@ def test_13_test_drafts_never_pay(world):
     c.execute("insert into draft_award_amounts (season, place, amount) values (%s, 1, 30)", (AWARD_SEASON,))
     for name, typ in (("tp", "prospect"), ("tk", "keeper")):
         did = world.draft(f"aw-{name}", [t], draft_type=typ, is_test=True, season=AWARD_SEASON, start=False)
-        c.execute("insert into draft_picks_live (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
-                  "values (%s,1,%s,%s,'web','x',1,'DC')", (did, "2750" if typ == "prospect" else "3468", t[0]))
+        c.execute(f"insert into {PICKS} (draft_id, overall, upid, team_abbr, source, made_by, seconds_used, contract_tier) "
+                  "values (%s,1,%s,%s,'web','x',1,%s)", (did, "2750" if typ == "prospect" else "3468", t[0], "DC" if typ == "prospect" else "VC-1"))
         c.execute("update drafts set status = 'complete' where draft_id = %s", (did,))
     assert ds.pay_speed_awards(c, AWARD_SEASON, at(0)) == []
     assert c.execute("select count(*) from wb_ledger where kind = 'draft_award' and season = %s", (AWARD_SEASON,)).fetchone()[0] == 0

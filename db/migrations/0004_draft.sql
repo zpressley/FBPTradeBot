@@ -9,6 +9,8 @@
 --                           draft_picks_live because the mirror owns "draft_picks" until cutover;
 --                           rename the mirror away and this one to draft_picks then.
 --   * draft_slots.makeup_seq and draft_picks_live.seq are additions (void makeup order, undo order).
+--   * draft_defaults (clock length per draft type) and drafts.clock_seconds filled by a trigger: the
+--     default clock lives only in the table, not in Python.
 --   * draft_award_amounts is an addition: the speed-award prize money as data, not code.
 --   * a partial unique index on drafts and one on wb_ledger (speed awards pay once) are additions.
 --
@@ -16,17 +18,38 @@
 create extension if not exists unaccent;
 create extension if not exists pg_trgm;
 
+-- The default clock per draft type (spec: Prospect 4 minutes, Keeper 3 minutes, changed 10/27).
+-- This table is the only place those numbers live.
+create table draft_defaults (
+  draft_type       text primary key check (draft_type in ('prospect','keeper')),
+  clock_seconds    int not null check (clock_seconds > 0),
+  forklift_seconds int not null check (forklift_seconds > 0)
+);
+insert into draft_defaults (draft_type, clock_seconds, forklift_seconds) values ('prospect', 240, 10), ('keeper', 180, 10);
+
 create table drafts (
   draft_id         text primary key,            -- e.g. 'prospect-2027'
   season           int  not null,
   draft_type       text not null check (draft_type in ('prospect','keeper')),
   status           text not null default 'setup'
                    check (status in ('setup','pool_check','live','paused','complete')),
-  clock_seconds    int  not null default 240 check (clock_seconds > 0),
-  forklift_seconds int  not null default 10 check (forklift_seconds > 0),
+  clock_seconds    int  not null check (clock_seconds > 0),      -- null on insert = draft_defaults (trigger below)
+  forklift_seconds int  not null check (forklift_seconds > 0),
   starts_at        timestamptz,
   is_test          boolean not null default false
 );
+create function drafts_fill_defaults() returns trigger language plpgsql as $$
+begin
+  if new.clock_seconds is null then
+    select clock_seconds into new.clock_seconds from draft_defaults where draft_type = new.draft_type;
+  end if;
+  if new.forklift_seconds is null then
+    select forklift_seconds into new.forklift_seconds from draft_defaults where draft_type = new.draft_type;
+  end if;
+  return new;
+end $$;
+create trigger drafts_fill_defaults before insert on drafts
+  for each row execute function drafts_fill_defaults();
 -- addition: boards are keyed (season, draft_type), so a season has one real draft of each type
 create unique index one_real_draft_per_type on drafts (season, draft_type) where not is_test;
 
@@ -66,6 +89,31 @@ create table draft_picks_live (                   -- the spec's draft_picks
 );
 create index draft_picks_live_seq_idx on draft_picks_live (draft_id, seq);
 
+-- A pick can't land in a slot the draft skips (keeper, taxed out, unbought buy-in), and its
+-- contract_tier must be a real tier: BC/DC for a prospect draft (those are prospect types, not rows
+-- of contract_tiers), a contract_tiers row for a keeper draft. (A plain foreign key to contract_tiers
+-- would reject BC and DC, so a trigger does the check.)
+create function draft_pick_checks() returns trigger language plpgsql as $$
+declare
+  s_skip text;
+  d_type text;
+begin
+  select skip_reason into s_skip from draft_slots where draft_id = new.draft_id and overall = new.overall;
+  if s_skip is not null then
+    raise exception 'slot % of % is skipped (%); no pick can be made there', new.overall, new.draft_id, s_skip
+      using errcode = 'check_violation';
+  end if;
+  select draft_type into d_type from drafts where draft_id = new.draft_id;
+  if d_type = 'prospect' and new.contract_tier not in ('BC','DC') then
+    raise exception 'contract_tier % is not a prospect draft tier (BC or DC)', new.contract_tier using errcode = 'foreign_key_violation';
+  elsif d_type = 'keeper' and not exists (select 1 from contract_tiers where tier = new.contract_tier) then
+    raise exception 'contract_tier % is not in contract_tiers', new.contract_tier using errcode = 'foreign_key_violation';
+  end if;
+  return new;
+end $$;
+create trigger draft_pick_checks before insert or update of overall, contract_tier on draft_picks_live
+  for each row execute function draft_pick_checks();
+
 create table draft_clock (
   draft_id            text primary key references drafts,
   on_clock_overall    int,
@@ -73,7 +121,8 @@ create table draft_clock (
   paused_remaining_ms int,
   warned              boolean not null default false,
   runner_heartbeat_at timestamptz,                -- the clock runner writes this every second
-  foreign key (draft_id, on_clock_overall) references draft_slots
+  foreign key (draft_id, on_clock_overall) references draft_slots,
+  check (deadline_at is null or paused_remaining_ms is null)   -- running or paused, never both
 );
 
 create table draft_forklift (
@@ -120,7 +169,8 @@ create table notifications (                      -- outbox: nothing is sent ins
   created_at timestamptz not null default now(),
   sent_at    timestamptz,
   attempts   int  not null default 0,
-  last_error text
+  last_error text,
+  next_attempt_at timestamptz                     -- retry backoff: the sender skips the row until then (null = now)
 );
 create index notifications_unsent_idx on notifications (id) where sent_at is null;
 
@@ -151,6 +201,9 @@ create table draft_add_requests (
 );
 create unique index one_pending_request_per_player on draft_add_requests (draft_id, mlb_id)
   where status = 'pending';
+-- each team gets one auto-pause per draft (the service checks first; this makes it a rule)
+create unique index one_auto_pause_per_team on draft_add_requests (draft_id, requested_by)
+  where paused_draft;
 
 -- Fastest-drafter prize money (spec: 1st $30 ... 6th $5). Data, not code.
 create table draft_award_amounts (
@@ -182,6 +235,13 @@ $$;
 -- for_round: the round of the slot being picked. When given and that round is an FYPD round
 -- (draft_slots.round_type = 'fypd'), only fypd = true players are eligible. null = ignore that rule.
 --
+-- eligible_rounds / round_note describe the FYPD rule WITHOUT a round, so the pool check's "Excluded
+-- players" tab can show it:
+--   'all'              eligible in every round
+--   'open_rounds_only' eligible, but not in the FYPD rounds (not FYPD eligible): round_note says
+--                      'Not FYPD eligible (rounds 1-2)'
+--   'none'             not eligible in any round (reason says why)
+--
 -- Ownership is read from contracts (the live table) AND, until the Dec 15 cutover, from the open
 -- roster_assignments rows (the shadow mirror, still the roster of record for 2026 holdings).
 -- REMOVE THE roster_assignments JOIN BELOW AT CUTOVER, once contracts is the only owner list.
@@ -189,15 +249,23 @@ $$;
 -- Order of reasons: drafted here, admin exclude, owned, [admin include], wrong player type, FYPD.
 -- An admin include lifts the player-type and FYPD rules only; it never makes a drafted or owned
 -- player eligible (the one-open-contract index would reject the pick anyway).
+--
+-- THIS FUNCTION NAMES THE PICKS TABLE (draft_picks_live). scripts/db/cutover_draft_rename.sql
+-- redefines it for the rename; a test keeps the two copies identical.
 create function draft_pool(p_draft_id text, for_round int default null)
 returns table (
   upid text, name text, eligible boolean, reason text,
   player_type text, positions text, mlb_team text, fypd boolean,
-  draft_rank int, drafted_overall int, owner text
+  draft_rank int, drafted_overall int, owner text,
+  eligible_rounds text, round_note text
 ) language sql stable as $$
   select p.upid, p.name, x.reason is null, x.reason,
          p.player_type, p.positions, p.mlb_team, p.fypd,
-         r.rank, dp.overall, coalesce(oc.team_abbr, ra.team_abbr)
+         r.rank, dp.overall, coalesce(oc.team_abbr, ra.team_abbr),
+         case when x.base_reason is not null then 'none'
+              when x.fypd_blocked then 'open_rounds_only'
+              else 'all' end,
+         case when x.base_reason is null and x.fypd_blocked then x.fypd_text end
     from drafts d
    cross join players p
     left join draft_picks_live dp on dp.draft_id = d.draft_id and dp.upid = p.upid
@@ -220,10 +288,18 @@ returns table (
           then 'Not a prospect (' || coalesce(p.player_type, 'no player type') || ')'
         when d.draft_type = 'keeper' and p.player_type is distinct from 'MLB'
           then 'Not an MLB player (' || coalesce(p.player_type, 'no player type') || ')'
-        when d.draft_type = 'prospect' and f.is_round and not coalesce(p.fypd, false)
-          then 'Not FYPD eligible (' || case when f.lo = f.hi then 'round ' || f.lo else 'rounds ' || f.lo || '-' || f.hi end || ')'
         else null
-      end as reason
+      end as base_reason,
+      -- would the FYPD rule keep him out of the FYPD rounds? (an admin include lifts it)
+      (d.draft_type = 'prospect' and f.lo is not null and not coalesce(p.fypd, false)
+        and o.action is distinct from 'include') as fypd_blocked,
+      'Not FYPD eligible (' || case when f.lo = f.hi then 'round ' || f.lo else 'rounds ' || f.lo || '-' || f.hi end || ')' as fypd_text
+   ) y
+   cross join lateral (
+      select y.base_reason, y.fypd_blocked, y.fypd_text,
+             case when y.base_reason is not null then y.base_reason
+                  when y.fypd_blocked and f.is_round then y.fypd_text
+                  else null end as reason
    ) x
    where d.draft_id = p_draft_id
 $$;

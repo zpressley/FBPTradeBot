@@ -11,7 +11,8 @@ It refuses to run unless the draft is_test. Run it on a Neon test branch (or a l
 database), never on main. --setup builds the is_test draft from the mirror's 2026 order (and, for
 the Prospect Draft, buys the prepaid slots the order needs). --cleanup removes everything the run
 made, including its ledger rows: that needs fbp.ledger_maintenance, so it only runs against a
-local database.
+local database. --setup and --cleanup also refuse unless the database's league_settings row `branch` is 'test' or
+the host is local (draft.service.check_test_branch).
 """
 
 from __future__ import annotations
@@ -37,6 +38,7 @@ from draft import service as ds  # noqa: E402
 from league import actions  # noqa: E402
 
 SIM = "simulator"
+PICKS = ds.PICKS_TABLE
 
 
 def connect(url):
@@ -85,9 +87,9 @@ def setup(conn, draft_id, clock, mirror_season, rng):
 
 def cleanup(conn, draft_id):
     d = conn.execute("select season, draft_type from drafts where draft_id = %s", (draft_id,)).fetchone()
-    upids = [r[0] for r in conn.execute("select upid from draft_picks_live where draft_id = %s", (draft_id,))]
+    upids = [r[0] for r in conn.execute(f"select upid from {PICKS} where draft_id = %s", (draft_id,))]
     conn.execute("delete from notifications where payload->>'draft_id' = %s", (draft_id,))
-    for t in ("draft_events", "draft_add_requests", "draft_picks_live", "draft_clock", "draft_forklift", "draft_rankings",
+    for t in ("draft_events", "draft_add_requests", ds.PICKS_TABLE, "draft_clock", "draft_forklift", "draft_rankings",
               "draft_pool_overrides", "draft_slots"):
         conn.execute(f"delete from {t} where draft_id = %s", (draft_id,))
     if d:
@@ -166,15 +168,16 @@ def manager(url, draft_id, team, afk, clock, stats, stop, rng):
     conn.close()
 
 
-def admin(url, draft_id, stats, stop, rng):
-    """Pauses and resumes the draft now and then."""
+def admin(url, draft_id, stats, stop, rng, clock, stale):
+    """Pauses and resumes the draft now and then. (The 60-second floor on a pause/resume with outage time is
+    scaled to the simulator's short clock, like the runner's restart rule.)"""
     conn = connect(url)
     while not stop.wait(rng.uniform(4, 8)):
         try:
-            ds.pause(conn, draft_id, SIM, "simulated pause")
+            ds.pause(conn, draft_id, SIM, "simulated pause", stale_seconds=stale, min_seconds=clock)
             stats["pauses"] += 1
             time.sleep(rng.uniform(0.3, 1.2))
-            ds.resume(conn, draft_id, SIM)
+            ds.resume(conn, draft_id, SIM, min_seconds=clock)
         except ds.DraftError:
             pass
     conn.close()
@@ -205,38 +208,38 @@ def verify(conn, draft_id, clock, max_gap):
         results.append((ok, name, detail))
 
     draftable = conn.execute("select count(*) from draft_slots where draft_id = %s and skip_reason is null", (draft_id,)).fetchone()[0]
-    picks = conn.execute("select count(*), count(distinct upid), count(distinct overall) from draft_picks_live where draft_id = %s", (draft_id,)).fetchone()
+    picks = conn.execute(f"select count(*), count(distinct upid), count(distinct overall) from {PICKS} where draft_id = %s", (draft_id,)).fetchone()
     check("draft is complete", status == "complete", f"status {status}")
     check("every draftable slot is filled", picks[0] == draftable, f"{picks[0]} picks for {draftable} slots")
     check("nobody was picked twice", picks[0] == picks[1] == picks[2], f"{picks}")
-    unfilled = conn.execute("""select count(*) from draft_slots s left join draft_picks_live p using (draft_id, overall)
+    unfilled = conn.execute(f"""select count(*) from draft_slots s left join {PICKS} p using (draft_id, overall)
                                 where s.draft_id = %s and s.skip_reason is null and p.upid is null""", (draft_id,)).fetchone()[0]
     check("no open slot", unfilled == 0, f"{unfilled} open")
-    skipped = conn.execute("""select count(*) from draft_picks_live p join draft_slots s using (draft_id, overall)
+    skipped = conn.execute(f"""select count(*) from {PICKS} p join draft_slots s using (draft_id, overall)
                                where p.draft_id = %s and s.skip_reason is not null""", (draft_id,)).fetchone()[0]
     check("no pick in a skipped slot", skipped == 0)
-    wrong_team = conn.execute("""select count(*) from draft_picks_live p join draft_slots s using (draft_id, overall)
+    wrong_team = conn.execute(f"""select count(*) from {PICKS} p join draft_slots s using (draft_id, overall)
                                   where p.draft_id = %s and p.team_abbr <> s.team_abbr""", (draft_id,)).fetchone()[0]
     check("every pick is by the slot's owner", wrong_team == 0)
     via = "prospect_draft" if kind == "prospect" else "keeper_draft"
-    bad = conn.execute("""select count(*) from draft_picks_live p join draft_slots s using (draft_id, overall)
+    bad = conn.execute(f"""select count(*) from {PICKS} p join draft_slots s using (draft_id, overall)
                            left join contracts c on c.upid = p.upid and c.valid_to is null
                           where p.draft_id = %s and (c.id is null or c.team_abbr <> p.team_abbr or c.acquired_via <> %s
                                                      or c.acquired_round is distinct from s.round)""", (draft_id, via)).fetchone()[0]
     check("every pick has its open contract (team, round, source)", bad == 0, f"{bad} mismatches")
     if kind == "prospect":
-        bad = conn.execute("""select count(*) from draft_picks_live p join contracts c on c.upid = p.upid and c.valid_to is null
+        bad = conn.execute(f"""select count(*) from {PICKS} p join contracts c on c.upid = p.upid and c.valid_to is null
                                where p.draft_id = %s and c.prospect_type is distinct from p.contract_tier""", (draft_id,)).fetchone()[0]
         check("contract type matches the pick's tier", bad == 0)
         open_slots = conn.execute("select count(*) from prospect_draft_slots where season = %s and filled_upid is null", (season,)).fetchone()[0]
-        filled = conn.execute("select count(*) from prospect_draft_slots where filled_upid in (select upid from draft_picks_live where draft_id = %s)",
+        filled = conn.execute(f"select count(*) from prospect_draft_slots where filled_upid in (select upid from {PICKS} where draft_id = %s)",
                               (draft_id,)).fetchone()[0]
         check("every prepaid slot was filled by a pick", open_slots == 0 and filled == picks[0], f"{filled} filled, {open_slots} still open")
-    extra = conn.execute("""select count(*) from contracts c where c.acquired_via = %s and c.valid_to is null
-                             and c.upid not in (select upid from draft_picks_live where draft_id = %s)
+    extra = conn.execute(f"""select count(*) from contracts c where c.acquired_via = %s and c.valid_to is null
+                             and c.upid not in (select upid from {PICKS} where draft_id = %s)
                              and c.valid_from > now() - interval '1 day'""", (via, draft_id)).fetchone()[0]
     check("no contract without a pick", extra == 0, f"{extra} extra")
-    bad = conn.execute("select count(*) from draft_picks_live where draft_id = %s and (seconds_used < 0 or seconds_used > %s)",
+    bad = conn.execute(f"select count(*) from {PICKS} where draft_id = %s and (seconds_used < 0 or seconds_used > %s)",
                        (draft_id, clock)).fetchone()[0]
     check("seconds_used within the clock", bad == 0)
     told = conn.execute("""select coalesce(sum(jsonb_array_length(payload->'picks')), 0) from notifications
@@ -266,6 +269,11 @@ def main(argv=None):
     conn = connect(url)
     if args.cleanup and (urlparse(url).hostname or "") not in ("localhost", "127.0.0.1", "::1"):
         raise SystemExit("--cleanup sets fbp.ledger_maintenance and only runs against a local database")
+    if args.setup or args.cleanup:
+        try:
+            ds.check_test_branch(conn)      # test drafts only on a test branch or a local database
+        except ds.DraftError as e:
+            raise SystemExit(f"REFUSING: {e}")
     if args.setup:
         existing = conn.execute("select is_test from drafts where draft_id = %s", (args.draft,)).fetchone()
         if existing is not None:
@@ -287,7 +295,7 @@ def main(argv=None):
     stats, stop = Counter(), threading.Event()
     stale = 1.0
     threads = [threading.Thread(target=runner, args=(url, args.draft, args.clock, stats, stop, random.Random(rng.random()), stale)),
-               threading.Thread(target=admin, args=(url, args.draft, stats, stop, random.Random(rng.random()))),
+               threading.Thread(target=admin, args=(url, args.draft, stats, stop, random.Random(rng.random()), args.clock, stale)),
                threading.Thread(target=viewer, args=(url, args.draft, stats, stop))]
     threads += [threading.Thread(target=manager, args=(url, args.draft, t, t in afk, args.clock, stats, stop, random.Random(rng.random())))
                 for t in teams]
@@ -300,7 +308,7 @@ def main(argv=None):
     status = "live"
     while time.time() - t0 < args.timeout:
         time.sleep(0.25)
-        n = conn.execute("select count(*) from draft_picks_live where draft_id = %s", (args.draft,)).fetchone()[0]
+        n = conn.execute(f"select count(*) from {PICKS} where draft_id = %s", (args.draft,)).fetchone()[0]
         if n != last_count:
             if last_count >= 0:
                 max_gap = max(max_gap, time.time() - last_change)
@@ -320,7 +328,7 @@ def main(argv=None):
     elapsed = time.time() - t0
 
     results = verify(conn, args.draft, args.clock, max_gap)
-    sources = dict(conn.execute("select source, count(*) from draft_picks_live where draft_id = %s group by 1 order by 1", (args.draft,)).fetchall())
+    sources = dict(conn.execute(f"select source, count(*) from {PICKS} where draft_id = %s group by 1 order by 1", (args.draft,)).fetchall())
     print()
     for ok, name, detail in results:
         print(f"{'PASS' if ok else 'FAIL'}  {name}" + (f"  ({detail})" if detail and not ok else ""))

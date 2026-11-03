@@ -70,9 +70,12 @@ insert into wb_rollover_caps (season, from_phase, to_phase, cap) values
 create table roster_limits (
   season int primary key,
   active_max int, sp_max int, sp_max_with_swing int, pitcher_max int, batter_max int, catcher_min int,
-  dc_slot_max int
+  dc_slot_max int,
+  -- Spec 07: IL and NA spots sit outside the 26. One place for the limit; actions._set_slot enforces them.
+  il_max int not null default 5 check (il_max >= 0),
+  na_max int not null default 2 check (na_max >= 0)
 );
-insert into roster_limits values (2027, 26, 8, 9, 14, 16, 1, 15);
+insert into roster_limits values (2027, 26, 8, 9, 14, 16, 1, 15, 5, 2);
 
 create table prospect_limits (
   season int primary key,
