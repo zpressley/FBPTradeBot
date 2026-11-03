@@ -462,18 +462,29 @@ def fetch_page(url: str, headless: bool = True, wait_selector: str = "table.rank
                         pass  # the parser decides whether the page is usable
                     # The rankings page shows 5 rows and a "Show Full List" button
                     # (data-testid="load-more-button"); click it until it is gone.
+                    # A normal click timed out live (the cookie-consent overlay sits on
+                    # top of the page), so dismiss the banner if present and click
+                    # through the DOM, which ignores overlays.
+                    try:
+                        page.evaluate("""() => {
+                            const b = document.querySelector('#onetrust-accept-btn-handler');
+                            if (b) b.click();
+                        }""")
+                    except Exception:  # noqa: BLE001
+                        pass
                     for _ in range(5):
-                        button = page.query_selector("[data-testid='load-more-button']")
-                        if button is None:
+                        clicked = page.evaluate("""() => {
+                            const b = document.querySelector("[data-testid='load-more-button']");
+                            if (!b) return false;
+                            b.scrollIntoView();
+                            b.click();
+                            return true;
+                        }""")
+                        if not clicked:
                             break
-                        try:
-                            button.click(timeout=5000)
-                            page.wait_for_timeout(1500)
-                            print("  clicked 'Show Full List'; rows now:",
-                                  len(page.query_selector_all("table.rankings__table tbody tr")))
-                        except Exception as e:  # noqa: BLE001
-                            print(f"  load-more click failed: {e}")
-                            break
+                        page.wait_for_timeout(2000)
+                        print("  clicked 'Show Full List'; rows now:",
+                              len(page.query_selector_all("table.rankings__table tbody tr")))
                     for _ in range(8):  # trigger lazy-loaded rows
                         page.mouse.wheel(0, 3000)
                         page.wait_for_timeout(500)
