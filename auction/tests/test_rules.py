@@ -377,3 +377,67 @@ def test_affordability_unsold_when_nobody_can_pay():
 
 def test_resolve_empty():
     assert resolve([], {}, {}, ORDER) == []
+
+
+# ---- parameters from wb_prices -------------------------------------------
+
+def test_validate_bid_uses_min_ob_and_min_raise_parameters():
+    b = bid("CCC", "p1", "OB", 14, at(0, 16))
+    now = b.placed_at
+    phase = phase_for(now, CAL)
+    validate_bid(b, phase, [], 500, ORDER, now)                       # default min_ob is 10
+    with pytest.raises(BidError) as e:
+        validate_bid(b, phase, [], 500, ORDER, now, min_ob=15)
+    assert e.value.message == "Originating bids must be at least $15 WB."
+    c = cb("AAA", 18)
+    cnow = c.placed_at
+    cphase = phase_for(cnow, CAL)
+    validate_bid(c, cphase, [OB1], 500, ORDER, cnow)                  # default raise is 5: 15 is the lowest
+    with pytest.raises(BidError) as e:
+        validate_bid(cb("AAA", 18), cphase, [OB1], 500, ORDER, cnow, min_raise=10)
+    assert "at least $10 above the current high ($10)" in e.value.message
+    validate_bid(cb("AAA", 20), cphase, [OB1], 500, ORDER, cnow, min_raise=10)
+
+
+# ---- affordability drop order -------------------------------------------
+
+def test_affordability_drops_cb_win_before_ob_match():
+    """AAA wins p1 as an OB_MATCH (its OB was placed Mon 16:00; the challenger's CB came Thu 12:00)
+    and p2 as a CB_WIN (its CB was placed Wed 9:00). The OB_MATCH counts from the OB's time, so the
+    CB win is the later one and is dropped first. (Dating the match by the challenger's CB would
+    have dropped p1 instead.)"""
+    bids = [
+        ob("AAA", "p1", 10, 16), bid("BBB", "p1", "CB", 20, at(3, 12)),
+        ob("CCC", "p2", 10, 17), bid("AAA", "p2", "CB", 30, at(2, 9)),
+    ]
+    r = {x.upid: x for x in resolve(bids, {"p1": "match"}, {"AAA": 40, "BBB": 99, "CCC": 99}, ORDER)}
+    assert (r["p1"].team, r["p1"].amount, r["p1"].outcome, r["p1"].dropped) == ("AAA", 20, "OB_MATCH", [])
+    assert (r["p2"].team, r["p2"].amount, r["p2"].outcome, r["p2"].dropped) == ("CCC", 10, "OB_ONLY", ["AAA"])
+
+
+def test_affordability_cb_wins_dropped_latest_cb_first():
+    bids = [
+        ob("CCC", "p1", 10, 15), ob("DDD", "p2", 10, 16), ob("EEE", "p3", 10, 17),
+        bid("AAA", "p1", "CB", 20, at(2, 11)),   # earliest win by time, placed last in the list on purpose
+        bid("AAA", "p3", "CB", 20, at(3, 9)),    # latest
+        bid("AAA", "p2", "CB", 20, at(2, 12)),
+    ]
+    r = {x.upid: x for x in resolve(list(reversed(bids)), {}, {"AAA": 40, "CCC": 99, "DDD": 99, "EEE": 99}, ORDER)}
+    assert r["p3"].team == "EEE" and r["p3"].dropped == ["AAA"]
+    assert r["p1"].team == r["p2"].team == "AAA"
+
+
+def test_affordability_over_budget_teams_handled_in_priority_order_and_input_order_is_irrelevant():
+    """AAA (worst standings, first in ORDER) and BBB are both over budget in the first pass. AAA's dropped
+    p2 lands on BBB, which is then trimmed again. The result is the same whatever order the bids arrive in."""
+    bids = [
+        ob("CCC", "p1", 10, 15), ob("DDD", "p2", 10, 16), ob("EEE", "p3", 10, 17), ob("FFF", "p4", 10, 18),
+        bid("AAA", "p1", "CB", 40, at(2, 9)), bid("AAA", "p2", "CB", 40, at(2, 10)),
+        bid("BBB", "p2", "CB", 30, at(2, 14)),
+        bid("BBB", "p3", "CB", 40, at(2, 12)), bid("BBB", "p4", "CB", 40, at(2, 13)),
+    ]
+    bal = {"AAA": 50, "BBB": 50, "CCC": 99, "DDD": 99, "EEE": 99, "FFF": 99}
+    expect = [("p1", "AAA", 40, []), ("p2", "DDD", 10, ["AAA", "BBB"]), ("p3", "BBB", 40, []), ("p4", "FFF", 10, ["BBB"])]
+    for seq in (bids, list(reversed(bids)), bids[4:] + bids[:4]):
+        got = sorted((x.upid, x.team, x.amount, x.dropped) for x in resolve(seq, {}, bal, ORDER))
+        assert got == expect

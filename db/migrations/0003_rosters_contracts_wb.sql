@@ -37,7 +37,7 @@ update contract_tiers set il_discount = case family when 'TC' then 10 when 'VC' 
 
 -- ---------------------------------------------------------------- rules tables
 create table wb_prices (
-  season int, item text, amount int not null,
+  season int, item text, amount int not null check (amount >= 0),
   primary key (season, item)
 );
 insert into wb_prices (season, item, amount) values
@@ -132,6 +132,69 @@ create unique index wb_ledger_job_once on wb_ledger (team_abbr, kind, ref_type, 
 create view wb_balances as
   select team_abbr, sum(amount) as balance from wb_ledger group by team_abbr;
 
+-- Credits are positive, debits negative; admin_adjustment and reversal may be either sign.
+-- Three kinds may carry zero: opening_balance (a team that starts at $0), rollover_in (the
+-- once-per-team marker row when nothing is carried) and keeper_salary (a keep that costs $0
+-- after an IL discount leaves the marker that makes a second keep impossible).
+alter table wb_ledger add constraint wb_ledger_amount_sign check (
+  case kind
+    when 'opening_balance' then amount >= 0
+    when 'rollover_in'     then amount >= 0
+    when 'keeper_salary'   then amount <= 0
+    when 'installment' then amount > 0 when 'finish_reward' then amount > 0
+    when 'buyin_refund' then amount > 0 when 'trade_in' then amount > 0
+    when 'penalty_credit' then amount > 0 when 'draft_award' then amount > 0
+    when 'prospect_contract' then amount < 0 when 'prospect_upgrade' then amount < 0
+    when 'debut_fee' then amount < 0 when 'draft_slot' then amount < 0
+    when 'buyin' then amount < 0 when 'rat' then amount < 0
+    when 'auction_win' then amount < 0 when 'trade_out' then amount < 0
+    when 'penalty' then amount < 0 when 'rollover_forfeit' then amount < 0
+    else true            -- admin_adjustment, reversal
+  end);
+
+-- Append-only. The ledger is the balance, so a row is never edited or removed; a mistake is
+-- fixed with a new admin_adjustment or reversal row. The only way around the trigger is a
+-- session that sets  fbp.ledger_maintenance = 'on'  (test cleanup, one-off repair by the
+-- database owner). Application code must never set it.
+create function wb_ledger_append_only() returns trigger language plpgsql as $$
+begin
+  if current_setting('fbp.ledger_maintenance', true) = 'on' then
+    if tg_op = 'DELETE' then return old; end if;
+    return new;
+  end if;
+  raise exception 'wb_ledger is append-only: % is not allowed (add an adjustment or reversal row instead)', tg_op
+    using errcode = 'P0001';
+end $$;
+create trigger wb_ledger_no_update_delete before update or delete on wb_ledger
+  for each row execute function wb_ledger_append_only();
+create trigger wb_ledger_no_truncate before truncate on wb_ledger
+  for each statement execute function wb_ledger_append_only();
+
+-- A team's balance may not end below zero unless the debit is a penalty (the Constitution
+-- allows fines against future installments). Deferred: checked at commit, so it also stops a
+-- plain INSERT that bypasses wb_spend(). It takes the same per-team lock as wb_spend().
+create function wb_ledger_check_balance() returns trigger language plpgsql as $$
+declare
+  bal bigint;
+begin
+  if new.kind = 'penalty' or new.amount >= 0 then
+    return null;
+  end if;
+  perform pg_advisory_xact_lock(hashtext('wb:' || new.team_abbr));
+  select coalesce(sum(l.amount), 0) into bal from wb_ledger l where l.team_abbr = new.team_abbr;
+  if bal < 0 then
+    raise exception 'insufficient WizBucks: % would end at %', new.team_abbr, bal using errcode = 'P0001';
+  end if;
+  return null;
+end $$;
+create constraint trigger wb_ledger_balance_nonneg after insert on wb_ledger
+  deferrable initially deferred for each row execute function wb_ledger_check_balance();
+
+-- One BC retention charge per player per season (retain_bc is idempotent)
+create unique index wb_ledger_bc_retain_once on wb_ledger (ref_id) where ref_type = 'bc_retain';
+-- a ledger row can be reversed once
+create unique index wb_ledger_reversal_once on wb_ledger (ref_id) where ref_type = 'reversal';
+
 -- Low-level ledger writes. wb_spend takes amount > 0 and records -amount; it
 -- refuses to take the balance below zero except for kind = 'penalty'.
 create function wb_spend(team_abbr text, amount int, kind text, phase text, season int,
@@ -184,24 +247,38 @@ create table contracts (
   kind          text not null check (kind in ('keeper','prospect')),
   tier          text references contract_tiers,
   prospect_type text check (prospect_type in ('DC','PC','BC')),
-  acquired_via  text not null,
+  acquired_via  text not null check (acquired_via in
+    ('keeper_draft','prospect_draft','auction','trade','pad','graduation','free_agent','import')),
   acquired_round int,
   il_tag        boolean not null default false,
   il_tag_season int,
   il_tag_family text check (il_tag_family in ('TC','VC','FC')),   -- addition: family at tag time (the tier advances)
-  rat_count     int not null default 0,
+  il_tag_team   text references teams,   -- addition: the team whose yearly allowance the tag used (it travels in a trade)
+  il_ineligible_until date,              -- addition: KAP end + 5 weeks; the IL-tagged player is ineligible until then
+  bc_decision_season int,                -- addition: PAD season in which retain_bc decided this BC
+  bc_decision   text check (bc_decision in ('retained','repurchase','DC','PC')),
+  rat_count     int not null default 0 check (rat_count >= 0),
   international_rookie boolean not null default false,
   valid_from    timestamptz not null default now(),
   valid_to      timestamptz,
-  end_reason    text,
+  end_reason    text check (end_reason in ('traded','released','graduated','voided','not_kept','season_rollover')),
+  constraint contracts_open_iff_no_end_reason check ((valid_to is null) = (end_reason is null)),
+  constraint contracts_valid_range check (valid_to is null or valid_to >= valid_from),
+  constraint contracts_il_tag_fields check (
+    il_tag = (il_tag_season is not null) and il_tag = (il_tag_family is not null) and il_tag = (il_tag_team is not null)),
+  constraint contracts_bc_decision_fields check ((bc_decision is null) = (bc_decision_season is null)),
   check ((kind='keeper' and tier is not null and prospect_type is null) or (kind='prospect' and prospect_type is not null)),
   -- addition: 'P' is the old prospect marker, not a keeper tier
   constraint contracts_tier_not_p check (tier is distinct from 'P')
 );
 create unique index one_open_contract on contracts (upid) where valid_to is null;
 create index contracts_team_idx on contracts (team_abbr) where valid_to is null;
+-- the IL-tag allowance is counted over open AND closed contracts
+create index contracts_il_tag_idx on contracts (il_tag_team, il_tag_season, il_tag_family) where il_tag;
 
-alter table players add column carried_tier text references contract_tiers;
+-- 'P' is the old prospect marker, never a tier a player carries
+alter table players add column carried_tier text references contract_tiers
+  constraint players_carried_tier_not_p check (carried_tier is distinct from 'P');
 
 create table roster_slots (
   upid       text primary key references players,
@@ -214,9 +291,10 @@ create table prospect_draft_slots (
   season      int not null,
   team_abbr   text not null references teams,
   slot_type   text not null check (slot_type in ('BC','DC')),
-  ledger_id   bigint not null references wb_ledger,
-  filled_upid text references players,
-  filled_at   timestamptz
+  ledger_id   bigint not null unique references wb_ledger,
+  filled_upid text unique references players,
+  filled_at   timestamptz,
+  constraint prospect_draft_slots_filled_together check ((filled_upid is null) = (filled_at is null))
 );
 create index prospect_draft_slots_open_idx on prospect_draft_slots (season, team_abbr, slot_type)
   where filled_upid is null;
@@ -227,4 +305,17 @@ create table prospect_status (
   pa int, ip numeric, appearances int, age int,
   over_mlb_limits boolean, over_fbp_limits boolean,
   updated_at   timestamptz not null
+);
+
+-- ---------------------------------------------------------------- phase windows
+-- Which actions are allowed is decided by these rows, never by an argument the caller passes.
+-- An admin opens and closes a window (league.actions.open_window / close_window).
+create table league_windows (
+  season    int  not null,
+  window_name text not null check (window_name in ('PAD','KAP','BC_FINALIZATION','TRADE')),  -- "window" is reserved in SQL
+  opens_at  timestamptz not null,
+  closes_at timestamptz not null,
+  opened_by text not null,
+  primary key (season, window_name),
+  check (closes_at > opens_at)
 );

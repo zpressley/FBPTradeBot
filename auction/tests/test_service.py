@@ -98,7 +98,9 @@ class World:
         c.execute("delete from player_events where upid like %s", (like,))
         c.execute("delete from roster_slots where upid like %s", (like,))
         c.execute("delete from contracts where upid like %s", (like,))
+        c.execute("set fbp.ledger_maintenance = 'on'")   # the ledger is append-only; test cleanup only
         c.execute("delete from wb_ledger where created_by = %s or upid like %s", (BY, like))
+        c.execute("reset fbp.ledger_maintenance")
         c.execute("delete from players where upid like %s", (like,))
 
     def close(self):

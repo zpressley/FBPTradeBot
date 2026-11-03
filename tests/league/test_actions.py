@@ -141,6 +141,7 @@ def test_03_rollover_caps_and_forfeits(conn):
         rows = cur.fetchall()
     assert [(k, a) for k, a, _, _ in rows] == [("rollover_forfeit", -20), ("rollover_in", 0)]
     assert "carried $30" in rows[1][3]
+    assert bal(conn, "WIZ") == 30   # the cap: the excess left, the carried part never moved
     n = ledger_count(conn)
     A.close_phase_rollover(conn, S, "PAD", "KAP", created_by="system")  # safe to run twice
     assert ledger_count(conn) == n and bal(conn, "WIZ") == 30
@@ -383,6 +384,7 @@ def test_12_concurrent_spend_of_last_20(db_url):
             cur.execute("select count(*) from wb_ledger where team_abbr = %s and amount < 0", (team,))
             assert cur.fetchone()[0] == 1
     finally:
+        admin.execute("set fbp.ledger_maintenance = 'on'")   # the ledger is append-only; test cleanup only
         admin.execute("delete from wb_ledger where team_abbr = %s", (team,))
         admin.execute("delete from teams where abbr = %s", (team,))
         with admin.cursor() as cur:
@@ -413,9 +415,10 @@ def test_upgrade_prospect_and_prices(conn):
     assert A.upgrade_prospect(conn, p, "PC", created_by=BY, season=S)["charged"] == 5
     with pytest.raises(RuleError, match="finalization"):
         A.upgrade_prospect(conn, p, "BC", created_by=BY, season=S)
-    assert A.upgrade_prospect(conn, p, "BC", created_by=BY, season=S, finalization_open=True)["charged"] == 10
+    A.open_window(conn, S, "BC_FINALIZATION", utc(2020, 1, 1), utc(2090, 1, 1), "zach")
+    assert A.upgrade_prospect(conn, p, "BC", created_by=BY, season=S)["charged"] == 10
     with pytest.raises(RuleError, match="can't upgrade"):
-        A.upgrade_prospect(conn, p, "PC", created_by=BY, season=S, finalization_open=True)
+        A.upgrade_prospect(conn, p, "PC", created_by=BY, season=S)
     n = mk_player(conn, "test-up-pad")
     assert A.assign_prospect_contract(conn, n, "WIZ", "BC", acquired_via="pad", created_by=BY, season=S)["charged"] == 20
     assert bal(conn, "WIZ") == 100 - 5 - 10 - 20
@@ -451,7 +454,7 @@ def test_import_never_touches_live_tables(db_url):
     root = Path(__file__).resolve().parents[2]
     c = psycopg.connect(db_url, autocommit=True)
     try:
-        A.wb_credit(c, "WIZ", 7, "admin_adjustment", "OFFSEASON", S, created_by="test-import-survival")
+        A.admin_adjust(c, reason="survival test", created_by="test-import-survival", team="WIZ", amount=7, season=S)
         c.execute("insert into players (upid, name) values ('test-import-survivor', 'Survivor')")
         c.execute("""insert into contracts (upid, team_abbr, kind, tier, acquired_via)
                      values ('test-import-survivor', 'WIZ', 'keeper', 'TC-1', 'import')""")
@@ -466,6 +469,7 @@ def test_import_never_touches_live_tables(db_url):
         assert c.execute("select count(*) from contracts where upid = 'test-import-survivor'").fetchone()[0] == 1
     finally:
         c.execute("delete from contracts where upid = 'test-import-survivor'")
+        c.execute("set fbp.ledger_maintenance = 'on'")   # the ledger is append-only; test cleanup only
         c.execute("delete from wb_ledger where created_by = 'test-import-survival'")
         c.execute("delete from players where upid = 'test-import-survivor'")
         c.close()

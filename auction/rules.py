@@ -177,9 +177,12 @@ def committed(team: str, bids: Sequence[Bid], priority_order: Sequence[str]) -> 
 
 def validate_bid(bid: Bid, week: Phase, bids: Sequence[Bid], balance: int,
                  priority_order: Sequence[str], now: datetime,
-                 prospect: Optional[Prospect] = None) -> None:
+                 prospect: Optional[Prospect] = None, min_ob: int = MIN_OB,
+                 min_raise: int = MIN_RAISE) -> None:
     """Raise BidError if `bid` breaks a rule. `week` is phase_for(now, ...);
-    `bids` are the week's existing, non-removed bids; `balance` is the team's WB."""
+    `bids` are the week's existing, non-removed bids; `balance` is the team's WB.
+    `min_ob` and `min_raise` come from wb_prices (auction_min_ob, auction_min_raise); the
+    defaults are the 2027 values."""
     et = now.astimezone(ET)
     team, upid, amount = bid.team, bid.upid, int(bid.amount)
 
@@ -200,8 +203,8 @@ def validate_bid(bid: Bid, week: Phase, bids: Sequence[Bid], balance: int,
         raise BidError("Originating bids are only allowed Mon 3pm–Tue midnight ET.")
     if bid.bid_type == "CB" and week.name != CB_WINDOW:
         raise BidError("Challenge bids are only allowed Wed midnight–Fri 9:00pm ET.")
-    if bid.bid_type == "OB" and amount < MIN_OB:
-        raise BidError("Originating bids must be at least $10 WB.")
+    if bid.bid_type == "OB" and amount < min_ob:
+        raise BidError(f"Originating bids must be at least ${min_ob} WB.")
 
     if bid.bid_type == "OB":
         if any(b.team == team and b.bid_type == "OB" for b in bids):
@@ -216,7 +219,7 @@ def validate_bid(bid: Bid, week: Phase, bids: Sequence[Bid], balance: int,
             raise BidError("Originating manager cannot place challenge bids on their own OB.")
 
         high_team, high_amt = high_bid(upid, bids, priority_order)
-        if amount < high_amt + MIN_RAISE:
+        if amount < high_amt + min_raise:
             if amount == high_amt:
                 if _seed(team, priority_order) >= _seed(high_team, priority_order):
                     raise BidError(
@@ -225,7 +228,7 @@ def validate_bid(bid: Bid, week: Phase, bids: Sequence[Bid], balance: int,
                     )
             else:
                 raise BidError(
-                    f"Challenge bids must be at least $5 above the current high (${high_amt}), "
+                    f"Challenge bids must be at least ${min_raise} above the current high (${high_amt}), "
                     f"or match at ${high_amt} exactly if you have higher CB priority (worse standings)."
                 )
 
@@ -257,7 +260,9 @@ def validate_bid(bid: Bid, week: Phase, bids: Sequence[Bid], balance: int,
 def _winner(upid: str, pbids: Sequence[Bid], decision: Optional[str],
             excluded: Sequence[str], priority_order: Sequence[str]):
     """Per-prospect rule on the bids of teams not excluded.
-    Returns (team, amount, outcome, placed_at of the deciding bid) or None."""
+    Returns (team, amount, outcome, when) or None. `when` is what orders a team's wins when it
+    can't afford them all: the OB's placed_at for OB_ONLY and OB_MATCH (the OB team's win starts
+    with its OB), the winning CB's placed_at for CB_WIN."""
     live = [b for b in pbids if b.team not in excluded]
     ob = next((b for b in live if b.bid_type == "OB"), None)
     cbs = [b for b in live if b.bid_type == "CB"]
@@ -268,7 +273,7 @@ def _winner(upid: str, pbids: Sequence[Bid], decision: Optional[str],
                      key=lambda b: (_seed(b.team, priority_order), b.placed_at))
     cb = top_cbs[0]
     if ob is not None and decision == "match":
-        return (ob.team, cb.amount, "OB_MATCH", cb.placed_at)
+        return (ob.team, cb.amount, "OB_MATCH", ob.placed_at)
     return (cb.team, cb.amount, "CB_WIN", cb.placed_at)
 
 
@@ -278,6 +283,12 @@ def resolve(bids: Sequence[Bid], decisions: Mapping[str, str],
 
     Prospects nobody can afford produce no Result. Results are ordered by when
     the prospect's first bid was placed, then upid.
+
+    Affordability: while any team's wins cost more than its balance, the over-budget team that is
+    first in `priority_order` (worst standings first) is handled, and its LATEST win is dropped:
+    latest = the OB's placed_at for OB_ONLY and OB_MATCH, the winning CB's placed_at for CB_WIN
+    (ties: the larger upid). The prospect is then re-decided without that team, and every team is
+    checked again. The order is a choice for Zach to confirm (auction/REPLAY_NOTES.md).
     """
     by_upid: dict = {}
     for b in bids:

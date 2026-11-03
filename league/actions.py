@@ -32,6 +32,15 @@ PROSPECT_TYPES = ("DC", "PC", "BC")
 SLOTS = ("active", "il", "na", "farm")
 DEBUT_FEE_WINDOW_DAYS = 7   # Constitution Art. III s02: "within 7 days" (a rule constant, see report)
 FEE_EXEMPT_MONTH = 9        # September call-ups are exempt from the debut fee
+IL_INELIGIBLE_DAYS = 35     # an IL-tagged player can't play for 5 weeks after the KAP ends
+
+# Ledger kinds the low-level wrappers will write. penalty() and admin_adjust() are the only
+# paths for 'penalty', 'admin_adjustment' and 'reversal'.
+SPEND_KINDS = ("prospect_contract", "prospect_upgrade", "debut_fee", "draft_slot", "buyin", "rat",
+               "keeper_salary", "auction_win", "trade_out", "rollover_forfeit")
+CREDIT_KINDS = ("installment", "finish_reward", "rollover_in", "buyin_refund", "trade_in",
+                "penalty_credit", "draft_award", "opening_balance")
+WINDOWS = ("PAD", "KAP", "BC_FINALIZATION", "TRADE")
 
 
 class RuleError(Exception):
@@ -182,9 +191,72 @@ def _set_slot(conn, upid, slot, ts):
     )
 
 
+# ------------------------------------------------------------------ phase windows
+
+def window_is_open(conn, season, window, ts) -> bool:
+    return _one(conn, """select 1 as x from league_windows
+                          where season = %s and window_name = %s and opens_at <= %s and %s < closes_at""",
+                (season, window, ts, ts)) is not None
+
+
+def _require_window(conn, season, window, ts, what):
+    """Phase gating comes from the league_windows table, never from an argument the caller passes.
+
+    There is deliberately no bypass for created_by='system': the one automatic job the spec runs at
+    KAP close (release of non-kept players) is not a gated action.
+    """
+    if not window_is_open(conn, season, window, ts):
+        raise RuleError(f"{what} is only allowed while the {window} window is open, and it is not open now")
+
+
+def _current_phase(conn, season, ts):
+    """Ledger phase for an action that is allowed at several times, taken from the open windows."""
+    for w in ("PAD", "KAP"):
+        if window_is_open(conn, season, w, ts):
+            return w
+    return "PAD" if window_is_open(conn, season, "BC_FINALIZATION", ts) else "IN_SEASON"
+
+
+@_atomic
+def open_window(conn, season, window, opens_at, closes_at, by):
+    """Admin: open (or re-time) a league window."""
+    if window not in WINDOWS:
+        raise RuleError(f"window must be one of {WINDOWS}")
+    if not by or by == "system":
+        raise RuleError("a window is opened by a named admin")
+    if closes_at <= opens_at:
+        raise RuleError("a window must close after it opens")
+    _exec(conn, """insert into league_windows (season, window_name, opens_at, closes_at, opened_by)
+                   values (%s, %s, %s, %s, %s)
+                   on conflict (season, window_name) do update
+                     set opens_at = excluded.opens_at, closes_at = excluded.closes_at, opened_by = excluded.opened_by""",
+          (season, window, opens_at, closes_at, by))
+    msg = f"{window} window for {season} open from {opens_at} to {closes_at} (by {by})."
+    _event(conn, None, "window_open", msg, team=None, season=season, by=by, ts=_now(None))
+    return {"message": msg}
+
+
+@_atomic
+def close_window(conn, season, window, by, now=None):
+    """Admin: close a window now. A window that never opened is removed."""
+    ts = _now(now)
+    row = _one(conn, "select opens_at, closes_at from league_windows where season = %s and window_name = %s for update",
+               (season, window))
+    if not row:
+        raise RuleError(f"no {window} window for {season}")
+    if ts <= row["opens_at"]:
+        _exec(conn, "delete from league_windows where season = %s and window_name = %s", (season, window))
+    elif ts < row["closes_at"]:
+        _exec(conn, "update league_windows set closes_at = %s where season = %s and window_name = %s", (ts, season, window))
+    msg = f"{window} window for {season} closed (by {by})."
+    _event(conn, None, "window_close", msg, team=None, season=season, by=by, ts=ts)
+    return {"message": msg}
+
+
 def _open_contract(conn, **c):
     cols = ["upid", "team_abbr", "kind", "tier", "prospect_type", "acquired_via", "acquired_round", "il_tag",
-            "il_tag_season", "il_tag_family", "rat_count", "international_rookie", "valid_from"]
+            "il_tag_season", "il_tag_family", "il_tag_team", "il_ineligible_until", "bc_decision",
+            "bc_decision_season", "rat_count", "international_rookie", "valid_from"]
     vals = [c.get(k) for k in cols]
     for i, k in enumerate(cols):
         if vals[i] is None and k in ("il_tag", "rat_count", "international_rookie"):
@@ -305,10 +377,10 @@ def _slot_type_for_round(conn, season, draft_round):
 
 @_atomic
 def assign_prospect_contract(conn, upid, team, prospect_type=None, *, acquired_via, created_by, season=None,
-                             phase="PAD", draft_round=None, international_rookie=False, now=None):
+                             draft_round=None, international_rookie=False, now=None):
     """Open a DC/PC/BC contract.
 
-    acquired_via 'pad': charges the price. 'prospect_draft': fills the team's next open slot of the
+    acquired_via 'pad': needs an open PAD window and charges the price. 'prospect_draft': fills the team's next open slot of the
     right type (BC for the early rounds, DC after) with no charge. 'auction': PC, already paid.
     """
     ts, season = _now(now), _season(conn, season)
@@ -340,8 +412,9 @@ def assign_prospect_contract(conn, upid, team, prospect_type=None, *, acquired_v
     else:
         if prospect_type not in PROSPECT_TYPES:
             raise RuleError(f"prospect_type must be one of {PROSPECT_TYPES}")
+        _require_window(conn, season, "PAD", ts, "buying a prospect contract")
         charged = _price(conn, season, prospect_type.lower())
-        _spend(conn, team, charged, "prospect_contract", phase, season, upid=upid, ref_type="pad",
+        _spend(conn, team, charged, "prospect_contract", "PAD", season, upid=upid, ref_type="pad",
                ref_id=str(season), note=f"{prospect_type} contract for {p['name']}", by=created_by)
     cid = _open_contract(conn, upid=upid, team_abbr=team, kind="prospect", prospect_type=prospect_type,
                          acquired_via=acquired_via, acquired_round=draft_round,
@@ -353,10 +426,11 @@ def assign_prospect_contract(conn, upid, team, prospect_type=None, *, acquired_v
 
 
 @_atomic
-def buy_draft_slot(conn, team, slot_type, *, created_by, season=None, count=1, phase="PAD", now=None):
+def buy_draft_slot(conn, team, slot_type, *, created_by, season=None, count=1, now=None):
     """Pay the BC or DC contract price now and get an empty prospect contract to fill at the Prospect Draft."""
     ts, season = _ts_season(conn, now, season)
     _team(conn, team)
+    _require_window(conn, season, "PAD", ts, "buying a draft slot")
     if slot_type not in ("BC", "DC"):
         raise RuleError("slot_type must be 'BC' or 'DC'")
     if count < 1:
@@ -371,7 +445,7 @@ def buy_draft_slot(conn, team, slot_type, *, created_by, season=None, count=1, p
     price = _price(conn, season, slot_type.lower())
     ids = []
     for _ in range(count):
-        lid = _spend(conn, team, price, "draft_slot", phase, season, ref_type="draft", ref_id=str(season),
+        lid = _spend(conn, team, price, "draft_slot", "PAD", season, ref_type="draft", ref_id=str(season),
                      note=f"{slot_type} draft slot", by=created_by)
         ids.append(_one(conn, """insert into prospect_draft_slots (season, team_abbr, slot_type, ledger_id)
                                  values (%s, %s, %s, %s) returning id""", (season, team, slot_type, lid))["id"])
@@ -385,20 +459,19 @@ def _ts_season(conn, now, season):
 
 
 @_atomic
-def upgrade_prospect(conn, upid, to_type, *, created_by, season=None, phase="PAD", team=None,
-                     finalization_open=False, now=None):
-    """DC->PC any time. DC->BC and PC->BC only while the admin-run finalization window is open."""
+def upgrade_prospect(conn, upid, to_type, *, created_by, season=None, team=None, now=None):
+    """DC->PC any time. DC->BC and PC->BC only while the admin-run BC_FINALIZATION window is open."""
     ts, season = _ts_season(conn, now, season)
     c = _locked_contract(conn, upid, team=team, kind="prospect")
     frm = c["prospect_type"]
     item = {("DC", "PC"): "dc_to_pc", ("DC", "BC"): "dc_to_bc", ("PC", "BC"): "pc_to_bc"}.get((frm, to_type))
     if item is None:
         raise RuleError(f"can't upgrade a {frm} contract to {to_type}")
-    if to_type == "BC" and not finalization_open:
+    if to_type == "BC" and not window_is_open(conn, season, "BC_FINALIZATION", ts):
         raise RuleError("Blue Chip upgrades are only allowed during post-draft finalization, which an admin opens")
     price = _price(conn, season, item)
     name = _player(conn, upid)["name"]
-    _spend(conn, c["team_abbr"], price, "prospect_upgrade", phase, season, upid=upid, ref_type="upgrade",
+    _spend(conn, c["team_abbr"], price, "prospect_upgrade", _current_phase(conn, season, ts), season, upid=upid, ref_type="upgrade",
            ref_id=f"{frm}>{to_type}", note=f"{frm} to {to_type} for {name}", by=created_by)
     _exec(conn, "update contracts set prospect_type = %s where id = %s", (to_type, c["id"]))
     msg = f"{name} upgraded from {frm} to {to_type} for ${price}."
@@ -529,6 +602,10 @@ def retain_bc(conn, upid, *, created_by="system", season=None, choice=None, snap
     ts, season = _ts_season(conn, now, season)
     c = _locked_contract(conn, upid, kind="prospect")
     name = _player(conn, upid)["name"]
+    if c["bc_decision_season"] == season:   # idempotent: a second call never charges again
+        d = c["bc_decision"]
+        return {"retained": d == "retained", "charged": 0, "already_decided": True, "prospect_type": c["prospect_type"],
+                "message": f"{name}: the {season} Blue Chip decision is already recorded ({d}); nothing charged."}
     if c["prospect_type"] != "BC":
         raise RuleError(f"{name} is not on a Blue Chip contract")
     if snapshot_date is None:
@@ -544,6 +621,7 @@ def retain_bc(conn, upid, *, created_by="system", season=None, choice=None, snap
     # Art. III s04: over MLB rookie limits but not FBP limits and not graduated still retains
     exempt = bool(st and st["over_mlb_limits"] and not st["over_fbp_limits"])
     if on_list or exempt:
+        _exec(conn, "update contracts set bc_decision = 'retained', bc_decision_season = %s where id = %s", (season, c["id"]))
         msg = f"{name} keeps his Blue Chip contract free" + (f" (Top 100 #{on_list['rank']})." if on_list else " (over MLB limits only).")
         _event(conn, upid, "bc_retained", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract="BC")
         return {"retained": True, "charged": 0, "message": msg}
@@ -556,9 +634,10 @@ def retain_bc(conn, upid, *, created_by="system", season=None, choice=None, snap
         price, new_type = _price(conn, season, choice.lower()), choice
     else:
         raise RuleError("choice must be 'repurchase', 'DC' or 'PC'")
-    _spend(conn, c["team_abbr"], price, "prospect_contract", "PAD", season, upid=upid, ref_type="pad",
-           ref_id=str(season), note=f"BC not retained; {choice}", by=created_by)
-    _exec(conn, "update contracts set prospect_type = %s where id = %s", (new_type, c["id"]))
+    _spend(conn, c["team_abbr"], price, "prospect_contract", "PAD", season, upid=upid, ref_type="bc_retain",
+           ref_id=f"{season}:{upid}", note=f"BC not retained; {choice}", by=created_by)
+    _exec(conn, "update contracts set prospect_type = %s, bc_decision = %s, bc_decision_season = %s where id = %s",
+          (new_type, choice, season, c["id"]))
     msg = f"{name} was not in the Top 100; {c['team_abbr']} paid ${price} and he is now {new_type}."
     _event(conn, upid, "bc_not_retained", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=new_type)
     return {"retained": False, "charged": price, "prospect_type": new_type, "message": msg}
@@ -598,6 +677,7 @@ def _kap_keep(conn, c, *, season, by, ts, tier_paid, il=False, rat=False):
 def keep_player(conn, upid, *, created_by, season=None, team=None, now=None):
     """KAP: charge the stored tier's keeper cost, then advance to next_tier for the following season."""
     ts, season = _ts_season(conn, now, season)
+    _require_window(conn, season, "KAP", ts, "keeping a player")
     c = _locked_contract(conn, upid, team=team, kind="keeper")
     if _already_kept(conn, upid, season):
         raise RuleError(f"{_player(conn, upid)['name']} was already kept in the {season} KAP")
@@ -607,12 +687,21 @@ def keep_player(conn, upid, *, created_by, season=None, team=None, now=None):
     return {"charged": cost, "tier": nxt, "message": msg}
 
 
+def _il_ineligible_until(conn, season, ts):
+    """KAP end date + 5 weeks, from seasons.dates['kap_end_date']; if the season has no such date, today + 35 days."""
+    row = _one(conn, "select dates->>'kap_end_date' as d from seasons where year = %s", (season,))
+    if row and row["d"]:
+        return date.fromisoformat(row["d"]) + timedelta(days=IL_INELIGIBLE_DAYS)
+    return ts.astimezone(ET).date() + timedelta(days=IL_INELIGIBLE_DAYS)
+
+
 @_atomic
 def il_tag(conn, upid, *, created_by, approved_by, season=None, team=None, now=None):
     """KAP: keep with the IL discount (TC -10, VC -15, FC -35). One per contract family per team. Admin approves."""
     ts, season = _ts_season(conn, now, season)
     if not approved_by:
         raise RuleError("an admin must approve an IL tag")
+    _require_window(conn, season, "KAP", ts, "an IL tag")
     c = _locked_contract(conn, upid, team=team, kind="keeper")
     name = _player(conn, upid)["name"]
     t = _tier(conn, c["tier"])
@@ -620,13 +709,15 @@ def il_tag(conn, upid, *, created_by, approved_by, season=None, team=None, now=N
         raise RuleError(f"{name} is on {c['tier']}, which can't take an IL tag")
     if _already_kept(conn, upid, season):
         raise RuleError(f"{name} was already kept in the {season} KAP")
-    used = _one(conn, """select 1 as x from contracts where team_abbr = %s and valid_to is null and il_tag
+    # open AND closed contracts count: a tagged player who was released or traded still used the allowance
+    used = _one(conn, """select 1 as x from contracts where il_tag_team = %s and il_tag
                           and il_tag_season = %s and il_tag_family = %s""", (c["team_abbr"], season, t["family"]))
     if used:
         raise RuleError(f"{c['team_abbr']} already used its {t['family']} IL tag for {season}")
     cost, nxt, note = _kap_keep(conn, c, season=season, by=created_by, ts=ts, tier_paid=c["tier"], il=True)
-    _exec(conn, "update contracts set il_tag = true, il_tag_season = %s, il_tag_family = %s where id = %s",
-          (season, t["family"], c["id"]))
+    _exec(conn, """update contracts set il_tag = true, il_tag_season = %s, il_tag_family = %s, il_tag_team = %s,
+                          il_ineligible_until = %s where id = %s""",
+          (season, t["family"], c["team_abbr"], _il_ineligible_until(conn, season, ts), c["id"]))
     msg = f"{note}: ${cost} charged (approved by {approved_by}); now {nxt}."
     _event(conn, upid, "il_tag", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=nxt)
     return {"charged": cost, "tier": nxt, "message": msg}
@@ -636,6 +727,7 @@ def il_tag(conn, upid, *, created_by, approved_by, season=None, team=None, now=N
 def reduce_a_tier(conn, upid, *, created_by, season=None, team=None, now=None):
     """KAP: pay the RaT price, drop the stored tier one step, pay that tier's cost, advance from it."""
     ts, season = _ts_season(conn, now, season)
+    _require_window(conn, season, "KAP", ts, "Reduce a Tier")
     c = _locked_contract(conn, upid, team=team, kind="keeper")
     name = _player(conn, upid)["name"]
     t = _tier(conn, c["tier"])
@@ -751,7 +843,8 @@ def transfer(conn, upid, from_team, to_team, *, created_by, season=None, ref_id=
     cid = _open_contract(
         conn, upid=upid, team_abbr=to_team, kind=c["kind"], tier=c["tier"], prospect_type=c["prospect_type"],
         acquired_via="trade", acquired_round=c["acquired_round"], il_tag=c["il_tag"], il_tag_season=c["il_tag_season"],
-        il_tag_family=c["il_tag_family"], rat_count=c["rat_count"], international_rookie=c["international_rookie"],
+        il_tag_family=c["il_tag_family"], il_tag_team=c["il_tag_team"], il_ineligible_until=c["il_ineligible_until"],
+        bc_decision=c["bc_decision"], bc_decision_season=c["bc_decision_season"], rat_count=c["rat_count"], international_rookie=c["international_rookie"],
         valid_from=ts)
     msg = f"{name} traded from {from_team} to {to_team}" + (f" ({ref_id})." if ref_id else ".")
     _event(conn, upid, "trade", msg, team=to_team, season=season, by=created_by, ts=ts, contract=c["tier"] or c["prospect_type"])
@@ -762,7 +855,12 @@ def transfer(conn, upid, from_team, to_team, *, created_by, season=None, ref_id=
 
 @_atomic
 def wb_spend(conn, team, amount, kind, phase, season, *, created_by, upid=None, ref_type=None, ref_id=None, note=None):
-    """Low-level spend (amount > 0). Fails with 'insufficient WizBucks' and no ledger row if short."""
+    """Low-level spend (amount > 0). Fails with 'insufficient WizBucks' and no ledger row if short.
+
+    Only SPEND_KINDS. A penalty goes through penalty(); admin_adjustment and reversal through admin_adjust().
+    """
+    if kind not in SPEND_KINDS:
+        raise RuleError(f"wb_spend can't write a {kind!r} row; allowed: {', '.join(SPEND_KINDS)}")
     _team(conn, team)
     _lock(conn, team)
     lid = _spend(conn, team, amount, kind, phase, season, upid=upid, ref_type=ref_type, ref_id=ref_id, note=note, by=created_by)
@@ -772,7 +870,11 @@ def wb_spend(conn, team, amount, kind, phase, season, *, created_by, upid=None, 
 
 @_atomic
 def wb_credit(conn, team, amount, kind, phase, season, *, created_by, upid=None, ref_type=None, ref_id=None, note=None):
-    """Low-level credit (amount >= 0)."""
+    """Low-level credit (amount > 0; an opening_balance may be 0). Only CREDIT_KINDS."""
+    if kind not in CREDIT_KINDS:
+        raise RuleError(f"wb_credit can't write a {kind!r} row; allowed: {', '.join(CREDIT_KINDS)}")
+    if amount is None or amount < 0 or (amount == 0 and kind != "opening_balance"):
+        raise RuleError("a credit must be a positive amount")
     _team(conn, team)
     _lock(conn, team)
     lid = _credit(conn, team, amount, kind, phase, season, upid=upid, ref_type=ref_type, ref_id=ref_id, note=note, by=created_by)
@@ -799,8 +901,13 @@ def penalty(conn, team, amount, *, rule, created_by, season=None, phase="IN_SEAS
 
 @_atomic
 def admin_adjust(conn, *, reason, created_by, season=None, phase="IN_SEASON", team=None, amount=None, upid=None,
-                 kind="admin_adjustment", set_tier=None, set_prospect_type=None, now=None):
-    """Ledger and/or contract fix with a required reason. A negative amount may not overdraw the balance."""
+                 kind="admin_adjustment", reverses_ledger_id=None, set_tier=None, set_prospect_type=None, now=None):
+    """Ledger and/or contract fix with a required reason. A negative amount may not overdraw the balance.
+
+    The only path for 'admin_adjustment' and 'reversal' rows. A reversal must name the ledger row it
+    reverses (`reverses_ledger_id`); it is recorded with ref_type='reversal', ref_id=<that id>, and a row
+    can be reversed once.
+    """
     ts, season = _ts_season(conn, now, season)
     if not (reason and reason.strip()):
         raise RuleError("an admin adjustment needs a reason")
@@ -808,15 +915,30 @@ def admin_adjust(conn, *, reason, created_by, season=None, phase="IN_SEASON", te
         raise RuleError("kind must be 'admin_adjustment' or 'reversal'")
     out = {}
     notes = []
+    ref_type, ref_id = "admin", None
+    if kind == "reversal":
+        if reverses_ledger_id is None:
+            raise RuleError("a reversal must name the ledger row it reverses")
+        ref_type, ref_id = "reversal", str(reverses_ledger_id)
+        orig = _one(conn, "select team_abbr from wb_ledger where id = %s", (reverses_ledger_id,))
+        if not orig:
+            raise RuleError(f"ledger row {reverses_ledger_id} does not exist")
+        if team is not None and team != orig["team_abbr"]:
+            raise RuleError(f"ledger row {reverses_ledger_id} belongs to {orig['team_abbr']}, not {team}")
+        team = orig["team_abbr"]
+        if _one(conn, "select 1 as x from wb_ledger where ref_type = 'reversal' and ref_id = %s", (ref_id,)):
+            raise RuleError(f"ledger row {reverses_ledger_id} was already reversed")
+    elif reverses_ledger_id is not None:
+        raise RuleError("reverses_ledger_id is only for kind='reversal'")
     if amount:
         if not team:
             raise RuleError("a ledger adjustment needs a team")
         _team(conn, team)
         _lock(conn, team)
         if amount > 0:
-            out["ledger_id"] = _credit(conn, team, amount, kind, phase, season, upid=upid, ref_type="admin", note=reason, by=created_by)
+            out["ledger_id"] = _credit(conn, team, amount, kind, phase, season, upid=upid, ref_type=ref_type, ref_id=ref_id, note=reason, by=created_by)
         else:
-            out["ledger_id"] = _spend(conn, team, -amount, kind, phase, season, upid=upid, ref_type="admin", note=reason, by=created_by)
+            out["ledger_id"] = _spend(conn, team, -amount, kind, phase, season, upid=upid, ref_type=ref_type, ref_id=ref_id, note=reason, by=created_by)
         notes.append(f"{team} {amount:+d} WB")
     if set_tier or set_prospect_type:
         if not upid:
@@ -834,6 +956,8 @@ def admin_adjust(conn, *, reason, created_by, season=None, phase="IN_SEASON", te
             _exec(conn, "update contracts set prospect_type = %s where id = %s", (set_prospect_type, c["id"]))
             notes.append(f"prospect type {c['prospect_type']} to {set_prospect_type}")
         team = team or c["team_abbr"]
+    if kind == "reversal" and "ledger_id" not in out:
+        raise RuleError("a reversal needs a non-zero amount")
     if not notes:
         raise RuleError("nothing to adjust")
     msg = f"Admin fix by {created_by}: " + "; ".join(notes) + f". Reason: {reason}"
@@ -854,6 +978,8 @@ def close_phase_rollover(conn, season, from_phase, to_phase, created_by="system"
     Writes, per team: a `rollover_forfeit` row for the excess (if any) and a `rollover_in` row
     recording what was carried. The carried money is not moved (the balance is the ledger), so the
     rollover_in row has amount 0 and the carried amount is in its note; it also marks the team done.
+    Refuses (RuleError, nothing written) if a team that hasn't been rolled over yet already has the next
+    phase's installment: the installment would be counted as carried money.
     """
     cap_row = _one(conn, "select cap from wb_rollover_caps where season = %s and from_phase = %s and to_phase = %s",
                    (season, from_phase, to_phase))
@@ -869,6 +995,11 @@ def close_phase_rollover(conn, season, from_phase, to_phase, created_by="system"
         if _one(conn, "select 1 as x from wb_ledger where team_abbr = %s and kind = 'rollover_in' and ref_type = 'rollover' and ref_id = %s",
                 (abbr, ref_id)):
             continue
+        nxt = f"{season}:{to_phase}"
+        if _one(conn, "select 1 as x from wb_ledger where team_abbr = %s and kind = 'installment' and ref_type = 'installment' and ref_id = %s",
+                (abbr, nxt)):
+            raise RuleError(f"{abbr} already has its {to_phase} installment for {season}: the rollover must run before it "
+                            "or the installment would be counted as carried money")
         bal = balance(conn, abbr)
         carried = max(min(bal, cap), 0)
         forfeit = max(bal - carried, 0)

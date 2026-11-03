@@ -79,9 +79,20 @@ What 0003 adds:
 Cutover commands (Zach only, December 15, after the final import; both are one transaction):
 
 ```bash
-python scripts/db/cutover_contracts.py --dry-run                 # build contracts from roster_assignments, print every conflict, write nothing
-python scripts/db/cutover_contracts.py                           # writes only if there are no conflicts
-python scripts/db/cutover_contracts.py --allow-conflicts         # writes the rest, skipping rows that can't be built without guessing
-python scripts/db/cutover_contracts.py --opening-balances --dry-run   # show the 12 numbers from data/wizbucks.json
-python scripts/db/cutover_contracts.py --opening-balances        # one opening_balance row per team (refuses if wb_ledger has rows)
+python scripts/db/cutover_contracts.py --dry-run --opening-balances      # list every conflict, the 12 balances (team-abbr order) and the --confirm-balances string; writes nothing
+python scripts/db/cutover_contracts.py --resolutions zach.json --opening-balances --confirm-balances "80,55,..."
+#   one transaction: contracts + roster_slots (keeper -> active, prospect -> farm) + one opening_balance per team
+#   refuses while any conflict has no entry in zach.json ({upid: {"kind", "tier", "prospect_type"}}); IL/NA slots are set by hand afterwards
 ```
+
+## Spec 02: auction (`0002_auction.sql`)
+
+`specs/02_auction_portal.md`. Adds exactly the spec's four tables (`auction_weeks`, `auction_bids`, `auction_decisions`, `auction_results`) and the two partial unique indexes (one OB per team per week, one OB per prospect per week). It depends only on `teams` and `players` from 0001, so it runs before 0003 on a fresh database. Nothing is ever deleted from these tables; admin removal sets `removed_at`.
+
+`auction/service.py` is the only code that may touch them (`place_bid`, `record_decision`, `get_board`, `resolve_week`, `mark_announced`, `admin_*`). **Nothing calls it yet**: no API route, Discord command, scheduler job or website code uses it. It reads WizBucks from the live `wb_ledger`/`wb_balances` and opens prospect contracts through `league.actions`, so it is only meaningful once Spec 03's tables are live. Tests: `python -m pytest auction -q` (the service tests commit real rows on separate connections and delete them again in `finally`).
+
+## Ledger rules in the database (0003)
+
+`wb_ledger` is append-only (a trigger raises on UPDATE, DELETE and TRUNCATE; fix a mistake with `admin_adjust`, kind `admin_adjustment` or `reversal`). The only bypass is a session that runs `set fbp.ledger_maintenance = 'on'` (test cleanup, a repair by the database owner); application code must never set it. A check constraint fixes the sign of `amount` by `kind`, and a deferred constraint trigger rejects any non-penalty debit that leaves a team below zero, even from a plain INSERT.
+
+`league_windows (season, window_name, opens_at, closes_at, opened_by)` decides what is allowed: KAP actions (`keep_player`, `il_tag`, `reduce_a_tier`) need an open `KAP` window, `buy_draft_slot` and PAD-priced `assign_prospect_contract` need `PAD`, upgrades to BC need `BC_FINALIZATION`. Admins use `open_window` / `close_window` in `league/actions.py`. (The column is `window_name` because `window` is a reserved word in SQL.)

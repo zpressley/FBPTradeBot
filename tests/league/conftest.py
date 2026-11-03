@@ -50,6 +50,11 @@ def check_balances(conn):
 def conn(db_url):
     c = psycopg.connect(db_url, autocommit=False)
     c.execute("select 1")  # open the outer transaction so every action nests as a savepoint
+    # The gated actions read league_windows, so the tests open PAD and KAP for 2027 and 2028 (rolled
+    # back with everything else). BC_FINALIZATION and TRADE stay closed; tests open them when they need them.
+    c.execute("""insert into league_windows (season, window_name, opens_at, closes_at, opened_by)
+                 select s, w, now() - interval '1 day', now() + interval '1 day', 'test-fixture'
+                   from (values (2027), (2028)) a(s), (values ('PAD'), ('KAP')) b(w)""")
     try:
         yield c
         check_balances(c)  # spec test 1, "always": after every test
