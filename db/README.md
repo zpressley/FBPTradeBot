@@ -96,3 +96,14 @@ python scripts/db/cutover_contracts.py --resolutions zach.json --opening-balance
 `wb_ledger` is append-only (a trigger raises on UPDATE, DELETE and TRUNCATE; fix a mistake with `admin_adjust`, kind `admin_adjustment` or `reversal`). The only bypass is a session that runs `set fbp.ledger_maintenance = 'on'` (test cleanup, a repair by the database owner); application code must never set it. A check constraint fixes the sign of `amount` by `kind`, and a deferred constraint trigger rejects any non-penalty debit that leaves a team below zero, even from a plain INSERT.
 
 `league_windows (season, window_name, opens_at, closes_at, opened_by)` decides what is allowed: KAP actions (`keep_player`, `il_tag`, `reduce_a_tier`) need an open `KAP` window, `buy_draft_slot` and PAD-priced `assign_prospect_contract` need `PAD`, upgrades to BC need `BC_FINALIZATION`. Admins use `open_window` / `close_window` in `league/actions.py`. (The column is `window_name` because `window` is a reserved word in SQL.)
+
+## Spec 07: lineups (`0007_lineups.sql`)
+
+`specs/07_team_page_lineups.md`. Database layer and service only; no website, bot job or API route calls it yet.
+
+- **Tables:** `lineup_slot_types` (the 2027 slot setup), `position_eligibility`, `lineups`, `lineup_versions` (one row per team per day, bumped by every lineup write; a save must carry the version it loaded), `mlb_games`, `mlb_roster_status` (where MLB lists each owned player: `active`, `il`, `minors`, `other`; this is what "MLB lists him on the IL" reads) and `league_settings` (`eligibility_games` 5, `il_slots` 5, `na_slots` 2). `lineups.season` is generated from `game_date`, so the slot code is a real foreign key, and a trigger checks `slot_index` against the slot's count.
+- **Service:** `lineups/service.py` is the only code that writes these tables. `validate` is the one validation function; `save_lineup` runs under the same `team:<abbr>` advisory lock as `league.actions`. Errors are `LineupError` (a `RuleError`) and `LineupConflict` (carries `.latest`).
+- **Jobs it expects (none scheduled yet):** `refresh_games` (daily plus every few minutes on game days), `lock_started_games` (every minute on game days; `save_lineup` also runs it), `carryover` (12:00 AM ET), and nightly `refresh_mlb_status` then `refresh_eligibility` fed by `lineups/mlb_api.py`. The API client is never called by tests; read the rate-limit note at the top of it before scheduling anything.
+- **Preseason seed:** `refresh_eligibility(conn, 2027, fetch_fielding(2026), now, source="last_season")`, then nightly in season with `source="this_season"`.
+- **DH** is a position in this table (and in UTIL's `accepts`) for batters with no fielding position, such as the batter half of a two-way player.
+- Tests: `python -m pytest tests/lineups -q` (each test rolls back).
