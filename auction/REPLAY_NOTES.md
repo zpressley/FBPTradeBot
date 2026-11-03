@@ -25,3 +25,9 @@ A mismatch outside these categories means the old or the new code has a bug.
 
 - **Affordability drop order.** When a team's wins cost more than its balance, `resolve()` handles over-budget teams in `priority_order` order (worst standings first) and drops that team's *latest* win first. "Latest" is the OB's `placed_at` for an OB_ONLY or OB_MATCH win (the team's OB starts that win) and the winning CB's `placed_at` for a CB_WIN. Every team is re-checked after each drop. The spec does not say which win is dropped or in what order teams are handled; this is a choice, pinned by tests in `auction/tests/test_rules.py`. The 2026 code dropped by dict order, so a replay can differ in weeks where a team was over budget.
 - **OB_MATCH timing changed.** Before this note the match was dated by the challenger's CB; it is now dated by the matching team's own OB, so a team's CB wins are dropped before its OB match.
+
+## Before go-live
+
+- **`calendar["start"]` must be the Monday of the pre-season auction week, not Opening Day.** `rules.phase_for` treats every week before `start` as `off_week`, so setting it to Opening Day would make the first auction week unbiddable. Set it from the 2027 league calendar when the auction opens (mid-March).
+- **The affordability drop order needs Zach's confirmation** (see "Choices for Zach to confirm" above). Until he confirms it, treat which win is dropped when a team can't pay for all of them as provisional.
+- `resolve_week` records a prospect that became owned between bidding and resolution under `unsold` with the reason "already owned by a team" and resolves the rest. Whether such a prospect should instead go to the next bidder is a rule question for Zach.

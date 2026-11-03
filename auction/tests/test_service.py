@@ -98,6 +98,7 @@ class World:
         c.execute("delete from player_events where upid like %s", (like,))
         c.execute("delete from roster_slots where upid like %s", (like,))
         c.execute("delete from contracts where upid like %s", (like,))
+        c.execute("delete from roster_assignments where upid like %s", (like,))
         c.execute("set fbp.ledger_maintenance = 'on'")   # the ledger is append-only; test cleanup only
         c.execute("delete from wb_ledger where created_by = %s or upid like %s", (BY, like))
         c.execute("reset fbp.ledger_maintenance")
@@ -165,9 +166,9 @@ def test_01_concurrent_bids_respect_balance_and_raise_rules(world):
     accepted = sum(ok for ok, _ in results)
     assert accepted >= 4                                 # the run really exercised accepted bids
 
-    # Replay the accepted bids in the order they committed (the lock makes xmin that order).
+    # Replay the accepted bids in the order they committed (the lock makes seq that order).
     rows = world.conn.execute("""select team_abbr, upid, bid_type, amount, placed_at from auction_bids
-                                  where week_start = %s order by xmin::text::bigint""", (WEEK,)).fetchall()
+                                  where week_start = %s order by seq""", (WEEK,)).fetchall()
     assert len(rows) == 3 + accepted
     seen = []
     for team, upid, bt, amount, placed in rows:

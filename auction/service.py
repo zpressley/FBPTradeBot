@@ -17,7 +17,7 @@ mark_announced() records that the post went out.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from typing import Callable, Optional, Sequence
 
 from psycopg.rows import dict_row
@@ -29,6 +29,12 @@ from league import actions
 
 IN_SEASON = "IN_SEASON"
 ACTIVE_PHASES = (rules.OB_WINDOW, rules.CB_WINDOW, rules.OB_FINAL)
+SOURCES = ("web", "discord", "admin")
+SCHEDULER = "scheduler"
+
+
+class NotAdmin(BidError):
+    """The caller is not an admin (teams.role = 'admin'). The message is safe to show."""
 
 
 # ------------------------------------------------------------------ plumbing
@@ -54,6 +60,31 @@ def _lock(conn):
     _exec(conn, "select pg_advisory_xact_lock(hashtext('auction'))")
 
 
+def _require_admin(conn, actor):
+    """Raise NotAdmin unless `actor` (a team abbr) has teams.role = 'admin'."""
+    r = _one(conn, "select role from teams where abbr = %s", (actor,)) if actor else None
+    if r is None or r["role"] != "admin":
+        raise NotAdmin("Admin only.")
+
+
+def _price(conn, season, item) -> int:
+    r = _one(conn, "select amount from wb_prices where season = %s and item = %s", (season, item))
+    if r is None:
+        raise BidError(f"No price '{item}' is set for season {season}.")
+    return r["amount"]
+
+
+def _owned(conn, upids) -> set:
+    """Prospects that now have an open contract, or an open mirror roster_assignments row (until cutover)."""
+    if not upids:
+        return set()
+    return {r["upid"] for r in _all(conn, """
+        select upid from contracts where upid = any(%s) and valid_to is null
+        union
+        select upid from roster_assignments where upid = any(%s) and valid_to is null""",
+                                    (list(upids), list(upids)))}
+
+
 def _date(v) -> date:
     return v if isinstance(v, date) and not isinstance(v, datetime) else date.fromisoformat(str(v))
 
@@ -68,10 +99,10 @@ def _week(conn, week_start, for_update=False):
 
 
 def _bid_rows(conn, week_start):
-    """Live (not removed) bids, oldest first. xmin breaks placed_at ties in insertion order."""
+    """Live (not removed) bids, oldest first. seq breaks placed_at ties in insertion order."""
     return _all(conn, """select bid_id, team_abbr, upid, bid_type, amount, placed_at, source
                            from auction_bids where week_start = %s and removed_at is null
-                          order by placed_at, xmin::text::bigint""", (week_start,))
+                          order by placed_at, seq""", (week_start,))
 
 
 def _to_bids(rows) -> list:
@@ -141,15 +172,28 @@ def get_or_create_week(conn, now: datetime, calendar, priority_source: Callable[
 
 # ------------------------------------------------------------------ bids
 
-def place_bid(conn, team, upid, bid_type, amount, source, now: datetime, calendar, priority_source=None):
-    """Validate with rules.validate_bid and insert. On BidError nothing is written.
-    `priority_source` (optional, same as get_or_create_week) lets the first bid of a week create it."""
-    try:
-        amount = int(amount)
-    except (TypeError, ValueError):
+def _whole_number(amount) -> int:
+    if isinstance(amount, bool):
         raise BidError("Bid amount must be a whole number.")
+    if isinstance(amount, int):
+        return amount
+    if isinstance(amount, str) and amount.strip().isascii() and amount.strip().isdigit():
+        return int(amount.strip())
+    raise BidError("Bid amount must be a whole number.")
+
+
+def place_bid(conn, team, upid, bid_type, amount, source, now: datetime, calendar, priority_source=None,
+              actor=None):
+    """Validate with rules.validate_bid and insert. On BidError nothing is written.
+    `priority_source` (optional, same as get_or_create_week) lets the first bid of a week create it.
+    source='admin' (a bid placed for a team) needs `actor` to be an admin, else NotAdmin."""
+    amount = _whole_number(amount)
+    if source not in SOURCES:
+        raise BidError(f"Invalid bid source. Use one of {', '.join(SOURCES)}.")
     with conn.transaction():
         _lock(conn)
+        if source == "admin":
+            _require_admin(conn, actor)
         phase = rules.phase_for(now, calendar)
         week = _ensure_week(conn, phase, calendar, priority_source)
         if week is None:
@@ -165,8 +209,10 @@ def place_bid(conn, team, upid, bid_type, amount, source, now: datetime, calenda
         rows = _bid_rows(conn, week["week_start"])
         bids = _to_bids(rows)
         balance = _balance(conn, team)
+        min_ob = _price(conn, week["season"], "auction_min_ob")
+        min_raise = _price(conn, week["season"], "auction_min_raise")
         rules.validate_bid(Bid(team, upid, bid_type, amount, now), phase, bids, balance, order, now,
-                           _prospect(conn, upid))
+                           _prospect(conn, upid), min_ob=min_ob, min_raise=min_raise)
 
         row = _one(conn, """insert into auction_bids (week_start, team_abbr, upid, bid_type, amount,
                                                       placed_at, placed_date_et, source)
@@ -222,6 +268,9 @@ def get_board(conn, now: datetime, calendar, team=None, priority_source=None):
     """Everything the auction page shows. Never writes (no lock, no week creation). If the week row
     does not exist yet, `priority_source` (optional) only supplies the order to display."""
     with conn.transaction():
+        # One snapshot for the whole page, and the database refuses any write. Must be the first
+        # statement, so call this on an idle connection (see the module docstring).
+        _exec(conn, "set transaction read only isolation level repeatable read")
         phase = rules.phase_for(now, calendar)
         week = _week(conn, phase.week_start)
         if week is not None:
@@ -274,12 +323,36 @@ def _announce_text(summary) -> str:
     return "\n".join(lines)
 
 
-def resolve_week(conn, week_start, resolved_by, now: datetime):
+def _check_resolve_allowed(week_start: date, now: datetime, calendar, force: bool) -> None:
+    """Resolving is only for the processing phase of that week (Sun 10:00am ET on) or after the
+    week ended. With a calendar this is rules.phase_for; without one, the same clock time."""
+    if force:
+        return
+    if calendar is not None:
+        phase = rules.phase_for(now, calendar)
+        ok = phase.name == rules.PROCESSING and phase.week_start == week_start
+        ok = ok or (phase.week_start > week_start)
+    else:
+        ok = now >= rules._at(week_start + timedelta(days=6), 10)
+    if not ok:
+        raise BidError("This auction week can only be resolved after Sun 10:00am ET (processing).")
+
+
+def resolve_week(conn, week_start, resolved_by, now: datetime, calendar=None, force=False):
     """Resolve one week in one transaction. A week already resolved returns its stored summary, so
-    running it twice (or at the same moment) changes nothing. Raises LookupError for an unknown week."""
+    running it twice (or at the same moment) changes nothing. Raises LookupError for an unknown week.
+
+    `resolved_by` is 'scheduler' or an admin team abbr (else NotAdmin). Refused before processing
+    unless force=True, which only an admin may use. Prospects that became owned since bidding are
+    left out and recorded as unsold; a team that can no longer pay raises RuleError and nothing is
+    written."""
     ws = _date(week_start)
     with conn.transaction():
         _lock(conn)
+        if resolved_by != SCHEDULER:
+            _require_admin(conn, resolved_by)
+        elif force:
+            raise NotAdmin("Only an admin can force a resolution.")
         week = _week(conn, ws, for_update=True)
         if week is None:
             raise LookupError(f"No auction week starting {ws}.")
@@ -287,39 +360,48 @@ def resolve_week(conn, week_start, resolved_by, now: datetime):
             raise BidError("This auction week was skipped.")
         if week["status"] == "resolved":
             return _resolve_reply(week["summary"], already=True)
+        _check_resolve_allowed(ws, now, calendar, force)
 
         order = list(week["priority_order"])
         season = week["season"]
-        rows = _bid_rows(conn, ws)
+        all_rows = _bid_rows(conn, ws)
+        owned = _owned(conn, {r["upid"] for r in all_rows})
+        rows = [r for r in all_rows if r["upid"] not in owned]
         decisions = {r["upid"]: r["decision"] for r in _all(
             conn, "select upid, decision from auction_decisions where week_start = %s", (ws,))}
+        # Lock every team with a bid (a superset of the winners), sorted, BEFORE reading balances,
+        # so a debit can't land between the read and the spend. Same order as league.actions.
+        actions._lock(conn, *{r["team_abbr"] for r in rows})
         balances = {t: _balance(conn, t) for t in order}
         results = rules.resolve(_to_bids(rows), decisions, balances, order)
-        names = _names(conn, {r["upid"] for r in rows})
+        names = _names(conn, {r["upid"] for r in all_rows})
 
         for r in results:
             _exec(conn, """insert into auction_results (week_start, upid, team_abbr, amount, outcome, dropped)
                            values (%s, %s, %s, %s, %s, %s)""",
                   (ws, r.upid, r.team, r.amount, r.outcome, Jsonb(r.dropped)))
-        # Same lock order as league.actions (team lock, then the ledger's wb: lock), teams sorted.
-        for t in sorted({r.team for r in results}):
-            _exec(conn, "select pg_advisory_xact_lock(hashtext('team:' || %s))", (t,))
         for r in results:
             name = names.get(r.upid, r.upid)
             # acquired_via='auction' opens the PC contract without charging; the debit is below.
             actions.assign_prospect_contract(conn, r.upid, r.team, "PC", acquired_via="auction",
                                              created_by=resolved_by, season=season, now=now)
-            _exec(conn, "select wb_spend(%s, %s, 'auction_win', %s, %s, %s, 'auction', %s, %s, %s)",
-                  (r.team, r.amount, IN_SEASON, season, r.upid, ws.isoformat(),
-                   f"Auction win: {name}", resolved_by))
+            actions.wb_spend(conn, r.team, r.amount, "auction_win", IN_SEASON, season,
+                             created_by=resolved_by, upid=r.upid, ref_type="auction", ref_id=ws.isoformat(),
+                             note=f"Auction win: {name}")
             _event(conn, r, name, season, resolved_by, now)
 
         won = {r.upid for r in results}
+        unsold = []
+        for u in dict.fromkeys(x["upid"] for x in all_rows):
+            if u in won:
+                continue
+            reason = "already owned by a team" if u in owned else "no bidder could afford it"
+            unsold.append({"upid": u, "name": names.get(u, u), "reason": reason})
         summary = {
             "week_start": ws.isoformat(), "season": season, "resolved_by": resolved_by,
             "results": [{"upid": r.upid, "name": names.get(r.upid, r.upid), "team": r.team, "amount": r.amount,
                          "outcome": r.outcome, "dropped": r.dropped} for r in results],
-            "unsold": [{"upid": u, "name": names.get(u, u)} for u in dict.fromkeys(x["upid"] for x in rows) if u not in won],
+            "unsold": unsold,
             "total_spent": sum(r.amount for r in results),
         }
         _exec(conn, """update auction_weeks set status = 'resolved', resolved_at = %s, resolved_by = %s, summary = %s
@@ -357,6 +439,7 @@ def admin_remove_bid(conn, bid_id, admin, note=None):
     """Mark a bid removed (never a delete). An OB with live challenge bids can't be removed first."""
     with conn.transaction():
         _lock(conn)
+        _require_admin(conn, admin)
         bid = _one(conn, """select b.*, w.status from auction_bids b join auction_weeks w using (week_start)
                              where b.bid_id = %s for update of b""", (str(bid_id),))
         if bid is None:
@@ -380,6 +463,7 @@ def admin_set_priority(conn, week_start, order, admin):
     ws = _date(week_start)
     with conn.transaction():
         _lock(conn)
+        _require_admin(conn, admin)
         week = _week(conn, ws, for_update=True)
         if week is None:
             raise BidError("No auction week starting that date.")

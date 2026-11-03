@@ -27,7 +27,9 @@ create table auction_bids (
   source        text not null check (source in ('web','discord','admin')),
   removed_at    timestamptz,                 -- admin removal, never a hard delete
   removed_by    text,
-  admin_note    text
+  admin_note    text,
+  seq           bigserial not null,          -- insertion order: breaks placed_at ties
+  constraint removed_pair check ((removed_at is null) = (removed_by is null))
 );
 create unique index one_ob_per_team_week on auction_bids (week_start, team_abbr)
   where bid_type = 'OB' and removed_at is null;
@@ -53,3 +55,21 @@ create table auction_results (
   dropped     jsonb,                          -- teams dropped for affordability, in order
   primary key (week_start, upid)
 );
+
+-- Backstop: nothing may be added to a week once it is resolved or skipped
+-- (the service checks too; this holds even for a plain INSERT).
+create function auction_week_must_be_open() returns trigger language plpgsql as $$
+declare st text;
+begin
+  select status into st from auction_weeks where week_start = new.week_start;
+  if st is distinct from 'open' then
+    raise exception 'auction week % is %, so % cannot add to it', new.week_start, st, tg_table_name
+      using errcode = 'P0001';
+  end if;
+  return new;
+end $$;
+
+create trigger auction_bids_week_open before insert on auction_bids
+  for each row execute function auction_week_must_be_open();
+create trigger auction_decisions_week_open before insert on auction_decisions
+  for each row execute function auction_week_must_be_open();
