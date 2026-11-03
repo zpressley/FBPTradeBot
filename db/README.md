@@ -107,3 +107,14 @@ python scripts/db/cutover_contracts.py --resolutions zach.json --opening-balance
 - **Preseason seed:** `refresh_eligibility(conn, 2027, fetch_fielding(2026), now, source="last_season")`, then nightly in season with `source="this_season"`.
 - **DH** is a position in this table (and in UTIL's `accepts`) for batters with no fielding position, such as the batter half of a two-way player.
 - Tests: `python -m pytest tests/lineups -q` (each test rolls back).
+
+## Spec 04: draft (`0004_draft.sql`)
+
+`specs/04_draft_room.md`. Database layer and service only; no website, Discord or clock-runner process calls it yet.
+
+- **Tables:** `drafts`, `draft_slots`, `draft_picks_live`, `draft_clock`, `draft_forklift`, `draft_boards`, `draft_rankings`, `draft_pool_overrides`, `notifications` (the outbox), `draft_events`, `draft_add_requests`, plus `draft_award_amounts` (speed-award prize money as data). Also enables `unaccent` and `pg_trgm`.
+- **Name note:** the spec renames Spec 01's `draft_picks` to `draft_slots` and calls the new picks table `draft_picks`. The daily import still truncates and reloads `draft_picks` from `draft_order_2026.json` until cutover, so that mirror is left alone and the spec's picks table is **`draft_picks_live`**. At cutover: drop or rename the mirror, then rename `draft_picks_live` to `draft_picks`.
+- **One eligibility rule:** SQL function `draft_pool(draft_id, for_round)` returns every player with `eligible` and a plain-text `reason`. Ownership is read from `contracts` and, **until the Dec 15 cutover, also from the open `roster_assignments` rows** (marked in the function; remove that join at cutover).
+- **Service:** `draft/service.py` (`create_draft`, `slots_from_mirror`, `start`/`pause`/`resume`, `make_pick`/`make_picks`, `clock_tick`, `undo_last_pick`/`swap_player`/`void_pick`, `set_forklift`, `set_board`, `upload_rankings`, `request_add_player`/`decide_add_request`, `search`, `state`, `pay_speed_awards`). Contracts and `player_events` go through `league/actions.py`. Tests: `python -m pytest tests/draft -q` (they commit real rows on a few connections and delete them again in `finally`).
+- **Simulator:** `python scripts/draft/simulate.py --draft prospect-2027 --clock 2 --setup --database-url URL` runs a whole draft with 12 fake managers, a clock runner that is killed and restarted, and admin pauses, then checks nothing stalled or was double-picked and contracts match picks. It refuses unless the draft is `is_test`; use a Neon test branch or a scratch database. `--cleanup` removes its rows (it sets `fbp.ledger_maintenance`, so local databases only).
+- **Known gap until cutover:** a player created by "add a player" lives only in `players`; the daily import deletes `players` rows that are not in `combined_players.json` (and fails if a contract points at one). Add such a player to the JSON too, or run this after the cutover.
