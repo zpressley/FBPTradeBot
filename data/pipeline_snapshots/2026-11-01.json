@@ -3,7 +3,7 @@
   "count": 100,
   "official": true,
   "source": "mlb.com/prospects",
-  "scraped_at": "2026-11-03T09:14:36.531827-05:00",
+  "scraped_at": "2026-11-03T09:23:41.927083-05:00",
   "players": [
     {
       "rank": 1,
@@ -510,8 +510,8 @@
       "level": "A+",
       "eta": "2027",
       "age": "21",
-      "upid": null,
-      "match_method": null,
+      "upid": "7002",
+      "match_method": "name_only",
       "stats": {
         "Rk": "14",
         "Player": "Roch Cholowsky",
@@ -1326,8 +1326,8 @@
       "level": "AA",
       "eta": "2028",
       "age": "19",
-      "upid": null,
-      "match_method": null,
+      "upid": "8047",
+      "match_method": "name_only",
       "stats": {
         "Rk": "35",
         "Player": "Josiah Hartshorn",
@@ -1406,8 +1406,8 @@
       "level": "A",
       "eta": "2028",
       "age": "21",
-      "upid": null,
-      "match_method": null,
+      "upid": "7020",
+      "match_method": "name_only",
       "stats": {
         "Rk": "37",
         "Player": "Drew Burress",
@@ -1702,8 +1702,8 @@
       "level": "AA",
       "eta": "2027",
       "age": "22",
-      "upid": null,
-      "match_method": null,
+      "upid": "7979",
+      "match_method": "name_only",
       "stats": {
         "Rk": "45",
         "Player": "Anthony Eyanson",
@@ -1734,8 +1734,8 @@
       "level": "AAA",
       "eta": "2027",
       "age": "22",
-      "upid": null,
-      "match_method": null,
+      "upid": "7971",
+      "match_method": "name_only",
       "stats": {
         "Rk": "46",
         "Player": "Caden Bodine",
@@ -2315,8 +2315,8 @@
       "level": "ROK",
       "eta": "2029",
       "age": "21",
-      "upid": null,
-      "match_method": null,
+      "upid": "8267",
+      "match_method": "name_only",
       "stats": {}
     },
     {
@@ -3341,8 +3341,8 @@
       "level": "AA",
       "eta": "2027",
       "age": "23",
-      "upid": null,
-      "match_method": null,
+      "upid": "7261",
+      "match_method": "name_only",
       "stats": {
         "Rk": "90",
         "Player": "Nolan Perry",
@@ -3386,8 +3386,8 @@
       "level": "AA",
       "eta": "2027",
       "age": "23",
-      "upid": null,
-      "match_method": null,
+      "upid": "8088",
+      "match_method": "name_only",
       "stats": {
         "Rk": "92",
         "Player": "Caden Hunter",
@@ -3730,12 +3730,6 @@
       "org": "Tampa Bay Rays"
     },
     {
-      "rank": 14,
-      "name": "Roch Cholowsky",
-      "mlb_id": 800604,
-      "org": "Chicago White Sox"
-    },
-    {
       "rank": 18,
       "name": "Vahn Lackey",
       "mlb_id": 822518,
@@ -3748,45 +3742,15 @@
       "org": "San Francisco Giants"
     },
     {
-      "rank": 35,
-      "name": "Josiah Hartshorn",
-      "mlb_id": 815824,
-      "org": "Chicago Cubs"
-    },
-    {
       "rank": 36,
       "name": "Eric Booth Jr.",
       "mlb_id": 835727,
       "org": "Baltimore Orioles"
     },
     {
-      "rank": 37,
-      "name": "Drew Burress",
-      "mlb_id": 806039,
-      "org": "Athletics"
-    },
-    {
-      "rank": 45,
-      "name": "Anthony Eyanson",
-      "mlb_id": 809254,
-      "org": "Baltimore Orioles"
-    },
-    {
-      "rank": 46,
-      "name": "Caden Bodine",
-      "mlb_id": 805207,
-      "org": "Tampa Bay Rays"
-    },
-    {
       "rank": 52,
       "name": "Roldy Brito",
       "mlb_id": 821041,
-      "org": "Colorado Rockies"
-    },
-    {
-      "rank": 62,
-      "name": "Tyler Bell",
-      "mlb_id": 815628,
       "org": "Colorado Rockies"
     },
     {
@@ -3808,22 +3772,10 @@
       "org": "Chicago Cubs"
     },
     {
-      "rank": 90,
-      "name": "Nolan Perry",
-      "mlb_id": 804526,
-      "org": "Toronto Blue Jays"
-    },
-    {
       "rank": 91,
       "name": "Gio Rojas",
       "mlb_id": 826061,
       "org": "Texas Rangers"
-    },
-    {
-      "rank": 92,
-      "name": "Caden Hunter",
-      "mlb_id": 827267,
-      "org": "Baltimore Orioles"
     },
     {
       "rank": 93,
@@ -3837,5 +3789,9 @@
       "mlb_id": 821150,
       "org": "Baltimore Orioles"
     }
-  ]
+  ],
+  "override": {
+    "reason": "Re-run with the name-only UPID fallback: 8 owned prospects (incl. BC Josiah Hartshorn) had no mlb_id in combined_players and were left unmatched by the first official run",
+    "at": "2026-11-03T09:23:41.927083-05:00"
+  }
 }
