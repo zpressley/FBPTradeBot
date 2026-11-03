@@ -272,11 +272,63 @@ def parse_headshots(html: str) -> list[dict]:
     return _collect(html, matches)
 
 
+TABLE_ROW = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.I | re.S)
+TABLE_CELL = re.compile(r"""<td\b[^>]*class=["'][^"']*rankings__table__cell--(\w+)[^"']*["'][^>]*>(.*?)</td>""", re.I | re.S)
+LEVEL_LABEL = re.compile(r"""prospect-level__label[^>]*>(.*?)</div>""", re.I | re.S)
+NAME_DIV = re.compile(r"""prospect-headshot__name[^>]*>(.*?)</div>""", re.I | re.S)
+TEAM_DIV = re.compile(r"""prospect-team__name[^>]*>(.*?)</div>""", re.I | re.S)
+STORY_ID = re.compile(r"""href=["'][^"']*/(?:stories|player)/[^"']*?-(\d+)(?:[/?#][^"']*)?["']""", re.I)
+
+
+def parse_rankings_table(html: str) -> list[dict]:
+    """Strategy 0: the page's own <table class="rankings__table rankings__table--top100">.
+
+    Seen live 2026-11-03: one <tr> per prospect with cells classed
+    rankings__table__cell--rank / --player / --position / --team / --level /
+    --eta / --currentAge / --heightWeight / --bats / --throws. The MLB ID is in
+    the headshot src (/people/<id>/headshot) or the story link (...-<id>).
+    The page shows 5 rows until "Show Full List" is clicked (fetch_page does that).
+    """
+    start = html.find("rankings__table--top100")
+    if start < 0:
+        return []
+    table = html[start:html.find("</table>", start) if html.find("</table>", start) > 0 else len(html)]
+    rows = []
+    for tr in TABLE_ROW.finditer(table):
+        cells = {k: v for k, v in TABLE_CELL.findall(tr.group(1))}
+        if "rank" not in cells:
+            continue
+        rank = to_int(clean_text(cells["rank"]))
+        player_html = cells.get("player", "")
+        mlb_id = None
+        m = HEADSHOT_ID.search(player_html) or STORY_ID.search(player_html)
+        if m:
+            mlb_id = int(m.group(1))
+        name_m = NAME_DIV.search(player_html)
+        name = clean_text(name_m.group(1)) if name_m else clean_text(player_html)
+        team_m = TEAM_DIV.search(cells.get("team", ""))
+        level_m = LEVEL_LABEL.search(cells.get("level", ""))
+        if rank is None or not name:
+            continue
+        rows.append({
+            "rank": rank, "name": name, "mlb_id": mlb_id,
+            "org": clean_text(team_m.group(1)) if team_m else (clean_text(cells.get("team", "")) or None),
+            "position": clean_text(cells.get("position", "")) or None,
+            "level": clean_text(level_m.group(1)) if level_m else (clean_text(cells.get("level", "")) or None),
+            "eta": clean_text(cells.get("eta", "")) or None,
+            "age": clean_text(cells.get("currentAge", "")) or None,
+        })
+    by_rank = {}
+    for r in rows:
+        by_rank.setdefault(r["rank"], r)
+    return [by_rank[k] for k in sorted(by_rank)]
+
+
 def parse_rankings_html(html: str):
     """Return (rows, strategy). Picks the first strategy that finds >= MIN_IDS rows,
     else the one with the most rows (so the failure log shows the best attempt)."""
     best, best_name = [], "none"
-    for name, fn in (("json", parse_json_blobs), ("anchors", parse_anchors),
+    for name, fn in (("table", parse_rankings_table), ("json", parse_json_blobs), ("anchors", parse_anchors),
                      ("headshots", parse_headshots)):
         rows = fn(html)
         print(f"  strategy {name}: {len(rows)} rows")
@@ -367,7 +419,7 @@ def match_rows(rows: list[dict], players: list[dict]) -> list[dict]:
 
 # --------------------------------------------------------------------- browser
 
-def fetch_page(url: str, headless: bool = True, wait_selector: str = "a[href*='/player/']"):
+def fetch_page(url: str, headless: bool = True, wait_selector: str = "table.rankings__table tbody tr, a[href*='/player/']"):
     """Load a page with Playwright; up to 3 attempts with 5s/15s/45s backoff.
 
     Returns (html, json_responses) where json_responses is a list of
@@ -408,6 +460,20 @@ def fetch_page(url: str, headless: bool = True, wait_selector: str = "a[href*='/
                         page.wait_for_selector(wait_selector, timeout=15000)
                     except Exception:
                         pass  # the parser decides whether the page is usable
+                    # The rankings page shows 5 rows and a "Show Full List" button
+                    # (data-testid="load-more-button"); click it until it is gone.
+                    for _ in range(5):
+                        button = page.query_selector("[data-testid='load-more-button']")
+                        if button is None:
+                            break
+                        try:
+                            button.click(timeout=5000)
+                            page.wait_for_timeout(1500)
+                            print("  clicked 'Show Full List'; rows now:",
+                                  len(page.query_selector_all("table.rankings__table tbody tr")))
+                        except Exception as e:  # noqa: BLE001
+                            print(f"  load-more click failed: {e}")
+                            break
                     for _ in range(8):  # trigger lazy-loaded rows
                         page.mouse.wheel(0, 3000)
                         page.wait_for_timeout(500)

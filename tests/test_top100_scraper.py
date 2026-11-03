@@ -194,3 +194,46 @@ def test_retention_requires_official(tmp_path):
     assert bc.main(["--snapshot", str(snap_path), "--out", out]) == 1
     assert bc.main(["--snapshot", str(snap_path), "--out", out, "--allow-unofficial"]) == 0
     assert os.path.exists(out)
+
+
+# ------------------------------------------------------------ table strategy
+
+def table_html(n=100, with_ids=True):
+    """Mirrors the live rankings table seen 2026-11-03 (one <tr> per prospect)."""
+    rows = []
+    for i in range(1, n + 1):
+        pid = 810000 + i
+        link = f'<a href="https://www.mlb.com/stories/player-{i}-{pid}">' if with_ids else "<a>"
+        img = (f'<img class="headshot-img" src="https://img.mlbstatic.com/x/v1/people/{pid}/headshot/silo/current" '
+               f'alt="Photo headshot of Player {i}">') if with_ids else "<img>"
+        rows.append(
+            '<tr data-testid="table-row"><td data-testid="table-cell" class="rankings__table__cell--rank">'
+            f'{i}</td><td data-testid="table-cell" class="rankings__table__cell--player"><div class="prospect-headshot">'
+            f'{link}<div class="headshot-container">{img}</div></a><div class="prospect-headshot__name">Pláyer {i}</div>'
+            '</div></td><td class="rankings__table__cell--position">SS</td>'
+            '<td class="rankings__table__cell--team"><div class="prospect-team"><img alt="Logo">'
+            '<div class="prospect-team__name">Milwaukee Brewers</div></div></td>'
+            '<td class="rankings__table__cell--level"><div class="prospect-level">'
+            '<div class="prospect-level__label">AA</div><div class="prospect-level__scale"><span></span></div></div></td>'
+            '<td class="rankings__table__cell--eta">2027</td><td class="rankings__table__cell--currentAge">19</td>'
+            '<td class="rankings__table__cell--heightWeight">6\' 1" / 221 lbs</td>'
+            '<td class="rankings__table__cell--bats">S</td><td class="rankings__table__cell--throws">R</td></tr>')
+    return ('<html><body><table class="rankings__table rankings__table--top100"><thead><tr><th class="rankings__table__cell--rank">Rank</th></tr></thead>'
+            '<tbody>' + "".join(rows) + '</tbody></table><div class="load-more__container">'
+            '<button data-testid="load-more-button">Show Full List</button></div></body></html>')
+
+
+def test_table_strategy():
+    rows, strategy = sc.parse_rankings_html(table_html())
+    assert strategy == "table" and len(rows) == 100
+    first = rows[0]
+    assert first == {"rank": 1, "name": "Pláyer 1", "mlb_id": 810001, "org": "Milwaukee Brewers",
+                     "position": "SS", "level": "AA", "eta": "2027", "age": "19"}
+    assert rows[-1]["rank"] == 100 and rows[-1]["mlb_id"] == 810100
+    assert sc.check_thresholds(rows) == []
+
+
+def test_table_strategy_without_ids_fails_threshold():
+    rows, strategy = sc.parse_rankings_html(table_html(with_ids=False))
+    assert len(rows) == 100 and all(r["mlb_id"] is None for r in rows)
+    assert sc.check_thresholds(rows)
