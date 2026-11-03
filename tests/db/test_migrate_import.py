@@ -35,7 +35,7 @@ def test_import_is_fast_and_repeatable(run_script, db_url):
     assert first.returncode == 0, first.stderr
     assert elapsed < 120, f"import took {elapsed:.0f}s"
     before = table_counts(db_url)
-    assert before["players"] > 0 and before["wb_ledger"] > 0
+    assert before["players"] > 0 and before["wb_ledger_history"] > 0
 
     second = run_script("import_json.py")
     assert second.returncode == 0, second.stderr

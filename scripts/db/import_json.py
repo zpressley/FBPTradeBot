@@ -4,6 +4,8 @@ Shadow mode: the JSON stays the source of truth. This script reads it,
 never modifies it, and rebuilds the database mirror in ONE transaction:
 truncate every imported table, reload everything, commit. If anything
 fails the transaction rolls back and the database is left as it was.
+teams and players are upserted instead of truncated, and the live Spec 03
+tables (wb_ledger, contracts, ...) are never touched; see write().
 
 Two phases:
   1. build: parse every source file into rows in memory (no database).
@@ -55,7 +57,7 @@ TABLE_COLUMNS: dict[str, list[str]] = {
     "teams": ["abbr", "name", "discord_id", "yahoo_team_id", "division", "role", "active"],
     "team_name_aliases": ["alias", "team_abbr"],
     "seasons": ["year", "dates"],
-    "team_seasons": ["team_abbr", "season", "final_rank", "standing", "division", "kap_rollover", "raw"],
+    "team_seasons": ["team_abbr", "season", "final_rank", "standing", "division", "kap_rollover", "raw", "bracket"],
     "players": [
         "upid", "name", "mlb_id", "yahoo_id", "bbref_id", "fangraphs_id", "birth_date", "bats",
         "throws", "height", "weight", "mlb_team", "positions", "mlb_primary_position",
@@ -66,7 +68,7 @@ TABLE_COLUMNS: dict[str, list[str]] = {
         "upid", "team_abbr", "contract_type", "contract_tier", "status_raw", "valid_from",
         "valid_to", "source",
     ],
-    "wb_ledger": [
+    "wb_ledger_history": [
         "txn_id", "ts", "team_abbr", "amount", "balance_before", "balance_after", "txn_type",
         "description", "related_upid", "season", "metadata", "source_txn_id", "raw",
     ],
@@ -99,7 +101,7 @@ TABLE_COLUMNS: dict[str, list[str]] = {
 # Load order (spec 01, section 4) = insert order; truncation happens once up front.
 LOAD_ORDER = [
     "teams", "team_name_aliases", "seasons", "team_seasons", "players", "player_aliases",
-    "roster_assignments", "wb_ledger", "trades", "trade_transfers", "player_events",
+    "roster_assignments", "wb_ledger_history", "trades", "trade_transfers", "player_events",
     "draft_picks", "top100_snapshots", "player_season_stats", "app_state", "history_raw",
 ]
 
@@ -504,11 +506,11 @@ def build_wb_ledger(ctx: Context, b: Bundle) -> None:
     for i, r in enumerate(rows):
         team = ctx.resolve_team(r.get("team") or r.get("team_name"), where="wizbucks_transactions.team")
         if team is None:
-            b.report.skip("wb_ledger", "unresolved team", row=i, team=r.get("team"), txn_id=r.get("txn_id"))
+            b.report.skip("wb_ledger_history", "unresolved team", row=i, team=r.get("team"), txn_id=r.get("txn_id"))
             continue
         ts = parse_ts(r.get("timestamp"))
         if ts is None:
-            b.report.skip("wb_ledger", "unparseable timestamp", row=i, timestamp=r.get("timestamp"))
+            b.report.skip("wb_ledger_history", "unparseable timestamp", row=i, timestamp=r.get("timestamp"))
             continue
         source_id = r.get("txn_id") or r.get("id")
         txn_id = source_id
@@ -525,7 +527,7 @@ def build_wb_ledger(ctx: Context, b: Bundle) -> None:
             seen[txn_id] = 1
         related = r.get("related_player") or {}
         meta = r.get("metadata") or {}
-        b.add("wb_ledger", {
+        b.add("wb_ledger_history", {
             "txn_id": txn_id, "ts": ts, "team_abbr": team,
             "amount": to_int(r.get("amount")) or 0,
             "balance_before": to_int(r.get("balance_before")),
@@ -538,11 +540,11 @@ def build_wb_ledger(ctx: Context, b: Bundle) -> None:
             "source_txn_id": None if txn_id == source_id else source_id,
             "raw": J(r),
         })
-    b.report.counts["wb_ledger"] = len(b.rows["wb_ledger"])
+    b.report.counts["wb_ledger_history"] = len(b.rows["wb_ledger_history"])
     if generated:
-        b.report.notes.append(f"wb_ledger: generated {generated} txn_ids for rows that had none")
+        b.report.notes.append(f"wb_ledger_history: generated {generated} txn_ids for rows that had none")
     if deduped:
-        b.report.notes.append(f"wb_ledger: {deduped} duplicate txn_ids suffixed with #n (original kept in source_txn_id)")
+        b.report.notes.append(f"wb_ledger_history: {deduped} duplicate txn_ids suffixed with #n (original kept in source_txn_id)")
 
 
 # ------------------------------------------------------------------- trades
@@ -804,6 +806,8 @@ def build(ctx: Context) -> Bundle:
         build_history = None
     if build_history is not None:
         build_history(ctx, b)
+    from scripts.db.seed_2026_results import apply_to_bundle
+    apply_to_bundle(b)  # 2026 final_rank + bracket survive every reload
     for table in TABLE_COLUMNS:
         b.report.counts[table] = len(b.rows[table])
     if ctx.unresolved_teams:
@@ -815,18 +819,43 @@ def build(ctx: Context) -> Bundle:
 
 # -------------------------------------------------------------------- write
 
+# teams and players are referenced by the live Spec 03 tables (wb_ledger, contracts, ...),
+# so they are upserted and stale rows deleted instead of truncated. A stale row that live
+# data still points at makes the delete fail and the whole import roll back.
+UPSERT_KEYS = {"teams": "abbr", "players": "upid"}
+# player_events also holds rows written by league/actions.py; only the imported files are reloaded.
+LEAGUE_ACTIONS_SOURCE = "league_actions"
+
+
 def write(conn, b: Bundle) -> int:
-    """Truncate + insert everything in one transaction. Returns the import_runs id."""
+    """Reload the mirror in one transaction. Returns the import_runs id.
+
+    Never touches the live Spec 03 tables (wb_ledger, contracts, roster_slots,
+    prospect_draft_slots, prospect_status) or player_events rows written by actions.
+    """
     t0 = time.time()
     with conn.transaction():
         with conn.cursor() as cur:
             cur.execute("select pg_advisory_xact_lock(hashtext('import_json'))")
-            cur.execute("truncate table " + ", ".join(LOAD_ORDER) + " restart identity cascade")
+            # no CASCADE: it would follow foreign keys into the live tables
+            truncate = [t for t in LOAD_ORDER if t not in UPSERT_KEYS and t != "player_events"]
+            cur.execute("truncate table " + ", ".join(truncate) + " restart identity")
+            cur.execute("delete from player_events where source_file <> %s", (LEAGUE_ACTIONS_SOURCE,))
             for table in LOAD_ORDER:
                 rows = b.rows[table]
+                cols = TABLE_COLUMNS[table]
+                if table in UPSERT_KEYS:
+                    key = UPSERT_KEYS[table]
+                    ki = cols.index(key)
+                    cur.execute(f"delete from {table} where {key} <> all(%s)", ([r[ki] for r in rows],))
+                    if rows:
+                        sets = ", ".join(f"{c} = excluded.{c}" for c in cols if c != key)
+                        sql = (f"insert into {table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))}) "
+                               f"on conflict ({key}) do update set {sets}, imported_at = now()")
+                        cur.executemany(sql, rows)
+                    continue
                 if not rows:
                     continue
-                cols = TABLE_COLUMNS[table]
                 sql = f"insert into {table} ({', '.join(cols)}) values ({', '.join(['%s'] * len(cols))})"
                 cur.executemany(sql, rows)
             b.report.notes.append(f"write phase took {time.time() - t0:.1f}s")

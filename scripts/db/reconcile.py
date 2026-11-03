@@ -127,7 +127,7 @@ def check_row_counts(conn, root, report, res, verbose):
         ("players", len(uniq), "select count(*) from players"),
         ("roster_assignments (open)", sum(1 for _, r in uniq if owned(r)),
          "select count(*) from roster_assignments where valid_to is null"),
-        ("wb_ledger", len(wb) - n_skips("wb_ledger"), "select count(*) from wb_ledger"),
+        ("wb_ledger_history", len(wb) - n_skips("wb_ledger_history"), "select count(*) from wb_ledger_history"),
         ("trades", n_trades, "select count(*) from trades"),
         ("trade_transfers", n_transfers, "select count(*) from trade_transfers"),
         ("player_events", len(ev_hist) + len(ev_log) - n_skips("player_events"),
@@ -166,16 +166,16 @@ def check_wizbucks(conn, root, aliases, res):
             bad.append(f"cannot resolve team name {name!r}")
         else:
             expected[abbr] = bal
-    got = dict(q(conn, "select team_abbr, balance from wb_balances"))
+    got = dict(q(conn, "select team_abbr, balance from wb_balances_history"))
     for abbr, bal in sorted(expected.items()):
         if got.get(abbr) != bal:
-            bad.append(f"{abbr}: wizbucks.json {bal}, wb_balances {got.get(abbr)}")
+            bad.append(f"{abbr}: wizbucks.json {bal}, wb_balances_history {got.get(abbr)}")
     for abbr in sorted(set(got) - set(expected)):
-        bad.append(f"{abbr}: in wb_balances ({got[abbr]}) but not in wizbucks.json")
+        bad.append(f"{abbr}: in wb_balances_history ({got[abbr]}) but not in wizbucks.json")
     if bad:
         res.add("FAIL", f"2. WizBucks: {len(bad)} team(s) differ", *[f"     {b}" for b in bad])
     else:
-        res.add("PASS", f"2. WizBucks: wb_balances equals wizbucks.json for all {len(expected)} teams")
+        res.add("PASS", f"2. WizBucks: wb_balances_history equals wizbucks.json for all {len(expected)} teams")
 
 
 def check_rosters(conn, root, aliases, res):
@@ -399,12 +399,12 @@ def known_issues(conn, report, verbose):
     show(dup, verbose, lambda d: f"mlb_id {d['mlb_id']} {d['name']}: upids {d['upids']}")
 
     dw = flags.get("duplicate_wb_txn_id", [])
-    print(f"\nDuplicate wb txn_ids (suffixed #n in wb_ledger): {len(dw)}")
+    print(f"\nDuplicate wb txn_ids (suffixed #n in wb_ledger_history): {len(dw)}")
     show(dw, True, lambda d: f"row {d['row']} txn_id {d['txn_id']}")
 
     print("\nGenerated ids")
     print(f"    player_events: {scalar(conn, 'select count(*) from player_events where id_generated')}")
-    print(f"    wb_ledger:     {scalar(conn, 'select count(*) from wb_ledger where txn_id like %s', ('gen\\_%',))}")
+    print(f"    wb_ledger_history: {scalar(conn, 'select count(*) from wb_ledger_history where txn_id like %s', ('gen\\_%',))}")
     for n in report.get("notes", []):
         if "generated" in n or "duplicate" in n:
             print("    import note:", n)
