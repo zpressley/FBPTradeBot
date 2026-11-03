@@ -16,7 +16,11 @@
 --   * More constraints than the spec writes (all additions): the trade id matches the season, a status
 --     and its close_kind/approval fields agree, 2 or 3 parties, every item's two teams are parties,
 --     no duplicate items, an item's columns match its kind, a manual trade carries a note, a
---     pick points at a real draft_slots row.
+--     pick points at a real draft_slots row, approved_by is a team or 'ADMIN', accepted/approved need
+--     every party's accepted_at, items and parties only change while the trade is pending (imports are
+--     exempt from the last two), one legacy id per imported trade.
+--   * trades_live.note (the manual-entry note) and trades_live.client_token (a double submit of a manual
+--     entry returns the existing trade) are additions.
 
 create table trade_sequences (
   season int primary key,
@@ -47,6 +51,8 @@ create table trades_live (
   close_note      text,
   source          text not null default 'portal' check (source in ('portal','admin_manual','import')),
   raw             jsonb,
+  note            text,                           -- addition: why an admin entered the trade by hand
+  client_token    text unique,                    -- addition: idempotency key of a manual entry
   constraint trades_live_id_matches_season
     check (trade_id ~ ('^T' || lpad((season % 100)::text, 2, '0') || '-[0-9]{4,}$')),
   constraint trades_live_not_own_counter check (countered_from is distinct from trade_id),
@@ -64,8 +70,23 @@ create table trades_live (
     end),
   constraint trades_live_closed_by check (close_kind is null or closed_by is not null),
   constraint trades_live_reason_required check (close_kind not in ('reject','void') or btrim(coalesce(close_note, '')) <> ''),
-  constraint trades_live_manual_note check (source <> 'admin_manual' or btrim(coalesce(raw ->> 'note', '')) <> '')
+  constraint trades_live_manual_note check (source <> 'admin_manual' or btrim(coalesce(note, '')) <> ''),
+  constraint trades_live_manual_token check (source <> 'admin_manual' or client_token is not null)
 );
+-- one imported trade per 2026 legacy id (the cutover script cannot run twice into the same ids)
+create unique index trades_live_legacy_id on trades_live ((raw ->> 'legacy_trade_id')) where source = 'import';
+
+-- approved_by is a team abbreviation or 'ADMIN' (a foreign key cannot allow the second)
+create function trades_live_approver_check() returns trigger language plpgsql as $$
+begin
+  if new.approved_by is not null and new.approved_by <> 'ADMIN'
+     and not exists (select 1 from teams where abbr = new.approved_by) then
+    raise exception 'approved_by % is neither a team nor ADMIN', new.approved_by using errcode = '23514';
+  end if;
+  return new;
+end $$;
+create trigger trades_live_approver before insert or update of approved_by on trades_live
+  for each row execute function trades_live_approver_check();
 create index trades_live_status_idx on trades_live (status);
 create index trades_live_countered_idx on trades_live (countered_from) where countered_from is not null;
 
@@ -96,6 +117,40 @@ end $$;
 create constraint trigger trade_parties_count after insert or update or delete on trade_parties
   deferrable initially deferred for each row execute function trade_parties_count_check();
 
+-- accepted / approved need every party's accepted_at (checked at commit, so the status and the last
+-- acceptance can be written in either order). Imported 2026 trades are exempt.
+create function trades_live_accept_check() returns trigger language plpgsql as $$
+begin
+  if new.source <> 'import' and new.status in ('accepted', 'approved')
+     and exists (select 1 from trade_parties where trade_id = new.trade_id and accepted_at is null) then
+    raise exception 'trade % is % but not every party has accepted', new.trade_id, new.status using errcode = '23514';
+  end if;
+  return null;
+end $$;
+create constraint trigger trades_live_accept after insert or update on trades_live
+  deferrable initially deferred for each row execute function trades_live_accept_check();
+
+-- Items and parties only change while the trade is pending (an acceptance is a change to a party, made
+-- while it is still pending). Imported trades are exempt. A session that sets  fbp.trade_maintenance = 'on'
+-- (test cleanup, repair by the database owner) skips the check; application code must never set it.
+create function trade_children_frozen_check() returns trigger language plpgsql as $$
+declare
+  tid text := coalesce(new.trade_id, old.trade_id);
+  t record;
+begin
+  if current_setting('fbp.trade_maintenance', true) = 'on' then
+    return coalesce(new, old);
+  end if;
+  select status, source into t from trades_live where trade_id = tid;
+  if found and t.source <> 'import' and t.status <> 'pending' then
+    raise exception 'trade % is %, so its % can no longer change', tid, t.status, tg_table_name using errcode = '23514';
+  end if;
+  return coalesce(new, old);
+end $$;
+
+create trigger trade_parties_frozen before insert or update or delete on trade_parties
+  for each row execute function trade_children_frozen_check();
+
 create table trade_items (
   id         bigserial primary key,
   trade_id   text not null references trades_live,
@@ -119,6 +174,8 @@ create table trade_items (
       when 'wb'     then amount is not null and upid is null and draft_id is null and overall is null
     end)
 );
+create trigger trade_items_frozen before insert or update or delete on trade_items
+  for each row execute function trade_children_frozen_check();
 create index trade_items_trade_idx on trade_items (trade_id);
 create index trade_items_upid_idx on trade_items (upid) where upid is not null;
 -- no duplicate items inside one trade
@@ -129,7 +186,7 @@ create unique index trade_items_one_wb on trade_items (trade_id, from_team, to_t
 create table trade_comments (
   id         bigserial primary key,
   trade_id   text not null references trades_live,
-  team_abbr  text not null references teams,       -- a system comment is filed under the sender's team
+  team_abbr  text not null references teams,       -- a system comment is filed under the sender's team; thread() shows it as null
   kind       text not null default 'comment' check (kind in ('comment','system')),
   body       text not null check (length(body) <= 500 and btrim(body) <> ''),
   created_at timestamptz not null default now()

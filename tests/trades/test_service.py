@@ -145,6 +145,7 @@ class World:
     def cleanup(self):
         c = self.conn
         ids = [r[0] for r in c.execute("select trade_id from trades_live where season = %s and created_at >= '2027-02-01'", (SEASON,))]
+        c.execute("set fbp.trade_maintenance = 'on'")        # items and parties of a non-pending trade are frozen; cleanup only
         c.execute("delete from notifications where payload->>'trade_id' = any(%s)", (ids,))
         c.execute("delete from trade_comments where trade_id = any(%s)", (ids,))
         c.execute("delete from trade_items where trade_id = any(%s)", (ids,))
@@ -152,6 +153,7 @@ class World:
             c.execute("update trades_live set countered_from = null where trade_id = any(%s)", (ids,))
             c.execute("delete from trade_parties where trade_id = any(%s)", (ids,))
             c.execute("delete from trades_live where trade_id = any(%s)", (ids,))
+        c.execute("reset fbp.trade_maintenance")
         if not c.execute("select 1 from trades_live where season = %s", (SEASON,)).fetchone():
             c.execute("delete from trade_sequences where season = %s", (SEASON,))
         c.execute("delete from draft_events where draft_id like 'trade-test-%'")
@@ -165,6 +167,8 @@ class World:
             c.execute("set fbp.ledger_maintenance = 'on'")   # the ledger is append-only; test cleanup only
             c.execute("delete from wb_ledger where id > %s", (start,))
             c.execute("reset fbp.ledger_maintenance")
+        c.execute("delete from roster_assignments where upid like 'trade-test-%'")
+        c.execute("delete from position_eligibility where upid like 'trade-test-%'")
         c.execute("delete from players where upid like 'trade-test-%'")
         c.execute("delete from league_windows where opened_by = %s", (BY,))
 
@@ -188,6 +192,28 @@ def blocks(res):
     return {b["code"] for b in res["blocks"]}
 
 
+def lock_held(url, key):
+    """True when another session holds pg_advisory_xact_lock(hashtext(key))."""
+    c = psycopg.connect(url, autocommit=True)
+    try:
+        with c.transaction():
+            got = c.execute("select pg_try_advisory_xact_lock(hashtext(%s))", (key,)).fetchone()[0]
+        return not got
+    finally:
+        c.close()
+
+
+def import_trade(w, tid, legacy, status="approved", by="ADMIN"):
+    """A synthetic imported trade (source 'import') in season 2027 so World.cleanup removes it."""
+    with w.conn.transaction():      # the sender-is-a-party foreign key is checked at commit
+        w.conn.execute("""insert into trades_live (trade_id, season, status, created_by, created_at, expires_at, approved_by, approved_at, source, raw)
+                          values (%s, 2027, %s, %s, %s, %s, %s, %s, 'import', %s)""",
+                       (tid, status, A, T0, T0 + timedelta(days=7) if status == "pending" else None,
+                        by if status == "approved" else None, T0 if status == "approved" else None,
+                        psycopg.types.json.Jsonb({"legacy_trade_id": legacy})))
+        w.conn.execute("insert into trade_parties (trade_id, team_abbr) values (%s, %s), (%s, %s)", (tid, A, tid, B))
+
+
 # ---------------------------------------------------------------------------------------------------------------
 
 def test_01_one_for_one_send_to_approved(w):
@@ -208,7 +234,7 @@ def test_01_one_for_one_send_to_approved(w):
     ev = w.conn.execute("select upid, update_type, admin, owner_abbr from player_events where source_file = 'league_actions' "
                         "and upid in (%s, %s) order by upid", (p1, p2)).fetchall()
     assert ev == [(p1, "trade", ADMIN, B), (p2, "trade", ADMIN, A)]
-    t = svc.get_trade(w.conn, tid)
+    t = svc.get_trade(w.conn, tid, ADMIN)
     assert (t["status"], t["approved_by"], t["approved_at"]) == ("approved", ADMIN, at(minutes=5))
     # notifications: a DM to each team and the #trades post in the "receives" format with Sub and Proc
     assert sorted(team for _, team, _ in w.notes(tid, "trade_approved")) == [A, B]
@@ -275,7 +301,7 @@ def test_04_r1_pick_needs_both_teams_bought_in(w):
     with pytest.raises(TradeError, match="DRO isn't bought into Round 1"):
         svc.send(w.conn, t, now=T0)
     # the impact panel shows who is bought in
-    pick = [x for x in svc.build_preview(w.conn, t, T0)["teams"] if x["team"] == A][0]["picks"][0]
+    pick = [x for x in svc.build_preview(w.conn, t, A, T0)["teams"] if x["team"] == A][0]["picks"][0]
     assert pick["bought_in"] == {A: True, B: False} and pick["label"].startswith("R1 ")
     # round 4 needs no buy-in, even with the same teams
     assert svc.validate(w.conn, w.trade(A, w.K(4, A, B), w.P(p, B, A)), "build", T0).ok
@@ -308,14 +334,14 @@ def test_06_roster_over_26_warns_but_does_not_block(w):
     # builder / review: a warning, not a block
     res = svc.validate(w.conn, t, "build", T0)
     assert res.ok and any(x["code"] == "roster" and "27 active, max 26" in x["message"] for x in res["warnings"])
-    panel = {x["team"]: x for x in svc.build_preview(w.conn, t, T0)["teams"]}
+    panel = {x["team"]: x for x in svc.build_preview(w.conn, t, A, T0)["teams"]}
     assert panel[B]["roster"]["after"]["active"] == 27 and panel[B]["roster"]["limits"]["active_max"] == 26
     assert any(v["rule"] == "active_max" for v in panel[B]["roster"]["violations"])
     # send, accept, admin queue (warned again) and approve all go through
     tid = svc.send(w.conn, t, now=T0)
     svc.accept(w.conn, tid, B, now=T0)
     svc.accept(w.conn, tid, C, now=T0)
-    queue = svc.admin_queue(w.conn, T0)
+    queue = svc.admin_queue(w.conn, ADMIN, T0)
     mine = [q for q in queue if q["trade"]["trade_id"] == tid][0]
     assert any("27 active" in x["message"] for x in mine["preview"]["warnings"])
     out = svc.approve(w.conn, tid, ADMIN, now=T0)
@@ -380,7 +406,7 @@ def test_09_non_admin_cannot_approve(w):
     with pytest.raises(NotAdmin):
         svc.void(w.conn, tid, A, "because", now=T0)
     with pytest.raises(NotAdmin):
-        svc.admin_manual_entry(w.conn, w.trade(A, w.P(p1, A, B)), A, "note", now=T0)
+        svc.admin_manual_entry(w.conn, w.trade(A, w.P(p1, A, B)), A, "note", "tok-9", now=T0)
     with pytest.raises(NotAdmin):
         svc.reject(w.conn, tid, A, "no", now=T0)               # an accepted trade is rejected by an admin only
     assert svc.approve(w.conn, tid, ADMIN, now=T0)["status"] == "approved"      # an admin who is not a party
@@ -394,8 +420,8 @@ def test_10_counter_links_and_thread_shows_on_both(w):
     row = w.conn.execute("select status, countered_from, closed_by from trades_live where trade_id = %s", (new,)).fetchone()
     assert row == ("pending", orig, None)
     assert w.conn.execute("select status, closed_by from trades_live where trade_id = %s", (orig,)).fetchone() == ("countered", B)
-    assert [x["body"] for x in svc.thread(w.conn, orig)] == [x["body"] for x in svc.thread(w.conn, new)]
-    bodies = [x["body"] for x in svc.thread(w.conn, new)]
+    assert [x["body"] for x in svc.thread(w.conn, orig, A)] == [x["body"] for x in svc.thread(w.conn, new, A)]
+    bodies = [x["body"] for x in svc.thread(w.conn, new, A)]
     assert bodies[0] == "first offer" and "what about the other guy?" in bodies and bodies[-1] == "how about this"
     assert any(b.startswith("Countered by DRO with") for b in bodies)
     assert [(k, t) for k, t, _ in w.notes(new, "trade_countered")] == [("trade_countered", A)]
@@ -422,9 +448,9 @@ def test_11_accepted_trade_never_expires_but_pending_does(w):
     assert w.conn.execute("select close_kind, closed_by from trades_live where trade_id = %s", (pend,)).fetchone() == ("expire", "system")
     assert w.status(acc) == "accepted"                             # 20 days with no admin action: still accepted
     assert svc.approve(w.conn, acc, ADMIN, now=at(days=20))["status"] == "approved"
+    late = svc.send(w.conn, w.trade(A, w.P(w.player(A), A, B)), now=T0)       # send is fine
     with pytest.raises(TradeError, match="expired"):
-        late = svc.send(w.conn, w.trade(A, w.P(w.player(A), A, B)), now=T0)
-        svc.accept(w.conn, late, B, now=at(days=8))
+        svc.accept(w.conn, late, B, now=at(days=8))                            # accept after 7 days is not
 
 
 def test_12_deadline_day_is_eleven_fifty_nine_pm_eastern(w):
@@ -456,12 +482,12 @@ def test_13_manual_entry_and_void_apply_and_reverse_cleanly(w):
     items = [w.P(p1, A, B), w.P(p2, B, A), pick, w.W(10, B, A)]
     # the note is required
     with pytest.raises(TradeError, match="note"):
-        svc.admin_manual_entry(w.conn, w.trade(A, *items), ADMIN, "  ", now=T0)
-    out = svc.admin_manual_entry(w.conn, w.trade(A, *items), ADMIN, "agreed on Discord before the window opened", now=T0)
+        svc.admin_manual_entry(w.conn, w.trade(A, *items), ADMIN, "  ", "tok-13", now=T0)
+    out = svc.admin_manual_entry(w.conn, w.trade(A, *items), ADMIN, "agreed on Discord before the window opened", "tok-13", now=T0)
     tid = out["trade_id"]
-    t = svc.get_trade(w.conn, tid)
+    t = svc.get_trade(w.conn, tid, ADMIN)
     assert (t["status"], t["source"], t["approved_by"]) == ("approved", "admin_manual", ADMIN)
-    assert t["raw"]["note"].startswith("agreed on Discord")
+    assert t["note"].startswith("agreed on Discord")
     assert (w.owner(p1), w.owner(p2)) == (B, A) and (w.bal(A), w.bal(B)) == (10, 30)
     slot = lambda: w.conn.execute("select team_abbr, original_team from draft_slots where draft_id = %s and overall = %s",
                                   (DRAFT, pick["overall"])).fetchone()
@@ -513,7 +539,7 @@ def test_14_structure_and_cap_rules(w):
     svc.send(w.conn, w.trade(A, w.W(80, A, B), w.P(p2, B, A)), now=T0)
     res = svc.validate(w.conn, w.trade(A, w.W(30, A, C), w.P(p3, C, A)), "send", T0)
     assert blocks(res) == {"wb_balance"} and "already promised" in res["blocks"][0]["message"]
-    panel = {x["team"]: x for x in svc.build_preview(w.conn, w.trade(A, w.W(10, A, C), w.P(p3, C, A)), T0)["teams"]}
+    panel = {x["team"]: x for x in svc.build_preview(w.conn, w.trade(A, w.W(10, A, C), w.P(p3, C, A)), A, T0)["teams"]}
     assert panel[A]["wb"] == {"now": 100, "after": 90, "out": 10, "in": 0, "tied_up": 80}
     # 12 active offers per team
     for _ in range(11):
@@ -528,3 +554,244 @@ def test_14_structure_and_cap_rules(w):
         svc.withdraw(w.conn, first, B, now=T0)                       # only the sender withdraws
     assert svc.withdraw(w.conn, first, A, now=T0)["status"] == "withdrawn"
     assert svc.validate(w.conn, w.trade(A, w.P(p1, A, C)), "send", T0).ok       # a slot is free again
+
+
+# ----------------------------------------------------------------------------------------- review fixes (T1-T15)
+
+def test_16_readers_need_a_viewer_who_is_a_party_or_admin(w):
+    p1, p2 = w.player(A), w.player(B)
+    tid = svc.send(w.conn, w.trade(A, w.P(p1, A, B), w.P(p2, B, A)), now=T0, note="hi")
+    svc.reject(w.conn, tid, B, "no thanks", now=at(minutes=1))                # leaves a system comment
+    for who in (A, B, ADMIN):
+        assert [x["body"] for x in svc.thread(w.conn, tid, who)][0] == "hi"
+        assert svc.get_trade(w.conn, tid, who)["trade_id"] == tid
+        assert svc.build_preview(w.conn, svc.get_trade(w.conn, tid, who), who, T0)["teams"]
+    with pytest.raises(NotAdmin) as e:
+        svc.thread(w.conn, tid, C)                                              # C is not in the trade and not an admin
+    assert e.value.status == 403 and isinstance(e.value, svc.NotAParty)
+    with pytest.raises(NotAdmin):
+        svc.get_trade(w.conn, tid, C)
+    with pytest.raises(NotAdmin):
+        svc.build_preview(w.conn, svc.get_trade(w.conn, tid, A), C, T0)
+    with pytest.raises(NotAdmin):
+        svc.build_preview(w.conn, w.trade(A, w.P(p1, A, B)), C, T0)           # a draft: C is not one of its teams
+    with pytest.raises(NotAdmin):
+        svc.admin_queue(w.conn, A, T0)
+    assert svc.admin_queue(w.conn, ADMIN, T0) is not None
+    with pytest.raises(TradeError) as e:
+        svc.thread(w.conn, "T27-9999", ADMIN)
+    assert e.value.status == 404
+    # T13: a system comment is stored under the sender's team but the UI-facing thread shows no team
+    rows = svc.thread(w.conn, tid, A)
+    assert [(r["kind"], r["team_abbr"]) for r in rows] == [("comment", A), ("system", None)]
+    assert w.comments(tid)[1][1] == A
+
+
+def test_17_player_without_a_contract_is_blocked_at_build_and_send(w):
+    p = w.player(B)
+    w.conn.execute("delete from roster_slots where upid = %s", (p,))
+    w.conn.execute("delete from contracts where upid = %s", (p,))
+    w.conn.execute("insert into roster_assignments (upid, team_abbr, valid_from, source) values (%s, %s, %s, 'test')", (p, B, at(-1)))
+    mine = w.player(A)
+    t = w.trade(A, w.P(mine, A, B), w.P(p, B, A))
+    res = svc.validate(w.conn, t, "build", T0)
+    assert blocks(res) == {"no_contract"} and "no contract row" in res["blocks"][0]["message"]
+    with pytest.raises(TradeError, match="no contract row"):
+        svc.send(w.conn, t, now=T0)
+    # the mirror still words the ownership message: he is on DRO, not on CFL
+    assert blocks(svc.validate(w.conn, w.trade(B, w.P(p, A, B), w.P(w.player(B), B, A)), "build", T0)) == {"ownership"}
+
+
+def test_18_window_closes_at_the_exact_instant(w):
+    p1, p2 = w.player(A), w.player(B)
+    w.window("TRADE", datetime(2027, 3, 1, tzinfo=ET), datetime(2027, 8, 1, 0, 0, tzinfo=ET))   # meant to allow 11:59 PM on Jul 31
+    t = w.trade(A, w.P(p1, A, B), w.P(p2, B, A))
+    just_in = datetime(2027, 7, 31, 23, 59, 30, tzinfo=ET)
+    assert svc.validate(w.conn, t, "send", just_in).ok
+    assert w.status(svc.send(w.conn, t, now=just_in)) == "pending"
+    assert blocks(svc.validate(w.conn, t, "send", datetime(2027, 8, 1, 0, 0, tzinfo=ET))) == {"window"}     # closes_at itself is closed
+
+
+def test_19_manual_entry_double_submit_and_checks(w):
+    p1, p2 = w.player(A), w.player(B)
+    w.fund(A, 20)
+    svc.send(w.conn, w.trade(A, w.W(15, A, B), w.P(p2, B, A)), now=T0)       # 15 of A's 20 is promised elsewhere
+    t = w.trade(A, w.P(p1, A, B), w.W(15, A, B))
+    with pytest.raises(TradeError, match="client_token"):
+        svc.admin_manual_entry(w.conn, t, ADMIN, "by hand", " ", now=T0)
+    first = svc.admin_manual_entry(w.conn, t, ADMIN, "by hand", "tok-a", now=T0)     # promised WB is NOT subtracted for an admin entry
+    assert first["already_entered"] is False
+    again = svc.admin_manual_entry(w.conn, t, ADMIN, "by hand", "tok-a", now=at(minutes=1))
+    assert again["trade_id"] == first["trade_id"] and again["already_entered"] is True
+    assert w.conn.execute("select count(*) from trades_live where client_token = 'tok-a'").fetchone()[0] == 1
+    assert w.conn.execute("select count(*) from wb_ledger where ref_type = 'trade' and ref_id = %s", (first["trade_id"],)).fetchone()[0] == 2
+    assert len(w.notes(first["trade_id"], "trade_post")) == 1 and w.owner(p1) == B
+    row = w.conn.execute("select note, client_token, source from trades_live where trade_id = %s", (first["trade_id"],)).fetchone()
+    assert row == ("by hand", "tok-a", "admin_manual")
+    # the structure checks apply: round 16 and a duplicate WB pair are blocked
+    with pytest.raises(TradeError, match="Only rounds 1-15"):
+        svc.admin_manual_entry(w.conn, w.trade(A, w.K(16, B, A), w.P(w.player(A), A, B)), ADMIN, "by hand", "tok-b", now=T0)
+    with pytest.raises(TradeError, match="not an active team|2 or 3"):
+        svc.admin_manual_entry(w.conn, {"season": SEASON, "created_by": A, "teams": [A], "items": []}, ADMIN, "by hand", "tok-c", now=T0)
+    assert w.conn.execute("select count(*) from trades_live where client_token in ('tok-b', 'tok-c')").fetchone()[0] == 0
+
+
+def test_20_roster_warnings_use_position_eligibility(w):
+    out_p = w.player(B, "OF")            # text says OF ...
+    in_p = w.player(C, "OF")
+    for upid in (out_p, in_p):           # ... eligibility says SP
+        w.conn.execute("insert into position_eligibility (upid, season, position, source) values (%s, %s, 'SP', 'admin')", (upid, SEASON))
+    t = w.trade(B, w.P(out_p, B, C), w.P(in_p, C, B))
+    panel = {x["team"]: x for x in svc.build_preview(w.conn, t, B, T0)["teams"]}
+    roster = panel[B]["roster"]
+    # one SP leaves, one SP arrives: the count must not move (it does if eligibility or the season is ignored)
+    assert roster["after"]["sp"] == roster["now"]["sp"] and roster["now"]["sp"] >= 1
+    assert roster["after"]["pitchers"] == roster["now"]["pitchers"]
+
+
+def test_21_counter_must_keep_every_original_party_and_ignores_the_original_wb(w):
+    p1, p2, p3, pc = w.player(A), w.player(B), w.player(B), w.player(C)
+    w.fund(A, 20)
+    orig = svc.send(w.conn, w.trade(A, w.W(15, A, B), w.P(p2, B, A)), now=T0)
+    with pytest.raises(TradeError, match="every team"):
+        svc.counter(w.conn, orig, B, w.trade(B, w.P(p3, B, C), w.P(pc, C, B)), now=at(minutes=1))     # B-C trade: A dropped
+    assert w.status(orig) == "pending"
+    # the same $15 is asked again in the counter: A's $15 in the original offer is not double counted
+    new = svc.counter(w.conn, orig, B, w.trade(B, w.W(15, A, B), w.P(p3, B, A)), now=at(minutes=2))
+    assert w.status(orig) == "countered" and w.status(new) == "pending"
+
+
+def test_22_wizbucks_net_inside_a_trade_and_opposite_pair_blocked(w):
+    pa, pb, pc = w.player(A), w.player(B), w.player(C)
+    w.fund(A, 30)
+    pair = svc.validate(w.conn, w.trade(A, w.W(10, A, B), w.W(5, B, A), w.P(pb, B, A)), "build", T0)
+    assert blocks(pair) == {"wb_pair"}
+    # a chain A->B->C: B only passes the money on, so it needs none of its own
+    chain = w.trade(A, w.W(10, A, B), w.W(10, B, C), w.P(pc, C, A))
+    bal = {t: w.bal(t) for t in (A, B, C)}
+    assert svc.validate(w.conn, chain, "build", T0).ok            # B's own balance does not matter
+    tid = svc.send(w.conn, chain, now=T0)
+    svc.accept(w.conn, tid, B, now=T0)
+    svc.accept(w.conn, tid, C, now=T0)
+    svc.approve(w.conn, tid, ADMIN, now=at(minutes=1))
+    assert (w.bal(A), w.bal(B), w.bal(C)) == (bal[A] - 10, bal[B], bal[C] + 10)
+    # B sending $10 with nothing coming in is still checked against its balance
+    short = svc.validate(w.conn, w.trade(B, w.W(5000, B, A), w.P(pa, A, B)), "build", T0)
+    assert blocks(short) == {"wb_balance"}
+
+
+def test_23_pick_moves_hold_the_draft_lock(w, db_url, monkeypatch):
+    p1, p2 = w.player(A), w.player(B)
+    pick = w.K(5, A, B)
+    tid = w.accepted(A, w.P(p1, A, B), pick, w.P(p2, B, A))
+    seen = []
+    real = actions.transfer
+
+    def spy(*a, **k):
+        seen.append(lock_held(db_url, DRAFT))
+        return real(*a, **k)
+
+    monkeypatch.setattr(actions, "transfer", spy)
+    assert not lock_held(db_url, DRAFT)
+    svc.approve(w.conn, tid, ADMIN, now=at(minutes=1))
+    assert seen and all(seen)
+    seen.clear()
+    svc.void(w.conn, tid, ADMIN, "injury", now=at(minutes=2))
+    assert seen and all(seen)
+    seen.clear()
+    svc.admin_manual_entry(w.conn, w.trade(A, w.P(p1, A, B), w.K(6, A, B), w.P(p2, B, A)), ADMIN, "by hand", "tok-lock", now=at(minutes=3))
+    assert seen and all(seen)
+    assert not lock_held(db_url, DRAFT)           # released with the transaction
+
+
+def test_24_skipped_slots_cannot_be_traded_but_still_count_as_bought_in(w):
+    pb, pa = w.player(B), w.player(A)
+    ov = lambda r, t: w.overall(r, t)
+    w.conn.execute("update draft_slots set skip_reason = 'keeper' where draft_id = %s and overall = %s", (DRAFT, ov(2, A)))
+    res = svc.validate(w.conn, w.trade(A, w.K(2, A, B), w.P(pb, B, A)), "build", T0)
+    assert blocks(res) == {"pick"} and "skipped slot (keeper)" in res["blocks"][0]["message"]
+    # A's own round-2 slot is taxed: A is still bought into round 2, so B's round-2 pick can go to A
+    w.conn.execute("update draft_slots set skip_reason = 'taxed' where draft_id = %s and overall = %s", (DRAFT, ov(2, A)))
+    assert svc.bought_in(w.conn, DRAFT, A, 2)
+    assert svc.validate(w.conn, w.trade(B, w.K(2, B, A), w.P(pa, A, B)), "build", T0).ok
+    # 'buyin_unpaid' is the only reason that means not bought in
+    w.conn.execute("update draft_slots set skip_reason = 'buyin_unpaid' where draft_id = %s and overall = %s", (DRAFT, ov(3, B)))
+    assert not svc.bought_in(w.conn, DRAFT, B, 3)
+    assert blocks(svc.validate(w.conn, w.trade(A, w.K(3, A, B), w.P(pb, B, A)), "build", T0)) == {"buyin"}
+
+
+def test_25_database_refuses_inconsistent_trades(w):
+    p1, p2 = w.player(A), w.player(B)
+    tid = svc.send(w.conn, w.trade(A, w.P(p1, A, B), w.P(p2, B, A)), now=T0)
+    # accepted without B's acceptance
+    with pytest.raises(psycopg.errors.CheckViolation, match="not every party has accepted"):
+        w.conn.execute("update trades_live set status = 'accepted', expires_at = null where trade_id = %s", (tid,))
+    assert w.status(tid) == "pending"
+    svc.accept(w.conn, tid, B, now=T0)
+    svc.approve(w.conn, tid, ADMIN, now=T0)
+    # once it is not pending, items and parties are frozen
+    with pytest.raises(psycopg.errors.CheckViolation, match="can no longer change"):
+        w.conn.execute("insert into trade_items (trade_id, kind, upid, from_team, to_team) values (%s, 'player', %s, %s, %s)", (tid, w.player(A), A, B))
+    with pytest.raises(psycopg.errors.CheckViolation, match="can no longer change"):
+        w.conn.execute("update trade_parties set accepted_at = null where trade_id = %s", (tid,))
+    with pytest.raises(psycopg.errors.CheckViolation, match="can no longer change"):
+        w.conn.execute("delete from trade_items where trade_id = %s", (tid,))
+    # approved_by is a team or ADMIN
+    with pytest.raises(psycopg.errors.CheckViolation, match="neither a team nor ADMIN"):
+        w.conn.execute("update trades_live set approved_by = 'zpressley' where trade_id = %s", (tid,))
+    w.conn.execute("update trades_live set approved_by = 'ADMIN' where trade_id = %s", (tid,))
+    # a manual trade needs a note and a token
+    with pytest.raises(psycopg.errors.CheckViolation):
+        w.conn.execute("""insert into trades_live (trade_id, season, status, created_by, created_at, expires_at, source, client_token)
+                          values ('T27-9100', 2027, 'pending', %s, %s, %s, 'admin_manual', 'x')""", (A, T0, at(days=7)))
+    # imports: exempt from the acceptance and frozen-children rules, one row per legacy id
+    import_trade(w, "T27-9001", "TRADE-LEGACY-1")
+    w.conn.execute("insert into trade_items (trade_id, kind, upid, from_team, to_team) values ('T27-9001', 'player', %s, %s, %s)", (p1, A, B))
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        import_trade(w, "T27-9002", "TRADE-LEGACY-1")
+    # and an import cannot be voided (T2)
+    with pytest.raises(TradeError, match="2026 import"):
+        svc.void(w.conn, "T27-9001", ADMIN, "injury", now=T0)
+
+
+def test_26_admin_who_is_a_party_approves_their_own_trade(w):
+    p1, p2 = w.player(ADMIN), w.player(B)
+    tid = svc.send(w.conn, w.trade(ADMIN, w.P(p1, ADMIN, B), w.P(p2, B, ADMIN)), now=T0)
+    svc.accept(w.conn, tid, B, now=T0)
+    assert svc.approve(w.conn, tid, ADMIN, now=at(minutes=1))["status"] == "approved"
+    t = svc.get_trade(w.conn, tid, ADMIN)
+    assert t["approved_by"] == ADMIN and (w.owner(p1), w.owner(p2)) == (B, ADMIN)
+    assert f"approved by {ADMIN}" in w.notes(tid, "trade_post")[0][2]["text"]
+
+
+def test_27_void_blocked_when_the_receiver_spent_the_credit(w):
+    p1, p2 = w.player(A), w.player(B)
+    w.fund(A, 10)
+    tid = w.accepted(A, w.P(p1, A, B), w.W(10, A, B), w.P(p2, B, A))
+    svc.approve(w.conn, tid, ADMIN, now=T0)
+    actions.wb_spend(w.conn, B, w.bal(B), "auction_win", "IN_SEASON", SEASON, created_by=BY)     # B spends everything, the $10 included
+    before = (w.bal(A), w.bal(B))
+    with pytest.raises(actions.RuleError):
+        svc.void(w.conn, tid, ADMIN, "injury", now=at(minutes=1))
+    assert w.status(tid) == "approved" and (w.bal(A), w.bal(B)) == before == (0, 0)
+    assert (w.owner(p1), w.owner(p2)) == (B, A)
+    assert w.conn.execute("select count(*) from wb_ledger where kind = 'reversal'").fetchone()[0] == 0
+    assert not w.notes(tid, "trade_voided")
+
+
+def test_28_three_team_accept_chain(w):
+    p1, p2, p3 = w.player(A), w.player(B), w.player(C)
+    tid = svc.send(w.conn, w.trade(A, w.P(p1, A, B), w.P(p2, B, C), w.P(p3, C, A)), now=T0)
+    assert [t for _, t, _ in w.notes(tid, "trade_offer")] == [B, C]
+    assert svc.accept(w.conn, tid, B, now=at(minutes=1)) == {"trade_id": tid, "status": "pending"}
+    assert not w.notes(tid, "trade_admin_card") and w.status(tid) == "pending"
+    with pytest.raises(TradeError, match="already accepted"):
+        svc.accept(w.conn, tid, B, now=at(minutes=2))
+    with pytest.raises(TradeError, match="not part of"):
+        svc.accept(w.conn, tid, "WAR", now=at(minutes=2))
+    assert svc.accept(w.conn, tid, C, now=at(minutes=3)) == {"trade_id": tid, "status": "accepted"}
+    assert len(w.notes(tid, "trade_admin_card")) == 1
+    parties = svc.get_trade(w.conn, tid, A)["parties"]
+    assert set(parties) == {A, B, C} and all(parties.values())
+    svc.approve(w.conn, tid, ADMIN, now=at(minutes=4))
+    assert (w.owner(p1), w.owner(p2), w.owner(p3)) == (B, C, A)

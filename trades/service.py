@@ -20,8 +20,18 @@ league.actions.wb_spend / wb_credit and admin_adjust. Notifications are rows in 
 outbox, written in the same transaction as the change (so they exist if and only if it committed);
 nothing is sent from here.
 
+Readers (`get_trade`, `thread`, `admin_queue`, `build_preview` of a stored trade) take the `viewer` team and
+only show a trade to its parties and to admins; anyone else gets NotAParty (a NotAdmin, 403).
+
+Window edge: a league_windows row is open from opens_at (inclusive) to closes_at (EXCLUSIVE). closes_at is the
+exact cut-off instant. A window meant to allow 11:59 PM ET must close at 00:00 ET the next day.
+
+Pre-cutover ownership: the open roster_assignments row (shadow mirror) is only used to word messages. A
+player with no `contracts` row is a block (code 'no_contract') at every stage, so an offer cannot pass
+send/accept and then die at approve. REMOVE the mirror fallback in _player_owner at cutover.
+
 Errors: TradeError (a RuleError; message safe to show a manager; .status is the HTTP status the API
-should use), NotAdmin (403), TradeConflict (409: the trade was auto-withdrawn because an item moved;
+should use), NotAdmin (403; NotAParty is the subclass for a non-party reader), TradeConflict (409: the trade was auto-withdrawn because an item moved;
 the withdrawal IS committed, the exception only tells the caller). `now` is passed in everywhere so
 tests control time; None means the real clock.
 """
@@ -59,6 +69,11 @@ class NotAdmin(TradeError):
         super().__init__(message, status=403)
 
 
+class NotAParty(NotAdmin):
+    def __init__(self, message="You are not part of this trade."):
+        super().__init__(message)
+
+
 class TradeConflict(TradeError):
     def __init__(self, message):
         super().__init__(message, status=409)
@@ -93,6 +108,13 @@ def _lock_teams(conn, teams):
         _exec(conn, "select pg_advisory_xact_lock(hashtext('team:' || %s))", (t,))
 
 
+def _lock_drafts(conn, items):
+    """The same lock draft.service takes (hashtext(draft_id)) for every draft whose picks move, so a pick
+    trade and a draft action on that draft cannot interleave. Taken after the team locks."""
+    for d in sorted({i["draft_id"] for i in items if i.get("kind") == "pick" and i.get("draft_id")}):
+        _exec(conn, "select pg_advisory_xact_lock(hashtext(%s))", (d,))
+
+
 def _lock_trade(conn, trade_id):
     """Serialise everything that touches one trade, then lock its row."""
     _exec(conn, "select pg_advisory_xact_lock(hashtext('trade:' || %s))", (trade_id,))
@@ -112,6 +134,17 @@ def _require_admin(conn, abbr):
     r = _one(conn, "select role from teams where abbr = %s", (abbr,))
     if not r or r["role"] != "admin":
         raise NotAdmin()
+
+
+def _require_party_or_admin(conn, trade_id, viewer):
+    """The viewer is a party of the stored trade or an admin. 404 if the trade does not exist."""
+    if not _one(conn, "select 1 as x from trades_live where trade_id = %s", (trade_id,)):
+        raise TradeError(f"Trade {trade_id} does not exist.", status=404)
+    if _one(conn, "select 1 as x from trade_parties where trade_id = %s and team_abbr = %s", (trade_id, viewer)):
+        return
+    r = _one(conn, "select role from teams where abbr = %s", (viewer,))
+    if not r or r["role"] != "admin":
+        raise NotAParty()
 
 
 def _name(conn, upid):
@@ -142,8 +175,15 @@ def _system_comment(conn, trade_id, body, ts):
 
 # ------------------------------------------------------------------ reading
 
-def get_trade(conn, trade_id):
-    """The stored trade in the same shape validate() takes, plus status, parties (team -> accepted_at) and comments."""
+def get_trade(conn, trade_id, viewer):
+    """The stored trade as `viewer` may see it: parties and admins only (NotAParty otherwise)."""
+    _require_party_or_admin(conn, trade_id, viewer)
+    return _load_trade(conn, trade_id)
+
+
+def _load_trade(conn, trade_id):
+    """The stored trade in the same shape validate() takes, plus status, parties (team -> accepted_at) and items.
+    No viewer check: for the service's own use."""
     t = _one(conn, "select * from trades_live where trade_id = %s", (trade_id,))
     if not t:
         raise TradeError(f"Trade {trade_id} does not exist.", status=404)
@@ -157,9 +197,12 @@ def get_trade(conn, trade_id):
     return t
 
 
-def thread(conn, trade_id):
-    """The comment thread. A counter carries the thread over: the whole chain of offers linked by
-    countered_from (before and after this one) shows the same comments, oldest first."""
+def thread(conn, trade_id, viewer):
+    """The comment thread, for a party or an admin (NotAParty otherwise). A counter carries the thread over:
+    the whole chain of offers linked by countered_from (before and after this one) shows the same comments,
+    oldest first. For the UI a `kind = 'system'` row has team_abbr None (the column holds the sender's team only
+    because it is a foreign key); show it as "FBP" or similar, never as that team speaking."""
+    _require_party_or_admin(conn, trade_id, viewer)
     chain = {r["trade_id"] for r in _all(conn, """
         with recursive up(trade_id, countered_from) as (
             select trade_id, countered_from from trades_live where trade_id = %s
@@ -168,8 +211,9 @@ def thread(conn, trade_id):
             select trade_id from up
             union select t.trade_id from trades_live t join chain c on t.countered_from = c.trade_id)
         select trade_id from chain""", (trade_id,))}
-    return _all(conn, """select id, trade_id, team_abbr, kind, body, created_at from trade_comments
+    rows = _all(conn, """select id, trade_id, team_abbr, kind, body, created_at from trade_comments
                           where trade_id = any(%s) order by created_at, id""", (sorted(chain),))
+    return [{**r, "team_abbr": None} if r["kind"] == "system" else r for r in rows]
 
 
 # ------------------------------------------------------------------ validate: facts
@@ -194,10 +238,12 @@ def _slot(conn, draft_id, overall):
 
 
 def bought_in(conn, draft_id, team, round_no):
-    """A team is bought into round N when its own slot in round N (original_team = team, wherever the
-    pick sits now) is live: skip_reason is null. Read from draft_slots, never copied."""
+    """A team is bought into round N when it has a slot in round N (original_team = team, wherever the pick
+    sits now) whose skip_reason is not 'buyin_unpaid'. A keeper or taxed slot still counts as bought in (the
+    team paid the buy-in; the slot is just used up). Read from draft_slots, never copied."""
     return _one(conn, """select 1 as x from draft_slots where draft_id = %s and round = %s
-                            and original_team = %s and skip_reason is null""", (draft_id, round_no, team)) is not None
+                            and original_team = %s and skip_reason is distinct from 'buyin_unpaid'""",
+                (draft_id, round_no, team)) is not None
 
 
 def committed_wb(conn, team, except_trade_id=None):
@@ -216,22 +262,24 @@ def _roster_limits(conn, season):
     return _one(conn, "select * from roster_limits where season = %s", (season,))
 
 
-def _roster_after(conn, items, team):
-    """(before, after): the team's active players now and after the trade. An incoming player keeps his
-    roster slot (a trade never changes it); one with no roster_slots row yet counts as active."""
-    before = actions._active_players(conn, team)
+def _roster_after(conn, items, team, season):
+    """(before, after): the team's active players now and after the trade, with position_eligibility for the
+    trade's season (as league.actions does). An incoming player keeps his roster slot (a trade never changes
+    it); one with no roster_slots row yet counts as active."""
+    before = actions._active_players(conn, team, season)
     out = {i["upid"] for i in items if i["kind"] == "player" and i["from_team"] == team}
     incoming = [i["upid"] for i in items if i["kind"] == "player" and i["to_team"] == team]
     after = [p for p in before if p["upid"] not in out]
     if incoming:
-        after += _all(conn, """select p.upid, p.name, p.positions, p.mlb_primary_position
-                                 from players p left join roster_slots rs on rs.upid = p.upid
-                                where p.upid = any(%s) and coalesce(rs.slot, 'active') = 'active'""", (incoming,))
+        rows = _all(conn, """select p.upid, p.name, p.positions, p.mlb_primary_position
+                               from players p left join roster_slots rs on rs.upid = p.upid
+                              where p.upid = any(%s) and coalesce(rs.slot, 'active') = 'active'""", (incoming,))
+        after += actions._with_eligibility(conn, rows, season)
     return before, after
 
 
 def _counts(players):
-    cl = [actions.classify(p["positions"], p["mlb_primary_position"]) for p in players]
+    cl = [actions.classify(p["positions"], p["mlb_primary_position"], p.get("eligibility")) for p in players]
     pitchers = sum(c["pitcher"] for c in cl)
     return {"active": len(players), "sp": sum(c["sp"] for c in cl), "pitchers": pitchers, "batters": len(players) - pitchers}
 
@@ -240,7 +288,7 @@ def _roster_warnings(conn, items, team, season):
     lim = _roster_limits(conn, season)
     if not lim:
         return []
-    _, after = _roster_after(conn, items, team)
+    _, after = _roster_after(conn, items, team, season)
     # catcher_min is a detection-only rule in league.actions (you may need to ADD a catcher), so it is not a trade warning
     return [v for v in actions.roster_violations(after, lim) if v["rule"] != "catcher_min"]
 
@@ -264,12 +312,20 @@ class _Result(dict):
         return not self["blocks"]
 
 
-def validate(conn, trade, stage, now=None):
+def validate(conn, trade, stage, now=None, *, structure=False, except_trade_id=None):
     """The one rule function (spec 05, "Rules"). Returns {"blocks", "warnings", "ok"}; it writes nothing.
 
     stage 'build'/'send': every rule. 'accept'/'approve': the rules the spec marks for them (ownership,
     window, WizBucks, buy-in, roster warnings); the structural rules cannot change once a trade is stored.
+    `structure=True` adds the structural rules (teams, items, duplicates, WB steps, round 1-15, two-way) to
+    accept/approve; an admin's manual entry uses it. The 12-offer cap and the subtraction of WizBucks promised
+    in other offers apply at build/send only. `except_trade_id` leaves one stored offer out of that subtraction
+    (a counter does not compete with the offer it replaces).
     Issue code 'ownership' is the conflict that auto-withdraws a trade at accept/approve.
+
+    Window: the TRADE (and, for picks, KAP) row of league_windows is open from opens_at up to, NOT including,
+    closes_at. closes_at is the exact cut-off instant: a window meant to allow 11:59 PM ET must close at
+    00:00 ET the next day (an offer at 11:59:30 PM ET goes through, one at 12:00:00 AM is blocked).
     """
     if stage not in STAGES:
         raise ValueError(f"stage must be one of {STAGES}")
@@ -278,8 +334,9 @@ def validate(conn, trade, stage, now=None):
     items = [_item(i) for i in trade.get("items") or []]
     season = trade["season"]
     early = stage in ("build", "send")
+    strict = early or structure
 
-    if early:
+    if strict:
         _check_structure(conn, trade, items, r)
         if r["blocks"]:
             return r          # later checks assume well-formed items
@@ -291,10 +348,11 @@ def validate(conn, trade, stage, now=None):
         r.block("window", "Draft picks can only be traded while the KAP window is open.")
 
     _check_ownership(conn, items, r)
-    _check_wb(conn, trade, items, stage, r)
-    _check_picks(conn, trade, items, early, r)
-    if early:
+    _check_wb(conn, trade, items, stage, r, except_trade_id)
+    _check_picks(conn, trade, items, strict, r)
+    if strict:
         _check_two_way(conn, items, r)
+    if early:
         _check_offer_cap(conn, trade, r)
     for team in sorted({i["from_team"] for i in items} | {i["to_team"] for i in items}):
         for v in _roster_warnings(conn, items, team, season):
@@ -334,6 +392,8 @@ def _check_structure(conn, trade, items, r):
                 r.block("items", "A pick needs its draft and pick number.")
         else:
             key = ("wb", i["from_team"], i["to_team"])
+            if ("wb", i["to_team"], i["from_team"]) in seen:
+                r.block("wb_pair", f"{i['from_team']} and {i['to_team']} both send each other WizBucks; send one net amount.", i["from_team"])
             amt = i["amount"]
             if not isinstance(amt, int) or amt <= 0 or amt % WB_STEP:
                 r.block("wb_step", f"WizBucks move in ${WB_STEP} steps (got {amt!r}).", i["from_team"])
@@ -354,6 +414,10 @@ def _check_ownership(conn, items, r):
                 r.block("ownership", f"{_name(conn, i['upid'])} is not on any roster.", i["from_team"])
             elif o["team"] != i["from_team"]:
                 r.block("ownership", f"{_name(conn, i['upid'])} is on {o['team']}, not {i['from_team']}.", i["from_team"])
+            elif not o["has_contract"]:
+                # only the shadow mirror knows him; transfer() needs a contract, so stop it now, not at approve
+                r.block("no_contract", f"{_name(conn, i['upid'])} has no contract row yet (rosters are still the shadow mirror), so he can't be traded.",
+                        i["from_team"])
         elif i["kind"] == "pick":
             s = _slot(conn, i["draft_id"], i["overall"])
             if not s:
@@ -362,23 +426,31 @@ def _check_ownership(conn, items, r):
                 r.block("ownership", f"{_pick_label(s)} belongs to {s['team_abbr']}, not {i['from_team']}.", i["from_team"])
 
 
-def _check_wb(conn, trade, items, stage, r):
-    """WizBucks leaving a team must be covered. Build/send: balance minus what the team already promised in
-    its other offers. Accept/approve: the balance (the other offers are not applied yet, and the first one
-    approved is the one that gets the money)."""
-    out = {}
+def _wb_net_out(items):
+    """{team: WizBucks it must be able to pay}: what it sends minus what it gets in the same trade (a 3-team
+    chain A->B, B->C needs nothing from B). _apply credits before it debits, so the net is what matters."""
+    net = {}
     for i in items:
         if i["kind"] == "wb":
-            out[i["from_team"]] = out.get(i["from_team"], 0) + i["amount"]
-    for team, need in sorted(out.items()):
+            net[i["from_team"]] = net.get(i["from_team"], 0) + i["amount"]
+            net[i["to_team"]] = net.get(i["to_team"], 0) - i["amount"]
+    return {t: n for t, n in net.items() if n > 0}
+
+
+def _check_wb(conn, trade, items, stage, r, except_trade_id=None):
+    """WizBucks leaving a team (net of what it gets in the same trade) must be covered. Build/send: balance
+    minus what the team already promised in its other offers (a product decision for Zach: it stops one pile of
+    WB being promised twice, but also blocks a legal offer the team could never pay twice). Accept/approve: the
+    balance (the other offers are not applied yet, and the first one approved is the one that gets the money)."""
+    for team, need in sorted(_wb_net_out(items).items()):
         bal = actions.balance(conn, team)
-        tied = committed_wb(conn, team, trade.get("trade_id")) if stage in ("build", "send") else 0
+        tied = committed_wb(conn, team, trade.get("trade_id") or except_trade_id) if stage in ("build", "send") else 0
         if bal - tied < need:
             extra = f" and ${tied} is already promised in other offers" if tied else ""
             r.block("wb_balance", f"{team} has ${bal}{extra}; this trade needs ${need}.", team)
 
 
-def _check_picks(conn, trade, items, early, r):
+def _check_picks(conn, trade, items, strict, r):
     for i in items:
         if i["kind"] != "pick":
             continue
@@ -391,7 +463,9 @@ def _check_picks(conn, trade, items, early, r):
             continue
         if s["used"]:
             r.block("pick", f"{label} has already been used.")
-        if early and not 1 <= s["round"] <= MAX_PICK_ROUND:
+        if s["skip_reason"]:
+            r.block("pick", f"{label} is a skipped slot ({s['skip_reason']}) and can't be traded.")
+        if strict and not 1 <= s["round"] <= MAX_PICK_ROUND:
             r.block("pick_round", f"Only rounds 1-{MAX_PICK_ROUND} can be traded ({label}).")
         if s["round"] <= BUY_IN_ROUNDS:
             for team in (i["from_team"], i["to_team"]):
@@ -425,16 +499,29 @@ def _raise_if_blocked(res, stage=None):
 
 # ------------------------------------------------------------------ the impact panel
 
-def build_preview(conn, trade, now=None):
+def build_preview(conn, trade, viewer, now=None):
     """What the trade does to each team, for the builder, review sheet, inbox and admin queue.
+    `viewer` must be a party or an admin: of the stored trade when `trade` has a trade_id, else of the
+    draft's teams (NotAParty otherwise). An imported 2026 trade gets a minimal preview (no pick or buy-in
+    panel; its picks are not in draft_slots and its money is in wb_ledger_history).
 
     {"teams": [{"team", "wb": {now, after, out, in, tied_up}, "roster": {now, after, limits, violations},
                 "prospects": {PC, DC, BC (after)}, "picks": [...]}],
      "blocks": [...], "warnings": [...]}   (blocks and warnings come from validate at stage 'build')
     """
+    if trade.get("trade_id"):
+        _require_party_or_admin(conn, trade["trade_id"], viewer)
+    elif viewer not in (trade.get("teams") or []):
+        _require_admin(conn, viewer)
+    return _preview(conn, trade, now)
+
+
+def _preview(conn, trade, now=None):
     ts = _now(now)
     items = [_item(i) for i in trade.get("items") or []]
     season = trade["season"]
+    if trade.get("source") == "import":
+        return {"source": "import", "teams": [{"team": t} for t in trade.get("teams") or []], "blocks": [], "warnings": []}
     res = validate(conn, trade, "build", ts)
     lim = _roster_limits(conn, season)
     teams = list(trade.get("teams") or sorted({i["from_team"] for i in items} | {i["to_team"] for i in items}))
@@ -443,7 +530,7 @@ def build_preview(conn, trade, now=None):
         wb_out = sum(i["amount"] for i in items if i["kind"] == "wb" and i["from_team"] == team)
         wb_in = sum(i["amount"] for i in items if i["kind"] == "wb" and i["to_team"] == team)
         bal = actions.balance(conn, team)
-        before, after = _roster_after(conn, items, team)
+        before, after = _roster_after(conn, items, team, season)
         violations = [v for v in actions.roster_violations(after, lim) if v["rule"] != "catcher_min"] if lim else []
         # prospect counts after: open prospect contracts, minus those leaving, plus those arriving
         pros = {k: 0 for k in actions.PROSPECT_TYPES}
@@ -477,17 +564,15 @@ def build_preview(conn, trade, now=None):
 
 # ------------------------------------------------------------------ writing a trade
 
-def _insert_trade(conn, trade, ts, *, status, source, countered_from=None, raw=None, approved_by=None, accepted_all=False):
-    """Insert trades_live + parties + items. Returns the new trade_id."""
+def _insert_trade(conn, trade, ts, *, source, countered_from=None, raw=None, accepted_all=False, note=None, client_token=None):
+    """Insert a PENDING trades_live row + parties + items (items and parties can only be written while the
+    trade is pending). Returns the new trade_id. A manual entry is then moved to 'approved' by the caller."""
     tid = _one(conn, "select trade_next_id(%s) as id", (trade["season"],))["id"]
-    pending = status == "pending"
-    approved = status == "approved"
     _exec(conn, """insert into trades_live (trade_id, season, status, created_by, created_at, expires_at, countered_from,
-                                            approved_by, approved_at, source, raw)
-                   values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-          (tid, trade["season"], status, trade["created_by"], ts, ts + timedelta(days=EXPIRY_DAYS) if pending else None,
-           countered_from, approved_by if approved else None, ts if approved else None, source,
-           Jsonb(raw) if raw is not None else None))
+                                            source, raw, note, client_token)
+                   values (%s, %s, 'pending', %s, %s, %s, %s, %s, %s, %s, %s)""",
+          (tid, trade["season"], trade["created_by"], ts, ts + timedelta(days=EXPIRY_DAYS),
+           countered_from, source, Jsonb(raw) if raw is not None else None, note, client_token))
     for team in trade["teams"]:
         _exec(conn, "insert into trade_parties (trade_id, team_abbr, accepted_at) values (%s, %s, %s)",
               (tid, team, ts if accepted_all or team == trade["created_by"] else None))
@@ -515,7 +600,7 @@ def send(conn, trade, now=None, note=None):
     with conn.transaction():
         _lock_teams(conn, trade.get("teams") or [])
         _raise_if_blocked(validate(conn, trade, "send", ts))
-        tid = _insert_trade(conn, trade, ts, status="pending", source="portal")
+        tid = _insert_trade(conn, trade, ts, source="portal")
         if note and note.strip():
             _add_comment(conn, tid, trade["created_by"], note, ts)
         _dm(conn, tid, "trade_offer", [t for t in trade["teams"] if t != trade["created_by"]], ts, from_team=trade["created_by"])
@@ -551,7 +636,7 @@ def accept(conn, trade_id, team, now=None):
     conflict = None
     with conn.transaction():
         t = _open_offer(conn, trade_id, ts)
-        trade = get_trade(conn, trade_id)
+        trade = _load_trade(conn, trade_id)
         if team not in trade["parties"]:
             raise TradeError(f"{team} is not part of trade {trade_id}.", status=403)
         if trade["parties"][team] is not None:
@@ -617,9 +702,12 @@ def counter(conn, trade_id, team, trade, now=None, note=None):
             raise TradeError("Only the other teams in a pending offer can counter it.", status=403)
         if trade.get("created_by") != team:
             raise TradeError("A counter is sent by the team making it.", status=403)
+        missing = sorted(set(parties) - set(trade.get("teams") or []))
+        if missing:
+            raise TradeError(f"A counter has to include every team in the original offer (missing {', '.join(missing)}).")
         _lock_teams(conn, list(trade.get("teams") or []) + parties)
-        _raise_if_blocked(validate(conn, trade, "send", ts))
-        new_id = _insert_trade(conn, trade, ts, status="pending", source="portal", countered_from=trade_id)
+        _raise_if_blocked(validate(conn, trade, "send", ts, except_trade_id=trade_id))
+        new_id = _insert_trade(conn, trade, ts, source="portal", countered_from=trade_id)
         _exec(conn, "update trades_live set status = 'countered', closed_by = %s, expires_at = null where trade_id = %s", (team, trade_id))
         _system_comment(conn, trade_id, f"Countered by {team} with {new_id}.", ts)
         if note and note.strip():
@@ -668,7 +756,7 @@ def _apply(conn, trade, by, ts):
     phase = actions._current_phase(conn, season, ts)
     players = [i for i in items if i["kind"] == "player"]
     for i in players:
-        # Until the cutover a player may be on a roster_assignments row only; league.actions.transfer needs a contract.
+        # validate() blocks this ('no_contract'); kept as a last line of defence
         if not _player_owner(conn, i["upid"])["has_contract"]:
             raise TradeError(f"{_name(conn, i['upid'])} has no contract row yet (rosters are still the shadow mirror), so he can't be traded.")
     for i in players:
@@ -681,18 +769,18 @@ def _apply(conn, trade, by, ts):
                 raise TradeError(f"Pick {i['draft_id']} #{i['overall']} is no longer on {i['from_team']}.")
             _exec(conn, "insert into draft_events (draft_id, kind, actor, detail, at) values (%s, 'trade_pick', %s, %s, %s)",
                   (i["draft_id"], by, Jsonb({"trade_id": tid, "overall": i["overall"], "from": i["from_team"], "to": i["to_team"]}), ts))
-    for i in items:
-        if i["kind"] == "wb":
-            note = f"Trade {tid}: ${i['amount']} {i['from_team']} to {i['to_team']}"
-            actions.wb_spend(conn, i["from_team"], i["amount"], "trade_out", phase, season, created_by=by,
-                             ref_type="trade", ref_id=tid, note=note)
-            actions.wb_credit(conn, i["to_team"], i["amount"], "trade_in", phase, season, created_by=by,
-                              ref_type="trade", ref_id=tid, note=note)
+    wbs = [i for i in items if i["kind"] == "wb"]
+    for i in wbs:     # credits first: validate() checks each team's NET outflow
+        actions.wb_credit(conn, i["to_team"], i["amount"], "trade_in", phase, season, created_by=by, ref_type="trade", ref_id=tid,
+                          note=f"Trade {tid}: ${i['amount']} {i['from_team']} to {i['to_team']}")
+    for i in wbs:
+        actions.wb_spend(conn, i["from_team"], i["amount"], "trade_out", phase, season, created_by=by, ref_type="trade", ref_id=tid,
+                         note=f"Trade {tid}: ${i['amount']} {i['from_team']} to {i['to_team']}")
 
 
 def receives(conn, trade_id):
     """{team: [lines]} in the Constitution's format: 'SP Name [MLB] [TC 1]', 'Keeper Pick R6 P66 via CFL', '$15 WB via CFL'."""
-    t = get_trade(conn, trade_id)
+    t = _load_trade(conn, trade_id)
     out = {team: [] for team in t["teams"]}
     for i in t["items"]:
         if i["kind"] == "player":
@@ -704,8 +792,13 @@ def receives(conn, trade_id):
             label = p["prospect_type"] if p["kind"] == "prospect" else (p["tier"] or "").replace("-", " ")
             out[i["to_team"]].append(f"{p['pos'] or '?'} {p['name']} [{p['mlb_team'] or 'FA'}]" + (f" [{label}]" if label else ""))
         elif i["kind"] == "pick":
-            s = _slot(conn, i["draft_id"], i["overall"])
-            out[i["to_team"]].append(f"Keeper Pick {_pick_label(s)} via {i['from_team']}")
+            if i["draft_id"] is None:      # an imported 2026 pick: the transfer is in raw (no draft_slots row)
+                x = i["raw"] or {}
+                label = f"R{x.get('round', '?')} P{x.get('pick', '?')}"
+                out[i["to_team"]].append(f"{str(x.get('draft') or 'keeper').title()} Pick {label} via {i['from_team']}")
+            else:
+                s = _slot(conn, i["draft_id"], i["overall"])
+                out[i["to_team"]].append(f"Keeper Pick {_pick_label(s)} via {i['from_team']}")
         else:
             out[i["to_team"]].append(f"${i['amount']} WB via {i['from_team']}")
     return out
@@ -716,14 +809,14 @@ def _day(ts):
 
 
 def _post_text(conn, trade_id, headline):
-    t = get_trade(conn, trade_id)
+    t = _load_trade(conn, trade_id)
     blocks = [f"🔁 **{team} receives:**\n" + ("\n".join(lines) if lines else "Nothing") for team, lines in receives(conn, trade_id).items()]
     return ("\n\n".join(blocks) + f"\n\n📆 Sub: {_day(t['created_at'])}\n📆 Proc: {_day(t['approved_at'])}\n\n"
             f"{headline} ({trade_id}, approved by {t['approved_by']})")
 
 
 def _announce_approved(conn, trade_id, ts):
-    t = get_trade(conn, trade_id)
+    t = _load_trade(conn, trade_id)
     text = _post_text(conn, trade_id, "✅ **TRADE APPROVED**")
     _dm(conn, trade_id, "trade_approved", t["teams"], ts, approved_by=t["approved_by"])
     _notify(conn, "trade_post", None, {"trade_id": trade_id, "channel": "trades", "text": text}, ts)
@@ -740,10 +833,11 @@ def approve(conn, trade_id, admin, now=None):
         t = _lock_trade(conn, trade_id)
         if t["status"] == "approved":
             return {"trade_id": trade_id, "status": "approved", "already_approved": True}
-        if t["status"] != "accepted":
+        if t["status"] != "accepted" or t["source"] == "import":
             raise TradeError(f"Trade {trade_id} is {t['status']}; only an accepted trade can be approved.")
-        trade = get_trade(conn, trade_id)
+        trade = _load_trade(conn, trade_id)
         _lock_teams(conn, trade["teams"])
+        _lock_drafts(conn, trade["items"])
         res = validate(conn, trade, "approve", ts)
         if any(b["code"] == "ownership" for b in res["blocks"]):
             conflict = _auto_withdraw(conn, trade_id, [b for b in res["blocks"] if b["code"] == "ownership"], trade["teams"], ts)
@@ -758,24 +852,37 @@ def approve(conn, trade_id, admin, now=None):
     return {"trade_id": trade_id, "status": "approved", "already_approved": False, "warnings": res["warnings"]}
 
 
-def admin_manual_entry(conn, trade, admin, note, now=None):
+def admin_manual_entry(conn, trade, admin, note, client_token, now=None):
     """Record a deal made outside the portal as an already-approved trade (source 'admin_manual'): the same
-    validation (stage 'approve') and side effects as approve. `trade` needs created_by (any team in it). A note is required."""
+    validation as approve (stage 'approve' plus the structure checks; no committed-WizBucks subtraction, no
+    12-offer cap) and the same side effects. `trade` needs created_by (any team in it). A note is required.
+
+    `client_token` is required and stored on the row: a second call with the same token (a double submit)
+    changes nothing and returns the existing trade with already_entered True."""
     ts = _now(now)
     _require_admin(conn, admin)
     if not (note and note.strip()):
         raise TradeError("A manual trade needs a note saying why it was entered by hand.")
+    if not (client_token and str(client_token).strip()):
+        raise TradeError("A manual trade needs a client_token so a double submit is harmless.")
+    client_token = str(client_token).strip()
     with conn.transaction():
+        _exec(conn, "select pg_advisory_xact_lock(hashtext('manual:' || %s))", (client_token,))
+        prior = _one(conn, "select trade_id, status from trades_live where client_token = %s", (client_token,))
+        if prior:
+            return {"trade_id": prior["trade_id"], "status": prior["status"], "already_entered": True, "warnings": []}
         _lock_teams(conn, trade.get("teams") or [])
-        res = validate(conn, trade, "send", ts)       # structure + the approve rules; the offer cap does not apply to an admin entry
-        res["blocks"] = [b for b in res["blocks"] if b["code"] != "offer_cap"]
+        _lock_drafts(conn, [_item(i) for i in trade.get("items") or []])
+        res = validate(conn, trade, "approve", ts, structure=True)
         _raise_if_blocked(res)
-        tid = _insert_trade(conn, trade, ts, status="approved", source="admin_manual", approved_by=admin,
-                            accepted_all=True, raw={"note": note.strip(), "entered_by": admin})
+        tid = _insert_trade(conn, trade, ts, source="admin_manual", accepted_all=True, note=note.strip(),
+                            client_token=client_token, raw={"entered_by": admin})
         _system_comment(conn, tid, f"Entered by hand by {admin}: {note.strip()}", ts)
-        _apply(conn, get_trade(conn, tid), admin, ts)
+        _apply(conn, _load_trade(conn, tid), admin, ts)
+        _exec(conn, "update trades_live set status = 'approved', expires_at = null, approved_by = %s, approved_at = %s where trade_id = %s",
+              (admin, ts, tid))
         _announce_approved(conn, tid, ts)
-    return {"trade_id": tid, "status": "approved", "warnings": res["warnings"]}
+    return {"trade_id": tid, "status": "approved", "already_entered": False, "warnings": res["warnings"]}
 
 
 def void(conn, trade_id, admin, reason, now=None):
@@ -790,10 +897,14 @@ def void(conn, trade_id, admin, reason, now=None):
     reason = reason.strip()
     with conn.transaction():
         t = _lock_trade(conn, trade_id)
+        if t["source"] == "import":
+            raise TradeError(f"Trade {trade_id} is a 2026 import: its WizBucks are in wb_ledger_history and its picks have no "
+                             "draft slots, so it can't be voided here. Fix it by hand with an admin adjustment.")
         if t["status"] != "approved":
             raise TradeError(f"Trade {trade_id} is {t['status']}; only an approved trade can be voided.")
-        trade = get_trade(conn, trade_id)
+        trade = _load_trade(conn, trade_id)
         _lock_teams(conn, trade["teams"])
+        _lock_drafts(conn, trade["items"])
         season = trade["season"]
         items = [_item(i) for i in trade["items"]]
         # money first: reversal credits (undoing the trade_out rows) before reversal debits, so a team that
@@ -828,10 +939,12 @@ def void(conn, trade_id, admin, reason, now=None):
     return {"trade_id": trade_id, "status": "voided"}
 
 
-def admin_queue(conn, now=None):
-    """Accepted trades waiting on an admin, oldest first, each with its impact panel (roster warnings included)."""
+def admin_queue(conn, viewer, now=None):
+    """Accepted trades waiting on an admin, oldest first, each with its impact panel (roster warnings included).
+    Admins only (NotAdmin otherwise)."""
+    _require_admin(conn, viewer)
     out = []
     for r in _all(conn, "select trade_id from trades_live where status = 'accepted' order by created_at, trade_id"):
-        t = get_trade(conn, r["trade_id"])
-        out.append({"trade": t, "preview": build_preview(conn, t, now)})
+        t = _load_trade(conn, r["trade_id"])
+        out.append({"trade": t, "preview": _preview(conn, t, now)})
     return out

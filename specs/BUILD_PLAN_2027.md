@@ -63,4 +63,9 @@ Rule questions raised by the Spec 03 / Spec 02 code review (the code does the si
 15. **Trades of IL/NA players** do not move the roster slot, so a trade can push the receiving team past the IL (5) or NA (2) cap. Spec 03 should say what happens.
 16. **Test drafts on Neon:** the database cannot know which branch it is on. `league_settings` row `branch = 'test'` (SQL in `db/README.md`) is what lets `is_test` drafts and the simulator run; never set it on `main`.
 17. **2026 big boards** import into the 2027 prospect draft as "Any pick" lists (`draft.service.import_boards_from_app_state`); confirm that is the intended home.
+19. **Trade offers and promised WizBucks.** Sending an offer is blocked when the WB it gives, plus WB already promised in the team's other pending or accepted offers, exceeds the balance. The spec only says "within balance"; decide whether this should warn instead.
+20. **Trade deadline instant.** A window's `closes_at` is the exact cut-off; a window meant to allow 11:59 PM must close at 00:00 ET the next day. The findings' "KAP trade window closes 3 days before the keeper deadline" rule is not implemented; it is just a `closes_at` the admin sets.
+21. **Imported 2026 trades** show in history but can't be voided or previewed in full (their picks and money predate the live tables). Who approved 11 of the 63 is recorded as 'ADMIN' (the old data said "zpressley", "ADMIN" or "ADMIN_BACKFILL"); say if "zpressley" should become WIZ.
+22. **Auction prospects owned since bidding** (signed, traded, drafted) are recorded as unsold at resolution instead of passed to the next bidder. Confirm.
+23. **Auction calendar:** `calendar["start"]` must be the Monday of the pre-season auction week, not Opening Day.
 18. **Cutover order for the draft rename:** `scripts/db/cutover_draft_rename.sql` renames the mirror and the live picks table; the daily import's `draft_picks` reload and one table name in `trades/service.py` must change in the same step.

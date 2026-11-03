@@ -10,7 +10,11 @@ tables `trades_live`, `trade_parties`, `trade_items` and `trade_comments`, all i
     in raw.legacy_trade_id. trade_sequences for 2026 is set to the next free number.
   * source 'import'. raw keeps the whole 2026 record.
   * statuses: approved -> approved, rejected / admin_rejected -> rejected, withdrawn -> withdrawn,
-    expired -> expired, admin_review -> accepted, pending -> pending. Anything else stops the script.
+    expired -> expired. Anything else stops the script. A mirror row that maps to pending (pending) or
+    accepted (admin_review) is live work: it is NOT imported (an imported 'accepted' trade would sit in the
+    admin queue and could be approved without ever being applied to 2027 data). The script lists those rows
+    and Zach decides what to do with them (resend in the portal, or reject by hand). Same for 2026 rows
+    that are still open at cutover: there should be none, the window closed July 31.
   * approved_by: the team abbreviation when admin_decision_by is one; "zpressley", "ADMIN", "ADMIN_BACKFILL" and
     blank all become 'ADMIN' (the original stays in raw). approved_at = processed_at, else data_applied_at, else
     manager_approved_at, else created_at (the plan lists the trades that needed the last fallback).
@@ -19,6 +23,8 @@ tables `trades_live`, `trade_parties`, `trade_items` and `trade_comments`, all i
   * items: player -> player, wizbucks -> wb, draft_pick -> pick with draft_id / overall NULL and the 2026
     transfer in trade_items.raw (the 2026 draft order is not in draft_slots, so there is no row to point at).
   * a party's accepted_at: the initiator at created_at, any other accepting team at manager_approved_at.
+    On an approved trade a party that is missing from raw.acceptances still gets an accepted_at (every party
+    had to agree for it to be approved): manager_approved_at, else approved_at. The plan counts those.
 
 Refuses to write if trades_live already has rows. Does not touch the mirror tables or any data/ file.
 """
@@ -41,6 +47,7 @@ from scripts.db.common import connect, parse_ts  # noqa: E402
 SEASON = 2026
 STATUS_MAP = {"approved": "approved", "rejected": "rejected", "admin_rejected": "rejected", "withdrawn": "withdrawn",
               "expired": "expired", "admin_review": "accepted", "pending": "pending"}
+OPEN_STATUSES = {"pending", "accepted"}      # mapped statuses that are live work: reported, never imported
 EXPIRY_DAYS = 7
 
 
@@ -55,19 +62,26 @@ def clean_admin(value, teams):
 
 
 def build_plan(conn):
-    """Read the mirror and return (plan, notes). plan is a list of dicts, one per trade, in id order. Reads only."""
+    """Read the mirror and return (plan, notes, skipped). plan is a list of dicts, one per imported trade, in id
+    order. skipped lists the open (pending / admin_review) mirror rows that were not imported. Reads only."""
     teams = {r[0] for r in conn.execute("select abbr from teams")}
     cur = conn.cursor(row_factory=dict_row)
     mirror = cur.execute("select * from trades order by created_at, trade_id").fetchall()
     xfers = {}
     for x in cur.execute("select * from trade_transfers order by id").fetchall():
         xfers.setdefault(x["trade_id"], []).append(x)
-    plan, notes = [], []
-    for n, m in enumerate(mirror, start=1):
+    plan, notes, skipped = [], [], []
+    n = 0
+    for m in mirror:
         raw = m["raw"] or {}
         if m["status"] not in STATUS_MAP:
             raise CutoverError(f"{m['trade_id']}: don't know how to map status {m['status']!r}")
         status = STATUS_MAP[m["status"]]
+        if status in OPEN_STATUSES:
+            skipped.append({"legacy": m["trade_id"], "mirror_status": m["status"], "teams": list(m["teams"] or []),
+                            "created_at": m["created_at"]})
+            continue
+        n += 1
         created = m["created_at"]
         initiator = m["initiator_team"]
         parties = list(m["teams"] or [])
@@ -88,13 +102,14 @@ def build_plan(conn):
             t.update(close_kind="withdraw", closed_by=initiator)
         elif status == "expired":
             t.update(close_kind="expire", closed_by="system")
-        elif status == "pending":
-            t["expires_at"] = m["expires_at"] or created + timedelta(days=EXPIRY_DAYS)
         accepted = set(raw.get("acceptances") or [])
         t["accepted_at"] = {}
         for p in parties:
             if p in accepted:
                 t["accepted_at"][p] = created if p == initiator else (m["manager_approved_at"] or created)
+            elif status == "approved":
+                t["accepted_at"][p] = m["manager_approved_at"] or t["approved_at"]
+                notes.append(f"{m['trade_id']} ({t['trade_id']}): {p} is not in raw.acceptances but the trade was approved; accepted_at synthesized")
         t["raw"] = {**raw, "legacy_trade_id": m["trade_id"]}
         t["items"] = []
         for x in xfers.get(m["trade_id"], []):
@@ -105,7 +120,7 @@ def build_plan(conn):
                                "amount": x["amount"] if kind == "wb" else None, "from_team": x["from_team"],
                                "to_team": x["to_team"], "raw": x["raw"] if kind == "pick" else None})
         plan.append(t)
-    return plan, notes
+    return plan, notes, skipped
 
 
 def write_plan(conn, plan):
@@ -136,7 +151,7 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     with connect(args.database_url) as conn:
         try:
-            plan, notes = build_plan(conn)
+            plan, notes, skipped = build_plan(conn)
             write_plan(conn, plan)        # inside the transaction, so a dry run also proves every constraint accepts the rows
             # deferred constraints (sender is a party, 2 or 3 parties) are checked here, before anything is committed
             conn.execute("set constraints all immediate")
@@ -152,6 +167,9 @@ def main(argv=None) -> int:
         print(f"ids {plan[0]['trade_id']} .. {plan[-1]['trade_id']}; sequence for {SEASON} set to {len(plan) + 1}" if plan else "no trades")
         for n in notes:
             print("note:", n)
+        for k in skipped:
+            print(f"NOT IMPORTED (open work, decide by hand): {k['legacy']} mirror status {k['mirror_status']!r}, "
+                  f"teams {k['teams']}, created {k['created_at']}")
         if args.dry_run:
             conn.rollback()
             print("dry run: nothing written")
