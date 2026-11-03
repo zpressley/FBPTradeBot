@@ -407,11 +407,17 @@ def match_rows(rows: list[dict], players: list[dict]) -> list[dict]:
             row["upid"], row["match_method"] = str(cands[0]["upid"]), "mlb_id"
             row["org"] = row["org"] or cands[0].get("team") or None
         else:
-            cands = by_name.get(normalize_name(row["name"]), [])
+            by_name_cands = by_name.get(normalize_name(row["name"]), [])
+            cands = by_name_cands
             if row["org"]:
                 cands = [c for c in cands if canon_org(c.get("team")) == canon_org(row["org"])]
-            if len(cands) == 1:  # no org on the row: only accept an unambiguous name
+            if len(cands) == 1:
                 row["upid"], row["match_method"] = str(cands[0]["upid"]), "name_org"
+            elif len(by_name_cands) == 1:
+                # Seen live 2026-11-03: owned prospects with no mlb_id and a blank or
+                # stale org in combined_players.json. A unique name is accepted but
+                # marked for review rather than left unmatched.
+                row["upid"], row["match_method"] = str(by_name_cands[0]["upid"]), "name_only"
         if not row["upid"]:
             unmatched.append({k: row[k] for k in ("rank", "name", "mlb_id", "org")})
     return unmatched
@@ -669,7 +675,11 @@ def main(argv=None) -> int:
     print(f"Stats merged for {merge_stats(rows, stats_rows)} of {len(rows)} rows")
 
     unmatched = match_rows(rows, load_players())
-    methods = {m: sum(1 for r in rows if r["match_method"] == m) for m in ("mlb_id", "name_org")}
+    methods = {m: sum(1 for r in rows if r["match_method"] == m) for m in ("mlb_id", "name_org", "name_only")}
+    for r in rows:
+        if r["match_method"] == "name_only":
+            print(f"  review #{r['rank']} {r['name']} ({r['org']}) matched upid {r['upid']} by name only: "
+                  f"combined_players.json has no mlb_id and a blank or different org for him")
     print(f"UPID matches: {methods}; unmatched: {len(unmatched)}")
     for u in unmatched:
         print(f"  unmatched #{u['rank']} {u['name']} (mlb_id={u['mlb_id']}, org={u['org']})")

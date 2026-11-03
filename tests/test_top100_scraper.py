@@ -113,6 +113,8 @@ PLAYERS = [
     {"upid": "4", "name": "Dupe Name", "mlb_id": 1, "team": "NYY"},
     {"upid": "5", "name": "Dupe Name", "mlb_id": 2, "team": "BOS"},
     {"upid": "", "name": "Blank Upid", "mlb_id": 700009, "team": "SD"},
+    {"upid": "6", "name": "Stale Org", "mlb_id": None, "team": "BOS"},   # MLB now lists him with BAL
+    {"upid": "7", "name": "No Org", "mlb_id": None, "team": ""},
 ]
 
 
@@ -124,11 +126,12 @@ def row(rank, name, mlb_id, org=None):
 def test_matching():
     rows = [row(1, "Wrong Name", 700001), row(2, "Str Id", 700002),
             row(3, "Name Only", None, "Athletics"), row(4, "Dupe Name", None, "Boston Red Sox"),
-            row(5, "Dupe Name", None), row(6, "Nobody", 123), row(7, "Blank Upid", 700009)]
+            row(5, "Dupe Name", None), row(6, "Nobody", 123), row(7, "Blank Upid", 700009),
+            row(8, "Stale Org", 700010, "Baltimore Orioles"), row(9, "No Org", 700011, "Chicago Cubs")]
     unmatched = sc.match_rows(rows, PLAYERS)
     got = [(r["upid"], r["match_method"]) for r in rows]
     assert got == [("1", "mlb_id"), ("2", "mlb_id"), ("3", "name_org"), ("5", "name_org"),
-                   (None, None), (None, None), (None, None)]
+                   (None, None), (None, None), (None, None), ("6", "name_only"), ("7", "name_only")]
     assert [u["rank"] for u in unmatched] == [5, 6, 7]
     assert rows[0]["org"] == "MIL"  # filled from combined_players on an ID match
 
