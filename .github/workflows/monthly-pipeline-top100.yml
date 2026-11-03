@@ -10,6 +10,20 @@ on:
 
   # Allow manual trigger
   workflow_dispatch:
+    inputs:
+      snapshot_date:
+        description: "Snapshot date YYYY-MM-DD (default: today, ET)"
+        required: false
+        type: string
+      official:
+        description: "Mark the snapshot official (frozen)"
+        required: false
+        type: boolean
+        default: false
+      override_reason:
+        description: "Required to overwrite an official snapshot"
+        required: false
+        type: string
 
 jobs:
   scrape-top-100:
@@ -32,14 +46,49 @@ jobs:
     - name: Install Playwright
       run: |
         python3 -m pip install --upgrade pip
-        pip install playwright
+        pip install playwright "psycopg[binary]>=3.2"
         playwright install --with-deps chromium
 
     - name: Run MLB Pipeline Top 100 scrape
       # scrape_pipeline_top100.py exits non-zero if it finds too few
       # players (site structure likely changed) instead of silently
       # committing a bad snapshot -- let that fail the job.
-      run: python3 data_pipeline/scrape_pipeline_top100.py
+      # The scraper skips the database write when DATABASE_URL is empty.
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+        OFFICIAL: ${{ inputs.official }}
+        OVERRIDE_REASON: ${{ inputs.override_reason }}
+      run: |
+        args=()
+        if [ -n "$SNAPSHOT_DATE" ]; then args+=(--date "$SNAPSHOT_DATE"); fi
+        if [ "$OFFICIAL" = "true" ]; then args+=(--official); fi
+        if [ -n "$OVERRIDE_REASON" ]; then args+=(--override-reason "$OVERRIDE_REASON"); fi
+        python3 data_pipeline/scrape_pipeline_top100.py "${args[@]}"
+
+    - name: Upload fetched HTML on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: top100-debug-html
+        path: debug_html/
+        if-no-files-found: ignore
+
+    - name: BC retention report (official snapshots only)
+      if: inputs.official == true
+      run: |
+        python3 scripts/bc_retention_report.py \
+          --snapshot "data/pipeline_snapshots/${SNAPSHOT_DATE:-$(TZ=America/New_York date +%F)}.json" \
+          --out scripts/output/bc_retention.csv
+      env:
+        SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+
+    - name: Upload BC retention CSV
+      if: inputs.official == true
+      uses: actions/upload-artifact@v4
+      with:
+        name: bc-retention-report
+        path: scripts/output/bc_retention.csv
 
     - name: Commit and push snapshot if changed
       run: |
