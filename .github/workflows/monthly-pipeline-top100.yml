@@ -66,6 +66,32 @@ jobs:
         if [ -n "$OVERRIDE_REASON" ]; then args+=(--override-reason "$OVERRIDE_REASON"); fi
         python3 data_pipeline/scrape_pipeline_top100.py "${args[@]}"
 
+    - name: Print page diagnostics on failure
+      # The artifact below is the full HTML; this step puts enough in the log
+      # (counts, script URLs, JSON response URLs, and the gzipped HTML as
+      # base64) to debug a parse failure from the log alone.
+      if: failure()
+      run: |
+        python3 - <<'PY'
+        import base64, glob, gzip, json, re
+        for path in sorted(glob.glob("debug_html/*.html")):
+            h = open(path, encoding="utf-8", errors="replace").read()
+            print("==", path, len(h), "chars")
+            print("title:", re.findall(r"<title>(.*?)</title>", h, re.S)[:1])
+            print("headshot ids:", len(set(re.findall(r"/people/(\d+)/headshot", h))))
+            print("player hrefs:", len(set(re.findall(r"/player/[^\"'?#]+", h))))
+            for src in sorted(set(re.findall(r"<script[^>]*src=\"([^\"]+)\"", h)))[:60]:
+                print("  script:", src)
+            blob = base64.b64encode(gzip.compress(h.encode("utf-8"))).decode()
+            print("== gz+b64 html (%d chars)" % len(blob))
+            for i in range(0, len(blob), 2000):
+                print(blob[i:i + 2000])
+        for path in sorted(glob.glob("debug_html/response_*.json")):
+            d = json.load(open(path, encoding="utf-8"))
+            body = json.dumps(d["body"])
+            print("== response", path, d["url"][:200], len(body), "chars; head:", body[:400])
+        PY
+
     - name: Upload fetched HTML on failure
       if: failure()
       uses: actions/upload-artifact@v4

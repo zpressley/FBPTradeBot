@@ -367,8 +367,14 @@ def match_rows(rows: list[dict], players: list[dict]) -> list[dict]:
 
 # --------------------------------------------------------------------- browser
 
-def fetch_html(url: str, headless: bool = True, wait_selector: str = "a[href*='/player/']") -> str:
-    """Load a page with Playwright; up to 3 attempts with 5s/15s/45s backoff."""
+def fetch_page(url: str, headless: bool = True, wait_selector: str = "a[href*='/player/']"):
+    """Load a page with Playwright; up to 3 attempts with 5s/15s/45s backoff.
+
+    Returns (html, json_responses) where json_responses is a list of
+    (url, parsed_value) for every JSON response the page fetched while
+    rendering. The rankings page is client-rendered, so the list it shows
+    usually arrives as one of those responses rather than in the HTML.
+    """
     from playwright.sync_api import sync_playwright  # imported here so tests need no browser
 
     last_error = None
@@ -378,7 +384,26 @@ def fetch_html(url: str, headless: bool = True, wait_selector: str = "a[href*='/
                 browser = p.chromium.launch(headless=headless)
                 try:
                     page = browser.new_page()
+                    json_responses = []
+
+                    def on_response(resp):
+                        try:
+                            ctype = resp.headers.get("content-type", "")
+                            if "json" not in ctype and not resp.url.split("?")[0].endswith(".json"):
+                                return
+                            body = resp.text()
+                            if len(body) < 2000:
+                                return
+                            json_responses.append((resp.url, json.loads(body)))
+                        except Exception:  # noqa: BLE001 - a bad response is not our problem
+                            pass
+
+                    page.on("response", on_response)
                     page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=20000)
+                    except Exception:
+                        pass
                     try:
                         page.wait_for_selector(wait_selector, timeout=15000)
                     except Exception:
@@ -386,7 +411,11 @@ def fetch_html(url: str, headless: bool = True, wait_selector: str = "a[href*='/
                     for _ in range(8):  # trigger lazy-loaded rows
                         page.mouse.wheel(0, 3000)
                         page.wait_for_timeout(500)
-                    return page.content()
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=10000)
+                    except Exception:
+                        pass
+                    return page.content(), json_responses
                 finally:
                     browser.close()
         except Exception as e:  # noqa: BLE001
@@ -396,6 +425,35 @@ def fetch_html(url: str, headless: bool = True, wait_selector: str = "a[href*='/
                 print(f"   waiting {wait}s before retrying")
                 time.sleep(wait)
     raise RuntimeError(f"Could not load {url} after {len(BACKOFF_SECONDS)} attempts: {last_error}")
+
+
+def fetch_html(url: str, headless: bool = True, wait_selector: str = "a[href*='/player/']") -> str:
+    return fetch_page(url, headless, wait_selector)[0]
+
+
+def parse_json_responses(json_responses) -> list[dict]:
+    """Strategy 0: the JSON the page fetched while rendering (same walk as the script blobs)."""
+    best = []
+    for url, value in json_responses:
+        found = []
+        _walk(value, found)
+        by_rank = {}
+        for row in found:
+            by_rank.setdefault(row["rank"], row)
+        rows = [by_rank[r] for r in sorted(by_rank)]
+        if len(rows) > len(best):
+            best = rows
+            print(f"  network json {url[:120]}: {len(rows)} ranked rows")
+    return best
+
+
+def parse_rankings(html: str, json_responses):
+    rows = parse_json_responses(json_responses)
+    print(f"  strategy network: {len(rows)} rows")
+    if len(rows) >= MIN_IDS:
+        return rows, "network"
+    html_rows, name = parse_rankings_html(html)
+    return (html_rows, name) if len(html_rows) > len(rows) else (rows, "network")
 
 
 def save_debug_html(html: str, date: str) -> str:
@@ -510,14 +568,19 @@ def main(argv=None) -> int:
     check_freeze(path, args.override_reason)
 
     print(f"🔍 Fetching rankings page {RANKINGS_URL}")
-    html = fetch_html(RANKINGS_URL, headless=not args.headful)
-    rows, strategy = parse_rankings_html(html)
+    html, json_responses = fetch_page(RANKINGS_URL, headless=not args.headful)
+    rows, strategy = parse_rankings(html, json_responses)
     print(f"Strategy used: {strategy} ({len(rows)} rows, {sum(1 for r in rows if r['mlb_id'])} with MLB IDs)")
     errors = check_thresholds(rows)
     if errors:
         saved = save_debug_html(html, date)
         print(f"❌ Rankings parse failed: {'; '.join(errors)}")
         print(f"Saved fetched HTML to {saved}")
+        os.makedirs(DEBUG_DIR, exist_ok=True)
+        for i, (url, value) in enumerate(json_responses):
+            with open(os.path.join(DEBUG_DIR, f"response_{i:02d}.json"), "w", encoding="utf-8") as f:
+                json.dump({"url": url, "body": value}, f)
+            print(f"  network json response {i:02d}: {url[:160]}")
         return 1
 
     try:
