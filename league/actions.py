@@ -1162,3 +1162,191 @@ def reverse_draft_pick(conn, upid, team, *, created_by, expected_tier=None, expe
     _event(conn, upid, "draft_pick_reversed", msg, team=team, season=season, by=created_by, ts=ts,
            contract=c["tier"] or c["prospect_type"])
     return {"contract_id": c["id"], "message": msg}
+
+
+# =============================================================== Spec 03 jobs
+# Support for the spec's "Automatic jobs". The jobs themselves live in
+# league/jobs.py; everything that writes a table is here, so league/actions.py
+# stays the only writer of contracts, WizBucks and prospect state.
+
+
+def _mlb_limits(conn, season):
+    lim = _one(conn, "select * from mlb_rookie_limits where season = %s", (season,))
+    if not lim:
+        raise RuleError(f"no MLB rookie limits for season {season}")
+    return lim
+
+
+def over_mlb_limits(status, limits) -> bool:
+    """Whether a prospect_status row is past MLB rookie eligibility (Art. III s04).
+
+    AB and IP only. MLB's definition also ends rookie status at 45 days on an active
+    roster, which the Stats API stat groups this reads do not report -- see the note
+    on mlb_rookie_limits in migration 0008. Unknown totals count as under the limit.
+    """
+    if status.get("ab") is not None and status["ab"] > limits["ab"]:
+        return True
+    if status.get("ip") is not None and status["ip"] > limits["ip"]:
+        return True
+    return False
+
+
+@_atomic
+def refresh_prospect_status(conn, rows, *, season=None, now=None):
+    """Upsert prospect_status from MLB Stats API rows (lineups.mlb_api.fetch_prospect_stats).
+
+    One row per player, keyed by mlb_id -> upid. Returns the upids whose mlb_debut
+    appeared for the first time, which is what the debut-watch job acts on.
+
+    mlb_debut only ever comes from the API and is never cleared: a row that comes back
+    without one leaves the stored date alone (the API omitting it is not the same as
+    the player not having debuted).
+    """
+    ts, season = _ts_season(conn, now, season)
+    fbp = _one(conn, "select * from prospect_limits where season = %s", (season,))
+    if not fbp:
+        raise RuleError(f"no prospect limits for season {season}")
+    mlb = _mlb_limits(conn, season)
+
+    # players.mlb_id is an int column, so the keys have to be ints for `= any(...)`
+    by_mlb_id = {}
+    for r in rows:
+        if r.get("mlb_id") is None:
+            continue
+        try:
+            by_mlb_id[int(r["mlb_id"])] = r
+        except (TypeError, ValueError):
+            continue
+    if not by_mlb_id:
+        return {"updated": 0, "new_debuts": [], "unmatched_mlb_ids": [],
+                "message": "no prospect rows to refresh."}
+
+    known = _all(conn, """select upid, mlb_id from players
+                           where mlb_id is not null and mlb_id = any(%s)""",
+                 (list(by_mlb_id),))
+    existing = {r["upid"]: r for r in _all(
+        conn, "select upid, mlb_debut from prospect_status where upid = any(%s)",
+        ([p["upid"] for p in known],))} if known else {}
+
+    new_debuts, updated = [], 0
+    unmatched = sorted(set(by_mlb_id) - {p["mlb_id"] for p in known})
+    for p in known:
+        upid, r = p["upid"], by_mlb_id[p["mlb_id"]]
+        status = {"pa": r.get("pa"), "ip": r.get("ip"), "appearances": r.get("appearances"),
+                  "age": r.get("age"), "ab": r.get("ab")}
+        was = existing.get(upid)
+        debut = r.get("mlb_debut")
+        if debut is not None and (was is None or was["mlb_debut"] is None):
+            new_debuts.append(upid)
+        _exec(conn, """insert into prospect_status
+                         (upid, mlb_debut, pa, ip, appearances, age, ab,
+                          over_mlb_limits, over_fbp_limits, updated_at)
+                       values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                       on conflict (upid) do update set
+                         mlb_debut = coalesce(excluded.mlb_debut, prospect_status.mlb_debut),
+                         pa = excluded.pa, ip = excluded.ip, appearances = excluded.appearances,
+                         age = excluded.age, ab = excluded.ab,
+                         over_mlb_limits = excluded.over_mlb_limits,
+                         over_fbp_limits = excluded.over_fbp_limits,
+                         updated_at = excluded.updated_at""",
+              (upid, debut, status["pa"], status["ip"], status["appearances"], status["age"],
+               status["ab"], over_mlb_limits(status, mlb), bool(over_fbp_limits(status, fbp)), ts))
+        updated += 1
+
+    msg = f"refreshed {updated} prospect(s); {len(new_debuts)} new debut(s)."
+    if unmatched:
+        msg += f" {len(unmatched)} MLB id(s) matched no player."
+    return {"updated": updated, "new_debuts": new_debuts, "unmatched_mlb_ids": unmatched, "message": msg}
+
+
+@_atomic
+def reconcile_roster_queue(conn, *, season=None, now=None):
+    """Nightly: put every current roster violation in roster_violation_queue and close
+    the rows that have cleared. Charges nothing -- an admin calls
+    confirm_roster_violation, which is what writes the ledger (Spec 03 test 11).
+
+    Idempotent: a violation still standing updates its open row and bumps
+    nights_standing once per calendar day in ET, so running the job twice in one night
+    does not inflate the count.
+    """
+    ts, season = _ts_season(conn, now, season)
+    today = ts.astimezone(ET).date()
+    found = roster_check(conn, season=season, now=ts)["violations"]
+    seen = set()
+    opened, standing = 0, 0
+
+    for v in found:
+        seen.add((v["team"], v["rule"]))
+        row = _one(conn, """select id, last_seen_at, nights_standing from roster_violation_queue
+                             where season = %s and team_abbr = %s and rule = %s
+                               and cleared_at is null and confirmed_at is null and dismissed_at is null
+                             for update""", (season, v["team"], v["rule"]))
+        if row is None:
+            _exec(conn, """insert into roster_violation_queue
+                             (season, team_abbr, rule, over_by, detail, penalty_amount,
+                              nights_standing, first_seen_at, last_seen_at)
+                           values (%s, %s, %s, %s, %s, %s, 1, %s, %s)""",
+                  (season, v["team"], v["rule"], v["over"], v["detail"], v["penalty_amount"], ts, ts))
+            opened += 1
+        else:
+            same_day = row["last_seen_at"].astimezone(ET).date() == today
+            _exec(conn, """update roster_violation_queue
+                             set detail = %s, over_by = %s, last_seen_at = %s,
+                                 nights_standing = nights_standing + %s
+                           where id = %s""",
+                  (v["detail"], v["over"], ts, 0 if same_day else 1, row["id"]))
+            standing += 1
+
+    cleared = 0
+    for row in _all(conn, """select id, team_abbr, rule from roster_violation_queue
+                              where season = %s and cleared_at is null and confirmed_at is null
+                                and dismissed_at is null""", (season,)):
+        if (row["team_abbr"], row["rule"]) not in seen:
+            _exec(conn, "update roster_violation_queue set cleared_at = %s where id = %s", (ts, row["id"]))
+            cleared += 1
+
+    return {"opened": opened, "standing": standing, "cleared": cleared,
+            "message": (f"{opened} new violation(s), {standing} still standing, {cleared} cleared; "
+                        "nothing charged until an admin confirms.")}
+
+
+@_atomic
+def confirm_roster_violation(conn, queue_id, *, created_by, amount=None, now=None):
+    """An admin confirms a queued violation. This is the only path from the queue to the
+    ledger, and it goes through penalty(), which refuses created_by='system'.
+
+    `amount` overrides the pre-filled penalty_amount (the per-night escalation in
+    wb_prices.roster_violation_daily is NOT applied automatically -- see the open
+    question for Zach).
+    """
+    ts = _now(now)
+    row = _one(conn, """select * from roster_violation_queue where id = %s for update""", (queue_id,))
+    if row is None:
+        raise RuleError("no such roster violation in the queue")
+    if row["confirmed_at"] is not None:
+        raise RuleError("that violation was already confirmed")
+    if row["dismissed_at"] is not None or row["cleared_at"] is not None:
+        raise RuleError("that violation is no longer open")
+    charge = row["penalty_amount"] if amount is None else int(amount)
+    res = penalty(conn, row["team_abbr"], charge, rule=row["rule"], created_by=created_by,
+                  season=row["season"], dates=row["detail"], now=ts)
+    _exec(conn, """update roster_violation_queue
+                     set confirmed_at = %s, confirmed_by = %s, ledger_id = %s where id = %s""",
+          (ts, created_by, res["ledger_id"], queue_id))
+    return {"queue_id": queue_id, "ledger_id": res["ledger_id"], "charged": charge,
+            "message": res["message"]}
+
+
+@_atomic
+def dismiss_roster_violation(conn, queue_id, *, created_by, reason, now=None):
+    """An admin decides a queued violation should not be fined. Writes no ledger row."""
+    ts = _now(now)
+    if not reason:
+        raise RuleError("dismissing a violation needs a reason")
+    n = _exec(conn, """update roster_violation_queue
+                         set dismissed_at = %s, dismissed_by = %s, dismiss_reason = %s
+                       where id = %s and cleared_at is null and confirmed_at is null
+                         and dismissed_at is null""", (ts, created_by, reason, queue_id))
+    if n != 1:
+        raise RuleError("no open roster violation with that id")
+    return {"queue_id": queue_id, "message": f"Violation {queue_id} dismissed by {created_by}: {reason}"}

@@ -1,4 +1,4 @@
-"""Thin MLB Stats API client for Spec 07. Plain functions that return plain dicts.
+"""Thin MLB Stats API client for Specs 03 and 07. Plain functions that return plain dicts.
 
 Tests never call these: they pass the parsed rows straight to lineups.service.
 
@@ -122,6 +122,65 @@ def fetch_player_positions(mlb_ids: list[int]) -> list[dict]:
             code = (entries[-1].get("statusCode") if entries else None)
             rows.append({"mlb_id": p["id"], "primary_position": (p.get("primaryPosition") or {}).get("abbreviation"),
                          "status": _status_from_code(code), "status_code": code})
+        if i + 100 < len(ids):
+            time.sleep(1)
+    return rows
+
+
+def innings_to_numeric(value) -> float | None:
+    """MLB reports innings pitched as "12.1", meaning 12 and 1/3 -- the decimal is outs,
+    not a fraction. Stored as a real number so prospect_limits.ip (100) compares correctly."""
+    if value in (None, ""):
+        return None
+    try:
+        whole, _, outs = str(value).partition(".")
+        n = float(whole or 0)
+        if outs:
+            n += min(int(outs[0]), 2) / 3
+        return round(n, 3)
+    except (TypeError, ValueError):
+        return None
+
+
+def _career_stat(person: dict, group: str) -> dict:
+    for s in person.get("stats", []):
+        name = ((s.get("group") or {}).get("displayName") or "").lower()
+        if name == group:
+            splits = s.get("splits") or []
+            if splits:
+                return splits[0].get("stat") or {}
+    return {}
+
+
+def fetch_prospect_stats(mlb_ids: list[int]) -> list[dict]:
+    """Career MLB totals and debut date, for league.actions.refresh_prospect_status (Spec 03).
+
+    Rows: {mlb_id, mlb_debut (date or None), age, ab, pa, ip, appearances}.
+
+    Career totals, not season: Spec 03's limits (350 PA, 100 IP, 30 appearances) are
+    career MLB service, which is also what decides graduation. `appearances` is a
+    pitcher's games pitched.
+    """
+    rows = []
+    ids = list(mlb_ids)
+    for i in range(0, len(ids), 100):
+        chunk = ids[i:i + 100]
+        data = _get("/people", {
+            "personIds": ",".join(str(x) for x in chunk),
+            "hydrate": "stats(group=[hitting,pitching],type=[career])",
+        })
+        for p in data.get("people", []):
+            hitting, pitching = _career_stat(p, "hitting"), _career_stat(p, "pitching")
+            debut = p.get("mlbDebutDate")
+            rows.append({
+                "mlb_id": p["id"],
+                "mlb_debut": date.fromisoformat(debut) if debut else None,
+                "age": p.get("currentAge"),
+                "ab": hitting.get("atBats"),
+                "pa": hitting.get("plateAppearances"),
+                "ip": innings_to_numeric(pitching.get("inningsPitched")),
+                "appearances": pitching.get("appearances") or pitching.get("gamesPitched"),
+            })
         if i + 100 < len(ids):
             time.sleep(1)
     return rows

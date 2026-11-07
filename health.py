@@ -800,6 +800,13 @@ async def setup_hook():
         print(f"   ✅ Loaded: commands.auction")
     except Exception as exc:
         print(f"   ⚠️ Failed to load auction commands: {exc}")
+
+    # Spec 03 scheduler jobs (the loop does nothing unless FBP_LEAGUE_DB is on)
+    try:
+        await bot.load_extension("commands.league_jobs")
+        print(f"   ✅ Loaded: commands.league_jobs")
+    except Exception as exc:
+        print(f"   ⚠️ Failed to load league jobs: {exc}")
     
     print("🔄 Syncing slash commands...")
     try:

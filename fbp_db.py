@@ -29,6 +29,7 @@ if str(REPO_ROOT) not in sys.path:  # same pattern as scripts/db/*.py
 # --------------------------------------------------------------------- flags
 
 AUCTION_FLAG = "FBP_AUCTION_DB"
+LEAGUE_FLAG = "FBP_LEAGUE_DB"
 
 _TRUTHY = {"1", "true", "yes", "on"}
 
@@ -45,6 +46,15 @@ def auction_enabled() -> bool:
     until Zach flips this, per specs/BUILD_PLAN_2027.md step 3.
     """
     return flag_enabled(AUCTION_FLAG)
+
+
+def league_enabled() -> bool:
+    """True when the Spec 03 scheduler jobs are switched on (FBP_LEAGUE_DB).
+
+    Off by default. These jobs write contracts, WizBucks and prospect state, so they
+    stay off until the Dec 15 cutover makes Postgres the source of truth.
+    """
+    return flag_enabled(LEAGUE_FLAG)
 
 
 # ---------------------------------------------------------------------- pool
