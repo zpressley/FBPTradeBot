@@ -10,6 +10,20 @@ on:
 
   # Allow manual trigger
   workflow_dispatch:
+    inputs:
+      snapshot_date:
+        description: "Snapshot date YYYY-MM-DD (default: today, ET)"
+        required: false
+        type: string
+      official:
+        description: "Mark the snapshot official (frozen)"
+        required: false
+        type: boolean
+        default: false
+      override_reason:
+        description: "Required to overwrite an official snapshot"
+        required: false
+        type: string
 
 jobs:
   scrape-top-100:
@@ -32,14 +46,75 @@ jobs:
     - name: Install Playwright
       run: |
         python3 -m pip install --upgrade pip
-        pip install playwright
+        pip install playwright "psycopg[binary]>=3.2"
         playwright install --with-deps chromium
 
     - name: Run MLB Pipeline Top 100 scrape
       # scrape_pipeline_top100.py exits non-zero if it finds too few
       # players (site structure likely changed) instead of silently
       # committing a bad snapshot -- let that fail the job.
-      run: python3 data_pipeline/scrape_pipeline_top100.py
+      # The scraper skips the database write when DATABASE_URL is empty.
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+        OFFICIAL: ${{ inputs.official }}
+        OVERRIDE_REASON: ${{ inputs.override_reason }}
+      run: |
+        args=()
+        if [ -n "$SNAPSHOT_DATE" ]; then args+=(--date "$SNAPSHOT_DATE"); fi
+        if [ "$OFFICIAL" = "true" ]; then args+=(--official); fi
+        if [ -n "$OVERRIDE_REASON" ]; then args+=(--override-reason "$OVERRIDE_REASON"); fi
+        python3 data_pipeline/scrape_pipeline_top100.py "${args[@]}"
+
+    - name: Print page diagnostics on failure
+      # The artifact below is the full HTML; this step puts enough in the log
+      # (counts, script URLs, JSON response URLs, and the gzipped HTML as
+      # base64) to debug a parse failure from the log alone.
+      if: failure()
+      run: |
+        python3 - <<'PY'
+        import base64, glob, gzip, json, re
+        for path in sorted(glob.glob("debug_html/*.html")):
+            h = open(path, encoding="utf-8", errors="replace").read()
+            print("==", path, len(h), "chars")
+            print("title:", re.findall(r"<title>(.*?)</title>", h, re.S)[:1])
+            print("headshot ids:", len(set(re.findall(r"/people/(\d+)/headshot", h))))
+            print("player hrefs:", len(set(re.findall(r"/player/[^\"'?#]+", h))))
+            for src in sorted(set(re.findall(r"<script[^>]*src=\"([^\"]+)\"", h)))[:60]:
+                print("  script:", src)
+            blob = base64.b64encode(gzip.compress(h.encode("utf-8"))).decode()
+            print("== gz+b64 html (%d chars)" % len(blob))
+            for i in range(0, len(blob), 2000):
+                print(blob[i:i + 2000])
+        for path in sorted(glob.glob("debug_html/response_*.json")):
+            d = json.load(open(path, encoding="utf-8"))
+            body = json.dumps(d["body"])
+            print("== response", path, d["url"][:200], len(body), "chars; head:", body[:400])
+        PY
+
+    - name: Upload fetched HTML on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: top100-debug-html
+        path: debug_html/
+        if-no-files-found: ignore
+
+    - name: BC retention report (official snapshots only)
+      if: inputs.official == true
+      run: |
+        python3 scripts/bc_retention_report.py \
+          --snapshot "data/pipeline_snapshots/${SNAPSHOT_DATE:-$(TZ=America/New_York date +%F)}.json" \
+          --out scripts/output/bc_retention.csv
+      env:
+        SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+
+    - name: Upload BC retention CSV
+      if: inputs.official == true
+      uses: actions/upload-artifact@v4
+      with:
+        name: bc-retention-report
+        path: scripts/output/bc_retention.csv
 
     - name: Commit and push snapshot if changed
       run: |

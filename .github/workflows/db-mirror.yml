@@ -1,0 +1,44 @@
+name: Neon mirror (migrate, import, reconcile)
+
+# Spec 01, section 7. The daily data pipeline runs the same three steps after
+# its data commit; this workflow exists to run them on demand (for example right
+# after a data fix, or to prove a fresh Neon branch) without re-running the
+# Yahoo pipeline. It never commits anything.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_URL_DIRECT: ${{ secrets.DATABASE_URL_DIRECT }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Refuse to run without the database secrets
+        if: ${{ env.DATABASE_URL == '' }}
+        run: |
+          echo "DATABASE_URL secret is not set (and DATABASE_URL_DIRECT for migrations). Add both repo secrets from 'neon env pull'."
+          exit 1
+
+      - name: Migrate, import, reconcile
+        run: |
+          python scripts/db/migrate.py
+          python scripts/db/import_json.py
+          python scripts/db/reconcile.py --seed 1

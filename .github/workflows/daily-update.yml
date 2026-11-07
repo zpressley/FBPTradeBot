@@ -17,6 +17,8 @@ jobs:
     env:
       TRADE_BOT_PUSH_TOKEN: ${{ secrets.FBP_TRADE_BOT_PUSH_TOKEN }}
       FBP_HUB_PUSH_TOKEN: ${{ secrets.FBP_HUB_PUSH_TOKEN }}
+      # Neon shadow mirror (specs/01_neon_foundation.md, section 7). The DB step is skipped when unset.
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
       BOT_API_URL: ${{ secrets.BOT_API_URL }}
       BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
       # Yahoo OAuth app credentials. Until these repo secrets are set,
@@ -154,6 +156,16 @@ jobs:
 
         git commit -m "🔄 Daily data update - $(date)"
         git push origin HEAD:${GITHUB_REF_NAME}
+
+    - name: Mirror data/ into Neon and reconcile
+      if: ${{ env.DATABASE_URL != '' }}
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL_DIRECT: ${{ secrets.DATABASE_URL_DIRECT }}
+      run: |
+        # Runs after the data commit, so a failure here never blocks the JSON pipeline's
+        # commit. A reconcile FAIL exits 1 and fails the run (spec 01, section 7).
+        python scripts/db/migrate.py && python scripts/db/import_json.py && python scripts/db/reconcile.py --seed 1
 
     - name: Commit email-digest baseline snapshots
       if: ${{ env.FBP_HUB_PUSH_TOKEN != '' }}
