@@ -1,10 +1,12 @@
 import json
 import os
+from pathlib import Path
 
 import discord
 from discord.ext import commands, tasks
 from discord import app_commands
 
+import fbp_db
 from auction_manager import AuctionManager, AuctionPhase, ET
 from commands.utils import DISCORD_ID_TO_TEAM, MANAGER_DISCORD_IDS
 from data_lock import DATA_LOCK
@@ -91,6 +93,7 @@ class Auction(commands.Cog):
         self._resolve_next_retry_at = None  # ET datetime for next allowed retry
         self._last_summary_date = None  # YYYY-MM-DD in ET
         self._last_synced_phase = None  # track phase for website sync
+        self._db_alert_week = None  # Spec 02 scheduler: Sunday 11am unresolved alert guard
 
         # Start background task that checks phase/time once per minute
         self.auction_tick.start()
@@ -361,6 +364,17 @@ class Auction(commands.Cog):
         from datetime import datetime, timedelta
 
         now = datetime.now(tz=ET)
+
+        # Spec 02: with FBP_AUCTION_DB on, Postgres is the auction and this is the
+        # one scheduler. Returning here also skips the phase-sync git commit below,
+        # which is the last of the three 2026 Sunday triggers (Spec 02 bug 2).
+        if fbp_db.auction_enabled():
+            try:
+                await self._auction_tick_db(now)
+            except Exception as exc:
+                print(f"Auction tick (database path) failed: {exc}")
+            return
+
         phase = self.manager.get_current_phase(now)
 
         # Sync phase to auction_current.json + GitHub so the website stays current.
@@ -650,6 +664,82 @@ class Auction(commands.Cog):
     # ------------------------------------------------------------------
     # Alert helpers
     # ------------------------------------------------------------------
+
+    def _admin_mention(self) -> str:
+        """Mention for the league admin, from config/managers.json (role = admin)."""
+        try:
+            path = Path(__file__).resolve().parent.parent / "config" / "managers.json"
+            with path.open(encoding="utf-8") as fh:
+                teams = json.load(fh).get("teams", {})
+            for info in teams.values():
+                if str(info.get("role", "")).lower() == "admin" and info.get("discord_id"):
+                    return f"<@{info['discord_id']}>"
+        except Exception:
+            pass
+        return "Zach"
+
+    async def _auction_tick_db(self, now) -> None:
+        """The Spec 02 scheduler ("One scheduler"), running off Postgres.
+
+        Every branch is idempotent because the database is the guard, not an
+        in-memory flag: resolve_week returns the stored summary once a week is
+        resolved, and mark_announced only sets announced_at the first time. A
+        restart mid-Sunday therefore loses nothing, and a second tick in the
+        same minute changes nothing.
+        """
+        from auction import rules as auction_rules
+        from auction import service as auction_service
+
+        calendar = fbp_db.auction_calendar()
+        phase = auction_rules.phase_for(now, calendar)
+        week_key = phase.week_start.isoformat()
+
+        # Monday 3:00pm ET: the OB window just opened.
+        if now.weekday() == 0 and now.hour == 15 and now.minute == 0:
+            if self._ob_open_week != week_key:
+                await self._send_ob_open_alert()
+                self._ob_open_week = week_key
+
+        # Resolution only happens in processing (Sun 10:00am ET onwards).
+        if phase.name != auction_rules.PROCESSING:
+            return
+
+        week_start = phase.week_start
+        with fbp_db.connection() as conn:
+            board = auction_service.get_board(conn, now, calendar)
+
+        status = board.get("week_status")
+        if status is None:
+            return  # no auction_weeks row: nothing was ever bid this week
+        if status != "open" and board.get("announced_at") is not None:
+            return  # resolved and announced: nothing left to do
+
+        try:
+            with fbp_db.connection() as conn:
+                result = auction_service.resolve_week(
+                    conn, week_start, auction_service.SCHEDULER, now, calendar=calendar
+                )
+        except Exception as exc:
+            print(f"Auction resolve failed for the week of {week_start}: {exc}")
+            if now.hour >= 11 and self._db_alert_week != week_key:
+                admin_channel = await self._get_admin_log_channel()
+                if admin_channel:
+                    await admin_channel.send(
+                        f"{self._admin_mention()} the auction week of {week_start} is "
+                        f"still unresolved after 11:00am ET. Last error: {exc}"
+                    )
+                self._db_alert_week = week_key
+            return
+
+        # After the commit, never inside the transaction. If the post fails the
+        # resolution still stands and only the announcement is retried next tick.
+        announce = result.get("announce")
+        if announce and board.get("announced_at") is None:
+            channel = await self._get_auction_channel()
+            if channel:
+                await channel.send(announce)
+                with fbp_db.connection() as conn:
+                    auction_service.mark_announced(conn, week_start)
 
     async def _get_auction_channel(self) -> discord.TextChannel | None:
         channel = self.bot.get_channel(AUCTION_CHANNEL_ID)

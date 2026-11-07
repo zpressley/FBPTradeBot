@@ -20,6 +20,7 @@ from pydantic import BaseModel
 import uvicorn
 from dotenv import load_dotenv
 
+import fbp_db
 from auction_manager import AuctionManager
 from draft.draft_manager import DraftManager
 from draft.prospect_database import ProspectDatabase
@@ -919,6 +920,74 @@ def verify_api_key(x_api_key: str | None = Header(default=None)) -> bool:
     return True
 
 
+def _api_key_is_valid(x_api_key: str | None) -> bool:
+    """A genuinely valid Worker key. Deliberately ignores the TEST_MODE bypass in
+    verify_api_key: Spec 02 says the API trusts the manager's team header "only
+    when X-API-Key is valid", so an unauthenticated TEST_MODE request must never
+    be able to claim a team."""
+    return bool(API_KEY) and bool(x_api_key) and x_api_key == API_KEY
+
+
+def verified_team(
+    x_fbp_team: str | None = Header(default=None, alias="X-FBP-Team"),
+    x_api_key: str | None = Header(default=None, alias="X-API-Key"),
+) -> str:
+    """The logged-in manager's team, as forwarded by the Cloudflare Worker.
+
+    Spec 02, "API": team identity comes from the Worker's verified login, never
+    from the request body. The header is trusted only behind a valid API key.
+    """
+    if not _api_key_is_valid(x_api_key):
+        raise HTTPException(status_code=401, detail="Invalid API key")
+    team = (x_fbp_team or "").strip().upper()
+    if not team:
+        raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+    return team
+
+
+def verified_team_optional(
+    x_fbp_team: str | None = Header(default=None, alias="X-FBP-Team"),
+    x_api_key: str | None = Header(default=None, alias="X-API-Key"),
+) -> str | None:
+    """Like verified_team, but the header is optional.
+
+    Spec 02's GET /api/auction/current includes the manager's balance only "if
+    the Worker passes the manager's team", so no header is fine -- but a header
+    that is present is still only trusted behind a valid API key.
+    """
+    if not (x_fbp_team or "").strip():
+        return None
+    if not _api_key_is_valid(x_api_key):
+        raise HTTPException(status_code=401, detail="Invalid API key")
+    return x_fbp_team.strip().upper()
+
+
+def _auction_service():
+    """The Spec 02 service, imported lazily so a process with the flag off never
+    needs psycopg or a DATABASE_URL."""
+    from auction import service as auction_service
+
+    return auction_service
+
+
+def _auction_http(exc: Exception) -> HTTPException:
+    """Map an auction/league error onto a status code.
+
+    NotAdmin subclasses BidError, so it has to be tested first.
+    """
+    from auction.service import NotAdmin
+    from auction.rules import BidError
+    from league.actions import RuleError
+
+    if isinstance(exc, NotAdmin):
+        return HTTPException(status_code=403, detail=str(exc))
+    if isinstance(exc, (BidError, RuleError)):
+        return HTTPException(status_code=400, detail=str(exc))
+    if isinstance(exc, LookupError):
+        return HTTPException(status_code=404, detail=str(exc))
+    raise exc
+
+
 class BidRequest(BaseModel):
     team: str
     prospect_id: str
@@ -1403,8 +1472,30 @@ def _player_profile_link(prospect_id, prospect_name=None):
 
 
 @app.get("/api/auction/current")
-async def get_current_auction(authorized: bool = Depends(verify_api_key)):
-    """Return the current auction state for API consumers."""
+async def get_current_auction(
+    authorized: bool = Depends(verify_api_key),
+    team: str | None = Depends(verified_team_optional),
+):
+    """Return the current auction state for API consumers.
+
+    With FBP_AUCTION_DB on this is **read only** (Spec 02 bug 4): one read-only
+    repeatable-read snapshot from auction.service.get_board, no state save and no
+    git commit anywhere in the path.
+    """
+    if fbp_db.auction_enabled():
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                return service.get_board(
+                    conn,
+                    datetime.now(tz=ET),
+                    fbp_db.auction_calendar(),
+                    team=team,
+                    priority_source=fbp_db.priority_order,
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+
     manager = AuctionManager()
     now = datetime.now(tz=ET)
     old_state = manager._load_json(manager.auction_file) or {}
@@ -1431,8 +1522,46 @@ async def get_current_auction(authorized: bool = Depends(verify_api_key)):
 async def api_place_bid(
     payload: BidRequest,
     authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
 ):
-    """Place an OB or CB bid from the website via Cloudflare Worker."""
+    """Place an OB or CB bid from the website via Cloudflare Worker.
+
+    With FBP_AUCTION_DB on the team comes from the Worker's verified login
+    (X-FBP-Team), never from the request body (Spec 02, "API"), and the write is
+    one transaction in auction.service.place_bid with no git push.
+    """
+    if fbp_db.auction_enabled():
+        if not verified:
+            raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                result = service.place_bid(
+                    conn,
+                    verified,
+                    payload.prospect_id,
+                    payload.bid_type,
+                    payload.amount,
+                    "web",
+                    datetime.now(tz=ET),
+                    fbp_db.auction_calendar(),
+                    priority_source=fbp_db.priority_order,
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+
+        # After the commit, never inside the transaction (Spec 02, step 5).
+        is_ob = str(payload.bid_type).upper() == "OB"
+        header = "📣 Originating Bid Posted" if is_ob else "⚔️ Challenging Bid Placed"
+        _schedule_bot_coro(_send_auction_log_message(
+            f"{header}\n\n"
+            f"🏷️ Team: {verified}\n"
+            f"💰 Bid: ${payload.amount}\n"
+            f"🧢 Player: {_player_profile_link(payload.prospect_id)}\n\n"
+            f"Source: Website Portal"
+        ))
+        return result
+
     manager = AuctionManager()
     with DATA_LOCK:
         result = manager.place_bid(
@@ -1468,8 +1597,40 @@ async def api_place_bid(
 
 
 @app.get("/api/admin/auction/bids")
-async def api_admin_auction_bids(authorized: bool = Depends(verify_api_key)):
-    """Return the current week's auction bids for admin tooling."""
+async def api_admin_auction_bids(
+    authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
+):
+    """Return the current week's auction bids for admin tooling.
+
+    With FBP_AUCTION_DB on this is the read-only board (every bid is public per
+    Spec 02, "Visibility"), so it needs no admin check and writes nothing.
+    """
+    if fbp_db.auction_enabled():
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                board = service.get_board(
+                    conn,
+                    datetime.now(tz=ET),
+                    fbp_db.auction_calendar(),
+                    team=verified,
+                    priority_source=fbp_db.priority_order,
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+        bids = [
+            dict(bid, prospect_id=prospect["upid"], prospect_name=prospect["name"])
+            for prospect in board["prospects"]
+            for bid in prospect["bids"]
+        ]
+        return {
+            "success": True,
+            "week_start": board["week_start"],
+            "phase": board["phase"],
+            "bids": bids,
+        }
+
     manager = AuctionManager()
     now = datetime.now(tz=ET)
     with DATA_LOCK:
@@ -1496,8 +1657,34 @@ async def api_admin_auction_bids(authorized: bool = Depends(verify_api_key)):
 async def api_admin_auction_add_bid(
     payload: AdminAuctionAddBidRequest,
     authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
 ):
-    """Admin: add an auction bid directly."""
+    """Admin: add an auction bid directly.
+
+    With FBP_AUCTION_DB on the actor is the Worker's verified team, not
+    payload.admin, and auction.service checks teams.role = 'admin' (403).
+    """
+    if fbp_db.auction_enabled():
+        if not verified:
+            raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                return service.place_bid(
+                    conn,
+                    payload.team,
+                    payload.prospect_id,
+                    payload.bid_type,
+                    payload.amount,
+                    "admin",
+                    datetime.now(tz=ET),
+                    fbp_db.auction_calendar(),
+                    priority_source=fbp_db.priority_order,
+                    actor=verified,
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+
     manager = AuctionManager()
     with DATA_LOCK:
         result = manager.admin_add_bid(
@@ -1536,8 +1723,22 @@ async def api_admin_auction_add_bid(
 async def api_admin_auction_remove_bid(
     payload: AdminAuctionRemoveBidRequest,
     authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
 ):
-    """Admin: remove an auction bid by bid_id."""
+    """Admin: remove an auction bid by bid_id.
+
+    With FBP_AUCTION_DB on this sets removed_at; nothing is ever deleted.
+    """
+    if fbp_db.auction_enabled():
+        if not verified:
+            raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                return service.admin_remove_bid(conn, payload.bid_id, verified)
+        except Exception as exc:
+            raise _auction_http(exc)
+
     manager = AuctionManager()
     with DATA_LOCK:
         result = manager.admin_remove_bid(
@@ -1575,7 +1776,23 @@ async def api_admin_auction_update_amount(
     payload: AdminAuctionUpdateBidAmountRequest,
     authorized: bool = Depends(verify_api_key),
 ):
-    """Admin: update a bid amount by bid_id."""
+    """Admin: update a bid amount by bid_id.
+
+    GAP FOR ZACH: Spec 02's service list has no "edit a bid amount" action --
+    only admin_remove_bid and admin_set_priority -- and an edit cannot be
+    composed here from remove + add, because that would be two transactions
+    where the rebuild rules require one. So with FBP_AUCTION_DB on this route
+    refuses and points the admin at the two actions the spec does define.
+    """
+    if fbp_db.auction_enabled():
+        raise HTTPException(
+            status_code=501,
+            detail=(
+                "Editing a bid amount is not part of Spec 02's auction service. "
+                "Remove the bid and add a replacement instead."
+            ),
+        )
+
     manager = AuctionManager()
     with DATA_LOCK:
         result = manager.admin_update_bid_amount(
@@ -1613,8 +1830,41 @@ async def api_admin_auction_update_amount(
 async def api_admin_auction_resolve_now(
     payload: AdminAuctionResolveNowRequest | None = None,
     authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
 ):
-    """Admin: resolve the current auction week immediately."""
+    """Admin: resolve the current auction week immediately.
+
+    Spec 02 keeps this as the manual button that calls service.resolve_week.
+    Resolution is one transaction and idempotent, so pressing it twice is safe;
+    force=True is how an admin resolves before Sun 10:00am ET.
+    """
+    if fbp_db.auction_enabled():
+        if not verified:
+            raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+        service = _auction_service()
+        now = datetime.now(tz=ET)
+        calendar = fbp_db.auction_calendar()
+        try:
+            from auction import rules as auction_rules
+
+            week_start = auction_rules.phase_for(now, calendar).week_start
+            with fbp_db.connection() as conn:
+                result = service.resolve_week(
+                    conn, week_start, verified, now, calendar=calendar, force=True
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+
+        announce = payload.announce_discord if payload is not None else True
+        if announce and result.get("announce"):
+            _schedule_bot_coro(_send_auction_log_message(result["announce"]))
+            try:
+                with fbp_db.connection() as conn:
+                    service.mark_announced(conn, week_start)
+            except Exception as exc:  # the resolution stands; only the post failed
+                print(f"Auction resolved but mark_announced failed: {exc}")
+        return result
+
     manager = AuctionManager()
     now = datetime.now(tz=ET)
     week_key = manager._monday_for_date(now.date()).isoformat()  # type: ignore[attr-defined]
@@ -1688,8 +1938,36 @@ async def api_admin_auction_resolve_now(
 async def api_record_match(
     payload: MatchRequest,
     authorized: bool = Depends(verify_api_key),
+    verified: str | None = Depends(verified_team_optional),
 ):
-    """Record an explicit Match / Forfeit decision from OB manager."""
+    """Record an explicit Match / Forfeit decision from OB manager.
+
+    With FBP_AUCTION_DB on the team comes from X-FBP-Team, not the body, and the
+    decision is one transaction in auction.service.record_decision.
+    """
+    if fbp_db.auction_enabled():
+        if not verified:
+            raise HTTPException(status_code=401, detail="Missing X-FBP-Team header")
+        service = _auction_service()
+        try:
+            with fbp_db.connection() as conn:
+                result = service.record_decision(
+                    conn,
+                    verified,
+                    payload.prospect_id,
+                    payload.decision,
+                    "web",
+                    datetime.now(tz=ET),
+                    fbp_db.auction_calendar(),
+                )
+        except Exception as exc:
+            raise _auction_http(exc)
+
+        announce = result.get("announce")
+        if announce:
+            _schedule_bot_coro(_send_auction_log_message(announce))
+        return result
+
     manager = AuctionManager()
     with DATA_LOCK:
         result = manager.record_match(
