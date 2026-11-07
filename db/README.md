@@ -2,16 +2,24 @@
 
 Nothing reads from this database yet. `data/*.json` is still the source of truth; the database is a verified mirror that the daily workflow refreshes (`specs/01_neon_foundation.md`).
 
+## The Neon project
+
+Project **HUB 3.0** (`nameless-tooth-55559042`, org `org-plain-credit-91312585`, `aws-us-east-1`, Postgres 18). The default branch is **`production`** (the spec calls it `main`; same role). `.neon` (git-ignored) links this checkout to it, and `neon.ts` declares the services: Postgres only, with new non-default branches expiring after 7 days.
+
+The CLI is `neon` (`npm i -g neon@latest`; the spec's `neonctl` is its old name). Sign in with `neon login`, or set `NEON_API_KEY` in CI.
+
 ## Connection strings
 
-Both live in a local `.env` (never committed) and in GitHub repo secrets.
+`neon deploy` (or `neon env pull`) writes the linked branch's strings into `.env.local` (`.env` if that file exists); both are git-ignored. The scripts load `.env` then `.env.local` themselves (real environment variables win), and each also takes `--database-url`.
 
 | Variable | Neon string | Used by |
 |---|---|---|
 | `DATABASE_URL` | pooled (host contains `-pooler`) | the app (later), `import_json.py`, `reconcile.py` |
-| `DATABASE_URL_DIRECT` | direct | `migrate.py` (falls back to `DATABASE_URL` if unset) |
+| `DATABASE_URL_UNPOOLED` (what Neon writes) or `DATABASE_URL_DIRECT` | direct | `migrate.py` (falls back to `DATABASE_URL` if both are unset) |
 
-The scripts read the environment, not `.env` itself: `set -a; source .env; set +a`. Each script also takes `--database-url`.
+The same two values go in the GitHub repo secrets `DATABASE_URL` and `DATABASE_URL_DIRECT` for the daily workflow and `db-mirror.yml` (run it from the Actions tab to migrate + import + reconcile on demand).
+
+Driver: the bot and API are one long-running Python process on Railway, so plain `psycopg` 3 over the **pooled** string is the right fit (no serverless HTTP driver needed); migrations use the direct string.
 
 ## Everyday commands
 
@@ -34,18 +42,19 @@ Every agent worktree gets its own Neon branch, a copy of `main`'s data:
 ```bash
 # new worktree + matching database branch with a copy of main's data
 git worktree add ../fbp-<name> -b <name>
-neonctl branches create --name wt-<name> --parent main
-neonctl connection-string wt-<name> --pooled   # put in the worktree's .env as DATABASE_URL
-neonctl connection-string wt-<name>            # direct string -> DATABASE_URL_DIRECT
+neon branches create --name wt-<name> --parent production
+neon connection-string wt-<name> --pooled   # put in the worktree's .env.local as DATABASE_URL
+neon connection-string wt-<name>            # direct string -> DATABASE_URL_UNPOOLED
+# or simply, from inside the worktree:  neon checkout wt-<name> --create   (creates the branch and writes .env.local)
 
 # done
-neonctl branches delete wt-<name>
+neon branches delete wt-<name>
 git worktree remove ../fbp-<name>
 ```
 
 `.env` is listed in `.worktreeinclude`, so each worktree gets its own copy; replace the connection strings with the branch's.
 
-**Never run migrations or imports against `main` from a worktree.** Only the scheduled workflow (`.github/workflows/daily-update.yml`) and deliberate manual runs by Zach touch `main`. Check `echo $DATABASE_URL` points at your `wt-<name>` branch before you run anything.
+**Never run migrations or imports against `production` from a worktree.** Only the scheduled workflow (`.github/workflows/daily-update.yml`), `db-mirror.yml` and deliberate manual runs by Zach touch `production`. Check `echo $DATABASE_URL` points at your `wt-<name>` branch before you run anything.
 
 ## Local Postgres (tests)
 

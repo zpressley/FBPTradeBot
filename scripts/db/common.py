@@ -15,14 +15,51 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo("America/New_York")
 
 
+def load_env_files() -> None:
+    """Load .env then .env.local from the repo root without overriding real env vars.
+
+    `neon deploy` / `neon env pull` write DATABASE_URL and DATABASE_URL_UNPOOLED to
+    .env.local (or .env if it exists); both files are git-ignored.
+    """
+    try:
+        from dotenv import load_dotenv
+    except ImportError:  # python-dotenv is in requirements.txt; tolerate a bare install
+        return
+    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    for name in (".env", ".env.local"):
+        path = os.path.join(root, name)
+        if os.path.exists(path):
+            load_dotenv(path, override=False)
+
+
 def database_url(explicit: str | None = None) -> str:
+    load_env_files()
     url = explicit or os.environ.get("DATABASE_URL")
     if not url:
         raise SystemExit(
-            "DATABASE_URL is not set. Put the pooled Neon connection string in .env "
-            "or pass --database-url. See db/README.md."
+            "DATABASE_URL is not set. Run `neon env pull` (writes .env.local) or put the pooled "
+            "Neon connection string in .env, or pass --database-url. See db/README.md."
         )
     return url
+
+
+def direct_database_url(explicit: str | None = None) -> str:
+    """Direct (non-pooled) string for migrations: DATABASE_URL_DIRECT, Neon's
+    DATABASE_URL_UNPOOLED, then DATABASE_URL.
+
+    When DATABASE_URL comes from the real environment (a test pointing at a local
+    database, CI) and no direct variable does, the env files are not consulted
+    for a direct string: otherwise .env.local could silently send migrations to
+    a different server than the imports.
+    """
+    if explicit:
+        return explicit
+    real = os.environ
+    if "DATABASE_URL" in real and "DATABASE_URL_DIRECT" not in real and "DATABASE_URL_UNPOOLED" not in real:
+        return real["DATABASE_URL"]
+    load_env_files()
+    return (os.environ.get("DATABASE_URL_DIRECT") or os.environ.get("DATABASE_URL_UNPOOLED")
+            or database_url())
 
 
 def connect(url: str | None = None) -> psycopg.Connection:

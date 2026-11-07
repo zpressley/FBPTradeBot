@@ -22,7 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.db.common import connect  # noqa: E402
+from scripts.db.common import connect, direct_database_url  # noqa: E402
 
 MIGRATIONS_DIR = REPO_ROOT / "db" / "migrations"
 
@@ -60,7 +60,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", action="store_true", help="list pending migrations, apply nothing")
     args = ap.parse_args(argv)
 
-    url = args.database_url or os.environ.get("DATABASE_URL_DIRECT") or os.environ.get("DATABASE_URL")
+    url = direct_database_url(args.database_url)
     with connect(url) as conn:
         todo = pending_migrations(conn)
         if not todo:
