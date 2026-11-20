@@ -1,0 +1,7 @@
+# Test-only dependencies. Not installed on Railway.
+#
+# Note: requirements.txt pins uvloop, which does not build on Windows. To set up
+# a local environment there, install requirements.txt with the uvloop line
+# filtered out; uvloop is a uvicorn speedup and no test needs it.
+pytest>=8.0
+httpx>=0.27          # fastapi.testclient needs it

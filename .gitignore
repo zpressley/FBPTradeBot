@@ -23,3 +23,6 @@ scripts/archive/
 
 # Trade store lockfile (should never be committed)
 /data/trades.lock
+.neon
+node_modules/
+.env.local
