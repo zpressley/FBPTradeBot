@@ -19,9 +19,11 @@ name: Resolve Weekly Auction
 # instead of silently leaving the week unresolved.
 
 on:
-  schedule:
-    # Sunday 14:30 UTC (~10:30am EDT), just after the 10am ET match/forfeit deadline.
-    - cron: "30 14 * * 0"
+  # Schedule paused for the offseason (2026-11-21) — no auction weeks to
+  # resolve. Restore the block below when the 2027 season starts.
+  # schedule:
+  #   # Sunday 14:30 UTC (~10:30am EDT), just after the 10am ET match/forfeit deadline.
+  #   - cron: "30 14 * * 0"
   # Allow manual runs (safe: resolve_week is idempotent via resolved_at).
   workflow_dispatch:
 
