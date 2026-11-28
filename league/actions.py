@@ -576,7 +576,7 @@ def _debut_state(conn, upid, ts):
 
 @_atomic
 def pay_debut_fee(conn, upid, *, created_by, season=None, team=None, now=None):
-    """$15 within 7 days of a DC prospect's MLB debut; the DC becomes a PC."""
+    """The debut purchase (wb_prices debut_fee), due within 7 days of a DC prospect's MLB debut; the DC becomes a PC."""
     ts, season = _ts_season(conn, now, season)
     c = _locked_contract(conn, upid, team=team, kind="prospect")
     if c["prospect_type"] != "DC":

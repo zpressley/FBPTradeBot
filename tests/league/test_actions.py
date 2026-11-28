@@ -214,9 +214,9 @@ def test_07_dc_debut_fee_void_and_september(conn):
     set_debut(conn, a, "2027-06-10")
     set_debut(conn, b, "2027-06-10")
     set_debut(conn, c, "2027-09-05")
-    # paid on day 4: becomes PC, $15
+    # paid on day 4: becomes PC for the $5 step from DC
     r = A.pay_debut_fee(conn, a, created_by=BY, season=S, now=utc(2027, 6, 14))
-    assert r["charged"] == 15 and contract(conn, a)["ptype"] == "PC" and bal(conn, "WIZ") == 85
+    assert r["charged"] == 5 and contract(conn, a)["ptype"] == "PC" and bal(conn, "WIZ") == 95
     # inside the window the system can't void
     with pytest.raises(RuleError, match="window is open"):
         A.void_dc(conn, b, season=S, now=utc(2027, 6, 14))
@@ -238,7 +238,7 @@ def test_07_dc_debut_fee_void_and_september(conn):
         A.pay_debut_fee(conn, c, created_by=BY, season=S, now=utc(2027, 9, 8))
     assert A.void_overdue_dcs(conn, season=S, now=utc(2027, 10, 20))["voided"] == 0
     assert contract(conn, c)["ptype"] == "DC" and contract(conn, c)["valid_to"] is None
-    assert bal(conn, "WIZ") == 85
+    assert bal(conn, "WIZ") == 95
 
 
 def test_08_graduation_tiers_and_advancement(conn):
