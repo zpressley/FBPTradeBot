@@ -328,6 +328,11 @@ def run_installments(conn, ctx) -> str:
         if pending:
             waiting.append(f"{installment} (waiting on the {pending} rollover)")
             continue
+        if installment == "PAD":
+            # the season rollover closes when PAD opens, and has to land before the PAD money does
+            rolled = actions.apply_season_rollover(conn, season)
+            if rolled["teams"]:
+                credited.append(rolled["message"])
         res = actions.credit_installment(conn, season, installment)
         if any(t["amount"] or t["reward"] for t in res["teams"]):
             credited.append(res["message"])

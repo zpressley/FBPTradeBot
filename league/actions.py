@@ -1166,6 +1166,113 @@ def close_phase_rollover(conn, season, from_phase, to_phase, created_by="system"
     return {"teams": results, "message": f"{from_phase} to {to_phase} rollover: {len(results)} team(s) processed."}
 
 
+# The season boundary (Art. I s02.2, Art. IV s02.3.1): leftover WizBucks carry into the new season, up to the
+# PRIOR_SEASON cap into each of PAD, KAP and APA, split the way the manager asks.
+SEASON_ROLLOVER_PHASES = ("PAD", "KAP", "APA")
+
+
+def _season_rollover_ref(season, phase=None):
+    return f"{season}:PRIOR_SEASON>{phase}" if phase else f"{season}:PRIOR_SEASON"
+
+
+def _season_rollover_caps(conn, season):
+    caps = {r["to_phase"]: r["cap"] for r in _all(
+        conn, "select to_phase, cap from wb_rollover_caps where season = %s and from_phase = 'PRIOR_SEASON'", (season,))}
+    if not caps:
+        raise RuleError(f"no season rollover caps for {season}")
+    return caps
+
+
+def _season_rollover_applied(conn, team, season):
+    return _one(conn, """select 1 as x from wb_ledger where team_abbr = %s and kind = 'rollover_in'
+                          and ref_type = 'rollover' and ref_id = %s""", (team, _season_rollover_ref(season, "PAD"))) is not None
+
+
+@_atomic
+def declare_season_rollover(conn, team, amounts, *, created_by, season=None):
+    """Preseason: how much of last season's leftover WizBucks `team` carries into each installment.
+
+    `amounts` is {'PAD': n, 'KAP': n, 'APA': n}; a phase left out is 0. Each is limited by its PRIOR_SEASON cap
+    and the total by what the team has now. A team can declare again until apply_season_rollover runs (when
+    PAD opens); whatever is not declared is forfeited then."""
+    season = _season(conn, season)
+    _team(conn, team)
+    _lock(conn, team)
+    if _season_rollover_applied(conn, team, season):
+        raise RuleError(f"the {season} season rollover has already been applied for {team}")
+    caps = _season_rollover_caps(conn, season)
+    unknown = sorted(set(amounts) - set(caps))
+    if unknown:
+        raise RuleError(f"rollover goes into {', '.join(SEASON_ROLLOVER_PHASES)}, not {', '.join(unknown)}")
+    declared = {}
+    for phase in SEASON_ROLLOVER_PHASES:
+        if phase not in caps:
+            continue
+        amt = amounts.get(phase, 0)
+        if isinstance(amt, bool) or not isinstance(amt, int) or amt < 0:
+            raise RuleError(f"the {phase} amount must be a whole number of WizBucks, 0 or more")
+        if amt > caps[phase]:
+            raise RuleError(f"at most ${caps[phase]} can roll over into {phase} (asked for ${amt})")
+        declared[phase] = amt
+    total, bal = sum(declared.values()), balance(conn, team)
+    if total > max(bal, 0):
+        raise RuleError(f"{team} has ${bal} left over and can't carry ${total}")
+    for phase, amt in declared.items():
+        _exec(conn, """insert into wb_rollover_declarations (season, team_abbr, to_phase, amount, declared_by)
+                       values (%s, %s, %s, %s, %s)
+                       on conflict (season, team_abbr, to_phase)
+                       do update set amount = excluded.amount, declared_by = excluded.declared_by, declared_at = now()""",
+              (season, team, phase, amt, created_by))
+    forfeit = max(bal, 0) - total
+    split = ", ".join(f"${amt} into {phase}" for phase, amt in declared.items())
+    msg = f"{team} will carry {split}" + (f"; ${forfeit} will be forfeited." if forfeit else ".")
+    return {"declared": declared, "total": total, "forfeit": forfeit, "message": msg}
+
+
+@_atomic
+def apply_season_rollover(conn, season, created_by="system"):
+    """Apply every team's season rollover, once, before the PAD installment. Safe to run twice.
+
+    Per team: the PAD share stays in the balance; the KAP and APA shares are set aside (`rollover_hold`) and
+    credit_installment gives them back with those installments; the rest is forfeited. A team that declared
+    nothing carries as much as the caps allow, PAD first, then KAP, then APA. If the balance has dropped since
+    the declaration, the shares are honoured in that same order until the money runs out. Refuses if an
+    unprocessed team already has its PAD installment, which would be counted as leftover money."""
+    caps = _season_rollover_caps(conn, season)
+    results = []
+    for t in _all(conn, "select abbr from teams where active order by abbr"):
+        abbr = t["abbr"]
+        _lock(conn, abbr)
+        if _season_rollover_applied(conn, abbr, season):
+            continue
+        if _one(conn, "select 1 as x from wb_ledger where team_abbr = %s and kind = 'installment' and ref_type = 'installment' and ref_id = %s",
+                (abbr, f"{season}:PAD")):
+            raise RuleError(f"{abbr} already has its PAD installment for {season}: the season rollover must run before it "
+                            "or the installment would be counted as leftover money")
+        bal = balance(conn, abbr)
+        declared = {r["to_phase"]: r["amount"] for r in _all(
+            conn, "select to_phase, amount from wb_rollover_declarations where season = %s and team_abbr = %s", (season, abbr))}
+        wanted = declared or caps
+        left, carried = max(bal, 0), {}
+        for phase in SEASON_ROLLOVER_PHASES:
+            carried[phase] = min(wanted.get(phase, 0), caps.get(phase, 0), left)
+            left -= carried[phase]
+        if left:
+            _spend(conn, abbr, left, "rollover_forfeit", "OFFSEASON", season, ref_type="rollover",
+                   ref_id=_season_rollover_ref(season), note=f"season rollover: ${bal} left over, forfeited ${left}", by=created_by)
+        for phase in ("KAP", "APA"):
+            if carried[phase]:
+                _spend(conn, abbr, carried[phase], "rollover_hold", "OFFSEASON", season, ref_type="rollover",
+                       ref_id=_season_rollover_ref(season, phase), note=f"season rollover: ${carried[phase]} set aside for {phase}",
+                       by=created_by)
+        _credit(conn, abbr, 0, "rollover_in", "PAD", season, ref_type="rollover", ref_id=_season_rollover_ref(season, "PAD"),
+                note=f"season rollover: ${bal} left over; carried ${carried['PAD']} into PAD, ${carried['KAP']} held for KAP, "
+                     f"${carried['APA']} held for APA, forfeited ${left}" + ("" if declared else " (nothing declared)"),
+                by=created_by)
+        results.append({"team": abbr, "carried": carried, "forfeited": left, "declared": bool(declared)})
+    return {"teams": results, "message": f"season rollover into {season}: {len(results)} team(s) processed."}
+
+
 @_atomic
 def credit_installment(conn, season, installment, created_by="system"):
     """Credit PAD / KAP / APA / PTDA by bracket, plus finish rewards. Safe to run twice."""
@@ -1194,7 +1301,7 @@ def credit_installment(conn, season, installment, created_by="system"):
         if installment == "KAP":   # finish rewards use the prior season's final rank
             ts_row = _one(conn, "select final_rank from team_seasons where team_abbr = %s and season = %s", (abbr, season - 1))
             rank = ts_row["final_rank"] if ts_row else None
-        row = {"team": abbr, "amount": 0, "reward": 0}
+        row = {"team": abbr, "amount": 0, "reward": 0, "rollover": 0}
         if not _one(conn, "select 1 as x from wb_ledger where team_abbr = %s and kind = 'installment' and ref_type = 'installment' and ref_id = %s",
                     (abbr, ref_id)):
             _credit(conn, abbr, amt["amount"], "installment", phase, season, ref_type="installment", ref_id=ref_id,
@@ -1208,6 +1315,15 @@ def credit_installment(conn, season, installment, created_by="system"):
                 _credit(conn, abbr, rw["amount"], "finish_reward", phase, season, ref_type="installment", ref_id=ref_id,
                         note=f"{installment} finish reward for finishing {rank} in {season - 1}", by=created_by)
                 row["reward"] = rw["amount"]
+        if installment in ("KAP", "APA"):     # give back the share the season rollover set aside for this installment
+            ref = _season_rollover_ref(season, installment)
+            held = _one(conn, """select -amount as amount from wb_ledger where team_abbr = %s and kind = 'rollover_hold'
+                                  and ref_type = 'rollover' and ref_id = %s""", (abbr, ref))
+            if held and not _one(conn, """select 1 as x from wb_ledger where team_abbr = %s and kind = 'rollover_in'
+                                           and ref_type = 'rollover' and ref_id = %s""", (abbr, ref)):
+                _credit(conn, abbr, held["amount"], "rollover_in", phase, season, ref_type="rollover", ref_id=ref,
+                        note=f"season rollover: ${held['amount']} carried into {installment}", by=created_by)
+                row["rollover"] = held["amount"]
         results.append(row)
     if missing:
         raise RuleError(f"{installment} {season} needs a bracket on team_seasons for: {', '.join(missing)}")
