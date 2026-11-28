@@ -424,6 +424,35 @@ def test_upgrade_prospect_and_prices(conn):
     assert bal(conn, "WIZ") == 100 - 5 - 10 - 20
 
 
+def test_upgrade_cannot_dodge_the_debut_fee(conn):
+    """Art. III s02.3: a debuted DC is compelled to pay the $15 fee, so the $5 upgrade is closed."""
+    fund(conn, "WIZ", 100)
+    owes = mk_prospect(conn, "test-up-debuted", "WIZ", "DC")
+    sept = mk_prospect(conn, "test-up-sept", "WIZ", "DC")
+    drafted = mk_prospect(conn, "test-up-drafted", "WIZ", "DC")
+    set_debut(conn, owes, "2027-06-10")
+    set_debut(conn, sept, "2027-09-05")
+    set_debut(conn, drafted, "2026-08-01")
+
+    # inside the fee window and after it: the $5 upgrade is refused and nothing is charged
+    for day in (utc(2027, 6, 12), utc(2027, 6, 30)):
+        with pytest.raises(RuleError, match="debut fee"):
+            A.upgrade_prospect(conn, owes, "PC", created_by=BY, season=S, now=day)
+    assert contract(conn, owes)["ptype"] == "DC" and bal(conn, "WIZ") == 100
+    # the fee is still the way through
+    assert A.pay_debut_fee(conn, owes, created_by=BY, season=S, now=utc(2027, 6, 12))["charged"] == 15
+
+    # a September debut owes no fee, so purchasing him is the ordinary $5 upgrade
+    assert A.upgrade_prospect(conn, sept, "PC", created_by=BY, season=S, now=utc(2027, 9, 8))["charged"] == 5
+
+    # post-draft finalization: a drafted prospect with service time pays only the remainder (Art. IV s04.1.3)
+    with pytest.raises(RuleError, match="debut fee"):
+        A.upgrade_prospect(conn, drafted, "PC", created_by=BY, season=S, now=utc(2027, 2, 20))
+    A.open_window(conn, S, "BC_FINALIZATION", utc(2027, 2, 19), utc(2027, 2, 22), "zach")
+    assert A.upgrade_prospect(conn, drafted, "PC", created_by=BY, season=S, now=utc(2027, 2, 20))["charged"] == 5
+    assert bal(conn, "WIZ") == 100 - 15 - 5 - 5
+
+
 def test_retain_bc_and_admin_adjust(conn):
     fund(conn, "WIZ", 100)
     on, off = mk_prospect(conn, "test-bc-on", "WIZ", "BC"), mk_prospect(conn, "test-bc-off", "WIZ", "BC")
