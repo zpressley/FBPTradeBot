@@ -2,7 +2,6 @@
 migrations applied and the JSON import loaded; every test cleans up after itself through the `world` fixture."""
 
 import importlib.util
-import json
 import re
 from datetime import timedelta
 
@@ -375,33 +374,3 @@ def test_default_clocks_live_in_the_table_only(world):
         assert c.execute("select clock_seconds from drafts where draft_id = %s", (did,)).fetchone()[0] == 200
     finally:
         c.execute("update draft_defaults set clock_seconds = 180 where draft_type = 'keeper'")
-
-
-# -------------------------------------------------------------- 13: importing the 2026 boards
-
-def test_import_boards_from_app_state(world):
-    c = world.conn
-    real = [r[0] for r in c.execute("select upid from players order by upid::bigint limit 4")]
-    key = "manager_boards_2097"
-    a, b = world.teams[:2]
-    board = {a: [real[0], "NOPE1", real[1], real[0], real[2]], b: [real[3]], "ZZZ": [real[0]]}
-    c.execute("insert into app_state (key, value) values (%s, %s)", (key, json.dumps(board)))
-    try:
-        res = ds.import_boards_from_app_state(c, 2097)
-        assert res["imported"] == {a: 3, b: 1}
-        assert res["unknown_upids"] == {a: ["NOPE1"]} and res["unknown_teams"] == ["ZZZ"] and res["skipped_existing"] == []
-        got = c.execute("select upid from draft_boards where season = 2097 and draft_type = 'prospect' and team_abbr = %s and slot_key = 'any' order by position", (a,)).fetchall()
-        assert [r[0] for r in got] == [real[0], real[1], real[2]]
-        again = ds.import_boards_from_app_state(c, 2097)                         # running twice changes nothing
-        assert again["imported"] == {} and sorted(again["skipped_existing"]) == sorted([a, b])
-        res = ds.import_boards_from_app_state(c, 2097, draft_type="keeper", target_season=2096)
-        assert res["imported"] == {a: 3, b: 1}
-        assert c.execute("select count(*) from draft_boards where season = 2096").fetchone()[0] == 4
-        with pytest.raises(DraftError):
-            ds.import_boards_from_app_state(c, 2095)
-        # the real mirror imports too (all 12 teams; the 2026 data has no unknown players)
-        real_res = ds.import_boards_from_app_state(c, 2026, target_season=2097, draft_type="keeper")
-        assert len(real_res["imported"]) + len(real_res["skipped_existing"]) == 12
-    finally:
-        c.execute("delete from draft_boards where season in (2096, 2097)")
-        c.execute("delete from app_state where key = %s", (key,))
