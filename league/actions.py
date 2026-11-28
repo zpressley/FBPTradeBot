@@ -545,32 +545,17 @@ def _ts_season(conn, now, season):
 
 @_atomic
 def upgrade_prospect(conn, upid, to_type, *, created_by, season=None, team=None, now=None):
-    """DC->PC any time before an MLB debut. DC->BC and PC->BC only while the admin-run
-    BC_FINALIZATION window is open.
-
-    A DC that has debuted is "compelled to be Purchased for a $15 WB fee" (Art. III s02.3), so
-    the $5 upgrade is closed to him and pay_debut_fee is the only way to PC. Two exceptions,
-    both from the Constitution: a September debut owes no fee (s02.3.3), and during post-draft
-    finalization a drafted prospect with service time pays only the remainder (Art. IV s04.1.3).
-    """
+    """DC->PC any time. DC->BC and PC->BC only while the admin-run BC_FINALIZATION window is open."""
     ts, season = _ts_season(conn, now, season)
     c = _locked_contract(conn, upid, team=team, kind="prospect")
     frm = c["prospect_type"]
     item = {("DC", "PC"): "dc_to_pc", ("DC", "BC"): "dc_to_bc", ("PC", "BC"): "pc_to_bc"}.get((frm, to_type))
     if item is None:
         raise RuleError(f"can't upgrade a {frm} contract to {to_type}")
-    finalization = window_is_open(conn, season, "BC_FINALIZATION", ts)
-    if to_type == "BC" and not finalization:
+    if to_type == "BC" and not window_is_open(conn, season, "BC_FINALIZATION", ts):
         raise RuleError("Blue Chip upgrades are only allowed during post-draft finalization, which an admin opens")
-    name = _player(conn, upid)["name"]
-    if frm == "DC" and not finalization:
-        st = _one(conn, "select mlb_debut from prospect_status where upid = %s", (upid,))
-        debut = st["mlb_debut"] if st else None
-        if debut is not None and debut.month != FEE_EXEMPT_MONTH:
-            fee = _price(conn, season, "debut_fee")
-            raise RuleError(f"{name} has made his MLB debut, so the ${_price(conn, season, item)} upgrade is closed; "
-                            f"pay the ${fee} debut fee instead")
     price = _price(conn, season, item)
+    name = _player(conn, upid)["name"]
     _spend(conn, c["team_abbr"], price, "prospect_upgrade", _current_phase(conn, season, ts), season, upid=upid, ref_type="upgrade",
            ref_id=f"{frm}>{to_type}", note=f"{frm} to {to_type} for {name}", by=created_by)
     _exec(conn, "update contracts set prospect_type = %s where id = %s", (to_type, c["id"]))
