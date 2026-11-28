@@ -174,3 +174,18 @@ Constitution Art. V s03 Clause 1 and Spec 07 ("two linked roster entries ... und
 - **Not covered:** two-way prospects (the prospect actions are not pair-aware; the trigger makes a half-applied change fail at commit, it does not make it work), and arriving optioned as part of a trade.
 - **Tested on Postgres 16 only.** Neon is 18; the generated column with a deferred self-referencing foreign key is the part to watch on the first `db-mirror.yml` run.
 - Tests: `python -m pytest tests/league/test_two_way.py -q`.
+
+## Debut purchase price (`0010_debut_fee.sql`)
+
+Sets `wb_prices.debut_fee` to 5. Zach, 2026-11-28: the Constitution's $15 is wrong; purchasing a debuted DC is the same $5 step from DC to PC as before a debut. `pay_debut_fee`, its 7-day window and `void_dc` are unchanged.
+
+## Season rollover (`0011_season_rollover.sql`)
+
+Constitution Art. I s02.2 and Art. IV s02.3.1: leftover WizBucks carry into the new season, up to $25 into each of PAD, KAP and APA, split the way the manager chooses.
+
+- **`wb_rollover_declarations`** holds each team's split (one row per installment); a trigger checks each amount against the `PRIOR_SEASON` cap in `wb_rollover_caps`.
+- **`league.actions.declare_season_rollover(conn, team, {"PAD": n, "KAP": n, "APA": n}, ...)`** records it. The total can't exceed what the team has. A team can declare again until the rollover is applied.
+- **`apply_season_rollover(conn, season)`** runs once per team, from `league.jobs.run_installments` when the PAD window opens, before the PAD installment (it refuses after it). The PAD share stays in the balance. The KAP and APA shares leave it as `rollover_hold` rows (a new ledger kind), so they can't be spent during PAD or counted in the PAD-to-KAP cap, and `credit_installment` gives each one back as `rollover_in` with its installment. The rest is a `rollover_forfeit` row.
+- **Defaults to confirm with Zach:** a team that declared nothing carries the most the caps allow, PAD first, then KAP, then APA. If the balance fell after the declaration, the shares are honoured in that same order until the money runs out.
+- No route or page calls `declare_season_rollover` yet.
+- Tests: `python -m pytest tests/league/test_season_rollover.py -q`.
