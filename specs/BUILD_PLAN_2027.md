@@ -69,3 +69,24 @@ Rule questions raised by the Spec 03 / Spec 02 code review (the code does the si
 22. **Auction prospects owned since bidding** (signed, traded, drafted) are recorded as unsold at resolution instead of passed to the next bidder. Confirm.
 23. **Auction calendar:** `calendar["start"]` must be the Monday of the pre-season auction week, not Opening Day.
 18. **Cutover order for the draft rename:** `scripts/db/cutover_draft_rename.sql` renames the mirror and the live picks table; the daily import's `draft_picks` reload and one table name in `trades/service.py` must change in the same step.
+
+## Answers, 2026-11-28
+
+From Zach, and from reading the open items above against the Constitution. Numbers are the items above.
+
+Settled by the Constitution, code already right: **9** (challenge bids end Friday 9pm and the OB match is "on Saturday", Art. V s04.2), **10** (auction wins get a Purchased Contract, Art. III s03.3; Spec 02's "tier `P`" wording is stale), **14** (a buy-in is a one-time entry fee, Art. IV s05.6.3.1), **22** (contracted prospects are protected from the Auction Portal, Art. III s01.5).
+
+- **7. Fixed.** A debuted DC is "compelled" to pay the $15 fee (Art. III s02.3), and `upgrade_prospect` let him pay $5 instead. It now refuses, except for a September debut (no fee) and during post-draft finalization (Art. IV s04.1.3).
+- **11. Built** as migration `0009_two_way.sql`; see `db/README.md`. Two readings in it are Zach's to confirm: "optioned" is a roster slot that does not count toward the 26, and adding one half as a free agent uses an option on the other.
+- **6.** The Constitution makes the season rollover the manager's choice: up to $25 into each of PAD, KAP and APA (Art. I s02.2, Art. IV s02.3.1). Not built; it needs a declare-rollover step. Waiting on Zach.
+- **20.** "Up until 3 days before the Keeper Deadline" is in the Constitution (Art. IV s05.6). Still set by hand as `closes_at`. The 2026 calendar had 2 days between the two dates, not 3.
+- **13.** Dropped for now. Zach: it is a thought, not a rule.
+- **19.** Stays a block. Zach: no speculative trades, you can't send out more than you have.
+- **21.** "zpressley" is Zach, and his team is WAR. WIZ is Kyle, the commissioner. Never map zpressley to WIZ. The import keeps those approvals as `ADMIN`, which is still accurate.
+- **15, and roster penalties.** Zach: live rosters must always follow the rules. An add or a trade that would break a roster rule does not complete, so roster penalties should not exist. The rules themselves have to be editable in admin settings, and a change has to be loud and not something an admin can change and change back midseason. **Not built, because it contradicts two specs:** Spec 05 says roster limits warn and do not block (its rules table and test 6), and Spec 03 has the nightly violation queue with a pre-filled penalty (migration `0008`). Free-agent adds, activations and the IL and NA maximums already block; `transfer` moves a traded player with no roster check at all. Zach to change the specs before this is built.
+- **12, 17.** Explained to Zach; his call. For 17, Spec 04 already says "Existing boards import as 'Any pick'".
+
+Found while building:
+
+- `scripts/db/reconcile.py` had a backslash inside an f-string expression, a syntax error before Python 3.12. The workflows run 3.10, so the daily reconcile step could not have started. Fixed.
+- Two tests in `tests/league/test_jobs.py` (`test_reconcile_queues_violations_and_charges_nothing`, `test_reconcile_twice_in_one_night_is_one_row_and_one_night`) fail on a freshly imported database, before and after this work: they expect 2 queued violations and get 13, because every team with no catcher on its (empty, pre-cutover) roster gets a `catcher_min` row. Left alone, since the queue itself is in question.
