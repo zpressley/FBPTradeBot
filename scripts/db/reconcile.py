@@ -404,7 +404,8 @@ def known_issues(conn, report, verbose):
 
     print("\nGenerated ids")
     print(f"    player_events: {scalar(conn, 'select count(*) from player_events where id_generated')}")
-    print(f"    wb_ledger_history: {scalar(conn, 'select count(*) from wb_ledger_history where txn_id like %s', ('gen\\_%',))}")
+    generated_txns = scalar(conn, "select count(*) from wb_ledger_history where txn_id like %s", ("gen\\_%",))
+    print(f"    wb_ledger_history: {generated_txns}")
     for n in report.get("notes", []):
         if "generated" in n or "duplicate" in n:
             print("    import note:", n)
