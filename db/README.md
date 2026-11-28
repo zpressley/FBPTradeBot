@@ -162,3 +162,15 @@ Three things Spec 03 needs but describes without giving a schema.
 - **`mlb_rookie_limits`** finally gives `prospect_status.over_mlb_limits` a source. That column has a real consumer -- `retain_bc` reads it for the Art. III s04 exemption, where a BC prospect over MLB rookie limits but under FBP limits retains free -- and nothing ever set it, so the exemption could not fire. Seeded 130 AB / 50 IP. **Needs Zach:** confirm those numbers, and note MLB's 45-days-on-an-active-roster component is **not** modelled, because the Stats API stat groups this reads do not report it.
 
 `prospect_status` also gains an `ab` column: MLB's rookie limit is at-bats, FBP's is plate appearances, so they cannot share one.
+
+## Two-way players (`0009_two_way.sql`)
+
+Constitution Art. V s03 Clause 1 and Spec 07 ("two linked roster entries ... under one contract"). A two-way player stays two `players` rows, a batter half and a pitcher half, because every ownership query keys on `upid`. What 0009 adds:
+
+- **The link is a column:** `players.two_way_twin`, generated from `raw->>'2wayplayer'`, with a foreign key, a unique index and a deferred trigger that refuses a one-sided link. The fact still lives in one place (`raw`, from `combined_players.json`).
+- **One contract:** each half has a `contracts` row, and the deferred trigger `contracts_two_way_agree` refuses to commit unless both halves are owned by the same team on the same terms (tier, IL tag fields, `rat_count`). So the tier is stored twice but cannot disagree. `league/actions.py` keeps them in step: `keep_player`, `il_tag` and `reduce_a_tier` charge once and copy the terms to the other half; a keeper draft pick, its undo, `release` and `acquire_free_agent` act on both rows.
+- **Roster spots:** each active half is one of the 26 and counts on its own side (batter or pitcher), as before.
+- **Options:** `league.actions.option_two_way` moves one half to the new slot `optioned` (off the 26, still owned). `roster_limits.two_way_options_max` (2) is the per-half, per-season limit, enforced by a trigger on `two_way_options` as well as by the action. Options are counted per contract, so a trade, which opens new contracts, resets them for the receiving team. One half has to stay on the roster. Recall is `move_slot(upid, 'active')` or `lineups.service.activate`, with the usual roster checks. Adding one half as a free agent options the other and uses one of its options; `with_twin=True` adds both.
+- **Not covered:** two-way prospects (the prospect actions are not pair-aware; the trigger makes a half-applied change fail at commit, it does not make it work), and arriving optioned as part of a trade.
+- **Tested on Postgres 16 only.** Neon is 18; the generated column with a deferred self-referencing foreign key is the part to watch on the first `db-mirror.yml` run.
+- Tests: `python -m pytest tests/league/test_two_way.py -q`.

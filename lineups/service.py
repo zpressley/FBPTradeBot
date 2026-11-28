@@ -664,7 +664,8 @@ def move_to_na(conn, team, upid, by, now):
 
 
 def activate(conn, team, upid, by, now):
-    """Back to active from IL or NA. Blocked, with the reason, if it would break a roster maximum (Spec 03).
+    """Back to active from IL, NA or optioned (one half of a two-way player). Blocked, with the reason, if it
+    would break a roster maximum (Spec 03).
     A farm player isn't activated; he goes through actions.graduate."""
     with conn.transaction():
         _lock_team(conn, team)
@@ -673,7 +674,7 @@ def activate(conn, team, upid, by, now):
                             where rs.upid = %s""", (team, upid))
         if cur is None:
             raise LineupError(f"{upid} is not on {team}.")
-        if cur["slot"] not in ("il", "na"):
+        if cur["slot"] not in ("il", "na", "optioned"):
             where = {"active": "already active", "farm": "on the farm (farm players go through graduate)"}[cur["slot"]]
             raise LineupError(f"{cur['name']} is {where}; only IL and NA players are activated.")
         return _move(conn, team, upid, "active", by, now)
@@ -683,9 +684,5 @@ def release(conn, team, upid, by, now, season=None):
     """Spec 03's release. A two-way player is released as a package: both rows."""
     with conn.transaction():
         _lock_team(conn, team)
-        twin = _one(conn, "select raw->>'2wayplayer' as twin from players where upid = %s", (upid,))
-        ids = [upid]
-        if twin and twin["twin"] and _one(conn, "select 1 as x from players where upid = %s", (twin["twin"],)):
-            ids.append(twin["twin"])
-        results = [actions.release(conn, u, created_by=by, team=team, season=season, now=now) for u in ids]
-        return {"released": ids, "message": " ".join(r["message"] for r in results)}
+        res = actions.release(conn, upid, created_by=by, team=team, season=season, now=now)
+        return {"released": res["released"], "message": res["message"]}

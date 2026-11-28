@@ -205,6 +205,32 @@ def _locked_contract(conn, upid, *, team=None, kind=None):
     return c
 
 
+# A two-way player is two players rows under one contract (Art. V s03 Clause 1, Spec 07). Each half has
+# its own contracts row so that ownership stays a lookup by upid; these are the terms the two rows share,
+# and migration 0009 refuses to commit them out of step.
+_PAIR_TERMS = "tier, il_tag, il_tag_season, il_tag_family, il_tag_team, il_ineligible_until, rat_count"
+
+
+def _twin(conn, upid):
+    """The other half of a two-way player, or None."""
+    r = _one(conn, "select two_way_twin from players where upid = %s", (upid,))
+    return r["two_way_twin"] if r else None
+
+
+def _halves(conn, upid):
+    twin = _twin(conn, upid)
+    return [upid, twin] if twin else [upid]
+
+
+def _sync_twin(conn, upid):
+    """Copy the shared contract terms from `upid`'s open contract to his other half's."""
+    twin = _twin(conn, upid)
+    if twin:
+        _exec(conn, f"""update contracts t set ({_PAIR_TERMS}) =
+                               (select {_PAIR_TERMS} from contracts s where s.upid = %s and s.valid_to is null)
+                         where t.upid = %s and t.valid_to is null""", (upid, twin))
+
+
 def _set_slot(conn, upid, slot, ts, season=None):
     """Put a player in a roster slot. The only writer of roster_slots after the cutover, so the IL and NA
     maximums (roster_limits.il_max / na_max, outside the 26) are enforced here for every path."""
@@ -721,8 +747,9 @@ def retain_bc(conn, upid, *, created_by="system", season=None, choice=None, snap
 # ----------------------------------------------------------------- keepers
 
 def _already_kept(conn, upid, season):
-    return _one(conn, """select 1 as x from wb_ledger where upid = %s and kind = 'keeper_salary'
-                          and ref_type = 'kap' and ref_id = %s""", (upid, str(season))) is not None
+    """A two-way player is kept once: the marker row on either half counts for both."""
+    return _one(conn, """select 1 as x from wb_ledger where upid = any(%s) and kind = 'keeper_salary'
+                          and ref_type = 'kap' and ref_id = %s""", (_halves(conn, upid), str(season))) is not None
 
 
 def _kap_keep(conn, c, *, season, by, ts, tier_paid, il=False, rat=False):
@@ -757,6 +784,7 @@ def keep_player(conn, upid, *, created_by, season=None, team=None, now=None):
     if _already_kept(conn, upid, season):
         raise RuleError(f"{_player(conn, upid)['name']} was already kept in the {season} KAP")
     cost, nxt, note = _kap_keep(conn, c, season=season, by=created_by, ts=ts, tier_paid=c["tier"])
+    _sync_twin(conn, upid)
     msg = f"{note}: ${cost} charged; now {nxt}."
     _event(conn, upid, "keeper_kept", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=nxt)
     return {"charged": cost, "tier": nxt, "message": msg}
@@ -793,6 +821,7 @@ def il_tag(conn, upid, *, created_by, approved_by, season=None, team=None, now=N
     _exec(conn, """update contracts set il_tag = true, il_tag_season = %s, il_tag_family = %s, il_tag_team = %s,
                           il_ineligible_until = %s where id = %s""",
           (season, t["family"], c["team_abbr"], _il_ineligible_until(conn, season, ts), c["id"]))
+    _sync_twin(conn, upid)
     msg = f"{note}: ${cost} charged (approved by {approved_by}); now {nxt}."
     _event(conn, upid, "il_tag", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=nxt)
     return {"charged": cost, "tier": nxt, "message": msg}
@@ -815,6 +844,7 @@ def reduce_a_tier(conn, upid, *, created_by, season=None, team=None, now=None):
            note=f"Reduce a Tier for {name}: {c['tier']} to {t['lower_tier']}", by=created_by)
     cost, nxt, note = _kap_keep(conn, c, season=season, by=created_by, ts=ts, tier_paid=t["lower_tier"], rat=True)
     _exec(conn, "update contracts set rat_count = rat_count + 1 where id = %s", (c["id"],))
+    _sync_twin(conn, upid)
     msg = f"{name} reduced {c['tier']} to {t['lower_tier']}: ${rat_price} RaT + ${cost} salary; now {nxt}."
     _event(conn, upid, "reduce_a_tier", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=nxt)
     return {"charged": rat_price + cost, "rat_price": rat_price, "salary": cost, "tier": nxt, "message": msg}
@@ -827,15 +857,18 @@ def assign_keeper_draft_pick(conn, upid, team, draft_round, *, created_by, seaso
     _team(conn, team)
     p = _player(conn, upid)
     _lock(conn, team)
-    if _one(conn, "select 1 as x from contracts where upid = %s and valid_to is null", (upid,)):
+    halves = _halves(conn, upid)     # a two-way player is one pick and one contract, on both of his rows
+    if _one(conn, "select 1 as x from contracts where upid = any(%s) and valid_to is null", (halves,)):
         raise RuleError(f"{p['name']} already has an open contract")
     entry = f"keeper_draft_r{draft_round}"
     if not _one(conn, "select 1 as x from contract_entry_tiers where entry = %s", (entry,)):
         entry = "keeper_draft_other"
     tier = _entry_tier(conn, entry)
-    cid = _open_contract(conn, upid=upid, team_abbr=team, kind="keeper", tier=tier, acquired_via="keeper_draft",
-                         acquired_round=draft_round, valid_from=ts)
-    _set_slot(conn, upid, "active", ts)
+    cids = [_open_contract(conn, upid=u, team_abbr=team, kind="keeper", tier=tier, acquired_via="keeper_draft",
+                           acquired_round=draft_round, valid_from=ts) for u in halves]
+    for u in halves:
+        _set_slot(conn, u, "active", ts)
+    cid = cids[0]
     msg = f"{team} drafted {p['name']} in round {draft_round}: {tier} contract."
     _event(conn, upid, "keeper_draft", msg, team=team, season=season, by=created_by, ts=ts, contract=tier)
     return {"contract_id": cid, "tier": tier, "message": msg}
@@ -845,42 +878,98 @@ def assign_keeper_draft_pick(conn, upid, team, draft_round, *, created_by, seaso
 
 @_atomic
 def release(conn, upid, *, created_by, season=None, team=None, reason="released", now=None):
-    """End the team's contract. The player keeps his tier as carried_tier for the next owner."""
+    """End the team's contract. The player keeps his tier as carried_tier for the next owner.
+    A two-way player is released as a package: both rows (Art. V s03 Clause 1)."""
     ts, season = _ts_season(conn, now, season)
     if reason not in ("released", "not_kept"):
         raise RuleError("reason must be 'released' or 'not_kept'")
     c = _locked_contract(conn, upid, team=team)
     name = _player(conn, upid)["name"]
-    _close_contract(conn, c["id"], reason, ts)
+    halves = _halves(conn, upid)
+    for row in _all(conn, "select id from contracts where upid = any(%s) and valid_to is null", (halves,)):
+        _close_contract(conn, row["id"], reason, ts)
     if c["kind"] == "keeper":
-        _exec(conn, "update players set carried_tier = %s where upid = %s", (c["tier"], upid))
-    _exec(conn, "delete from roster_slots where upid = %s", (upid,))
-    _roster_changed(conn, c["team_abbr"], [upid], ts)
+        _exec(conn, "update players set carried_tier = %s where upid = any(%s)", (c["tier"], halves))
+    _exec(conn, "delete from roster_slots where upid = any(%s)", (halves,))
+    _roster_changed(conn, c["team_abbr"], halves, ts)
     carried = f" He keeps his {c['tier']} tier." if c["kind"] == "keeper" else ""
     msg = f"{c['team_abbr']} {reason.replace('_', ' ')} {name}.{carried}"
     _event(conn, upid, reason, msg, team=c["team_abbr"], season=season, by=created_by, ts=ts, contract=c["tier"] or c["prospect_type"])
-    return {"carried_tier": c["tier"] if c["kind"] == "keeper" else None, "message": msg}
+    return {"carried_tier": c["tier"] if c["kind"] == "keeper" else None, "released": halves, "message": msg}
 
 
 @_atomic
-def acquire_free_agent(conn, upid, team, *, created_by, season=None, slot="active", now=None):
-    """Open a keeper contract at the player's carried_tier (TC-1 if he has none)."""
+def acquire_free_agent(conn, upid, team, *, created_by, season=None, slot="active", with_twin=False, now=None):
+    """Open a keeper contract at the player's carried_tier (TC-1 if he has none).
+
+    A two-way player is one contract on both of his rows. The half named here goes to `slot`. His other
+    half is optioned, which uses one of that half's options ("must announce and use an option on the
+    version not added", Art. V s03 Clause 1), unless with_twin puts both halves in `slot`."""
     ts, season = _ts_season(conn, now, season)
     _team(conn, team)
     p = _player(conn, upid)
     _lock(conn, team)
     if slot not in SLOTS:
         raise RuleError(f"slot must be one of {SLOTS}")
-    if _one(conn, "select 1 as x from contracts where upid = %s and valid_to is null", (upid,)):
+    halves = _halves(conn, upid)
+    if _one(conn, "select 1 as x from contracts where upid = any(%s) and valid_to is null", (halves,)):
         raise RuleError(f"{p['name']} is owned and can't be added as a free agent")
     tier = p["carried_tier"] or _entry_tier(conn, "free_agent_default")
-    if slot == "active":
-        _check_can_activate(conn, team, upid, season)
-    cid = _open_contract(conn, upid=upid, team_abbr=team, kind="keeper", tier=tier, acquired_via="free_agent", valid_from=ts)
-    _set_slot(conn, upid, slot, ts, season)
+    cid = None
+    for u in halves:
+        to = slot if (u == upid or with_twin) else "optioned"
+        if to == "active":
+            _check_can_activate(conn, team, u, season)
+        new = _open_contract(conn, upid=u, team_abbr=team, kind="keeper", tier=tier, acquired_via="free_agent", valid_from=ts)
+        cid = cid or new
+        _set_slot(conn, u, to, ts, season)
+        if to == "optioned":
+            _use_option(conn, new, u, season, ts, created_by)
     msg = f"{team} added {p['name']} as a free agent at {tier}."
     _event(conn, upid, "free_agent_add", msg, team=team, season=season, by=created_by, ts=ts, contract=tier)
     return {"contract_id": cid, "tier": tier, "message": msg}
+
+
+def _use_option(conn, contract_id, upid, season, ts, by):
+    """Record one option against this half's contract. RuleError when none are left this season."""
+    cap = _limits(conn, season)["two_way_options_max"]
+    used = _one(conn, "select count(*) as n from two_way_options where contract_id = %s and season = %s",
+                (contract_id, season))["n"]
+    if used >= cap:
+        raise RuleError(f"{_player(conn, upid)['name']} has no options left for {season} ({used} of {cap} used); "
+                        "the only move left is releasing both halves")
+    _exec(conn, "insert into two_way_options (contract_id, upid, season, optioned_at, created_by) values (%s, %s, %s, %s, %s)",
+          (contract_id, upid, season, ts, by))
+    return used + 1, cap
+
+
+@_atomic
+def option_two_way(conn, upid, *, created_by, season=None, team=None, now=None):
+    """Option one half of a two-way player: he leaves the 26 but stays owned (Art. V s03 Clause 1).
+
+    Each half can be optioned roster_limits.two_way_options_max times a season. A trade opens new
+    contracts, so the receiving team's options start again. One half has to stay on the roster, so a
+    half can't be optioned while the other one is. Recalling him is move_slot(upid, 'active'), which
+    checks the roster maximums like any other activation."""
+    ts, season = _ts_season(conn, now, season)
+    c = _locked_contract(conn, upid, team=team, kind="keeper")
+    name = _player(conn, upid)["name"]
+    twin = _twin(conn, upid)
+    if not twin:
+        raise RuleError(f"{name} is not a two-way player; only one half of a two-way player can be optioned")
+    slots = {r["upid"]: r["slot"] for r in _all(conn, "select upid, slot from roster_slots where upid = any(%s)", ([upid, twin],))}
+    if slots.get(upid) == "optioned":
+        raise RuleError(f"{name} is already optioned")
+    if slots.get(twin) == "optioned":
+        raise RuleError(f"{_player(conn, twin)['name']} is already optioned, and one half of a two-way player "
+                        "has to stay on the roster")
+    used, cap = _use_option(conn, c["id"], upid, season, ts, created_by)
+    _set_slot(conn, upid, "optioned", ts, season)
+    if slots.get(upid) == "active":
+        _roster_changed(conn, c["team_abbr"], [upid], ts)
+    msg = f"{c['team_abbr']} optioned {name} ({used} of {cap} options used in {season})."
+    _event(conn, upid, "two_way_option", msg, team=c["team_abbr"], season=season, by=created_by, ts=ts)
+    return {"slot": "optioned", "options_used": used, "options_max": cap, "message": msg}
 
 
 @_atomic
@@ -1170,8 +1259,10 @@ def reverse_draft_pick(conn, upid, team, *, created_by, expected_tier=None, expe
     if expected_tier is not None and c["tier"] != expected_tier:
         raise RuleError(f"{name}'s contract is now {c['tier'] or c['prospect_type']}, not the {expected_tier} the pick gave "
                         "(changed since the draft)")
-    _close_contract(conn, c["id"], "voided", ts)
-    _exec(conn, "delete from roster_slots where upid = %s", (upid,))
+    halves = _halves(conn, upid)     # a two-way player's pick gave both of his rows a contract
+    for row in _all(conn, "select id from contracts where upid = any(%s) and valid_to is null", (halves,)):
+        _close_contract(conn, row["id"], "voided", ts)
+    _exec(conn, "delete from roster_slots where upid = any(%s)", (halves,))
     _exec(conn, "update prospect_draft_slots set filled_upid = null, filled_at = null where filled_upid = %s", (upid,))
     msg = f"{team}'s draft pick ({note or 'draft'}) was reversed; {name} is back in the pool."
     _event(conn, upid, "draft_pick_reversed", msg, team=team, season=season, by=created_by, ts=ts,

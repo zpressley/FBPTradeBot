@@ -311,8 +311,9 @@ def test_04_r1_pick_needs_both_teams_bought_in(w):
 
 def test_05_two_way_player_needs_his_other_half(w):
     bat, pit = w.player(A, "DH"), w.player(A, "SP")
-    w.conn.execute("update players set raw = jsonb_build_object('2wayplayer', %s::text) where upid = %s", (pit, bat))
-    w.conn.execute("update players set raw = jsonb_build_object('2wayplayer', %s::text) where upid = %s", (bat, pit))
+    # one statement: this connection autocommits, and a one-sided link can't be committed (0009)
+    w.conn.execute("""update players set raw = jsonb_build_object('2wayplayer', case upid when %s then %s::text else %s::text end)
+                       where upid in (%s, %s)""", (bat, pit, bat, bat, pit))
     other = w.player(B)
     res = svc.validate(w.conn, w.trade(A, w.P(bat, A, B), w.P(other, B, A)), "build", T0)
     assert blocks(res) == {"two_way"} and "has to be traded with Test Player 2" in res["blocks"][0]["message"]
